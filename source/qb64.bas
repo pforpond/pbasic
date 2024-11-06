@@ -1641,7 +1641,7 @@ IF idemode THEN GOTO ideret1
 
 IF NOT QuietMode THEN
     PRINT
-    PRINT "Beginning C++ output from QB64 code... "
+    PRINT "Checking BASIC code... "
 END IF
 
 lineinput3load sourcefile$
@@ -12304,9 +12304,9 @@ IF idemode = 0 AND No_C_Compile_Mode = 0 THEN
     IF NOT QuietMode THEN
         PRINT
         IF os$ = "LNX" THEN
-            PRINT "Compiling C++ code into executable..."
+            PRINT "Compiling BASIC code into executable..."
         ELSE
-            PRINT "Compiling C++ code into EXE..."
+            PRINT "Compiling BASIC code into executable..."
         END IF
     END IF
     IF LEN(outputfile_cmd$) THEN
@@ -13257,11 +13257,11 @@ END IF
 
 IF compfailed THEN
     IF idemode THEN
-        idemessage$ = "C++ Compilation failed " + CHR$(0) + "(Check " + _TRIM$(compilelog$) + ")"
+        idemessage$ = "Compilation failed " + CHR$(0) + "(Check " + _TRIM$(compilelog$) + ")"
         GOTO ideerror
     END IF
     IF compfailed THEN
-        PRINT "ERROR: C++ compilation failed."
+        PRINT "ERROR: Compilation failed."
         PRINT "Check " + compilelog$ + " for details."
     END IF
 ELSE
