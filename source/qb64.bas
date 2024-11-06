@@ -66,9 +66,9 @@ QB64_uptime! = TIMER
 NoInternalFolder:
 IF _DIREXISTS("internal") = 0 THEN
     _SCREENSHOW
-    PRINT "QB64 cannot locate the 'internal' folder"
+    PRINT "pBASIC cannot locate the 'internal' folder"
     PRINT
-    PRINT "Check that QB64 has been extracted properly."
+    PRINT "Check that pBASIC has been extracted properly."
     PRINT "For MacOSX, launch 'qb64_start.command' or enter './qb64' in Terminal."
     PRINT "For Linux, in the console enter './qb64'."
     DO
@@ -104,7 +104,7 @@ DIM SHARED UseGL 'declared SUB _GL (no params)
 DIM SHARED OS_BITS AS LONG, WindowTitle AS STRING
 OS_BITS = 64: IF INSTR(_OS$, "[32BIT]") THEN OS_BITS = 32
 
-IF OS_BITS = 32 THEN WindowTitle = "QB64 x32" ELSE WindowTitle = "QB64 x64"
+IF OS_BITS = 32 THEN WindowTitle = "pBASIC x32" ELSE WindowTitle = "pBASIC x64"
 _TITLE WindowTitle
 
 DIM SHARED ConsoleMode, No_C_Compile_Mode, NoIDEMode
@@ -1122,7 +1122,7 @@ GOTO sendcommand
 noide:
 IF (qb64versionprinted = 0 OR ConsoleMode = 0) AND NOT QuietMode THEN
     qb64versionprinted = -1
-    PRINT "QB64 Compiler V" + Version$
+    PRINT "pBASIC Compiler V" + Version$
 END IF
 
 IF CMDLineFile = "" THEN
@@ -13427,7 +13427,7 @@ FUNCTION ParseCMDLineArgs$ ()
         SELECT CASE LCASE$(LEFT$(token$, 2))
             CASE "-?" 'Command-line help
                 _DEST _CONSOLE
-                IF qb64versionprinted = 0 THEN qb64versionprinted = -1: PRINT "QB64 Compiler V" + Version$
+                IF qb64versionprinted = 0 THEN qb64versionprinted = -1: PRINT "pBASIC Compiler V" + Version$
                 PRINT
                 PRINT "Usage: qb64 [switches] <file>"
                 PRINT
@@ -13474,7 +13474,7 @@ FUNCTION ParseCMDLineArgs$ ()
             CASE "-s" 'Settings
                 settingsMode = -1
                 _DEST _CONSOLE
-                IF qb64versionprinted = 0 THEN qb64versionprinted = -1: PRINT "QB64 Compiler V" + Version$
+                IF qb64versionprinted = 0 THEN qb64versionprinted = -1: PRINT "pBASIC Compiler V" + Version$
                 SELECT CASE LCASE$(MID$(token$, 3))
                     CASE ""
                         PRINT "debuginfo     = ";
