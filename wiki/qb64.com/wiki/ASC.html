@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/ASC by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="ASC-2.html" />
+<meta property="og:url" content="ASC-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/ASC.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="ASC.html">ASC</a> function returns the <a href="ASCII.html">ASCII</a> code number of a certain <a href="STRING.html">STRING</a> text character or a keyboard press.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>code% = <a href="ASC.html">ASC</a>(text$[, position%])</p>
+</blockquote>
+
+<ul>
+  <li>text$ <a href="STRING.html">STRING</a> character parameter must have a length of at least 1 byte or an error occurs.</li>
+  <li><strong>In QB64</strong> the optional byte position% <a href="INTEGER.html">INTEGER</a> parameter greater than 0 can specify the ASCII code of any character in a string to be returned.</li>
+  <li>If the optional position% parameter is omitted, ASC will return the <a href="ASCII.html">ASCII</a> code of the first <a href="STRING.html">STRING</a> character.</li>
+  <li><a href="ASCII.html">ASCII</a> code <a href="INTEGER.html">INTEGER</a> or <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_BYTE.html">_BYTE</a> values returned range from 0 to 255.</li>
+  <li>ASC returns 0 when reading <a href="ASCII.html">ASCII</a> 2 byte codes returned by <a href="INKEY%24.html">INKEY$</a> when the arrow, function, Home/Page keys are used.
+    <ul>
+      <li>Use QB64’s position% parameter to read the second byte if necessary. IF ASC(key$) <nowiki>=</nowiki> 0 THEN byte2 <nowiki>=</nowiki> ASC(key$, 2)</li>
+    </ul>
+  </li>
+  <li>In <strong>QB64</strong> ASC string byte position reads are about <strong>5 times faster</strong> than <a href="MID%24.html">MID$</a> when parsing strings. See <a href="MID%24.html">MID$</a> <em>Example 2</em>.</li>
+</ul>
+
+<h2 id="errors">Error(s)</h2>
+
+<ul>
+  <li>If the function is used to read an <strong>empty string value</strong> an illegal function call <a href="ERROR-Codes.html">ERROR Codes</a> will occur. <a href="INKEY%24.html">INKEY$</a> returns an empty string when a key is not pressed.</li>
+  <li><strong>QB64</strong>’s position% parameters must range from 1 to the <a href="LEN.html">LEN</a> of the string being read or an illegal function call <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+'                                **ASCII Keyboard Codes**
+'
+**' Esc  F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  Sys ScL Pause**                  
+'  27 +59 +60 +61 +62 +63 +64 +65 +66 +67 +68  +133 +134   -   -    -
+**' `~  1!  2@  3#  4$  5%  6^  7&amp;  8*  9(  0) -_ =+ BkSp   Ins Hme PUp   NumL  /   *    -** 
+' 126 33  64  35  36  37  94  38  42  40  41 95 43   8    +82 +71 +73    -    47  42   45
+**  96 49  50  51  52  53  54  55  56  57  48 45 61*
+**' Tab Q   W   E   R   T   Y   U   I   O   P  [{  ]}  \|   Del End PDn   7Hme 8/▲  9PU  + **
+'  9  81  87  69  82  84  89  85  73  79  80 123 125 124  +83 +79 +81   +71  +72  +73  43
+**    113 119 101 114 116 121 117 105 111 112  91  93  92                 55   56   57 *
+**' CapL  A   S   D   F   G   H   J   K   L   ;:  '" Enter                4/◄-  5   6/-►  
+'   -   65  83  68  70  71  72  74  75  76  58  34  13                  +75  +76  +77  **E**
+**       97 115 100 102 103 104 106 107 108  59  39                       52   53   54 * **n**                                    
+**' Shift  Z   X   C   V   B   N   M   ,&lt;  .&gt;  /?    Shift       ▲        1End 2/▼  3PD  t**
+'   *    90  88  67  86  66  78  77  60  62  63      *        +72       +79  +80  +81  **e**
+**       122 120  99 118  98 110 109  44  46  47                          49   50   51 * **r**
+**' Ctrl Win Alt       Spacebar          Alt Win Menu Ctrl   ◄-  ▼   -►   0Ins     .Del **
+'  *    -   *           32              *   -   -    *    +75 +80 +77   +82       +83  13 
+'                                                                   *     48        46*
+'
+' **    *Italics* = LCase/NumLock On  ____________  + = 2 Byte: CHR$(0) + CHR$(code)**
+'
+
+</code></pre></div></div>
+
+<p><strong><a href="ASCII.html">ASCII</a></strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                    **Two Byte Characters        Key                 CHR$(0) + "?" **
+
+                    CHR$(0) + CHR$(16-50)      [Alt] + letter       
+                    CHR$(0) + CHR$(59)         [F1]                 ";"
+                    CHR$(0) + CHR$(60)         [F2]                 "&lt;"
+                    CHR$(0) + CHR$(61)         [F3]                 "="
+                    CHR$(0) + CHR$(62)         [F4]                 "&gt;"
+                    CHR$(0) + CHR$(63)         [F5]                 "?"
+                    CHR$(0) + CHR$(64)         [F6]                 "@"
+                    CHR$(0) + CHR$(65)         [F7]                 "A"
+                    CHR$(0) + CHR$(66)         [F8]                 "B"
+                    CHR$(0) + CHR$(67)         [F9]                 "C"
+                    CHR$(0) + CHR$(68)         [F10]                "D"
+                    CHR$(0) + CHR$(71)         [Home]               "G"
+                    CHR$(0) + CHR$(72)         [↑] Arrow            "H"
+                    CHR$(0) + CHR$(73)         [Page Up]            "I"
+                    CHR$(0) + CHR$(75)         [←] Arrow            "K"
+                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QB64)
+                    CHR$(0) + CHR$(77)         [→] Arrow            "M"
+                    CHR$(0) + CHR$(79)         [End]                "O"
+                    CHR$(0) + CHR$(80)         [↓] Arrow            "P"
+                    CHR$(0) + CHR$(81)         [Page Down]          "Q"
+                    CHR$(0) + CHR$(82)         [Insert]             "R"
+                    CHR$(0) + CHR$(83)         [Delete]             "S"
+                    CHR$(0) + CHR$(84-93)      [Shift] + F1-10
+                    CHR$(0) + CHR$(94-103)     [Ctrl] + F1-10
+                    CHR$(0) + CHR$(104-113)    [Alt] + F1-10
+                    CHR$(0) + CHR$(114-119)    [Ctrl] + keypad 
+                    CHR$(0) + CHR$(120-129)    [Alt] + number
+                    CHR$(0) + CHR$(130 or 131) [Alt] + _/- or +/=   "é" or "â"
+                    CHR$(0) + CHR$(133)        [F11]                "à"
+                    CHR$(0) + CHR$(134)        [F12]                "å"
+                    CHR$(0) + CHR$(135)        [Shift] + [F11]      "ç"
+                    CHR$(0) + CHR$(136)        [Shift] + [F12]      "ê"
+                    CHR$(0) + CHR$(137)        [Ctrl] + [F11]       "ë"
+                    CHR$(0) + CHR$(138)        [Ctrl] + [F12]       "è"
+                    CHR$(0) + CHR$(139)        [Alt] + [F11]        "ï"
+                    CHR$(0) + CHR$(140)        [Alt] + [F12]        "î"
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>In <strong>QB64</strong>, <a href="CVI.html">CVI</a> can be used to get the <a href="_KEYDOWN.html">_KEYDOWN</a> 2-byte code value. Example: IF _KEYDOWN(<a href="CVI.html">CVI</a>(<a href="CHR%24.html">CHR$</a>(0) + “P”)) THEN</p>
+</blockquote>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>How ASC can be used to find any ASCII code in a string of characters using QB64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"A"</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"Be a rockstar"</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"QB64 is not only COMPATIBLE, it can find any part of the string!"</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<p><em>Returns:</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 65
+ 66
+ 67
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The ASCII code for “A” is 65 and the ASCII code for “B” is 66, ASCII code for “C” is 67 and the “C” is at position 18 in the string.</p>
+
+<blockquote>
+  <p><em>Note:</em> The ASCII code for “A” and “a” are different by the value of 32, “A” + 32 is “a”, 65(“A”) + 32 = 97(“a”).</p>
+</blockquote>
+
+<p>Reading the ASCII and two byte code combinations with ASC in <strong>QB64</strong>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">Q</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="c1">' quote character</span>
+<span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">22</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press some keys or combinations!"</span>
+<span class="n">COLOR</span> <span class="mi">13</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">30</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Escape key Quits"</span>
+<span class="n">DO</span>
+   <span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">key$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">key$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="c1">' prevent ASC empty string read error</span>
+   <span class="n">code%</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">key$</span><span class="p">):</span> <span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span>
+   <span class="n">IF</span> <span class="n">code%</span> <span class="n">THEN</span>    <span class="c1">' ASC returns any value greater than 0</span>
+    <span class="n">PRINT</span> <span class="s">"CHR$("</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">code%</span><span class="p">))</span> <span class="o">+</span> <span class="s">")"</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">13</span><span class="p">):</span> 
+    <span class="n">IF</span> <span class="n">code%</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="n">AND</span> <span class="n">code%</span> <span class="o">&lt;</span> <span class="mi">14</span> <span class="n">THEN</span> <span class="n">code%</span> <span class="o">=</span> <span class="mi">32</span>    <span class="c1">' unprintable control codes</span>
+    <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">code%</span><span class="p">)</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>        
+   <span class="n">ELSE</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"CHR$(0) + CHR$("</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">key$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="o">+</span> <span class="s">")"</span>
+    <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"CHR$(0) + "</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">key$</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span>
+   <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">code%</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">*</span> <span class="c1">'</span>
+
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The keypress read loop checks that ASC will not read an empty string. That would create a program error. <a href="SLEEP.html">SLEEP</a> reduces CPU memory usage between keypresses. Normal byte codes returned are indicated by the IF statement when ASC returns a value. Otherwise the routine will return the two byte ASCII code. The extended keyboard keys(Home pad, Arrow pad and Number pad), Function keys or Ctrl, Alt or Shift key combinations will return two byte codes. Ctrl + letter combinations will return control character codes 1 to 26.</p>
+
+<p>Reading only numerical values input by a program user.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span> <span class="c1">' requires a keypress to run loop once</span>
+   <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+   <span class="n">code</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">K</span><span class="err">$</span><span class="p">)</span>
+   <span class="n">IF</span> <span class="n">code</span> <span class="o">&gt;=</span> <span class="mi">48</span> <span class="n">AND</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mi">57</span> <span class="n">THEN</span> <span class="n">entry$</span> <span class="o">=</span> <span class="n">entry$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="c1">' numbers only</span>
+   <span class="n">IF</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">46</span> <span class="n">AND</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> 
+      <span class="n">entry$</span> <span class="o">=</span> <span class="n">entry$</span> <span class="o">+</span> <span class="n">K</span><span class="err">$</span><span class="p">:</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">mark</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">entry$</span><span class="p">)</span> <span class="c1">' decimal point</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">L</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">entry$</span><span class="p">)</span> <span class="c1">' check entry length for possible backspace</span>
+   <span class="n">IF</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">8</span> <span class="n">AND</span> <span class="n">L</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="c1">' backspace pressed and entry has a length</span>
+     <span class="n">entry$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">entry$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">' remove one character from entry$</span>
+     <span class="n">IF</span> <span class="n">L</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">mark</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">' allow another decimal point if removed.</span>
+     <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="err">;</span> <span class="c1">' remove character from screen</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">entry$</span><span class="err">;</span> 
+   <span class="c1">' display present entry to user(semicolon required for correct POS return)</span>
+ <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">L</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> <a href="SLEEP.html">SLEEP</a> waits for a keypress allowing background programs to use the processor time. It also keeps the press in the keyboard buffer for <a href="INKEY%24.html">INKEY$</a> to read and guarantees that ASC will not read an empty string value to create an error. Filtered codes 48 to 57 are only number characters. One decimal point is allowed by using the flag. Code 8 is a backspace request which is ignored if the entry has no characters. If it is allowed it removes the last character from the entry and the screen. The loop exits when the user presses the [Enter] key and the entry has a length.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="ASC-(statement).html">ASC (statement)</a></li>
+  <li><a href="_KEYHIT.html">_KEYHIT</a>, <a href="_KEYDOWN.html">_KEYDOWN</a></li>
+  <li><a href="MID%24.html">MID$</a>, <a href="CHR%24.html">CHR$</a>, <a href="INKEY%24.html">INKEY$</a></li>
+  <li><a href="VAL.html">VAL</a>, <a href="STRING%24.html">STRING$</a></li>
+  <li><a href="ASCII.html">ASCII</a>, <a href="_MAPUNICODE.html">_MAPUNICODE</a></li>
+  <li><a href="Scancodes.html">Scancodes</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/ASC by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:17 GMT -->
+</html>

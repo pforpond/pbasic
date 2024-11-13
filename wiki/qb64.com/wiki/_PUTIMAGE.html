@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_PUTIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_PUTIMAGE-2.html" />
+<meta property="og:url" content="_PUTIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_PUTIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> puts an area of a source image to an area of a destination image in one operation, like <a href="GET-(graphics-statement).html">GET (graphics statement)</a> and <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> [STEP] [(dx1, dy1)-[STEP][(dx2, dy2)]][, sourceHandle&amp;][, destHandle&amp;][, ][STEP][(sx1, sy1)[-STEP][(sx2, sy2)]][<em>_SMOOTH</em>]</p>
+</blockquote>
+
+<h3 id="sample-usage">Sample usage</h3>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> ‘full source image to fit full destination area after <a href="_SOURCE.html">_SOURCE</a> and <a href="_DEST.html">_DEST</a> are set</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> , sourceHandle&amp;, destHandle&amp; ‘size full source to fit full destination area</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> (<em>dx1</em>, <em>dy1</em>), sourceHandle&amp;, destHandle&amp; ‘full source to top-left corner destination position</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> (<em>dx1</em>, <em>dy1</em>)-(<em>dx2</em>, <em>dy2</em>), sourceHandle&amp;, destHandle&amp; ‘size full source to destination coordinate area</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> (<em>dx1</em>, <em>dy1</em>), sourceHandle&amp;, destHandle&amp;, (<em>sx1</em>, <em>sy1</em>)-(<em>sx2</em>, <em>sy2</em>) ‘portion of source to the top-left corner of the destination page</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> , sourceHandle&amp;, destHandle&amp;, (<em>sx1</em>, <em>sy1</em>)-(<em>sx2</em>, <em>sy2</em>) ‘portion of source to full destination area</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_PUTIMAGE.html">_PUTIMAGE</a> (<em>dx1</em>, <em>dy1</em>)-(<em>dx2</em>, <em>dy2</em>), sourceHandle&amp;, destHandle&amp;,(<em>sx1</em>, <em>sy1</em>) ‘right side of source from top-left corner to destination</p>
+</blockquote>
+
+<blockquote>
+  <p>Note: The top-left corner position designates the leftmost and topmost portion of the image to use.</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Relative coordinates to a previous graphical object can be designated using <a href="STEP.html">STEP</a> as opposed to literal surface coordinates.</li>
+  <li>Coordinates <em>dx</em> and <em>dy</em> map the box area of the <a href="_DEST.html">_DEST</a> area to use. When omitted the entire desination area is used. If only one coordinate is used, the source is placed with its original dimensions. Coordinates can be set to flip or resize the image.
+    <ul>
+      <li>dx1 = the column coordinate at which the insertion of the source will begin (leftmost); when larger than <em>dx2</em>, reverses image.</li>
+      <li>dy1 = the row coordinate at which the insertion of the source will begin (topmost); when larger than <em>dy2</em>, inverts image.</li>
+      <li>dx2 = the column coordinate at which the insertion of the source will end (rightmost); further apart, widens image.</li>
+      <li>dy2 = the row coordinate at which the insertion of the source will end (bottommost); closer together, shrinks image</li>
+    </ul>
+  </li>
+  <li>sourceHandle&amp; = the <a href="LONG.html">LONG</a> handle of the <a href="_SOURCE.html">_SOURCE</a> image created with <a href="_NEWIMAGE.html">_NEWIMAGE</a>, <a href="_LOADIMAGE.html">_LOADIMAGE</a> or <a href="_COPYIMAGE.html">_COPYIMAGE</a>.</li>
+  <li>destHandle&amp; = the <a href="LONG.html">LONG</a> handle of the <a href="_DEST.html">_DEST</a> image may be created with <a href="_NEWIMAGE.html">_NEWIMAGE</a>, <a href="SCREEN.html">SCREEN</a> or <a href="_DEST.html">_DEST</a> 0.</li>
+  <li>Coordinates <em>sx</em> and <em>sy</em> <a href="GET-(graphics-statement).html">GET (graphics statement)</a> the box area of the <a href="_SOURCE.html">_SOURCE</a> image to transfer to the <a href="_DEST.html">_DEST</a> image, page or <a href="SCREEN.html">SCREEN</a>:
+    <ul>
+      <li>sx1 = the column coordinate of the left-most pixel to include of the source. When omitted, the entire image is used</li>
+      <li>sy1 = the row coordinate of the upper-most pixel to include of the source. When omitted, the entire image is used</li>
+      <li>sx2 = the column coordinate of the right-most pixel to include of the source. Can be omitted to get rest of image.</li>
+      <li>sy2 = the row coordinate of the bottom-most pixel to include of the source. Can be omitted to get rest of image.</li>
+    </ul>
+  </li>
+  <li><em>_SMOOTH</em> applies linear filtering.</li>
+</ul>
+
+<p><strong>Note: The <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> options PSET, PRESET, AND, OR and XOR are not available with _PUTIMAGE. QB64 can use <a href="_ALPHA.html">_ALPHA</a> of colors to achieve the same results.</strong></p>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>_PUTIMAGE can be used without any handle parameters if the <a href="_SOURCE.html">_SOURCE</a> and/or <a href="_DEST.html">_DEST</a> are already defined.</li>
+  <li>If the area of the source is bigger or smaller than the area of the destination then the image is adjusted to fit that area.</li>
+  <li>Supports 32 bit alpha blending, color key transparency, true type fonts, stretching, mirroring/flipping, and a variety of graphics file formats including gif, png, bmp &amp; jpg. <strong>32 bit screen surface backgrounds (black) have zero <a href="_ALPHA.html">_ALPHA</a> and are transparent when placed over other surfaces.</strong> Use <a href="CLS.html">CLS</a> or <a href="_DONTBLEND.html">_DONTBLEND</a> to make a new surface background <a href="_ALPHA.html">_ALPHA</a> 255 or opaque.</li>
+  <li>All graphical surfaces, including screen pages, can be acted upon in the same manner, and are referred to as “images”.</li>
+  <li><strong>Hardware images</strong> (created using mode <strong>33</strong> via <a href="_LOADIMAGE.html">_LOADIMAGE</a> or <a href="_COPYIMAGE.html">_COPYIMAGE</a>) can be used as the source or destination.</li>
+  <li><a href="Handle-2.html">Handle</a>s are used to identify graphical surfaces. Positive values are used to refer to screen pages. -1 (negative one) indicates an invalid surface. It is recommended to store image handles in <a href="LONG.html">LONG</a> variables. Passing an invalid handle generates an <a href="ERROR-Codes.html">ERROR Codes</a> error.</li>
+  <li>When handles are not passed (or cannot be passed) to subs/functions then the default destination image or source image is referenced. These are set to the active page when the SCREEN statement is called, but can be changed to any image. So it is possible to read from one image using <a href="POINT.html">POINT</a> and write to a different one with <a href="PSET.html">PSET</a>.</li>
+  <li><strong><a href="PRINT.html">PRINT</a>ed text cannot be transferred and positioned accurately.</strong> Use <a href="_PRINTSTRING.html">_PRINTSTRING</a> for graphical text or font placement.</li>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+  <li><strong>It is important to free discarded or unused images with <a href="_FREEIMAGE.html">_FREEIMAGE</a> to prevent CPU memory overflow errors.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">SCREEN</span> <span class="mi">13</span>
+ <span class="n">a&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="c1">' creates a 640 * 200 image with the LONG handle a&amp;</span>
+ <span class="n">_DEST</span> <span class="n">a&amp;</span> <span class="c1">' makes image a&amp; the default drawing output.</span>
+ <span class="n">LINE</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="n">BF</span> <span class="c1">' draws a filled box (BF) into destination</span>
+ <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">a&amp;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em></p>
+</blockquote>
+
+<blockquote>
+  <p>1) A graphics mode is set by using <a href="SCREEN-(statement).html">SCREEN (statement)</a> 13 which can use up to 256 colors. 
+2) A new image is created that is 640 X 200 and uses the palette compatible with SCREEN 13 (256 colors).
+3) <a href="_DEST.html">_DEST</a> a&amp; makes the image with handle ‘a&amp;’ the default image to draw on instead of the screen (which is <a href="_DEST.html">_DEST</a> 0).
+4) Next a filled box (BF) is drawn from 10, 10 to 100, 100 with red color (12) to the destination image (set by <a href="_DEST.html">_DEST</a> a&amp;)
+5) Now we put the image from 0, 0 to 320, 200 from the image with the handle ‘a&amp;’ to the screen (always handle 0) and puts this image into the coordinates 0, 0 to 320, 200. If we want to stretch the image we can alter these coordinates.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note:</strong> All arguments are optional. If you want to simply put the whole image of the source to the whole image of the destination then you omit the area (x, y)-(x2, y2) on both sides, the last line of the example can be replaced by <a href="_PUTIMAGE.html">_PUTIMAGE</a> , a&amp;, 0 which indeed will stretch the image since image a&amp; is bigger than the screen (the screen is 320 * 200 and a&amp; is 640 * 200)</p>
+</blockquote>
+
+<ul>
+  <li>You don’t need to do anything special to use a .PNG image with alpha/transparency. Here’s a simple example:</li>
+</ul>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">CLS</span> <span class="p">,</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="o">**</span><span class="s">"QB64.PNG"</span><span class="o">**</span><span class="p">)</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">i</span> <span class="c1">' places image at upper left corner of window w/o stretching it </span>
+
+</code></pre></div></div>
+
+<p>Flipping and enlarging an image with _PUTIMAGE by swapping or increasing the desination coordinates.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFLNG</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">dest_handle</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="n">dest_handle</span>  <span class="c1">'32 bit Screen 12 dimensions</span>
+<span class="n">source_handle</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="o">**</span><span class="s">"QB64.PNG"</span><span class="o">**</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">dx1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">dy1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dx2</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">source_handle</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">dy2</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">source_handle</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'image dimensions - 1</span>
+<span class="n">LOCATE</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press any Key!"</span><span class="err">;</span>
+<span class="c1">'normal image coordinate values based on the dimensions of the image:</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">dx1</span><span class="p">,</span> <span class="n">dy1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">dx2</span><span class="p">,</span> <span class="n">dy2</span><span class="p">),</span> <span class="n">source_handle</span><span class="p">,</span> <span class="n">dest_handle</span>
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Normal layout"</span>
+<span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"_PUTIMAGE (dx1, dy1)-(dx2, dy2), source_handle, dest_handle"</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">'to flip the image on the x axis, swap the dx coordinate values:</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">dx2</span><span class="p">,</span> <span class="n">dy1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">dx1</span><span class="p">,</span> <span class="n">dy2</span><span class="p">),</span> <span class="n">source_handle</span><span class="p">,</span> <span class="n">dest_handle</span>
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Flip by X axis"</span>
+<span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"_PUTIMAGE (dx2, dy1)-(dx1, dy2), source_handle, dest_handle"</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">'to flip image on y axis, swap the dy coordinate values:</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">dx1</span><span class="p">,</span> <span class="n">dy2</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">dx2</span><span class="p">,</span> <span class="n">dy1</span><span class="p">),</span> <span class="n">source_handle</span><span class="p">,</span> <span class="n">dest_handle</span>
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Flip by Y axis"</span>
+<span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"_PUTIMAGE (dx1, dy2)-(dx2, dy1), source_handle, dest_handle "</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">'to flip both, swap both the dx and dy coordinate values:</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">dx2</span><span class="p">,</span> <span class="n">dy2</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">dx1</span><span class="p">,</span> <span class="n">dy1</span><span class="p">),</span> <span class="n">source_handle</span><span class="p">,</span> <span class="n">dest_handle</span>
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Flip on both axis"</span>
+<span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"_PUTIMAGE (dx2, dy2)-(dx1, dy1), source_handle, dest_handle"</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">'to enlarge, double the second set of values plus any offset of the first coordinates:</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">dx1</span><span class="p">,</span> <span class="n">dy1</span><span class="p">)</span><span class="o">-</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dx2</span><span class="p">)</span> <span class="o">+</span> <span class="n">dx1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dy2</span><span class="p">)</span> <span class="o">+</span> <span class="n">dy1</span><span class="p">),</span> <span class="n">source_handle</span><span class="p">,</span> <span class="n">dest_handle</span>
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Double image size"</span>
+<span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> 
+<span class="n">PRINT</span> <span class="s">"_PUTIMAGE (dx1, dy1)-((2 * dx2) + dx1, (2 * dy2) + dy1), s_handle, d_handle 
+END 
+
+</span></code></pre></div></div>
+
+<p>Using _PUTIMAGE to scroll a larger image created on a separate <a href="_NEWIMAGE.html">_NEWIMAGE</a> screen page with QB64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">RANDOMIZE</span> <span class="n">TIMER</span>
+<span class="n">ws&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">2560</span><span class="p">,</span> <span class="mi">1440</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">'large image page</span>
+<span class="n">s&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span><span class="c1">' program screen</span>
+
+<span class="n">_DEST</span> <span class="n">ws&amp;</span> <span class="c1">'create large image of random filled circles</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">50</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">RND</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2560</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">RND</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1440</span>
+    <span class="n">clr&amp;</span> <span class="o">=</span> <span class="n">_RGB32</span><span class="p">(</span><span class="n">RND</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">RND</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">RND</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">RND</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">300</span><span class="p">,</span> <span class="n">clr&amp;</span>
+    <span class="n">PAINT</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">clr&amp;</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="s">"This is a demo of some screen scrolling.   Use the number pad keys to scroll.  4 goes left, 6 goes right.  8 up, 2 down. ESC key will close this program."</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">SCREEN</span> <span class="n">s&amp;</span>
+
+<span class="n">DO</span>
+    <span class="n">CLS</span>
+    <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ws&amp;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1279</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">719</span><span class="p">)</span>
+    <span class="n">a$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">a$</span>
+        <span class="n">CASE</span> <span class="s">"4"</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">10</span><span class="p">:</span> <span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">CASE</span> <span class="s">"6"</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">:</span> <span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1280</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1280</span>
+        <span class="n">CASE</span> <span class="s">"8"</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">10</span><span class="p">:</span> <span class="n">IF</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">CASE</span> <span class="s">"2"</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">10</span><span class="p">:</span> <span class="n">IF</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">720</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">720</span>
+        <span class="n">CASE</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">):</span> <span class="n">SYSTEM</span>
+    <span class="n">END</span> <span class="n">SELECT</span>
+    <span class="n">_DISPLAY</span>
+<span class="n">LOOP</span> 
+
+</code></pre></div></div>
+
+<p>_PUTIMAGE can be used with no parameters at all if the <a href="_SOURCE.html">_SOURCE</a> and <a href="_DEST.html">_DEST</a> are already set.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">h&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">_DEST</span> <span class="n">h&amp;</span>
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="s">"This _PUTIMAGE used no parameters!"</span>
+<span class="n">_SOURCE</span> <span class="n">h&amp;</span>
+<span class="n">_DEST</span> <span class="mi">0</span>
+<span class="n">_PUTIMAGE</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<h3 id="more-examples">More examples</h3>
+
+<ul>
+  <li><a href="Bitmaps.html">Bitmaps</a> (Bitmap Screenshots)</li>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (Converts Images to Bitmaps)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_NEWIMAGE.html">_NEWIMAGE</a></li>
+  <li><a href="_COPYIMAGE.html">_COPYIMAGE</a>, <a href="_SCREENIMAGE.html">_SCREENIMAGE</a></li>
+  <li><a href="_MAPTRIANGLE.html">_MAPTRIANGLE</a>, <a href="STEP.html">STEP</a></li>
+  <li><a href="_DEST.html">_DEST</a>, <a href="_SOURCE.html">_SOURCE</a>, <a href="_FREEIMAGE.html">_FREEIMAGE</a></li>
+  <li><a href="Hardware-images.html">Hardware images</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_PUTIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:04 GMT -->
+</html>

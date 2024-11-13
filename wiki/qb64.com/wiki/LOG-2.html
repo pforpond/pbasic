@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/LOG.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="LOG-2.html" />
+<meta property="og:url" content="LOG-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/LOG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="LOG.html">LOG</a> math function returns the natural logarithm of a specified numerical value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>logarithm! = <a href="LOG.html">LOG</a>(value)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>value MUST be greater than 0. <a href="ERROR-Codes.html">ERROR Codes</a> occurs if negative or zero values are used.</li>
+  <li>The natural logarithm is the logarithm to the base <strong>e = 2.718282</strong> (approximately).</li>
+  <li>The natural logarithm of <em>a</em> is defined as the integral from 1 to <em>a</em> of dx/x.</li>
+  <li>Returns are default <a href="SINGLE.html">SINGLE</a> precision unless the value parameter uses <a href="DOUBLE.html">DOUBLE</a> precision.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><a href="FUNCTION.html">FUNCTION</a> to find the base ten logarithm of a numerical value.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">FUNCTION</span> <span class="n">Log10</span><span class="p">#(</span><span class="n">value</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span> <span class="n">STATIC</span>
+   <span class="n">Log10</span><span class="p">#</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="n">LOG</span><span class="p">(</span><span class="mf">10.</span><span class="p">#)</span> 
+ <span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The natural logarithm of the value is divided by the base 10 logarithm. The LOG of ten is designated as a DOUBLE precision return by using # after the Log10 value. The return tells you the number of times 10 goes into a value.</p>
+</blockquote>
+
+<p>A binary FUNCTION to convert <a href="INTEGER.html">INTEGER</a> values using LOG to find the number of digits the return will be.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FUNCTION</span> <span class="n">BIN</span><span class="err">$</span> <span class="p">(</span><span class="n">n&amp;</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">n&amp;</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>            <span class="c1">'positive numbers only! negative error!</span>
+  <span class="n">FOR</span> <span class="n">p%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">INT</span><span class="p">(</span><span class="n">LOG</span><span class="p">(</span><span class="n">n&amp;</span> <span class="o">+</span> <span class="p">.</span><span class="err">1)</span> <span class="err">/</span> <span class="n">LOG</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>     <span class="c1">' added +.1 to get 0 to work</span>
+    <span class="n">IF</span> <span class="n">n&amp;</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">p%</span> <span class="n">THEN</span> <span class="n">s$</span> <span class="o">=</span> <span class="s">"1"</span> <span class="o">+</span> <span class="n">s$</span> <span class="n">ELSE</span> <span class="n">s$</span> <span class="o">=</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">s$</span>  <span class="c1">'find bits on</span>
+  <span class="n">NEXT</span> <span class="n">p%</span>
+  <span class="n">IF</span> <span class="n">s$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="s">"&amp;B0"</span> <span class="n">ELSE</span> <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="s">"&amp;B"</span> <span class="o">+</span> <span class="n">s$</span>       <span class="c1">'check for zero return</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The LOG of a <strong>positive</strong> <a href="INTEGER.html">INTEGER</a> value is divided by the LOG of 2 to determine the number of binary digits that will be returned. The FOR loop compares the value with the exponents of two and determines if a bit is ON or OFF as “1” or “0”.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<p>*<a href="EXP.html">EXP</a>, <a href="%26B.html">&amp;B</a> (binary number)</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/LOG.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:31 GMT -->
+</html>

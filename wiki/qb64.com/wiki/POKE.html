@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/POKE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="POKE-2.html" />
+<meta property="og:url" content="POKE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/POKE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>POKE</strong> statement sets the value of a specified memory address offset. <strong>QB64 currently has limited access!</strong></p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>POKE <em>segment_offset</em>, <em>offset_value</em></p>
+</blockquote>
+
+<ul>
+  <li>Writes a value to the <em>segment_offset</em> address in memory.</li>
+  <li>POKE can only be used to set a value from 0 to 255 (one byte).</li>
+  <li>A segment should be defined using <a href="DEF-SEG.html">DEF SEG</a>, if you don’t define a segment qbasics ordinary segment will be used.</li>
+  <li>POKE sends byte values to memory areas. It does not directly access registers.</li>
+  <li>Important <a href="SCREEN-(statement).html">SCREEN (statement)</a> segments using <a href="PEEK.html">PEEK</a> and <a href="POKE.html">POKE</a> include &amp;HB800 (text segment) and &amp;HA000 (graphics segment).</li>
+  <li><a href="DEF-SEG.html">DEF SEG</a> should always be used to reset the default segment when access to other memory is no longer necessary.</li>
+  <li>POKE is safer to use than <a href="OUT.html">OUT</a> which could damage a PC register.</li>
+  <li><strong>Warning: DEF SEG, VARSEG , VARPTR, PEEK or POKE access QB64’s emulated 16 bit conventional memory block!</strong>
+    <blockquote>
+      <p><strong>It is highly recommended that QB64’s <a href="_MEM.html">_MEM</a> memory system be used to avoid running out of memory.</strong></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<blockquote>
+  <p>Turning keyboard Lock and Insert modes on and off.</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="n">oldsetting%</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">OR</span> <span class="mi">16</span> <span class="c1">' ENABLES SCROLL LOCK</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">OR</span> <span class="mi">32</span> <span class="c1">' ENABLES NUMBER LOCK</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">OR</span> <span class="mi">64</span> <span class="c1">' ENABLES CAPS LOCK</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">OR</span> <span class="mi">128</span> <span class="c1">' ENABLES INSERT MODE</span>
+ <span class="n">DEF</span> <span class="n">SEG</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note: Use <a href="XOR.html">XOR</a> instead of <a href="OR.html">OR</a> above to alternate between on and off modes.</em></p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="n">oldsetting%</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">239</span> <span class="c1">' TURNS OFF SCROLL LOCK (239 = 255 - 16)</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">223</span> <span class="c1">' TURNS OFF NUMBER LOCK (223 = 255 - 32)</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">191</span> <span class="c1">' TURNS OFF CAPS LOCK (191 = 255 - 64)</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span><span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">127</span> <span class="c1">' TURNS OFF INSERT MODE (127 = 255 - 128)</span>
+ <span class="n">DEF</span> <span class="n">SEG</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note: Using <a href="AND.html">AND</a> requires that the bit value is subtracted from 255 to turn off a bit.</em> The above examples won’t work in NT.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Warning: The keyboard lights may NOT change so it is a good idea to restore the original settings!</strong></p>
+</blockquote>
+
+<p>A small PEEK and POKE fractal program.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HA000</span>     <span class="c1">'set to read screen buffer</span>
+<span class="n">DO</span>
+    <span class="n">FOR</span> <span class="n">a&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">65535</span>
+        <span class="n">POKE</span> <span class="n">a&amp;</span><span class="p">,</span> <span class="n">PEEK</span><span class="p">((</span><span class="n">a&amp;</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">HFFFF</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">NEXT</span>
+    <span class="n">_LIMIT</span> <span class="mi">25</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+<span class="n">DEF</span> <span class="n">SEG</span> 
+
+</code></pre></div></div>
+
+<p>Highlighting a row of text in Screen 0</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">minX</span> <span class="o">=</span> <span class="mi">20</span><span class="p">:</span> <span class="n">maxX</span> <span class="o">=</span> <span class="mi">60</span><span class="p">:</span> <span class="n">minY</span> <span class="o">=</span> <span class="mi">10</span><span class="p">:</span> <span class="n">maxY</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'the screen Y coordinate of the previously highlighted item</span>
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">25</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="n">i%</span><span class="p">,</span> <span class="mi">40</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">i%</span><span class="err">;</span><span class="p">:</span> <span class="n">NEXT</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">100</span>
+  <span class="n">IF</span> <span class="n">_MOUSEINPUT</span> <span class="n">THEN</span>
+    <span class="c1">'Un-highlight any selected row</span>
+    <span class="n">IF</span> <span class="n">selection</span> <span class="n">THEN</span> <span class="n">selectRow</span> <span class="n">selection</span><span class="p">,</span> <span class="n">minX</span><span class="p">,</span> <span class="n">maxX</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">_MOUSEX</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">_MOUSEY</span><span class="p">)</span>    
+    <span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">minX</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">maxX</span> <span class="n">AND</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">minY</span> <span class="n">AND</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">maxY</span> <span class="n">THEN</span>
+      <span class="n">selection</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">ELSE</span>
+      <span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="c1">'Highlight any selected row</span>
+    <span class="n">IF</span> <span class="n">selection</span> <span class="n">THEN</span> <span class="n">SelectRow</span> <span class="n">selection</span><span class="p">,</span> <span class="n">minX</span><span class="p">,</span> <span class="n">maxX</span><span class="p">,</span> <span class="mi">2</span> 
+    <span class="n">IF</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">selection</span> 
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">SUB</span> <span class="n">SelectRow</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HB800</span>
+<span class="n">addr&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_WIDTH</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="n">TO</span> <span class="n">x2</span>
+  <span class="n">oldCol</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">addr&amp;</span><span class="p">)</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">B10001111</span>   <span class="c1">' Mask foreground color and blink bit</span>
+  <span class="n">POKE</span> <span class="n">addr&amp;</span><span class="p">,</span> <span class="n">oldCol</span> <span class="n">OR</span> <span class="p">((</span><span class="n">col</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">B111</span><span class="p">)</span> <span class="o">*</span> <span class="o">&amp;</span><span class="n">B10000</span><span class="p">)</span> <span class="c1">' Apply background color</span>
+  <span class="n">addr&amp;</span> <span class="o">=</span> <span class="n">addr&amp;</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">NEXT</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-examples">See Example(s)</h2>
+
+<ul>
+  <li><a href="SelectScreen.html">SelectScreen</a> (Screen mode selection)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DEF-SEG.html">DEF SEG</a>, <a href="DEF-SEG-%3d-0.html">DEF SEG = 0</a> (reference)</li>
+  <li><a href="PEEK.html">PEEK</a> (read memory), <a href="OUT.html">OUT</a> (write to register)</li>
+  <li><a href="VARSEG.html">VARSEG</a>, <a href="VARPTR.html">VARPTR</a></li>
+  <li><a href="_MEMGET-(function).html">_MEMGET (function)</a>, <a href="_MEMPUT.html">_MEMPUT</a></li>
+  <li><a href="Scancodes.html">Scancodes</a> (demo), <a href="Screen-Memory.html">Screen Memory</a></li>
+  <li><a href="PEEK-and-POKE-Library.html">PEEK and POKE Library</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/POKE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:26 GMT -->
+</html>

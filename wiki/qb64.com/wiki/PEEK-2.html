@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PEEK.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PEEK-2.html" />
+<meta property="og:url" content="PEEK-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PEEK.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>PEEK</strong> function returns the value that is contained at a certain memory address offset. <strong>QB64 currently has limited access!</strong></p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>variable = PEEK(<em>segment_offset</em>)</p>
+</blockquote>
+
+<ul>
+  <li>Reads the specified memory <em>segment_offset</em> value.</li>
+  <li>Use <a href="DEF-SEG.html">DEF SEG</a> before PEEK to specify which memory segment to work in.</li>
+  <li>PEEK only reads the memory byte value. Not certain bits. (See <a href="AND.html">AND</a>)</li>
+  <li>Important <a href="SCREEN-(statement).html">SCREEN (statement)</a> segments using <a href="PEEK.html">PEEK</a> and <a href="POKE.html">POKE</a> include &amp;HB800 (text segment) and &amp;HA000 (graphics segment).</li>
+  <li>To return to Basic default segment use <a href="DEF-SEG.html">DEF SEG</a> without any arguments.</li>
+  <li><strong>Warning: DEF SEG, VARSEG , VARPTR, PEEK or POKE access QB64’s emulated 16 bit conventional memory block!</strong>
+    <blockquote>
+      <p><strong>It is highly recommended that QB64’s <a href="_MEM.html">_MEM</a> memory system be used to avoid running out of memory.</strong></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Checking the 8 keyboard bit settings using a PEEK return value.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">SCREEN</span> <span class="mi">12</span>
+ <span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">' BIOS area</span>
+ <span class="n">oldvalue</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span> <span class="c1">' IMPORTANT! save initial setting to reset later</span>
+ <span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">100</span>
+   <span class="n">port</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1047</span><span class="p">)</span>
+   <span class="n">IF</span> <span class="n">port</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">LOCATE</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">19</span><span class="p">:</span> <span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> 
+      <span class="n">PRINT</span> <span class="s">"Turn ALL Locks off to see each key's bit value!"</span>
+   <span class="n">END</span> <span class="n">IF</span>
+ <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span><span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">25</span>
+ <span class="n">PRINT</span> <span class="s">"PEEK(1047) ="</span><span class="err">;</span> <span class="n">port</span><span class="err">;</span> <span class="s">"present keyboard port byte value"</span>
+ <span class="n">LOCATE</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"R SHIFT PRESSED  "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"R SHIFT RELEASED"</span>
+ <span class="n">LOCATE</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"L SHIFT PRESSED  "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"L SHIFT RELEASED"</span>
+ <span class="n">LOCATE</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"CTRL KEY PRESSED "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"CTRL KEY RELEASED"</span>
+ <span class="n">LOCATE</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"ALT KEY PRESSED "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"ALT KEY RELEASED"</span>
+ <span class="n">LOCATE</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">16</span><span class="p">)</span> <span class="o">=</span> <span class="mi">16</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"SCROLL LOCK ON "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"SCROLL LOCK OFF"</span>
+ <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">32</span><span class="p">)</span> <span class="o">=</span> <span class="mi">32</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"NUMBER LOCK ON "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"NUMBER LOCK OFF"</span>
+ <span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">64</span><span class="p">)</span> <span class="o">=</span> <span class="mi">64</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"CAPS LOCK ON "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"CAPS LOCK OFF"</span>
+ <span class="n">LOCATE</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">35</span>
+ <span class="n">IF</span> <span class="p">(</span><span class="n">port</span> <span class="n">AND</span> <span class="mi">128</span><span class="p">)</span> <span class="o">=</span> <span class="mi">128</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"INSERT MODE ON "</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"INSERT MODE OFF"</span>
+ <span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press mode keys to change or [ESC] to quit!"</span><span class="err">;</span>
+ <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H60</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">' escape key exit</span>
+ <span class="n">POKE</span> <span class="mi">1047</span><span class="p">,</span> <span class="n">oldvalue</span>      <span class="c1">' IMPORTANT reset to original settings</span>
+ <span class="n">DEF</span> <span class="n">SEG</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>NOTE: Keyboard Port function key settings cannot be reset on NT machines!</strong></p>
+</blockquote>
+
+<h2 id="see-examples">See Example(s)</h2>
+
+<ul>
+  <li><a href="SelectScreen.html">SelectScreen</a> (Screen 0 row highlighting)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="POKE.html">POKE</a> (write to memory), <a href="INP.html">INP</a> (read register)</li>
+  <li><a href="DEF-SEG.html">DEF SEG</a>, <a href="VARSEG.html">VARSEG</a>, <a href="VARPTR.html">VARPTR</a></li>
+  <li><a href="_MEMGET-(function).html">_MEMGET (function)</a>, <a href="_MEMPUT.html">_MEMPUT</a></li>
+  <li><a href="DEF-SEG-%3d-0.html">DEF SEG = 0</a>, <a href="Scancodes.html">Scancodes</a> (demo)</li>
+  <li><a href="PEEK-and-POKE-Library.html">PEEK and POKE Library</a></li>
+  <li><a href="Screen-Memory.html">Screen Memory</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PEEK.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+</html>

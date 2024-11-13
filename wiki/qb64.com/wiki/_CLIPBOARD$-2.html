@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_CLIPBOARD$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_CLIPBOARD%24-2.html" />
+<meta property="og:url" content="_CLIPBOARD%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_CLIPBOARD$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_CLIPBOARD%24.html">_CLIPBOARD$</a> function returns the current operating system’s clipboard contents as a <a href="STRING.html">STRING</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result$ = <a href="_CLIPBOARD%24.html">_CLIPBOARD$</a></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Text returned can contain the entire contents of a copied file or web page or text from a previous <a href="_CLIPBOARD%24-(statement).html">_CLIPBOARD$ (statement)</a> statement.</li>
+  <li>The string returned can also contain formatting like CRLF (<a href="CHR%24.html">CHR$</a>(13) + <a href="CHR%24.html">CHR$</a>(10)) end of line characters.</li>
+  <li>The clipboard can be used to copy, paste and communicate between running programs.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Passing a string value between two running programs no matter where they are located.</p>
+
+<blockquote>
+  <p><em>Program1:</em></p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Start Program2 to read your text entries! Empty entry quits!"</span>
+<span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"Entry program started!"</span>            <span class="c1">'set clipboard initially</span>
+
+<span class="n">DO</span>
+  <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Enter some text to send to other program: "</span><span class="p">,</span> <span class="n">text$</span>
+  <span class="n">IF</span> <span class="n">text$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+  <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="n">text$</span>
+<span class="n">LOOP</span>
+
+<span class="n">SYSTEM</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Program2:</em></p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Enter text in Program1 and this program will read it. Esc key quits!"</span>
+
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">100</span>
+  <span class="n">text$</span> <span class="o">=</span> <span class="n">_CLIPBOARD$</span>                       <span class="c1">'function returns clipboard contents</span>
+  <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span> <span class="n">THEN</span> 
+     <span class="n">PRINT</span> <span class="n">text$</span>
+     <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">""</span>                       <span class="c1">'clear clipboard after a read</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+
+<span class="n">END</span>  
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Compile and run both programs at once to see the interaction. You could also run them on different paths.</p>
+</blockquote>
+
+<p>A minimized program that pops up when Ctrl + Shift is entered anytime in <strong>Windows</strong> and adds clipboard text to be Pasted:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'"ClippyBoard" program uses GetKeyState Win API to monitor a specific key combination.</span>
+<span class="c1">'This demo will maximize the window and focus on program when Shift+A is pressed.</span>
+
+<span class="n">DECLARE</span> <span class="n">DYNAMIC</span> <span class="n">LIBRARY</span> <span class="s">"user32"</span>
+  <span class="n">FUNCTION</span> <span class="n">FindWindowA</span><span class="err">%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">ClassName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">WindowName</span><span class="err">$</span><span class="p">)</span> <span class="c1">'find process handle by title</span>
+  <span class="n">FUNCTION</span> <span class="n">GetKeyState</span><span class="err">%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">nVirtKey</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span> <span class="c1">'Windows virtual key presses</span>
+  <span class="n">FUNCTION</span> <span class="n">ShowWindow</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hwnd</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">nCmdShow</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span> <span class="c1">'maximize process</span>
+  <span class="n">FUNCTION</span> <span class="n">GetForegroundWindow</span><span class="err">%</span><span class="o">&amp;</span> <span class="c1">'find currently focused process handle</span>
+  <span class="n">FUNCTION</span> <span class="n">SetForegroundWindow</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hwnd</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span> <span class="c1">'set foreground window process(focus)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">title$</span> <span class="o">=</span> <span class="s">"Clippy Clipboard (Ctrl+Shift)"</span> <span class="c1">'title of program window</span>
+<span class="n">_TITLE</span> <span class="n">title$</span> <span class="c1">'set program title</span>
+<span class="n">hwnd%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">FindWindowA</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">title$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1">'find this program's process handle</span>
+
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">_SCREENMOVE</span> <span class="n">_MIDDLE</span>
+
+<span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">" Press Ctrl+Shift to see clipboard menu."</span>
+
+<span class="n">_DELAY</span> <span class="mi">4</span>
+<span class="n">x&amp;</span> <span class="o">=</span> <span class="n">ShowWindow</span><span class="o">&amp;</span><span class="p">(</span><span class="n">hwnd%</span><span class="o">&amp;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">'minimize</span>
+
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">30</span> <span class="c1">'save CPU usage while waiting for key press</span>
+
+  <span class="n">IF</span> <span class="n">GetKeyState</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">GetKeyState</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="c1">'&lt;==== Shift+A</span>
+    <span class="n">FGwin</span><span class="err">%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">GetForegroundWindow</span><span class="err">%</span><span class="o">&amp;</span> <span class="c1">'get current process in focus</span>
+    <span class="n">y&amp;</span> <span class="o">=</span> <span class="n">ShowWindow</span><span class="o">&amp;</span><span class="p">(</span><span class="n">hwnd%</span><span class="o">&amp;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">'maximize minimized program</span>
+
+    <span class="n">IF</span> <span class="n">FGwin</span><span class="err">%</span><span class="o">&amp;</span> <span class="o">&lt;&gt;</span> <span class="n">hwnd%</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">z&amp;</span> <span class="o">=</span> <span class="n">SetForegroundWindow</span><span class="o">&amp;</span><span class="p">(</span><span class="n">hwnd%</span><span class="o">&amp;</span><span class="p">)</span> <span class="c1">'set focus when necessary</span>
+    <span class="n">_DELAY</span> <span class="mi">1</span>
+    <span class="n">GetKey</span>
+    <span class="n">x&amp;</span> <span class="o">=</span> <span class="n">ShowWindow</span><span class="o">&amp;</span><span class="p">(</span><span class="n">hwnd%</span><span class="o">&amp;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">'minimize after letter key entry</span>
+    <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span>
+    <span class="n">PRINT</span> <span class="s">" Press Ctrl+Shift to see clipboard menu."</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+
+<span class="n">SUB</span> <span class="n">GetKey</span>
+<span class="n">CLS</span>
+<span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">_CLIPBOARD$</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">_DELAY</span> <span class="mi">1</span>
+<span class="n">CLS</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Select a letter clipboard option:"</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"A = Address"</span>
+<span class="n">PRINT</span> <span class="s">"C = Cell phone"</span>
+<span class="n">PRINT</span> <span class="s">"E = Email"</span>
+<span class="n">PRINT</span> <span class="s">"F = First Name"</span>
+<span class="n">PRINT</span> <span class="s">"H = Home phone"</span>
+<span class="n">PRINT</span> <span class="s">"L = Last Name"</span>
+<span class="n">PRINT</span> <span class="s">"N = Name"</span>
+<span class="n">PRINT</span> <span class="s">"M = MAC address"</span>
+<span class="n">PRINT</span> <span class="s">"P = Password"</span>
+<span class="n">PRINT</span> <span class="s">"W = Work name"</span>
+<span class="n">PRINT</span> <span class="s">"X = QUIT!"</span>
+<span class="n">PRINT</span> <span class="s">"Z = Zip code"</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"Another letter will skip or X = EXIT!"</span>
+
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">K</span><span class="err">$</span>  <span class="c1">'The following text should be your personal user info:</span>
+  <span class="n">CASE</span> <span class="s">"A"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"my address"</span>
+  <span class="n">CASE</span> <span class="s">"C"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"cell number"</span>
+  <span class="n">CASE</span> <span class="s">"E"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"myemail"</span>
+  <span class="n">CASE</span> <span class="s">"F"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"formal name"</span>
+  <span class="n">CASE</span> <span class="s">"H"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"home number"</span>
+  <span class="n">CASE</span> <span class="s">"L"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"lastname"</span>
+  <span class="n">CASE</span> <span class="s">"M"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"modempassword"</span>
+  <span class="n">CASE</span> <span class="s">"N"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"name"</span>
+  <span class="n">CASE</span> <span class="s">"P"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"password"</span>
+  <span class="n">CASE</span> <span class="s">"X"</span><span class="p">:</span> <span class="n">END</span>
+  <span class="n">CASE</span> <span class="s">"Z"</span><span class="p">:</span> <span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"zipcode"</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">CLS</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">_CLIPBOARD$</span>
+<span class="n">BEEP</span>
+<span class="n">_DELAY</span> <span class="mi">2</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The program will run minimized until Ctrl + Shift is entered and will pop up to ask for a letter choice that contains the text you want in the clipboard. More letter choices can be added. Text can be pasted into a web page or entry box and the program will minimize until it is needed later. The program uses very little resources!</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_CLIPBOARD%24-(statement).html">_CLIPBOARD$ (statement)</a></li>
+  <li><a href="_CLIPBOARDIMAGE-(function).html">_CLIPBOARDIMAGE (function)</a>, <a href="_CLIPBOARDIMAGE.html">_CLIPBOARDIMAGE</a> (statement)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_CLIPBOARD$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:30 GMT -->
+</html>

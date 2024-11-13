@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/POINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="POINT-2.html" />
+<meta property="og:url" content="POINT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/POINT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>POINT</strong> function returns the pixel <a href="COLOR.html">COLOR</a> attribute at a specified graphics coordinate or the current graphic cursor position.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p><em>Color</em></p>
+
+<blockquote>
+  <p>color_attribute% = <strong>POINT (</strong><em>column%, row%</em><strong>)</strong></p>
+</blockquote>
+
+<p><em>Graphic cursor position</em></p>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>pointer_coordinate% = <strong>POINT(</strong>{0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3}<strong>)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<p>Graphic Color syntax:</p>
+
+<ul>
+  <li>The <a href="INTEGER.html">INTEGER</a> <em>column</em> and <em>row</em> coordinates designate the pixel position color on the screen to read.</li>
+  <li>The return value is an <a href="INTEGER.html">INTEGER</a> palette attribute value or an <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> <a href="_RGBA.html">_RGBA</a> 32 bit value in QB64.</li>
+</ul>
+
+<p>Graphic cursor position syntax:</p>
+
+<ul>
+  <li>The <a href="INTEGER.html">INTEGER</a> position number can be 0 to 3 depending on the cursor position desired:
+    <ul>
+      <li>POINT(0) returns the current graphic cursor <a href="SCREEN.html">SCREEN</a> column pixel coordinate.</li>
+      <li>POINT(1) returns the current graphic cursor <a href="SCREEN.html">SCREEN</a> row pixel coordinate.</li>
+      <li>POINT(2) returns the current graphic cursor <a href="WINDOW.html">WINDOW</a> column position.</li>
+      <li>POINT(3) returns the current graphic cursor <a href="WINDOW.html">WINDOW</a> row position.</li>
+    </ul>
+  </li>
+  <li>If a <a href="WINDOW.html">WINDOW</a> view port has not been established, the coordinate returned will be the <a href="SCREEN.html">SCREEN</a> cursor pixel position.</li>
+  <li>The return value is the current graphic cursor <em>column</em> or <em>row</em> pixel position on the <a href="SCREEN.html">SCREEN</a> or <a href="WINDOW.html">WINDOW</a>.</li>
+  <li>Graphic cursor positions returned will be the last ones used in a graphic shape such as a <a href="CIRCLE.html">CIRCLE</a> center point.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>Use <strong><a href="_SOURCE.html">_SOURCE</a></strong> first to set the image handle that POINT should read or QB64 will assume the current source image.
+    <blockquote>
+      <p><strong>_SOURCE 0</strong> ‘sets POINT to read the current SCREEN image after reading a previous source image</p>
+    </blockquote>
+  </li>
+  <li><strong>POINT cannot be used in SCREEN 0!</strong> Use the <a href="SCREEN-(function).html">SCREEN (function)</a> function to point text character codes and colors in SCREEN 0.</li>
+</ul>
+
+<p><strong>POINT in QBasic Legacy Graphic SCREEN Modes:</strong></p>
+
+<ul>
+  <li>The <a href="INTEGER.html">INTEGER</a> color attributes returned are limited by the number of colors in the legacy SCREEN mode used.</li>
+  <li><em>Column</em> and <em>row</em> <a href="INTEGER.html">INTEGER</a> parameters denote the graphic pixel coordinate to read.</li>
+  <li>In <strong>QB64</strong> the offscreen or off image value returned is -1. Use IF POINT(x, y) &lt;&gt; -1 THEN…</li>
+  <li>In QBasic the coordinates MUST be on the screen or an <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</li>
+</ul>
+
+<p><strong>POINT in QB64 32 Bit Graphic <a href="_NEWIMAGE.html">_NEWIMAGE</a> or <a href="_LOADIMAGE.html">_LOADIMAGE</a> Modes:</strong></p>
+
+<ul>
+  <li>Returns <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> 32 bit color values. Use <a href="_UNSIGNED.html">_UNSIGNED</a> values when you don’t want negative values.</li>
+  <li><strong><a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> variables should be used when comparing POINT returns with <a href="_RGB.html">_RGB</a> or <a href="_RGB32.html">_RGB32</a> <a href="_ALPHA.html">_ALPHA</a> bit values</strong></li>
+  <li>Convert 32 bit color values to RGB intensities(0 to 255) using the <a href="_RED32.html">_RED32</a>, <a href="_GREEN32.html">_GREEN32</a> and <a href="_BLUE32.html">_BLUE32</a> functions.</li>
+  <li>To convert color intensities to OUT &amp;H3C9 color port palette intensity values divide the values of 0 to 255 by 4.</li>
+  <li>Use the <a href="_PALETTECOLOR-(function).html">_PALETTECOLOR (function)</a> to convert color port palette intensities in 32 bit modes.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>How <a href="_RGB.html">_RGB</a> 32 bit values return <a href="DOUBLE.html">DOUBLE</a> or <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> values in QB64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">clr</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'DO NOT use LONG in older versions of QB64 (V .936 down)</span>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">CLS</span> <span class="p">,</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>  <span class="c1">'makes the background opaque white</span>
+
+<span class="n">PRINT</span> <span class="s">"POINT(100, 100) ="</span><span class="err">;</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">clr</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Variable clr = "</span><span class="err">;</span>  <span class="n">clr</span>
+<span class="n">IF</span> <span class="n">clr</span> <span class="o">=</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Long OK"</span>
+<span class="n">IF</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"_RGB OK"</span>
+<span class="n">IF</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="n">clr</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Type OK"</span> <span class="c1">'will not print with a LONG variable type</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note:</strong> Change the DIM <em>clr</em> variable type to <a href="LONG.html">LONG</a> to see how the last IF statement doesn’t PRINT as shown in the output below:</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+POINT(100, 100) = 4294967295
+Variable clr = -1
+Long OK
+_RGB OK
+
+</code></pre></div></div>
+
+<p>Using a POINT mouse routine to get the 32 bit color values of an image.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">_TITLE</span> <span class="s">"Mouse POINTer 32"</span>
+
+<span class="c1">'LINE INPUT "Enter an image file: ", image$  'use quotes around file names with spaces</span>
+<span class="n">image$</span> <span class="o">=</span> <span class="s">"QB64bee.png"</span> <span class="c1">'up to 320 X 240 with current _PUTIMAGE settings</span>
+<span class="n">i&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="n">image$</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">i&amp;</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">BEEP</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Could NOT load image!"</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">w&amp;</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">i&amp;</span><span class="p">):</span> <span class="n">h&amp;</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">i&amp;</span><span class="p">)</span>
+
+<span class="n">PRINT</span> <span class="s">"Make background transparent?(Y\N)"</span><span class="err">;</span>
+<span class="n">BG</span><span class="err">$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">PRINT</span> <span class="n">BG</span><span class="err">$</span>
+<span class="n">_DELAY</span> <span class="mi">1</span>
+
+<span class="c1">'CLS 'commented to keep background alpha 0</span>
+
+<span class="n">IF</span> <span class="n">BG</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">THEN</span> <span class="n">_CLEARCOLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">i&amp;</span> <span class="c1">'make white Background transparent</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">320</span> <span class="o">-</span> <span class="n">w&amp;</span><span class="p">,</span> <span class="mi">240</span> <span class="o">-</span> <span class="n">h&amp;</span><span class="p">)</span><span class="o">-</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">w&amp;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">320</span> <span class="o">-</span> <span class="n">w&amp;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h&amp;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">240</span> <span class="o">-</span> <span class="n">h&amp;</span><span class="p">)),</span> <span class="n">i&amp;</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">_FREEIMAGE</span> <span class="n">i&amp;</span>
+
+<span class="n">_MOUSEMOVE</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">240</span> <span class="c1">'center mouse pointer on screen</span>
+
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">100</span>
+  <span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span>
+    <span class="n">mx</span> <span class="o">=</span> <span class="n">_MOUSEX</span>
+    <span class="n">my</span> <span class="o">=</span> <span class="n">_MOUSEY</span>
+    <span class="n">c&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">my</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">_RED32</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">_GREEN32</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">_BLUE32</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">_ALPHA32</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">)</span>
+    <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">mx</span><span class="err">;</span> <span class="n">my</span><span class="p">,</span> <span class="s">"R:"</span><span class="err">;</span> <span class="n">r</span><span class="p">,</span> <span class="s">"G:"</span><span class="err">;</span> <span class="n">g</span><span class="p">,</span> <span class="s">"B:"</span><span class="err">;</span> <span class="n">b</span><span class="p">,</span> <span class="s">"A:"</span><span class="err">;</span> <span class="n">a</span><span class="err">;</span> <span class="s">"  "</span>
+    <span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"HTML Color: &amp;H"</span> <span class="o">+</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+  <span class="n">LOOP</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&gt;</span> <span class="s">""</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Use the mouse pointer to get the background RGB of the image to make it transparent with <a href="_CLEARCOLOR.html">_CLEARCOLOR</a>.</p>
+</blockquote>
+
+<p>Creating an image mask to PUT an image over other colored backgrounds. See: <a href="GET-and-PUT-Demo.html">GET and PUT Demo</a> to run code.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">59</span>    <span class="c1">'60 X 60 area from 0 pixel</span>
+   <span class="n">FOR</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">59</span>
+    <span class="n">IF</span> <span class="n">POINT</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mi">15</span> <span class="n">ELSE</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mi">0</span>
+   <span class="n">NEXT</span> <span class="n">r</span>
+ <span class="n">NEXT</span> <span class="n">c</span>
+ <span class="n">GET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">Image</span><span class="p">(</span><span class="mi">1500</span><span class="p">)</span> <span class="c1">' save mask in an array(indexed above original image).</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> In the procedure all black areas(background) are changed to white for a PUT using AND over other colored objects. The other image colors are changed to black for a PUT of the original image using XOR. The array images can be BSAVEd for later use. <strong>QB64 can also</strong> <a href="PUT.html">PUT</a>** a full screen 12 image from an array directly into a** <a href="BINARY.html">BINARY</a> <strong>file.</strong></p>
+</blockquote>
+
+<h2 id="see-examples">See Example(s)</h2>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (QB64 Image to Bitmap SUB by Galleon)</li>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a> (Member program for legacy screen modes)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (QB64 Image area to bitmap)</li>
+  <li><a href="ThirtyTwoBit-MEM-SUB.html">ThirtyTwoBit MEM SUB</a> (Fast image area to Bitmap using <a href="_MEM.html">_MEM</a>)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a>, <a href="_LOADIMAGE.html">_LOADIMAGE</a> (see 32 bit modes)</li>
+  <li><a href="_MEMIMAGE.html">_MEMIMAGE</a>, <a href="_MEMGET.html">_MEMGET</a></li>
+  <li><a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a></li>
+  <li><a href="SCREEN.html">SCREEN</a>, <a href="SCREEN-(function).html">SCREEN (function)</a> (text pointer function)</li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a>, <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Creating-Sprite-Masks.html">Creating Sprite Masks</a>, <a href="Text-Using-Graphics.html">Text Using Graphics</a> (Demo)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/POINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:36 GMT -->
+</html>

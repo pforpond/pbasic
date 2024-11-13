@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/DEF-SEG-=-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="DEF-SEG-%3d-1.html" />
+<meta property="og:url" content="DEF-SEG-%3d-1.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/DEF-SEG-=-0.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The following <strong>DOS BIOS</strong> information can be used on Windows 9x machines. Not necessarily XP or NT! Each routine includes the hexadecimal and decimal registers.</p>
+
+<blockquote>
+  <p><strong>NOTE: Few of these addresses are currenly accessable in QB64! Some may never be due to OS changes.</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>DEF SEG = 0 LOW MEMORY PORT ADDRESSES</strong></p>
+  <h4 id="----">#### #### #### #### ####</h4>
+</blockquote>
+
+<blockquote>
+  <p><strong>PORT # | FUNCTION, DESCRIPTION OR COMMENTS FOR USE</strong></p>
+  <h4 id="---------">#### #### #### #### #### #### #### #### #### =</h4>
+</blockquote>
+
+<h2 id="timer">TIMER</h2>
+
+<ul>
+  <li><strong>&amp;H42 (66)</strong></li>
+</ul>
+
+<blockquote>
+  <p>SETS TIMER CHIP TO PRODUCE A FREQUENCY 20 TO 20,000 HZ:</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+   <span class="n">A</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="mi">1193182</span> <span class="o">/</span> <span class="n">F</span><span class="p">)</span>
+   <span class="n">H</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">A</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+   <span class="n">L</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">H</span> <span class="o">*</span> <span class="mi">256</span> 
+   <span class="n">OUT</span> <span class="mi">66</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="n">OUT</span> <span class="mi">66</span><span class="p">,</span> <span class="n">H</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li><strong>&amp;H43 (67)</strong></li>
+</ul>
+
+<blockquote>
+  <p>OUT 67, 182 PREPARES TIMER CHIP TO RECEIVE A VALUE.</p>
+</blockquote>
+
+<ul>
+  <li><strong>&amp;H46C - &amp;H46E (1132 - 1134)</strong></li>
+</ul>
+
+<blockquote>
+  <p>ticks&amp; = PEEK (1132) + 256 * PEEK (1133) + 65536 + PEEK (1134)</p>
+</blockquote>
+
+<blockquote>
+  <p>WILL PROVIDE THE NUMBER OF CLOCK TICKS SINCE MIDNIGHT 1 TO 1,533,039 (18.2 PER SEC)</p>
+</blockquote>
+
+<blockquote>
+  <p>USING A ONE TICK TIMER LOOP:</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">' set to PEEK and POKE TIMER</span>
+ <span class="n">POKE</span> <span class="p">(</span><span class="mi">1132</span><span class="p">),</span> <span class="mi">0</span> <span class="c1">' zero Timer ticks</span>
+ <span class="n">DO</span>
+   <span class="n">key</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H60</span><span class="p">)</span> 
+ <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1132</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="c1">' until one tick (@ 1/18th sec.) has passed </span>
+ <span class="n">DEF</span> <span class="n">SEG</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li><strong>&amp;H470 = 1136)</strong></li>
+</ul>
+
+<p>DETERMINING THE DATE n DAYS FROM NOW.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="n">DATE</span><span class="err">$</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">A</span><span class="err">$</span>                <span class="c1">'IMPORTANT! save original date!</span>
+  <span class="n">IF</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">255</span> <span class="n">THEN</span> <span class="n">POKE</span> <span class="mi">1136</span><span class="p">,</span> <span class="n">n</span>
+  <span class="n">IF</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">255</span> <span class="n">THEN</span>     
+     <span class="n">FOR</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">n</span><span class="p">:</span> <span class="n">POKE</span> <span class="mi">1136</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">NEXT</span> <span class="n">D</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">laterdate$</span> <span class="o">=</span> <span class="n">DATE</span><span class="err">$</span>
+  <span class="n">PRINT</span> <span class="n">laterdate$</span>                    <span class="c1">'resulting date n days from today</span>
+  <span class="n">DATE</span><span class="err">$</span> <span class="o">=</span> <span class="n">A</span><span class="err">$</span>                          <span class="c1">'restore original computer date! </span>
+
+</code></pre></div></div>
+
+<h2 id="hardware">HARDWARE</h2>
+
+<ul>
+  <li><strong>&amp;H61 (97)</strong></li>
+</ul>
+
+<blockquote>
+  <p>OUT 97,INP(97) OR 3 TO     ‘TURN THE SPEAKER ON.
+OUT 97,INP(97) OR 8 TO     ‘TURN THE CASSETTE MOTOR OFF.
+OUT 97,INP(97) AND 247     ‘TO TURN THE CASSETTE MOTOR ON.
+OUT 97,INP(97) AND 252     ‘TO TURN THE SPEAKER OFF.
+POKE (97),PEEK(97) OR 128  ‘ DISABLES PC/XT KEYBOARDS.
+POKE (97),PEEK(97) AND 127 ‘ ENABLES PC/XT KEYBOARDS.</p>
+</blockquote>
+
+<h2 id="printer">PRINTER</h2>
+
+<ul>
+  <li><strong>&amp;H62 (98)</strong></li>
+</ul>
+
+<blockquote>
+  <p>PEEK (98)  PROVIDES CURRENT PRINTER WIDTH.
+POKE 98, w” SETS CURRENT PRINTER WIDTH TO w.</p>
+</blockquote>
+
+<ul>
+  <li><strong>&amp;H6C - &amp;H6F (108 - 111)</strong></li>
+</ul>
+
+<blockquote>
+  <p>POKE 108, 83: POKE 109, 255: POKE 110,0: POKE 111,240 ‘DISABLE CTRL-BRK.
+POKE 108, 240: POKE 109, 32: POKE 110,3: POKE 111,12 ‘ ENABLES CTRL-BRK.</p>
+</blockquote>
+
+<h2 id="disk">DISK</h2>
+
+<ul>
+  <li><strong>&amp;H43F (1087)</strong></li>
+</ul>
+
+<p>Determining the status of a drive motor:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">IF</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1087</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">128</span> <span class="o">=</span> <span class="mi">128</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"drive write in progress"</span>
+<span class="n">IF</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1087</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">15</span>  <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"No drive being written to"</span> 
+
+</code></pre></div></div>
+
+<p>Drive$ designated is A, B, C or D, and the letter must be in uppercase.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">IF</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1087</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="p">(</span><span class="n">ASC</span> <span class="p">(</span><span class="n">Drive</span><span class="err">$</span><span class="p">)</span> <span class="o">-</span> <span class="mi">65</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Drive: "</span> <span class="n">Drive</span><span class="err">$</span> 
+
+</code></pre></div></div>
+<blockquote>
+  <p><strong>NOTE:</strong> These value are not affected if an OUT was used to turn on the motor.</p>
+</blockquote>
+
+<ul>
+  <li><strong>&amp;H440 (1088)</strong></li>
+</ul>
+
+<p>To turn on drive D for n seconds, where n is at MOST 14! :</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                     
+<span class="n">POKE</span> <span class="mi">1088</span><span class="p">,</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span>
+<span class="n">OUT</span> <span class="mi">1010</span><span class="p">,</span> <span class="mi">2</span> <span class="o">^</span> <span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="s">"D"</span><span class="p">)</span> <span class="o">-</span> <span class="mi">61</span><span class="p">)</span> <span class="o">+</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"D"</span><span class="p">)</span> <span class="o">-</span> <span class="mi">53</span>   <span class="c1">'1010 = &amp;H3F2 </span>
+
+</code></pre></div></div>
+<blockquote>
+  <p><strong>NOTE:</strong> Location 1088 holds the countdown, in clock ticks, until the motor is shut off. To turn off all drives, send: OUT 1010, 12</p>
+</blockquote>
+
+<ul>
+  <li>**&amp;H445 (1093) **</li>
+</ul>
+
+<p>track = PEEK(1093)  ‘determine the diskette track that was last accessed</p>
+
+<ul>
+  <li><strong>&amp;H446 (1094)</strong></li>
+</ul>
+
+<p>head = PEEK(1094)  ‘determine which diskette head (0 or 1) was last accessed</p>
+
+<ul>
+  <li><strong>&amp;H447 (1095)</strong></li>
+</ul>
+
+<p>sector = PEEK(1095)  ‘determine which diskette sector was last accessed</p>
+
+<ul>
+  <li><strong>&amp;H448  (1096)</strong></li>
+</ul>
+
+<p>bytes = 128 * 2 ^ PEEK(1096)  ‘number of bytes per sector on a diskette</p>
+
+<ul>
+  <li><strong>&amp;H78 - &amp;H7B  (120 - 123)</strong></li>
+</ul>
+
+<p>The diskette parameter table consists of 11 bytes</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span> <span class="o">+</span> <span class="mi">256</span> <span class="o">*</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span> <span class="c1">' get value of Diskette</span>
+
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span> <span class="o">+</span> <span class="mi">256</span> <span class="o">*</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="c1">'set to derive the following table</span>
+<span class="n">track</span> <span class="o">=</span> <span class="p">(</span><span class="n">PEEK</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">240</span><span class="p">)</span> <span class="o">\</span> <span class="mi">8</span> <span class="c1">'time(milliseconds) required for diskette drive to move track to track</span>
+<span class="n">HUT</span> <span class="o">=</span> <span class="p">(</span><span class="n">PEEK</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">15</span><span class="p">)</span> <span class="o">*</span> <span class="mi">32</span> <span class="c1">' head unload time(milliseconds) after read or write has occurred</span>
+<span class="n">HLT</span> <span class="o">=</span> <span class="p">(</span><span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">240</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span> <span class="c1">'head load time (in milliseconds)</span>
+<span class="n">DirMode</span> <span class="o">=</span> <span class="p">(</span><span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">'Direct Memory Access mode</span>
+<span class="n">WT</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">'wait time until turning the motor off</span>
+<span class="n">BPS</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">'number of bytes per sector on the disk. FOR v = 0 TO 3: 128 * 2 ^ v bytes per sector, </span>
+<span class="n">SPT</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">'number of sectors per track, usually 8 or 9</span>
+<span class="n">GapLen</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">'gap length (in bytes) between sectors</span>
+<span class="n">DatLen</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">'data length read or written into a sector when sector length not specified</span>
+<span class="n">GFLen</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="c1">'gap length used when formatting</span>
+<span class="n">FVal</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">'value format operation uses to initialize diskette sectors, usually 256</span>
+<span class="n">HST</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">'number of milliseconds for the heads to stabilize</span>
+<span class="n">MST</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">'number of eighths of a second for motor startup</span>
+<span class="n">DEF</span> <span class="n">SEG</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>WARNING: Changing the values of PEEK(D + 3) and PEEK(D + 4) can modify the way that diskettes are read and might require you to format your diskettes manually!</strong></p>
+</blockquote>
+
+<ul>
+  <li><strong>&amp;H504 (1284)</strong></li>
+</ul>
+
+<p>If a single diskette drive is used for both drives A: and B:, current role is:</p>
+
+<blockquote>
+  <p>PRINT “Current Drive: “ + CHR$(65 + PEEK(1284))</p>
+</blockquote>
+
+<ul>
+  <li><strong>&amp;H475 (1141)</strong></li>
+</ul>
+
+<p>numHD% = PEEK (1141)  ‘provides number of hard drives installed</p>
+
+<ul>
+  <li><strong>&amp;H413 - &amp;H414 (1043-44)</strong></li>
+</ul>
+
+<p>PEEK (1043) + 256 * PEEK(1044) ‘indicates the RAM installed in kilobytes</p>
+
+<ul>
+  <li><strong>&amp;H3F2 (1010)</strong></li>
+</ul>
+
+<p>OUT 1010, 12 ‘will turn off all drives</p>
+
+<h2 id="ports">PORTS</h2>
+
+<p><strong>PRINTER LPT Ports</strong></p>
+
+<blockquote>
+  <p>&amp;H411
+numLPT% = (PEEK (1041) AND 192) / 64 = the number of LPT printer adaptors installed.</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H406, &amp;H407
+firstLPT = PEEK(1030 + 2 * n) + PEEK(1031 + 2 * n) * 256</p>
+</blockquote>
+
+<p>To swap two printers, interchange their initial port numbers.
+Denote the first port associated with LPTn by Pn. The value
+of P1 will be 956 if LPT1 is attached to the IBM monochrome display
+and parallel printer adapter.</p>
+
+<p><strong>RS-232 Serial port INTERFACE</strong></p>
+
+<blockquote>
+  <p>&amp;H411</p>
+</blockquote>
+
+<p>The number of RS-232 cards attached can be found with: (PEEK(1041) AND 14)/2</p>
+
+<blockquote>
+  <p>To determine the first of the seven ports associated with COMn:</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H3FE, &amp;H3FF
+PEEK(1022 + 2 * n) + 256 * PEEK(1023 + 2 * n).
+If this number is 0, then COMn is not available.</p>
+</blockquote>
+
+<p>To swap two RS-232 interfaces, interchange their initial port numbers.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     Denote the initial port associated with COMn by Pn (Base).
+     Normally, the value of P1 is 1016 and the value of P2 is 760.
+
+            Interrupt enabling:     Base + 1 address
+    OUT Pn + 1, 1 enables an interrupt when a character has been received
+    OUT Pn + 1, 2 enables an interrupt when a character has been transmitted
+    OUT Pn + 1, 4 enables an interrupt when an error has occurred
+    OUT Pn + 1, 8 enables an interrupt when the modem status has changed
+</code></pre></div></div>
+
+<p>To enable several of the above interrupts at the same time, OUT the
+         sum of the associated numbers to port Pn + 1.</p>
+
+<p>To identify interrupts, use the port number determined above  Base + 2:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    X = INP(Pn + 2). 
+    IntSet% = X AND 1       'has a value of 1 as long as no interrupts have been 
+                            'issued because of communications port activity.
+
+    IntHi% = X AND 6        'is used to identify the highest priority interrupt
+                            'pending, as indicated in the table "Interrupt Control 
+                            'Functions" in the IBM Technical Reference manual.
+</code></pre></div></div>
+
+<p>To establish the number of data bits (d), the number of stop bits (s), Base + 3
+and the parity (p = 0 for no parity, p = 1 for odd parity, p = 3 for even parity),</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Send: OUT Pn + 3, (d - 5) + (4 * (s - 1) + 8 * p).
+</code></pre></div></div>
+
+<p>To establish the baud rate:  address = Base, Base + 1, Base + 3  <br />
+      H = INP(Pn + 3): OUT Pn + 3, H OR 128:
+      OUT Pn, DL: OUT Pn + 1, DH: OUT Pn + 3, H.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Use values DL = 128 and DH = 1 for 300
+  baud, and DL=96 and DH=0 for baud rate 1200.
+ 
+  Otherwise, DL = d MOD 256 and DH = d \ 256
+  Where d is the divisor number given by the IBM Technical Reference manual
+       in the table "Baud Rate at 1.853 MHz."
+</code></pre></div></div>
+
+<p>To produce a break signal:  address = Base + 3 
+      X = INP(Pn + 3)
+      OUT Pn + 3, X OR 64:PLAY “MF”:SOUND 32767,6: SOUND 32767,1: OUT Pn+3,X.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  The PLAY and SOUND statements produce a delay of 1/3 second.
+</code></pre></div></div>
+
+<p>To control the modem, use:  address = Base + 4 
+       OUT Pn + 4, 1 to assert that the data terminal is ready (DTR)
+       OUT Pn + 4, 2 to raise a request to send (RTS)
+       OUT Pn + 4, 16 to perform loopback testing</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> To accomplish several of the above tasks simultaneously, OUT the sum of the
+ associated numbers to port Pn + 4.
+</code></pre></div></div>
+
+<p>To determine the status of data transfer, begin with Base + 5:
+      LET X = INP(Pn + 5). Now:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  idle% = X AND 64  'has a value of 64 if the transmitter shift register is idle
+  ready% = X AND 32 'is 32 if the transmitter holding register is ready to
+                    'accept a character for transmission
+  break% = X AND 16 'has the value 16 if the received data input is held in the
+                    'spacing state too long (that is, if a break was received)
+  nostop% = X AND 8 'has the value 8 if the received character did not have a
+                    'valid stop bit; that is, if a framing error occurred
+  noPar% = X AND 4  'has the value 4 if the received character does not have correct 
+                    'parity
+  overR% = X AND 2   'is 2 if the received data destroyed the previous character
+                    '(an overrun error)
+  RecRead% =  X AND 1 'has value 1 if a character is ready to be read from received 
+                      'buffer register
+
+  INP(Pn) will read the ASCII value of a character from the serial port,
+   
+        IF (INP(Pn + 5) AND 1) = 1 THEN char$ = CHR$(INP(Pn)) 
+</code></pre></div></div>
+
+<p>You can use OUT Pn, m to write the character with ASCII value m to the serial
+           read Base + 5 first:
+       IF (INP(Pn + 5) AND 32) = 32 THEN</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   To determine the status of the modem, use Base + 6: 
+   X = INP(Pn + 6). Then:
+     X AND 128 has the value 128 if a Carrier signal has been detected
+     X AND 64 is 64 if the modem is ringing
+     X AND 32 has a value of 32 if the modem has asserted Data Set Ready
+     X AND 16 is 16 if the modem has asserted Clear to Send
+     X AND 8 is 8 if the Carrier Detect has changed state
+     X AND 4 has the value 4 if the Ring Indicator input has changed from On to Off
+     X AND 2 is 2 if the Data Set Ready input has changed state since last read
+     X AND 1 has a value of 1 if the Clear to Send input has changed since last read
+</code></pre></div></div>
+
+<p>&amp;H3FE = 1022</p>
+
+<blockquote>
+  <p>PROVIDES INFORMATION RELATED TO RS232 COMMUNICATIONS PORTS:</p>
+</blockquote>
+
+<blockquote>
+  <p>PEEK(1022 + 2 * n) + PEEK(1023 + 2 * n) * 256 
+WHERE COMn value = 0 IF COMn: IS NOT AVAILABLE.</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H411 = 1041</p>
+</blockquote>
+
+<blockquote>
+  <p>(PEEK (1041) AND 14)/2    ‘WILL PROVIDE NUMBER OF Serial RS232 PORTS INSTALLED.
+(PEEK (1041) AND 16)/16   ‘WILL PROVIDE NUMBER OF GAME PORTS INSTALLED.
+(PEEK (1041) AND 192)/64  ‘WILL PROVIDE NUMBER OF LPT Ports INSTALLED.</p>
+</blockquote>
+
+<table>
+  <tbody>
+    <tr>
+      <td>&amp;H408 = 1032</td>
+      <td>Provides Information on PRINTER PORTS (LPT)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>FOR i% = 1 TO 3
+  lpt% = PEEK(&amp;H408 + (i% - 1) * 2) + PEEK(&amp;H408 + (i% - 1) * 2 + 1) * 256
+  LOCATE , 23: PRINT “LPT”; HEX$(i%);
+  IF lpt% = 0 THEN
+    PRINT “ not found”
+  ELSE : PRINT “ found at &amp;H”; HEX$(lpt%); “ (“; LTRIM$(STR$(lpt%)); “)”
+  END IF
+  IF lpt% = 888 THEN port378% = i% ‘ usually the LPT1 port printer address
+NEXT</p>
+</blockquote>
+
+<h2 id="display">DISPLAY</h2>
+
+<blockquote>
+  <p><strong>DEF SEG = 0 MONITOR INFORMATION</strong></p>
+  <h4 id="---">#### #### #### ####</h4>
+</blockquote>
+
+<blockquote>
+  <p>To check the type of display:</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H410 = 1040</p>
+</blockquote>
+
+<blockquote>
+  <p>PEEK(1040) AND 48 = 0 ‘ is no monitors      ‘ &amp;H410
+PEEK(1040) AND 48 = 16 ‘ is a 40 x 25 graphics monitor
+PEEK(1040) AND 48 = 32 ‘ is a 80 x 25 graphics monitor
+PEEK(1040) AND 48 = 48 ‘ is a monochrome display</p>
+</blockquote>
+
+<blockquote>
+  <p>To select a display:</p>
+</blockquote>
+
+<blockquote>
+  <p>POKE 1040, PEEK(1040) OR 48 ‘ Monochrome</p>
+</blockquote>
+
+<blockquote>
+  <p>SCREEN 0: WIDTH 80: LOCATE ,,1,0,0
+POKE 1040,(PEEK(1040) AND 207) OR 16 ‘ graphics
+SCREEN 1,0,0,0:WIDTH 80:LOCATE ,,1,0,0.</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H44A, &amp;H44B = 1098, 1099 ‘ (DEF SEG = 0)</p>
+</blockquote>
+
+<blockquote>
+  <p>columns = PEEK(1098) + 256 * PEEK(1099) ‘gives the present screen width in columns.</p>
+</blockquote>
+
+<blockquote>
+  <p>(DEF SEG = 64)
+DEF SEG = &amp;H40: textcols = PEEK(&amp;H4A): DEF SEG</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H44E, &amp;H44F = 1102, 1103</p>
+</blockquote>
+
+<p>Graphics screen contents stored in a buffer at:</p>
+
+<blockquote>
+  <p>PEEK(1102) + 256 * PEEK(1103).</p>
+</blockquote>
+
+<p>memory that physically resides on a graphics board.</p>
+
+<blockquote>
+  <p>&amp;H44C, &amp;H44D = 1100, 1101
+PEEK(1100) + 256 * PEEK(1101) ‘ Buffer size</p>
+</blockquote>
+
+<blockquote>
+  <p>The cursor locations for the various pages are given as follows:
+Let CR(n) and CC(n) be the Cursor Row and Cursor Column for page n.
+&amp;H450, &amp;H451 = 1004, 1005</p>
+</blockquote>
+
+<blockquote>
+  <p>PEEK(1105) + 2 * n) ‘ has a value of CR(n) - 1,</p>
+</blockquote>
+
+<blockquote>
+  <p>PEEK(1104 + 2 * n) ‘ has a value of CC(n) - 1.</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H460 to &amp;H462 = 1120 to 1122
+The shape of the cursor can be set as follows: LOCATE ,,,I,J.</p>
+</blockquote>
+
+<blockquote>
+  <p>:PEEK(1121) AND 31 ‘ has value I
+:PEEK(1120) AND 31 ‘ has value J.
+:PEEK(1121) AND 32 ‘ = 32 then cursor is not displayed.
+:PEEK(1122)  ‘ will equal the active visual page.</p>
+</blockquote>
+
+<p>To determine the active 6845 index register:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &amp;H463             &amp;H464 "PEEK(1123) + 256 * PEEK(1124)" = 948 if monochrome display board in use. = 980 for the color/graphics adapter.
+      To check the 6845 mode settings:
+        &amp;H465
+   PEEK(1125) AND 1 has value 1 if in text mode, width 80
+   PEEK(1125) AND 2 has value 2 if in graphics mode
+   PEEK(1125) AND 4 has value 4 if color is disabled.
+   PEEK(1125) AND 8 has value 8 if video is enabled.
+   PEEK(1125) AND 16 has value 16 if in high-resolution graphics mode
+   PEEK(1125) AND 32 has value 32 if blinking is enabled
+</code></pre></div></div>
+
+<p>Background color and palette selected by COLOR bg,fc :
+           &amp;H466
+      bg = (PEEK(1126) AND 15)    ‘background color
+      fc = (PEEK(1126) AND 32)/32 ‘fore color
+      bc = PEEK(1126) MOD 16      ‘border color</p>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H410 = 1040</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>(PEEK (1040) AND 1) * (1 + PEEK (1040)) \ 64 PROVIDES NUMBER OF DRIVES.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1040) AND 48</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>0 = NO MONITOR INSTALLED.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>16 = 40 x 25 GRAPHICS.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>32 = 80 x 25 GRAPHICS.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>48 = MONOCHROME.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>:</td>
+        <td>“POKE (1040), PEEK(1040) OR 48” SELECTS MONOCHROME DISPLAY.</td>
+      </tr>
+      <tr>
+        <td>:</td>
+        <td>“POKE (1040), PEEK(1040) AND 207 OR 32” SELECTS 80 x 25 GRAPHICS.</td>
+      </tr>
+      <tr>
+        <td>::NOTE:</td>
+        <td>SCREEN 0,0,0:WIDTH 80 SHOULD BE USED BEFORE CALLING MONOCHROME.</td>
+      </tr>
+      <tr>
+        <td>::NOTE:</td>
+        <td>SCREEN 1,0,0,0:WIDTH 80 SHOULD BE USED BEFORE CALLING 80 x 25 GRAPHICS</td>
+      </tr>
+      <tr>
+        <td>::NOTE:</td>
+        <td>SAVE VALUES IN PORTS 1097 THRU 1126 IN AN ARRAY FOR RESTORING IN THE EVENT THAT YOU WANT TO CHANGE BACK TO ORIGINAL DISPLAY WITH CONFIDENCE</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H449 = 1097 PEEK (1097) PROVIDES DISPLAY MODE INFORMATION:</dt>
+    <dd>0 = TEXT MODE, WIDTH 40, NO COLOR.</dd>
+    <dd>1 = TEXT MODE, WIDTH 40, COLOR.</dd>
+    <dd>2 = TEXT MODE, WIDTH 80, NO COLOR.</dd>
+    <dd>3 = TEXT MODE, WIDTH 80, COLOR.</dd>
+    <dd>4 = MEDIUM GRAPHICS MODE, COLOR.</dd>
+    <dd>5 = MEDIUM GRAPHICS MODE, NO COLOR.</dd>
+    <dd>6 = HIGH RESOLUTION GRAPHICS.</dd>
+    <dd>7 = TEXT MODE, WIDTH 80, MONOCHROME.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H449 - &amp;H44A = 1097-98</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>POKE (1097),4:POKE (1098),40 ‘ PROVIDES SCREEN 2 WITH WIDTH 40.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>POKE (1097),6:POKE (1098),80 ‘ PROVIDES SCREEN 2 WITH WIDTH 80.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<p>&amp;H44C, &amp;H44D, &amp;H44E, &amp;H44F = 1100-03 CONTAINS CONTENTS OF GRAPHICS MEMORY RESIDING ON THE DISPLAY CARD.</p>
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>:</td>
+        <td>SIZE = PEEK(1100) + 256 * PEEK(1101)</td>
+      </tr>
+      <tr>
+        <td>:</td>
+        <td>LOCATION = PEEK(1102) + 256 * PEEK(1103)</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H450 - &amp;H451 = 1104-05 CONTAINS CURSON LOCATIONS FOR VARIOUS GRAPHICS MEMORY PAGES.</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>COL = PEEK(1104 + 2 * n)</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>ROW = PEEK(1105 + 2 * n)” WHERE n IS THE PAGE.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H460 = 1120</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>J = PEEK (1120) AND 31 ‘ REFLECTS VALUE OF LOCATE ,,,I,J.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H461 = 1121</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>I = PEEK (1121) AND 31 ‘ REFLECTS VALUE OF LOCATE ,,,I,J.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1121) AND 32 = 32 ‘ IF CURSOR ON / 0 IF OFF.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>POKE (1121),PEEK (1121) OR 32 ‘ TURNS OFF CURSOR.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H462 = 1122</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1122) ‘ RETURNS THE NUMBER OF ACTIVE SCREEN PAGES.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H465 = 1125</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1125) AND 1 = 1 ‘ IF ACTIVE CRT IS TEXT MODE WIDTH 80.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1125) AND 2 = 2 ‘ IF ACTIVE CRT IS IN GRAPHICS MODE.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1125) AND 4 = 4 ‘ IF ACTIVE CRT HAS COLOR DISABLED.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1125) AND 8 = 8 ‘ IF ACTIVE CRT HAS NOT BEEN BLANKED.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1125) AND 16 = 16 ‘ IF ACTIVE CRT IS IN HIGH RES. GRAPHICS.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>PEEK (1125) AND 32 = 32 ‘ IF ACTIVE CRT BLINKING IS ENABLED.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<p>&amp;H466 = 1126</p>
+<blockquote>
+  <dl>
+    <dt>CONTAINS THE BACKGROUND COLOR AND PALETTE VALUES WHEN DISPLAY IS IN MEDIUM RESOLUTION.</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>WHERE COLOR b, p:</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>b = PEEK (1126) AND 15</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>| p = (PEEK(1126) AND 32)/32
+WHILE IN TEXT MODE, IT CONTAINS THE FOREGROUND AND BACKGROUND.</dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>WHERE COLOR f, b:</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>f = PEEK (1126) AND 16</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>b = PEEK(1126) MOD 16</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H7C, &amp;H7D, &amp;H7E, &amp;H7F, &amp;H80 = 124 - 128</dt>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>CONTAINS EXTENDED CHARACTER SET 128 THRU 254 IN GRAPHICS MODE.</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>“n = PEEK (124) + 256 * PEEK (125)” WILL BE CHR$(128).</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+    <dd>
+      <table>
+        <tbody>
+          <tr>
+            <td>“n = PEEK (126) + 256 * PEEK (127)” WILL BE CHR$(129).</td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </dl>
+</blockquote>
+
+<p>&amp;H3BE = 985</p>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>:</td>
+        <td>“POKE (985), x” CHANGES GRAPHICS COLOR WHERE x IS COLOR.</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<ul>
+  <li><strong>&amp;H74 - 75 (116-117)</strong> VIDEO PARAMETER TABLE.
+    <blockquote>
+      <p>: <strong>BE CAREFUL! - CHANGES HERE COULD PHYSICALLY DAMAGE A MONITOR!</strong></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="keyboard">KEYBOARD</h2>
+
+<blockquote>
+  <p>::::<strong>KEYBOARD Buffer</strong>
+::::#### ##</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H41A = 1050: &amp;H41C = 1052
+:Keyboard buffer begins at PEEK(1050) + 1024 and ends at PEEK(1052) + 1023.
+:Ordinary characters use every other location. Extended characters use two locations, the first location containing the null character (CHR$(0)).
+::POKE 1050, PEEK(1052) ‘ clears the keyboard buffer.
+:Buffer contents can be read by PEEK without being removed from the buffer.</p>
+</blockquote>
+
+<blockquote>
+  <p>::::::::<strong>CTRL-Break</strong>
+&amp;H6C, &amp;H6D, &amp;H6E, &amp;H6F = 108 to 111 
+:Before disabling Ctrl-Break, use PEEK to record the bytes in locations 108-111 !</p>
+</blockquote>
+
+<blockquote>
+  <p>::FOR I = 0 TO 3: Array(I) = PEEK(108 + I): NEXT I</p>
+</blockquote>
+
+<blockquote>
+  <p>:To disable Ctrl-Break, enter:</p>
+</blockquote>
+
+<blockquote>
+  <p>::FOR I = 0 TO 3: POKE(108 + I), PEEK(112 + I): NEXT I.</p>
+</blockquote>
+
+<blockquote>
+  <p>:To re-enable Ctrl-Break enter saved values from Array:</p>
+</blockquote>
+
+<blockquote>
+  <p>::FOR I = 0 TO 3: POKE(108 + I), Array(I): NEXT I</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H471 = 1137</p>
+</blockquote>
+
+<blockquote>
+  <p>:ChkCtrl% = PEEK(1137) AND 128 = 128 ‘ if Ctrl-Break used since start of a program.</p>
+</blockquote>
+
+<blockquote>
+  <p>: NOTE: NT and XP computers will block some keyboard OUT changes!</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H61 = 97
+:To disable the keyboard (PC &amp; XT only), send OUT 97, INP(97) OR 128. 
+:To enable the keyboard (PC &amp; XT only), send OUT 97, INP(97) AND 127.</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H21 = 33
+To disable all keyboard interrupts: OUT 33, 130. 
+To enable keyboard interrupts: OUT 33, 128.</p>
+</blockquote>
+
+<blockquote>
+  <p>For the PC-AT only, the green lights that indicate CapsLock, NumLock and the ScrollLock status can be turned on and off without altering any of the states.
+:: NOTE: NT or XP will block access to the keyboard lights!</p>
+</blockquote>
+
+<blockquote>
+  <p>&amp;H60 = 96
+The statement: OUT 96, 237: OUT 96, n produces the following results:</p>
+</blockquote>
+
+<blockquote>
+  <p>::n = 7 all indicators on
+::n = 6 ScrollLock indicator off, others on
+::n = 5 NumLock indicator off, others on
+::n = 4 CapsLock indicator on, others off
+::n = 3 CapsLock indicator off, others on
+::n = 2 NumLock indicator on, others off
+::n = 1 ScrollLock indicator on, others off
+::n = 0 all indicators off</p>
+</blockquote>
+
+<p>&amp;H417 = 1047</p>
+<blockquote>
+  <dl>
+    <dt>: PEEK (1047) AND 1 = 1 ‘ IF RIGHT SHIFT IS PRESSED</dt>
+    <dd>PEEK (1047) AND 2 = 2 ‘ IF LEFT SHIFT IS PRESSED</dd>
+    <dd>PEEK (1047) AND 4 = 4 ‘ IF CTRL KEY IS PRESSED.</dd>
+    <dd>PEEK (1047) AND 8 = 8 ‘ IF ALT KEY IS PRESSED.</dd>
+    <dd>PEEK (1047) AND 16 = 16 ‘ IF SCROLL LOCK IS ON / 0 IF OFF.</dd>
+    <dd>PEEK (1047) AND 32 = 32 ‘ IF NUMBER PAD IS ON / 0 IF OFF.</dd>
+    <dd>PEEK (1047) AND 64 = 64 ‘ IF CAPS LOCK IS ON / 0 IF OFF.</dd>
+    <dd>PEEK (1047) AND 128 = 128 ‘ IF INSERT MODE IS ON / 0 IF OFF.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>:::::ENABLING MODES(will not affect lights)</dt>
+    <dd>POKE (1047),PEEK (1047) OR 16 ‘ ENABLES SCROLL LOCK.</dd>
+    <dd>POKE (1047),PEEK (1047) OR 32 ‘ ENABLES NUMBER LOCK.</dd>
+    <dd>POKE (1047),PEEK (1047) OR 64 ‘ ENABLES CAPS LOCK.</dd>
+    <dd>POKE (1047),PEEK (1047) OR 128 ‘ ENABLES INSERT MODE.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>:::::DISABLING MODES(will not affect lights)</dt>
+    <dd>POKE (1047),PEEK (1047) AND 239 ‘ TURNS OFF SCROLL LOCK.</dd>
+    <dd>POKE (1047),PEEK (1047) AND 223 ‘ TURNS OFF NUMBER LOCK.</dd>
+    <dd>POKE (1047),PEEK (1047) AND 191 ‘ TURNS OFF CAPS LOCK.</dd>
+    <dd>POKE (1047),PEEK (1047) AND 127 ‘ TURNS OFF INSERT MODE.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>:::::ALTERNATING MODES(will not affect lights)</dt>
+    <dd>POKE (1047),PEEK (1047) XOR 16 ‘ CHANGES SCROLL LOCK MODE.</dd>
+    <dd>POKE (1047),PEEK (1047) XOR 32 ‘ CHANGES NUMBER LOCK MODE.</dd>
+    <dd>POKE (1047),PEEK (1047) XOR 64 ‘ CHANGES CAPS LOCK MODE.</dd>
+    <dd>POKE (1047),PEEK (1047) XOR 128 ‘ CHANGES INSERT MODE.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <p>:::::::XP codes for Alt and Ctrl
+::: DEF SEG = 0
+::: DO
+:::: IF PEEK(1047) MOD 16 = 8 THEN SOUND 1000, 1: REM Alt
+:::: IF PEEK(1047) MOD 16 = 4 THEN SOUND 100, 1: REM Ctrl
+:::: IF INKEY$ = CHR$(27) THEN EXIT DO
+::: LOOP
+::: DEF SEG</p>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H41A = 1050</dt>
+    <dd>| KEYBOARD INPUT BUFFER STORED AT “PEEK(1050) + 1024” TO “PEEK(1052) + 1053”
+:: EACH CHARACTER HAS 2 BYTES RESERVED TO COVER EXTENDED CHARACTERS.</dd>
+  </dl>
+</blockquote>
+
+<h2 id="other">OTHER</h2>
+
+<blockquote>
+  <dl>
+    <dt>&amp;H50F = 1295</dt>
+    <dd>|  POKE 1295,2
+:SYSTEM WILL LEAVE THE BASIC(A) FLAG SET TO INDICATE A SHELL TO DOS HAS OCCURRED AND PREVENT ACCESS TO BASIC(A) AGAIN.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <p>:::::<strong>SPEAKER &amp;H61</strong>
+:::::###</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  To turn the speaker on, use: OUT 97,INP(97) OR 3
+  Conversely, to turn the speaker off: OUT 97, INP(97) AND 252
+</code></pre></div></div>
+
+<blockquote>
+  <p>:::::<strong>CASETTE PORT CONTROL  &amp;H61</strong>
+:::::#### #### #### #### =</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  To turn the cassette motor on: OUT 97,INP(97) AND 247
+  To turn the cassette motor off: OUT 97,INP(97) OR 8
+</code></pre></div></div>
+
+<blockquote>
+  <p>::::<strong>MISCELLANEOUS</strong> 
+::::####</p>
+</blockquote>
+
+<p>&amp;H411
+1041  (PEEK (1041) AND 16)/16 = number of game adaptors attached.</p>
+
+<p>&amp;H413
+1043  PEEK(1043) + 256 * PEEK(1044) = size of RAM in KB.</p>
+
+<p>&amp;H46C
+1132  PEEK(1132) + 256 * PEEK(1133) + 65536 PEEK(1134) = number of ticks since midnight.
+             With 18.2 ticks per second up to 1,533,039.
+     Memory locations 1264 to 1279 are not used by either DOS or BASIC.
+       Data can be passed from one program to another by POKEing and PEEKING.</p>
+
+<p>&amp;H50F
+1295  To exit BASIC and complicate reinvoking it, you can: 
+              POKE 1295, 2: SYSTEM.
+      Memory location 1295 is set to 2 when the BASIC command SHELL is executed.</p>
+
+<p>&amp;H510 - &amp;H511
+1296-7 The segment number of BASIC’s data segment may be found with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          PEEK(1296) + 256 * PEEK(1297)
+</code></pre></div></div>
+
+<h2 id="basica">BASICA</h2>
+
+<blockquote>
+  <p>:::::NOTE: DEF SEG BASIC(A) MEMORY PORT ADDRESSES</p>
+</blockquote>
+
+<blockquote>
+  <p>:::<strong>PORT # | FUNCTION, DESCRIPTION OR COMMENTS FOR USE</strong>
+:::#### #### #### #### #### #### #### #### #### #### =</p>
+</blockquote>
+
+<table>
+  <tbody>
+    <tr>
+      <td>11-13</td>
+      <td>USED BY BASIC(A) FOR RANDOM NUMBER GENERATION.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>40</td>
+      <td>CONTAINS LAST ERROR NUMBER IN BASIC(A).</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>41</td>
+      <td>BASIC(A) SCROLLING LIMITER - SEE# 91 FOR MORE DETAILS.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>44-45</td>
+      <td>CONTAINS BASIC(A) ENVIRONMENT EQUATIONS.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>46-47</td>
+      <td>“PEEK (46)+256*PEEK(47)” RETURNS CURRENT BASIC(A) LINE NUMBER.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>72       | “PEEK(72)” RETURNS CURRENT SCREEN MODE:
+           0 = TEXT MODE, WIDTH 40, COLOR BURST DISABLED.
+           1 = TEXT MODE, WIDTH 40, COLOR BURST ENABLED.
+           2 = TEXT MODE, WIDTH 80, COLOR BURST DISABLED.
+           3 = TEXT MODE, WIDTH 80, COLOR BURST ENABLED.
+           4 = MEDIUM RESOLUTION GRAPHICS, COLOR BURST ENABLED.
+           5 = MEDIUM RESOLUTION GRAPHICS, COLOR BURST DISABLED.
+           6 = HIGH RESOLUTION GRAPHICS, COLOR BURST DISABLED.
+           7 = MONOCHROME DISPLAY.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>75</td>
+      <td>“PEEK(75)” DETERMINES TEXT MODE FOREGROUND COLOR.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>76</td>
+      <td>“PEEK(76)” DETERMINES TEXT MODE BACKGROUND COLOR.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>77</td>
+      <td>“PEEK(77)” DETERMINES TEXT MODE BORDER COLOR.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>78       | “PEEK(78) AND 3” DETERMINES MEDIUM RESOLUTION TEXT COLOR.
+          “POKE 78,c” SETS MEDIUM RES. TO COLOR c=(1/2/3) OF PALETTE.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>81</td>
+      <td>“POKE (81) AND 15” PROVIDES MEDIUM RES. BACKGROUND COLOR.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>82</td>
+      <td>“POKE (82) MOD 2” PROVIDES MEDIUM PALETTE.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>86</td>
+      <td>“POKE (86)” PROVIDES CURSOR ROW NUMBER.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>87</td>
+      <td>“POKE (87)” PROVIDES CURSOR COLUMN NUMBER.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>91-92    | USED TO CREATE SCROLLING LIMITERS.
+          “POKE 41, c: POKE 91, a: POKE 92, b”
+           WHERE: a=STARTING LINE b=ENDING LINE c=NUMBER OF POSITIONS.
+         | “POKE 92,0” WILL PREVENT ALL SCROLLING.
+         | “POKE 92,25” WILL SCROLL ALL 25 LINES.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>100</td>
+      <td>“PEEK (100)” RETURNS 1 IF CASSETTE MOTOR OFF / 0 IF OFF.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>113      | “PEEK (113)” DETERMINES IF SOFTKEYS DISPLAYED.
+            0 = IF SOFTKEYS NOT DISPLAYED.
+            1 = ALWAYS DISPAYED.
+            255 = INVOKED BY “KEY ON”</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>835-836</td>
+      <td>“PEEK (835) + 256 * PEEK(836)” POINTS TO LAST STATEMENT EXECUTED.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>837-838</td>
+      <td>“PEEK (837) +256 * PEEK(838)” MEMORY LOCATION BY THE BASIC(A) STACK POINTER.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>839-840  | “PEEK (839) + 256 * PEEK(840)” LINE NUMBER OF LAST BASIC(A) ERROR.
+                  BASIC(A) STACK POINTER.</p>
+
+<p>845-846  | “PEEK (845)+256*PEEK (846)” LINE NUMBER POINTED TO BY BASIC(A)
+                 ON ERROR GOTO STATEMENT.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>848-849</td>
+      <td>“PEEK (848)+256*PEEK (849)” RETURNS BASIC(A) DATA SEGMENT.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>862-863  | “PEEK (848)+256*PEEK (849)” POINTS TO NEXT BYTE OF LAST BASIC(A) DATA MOST 
+                RECENLTY READ. (READ DATA LOOP)</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1116</td>
+      <td>“PEEK (1116)” RETURNS MINIMUM ALLOWABLE VALUE FOR ARRAY SUBSCRIPTS</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1124</td>
+      <td>“PEEK (1124) = 0 IF FILE IN MEMORY NOT PROTECTED.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>1125     | “POKE 1125,255” PROTECTS BASIC(A) FILE IN MEMORY.
+           “PEEK (1125) AND 1” WILL = 1 IF ACTIVE CRT IS TEXT MODE WIDTH 80.
+           “PEEK (1125) AND 2” WILL = 2 IF ACTIVE CRT IS IN GRAPHICS MODE.
+           “PEEK (1125) AND 4” WILL = 4 IF ACTIVE CRT HAS COLOR DISABLED.
+           “PEEK (1125) AND 8” WILL = 8 IF ACTIVE CRT HAS NOT BEEN BLANKED.
+           “PEEK (1125) AND 16” WILL = 16 IF ACTIVE CRT IS IN HIGH RES. GRAPHICS.
+           “PEEK (1125) AND 32” WILL = 32 IF ACTIVE CRT BLINKING IS ENABLED.</p>
+
+<p>1247     | “PEEK (1247)” REFLECTS NUMBER OF FILES SPECIFIED BY BASIC(A)/F
+               COMMAND LINE PARAMETER.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1248-49</td>
+      <td>“PEEK (1248)+256*PEEK(1249)” POINTS TO FILE CONTROL BLOCKS.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>1264     | “CHR$(64 + PEEK(1264)) POINTS TO DRIVE LAST ACCESSED BY BASIC(A)
+1265     | “A$=”“:FOR I = 1 TO 10 :A$ = CHR$(PEEK(1265+I)):NEXT I”
+           POINTS TO FILE MOST RECENTLY ACCESSED BY BASIC(A).</p>
+
+<p>1295     | “POKE 1295,2:SYSTEM” WILL LEAVE THE BASIC(A) FLAG SET TO INDICATE A
+          SHELL TO DOS HAS OCCURRED AND PREVENT ACCESS TO BASIC(A) AGAIN.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1296-97</td>
+      <td>BASIC(A) DATA SEGMENT NUMBER MAY BE FOUND. “PEEK(1296) + 256 * PEEK(1297)”</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1339-40</td>
+      <td>“PEEK (1339) + 256 * PEEK (1340)”POINTS TO Y COORDINATE LAST USED.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1341-42</td>
+      <td>“PEEK (1341)+256*PEEK (1342)”POINTS TO X COORDINATE LAST USED.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>1619 TO  | STRINGS OF 15 CHARACTERS SEPARATED BY A NULL CHARACTER ARE STORED
+1772       HERE TO DEFINE THE VALUE OF THE SOFTKEYS. (FUNCTION KEYS 1 THRU 10).</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1782</td>
+      <td>“PEEK (1782) AND 3” PROVIDES THE CURRENT COLOR FOR DRAW STAT.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>“POKE 1782, 85 * c” WILL CHANGE DRAW COLOR TO c.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1794-95</td>
+      <td>“PEEK (1794) + 256 * PEEK (1795)” PROVIDES PROGRAM SEGMENT PREFIX.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reference">REFERENCE</h2>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li>
+    <p><a href="PEEK.html">PEEK</a>, <a href="POKE.html">POKE</a></p>
+  </li>
+  <li>
+    <p><a href="INP.html">INP</a>, <a href="OUT.html">OUT</a></p>
+  </li>
+  <li>
+    <p><a href="Screen-Memory.html">Screen Memory</a></p>
+  </li>
+</ul>
+
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/DEF-SEG-=-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+</html>

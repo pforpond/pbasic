@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SEEK-(statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SEEK-(statement)-2.html" />
+<meta property="og:url" content="SEEK-(statement)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SEEK-(statement).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>SEEK</strong> statement sets the next byte or record position of a file for a read or write.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>SEEK <em>filenumber&amp;</em>, <em>position</em></p>
+</blockquote>
+
+<ul>
+  <li><em>filenumber</em> must be the file number that is <a href="OPEN.html">OPEN</a> and being read or written to.</li>
+  <li><em>position</em> is a byte in <a href="BINARY.html">BINARY</a> or sequencial files created in <a href="OUTPUT.html">OUTPUT</a>, <a href="APPEND.html">APPEND</a> or <a href="INPUT-(file-mode).html">INPUT (file mode)</a>s. The first byte = 1.</li>
+  <li><em>position</em> is the record in <a href="RANDOM.html">RANDOM</a> files to read or write. Records can hold more than one variable defined in a <a href="TYPE.html">TYPE</a>.</li>
+  <li>Since the first SEEK file position is 1 it may require adding one to an offset value when documentation uses that position as 0.</li>
+  <li>After a SEEK statement, the next file operation starts at that SEEK byte position.</li>
+  <li>The SEEK statement can work with the <a href="SEEK.html">SEEK</a> function to move around in a file.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>A SEEK statement using the <a href="SEEK.html">SEEK</a> function to move to the next random record in a file.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">SEEK</span> <span class="mi">1</span><span class="p">,</span> <span class="n">SEEK</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SEEK.html">SEEK</a> (function)</li>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SEEK-(statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+</html>

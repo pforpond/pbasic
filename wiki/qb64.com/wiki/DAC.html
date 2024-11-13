@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/DAC by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="DAC-2.html" />
+<meta property="og:url" content="DAC-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/DAC.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>DAC</strong> stands for the QBasic Digital to Analog Converter color attributes used in screens 0, 7 and 9.</p>
+
+<blockquote>
+  <p>** IMPORTANT: QB64 screens do not use the DAC index!**</p>
+</blockquote>
+
+<ul>
+  <li>DAC colors are preset and cannot be changed in QBasic easily(see example).</li>
+  <li>DAC color attribute settings cannot be changed using <a href="PALETTE.html">PALETTE</a> or <a href="OUT.html">OUT</a> RGB statements.</li>
+  <li>Screen 0 and 9 can use up to 64 DAC color hues. Only attributes 0 to 5 and 7 can have RGB values altered using <a href="OUT.html">OUT</a>.</li>
+  <li><a href="PALETTE.html">PALETTE</a> swap statements can assign one attribute’s DAC color setting to another attribute color in <a href="SCREEN.html">SCREEN</a>s 0 to 9.</li>
+  <li>Screen attributes 0 to 5 and 7 can have their RGB settings altered using OUT as shown in <strong>Bold</strong> below:</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+            ***SCREEN 0 or 9                     SCREEN 7***
+        Attribute = DAC setting         Attribute = DAC setting
+          ** 0 to 5 = 0 to 5                 0 to 5 = 0 to 5**
+                6 = 20                       **   6 = 6**
+                7 = 7                           7 = 7**
+                8 = 56                          8 = 16
+                9 = 57                          9 = 17
+               10 = 58                         10 = 18
+               11 = 59                         11 = 19
+               12 = 60                         12 = 20
+               13 = 61                         13 = 21
+               14 = 62                         14 = 22
+               15 = 63                         15 = 23
+
+    **OUT can change RGB intensities where the DAC value matches the attribute value.**
+
+</code></pre></div></div>
+
+<p>Changing the DAC attributes to use <a href="OUT.html">OUT</a> for custom colors.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">9</span>   <span class="c1">'use 0, 7 or 9 only"</span>
+<span class="n">InitDAC</span><span class="err">%</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3DA</span><span class="p">)</span>    <span class="c1">' prepare DAC port for access</span>
+<span class="n">FOR</span> <span class="n">attribute%</span> <span class="o">=</span> <span class="mi">6</span> <span class="n">TO</span> <span class="mi">15</span> <span class="c1">' attributes 0 to 5 are already non-DAC</span>
+   <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="n">attribute%</span> <span class="c1">' send attribute to change</span>
+   <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="n">attribute%</span> <span class="c1">' change DAC value to normal number</span>
+<span class="n">NEXT</span> <span class="n">attribute%</span><span class="s">"
+OUT &amp;H3C0, 32            ' close port access
+
+</span></code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The procedure is a MUST to import 4 BPP bitmap colors in SCREEN 7 or 9. The InitDAC% value is not used, but that code line opens the DAC color port. Now all color attributes 0 to 15 can be used for custom or imported bitmap RGB color settings.</p>
+</blockquote>
+
+<p>Disabling blinking colors in fullscreen SCREEN 0 mode enabling high intensity only. (<a href="DAC.html">DAC</a>)</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">D</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3DA</span><span class="p">)</span>    <span class="c1">'prepares port for access</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H30</span> 
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="mi">4</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Make attributes 8-15 available to both foreground AND background colors. In other words it will make fullscreen behave like windowed mode. For the same effect in QB64, use <a href="_BLINK.html">_BLINK</a> OFF.</p>
+</blockquote>
+
+<p><em>Enabling:</em> The following code disables above code and returns SCREEN 0 blinking to normal.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">D</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3DA</span><span class="p">)</span>    <span class="c1">'prepares port for access</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H30</span> 
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="mi">12</span> 
+
+</code></pre></div></div>
+<blockquote>
+  <p><strong>NOTE: QB64</strong> allows blinking mode in both fullscreen and windowed modes <strong>without</strong> using the code above. To reenable blinking in QB64 after using <a href="_BLINK.html">_BLINK</a> OFF, use <a href="_BLINK.html">_BLINK</a> ON.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a>, <a href="COLOR.html">COLOR</a></li>
+  <li><a href="PALETTE.html">PALETTE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/DAC by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:03 GMT -->
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_DIREXISTS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_DIREXISTS-2.html" />
+<meta property="og:url" content="_DIREXISTS-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_DIREXISTS.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_DIREXISTS.html">_DIREXISTS</a> function determines if a designated file path or folder exists and returns true (-1) or false (0).</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>dirExists% = <a href="_DIREXISTS.html">_DIREXISTS</a>(filepath$)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The filepath$ parameter can be a literal or variable <a href="STRING.html">STRING</a> path value.</li>
+  <li>The function returns -1 when a path or folder exists and 0 when it does not.</li>
+  <li>The function reads the system information directly without using a <a href="SHELL.html">SHELL</a> procedure.</li>
+  <li>The function will use the appropriate Operating System path separators. <a href="_OS%24.html">_OS$</a> can determine the operating system.</li>
+  <li><strong>This function does not guarantee that a path can be accessed, only that it exists.</strong></li>
+  <li><strong>NOTE: Checking if a folder exists in a CD drive may cause the tray to open automatically to request a disk when empty.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Checks if a folder exists before proceeding.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">IF</span> <span class="n">_DIREXISTS</span><span class="p">(</span><span class="s">"internal\temp"</span><span class="p">)</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="s">"Folder found."</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FILEEXISTS.html">_FILEEXISTS</a></li>
+  <li><a href="SHELL.html">SHELL</a></li>
+  <li><a href="_OS%24.html">_OS$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_DIREXISTS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+</html>

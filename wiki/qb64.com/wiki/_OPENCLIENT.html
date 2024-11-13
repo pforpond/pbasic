@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_OPENCLIENT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_OPENCLIENT-2.html" />
+<meta property="og:url" content="_OPENCLIENT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_OPENCLIENT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_OPENCLIENT.html">_OPENCLIENT</a> function connects to a Host on the Internet as a Client and returns the Client status handle.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>clientHandle&amp; = <a href="_OPENCLIENT.html">_OPENCLIENT</a>(<strong>“TCP/IP:8080:12:30:1:10”</strong>)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>An <a href="ERROR-Codes.html">ERROR Codes</a> error will be triggered if the function is called with a string argument of the wrong syntax.</li>
+  <li>Connects to a host somewhere on the internet as a client.</li>
+  <li>Valid clientHandle&amp; values are negative. 0 means that the connection failed. Always check that the handle returned is not 0.</li>
+  <li><a href="CLOSE.html">CLOSE</a> client_handle closes the client. A failed handle of value 0 does not need to be closed.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Attempting to connect to a local host(your host) as a client. A zero return indicates failure.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">client</span> <span class="o">=</span> <span class="n">_OPENCLIENT</span><span class="p">(</span><span class="s">"TCP/IP:7319:localhost"</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">client</span> <span class="n">THEN</span> 
+   <span class="n">PRINT</span> <span class="s">"[Connected to "</span> <span class="o">+</span> <span class="n">_CONNECTIONADDRESS</span><span class="p">(</span><span class="n">client</span><span class="p">)</span> <span class="o">+</span> <span class="s">"]"</span> 
+<span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"[Connection Failed!]"</span>
+<span class="n">END</span> <span class="n">IF</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Try a valid TCP/IP port setting to test this routine!</p>
+</blockquote>
+
+<p>Using a “raw” Download function to download the QB64 bee image and displays it.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'replace the fake image address below with a real image address you want to download</span>
+<span class="n">IF</span> <span class="n">Download</span><span class="p">(</span><span class="s">"www.qb64.org/qb64.png"</span><span class="p">,</span> <span class="s">"qb64logo.png"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="n">THEN</span> <span class="c1">' timelimit = 10 seconds</span>
+ <span class="n">SCREEN</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"qb64logo.png"</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">ELSE</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Couldn't download image."</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">SLEEP</span>
+<span class="n">SYSTEM</span>
+<span class="c1">' ---------- program end -----------</span>
+
+<span class="n">FUNCTION</span> <span class="n">Download</span> <span class="p">(</span><span class="n">url$</span><span class="p">,</span> <span class="n">file$</span><span class="p">,</span> <span class="n">timelimit</span><span class="p">)</span> <span class="c1">' returns -1 if successful, 0 if not</span>
+<span class="n">url2$</span> <span class="o">=</span> <span class="n">url$</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">url2$</span><span class="p">,</span> <span class="s">"/"</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">x</span> <span class="n">THEN</span> <span class="n">url2$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">url$</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">_OPENCLIENT</span><span class="p">(</span><span class="s">"TCP/IP:80:"</span> <span class="o">+</span> <span class="n">url2$</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">client</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">e$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">' end of line characters</span>
+<span class="n">url3$</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">url$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">url$</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="s">"GET "</span> <span class="o">+</span> <span class="n">url3$</span> <span class="o">+</span> <span class="s">" HTTP/1.1"</span> <span class="o">+</span> <span class="n">e$</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"Host: "</span> <span class="o">+</span> <span class="n">url2$</span> <span class="o">+</span> <span class="n">e$</span> <span class="o">+</span> <span class="n">e$</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">client</span><span class="p">,</span> <span class="p">,</span> <span class="n">x$</span>
+<span class="n">t!</span> <span class="o">=</span> <span class="n">TIMER</span> <span class="c1">' start time</span>
+<span class="n">DO</span>
+    <span class="n">_DELAY</span> <span class="mf">0.05</span> <span class="c1">' 50ms delay (20 checks per second)</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="n">client</span><span class="p">,</span> <span class="p">,</span> <span class="n">a2$</span>
+    <span class="n">a$</span> <span class="o">=</span> <span class="n">a$</span> <span class="o">+</span> <span class="n">a2$</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"Content-Length:"</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">i</span> <span class="n">THEN</span>
+      <span class="n">i2</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a$</span><span class="p">,</span> <span class="n">e$</span><span class="p">)</span>
+      <span class="n">IF</span> <span class="n">i2</span> <span class="n">THEN</span>
+      <span class="n">l</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">i2</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span><span class="mi">14</span><span class="p">))</span>
+      <span class="n">i3</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">i2</span><span class="p">,</span> <span class="n">a$</span><span class="p">,</span> <span class="n">e$</span> <span class="o">+</span> <span class="n">e$</span><span class="p">)</span>
+        <span class="n">IF</span> <span class="n">i3</span> <span class="n">THEN</span>
+          <span class="n">i3</span> <span class="o">=</span> <span class="n">i3</span> <span class="o">+</span> <span class="mi">4</span> <span class="c1">'move i3 to start of data</span>
+          <span class="n">IF</span> <span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">-</span> <span class="n">i3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">l</span> <span class="n">THEN</span>
+            <span class="n">CLOSE</span> <span class="n">client</span> <span class="c1">' CLOSE CLIENT</span>
+            <span class="n">d$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+            <span class="n">fh</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+            <span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="n">fh</span><span class="p">:</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="n">fh</span> <span class="c1">' erase existing file?</span>
+
+            <span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="n">fh</span>
+            <span class="n">PUT</span> <span class="p">#</span><span class="n">fh</span><span class="p">,</span> <span class="p">,</span> <span class="n">d$</span>
+            <span class="n">CLOSE</span> <span class="p">#</span><span class="n">fh</span>
+            <span class="n">Download</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'indicates download was successfull</span>
+            <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+          <span class="n">END</span> <span class="n">IF</span> <span class="c1">' availabledata = l</span>
+        <span class="n">END</span> <span class="n">IF</span> <span class="c1">' i3</span>
+      <span class="n">END</span> <span class="n">IF</span> <span class="c1">' i2</span>
+    <span class="n">END</span> <span class="n">IF</span> <span class="c1">' i</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">TIMER</span> <span class="o">&gt;</span> <span class="n">t!</span> <span class="o">+</span> <span class="n">timelimit</span> <span class="c1">' (in seconds)</span>
+<span class="n">CLOSE</span> <span class="n">client</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_OPENHOST.html">_OPENHOST</a>, <a href="_OPENCONNECTION.html">_OPENCONNECTION</a></li>
+  <li><a href="_CONNECTED.html">_CONNECTED</a>, <a href="_CONNECTIONADDRESS%24.html">_CONNECTIONADDRESS$</a></li>
+  <li><a href="Email-Demo.html">Email Demo</a>, <a href="Inter-Program-Data-Sharing-Demo.html">Inter-Program Data Sharing Demo</a></li>
+  <li><a href="Downloading-Files.html">Downloading Files</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_OPENCLIENT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:49 GMT -->
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/OPEN-COM.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="OPEN-COM-2.html" />
+<meta property="og:url" content="OPEN-COM-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/OPEN-COM.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="OPEN-COM.html">OPEN COM</a> statement is used to access a computer’s serial port COM.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>OPEN</strong> “COMn: <em>Speed</em>, <em>Parity</em>, <em>Bits</em>, <em>Stopbit</em>, [<em>Options</em>]” [FOR {<a href="RANDOM.html">RANDOM</a></td>
+        <td><a href="BINARY.html">BINARY</a></td>
+        <td><a href="OUTPUT.html">OUTPUT</a></td>
+        <td><a href="INPUT-(file-mode).html">INPUT (file mode)</a>}] AS #<em>P</em> [LEN = byteSize]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li><em>Speed</em> (baud rate): 50, 150, 300, 600, 1200, 1800, 2400, <strong>9600</strong> (QBasic’s maximum), 19200 or <strong>115200</strong> (<strong>QB64</strong>’s maximum).</li>
+  <li><em>Parity</em>: <strong>N</strong> (none), E (even), O (odd), S (space) or M (mark). Note: If 8 bits, use parity N for numerical data.</li>
+  <li><em>Bits</em> = number of bits/byte: Valid numbers: 5, 6, 7 or <strong>8</strong></li>
+  <li><em>Stopbit</em> = number of stop bits: Valid numbers: <strong>1</strong>, 1.5 or 2</li>
+  <li>Optional COM port <em>Options</em> (separated by commas):
+    <ul>
+      <li>ASC : <a href="ASCII.html">ASCII</a> byte mode. End of line = <a href="CHR%24.html">CHR$</a>(13). End of file = CHR$(26)</li>
+      <li>BIN : <a href="Binary-2.html">Binary</a> byte mode. Default mode if ASC is not used(option not required).
+        <blockquote>
+          <p><em>Below ms is the timeout in milliseconds 1 to 65535. Zero ignores a timeout. Default without ms = 1000 :</em></p>
+        </blockquote>
+      </li>
+      <li>CD[ms] : Time until timeout of DCD (Carrier Detect) line in. CD0 ignores timeouts.</li>
+      <li>CS[ms] : Time until timeout of CTS (Clear to Send) line in. CS0 ignores timeouts.</li>
+      <li>DS[ms] : Time until timeout of DSR (Data Set Ready) line in. DS0 ignores timeouts.</li>
+      <li>OP[ms] : Time until data lines become active. If timeout then OPEN fails, OP0 ignores timeouts.</li>
+      <li>RB[b] : Size of receive buffer in bytes when used. Default when not used = 512 bytes</li>
+      <li>TB[b] : Size of transmit buffer in bytes when used. Default when not used = 512 bytes</li>
+      <li>RS  : Supress detection of Request to Send (RTS) line.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><strong>If any optional CD, CS, DS or OP timeouts occur the OPEN will fail or port access will stop. Try 0 to ignore.</strong></li>
+  <li><strong>QB64</strong> can open any COM<em>n</em> port number from 1 to 9.</li>
+  <li>See Windows System <strong>Device Manager</strong> for COM port numbers and port addresses &amp;H3F8, &amp;H2F8, &amp;H3E8 and &amp;H2E8.</li>
+  <li>Four commas are required after the Speed, Parity, Bits, and Stopbit, even if none of the Options are used.</li>
+  <li>Other <a href="OPEN.html">OPEN</a> <em>options</em> are optional and in any order separated by commas within the OPEN command <a href="STRING.html">STRING</a>.(See list below)</li>
+  <li>The optional FOR access <em>mode</em> can be <a href="OUTPUT.html">OUTPUT</a>, <a href="INPUT-(file-mode).html">INPUT (file mode)</a> or <a href="RANDOM.html">RANDOM</a> (default mode when no FOR statement is used).</li>
+  <li><strong>Currently, QB64 only supports <a href="OPEN.html">OPEN</a> FOR <a href="RANDOM.html">RANDOM</a> access using the <a href="GET.html">GET</a>/<a href="PUT.html">PUT</a> commands in <a href="BINARY.html">BINARY</a> mode.</strong></li>
+  <li><strong>Use the BIN option listed below for <a href="BINARY.html">BINARY</a> byte mode port access.</strong></li>
+  <li>The <a href="LEN.html">LEN</a> statement is also optional. The default record size is 512 bytes when not used.</li>
+  <li>Use the <a href="LOC.html">LOC</a>(portnumber) function to determine that there is data in the receive buffer when the value is greater than 0.</li>
+  <li>OPEN AS number can use a <a href="FREEFILE.html">FREEFILE</a> value. Numbers used by files already open <strong>cannot</strong> be used by OPEN COM.</li>
+  <li><a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Checking to see if a COM port exists. If the port does not exist QBasic will cause a Windows access error.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">ON</span> <span class="n">ERROR</span> <span class="n">GOTO</span> <span class="n">Handler</span> 
+<span class="n">FF</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">comPort$</span> <span class="o">=</span> <span class="s">"COM1:"</span>                         <span class="c1">'try a COM port number that does not exist</span>
+<span class="n">CONST</span> <span class="n">comMode$</span> <span class="o">=</span> <span class="s">"9600,N,8,1,CS0,DS0"</span>      <span class="c1">'Use 0 to avoid timeouts </span>
+<span class="n">OPEN</span> <span class="n">comPort$</span> <span class="o">+</span> <span class="n">comMode$</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="n">FF</span> 
+<span class="n">IF</span> <span class="n">errnum</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"COM exists!
+
+K$ = INPUT$(1) 
+END 
+
+Handler: 
+errnum = ERR 
+PRINT "</span><span class="k">Error</span><span class="p">:</span><span class="s">"; errnum
+RESUME NEXT 
+
+</span></code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> QB64 may create error 68 if COM is not found. Use a zero CD, CS, DS or OP timeout value to avoid COM timeouts.</p>
+</blockquote>
+
+<p>Opening a COM port with the BIN, CS0 and DS0 options in <strong>QB64</strong>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">bytestr</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1">'one byte transfers</span>
+<span class="n">INPUT</span> <span class="s">"COM port number #"</span><span class="p">,</span> <span class="n">port$</span>  <span class="c1">'any COM port number available</span>
+
+<span class="n">OPEN</span> <span class="s">"COM"</span> <span class="o">+</span> <span class="n">port$</span> <span class="o">+</span> <span class="s">":9600,N,8,1,BIN,CS0,DS0"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">DO</span> <span class="c1">'main loop</span>
+    <span class="c1">'receive data in buffer when LOC &gt; 0</span>
+    <span class="n">IF</span> <span class="n">LOC</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> 
+       <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">bytestr</span>
+       <span class="n">PRINT</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">bytestr</span> <span class="o">+</span> <span class="s">"]"</span><span class="err">;</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="c1">'transmit (send)</span>
+    <span class="n">k$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>  
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">k$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span>
+       <span class="n">k</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">k$</span><span class="p">)</span>
+       <span class="n">IF</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="n">THEN</span>     <span class="c1">'ignore control key codes</span>
+           <span class="n">PRINT</span> <span class="s">"&gt;"</span> <span class="o">+</span> <span class="n">k$</span> <span class="o">+</span> <span class="s">"&lt;"</span><span class="err">;</span>
+           <span class="n">bytestr</span> <span class="o">=</span> <span class="n">k$</span><span class="p">:</span> <span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">bytestr</span>
+       <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Finished!"</span> 
+
+</code></pre></div></div>
+
+<p>Sending string data from one COM port to another requires predefined length strings:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">ByteIn</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1</span> <span class="c1">'One byte transfers</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Byte4</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">4</span> <span class="c1">'Four byte transfers</span>
+
+<span class="n">Byte4</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">254</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">175</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">'Command code to query all 4 banks of switch input board.</span>
+
+<span class="n">OPEN</span> <span class="s">"COM1:115200,N,8,1,BIN,CS0,DS0"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">'Open port used to send commands.</span>
+<span class="n">OPEN</span> <span class="s">"COM2:115200,N,8,1,BIN,CS0,DS0"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span> <span class="c1">'Open port used to receive commands.</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">Byte4</span> <span class="c1">'Send the 4 byte command.</span>
+
+<span class="n">Start</span><span class="p">#</span> <span class="o">=</span> <span class="n">TIMER</span>
+<span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">LOC</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="c1">'Check if there is data received at com2</span>
+    <span class="n">IF</span> <span class="n">TIMER</span> <span class="o">-</span> <span class="n">Start</span><span class="p">#</span> <span class="o">&gt;</span> <span class="p">.</span><span class="err">5</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span> <span class="c1">'Exit loop if no data arrives within .5 seconds.</span>
+<span class="n">LOOP</span>
+
+<span class="n">IF</span> <span class="n">LOC</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="c1">'If no data was received.....</span>
+    <span class="n">PRINT</span> <span class="s">"No data received from COM port."</span>
+    <span class="n">END</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">PRINT</span> <span class="s">"Received from COM2:"</span><span class="err">;</span>
+
+<span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">LOC</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'Read data from COM2 until there is no more data.</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="p">,</span> <span class="n">ByteIn</span>
+    <span class="n">PRINT</span> <span class="n">ASC</span><span class="p">(</span><span class="n">ByteIn</span><span class="p">)</span><span class="err">;</span>
+<span class="n">LOOP</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="BINARY.html">BINARY</a>, <a href="RANDOM.html">RANDOM</a></li>
+  <li><a href="INPUT%24.html">INPUT$</a>, <a href="PRINT-(file-statement).html">PRINT (file statement)</a></li>
+  <li><a href="LOC.html">LOC</a>, <a href="INKEY%24.html">INKEY$</a>, <a href="OPEN.html">OPEN</a></li>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a></li>
+  <li><a href="Port-Access-Libraries.html">Port Access Libraries</a> (Includes full LPT and COM port descriptions with downloadable DLL library)</li>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/OPEN-COM.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:31 GMT -->
+</html>

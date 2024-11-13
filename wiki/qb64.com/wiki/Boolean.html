@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Boolean by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Boolean-3.html" />
+<meta property="og:url" content="Boolean-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Boolean.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Boolean</strong> statements are numerical evaluations that return True (-1 or NOT 0) or False (0) values that can be used in other calculations.</p>
+
+<p><em>Basic Returns:</em></p>
+
+<ul>
+  <li>True evaluations return -1. <a href="NOT.html">NOT</a> 0 = -1 in Basic. Can be used to increment a value.</li>
+  <li>For positive True results, subtract it, multiply it by a negative value or use <a href="ABS.html">ABS</a>.</li>
+  <li>False evaluations return 0. Watch out for <a href="ERROR-Codes.html">ERROR Codes</a>!</li>
+</ul>
+
+<p>MISSING: Relational Table</p>
+
+<ul>
+  <li>When evaluating a True value, an IF value &lt; 0 statement is NOT necessary for return values not 0.</li>
+</ul>
+
+<p>** Truth table of the BASIC Logical Operators:**</p>
+
+<p>MISSING: Logical Truth Table</p>
+
+<p><strong>Boolean Conditional Operators:</strong></p>
+
+<ul>
+  <li><a href="AND-(boolean).html">AND (boolean)</a> can be used to add extra conditions to a boolean statement evaluation. Both must be True.</li>
+  <li><a href="OR-(boolean).html">OR (boolean)</a> can be used to add alternate conditions to a boolean statement evaluation. One must be True.</li>
+  <li>Parenthesis are allowed inside of boolean statements to clarify an evaluation.</li>
+  <li><strong>Note that Basic returns -1 for True and 0 for False.</strong></li>
+</ul>
+
+<p>Using 2 different boolean evaluations to determine a leap year.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">INPUT</span> <span class="s">"Enter a year greater than 1583: "</span><span class="p">,</span> <span class="n">annum$</span>
+ <span class="n">Y</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">annum$</span><span class="p">)</span>
+ <span class="n">leap1</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y</span> <span class="n">MOD</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">Y</span> <span class="n">MOD</span> <span class="mi">100</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">OR</span> <span class="p">(</span><span class="n">Y</span> <span class="n">MOD</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+ <span class="n">leap2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y</span> <span class="n">MOD</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">Y</span> <span class="n">MOD</span> <span class="mi">100</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span> <span class="n">MOD</span> <span class="mi">400</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+ <span class="n">PRINT</span> <span class="s">"Year = "</span><span class="err">;</span> <span class="n">annum$</span><span class="p">,</span> <span class="s">"Leap1 = "</span><span class="err">;</span> <span class="n">leap1</span><span class="p">,</span> <span class="s">"Leap2 = "</span><span class="err">;</span> <span class="n">leap2</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> Both boolean evaluations will return -1 if the year is a leap year. It is not simply every four years as many people think. That is checked by the first evaluation (Y MOD 4 = 0) of each. In new century years like 1900 (which was not a leapyear) there is only one leap year every 400 years. 100 is used with <a href="MOD.html">MOD</a> to see if there is a remainder. When that is true, the boolean return of that part of the first evaluation will be 0. The second returns -1 (which is actually added). In both evaluations the result of (Y MOD 400 = 0) indicates a century leap year.</p>
+
+<p>Entry year = 2000</p>
+
+<blockquote>
+  <p>leap1 = (-1 AND 0) OR -1 = -1 ‘ the AND evaluation returns False(0) so the OR value is used.</p>
+</blockquote>
+
+<blockquote>
+  <p>leap2 = (-1) - (-1) + (-1) = -1 + 1 + -1 = -1</p>
+</blockquote>
+
+<p>Entry year = 1900</p>
+
+<blockquote>
+  <p>leap1 = (-1 AND 0) OR 0 = 0 OR 0 = 0</p>
+</blockquote>
+
+<blockquote>
+  <p>leap2 = (-1) - (-1) + (0) = -1 + 1 + 0 = 0</p>
+</blockquote>
+
+<p>Moving an <a href="ASCII.html">ASCII</a> character using the arrow keys and boolean statements to determine the new coordinate.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">COLOR</span> <span class="mi">7</span>
+<span class="n">LOCATE</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Using Screen 12 here to be in 80 X 30 coordinates mode"</span>
+<span class="n">LOCATE</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Simple Example of Alternative programming without IF-THEN-ELSE Statements"</span>
+<span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Use the four Cursor keys to move the yellow cursor, text will not be disturbed"</span>
+<span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"When you END the program with the ESC key, cursor will disappear"</span>
+
+<span class="n">cordx%</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">cordy%</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">DO</span>
+<span class="n">oldcordx%</span> <span class="o">=</span> <span class="n">cordx%</span>
+<span class="n">oldcordy%</span> <span class="o">=</span> <span class="n">cordy%</span>
+<span class="n">p%</span> <span class="o">=</span> <span class="n">SCREEN</span><span class="p">(</span><span class="n">cordy%</span><span class="p">,</span> <span class="n">cordx%</span><span class="p">)</span> <span class="c1">'get ASCII character code at present position</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="n">cordy%</span><span class="p">,</span> <span class="n">cordx%</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">178</span><span class="p">)</span><span class="err">;</span> <span class="c1">'print cursor character to position</span>
+
+<span class="n">WHILE</span> <span class="n">cordx%</span> <span class="o">=</span> <span class="n">oldcordx%</span> <span class="n">AND</span> <span class="n">cordy%</span> <span class="o">=</span> <span class="n">oldcordy%</span> <span class="n">AND</span> <span class="n">k$</span> <span class="o">&lt;&gt;</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">k$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+<span class="n">cordx%</span> <span class="o">=</span> <span class="n">cordx%</span> <span class="o">+</span> <span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"K"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">cordx%</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ABS</span><span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"M"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">cordx%</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">cordy%</span> <span class="o">=</span> <span class="n">cordy%</span> <span class="o">+</span> <span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"H"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">cordy%</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ABS</span><span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"P"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">cordy%</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">WEND</span>
+
+<span class="n">COLOR</span> <span class="mi">7</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="n">oldcordy%</span><span class="p">,</span> <span class="n">oldcordx%</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">p%</span><span class="p">)</span><span class="err">;</span> <span class="c1">'replace overwritten screen characters</span>
+
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> 
+
+</code></pre></div></div>
+<p><sub>Code by AlgoreIthm</sub></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="IF...html">IF…THEN</a>, <a href="SELECT-CASE.html">SELECT CASE</a></li>
+  <li><a href="Binary-2.html">Binary</a>, <a href="ABS.html">ABS</a>, <a href="SGN.html">SGN</a></li>
+  <li><a href="AND.html">AND</a>, <a href="OR.html">OR</a>, <a href="XOR.html">XOR</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Boolean by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:07 GMT -->
+</html>

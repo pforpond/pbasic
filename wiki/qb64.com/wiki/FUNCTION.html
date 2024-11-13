@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/FUNCTION by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:11:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="FUNCTION-2.html" />
+<meta property="og:url" content="FUNCTION-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/FUNCTION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>A <a href="FUNCTION.html">FUNCTION</a> block statement is used to create a function procedure to return a calculated value to a program.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>FUNCTION procedureName</strong>[type-suffix] [(<em>parameters</em>)]</p>
+
+  <p><em>{code}</em></p>
+
+  <p>‘variable definitions and procedure statements</p>
+
+  <p>⋮</p>
+
+  <p>procedureName = returnValue</p>
+
+  <p><strong>END FUNCTION</strong></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The function type can be any variable type that it will return to the program and is represented by the type suffix.</li>
+  <li>Functions hold one return value in the function’s name which is a variable type. Other values can be passed through <em>parameters</em>.</li>
+  <li>Functions are often referred to in program calculations, not called like SUB procedures. <a href="CALL.html">CALL</a> cannot be used with functions.</li>
+  <li>If there are no parameters passed or they are <a href="SHARED.html">SHARED</a> the <em>parameters</em> and parenthesis are not required.</li>
+  <li>Variable names within the procedure do not have to match the names used in the reference parameters, just the value types.</li>
+  <li>All <a href="%24DYNAMIC.html">$DYNAMIC</a> variable values return to 0 or null strings when the procedure is exited except when a variable or the entire function is <a href="STATIC.html">STATIC</a>. This can save program memory as all <a href="%24DYNAMIC.html">$DYNAMIC</a> memory used in a FUNCTION is released on procedure exit.</li>
+  <li>FUNCTION procedure code can use <a href="GOSUB.html">GOSUB</a> and <a href="GOTO.html">GOTO</a> line numbers or labels inside of the procedure when necessary.</li>
+  <li>For early function exits use <a href="EXIT.html">EXIT</a> <a href="FUNCTION.html">FUNCTION</a> before <a href="END-FUNCTION.html">END FUNCTION</a> and <a href="GOSUB.html">GOSUB</a> procedures using <a href="RETURN.html">RETURN</a>.</li>
+  <li><strong>QB64 ignores all procedural DECLARE statements.</strong> Define all <em>parameter</em> <a href="Data-types.html">Data types</a> in the FUNCTION procedure.</li>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+  <li>The IDE can create the FUNCTION and END FUNCTION lines for you. Use the <em>New FUNCTION…</em> option in the Edit Menu. A box will come up for you to enter a name for the FUNCTION. Enter all code between the FUNCTION and <a href="END-FUNCTION.html">END FUNCTION</a> lines.</li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li>Once a FUNCTION was created and used, the QBasic IDE would DECLARE it when the file was saved. <strong>QB64 doesn’t need these declarations.</strong></li>
+  <li>QBasic’s IDE could place a <a href="DEFINT.html">DEFINT</a>, <a href="DEFSNG.html">DEFSNG</a>, <a href="DEFLNG.html">DEFLNG</a>, <a href="DEFDBL.html">DEFDBL</a> or <a href="DEFSTR.html">DEFSTR</a> statement before the FUNCTION line if it is used in the main module. It may even be the wrong variable type needed.</li>
+  <li>QBasic allowed programmers to add DATA fields anywhere because the IDE separated the main code from other procedures.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>A simple function that returns the current path. Place <a href="FUNCTION.html">FUNCTION</a> or <a href="SUB.html">SUB</a> procedures after the program <a href="END.html">END</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Current path = "</span><span class="err">;</span> <span class="n">PATH</span><span class="err">$</span>
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">PATH</span><span class="err">$</span>
+    <span class="n">f%</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+    <span class="n">file$</span> <span class="o">=</span> <span class="s">"D0Spath.inf"</span> <span class="c1">'file name uses a zero to prevent an overwrite of existing file name</span>
+    <span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"CD &gt; "</span> <span class="o">+</span> <span class="n">file$</span> <span class="c1">'send screen information to a created text file</span>
+    <span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f%</span> <span class="c1">'file should exist with one line of text</span>
+    <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="n">PATH</span><span class="err">$</span> <span class="c1">'read file path text to function name</span>
+    <span class="n">CLOSE</span> <span class="p">#</span><span class="n">f%</span>
+    <span class="n">KILL</span> <span class="n">file$</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<p>Returns a <a href="LONG.html">LONG</a> array byte size required for a certain sized graphics screen pixel area <a href="GET-(graphics-statement).html">GET (graphics statement)</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INPUT</span> <span class="s">"Enter a screen mode: "</span><span class="p">,</span> <span class="n">mode%</span>
+<span class="n">INPUT</span> <span class="s">"Enter image width: "</span><span class="p">,</span> <span class="n">wide&amp;</span>
+<span class="n">INPUT</span> <span class="s">"Enter image depth: "</span><span class="p">,</span> <span class="n">deep&amp;</span>
+<span class="n">IntegerArray</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">ImageBufferSize</span><span class="o">&amp;</span><span class="p">(</span><span class="n">wide&amp;</span><span class="p">,</span> <span class="n">deep&amp;</span><span class="p">,</span> <span class="n">mode%</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span> <span class="c1">' returns size of an INTEGER array.</span>
+<span class="n">PRINT</span> <span class="n">IntegerArray</span><span class="o">&amp;</span>
+<span class="n">END</span>
+
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">FUNCTION</span> <span class="n">ImageBufferSize</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">Wide</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Deep</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">ScreenMode</span><span class="err">%</span><span class="p">)</span>
+    <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">ScreenMode</span><span class="err">%</span>
+        <span class="n">CASE</span> <span class="mi">1</span><span class="p">:</span> <span class="n">BPPlane</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span> <span class="n">Planes</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">CASE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="n">BPPlane</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Planes</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">CASE</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="n">BPPlane</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Planes</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="n">CASE</span> <span class="mi">10</span><span class="p">:</span> <span class="n">BPPlane</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Planes</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">CASE</span> <span class="mi">13</span><span class="p">:</span> <span class="n">BPPlane</span> <span class="o">=</span> <span class="mi">8</span><span class="p">:</span> <span class="n">Planes</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">CASE</span> <span class="n">ELSE</span><span class="p">:</span> <span class="n">BPPlane</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">END</span> <span class="n">SELECT</span>
+    <span class="n">ImageBufferSize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">INT</span><span class="p">((</span><span class="n">Wide</span><span class="o">&amp;</span> <span class="o">*</span> <span class="n">BPPlane</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">Deep</span><span class="o">&amp;</span> <span class="o">*</span> <span class="n">Planes</span><span class="p">)</span> <span class="c1">'return the value to function name.</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Function calculates the array byte size required when you <a href="GET-(graphics-statement).html">GET (graphics statement)</a> an area of a graphics <a href="SCREEN.html">SCREEN</a>. Each mode may require a different sized array. Since graphics uses <a href="INTEGER.html">INTEGER</a> arrays, 2 byte elements, the size returned is divided by 2 in the IntegerArray&amp; calculation function reference. Function returns only 4 for <a href="SCREEN.html">SCREEN</a> 0 which is a text only mode.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SUB.html">SUB</a>, <a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+  <li><a href="EXIT.html">EXIT</a> (statement), <a href="END.html">END</a></li>
+  <li><a href="_EXIT-(function).html">_EXIT (function)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/FUNCTION by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:11:58 GMT -->
+</html>

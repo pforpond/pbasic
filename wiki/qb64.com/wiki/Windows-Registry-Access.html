@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Windows-Registry-Access by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Windows-Registry-Access-2.html" />
+<meta property="og:url" content="Windows-Registry-Access-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Windows-Registry-Access.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The following procedure demonstrates how Registry information can be altered by disabling and re-enabling the Autorun/Autoplay for the current user. It then reads the Registry to list some of the programs that auto start for all users.</p>
+
+<p><sub>Code courtesy of Michael Calkins</sub></p>
+
+<p><strong>WARNING! Use care when editing or altering Registry settings! YOU will be responsible for any damages incurred!</strong></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">' winreg.h</span>
+<span class="n">CONST</span> <span class="n">HKEY_CLASSES_ROOT</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000000</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">HKEY_CURRENT_USER</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000001</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">HKEY_LOCAL_MACHINE</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000002</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">HKEY_USERS</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000003</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">HKEY_PERFORMANCE_DATA</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000004</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">HKEY_CURRENT_CONFIG</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000005</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">HKEY_DYN_DATA</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H80000006</span><span class="err">~</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">REG_OPTION_VOLATILE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">CONST</span> <span class="n">REG_OPTION_NON_VOLATILE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CONST</span> <span class="n">REG_CREATED_NEW_KEY</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">CONST</span> <span class="n">REG_OPENED_EXISTING_KEY</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1">' **http://msdn.microsoft.com/en-us/library/ms724884(v=VS.85).aspx**</span>
+<span class="n">CONST</span> <span class="n">REG_NONE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CONST</span> <span class="n">REG_SZ</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">CONST</span> <span class="n">REG_EXPAND_SZ</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">CONST</span> <span class="n">REG_BINARY</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">CONST</span> <span class="n">REG_DWORD_LITTLE_ENDIAN</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">'   value is defined REG_DWORD in Windows header files</span>
+<span class="n">CONST</span> <span class="n">REG_DWORD</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">'                  32-bit number</span>
+<span class="n">CONST</span> <span class="n">REG_DWORD_BIG_ENDIAN</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">'       some UNIX systems support big-endian architectures</span>
+<span class="n">CONST</span> <span class="n">REG_LINK</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">CONST</span> <span class="n">REG_MULTI_SZ</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">CONST</span> <span class="n">REG_RESOURCE_LIST</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">CONST</span> <span class="n">REG_FULL_RESOURCE_DESCRIPTOR</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">CONST</span> <span class="n">REG_RESOURCE_REQUIREMENTS_LIST</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">CONST</span> <span class="n">REG_QWORD_LITTLE_ENDIAN</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">'  64-bit number in little-endian format</span>
+<span class="n">CONST</span> <span class="n">REG_QWORD</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1">'                 64-bit number</span>
+<span class="n">CONST</span> <span class="n">REG_NOTIFY_CHANGE_NAME</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">CONST</span> <span class="n">REG_NOTIFY_CHANGE_ATTRIBUTES</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">CONST</span> <span class="n">REG_NOTIFY_CHANGE_LAST_SET</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">CONST</span> <span class="n">REG_NOTIFY_CHANGE_SECURITY</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="c1">' **http://msdn.microsoft.com/en-us/library/ms724878(v=VS.85).aspx**</span>
+<span class="n">CONST</span> <span class="n">KEY_ALL_ACCESS</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HF003F</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_CREATE_LINK</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0020</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_CREATE_SUB_KEY</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0004</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_ENUMERATE_SUB_KEYS</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0008</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_EXECUTE</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H20019</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_NOTIFY</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0010</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_QUERY_VALUE</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0001</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_READ</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H20019</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_SET_VALUE</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0002</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_WOW64_32KEY</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0200</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_WOW64_64KEY</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H0100</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">KEY_WRITE</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H20006</span><span class="o">&amp;</span>
+
+<span class="c1">' winerror.h</span>
+<span class="c1">' **http://msdn.microsoft.com/en-us/library/ms681382(v=VS.85).aspx**</span>
+<span class="n">CONST</span> <span class="n">ERROR_SUCCESS</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CONST</span> <span class="n">ERROR_FILE_NOT_FOUND</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H2</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">ERROR_INVALID_HANDLE</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H6</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">ERROR_MORE_DATA</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HEA</span><span class="o">&amp;</span>
+<span class="n">CONST</span> <span class="n">ERROR_NO_MORE_ITEMS</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">H103</span><span class="o">&amp;</span>
+<span class="c1">'---------------------------------------------------------------------------------------------</span>
+<span class="c1">' REGSAM is an ACCESS_MASK (winreg.h), which is a DWORD (winnt.h)</span>
+
+<span class="n">DECLARE</span> <span class="n">DYNAMIC</span> <span class="n">LIBRARY</span> <span class="s">"advapi32"</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724897(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegOpenKeyExA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpSubKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">ulOptions</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">samDesired</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">phkResult</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724837(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegCloseKey</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724865(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegEnumValueA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">dwIndex</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpValueName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcchValueName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpReserved</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpType</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpData</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcbData</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724911(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegQueryValueExA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpValueName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpReserved</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpType</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpData</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcbData</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724923(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegSetValueExA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpValueName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Reserved</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">dwType</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpData</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">cbData</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+
+ <span class="c1">'untested:</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724862(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegEnumKeyExA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">dwIndex</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpReserved</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpClass</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcClass</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpftLastWriteTime</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724844(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegCreateKeyExA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpSubKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Reserved</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpClass</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">dwOptions</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">samDesired</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpSecurityAttributes</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">phkResult</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpdwDisposition</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724851(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegDeleteValueA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpValueName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span> <span class="c1">'&lt;&lt;&lt; DANGER</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724845(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegDeleteKeyA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpSubKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span> <span class="c1">'&lt;&lt;&lt; DANGER</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724905(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegQueryMultipleValuesA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">val_list</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">num_vals</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpValueBuf</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">ldwTotsize</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms724902(v=VS.85).aspx</span>
+ <span class="n">FUNCTION</span> <span class="n">RegQueryInfoKeyA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpClass</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcClass</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpReserved</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcSubKeys</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcMaxSubKeyLen</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcMaxClassLen</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcValues</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcMaxValueNameLen</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcMaxValueLen</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpcbSecurityDescriptor</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">lpftLastWriteTime</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+ <span class="c1">' http://msdn.microsoft.com/en-us/library/ms725490(v=VS.85).aspx</span>
+<span class="n">TYPE</span> <span class="n">VALENT</span> <span class="c1">'for RegQueryMultipleValues</span>
+ <span class="n">ve_valuename</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+ <span class="n">ve_valuelen</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+ <span class="n">ve_valueptr</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+ <span class="n">ve_type</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="c1">' example:</span>
+
+<span class="n">DIM</span> <span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">DIM</span> <span class="n">Ky</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">DIM</span> <span class="n">SubKey</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">Value</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">bData</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">t</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">dwType</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">numBytes</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">numTchars</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">l</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">dwIndex</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+
+<span class="n">Ky</span> <span class="o">=</span> <span class="n">HKEY_CURRENT_USER</span>
+<span class="n">SubKey</span> <span class="o">=</span> <span class="s">"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Value</span> <span class="o">=</span> <span class="s">"NoDriveTypeAutoRun"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">bData</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">numBytes</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">bData</span><span class="p">)</span>
+
+<span class="n">DO</span>
+ <span class="n">PRINT</span> <span class="s">"This value enables/disables AutoRun/AutoPlay for the current user:"</span>
+ <span class="n">l</span> <span class="o">=</span> <span class="n">RegOpenKeyExA</span><span class="p">(</span><span class="n">Ky</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">SubKey</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">KEY_READ</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">hKey</span><span class="p">))</span>
+ <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+  <span class="n">PRINT</span> <span class="s">"RegOpenKeyExA failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+ <span class="n">ELSE</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="n">RegQueryValueExA</span><span class="p">(</span><span class="n">hKey</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">Value</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">dwType</span><span class="p">),</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">bData</span><span class="p">),</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">numBytes</span><span class="p">))</span>
+  <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+   <span class="n">PRINT</span> <span class="s">"RegQueryValueExA failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+  <span class="n">ELSE</span>
+   <span class="n">PRINT</span> <span class="n">whatKey$</span><span class="p">(</span><span class="n">Ky</span><span class="p">)</span> <span class="o">+</span> <span class="s">"\"</span> <span class="o">+</span> <span class="n">SubKey</span>
+   <span class="n">PRINT</span> <span class="n">whatType</span><span class="p">(</span><span class="n">dwType</span><span class="p">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">Value</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="n">formatData</span><span class="p">(</span><span class="n">dwType</span><span class="p">,</span> <span class="n">numBytes</span><span class="p">,</span> <span class="n">bData</span><span class="p">)</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="n">RegCloseKey</span><span class="p">(</span><span class="n">hKey</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+   <span class="n">PRINT</span> <span class="s">"RegCloseKey failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+   <span class="n">END</span>
+  <span class="n">END</span> <span class="n">IF</span>
+ <span class="n">END</span> <span class="n">IF</span>
+ <span class="n">IF</span> <span class="n">dwType</span> <span class="o">&lt;&gt;</span> <span class="n">REG_DWORD</span> <span class="n">THEN</span>
+  <span class="n">PRINT</span> <span class="s">"Oops. I expected that value to be a DWORD."</span>
+  <span class="n">EXIT</span> <span class="n">DO</span>
+ <span class="n">END</span> <span class="n">IF</span>
+ <span class="n">PRINT</span>
+ <span class="n">PRINT</span> <span class="s">"Would you like to change that value? "</span><span class="err">;</span>
+ <span class="n">DO</span>
+  <span class="n">_LIMIT</span> <span class="mi">20</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">)</span>
+ <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="p">(</span><span class="n">t</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">)</span> <span class="n">OR</span> <span class="p">(</span><span class="n">t</span> <span class="o">=</span> <span class="s">"n"</span><span class="p">)</span>
+ <span class="n">PRINT</span> <span class="n">t</span>
+ <span class="n">IF</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"y"</span> <span class="n">THEN</span>
+  <span class="n">PRINT</span> <span class="s">"I recommend setting this value to 0xff to disable AutoRun for the current user."</span>
+  <span class="n">PRINT</span> <span class="s">"Enter a new DWORD value: 0x"</span><span class="err">;</span>
+  <span class="n">LINE</span> <span class="n">INPUT</span> <span class="n">t</span>
+  <span class="n">bData</span> <span class="o">=</span> <span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;h"</span> <span class="o">+</span> <span class="n">t</span> <span class="o">+</span> <span class="s">"&amp;"</span><span class="p">))</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="s">"y"</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="n">RegOpenKeyExA</span><span class="p">(</span><span class="n">Ky</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">SubKey</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">KEY_ALL_ACCESS</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">hKey</span><span class="p">))</span>
+  <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+   <span class="n">PRINT</span> <span class="s">"RegOpenKeyExA failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+  <span class="n">ELSE</span>
+   <span class="n">l</span> <span class="o">=</span> <span class="n">RegSetValueExA</span><span class="p">(</span><span class="n">hKey</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">Value</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dwType</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">bData</span><span class="p">),</span> <span class="n">numBytes</span><span class="p">)</span>
+   <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="s">"RegSetValueExA failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">l</span> <span class="o">=</span> <span class="n">RegCloseKey</span><span class="p">(</span><span class="n">hKey</span><span class="p">)</span>
+   <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="s">"RegCloseKey failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+    <span class="n">END</span>
+   <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">PRINT</span>
+ <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"n"</span>
+
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"This key lists some of the programs that auto start for all users:"</span>
+<span class="n">Ky</span> <span class="o">=</span> <span class="n">HKEY_LOCAL_MACHINE</span>
+<span class="n">SubKey</span> <span class="o">=</span> <span class="s">"SOFTWARE\Microsoft\Windows\CurrentVersion\Run"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Value</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">261</span><span class="p">)</span> <span class="c1">'ANSI Value name limit 260 chars + 1 null</span>
+<span class="n">bData</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H7FFF</span><span class="p">)</span> <span class="c1">'arbitrary</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">RegOpenKeyExA</span><span class="p">(</span><span class="n">Ky</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">SubKey</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">KEY_READ</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">hKey</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+ <span class="n">PRINT</span> <span class="s">"RegOpenKeyExA failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+<span class="n">ELSE</span>
+ <span class="n">PRINT</span> <span class="n">whatKey$</span><span class="p">(</span><span class="n">Ky</span><span class="p">)</span> <span class="o">+</span> <span class="s">"\"</span> <span class="o">+</span> <span class="n">SubKey</span>
+ <span class="n">dwIndex</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="n">DO</span>
+  <span class="n">SLEEP</span> <span class="mi">1</span>
+  <span class="n">numBytes</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">bData</span><span class="p">)</span>
+  <span class="n">numTchars</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="n">RegEnumValueA</span><span class="p">(</span><span class="n">hKey</span><span class="p">,</span> <span class="n">dwIndex</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">Value</span><span class="p">),</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">numTchars</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">dwType</span><span class="p">),</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">bData</span><span class="p">),</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">numBytes</span><span class="p">))</span>
+  <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+   <span class="n">IF</span> <span class="n">l</span> <span class="o">&lt;&gt;</span> <span class="n">ERROR_NO_MORE_ITEMS</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="s">"RegEnumValueA failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">EXIT</span> <span class="n">DO</span>
+  <span class="n">ELSE</span>
+   <span class="n">PRINT</span> <span class="n">whatType</span><span class="p">(</span><span class="n">dwType</span><span class="p">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">Value</span><span class="p">,</span> <span class="n">numTchars</span><span class="p">)</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="n">formatData</span><span class="p">(</span><span class="n">dwType</span><span class="p">,</span> <span class="n">numBytes</span><span class="p">,</span> <span class="n">bData</span><span class="p">)</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">dwIndex</span> <span class="o">=</span> <span class="n">dwIndex</span> <span class="o">+</span> <span class="mi">1</span>
+ <span class="n">LOOP</span>
+ <span class="n">PRINT</span> <span class="n">dwIndex</span><span class="err">;</span> <span class="s">"Values."</span>
+ <span class="n">l</span> <span class="o">=</span> <span class="n">RegCloseKey</span><span class="p">(</span><span class="n">hKey</span><span class="p">)</span>
+ <span class="n">IF</span> <span class="n">l</span> <span class="n">THEN</span>
+  <span class="n">PRINT</span> <span class="s">"RegCloseKey failed. Error: 0x"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+  <span class="n">END</span>
+ <span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">whatType$</span> <span class="p">(</span><span class="n">dwType</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">dwType</span>
+ <span class="n">CASE</span> <span class="n">REG_SZ</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_SZ"</span>
+ <span class="n">CASE</span> <span class="n">REG_EXPAND_SZ</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_EXPAND_SZ"</span>
+ <span class="n">CASE</span> <span class="n">REG_BINARY</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_BINARY"</span>
+ <span class="n">CASE</span> <span class="n">REG_DWORD</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_DWORD"</span>
+ <span class="n">CASE</span> <span class="n">REG_DWORD_BIG_ENDIAN</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_DWORD_BIG_ENDIAN"</span>
+ <span class="n">CASE</span> <span class="n">REG_LINK</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_LINK"</span>
+ <span class="n">CASE</span> <span class="n">REG_MULTI_SZ</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_MULTI_SZ"</span>
+ <span class="n">CASE</span> <span class="n">REG_RESOURCE_LIST</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_RESOURCE_LIST"</span>
+ <span class="n">CASE</span> <span class="n">REG_FULL_RESOURCE_DESCRIPTOR</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_FULL_RESOURCE_DESCRIPTOR"</span>
+ <span class="n">CASE</span> <span class="n">REG_RESOURCE_REQUIREMENTS_LIST</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_RESOURCE_REQUIREMENTS_LIST"</span>
+ <span class="n">CASE</span> <span class="n">REG_QWORD</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"REG_QWORD"</span>
+ <span class="n">CASE</span> <span class="n">ELSE</span><span class="p">:</span> <span class="n">whatType</span> <span class="o">=</span> <span class="s">"unknown"</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">whatKey$</span> <span class="p">(</span><span class="n">hKey</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">hKey</span>
+ <span class="n">CASE</span> <span class="n">HKEY_CLASSES_ROOT</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_CLASSES_ROOT"</span>
+ <span class="n">CASE</span> <span class="n">HKEY_CURRENT_USER</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_CURRENT_USER"</span>
+ <span class="n">CASE</span> <span class="n">HKEY_LOCAL_MACHINE</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_LOCAL_MACHINE"</span>
+ <span class="n">CASE</span> <span class="n">HKEY_USERS</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_USERS"</span>
+ <span class="n">CASE</span> <span class="n">HKEY_PERFORMANCE_DATA</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_PERFORMANCE_DATA"</span>
+ <span class="n">CASE</span> <span class="n">HKEY_CURRENT_CONFIG</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_CURRENT_CONFIG"</span>
+ <span class="n">CASE</span> <span class="n">HKEY_DYN_DATA</span><span class="p">:</span> <span class="n">whatKey</span> <span class="o">=</span> <span class="s">"HKEY_DYN_DATA"</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">formatData$</span> <span class="p">(</span><span class="n">dwType</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">numBytes</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">bData</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">t</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">ul</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">b</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">dwType</span>
+ <span class="n">CASE</span> <span class="n">REG_SZ</span><span class="p">,</span> <span class="n">REG_EXPAND_SZ</span><span class="p">,</span> <span class="n">REG_MULTI_SZ</span>
+  <span class="n">formatData</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">bData</span><span class="p">,</span> <span class="n">numBytes</span><span class="p">)</span>
+ <span class="n">CASE</span> <span class="n">REG_DWORD</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">CVL</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">bData</span><span class="p">,</span> <span class="mi">4</span><span class="p">))))</span>
+  <span class="n">formatData</span> <span class="o">=</span> <span class="s">"0x"</span> <span class="o">+</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">LEN</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">H30</span><span class="p">)</span> <span class="o">+</span> <span class="n">t</span>
+ <span class="n">CASE</span> <span class="n">ELSE</span>
+  <span class="n">IF</span> <span class="n">numBytes</span> <span class="n">THEN</span>
+   <span class="n">b</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">bData</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+   <span class="n">IF</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="o">&amp;</span><span class="n">H10</span> <span class="n">THEN</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+   <span class="n">ELSE</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+   <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">FOR</span> <span class="n">ul</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">TO</span> <span class="n">numBytes</span>
+   <span class="n">b</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">bData</span><span class="p">,</span> <span class="n">ul</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+   <span class="n">IF</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="o">&amp;</span><span class="n">H10</span> <span class="n">THEN</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="s">" 0"</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+   <span class="n">ELSE</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+   <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">NEXT</span>
+  <span class="n">formatData</span> <span class="o">=</span> <span class="n">t</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> This procedure lists most of the Constants and Registry functions available, but only uses a few of them in this demo. All of these functions, except RegCloseKey, have both ANSI (ending in A) and Unicode (ending in W) versions. I am not aware of any reason why both  versions could not be used in the same program. To add the Unicode version, duplicate the function declaration, but change the ending A to W. Be sure that you know how to use the <a href="Unicode.html">Unicode</a> version!</p>
+</blockquote>
+
+<p><strong>WARNING! Use care when editing or altering Registry settings! YOU will be responsible for any damages incurred!</strong></p>
+
+<p><strong>Your code contribution using the above Registry Libraries could end up here!</strong></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+  <li><a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a></li>
+  <li><a href="_OFFSET.html">_OFFSET</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Windows-Registry-Access by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:43 GMT -->
+</html>

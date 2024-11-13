@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/TYPE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="TYPE-2.html" />
+<meta property="og:url" content="TYPE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/TYPE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>TYPE</strong> definitions are used to create variables that can hold more than one element.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>TYPE</strong> typename</p>
+
+  <blockquote>
+    <p>element-name1 <a href="AS.html"><strong>AS</strong></a> type</p>
+
+    <p>element-name2 <a href="AS.html"><strong>AS</strong></a> type</p>
+
+    <p>(…)</p>
+
+    <p>element-nameN <a href="AS.html"><strong>AS</strong></a> type</p>
+  </blockquote>
+
+  <p><strong>END TYPE</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>TYPE</strong> typename</p>
+  <blockquote>
+
+    <p><a href="AS.html"><strong>AS</strong></a> type element-list1</p>
+
+    <p><a href="AS.html"><strong>AS</strong></a> type element-list2</p>
+
+    <p>(…)</p>
+
+    <p><a href="AS.html"><strong>AS</strong></a> type element-listN</p>
+
+    <p><strong>END TYPE</strong></p>
+  </blockquote>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Typename is an undefined type name holder as it can hold any variable types.</li>
+  <li>TYPE definitions are usually placed in the main module before the start of the program code execution.</li>
+  <li>TYPE definitions cam also be placed in <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures.</li>
+  <li>TYPE definitions cannot contain Array variables. Arrays can be <a href="DIM.html">DIM</a>ensioned as a TYPE definition.</li>
+  <li>TYPE definitions cannot be inside of another TYPE definition, but variables can be defined AS another type.(See Example 4)</li>
+  <li>TYPE definitions must be ended with <a href="END-TYPE.html">END TYPE</a>.</li>
+  <li>A TYPE variable must be assigned to the type after it is defined. Array variables are allowed.</li>
+  <li>Type variables must be defined in every SUB or FUNCTION unless the type variable is <a href="DIM.html">DIM</a>ensioned as <a href="SHARED.html">SHARED</a>.</li>
+  <li>Type variables use DOT variable names to read or write specific values. They do not use type suffixes as they can hold ANY variable type values! The name before the dot is the one you defined after the type definition and the name after is the variable name used inside of the TYPE. The name of the dimensioned type variable alone can be used to <a href="PUT.html">PUT</a> # or <a href="GET.html">GET</a> # all of the data at once!</li>
+  <li>Once the TYPE variable is created you can find the record or byte size by using <a href="LEN.html">LEN</a>(typevariable).</li>
+  <li>TYPE definitions can also be placed in <a href="%24INCLUDE.html">$INCLUDE</a> .BI text files such as <a href="QB.html">QB.BI</a> is used by <a href="INTERRUPT.html">INTERRUPT</a> and <a href="INTERRUPTX.html">INTERRUPTX</a>.</li>
+  <li>You can mix the <strong>element-name AS type</strong> syntax with the <strong>AS type element-list</strong> syntax in the same TYPE block.</li>
+  <li><strong><a href="_BIT.html">_BIT</a> is not supported in User Defined <a href="TYPE.html">TYPE</a>s</strong>.</li>
+</ul>
+
+<h3 id="numerical-types">Numerical Types</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type Name</th>
+      <th>Symbol</th>
+      <th>Minimum Value</th>
+      <th>Maximum Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>_BIT</td>
+      <td>`</td>
+      <td>-1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>_BIT * n</td>
+      <td>`n</td>
+      <td>-128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _BIT</td>
+      <td>~`</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>_BYTE</td>
+      <td>%%</td>
+      <td>-128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _BYTE</td>
+      <td>~%%</td>
+      <td>0</td>
+      <td>255</td>
+    </tr>
+    <tr>
+      <td>INTEGER</td>
+      <td>%</td>
+      <td>-32,768</td>
+      <td>32,767</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED INTEGER</td>
+      <td>~%</td>
+      <td>0</td>
+      <td>65,535</td>
+    </tr>
+    <tr>
+      <td>LONG</td>
+      <td>&amp;</td>
+      <td>-2,147,483,648</td>
+      <td>2,147,483,647</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED LONG</td>
+      <td>~&amp;</td>
+      <td>0</td>
+      <td>4,294,967,295</td>
+    </tr>
+    <tr>
+      <td>_INTEGER64</td>
+      <td>&amp;&amp;</td>
+      <td>-9,223,372,036,854,775,808</td>
+      <td>9,223,372,036,854,775,807</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _INTEGER64</td>
+      <td>~&amp;&amp;</td>
+      <td>0</td>
+      <td>18,446,744,073,709,551,615</td>
+    </tr>
+    <tr>
+      <td>SINGLE</td>
+      <td>! or none</td>
+      <td>-2.802597E-45</td>
+      <td>+3.402823E+38</td>
+    </tr>
+    <tr>
+      <td>DOUBLE</td>
+      <td>#</td>
+      <td>-4.490656458412465E-324</td>
+      <td>+1.797693134862310E+308</td>
+    </tr>
+    <tr>
+      <td>_FLOAT</td>
+      <td>##</td>
+      <td>-1.18E−4932</td>
+      <td>+1.18E+4932</td>
+    </tr>
+    <tr>
+      <td>_OFFSET</td>
+      <td>%&amp;</td>
+      <td>-9,223,372,036,854,775,808</td>
+      <td>9,223,372,036,854,775,807</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _OFFSET</td>
+      <td>~%&amp;</td>
+      <td>0</td>
+      <td>18,446,744,073,709,551,615</td>
+    </tr>
+    <tr>
+      <td>_MEM</td>
+      <td>none</td>
+      <td>combined memory variable type</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note: For the floating-point numeric types <a href="SINGLE.html">SINGLE</a> (default when not assigned), <a href="DOUBLE.html">DOUBLE</a> and <a href="_FLOAT.html">_FLOAT</a>, the minimum values represent the smallest values closest to zero, while the maximum values represent the largest values closest to ±infinity. OFFSET dot values are used as a part of the <a href="_MEM.html">_MEM</a> variable type in QB64 to return or set the position in memory.</em></p>
+
+<h3 id="string-text-type">String Text Type</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type Name</th>
+      <th>Symbol</th>
+      <th>Minimum Length</th>
+      <th>Maximum Length</th>
+      <th>Size (Bytes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>STRING</td>
+      <td>$</td>
+      <td>0</td>
+      <td>2,147,483,647</td>
+      <td>Use LEN</td>
+    </tr>
+    <tr>
+      <td>STRING * <em>n</em></td>
+      <td>$n</td>
+      <td>1</td>
+      <td>2,147,483,647</td>
+      <td>n</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note: For the fixed-length string type <a href="STRING.html">STRING * n</a>, where n is an integer length value from 1 (one) to 2,147,483,647.</em></p>
+
+<h2 id="examples">Examples</h2>
+
+<p>Creating a mouse <a href="INTERRUPT.html">INTERRUPT</a> TYPE definition. Each <a href="INTEGER.html">INTEGER</a> value is 2 bytes.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">RegType</span>
+  <span class="n">AX</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' mouse function to use</span>
+  <span class="n">BX</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' mouse button</span>
+  <span class="n">CX</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' mouse graphic column position</span>
+  <span class="n">DX</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' mouse graphic row position</span>
+  <span class="n">BP</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' not used by mouse, but required *</span>
+  <span class="n">SI</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' not used by mouse, but required *</span>
+  <span class="n">DI</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' not used by mouse, but required *</span>
+  <span class="n">Flags</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">' not used by mouse but required *</span>
+  <span class="n">DS</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' used by INTERRUPTX only</span>
+  <span class="n">ES</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">' used by INTERRUPTX only</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">InRegs</span> <span class="n">AS</span> <span class="n">RegType</span><span class="p">,</span> <span class="n">OutRegs</span> <span class="n">AS</span> <span class="n">RegType</span> <span class="c1">' create dot variables</span>
+
+<span class="n">InRegs</span><span class="p">.</span><span class="n">AX</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1">' sets the mouse function to read the mouse buttons and position.</span>
+
+<span class="n">CALL</span> <span class="n">INTERRUPT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H33</span><span class="p">,</span> <span class="n">InRegs</span><span class="p">,</span> <span class="n">OutRegs</span><span class="p">)</span>
+
+<span class="n">column%</span> <span class="o">=</span> <span class="n">OutRegs</span><span class="p">.</span><span class="n">CX</span> <span class="c1">' returns the current mouse column position</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> InRegs and OutRegs become the DOT variable prefix name for the TYPE definition’s variables.</p>
+</blockquote>
+
+<blockquote>
+  <p>Each TYPE variable is designated as the DOT variable’s suffix.</p>
+</blockquote>
+
+<p><strong>* Note: Omitting variables in the RegType definition can change other program variable values.</strong></p>
+
+<p>Simplifying the TYPE from Example 1 using the alternative TYPE syntax.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">RegType</span>
+  <span class="n">AS</span> <span class="n">INTEGER</span> <span class="n">AX</span><span class="p">,</span> <span class="n">BX</span><span class="p">,</span> <span class="n">CX</span><span class="p">,</span> <span class="n">DX</span><span class="p">,</span> <span class="n">BP</span><span class="p">,</span> <span class="n">SI</span><span class="p">,</span> <span class="n">DI</span><span class="p">,</span> <span class="n">Flags</span><span class="p">,</span> <span class="n">FS</span><span class="p">,</span> <span class="n">ES</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> By using <strong>AS type element-list</strong> you reduce typing in your TYPE definition, while achieving the same results.</p>
+</blockquote>
+
+<p>Creating an addressbook database for a <a href="RANDOM.html">RANDOM</a> file.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">ContactInfo</span>
+  <span class="n">First</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">10</span>
+  <span class="n">Last</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">15</span>
+  <span class="n">Address1</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">30</span>
+  <span class="n">Address2</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">30</span>
+  <span class="n">City</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">15</span>
+  <span class="n">State</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">2</span>
+  <span class="n">Zip</span> <span class="n">AS</span> <span class="n">LONG</span>   <span class="c1">' (4 bytes)</span>
+  <span class="n">Phone</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">12</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">DIM</span> <span class="n">Contact</span> <span class="n">AS</span> <span class="n">ContactInfo</span> <span class="c1">'create contact record variable for RANDOM file </span>
+<span class="n">RecordLEN</span><span class="err">%</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Contact</span><span class="p">)</span> <span class="c1">' 118 bytes</span>
+<span class="c1">' define values</span>
+<span class="n">Contact</span><span class="p">.</span><span class="n">First</span> <span class="o">=</span> <span class="s">"Ted"</span> <span class="c1">' the fixed string length value will contain 7 extra spaces</span>
+<span class="n">Contact</span><span class="p">.</span><span class="n">Zip</span> <span class="o">=</span> <span class="mi">15236</span> <span class="c1">' LONG value that can be used to search certain zip code numbers.</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Contact</span>  <span class="c1">'place contact info into fifth record position</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Use the assigned type variable to find the RANDOM record length which is 118 bytes.</p>
+</blockquote>
+
+<p>Defining a TYPE variable as another variable type from a previous TYPE definition in QB64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">bar</span>
+  <span class="n">b</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">TYPE</span> <span class="n">foo</span>
+  <span class="n">a</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+  <span class="n">c</span> <span class="n">AS</span> <span class="n">bar</span>          <span class="c1">'define variable as a bar type</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">DIM</span> <span class="n">foobar</span> <span class="n">AS</span> <span class="n">foo</span>   <span class="c1">'create a variable to use the foo type</span>
+<span class="n">foobar</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">15.5</span>
+<span class="n">foobar</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="s">"this is me"</span>
+
+<span class="n">PRINT</span> <span class="n">foobar</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="n">foobar</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">b</span> 
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<p>A bitmap header information TYPE <a href="%24INCLUDE.html">$INCLUDE</a> File.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">' ********</span>
+<span class="c1">'Bitmap.BI can be included at start of program</span>
+
+ <span class="n">TYPE</span> <span class="n">BMPHeaderType</span>        <span class="c1">' Description                  Bytes      **QB64**</span>
+  <span class="n">ID</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">2</span>        <span class="c1">' File ID is "BM"                2 </span>
+  <span class="n">Size</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">' Size of the data file          4 </span>
+  <span class="n">Res1</span> <span class="n">AS</span> <span class="n">INTEGER</span>         <span class="c1">' Reserved 1 should be 0         2 </span>
+  <span class="n">Res2</span> <span class="n">AS</span> <span class="n">INTEGER</span>         <span class="c1">' Reserved 2 should be 0         2 </span>
+  <span class="n">Offset</span> <span class="n">AS</span> <span class="n">LONG</span>          <span class="c1">' Start position of pixel data   4 </span>
+  <span class="n">Hsize</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">' Information header size        4 </span>
+  <span class="n">PWidth</span> <span class="n">AS</span> <span class="n">LONG</span>          <span class="c1">' Image width                    4       _WIDTH (QB64) </span>
+  <span class="n">PDepth</span> <span class="n">AS</span> <span class="n">LONG</span>          <span class="c1">' Image height                   4       _HEIGHT</span>
+  <span class="n">Planes</span> <span class="n">AS</span> <span class="n">INTEGER</span>       <span class="c1">' Number of planes               2 </span>
+  <span class="n">BPP</span> <span class="n">AS</span> <span class="n">INTEGER</span>          <span class="c1">' Bits per pixel(palette)        2       _PIXELSIZE</span>
+  <span class="n">Compress</span> <span class="n">AS</span> <span class="n">LONG</span>        <span class="c1">' Compression                    4</span>
+  <span class="n">ImageBytes</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">' Width * Height = ImageSIZE     4</span>
+  <span class="n">Xres</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">' Width in PELS per metre        4</span>
+  <span class="n">Yres</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">' Depth in PELS per metre        4</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">' Number of Colors               4</span>
+  <span class="n">SigColors</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">' Significant Colors             4</span>
+<span class="n">END</span> <span class="n">TYPE</span>                  <span class="c1">'          Total Header bytes = 54  </span>
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'$INCLUDE: 'Bitmap.BI'  'use only when including a BI file </span>
+
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">BMPHead</span> <span class="n">AS</span> <span class="n">BMPHeaderType</span> 
+
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">BMPHead</span>  <span class="c1">'get the entire bitmap header information</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Use one <a href="GET.html">GET</a> to read all of the header information from the start of the bitmap file opened AS <a href="BINARY.html">BINARY</a>. It reads all 54 bytes as <a href="STRING.html">STRING</a>, <a href="INTEGER.html">INTEGER</a> and <a href="LONG.html">LONG</a> type DOT variable values.</p>
+</blockquote>
+
+<blockquote>
+  <p>NOTE: BPP returns 4(16 colors), 8(256 colors) or 24(16 million colors) bits per pixel in QBasic. 24 bit can only be in greyscale.</p>
+</blockquote>
+
+<blockquote>
+  <p>Then use the DOT variable name values like this <a href="GET-(graphics-statement).html">GET (graphics statement)</a> after you load the bitmap image to the screen:</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">GET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">BMPHead</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BMPHead</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Image</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="c1">'indexed for 4 BPP colors</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>The bitmap image is now stored in an array to BSAVE to a file. The RGB color information follows the file header as <a href="ASCII.html">ASCII</a> character values read using ASC. The color values could be indexed at the start of the Array with the image being offset to: index = NumberOfColors * 3. As determined by the SCREEN mode used. In SCREEN 13(256 colors) the index would be 768.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DIM.html">DIM</a>, <a href="REDIM.html">REDIM</a></li>
+  <li><a href="INTEGER.html">INTEGER</a>, <a href="SINGLE.html">SINGLE</a>, <a href="DOUBLE.html">DOUBLE</a></li>
+  <li><a href="LONG.html">LONG</a>, <a href="_INTEGER64.html">_INTEGER64</a>, <a href="_FLOAT.html">_FLOAT</a></li>
+  <li><a href="STRING.html">STRING</a>, <a href="_BYTE.html">_BYTE</a>, <a href="_BIT.html">_BIT</a>, <a href="_OFFSET.html">_OFFSET</a></li>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a>, <a href="BINARY.html">BINARY</a></li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a>, <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a></li>
+  <li><a href="LEN.html">LEN</a>, <a href="LOF.html">LOF</a>, <a href="EOF.html">EOF</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Creating-Icon-Bitmaps.html">Creating Icon Bitmaps</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/TYPE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:17 GMT -->
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/RUN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="RUN-2.html" />
+<meta property="og:url" content="RUN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/RUN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>RUN</strong> is a control flow statement that clears and restarts the program currently in memory or executes another specified program.</p>
+
+<p>The multi-modular technique goes back to when QBasic and QuickBASIC had module size constraints. In QB64 it has been implemented so that that older code can still be compiled, though <strong>it is advisable to use single modules for a single project (not counting <a href="%24INCLUDE.html">$INCLUDE</a> libraries), for ease of sharing and also because the module size constraints no longer exist.</strong></p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>RUN</strong> [{<em>line_number</em></td>
+        <td><em>filespec$</em>}] [<em>command_parameter(s)</em>]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li><em>line number</em> specifies a line number in the main module code.</li>
+  <li>An optional <em>filespec</em> specifies a program to load into memory and run.
+    <ul>
+      <li>BAS or EXE extensions are assumed to be the same as the calling module’s extension, EXE or BAS (QBasic only).</li>
+      <li><em>file names specs</em> with other extensions must use the full filename. No extension requires a dot.</li>
+    </ul>
+  </li>
+  <li>In <strong>QB64</strong> <em>command line parameters</em> can follow the program file name and be read using the <a href="COMMAND%24.html">COMMAND$</a> function later.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>The starting <a href="line-number-2.html">line number</a> MUST be one used in the main module code, even if RUN is called from within a SUB or FUNCTION.</li>
+  <li>If no line number is given the currently loaded program runs from the first executable line.</li>
+  <li>In <strong>QB64</strong> RUN can open any kind of executable program and provide case sensitive program specific parameters.
+    <ul>
+      <li>Recommended practice to run external programs is to use <a href="SHELL.html">SHELL</a>.</li>
+    </ul>
+  </li>
+  <li>RUN closes all open files and closes the invoking program module before the called program starts.</li>
+  <li>RUN resets the <a href="RANDOMIZE.html">RANDOMIZE</a> sequence to the starting <a href="RND.html">RND</a> function value.</li>
+  <li><strong>Note: Calling RUN repeatedly may cause a stack leak in QB64 if it is called from within a <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a>. Avoid when possible.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Shows how RUN can reference multiple line numbers in the main module code. No line number executes first code line.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">" A"</span><span class="p">,</span> <span class="s">" B"</span><span class="p">,</span> <span class="s">" C"</span><span class="p">,</span> <span class="s">" D"</span>
+<span class="mi">10</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="mi">20</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">30</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="mi">40</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="mi">50</span> <span class="n">PRINT</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span>
+<span class="mi">60</span> <span class="n">IF</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="mi">70</span> <span class="n">ELSE</span> <span class="n">RUN</span> <span class="mi">20</span>    <span class="c1">'RUN clears all values</span>
+<span class="mi">70</span> <span class="n">IF</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="mi">80</span> <span class="n">ELSE</span> <span class="n">RUN</span> <span class="mi">30</span>
+<span class="mi">80</span> <span class="n">IF</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="mi">90</span> <span class="n">ELSE</span> <span class="n">RUN</span> <span class="mi">40</span>
+<span class="mi">90</span> <span class="n">IF</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="mi">100</span> <span class="n">ELSE</span> <span class="n">RUN</span> <span class="mi">50</span>
+<span class="mi">100</span> <span class="n">PRINT</span>
+<span class="n">INPUT</span> <span class="s">"Do you want to quit?(Y/N)"</span><span class="p">,</span> <span class="n">quit$</span>
+<span class="n">IF</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">quit$</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">THEN</span> <span class="n">END</span> <span class="n">ELSE</span> <span class="n">RUN</span>  <span class="c1">'RUN without line number executes at first code line</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+A       B       C       D
+1       2       3       4
+0       2       3       4
+0       0       3       4
+0       0       0       4
+0       0       0       0
+
+Do you want to quit?(Y/N)_
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="CHAIN.html">CHAIN</a>, <a href="SHELL.html">SHELL</a></li>
+  <li><a href="COMMAND%24.html">COMMAND$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/RUN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+</html>

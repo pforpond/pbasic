@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SCREEN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SCREEN-2.html" />
+<meta property="og:url" content="SCREEN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SCREEN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="SCREEN.html">SCREEN</a> statement sets the video display mode and size of the program window’s workspace.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>SCREEN</strong> {<em>mode%</em></td>
+        <td><em>imagehandle&amp;</em>} [, , active_page, visual_page]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The SCREEN <em>mode</em> <a href="INTEGER.html">INTEGER</a> values available today are 0 to 2 and 7 to 13 listed below.</li>
+  <li><strong>QB64</strong> can use a <a href="LONG.html">LONG</a> <a href="_NEWIMAGE.html">_NEWIMAGE</a> page or <a href="_LOADIMAGE.html">_LOADIMAGE</a> file <em>image handle</em> value instead.</li>
+  <li>The empty comma disables color when any value is used. <strong>DO NOT USE!</strong> Include the comma ONLY when using page flipping.</li>
+  <li>If the SCREEN mode supports pages, the <em>active page</em> is the page to be worked on while <em>visual page</em> is the one displayed.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>No SCREEN statement in a program defaults to <a href="SCREEN.html">SCREEN</a> 0 text ONLY mode.</li>
+  <li>A SCREEN statement that changes screen modes also clears the screen like <a href="CLS.html">CLS</a>. Nothing on the screen is retained.</li>
+  <li>Some screen mode text sizes are adjustable with <a href="WIDTH.html">WIDTH</a> and all <strong>QB54</strong> screens support <a href="PCOPY.html">PCOPY</a> and page flipping.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                       **LEGACY SCREEN MODES AT A GLANCE**
+
+ **Screen      Text           Graphics          Colors      Video    Text      Default** 
+  **Mode   Rows   Columns   Width   Height  Attrib.   BPP   Pages    Block    QB64 Font**
+
+   0   25/43/50  80/40    No graphics     16/16 DAC  4     0-7     -----    _FONT 16
+   1      25      40      320     200     16/4 BG    4     none    8 X 8    _FONT 8 
+   2      25      80      640     200      2/mono    1     none    8 X 8    _FONT 8 
+   ................................................................................. 
+   7      25      40      320     200     16/16 DAC  4     0-7     8 X 8    _FONT 8 
+   8      25      80      640     200     16/16      4     0-3     8 X 8    _FONT 8 
+   9      25      80      640     350     16/64 DAC  4     0-1     8 X 14   _FONT 14
+  10      25      80      640     350     4/2 GScale 2     none    8 X 14   _FONT 14
+  11     30/60    80      640     480      2/mono    1     none    8 X 16   _FONT 16
+  12     30/60    80      640     480     16/262K    4     none    8 X 16   _FONT 16
+  13      25      40      320     200     256/65K    8     none    8 X 8    _FONT 8 
+
+              **QB64 allows video paging and [PCOPY](PCOPY) in ALL screen modes!** 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>QB64 Custom Screen Modes</strong></p>
+</blockquote>
+
+<h2 id="qb64-syntax">QB64 Syntax</h2>
+
+<blockquote>
+  <p><a href="SCREEN.html">SCREEN</a> <em>imagehandle&amp;</em> [, , <em>active_page</em>, <em>visual_page</em>]</p>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="SCREEN.html">SCREEN</a> <a href="_NEWIMAGE.html">_NEWIMAGE</a>(<em>wide&amp;</em>, <em>high&amp;</em>[, {<em>mode</em></td>
+        <td><em>256</em></td>
+        <td><em>32</em>}]) [, , <em>active_page</em>, <em>visual_page</em>]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="SCREEN.html">SCREEN</a> <a href="_LOADIMAGE.html">_LOADIMAGE</a>(<em>file$</em>[, {<em>mode</em></td>
+        <td><em>256</em></td>
+        <td><em>32</em>}]) [, , <em>active_page</em>, <em>visual_page</em>]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<ul>
+  <li>Custom screen modes can be created using a <a href="_NEWIMAGE.html">_NEWIMAGE</a> or <a href="_LOADIMAGE.html">_LOADIMAGE</a> function <em>imagehandle</em> return value.</li>
+  <li><strong>QB64</strong> screen modes 0 to 2 and 7 to 13 can be emulated with the same color depth and text block size and different dimensions.</li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a> screens can be any set size. A screen mode can be emulated or 256 or 32 bit colors can be designated.</li>
+  <li>The <a href="_LOADIMAGE.html">_LOADIMAGE</a> screen size will be the size of the image loaded. Can designate a <em>mode</em> or 256 or 32 bit colors.</li>
+  <li><strong>QB64</strong> allows page flipping or a <a href="PCOPY.html">PCOPY</a> in ANY SCREEN mode. <a href="_DISPLAY.html">_DISPLAY</a> can also be used to reduce flickering in animations.</li>
+  <li>All SCREEN modes are Windows in QB64. Use <a href="_FULLSCREEN.html">_FULLSCREEN</a> to set the window area to full screen.</li>
+  <li><a href="_SCREENMOVE.html">_SCREENMOVE</a> can position a window or the _MIDDLE option can center it on the desktop.</li>
+</ul>
+
+<h2 id="legacy-screen-modes">Legacy Screen Modes</h2>
+
+<ul>
+  <li><strong><a href="SCREEN.html">SCREEN</a> 0</strong> (default mode) is a <strong>text only</strong> screen mode. 64 (VGA) colors with hi-intensity(blinking) colors 16 to 31. (<a href="DAC.html">DAC</a> attrib 6, 8 to 15). 8 Background colors intensities only(0 - 7). No graphics are possible! Normally runs in a window. ALT-Enter switches from a window to fullscreen. To automatically run in <strong>QBasic</strong> fullscreen, use another Screen mode before using <a href="SCREEN-(statement).html">SCREEN (statement)</a> 0.  Can use <a href="PCOPY.html">PCOPY</a> with video pages 0 to 7. Text is 25, 43 or 50 rows by 40 or 80 columns. Default is 25 by 80. See <a href="WIDTH.html">WIDTH</a>.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> Use <a href="OUT.html">OUT</a> or <a href="_PALETTECOLOR.html">_PALETTECOLOR</a> to create higher intensity color backgrounds than <a href="COLOR.html">COLOR</a> , 7.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>All other available <a href="SCREEN.html">SCREEN</a> modes can use text and graphics and are fullscreen in QBasic ONLY.</strong></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 1</strong> has 4 background color attributes. 0 = black, 1 = blue, 2 = green, 3 = grey. White foreground only. Text is 25 by 40. White graphics is 320 by 200.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 2</strong> is <strong>monochrome</strong> with black background and white foreground. Text is 25 by 80. White graphics 640 by 200. NO <a href="COLOR.html">COLOR</a> keyword allowed.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 3 to 6 are no longer supported</strong> on most computers! Using them will cause a video <a href="ERROR-Codes.html">ERROR Codes</a>!</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 7</strong> has 16 color attributes (<a href="DAC.html">DAC</a> attrib. 8 to 15) with background colors. Text 25 rows by 40 columns. Graphics 320 columns by 200 rows. Video  pages 0 to 7 for flipping or <a href="PCOPY.html">PCOPY</a>.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 8</strong> has 16 color attributes with background. Text is 25 by 80. Graphics is 640 by 200. Video pages 0 to 3.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 9</strong> has 64 DAC color hues for (<a href="DAC.html">DAC</a> attrib. 6, 8 to 15) with background colors. Text is 25 by 80. Graphics is 640 by 350. Video pages 0 and 1 for flipping or <a href="PCOPY.html">PCOPY</a>.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 10</strong> has 4 gray scale color attributes with black background. 1 = normal white, 2 = blinking white and 3 = bright white. Text is 25 by 80. Graphics is 640 by 350.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 11</strong> is <strong>monochrome</strong> with black background and white foreground. Text is 30 or 60 by 80 columns(see <a href="WIDTH.html">WIDTH</a>). White graphics is 640 by 480. NO <a href="COLOR.html">COLOR</a> keyword allowed.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 12</strong> has 16 color attributes, black background. 256K possible color hues. Text is 30 or 60 by 80 columns(see <a href="WIDTH.html">WIDTH</a>). Graphics 640 by 480.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> 13</strong> has 256 color attributes, black background. 256K possible color hues. Text is 25 by 40. Graphics is 320 by 200.</p>
+  </li>
+</ul>
+
+<h2 id="modern-syntax">Modern Syntax</h2>
+
+<ul>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> <a href="_NEWIMAGE.html">_NEWIMAGE</a></strong>(wide&amp;, deep&amp;, mode%) can imitate any size screen mode or use 32 bit or 256 color modes in <strong>QB64</strong>.</p>
+  </li>
+  <li>
+    <p><strong><a href="SCREEN.html">SCREEN</a> <a href="_LOADIMAGE.html">_LOADIMAGE</a></strong>(imagehandle&amp;, colors) can load a program screen of an image file handle in <strong>QB64</strong> using 256 or 32 bit.</p>
+  </li>
+</ul>
+
+<p><strong>QB64 can use page flipping with any number of pages in any screen mode!</strong></p>
+
+<h2 id="text-and-graphics">Text and Graphics</h2>
+
+<blockquote>
+  <p><strong>Text Coordinates:</strong></p>
+</blockquote>
+
+<ul>
+  <li>Are a minimum of 1 and the values given above are the maximums. <a href="LOCATE.html">LOCATE</a> 1, 1 is the top left <a href="SCREEN.html">SCREEN</a> text position.</li>
+  <li>Text characters occupy a certain sized pixel box adjusted by <a href="WIDTH.html">WIDTH</a> in some screen modes.</li>
+  <li>Text <a href="PRINT.html">PRINT</a> cursor positions can be read by <a href="CSRLIN.html">CSRLIN</a> and <a href="POS.html">POS</a> to <a href="LOCATE.html">LOCATE</a> text <a href="PRINT.html">PRINT</a>s.</li>
+  <li>The <a href="SCREEN-(function).html">SCREEN (function)</a> can be used to read the <a href="ASCII.html">ASCII</a> character code or color of text in SCREEN 0 only.</li>
+  <li><a href="VIEW-PRINT.html">VIEW PRINT</a> can be used to designate a text view port area.</li>
+  <li>In <strong>QB64</strong> the <a href="_WIDTH-(function).html">_WIDTH (function)</a> and <a href="_HEIGHT.html">_HEIGHT</a> functions will return the text block dimensions in SCREEN 0 only.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Graphic Coordinates:</strong></p>
+</blockquote>
+
+<ul>
+  <li>The minimum on screen graphics pixel coordinates are 0 for columns and rows in the top left corner.</li>
+  <li>Maximum pixel coordinates are one less than the maximum dimensions above because the pixel count starts at 0.</li>
+  <li>Graphic objects such as <a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a>, <a href="LINE.html">LINE</a>, <a href="CIRCLE.html">CIRCLE</a> and <a href="DRAW.html">DRAW</a> can be placed partially off of the screen.</li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a> and <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> screen image operations MUST be located completely on the screen in QBasic!</li>
+  <li><a href="VIEW.html">VIEW</a> can be used to designate a graphic view port area of the screen.</li>
+  <li><a href="WINDOW.html">WINDOW</a> can be used to set the graphics SCREEN coordinates to almost any size needed. Use the SCREEN option for normal row coordinate values. Row coordinates are Cartesian(decrease in value going down the screen) otherwise.</li>
+  <li>In <strong>QB64</strong> the <a href="_WIDTH-(function).html">_WIDTH (function)</a> and <a href="_HEIGHT.html">_HEIGHT</a> functions will return the graphic pixel dimensions in SCREENs other than 0.</li>
+</ul>
+
+<blockquote>
+  <p><strong>QB64 Screen Statements and Functions:</strong></p>
+</blockquote>
+
+<ul>
+  <li>For file image screens that adopt the image dimensions and image color settings use: <a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li>To create custom sized screen modes or pages and 256 or 32 bit colors use: <a href="_NEWIMAGE.html">_NEWIMAGE</a></li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a> can stretch or reduce the size of images to fit the SCREEN size.</li>
+  <li><a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> can use <a href="_CLIP.html">_CLIP</a> to set objects partially off screen. <a href="GET-(graphics-statement).html">GET (graphics statement)</a> can read objects off screen as a color in QB64 ONLY.</li>
+  <li>A <a href="_DISPLAY.html">_DISPLAY</a> statement can be used to only display an image after changes instead of using page flipping or <a href="PCOPY.html">PCOPY</a>.</li>
+  <li>The current desktop screen resolution can be found using the <a href="_SCREENIMAGE.html">_SCREENIMAGE</a> handle value with <a href="_WIDTH-(function).html">_WIDTH (function)</a> and <a href="_HEIGHT.html">_HEIGHT</a>.</li>
+  <li><strong>NOTE: Default 32 bit backgrounds are clear black or <a href="_RGBA.html">_RGBA</a>(0, 0, 0, 0)! Use <a href="CLS.html">CLS</a> to make the black opaque!</strong></li>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<blockquote>
+  <p>Shows an example of each legacy screen mode available to QBasic and QB64.</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">0</span>
+<span class="n">PRINT</span> <span class="s">"This is SCREEN 0 - only text is allowed!"</span>
+<span class="n">FOR</span> <span class="n">S</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">13</span>
+   <span class="n">IF</span> <span class="n">S</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="n">OR</span> <span class="n">S</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="n">THEN</span> 
+     <span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+     <span class="n">SCREEN</span> <span class="n">S</span>
+     <span class="n">PRINT</span> <span class="s">"This is SCREEN"</span><span class="err">;</span> <span class="n">S</span><span class="err">;</span> <span class="s">" - can use text and graphics!"</span>
+       <span class="n">IF</span> <span class="n">S</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">OR</span> <span class="n">S</span> <span class="o">=</span> <span class="mi">11</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Monochrome - no COLOR statements!"</span>
+       <span class="n">IF</span> <span class="n">S</span> <span class="o">=</span> <span class="mi">10</span> <span class="n">THEN</span> 
+         <span class="n">COLOR</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"This SCREEN has only 4 colors. Black and 3 white: 2 blinks.
+         CIRCLE (100,100), 50, 2
+       ELSE : CIRCLE (100,100), 100, S
+       END IF
+   END IF
+NEXT 
+SLEEP
+SYSTEM 
+
+</span></code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+This is SCREEN 0 - only text is allowed!
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Displays each <a href="SCREEN-(statement).html">SCREEN (statement)</a> mode one at a time with a <a href="CIRCLE.html">CIRCLE</a> (except for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 0)</p>
+</blockquote>
+
+<p>Making ANY <strong>QB64 legacy screen mode</strong> larger using a SUB that easily converts PRINT to <a href="_PRINTSTRING.html">_PRINTSTRING</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">Scr13</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>  <span class="c1">'this is the old SCREEN 13 image page to set the image</span>
+<span class="n">Big13</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="c1">'use 4 X 3 aspect ratio that Qbasic used when full screen</span>
+
+<span class="n">SCREEN</span> <span class="n">Big13</span><span class="o">&amp;</span>
+<span class="n">_DEST</span> <span class="n">Scr13</span><span class="o">&amp;</span>
+<span class="n">image1&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"Howie.BMP"</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>  <span class="c1">'see the download link below for 2 image files</span>
+<span class="n">image2&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"Howie2.BMP"</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">image1&amp;</span><span class="p">,</span> <span class="n">Scr13</span><span class="o">&amp;</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">image2&amp;</span><span class="p">,</span> <span class="n">Scr13</span><span class="o">&amp;</span>
+<span class="n">_COPYPALETTE</span> <span class="n">image1&amp;</span><span class="p">,</span> <span class="n">Scr13</span><span class="o">&amp;</span>
+<span class="n">COLOR</span> <span class="mi">151</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINTS</span> <span class="s">"Screen 13 Height Reduction to 83%"</span> 
+<span class="n">LOCATE</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">22</span><span class="p">:</span> <span class="n">PRINTS</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s">" 4 X 3 Proportion"</span>  <span class="c1">'use concatenation</span>
+<span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">21</span><span class="p">:</span> <span class="n">PRINTS</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Stretched at 100%"</span> <span class="c1">'instead of a semicolon!</span>
+<span class="n">_COPYPALETTE</span> <span class="n">Scr13</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Big13</span><span class="o">&amp;</span>  <span class="c1">'required when imported image colors are used</span>
+<span class="n">_PUTIMAGE</span> <span class="p">,</span> <span class="n">Scr13</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Big13</span><span class="o">&amp;</span>   <span class="c1">'stretches the screen to double the size</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">PRINTS</span> <span class="p">(</span><span class="n">Text</span><span class="err">$</span><span class="p">)</span>
+<span class="n">row%</span> <span class="o">=</span> <span class="p">(</span><span class="n">CSRLIN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_FONTHEIGHT</span>      <span class="c1">'finds current screen page text or font row height</span>
+<span class="n">col%</span> <span class="o">=</span> <span class="p">(</span><span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_PRINTWIDTH</span><span class="p">(</span><span class="s">"W"</span><span class="p">)</span> <span class="c1">'finds current page text or font column width</span>
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="n">col%</span><span class="p">,</span> <span class="n">row%</span><span class="p">),</span> <span class="n">Text</span><span class="err">$</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<blockquote>
+  <p><em>Explanation:</em> The procedure above creates a larger version of a SCREEN 13 window by stretching it with <a href="_PUTIMAGE.html">_PUTIMAGE</a>. It cannot stretch PRINTed text so <a href="_PRINTSTRING.html">_PRINTSTRING</a> must be used instead. <a href="LOCATE.html">LOCATE</a> sets the PRINT cursor position for <a href="CSRLIN.html">CSRLIN</a> and <a href="POS.html">POS</a>(0) to read. The SUB then converts the coordinates to graphical ones. Then <strong>change</strong> <a href="PRINT.html">PRINT</a> to PRINTS using the <strong>Search Menu</strong>.</p>
+</blockquote>
+
+<p><a href="http://dl.dropbox.com/u/8440706/HOWIE.zip">Download of Example 2 Bitmap images</a></p>
+
+<p>You can easily change PRINT to the PRINTS sub-procedure name in your code using the IDE <em>Search</em>  Menu <em>Change</em> option.</p>
+
+<h2 id="see-examples">See Example(s)</h2>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (QB64 Image to Bitmap SUB by Galleon)</li>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a> (Member program for legacy screen modes)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (QB64 Image area to bitmap)</li>
+  <li><a href="SelectScreen.html">SelectScreen</a> (Member Screen mode function)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="COLOR.html">COLOR</a>, <a href="CLS.html">CLS</a>, <a href="WIDTH.html">WIDTH</a></li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a>, <a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_SCREENIMAGE.html">_SCREENIMAGE</a></li>
+  <li><a href="_LOADFONT.html">_LOADFONT</a>, <a href="_FONT.html">_FONT</a></li>
+  <li><a href="_DISPLAY.html">_DISPLAY</a>, <a href="_COPYIMAGE.html">_COPYIMAGE</a>, <a href="_SCREENMOVE.html">_SCREENMOVE</a></li>
+  <li><a href="PALETTE.html">PALETTE</a>, <a href="OUT.html">OUT</a>, <a href="PCOPY.html">PCOPY</a>,</li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a>, <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> (graphics)</li>
+  <li><a href="VIEW.html">VIEW</a>, <a href="WINDOW.html">WINDOW</a>-(graphic-viewport), <a href="VIEW-PRINT.html">VIEW PRINT</a> (text view port)</li>
+  <li><a href="SCREEN-(function).html">SCREEN (function)</a> (text only), <a href="POINT.html">POINT</a> (graphic pixel colors)</li>
+  <li><a href="Screen-Memory.html">Screen Memory</a>, <a href="Screen-Saver-Programs.html">Screen Saver Programs</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SCREEN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:02 GMT -->
+</html>

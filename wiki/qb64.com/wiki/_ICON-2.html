@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_ICON.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_ICON-2.html" />
+<meta property="og:url" content="_ICON-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_ICON.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_ICON.html">_ICON</a> statement uses an image handle from <a href="_LOADIMAGE.html">_LOADIMAGE</a> for the program header and icon image in the OS.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_ICON.html">_ICON</a> [mainImageHandle&amp;[, smallImageHandle&amp;]]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>mainImageHandle&amp;  is the <a href="LONG.html">LONG</a> handle value of the OS icon and title bar image pre-loaded with <a href="_LOADIMAGE.html">_LOADIMAGE</a> when used alone.</li>
+  <li>smallImageHandle&amp; is the <a href="LONG.html">LONG</a> handle value of a different title bar image pre-loaded with <a href="_LOADIMAGE.html">_LOADIMAGE</a> when used.</li>
+  <li>No image handle designates use of the default QB64 icon or the embedded icon set by <a href="%24EXEICON.html">$EXEICON</a>.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If no image handle is passed, the default QB64 icon will be used (all versions). If the <a href="%24EXEICON.html">$EXEICON</a> metacommand is used, <a href="_ICON.html">_ICON</a> without an image handle uses the embedded icon from the binary (Windows only).</li>
+  <li>Beginning with <strong>version 1.000</strong>, the following is considered:
+    <ul>
+      <li>mainImageHandle&amp; creates the image as the icon in the OS and the image in the program header (title bar).</li>
+      <li>smallImageHandle&amp; can be used for a different image in the program header bar.</li>
+    </ul>
+  </li>
+  <li>The header image will automatically be resized to fit the icon size of 16 X 16 if smaller or larger.</li>
+  <li>Once the program’s icon is set, the image handle can be discarded with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</li>
+</ul>
+
+<h2 id="errors">Error(s)</h2>
+
+<ul>
+  <li><strong>NOTE: Icon files are not supported with <a href="_LOADIMAGE.html">_LOADIMAGE</a> and an error will occur. See Example 2.</strong></li>
+  <li>Images used can be smaller or larger than 32 X 32 pixels, but image resolution may be affected.</li>
+  <li>It is important to free unused or unneeded images with <a href="_FREEIMAGE.html">_FREEIMAGE</a> to prevent memory overflow errors.</li>
+  <li>In <strong>SCREEN 0</strong> (default text mode) you need to specify 32-bit mode in <a href="_LOADIMAGE.html">_LOADIMAGE</a> to load images.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Loading an image to a 32 bit palette in SCREEN 0 (the default screen mode).</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">i&amp;</span> <span class="o">=</span><span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"RDSWU16.BMP"</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt; use your image file name here</span>
+
+<span class="n">IF</span> <span class="n">i&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> 
+  <span class="n">_ICON</span> <span class="n">i&amp;</span>
+  <span class="n">_FREEIMAGE</span> <span class="n">i&amp;</span> <span class="c1">' release image handle after setting icon</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> _ICON images can be freed if the <a href="SCREEN.html">SCREEN</a> mode stays the same. Freed image handles can on longer be referenced.</p>
+</blockquote>
+
+<p>Function that converts an icon into a temporary bitmap for use in QB64. Function returns the available image count.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">_TITLE</span> <span class="s">"Icon Converter"</span>
+<span class="n">icon$</span> <span class="o">=</span> <span class="s">"daphne.ico"</span>     <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; change icon file name</span>
+<span class="n">bitmap$</span> <span class="o">=</span> <span class="s">"tempfile.bmp"</span>
+<span class="n">indx%</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1">'1 minimum &lt;&lt;&lt;&lt;&lt;&lt;&lt; higher values than count get highest entry image in icon file</span>
+
+<span class="n">IF</span> <span class="n">Icon2BMP</span><span class="p">(</span><span class="n">icon$</span><span class="p">,</span> <span class="n">bitmap$</span><span class="p">,</span> <span class="n">indx%</span><span class="p">)</span> <span class="n">THEN</span>
+  <span class="n">img&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="n">bitmap$</span><span class="p">)</span> <span class="c1">'  use 32 as color mode in SCREEN 0</span>
+  <span class="n">IF</span> <span class="n">img&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="c1">'           check that handle value is good before loading</span>
+    <span class="n">_ICON</span> <span class="n">img&amp;</span> <span class="c1">'                place image in header</span>
+    <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">img&amp;</span> <span class="c1">'place image on screen</span>
+    <span class="n">_FREEIMAGE</span> <span class="n">img&amp;</span> <span class="c1">'           always free unused handles to save memory</span>
+    <span class="n">KILL</span> <span class="n">bitmap$</span> <span class="c1">'              comment out and/or rename to save the bitmaps </span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span>
+<span class="c1">'                ----------------------------------------------------</span>
+
+<span class="n">FUNCTION</span> <span class="n">Icon2BMP</span><span class="err">%</span> <span class="p">(</span><span class="n">filein</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">fileout</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">index</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+<span class="c1">'function creates a bitmap of the icon and returns the icon count</span>
+<span class="n">DIM</span> <span class="n">byte</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span><span class="p">,</span> <span class="n">word</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">dword</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">wide</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">high</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BM</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">bpp</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">IF</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">filein</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="o">=</span> <span class="s">".ico"</span> <span class="n">THEN</span> <span class="c1">'check file extension is ICO only</span>
+  <span class="n">OPEN</span> <span class="n">filein</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">ACCESS</span> <span class="n">READ</span> <span class="n">AS</span> <span class="n">rf</span> 
+<span class="n">ELSE</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">word</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="n">icon</span> <span class="o">=</span> <span class="n">word</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="n">count</span> <span class="o">=</span> <span class="n">word</span>
+<span class="n">IF</span> <span class="n">icon</span> <span class="o">&lt;&gt;</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">CLOSE</span> <span class="n">rf</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="c1">'PRINT icon, count</span>
+<span class="n">IF</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">count</span> <span class="n">THEN</span> <span class="n">entry</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">entry</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">SEEK</span> <span class="n">rf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">entry</span> <span class="c1">'start of indexed Entry header</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="p">:</span> <span class="n">wide</span> <span class="o">=</span> <span class="n">byte</span> <span class="c1">' use this unsigned for images over 127</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="p">:</span> <span class="n">high</span> <span class="o">=</span> <span class="n">byte</span> <span class="c1">' use this unsigned because it isn't doubled</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">word</span> <span class="c1">'number of 4 BPP colors(256 &amp; 32 = 0) &amp; reserved bytes</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dword</span> <span class="c1">'2 hot spots both normally 0 in icons, used for cursors</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dword</span><span class="p">:</span> <span class="n">size</span> <span class="o">=</span> <span class="n">dword</span> <span class="c1">'this could be used, doesn't seem to matter</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dword</span><span class="p">:</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">dword</span> <span class="c1">'find where the specific index BMP header is</span>
+<span class="c1">'PRINT wide; "X"; high, size, offset</span>
+
+<span class="n">SEEK</span> <span class="n">rf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">14</span> <span class="c1">'only read the BPP in BMP header</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="n">bpp</span> <span class="o">=</span> <span class="n">word</span> 
+<span class="n">IF</span> <span class="n">bpp</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">CLOSE</span> <span class="n">rf</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">IF</span> <span class="n">bpp</span> <span class="o">&lt;=</span> <span class="mi">24</span> <span class="n">THEN</span> <span class="n">pixelbytes</span> <span class="o">=</span> <span class="n">bpp</span> <span class="o">/</span> <span class="mi">8</span> <span class="n">ELSE</span> <span class="n">pixelbytes</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">IF</span> <span class="n">bpp</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">AND</span> <span class="n">bpp</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">palettebytes</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">^</span> <span class="n">bpp</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">palettebytes</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">datasize&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">wide</span> <span class="o">*</span> <span class="n">high</span> <span class="o">*</span> <span class="n">pixelbytes</span><span class="p">)</span> <span class="o">+</span> <span class="n">palettebytes</span> <span class="c1">'no padder should be necessary</span>
+<span class="n">filesize&amp;</span> <span class="o">=</span> <span class="n">datasize&amp;</span> <span class="o">+</span> <span class="mi">14</span> <span class="o">+</span> <span class="mi">40</span> <span class="c1">'                      data and palette + header</span>
+<span class="n">bmpoffset&amp;</span> <span class="o">=</span> <span class="n">palettebytes</span> <span class="o">+</span> <span class="mi">54</span> <span class="c1">'                       data offset from start of bitmap</span>
+<span class="n">readbytes&amp;</span> <span class="o">=</span> <span class="n">datasize&amp;</span> <span class="o">+</span> <span class="mi">28</span> <span class="c1">' (40 - 12) bytes left to read in BMP header and XOR mask only</span>
+<span class="c1">'PRINT bpp, bmpoffset&amp;, filesize&amp;</span>
+
+<span class="n">BM</span> <span class="o">=</span> <span class="n">CVI</span><span class="p">(</span><span class="s">"BM"</span><span class="p">)</span> <span class="c1">'this will create "BM" in file like MKI$ would</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="n">fileout</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="n">wf</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">BM</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">filesize&amp;</span>
+<span class="n">dword</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dword</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">bmpoffset&amp;</span> <span class="c1">'byte location of end of palette or BMP header</span>
+<span class="n">dword</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dword</span> <span class="c1">'              start of 40 byte BMP header</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">wide</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">high</span>
+<span class="n">SEEK</span> <span class="n">rf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">12</span> <span class="c1">'     after 12 bytes start copy of BMP header starting at planes</span>
+<span class="n">dat$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">readbytes&amp;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'create string to hold remaining bytes needed w/o AND mask data</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dat$</span> <span class="c1">'               copy lower header, palette(if used) and XOR mask</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dat$</span> <span class="c1">'               put all of the string data in the bitmap all at once</span>
+<span class="n">CLOSE</span> <span class="n">rf</span><span class="p">,</span> <span class="n">wf</span>
+<span class="n">Icon2BMP</span> <span class="o">=</span> <span class="n">count</span> <span class="c1">'             return the number of icons available in the icon file</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Once the file has been loaded into memory, the image handle can still be used even after the file has been deleted.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_TITLE.html">_TITLE</a></li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="%24EXEICON.html">$EXEICON</a></li>
+  <li><a href="Creating-Icon-Bitmaps.html">Creating Icon Bitmaps</a> (member-contributed program)</li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+  <li><a href="Resource-Table-extraction.html">Resource Table extraction</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_ICON.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+</html>

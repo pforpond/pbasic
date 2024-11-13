@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/BINARY by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="BINARY-3.html" />
+<meta property="og:url" content="BINARY-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/BINARY.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>See <a href="OPEN.html">OPEN</a>.</p>
+
+<p><a href="BINARY.html">BINARY</a> is used in an <a href="OPEN.html">OPEN</a> statement to work with the file or port device manipulating its bytes directly.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="OPEN.html">OPEN</a> fileName$ <a href="FOR.html">FOR</a> <a href="BINARY.html">BINARY</a> <a href="AS.html">AS</a> #fileNumber%</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><a href="OPEN.html">OPEN</a> FOR BINARY creates the file if the fileName$ does not exist.</li>
+  <li>fileName$ is the name of the file to open, but could also configure a port.</li>
+  <li>#fileNumber% is the number that will represent the file when performing file operations.</li>
+  <li>BINARY files use <a href="GET.html">GET</a> and <a href="PUT.html">PUT</a> to read or write the file at any byte position.</li>
+  <li>In <strong>version 1.000 and up</strong> you can use <a href="LINE-INPUT.html">LINE INPUT</a> in <a href="BINARY.html">BINARY</a> mode for faster access to text file data.</li>
+  <li>QBasic’s <a href="BSAVE.html">BSAVE</a> or BINARY save files can be read using BINARY mode.</li>
+  <li>BINARY mode ignores any <a href="LEN.html">LEN</a> = recordlength statement in the <a href="OPEN.html">OPEN</a> statement.</li>
+  <li>Ports can also be opened in <a href="BINARY.html">BINARY</a> mode. See: <a href="OPEN-COM.html">OPEN COM</a></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Shows how a PUT variable value is converted to an <a href="ASCII.html">ASCII</a> string <a href="_MK%24.html">_MK$</a> format in a BINARY file.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">int64</span> <span class="n">AS</span> <span class="n">_INTEGER64</span>
+<span class="n">DIM</span> <span class="n">byte8</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">8</span>
+<span class="n">int64</span> <span class="o">=</span> <span class="mi">12345678</span>
+<span class="n">PRINT</span> <span class="n">int64</span>
+
+<span class="n">OPEN</span> <span class="s">"temp64.tmp"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">int64</span>                 <span class="c1">'the file size will be 8 bytes</span>
+<span class="n">CLOSE</span>
+
+<span class="n">PRINT</span> <span class="s">"Press a key to read the file!"</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">OPEN</span> <span class="s">"temp64.tmp"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte8</span>                <span class="c1">'GET the value as a string</span>
+<span class="n">PRINT</span> <span class="s">"text string: "</span><span class="err">;</span> <span class="n">byte8</span>   <span class="c1">'show that string is in _MK$ format</span>
+
+<span class="n">PRINT</span> <span class="n">_CV</span><span class="p">(</span><span class="n">_INTEGER64</span><span class="p">,</span> <span class="n">byte8</span><span class="p">)</span>   <span class="c1">'convert to numerical value</span>
+<span class="n">CLOSE</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The numerical value does not need to be converted if the file is read using the same numerical variable type as written.</p>
+</blockquote>
+
+<p>A binary file viewer that can view integer values. The type of value can be changed at <a href="DIM.html">DIM</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">_SCREENMOVE</span> <span class="n">_MIDDLE</span>
+<span class="n">DIM</span> <span class="n">value</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'value type can be changed</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="err">;</span> <span class="s">"Enter a BINARY filename to open: "</span><span class="p">,</span> <span class="n">file$</span>
+<span class="n">PRINT</span> <span class="s">" Press S to restart!"</span>
+
+<span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">file$</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">ELSE</span> <span class="n">END</span>
+<span class="n">IF</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Empty file!"</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">DO</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">16</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">value</span>
+    <span class="n">IF</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+    <span class="n">PRINT</span> <span class="n">value</span><span class="err">;</span>
+  <span class="n">NEXT</span>
+  <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span><span class="err">;</span> <span class="n">x</span><span class="err">;</span> <span class="s">"@"</span><span class="err">;</span> <span class="n">row</span>
+  <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">K</span><span class="err">$</span><span class="p">)</span> <span class="o">=</span> <span class="s">"S"</span> <span class="n">THEN</span> <span class="n">CLS</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Restarted!"</span><span class="p">:</span> <span class="n">SEEK</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">256</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">row</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">PRINT</span> <span class="s">"Press Escape to exit!"</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">100</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">SYSTEM</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="OPEN.html">OPEN</a>, <a href="CLOSE.html">CLOSE</a></li>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a>, <a href="LINE-INPUT.html">LINE INPUT</a></li>
+  <li><a href="SEEK.html">SEEK</a> (function), <a href="SEEK-(statement).html">SEEK (statement)</a></li>
+  <li><a href="INPUT-(file-mode).html">INPUT (file mode)</a>, <a href="RANDOM.html">RANDOM</a>, <a href="APPEND.html">APPEND</a>, <a href="OUTPUT.html">OUTPUT</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Binary-2.html">Binary</a> (numbers)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/BINARY by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:29 GMT -->
+</html>

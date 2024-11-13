@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_PRESERVE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_PRESERVE-2.html" />
+<meta property="og:url" content="_PRESERVE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_PRESERVE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_PRESERVE.html">_PRESERVE</a> <a href="REDIM.html">REDIM</a> action preserves the current contents of <a href="%24DYNAMIC.html">$DYNAMIC</a> <a href="arrays-2.html">arrays</a>, when resizing or changing indices.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="REDIM.html">REDIM</a> <a href="_PRESERVE.html">_PRESERVE</a> array(newLowerIndex&amp; [<a href="TO.html">TO</a> newUpperIndex&amp;]) [<a href="AS.html">AS</a> variabletype]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><a href="REDIM.html">REDIM</a> or the <a href="%24DYNAMIC.html">$DYNAMIC</a> metacommand must be used when the array is first created to be able to resize and preserve.</li>
+  <li>If <a href="_PRESERVE.html">_PRESERVE</a> is not used, the current contents of the array are cleared by <a href="REDIM.html">REDIM</a>.
+    <ul>
+      <li>All element values of an array are preserved if the array size is increased.</li>
+      <li>The remaining elements of the array are preserved if the array size is decreased.</li>
+      <li>If the new index range is different from the original, all values will be moved to the new corresponding indices.</li>
+    </ul>
+  </li>
+  <li><strong>REDIM <a href="_PRESERVE.html">_PRESERVE</a> cannot change the number of array dimensions, but can change the number of elements.</strong></li>
+  <li><strong>Always use the same array <a href="TYPE.html">TYPE</a> suffix (<a href="AS.html">AS</a> type) or a new array type with the same name may be created.</strong></li>
+</ul>
+
+<h2 id="errors">Error(s)</h2>
+
+<ul>
+  <li><a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> arrays created using <a href="REDIM.html">REDIM</a> require that they be recreated to be used after arrays are <a href="ERASE.html">ERASE</a>d.</li>
+  <li><strong>Warning:</strong> Do not use negative upper array index values as an “Out of Memory” <a href="ERROR-Codes.html">ERROR Codes</a> (or global Operating System errors) will occur.**</li>
+  <li>Use <a href="_PRESERVE.html">_PRESERVE</a> before <a href="SHARED.html">SHARED</a> or an “invalid variable name” error will occur.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Changing the upper and lower array bounds</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">REDIM</span> <span class="n">a</span><span class="p">(</span><span class="mi">5</span> <span class="n">TO</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">' create array as dynamic using REDIM</span>
+<span class="n">a</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">a</span><span class="p">(</span><span class="mi">20</span> <span class="n">TO</span> <span class="mi">40</span><span class="p">)</span> 
+<span class="n">PRINT</span> <span class="n">a</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> a(20) is now the 123 value a(5) was. The upper or lower bounds of arrays can be changed, but the type cannot. New array indices like a(40) are null(0) or empty strings. If the array element count is not reduced, all of the data will be preserved.</p>
+</blockquote>
+
+<p>Sizing an array while storing file data.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">REDIM</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                <span class="c1">'create a dynamic string array</span>
+<span class="n">filename$</span> <span class="o">=</span> <span class="s">"Readme.txt"</span>       <span class="c1">'Qb64 information text file</span>
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">Array</span><span class="err">$</span><span class="p">)</span> <span class="n">THEN</span>
+    <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="n">count</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="c1">'increase array's size by 50% without losing data</span>
+  <span class="n">END</span> <span class="n">IF</span>
+
+  <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">textline$</span>
+  <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">textline$</span>
+<span class="n">LOOP</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span>
+<span class="n">PRINT</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">c</span> <span class="n">MOD</span> <span class="mi">20</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">NEXT</span> 
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="REDIM.html">REDIM</a></li>
+  <li><a href="%24DYNAMIC.html">$DYNAMIC</a></li>
+  <li><a href="Arrays.html">Arrays</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_PRESERVE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:36 GMT -->
+</html>

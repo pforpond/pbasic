@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/samples/bar-demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:24:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="index.html" />
+<meta property="og:url" content="index.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/samples/bar-demo/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="../../index.html">Home</a> • <a href="../../news.html">News</a> • <a href="https://github.com/QB64Official/qb64">GitHub</a> • <a href="wiki.html">Wiki</a> • <a href="../../samples.html">Samples</a> • <a href="../../inform.html">InForm</a> • <a href="../../gx.html">GX</a> • <a href="../../qbjs.html">QBjs</a> • <a href="../../community.html">Community</a> • <a href="../../more.html">More…</a></p>
+
+<h2 id="sample-bar-demo">SAMPLE: BAR DEMO</h2>
+
+<p><img src="img/screenshot.png" alt="screenshot.png" /></p>
+
+<h3 id="author">Author</h3>
+
+<p><a href="../douglas-park.html">🐝 Douglas Park</a></p>
+
+<h3 id="description">Description</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' BARDEMO.BAS
+' by Douglas Park
+' Copyright (C) 1995 DOS World Magazine
+' Published in Issue #19, January 1995, page 60
+
+***************************************************************************** 
+ BARDEMO.BAS 
+   by Douglas Park 
+ Copyright (C) 1995 DOS World Magazine 
+ Published in Issue #19, January 1995, page 60 
+ 
+If you often find graphs easier to understand than numbers, the CHART  
+subroutine in this program will allow you to compare two numbers visually in  
+the form of bar graphs.  BARDEMO.BAS is a demonstration program that  
+illustrates the usage of CHART.  As a bonus, the program also includes the  
+BOX subroutine, which makes it easy to draw boxes on the display. 
+ 
+To run the program from the DOS command line, change to the directory  
+containing BARDEMO.BAS, then type: 
+ 
+QBASIC /RUN BARDEMO 
+ 
+ 
+When you run BARDEMO.BAS, it first displays two graphs, each of which  
+visually compares two numbers.  One graph occupies the full width of the  
+display, and a smaller one is centered in the middle of the display.  A third  
+graph appears at the bottom of the display when you press a key in response  
+to the on-screen prompt.  The lengths of the bars in this graph change each  
+time you press a key. 
+ 
+The CHART subroutine uses one of DOS’s shaded box characters to create its  
+bar graph, automatically adjusting the length of the bar representing the  
+largest quantity so it will fit on a standard 80-column display.  The length  
+of the bar representing the smaller of the two quantities is automatically  
+adjusted in proportion to the larger bar.  CHART limits the length of the  
+longest bar to 56 characters. 
+ 
+Calls to CHART are in the following form: 
+ 
+CALL CHART (STR1$, STR2$, NUM1%, NUM2%, WID%, X%, Y%) 
+ 
+Thus, CHART requires that your program specify seven values: 
+ 
+STR1$ and STR2$ are the labels for the two bars. 
+NUM1% and NUM2% are the two numbers (integers) you wish to compare.  The 
+     largest integer allowed by QBasic is 32767. 
+WID% is the maximum width of the longer of the two bars.  If you specify a 
+     value larger than 56, CHART reduces it to 56. 
+X% and Y% are the row and column on the screen where the graph will be 
+     displayed. 
+ 
+The BOX subroutine draws a single-line border of any size you specify.  Calls  
+to BOX are in the following form: 
+ 
+CALL BOX (Y1%, X1%, Y2%, X2%) 
+ 
+The first two values, Y1% and X1%, are the row and column on the screen of  
+the upper-left corner of the box.  The third and fourth values, Y2% and X2%,  
+are the row and column of the lower right corner of the box. 
+ 
+These two subroutines can be incorporated into your own programs.  Use CHART  
+when you want a visual representation of the relative sizes of two numbers.   
+Use BOX as a quick and easy way to draw boxes around portions of the screen  
+display.
+</code></pre></div></div>
+
+<h3 id="qbjs">QBjs</h3>
+
+<blockquote>
+  <p>Please note that QBjs is still in early development and support for these examples is extremely experimental (meaning will most likely not work). With that out of the way, give it a try!</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://qbjs.org/index.html?src=https://qb64.com/samples/bar-demo/src/bardemo.bas">LOAD “bardemo.bas”</a></li>
+  <li><a href="https://qbjs.org/index.html?mode=auto&amp;src=https://qb64.com/samples/bar-demo/src/bardemo.bas">RUN “bardemo.bas”</a></li>
+  <li><a href="https://qbjs.org/index.html?mode=play&amp;src=https://qb64.com/samples/bar-demo/src/bardemo.bas">PLAY “bardemo.bas”</a></li>
+</ul>
+
+<h3 id="files">File(s)</h3>
+
+<ul>
+  <li><a href="src/bardemo.bas">bardemo.bas</a></li>
+</ul>
+
+<p>🔗 <a href="../tui.html">tui</a>, <a href="../dos-world.html">dos world</a></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/samples/bar-demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:24:36 GMT -->
+</html>

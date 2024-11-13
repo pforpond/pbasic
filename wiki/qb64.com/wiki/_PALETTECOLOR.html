@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_PALETTECOLOR by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_PALETTECOLOR-2.html" />
+<meta property="og:url" content="_PALETTECOLOR-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_PALETTECOLOR.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_PALETTECOLOR.html">_PALETTECOLOR</a> statement sets the color value of a palette entry of an image using 256 color modes or less (4 or 8 BPP).</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_PALETTECOLOR.html">_PALETTECOLOR</a> attribute%, newColor&amp;[, destHandle&amp;]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The attribute% is the palette index number of the color to set, ranging from 0 to 15 (4 bit) or 0 to 255 (8 bit) color modes.</li>
+  <li>The <a href="LONG.html">LONG</a> newColor&amp; is the new color value to set using <a href="_RGB32.html">_RGB32</a> or <a href="_RGBA32.html">_RGBA32</a> values or using <a href="HEX%24-32-Bit-Values.html">HEX$ 32 Bit Values</a>.</li>
+  <li>If destHandle&amp; is omitted, <a href="_DEST.html">_DEST</a> is assumed to be the current write page or screen surface.</li>
+  <li>If attribute% is outside of image or <a href="SCREEN.html">SCREEN</a> mode attribute range (0 to 15 or 0 to 255), an <a href="ERROR-Codes.html">ERROR Codes</a> error will occur.</li>
+  <li>If destHandle&amp; does not use a palette, an <a href="ERROR-Codes.html">ERROR Codes</a> error occurs. <strong>Will not work in 24/32 bit color palette modes.</strong></li>
+  <li>If destHandle&amp; is an invalid handle value, an <a href="ERROR-Codes.html">ERROR Codes</a> error occurs.</li>
+</ul>
+
+<p><strong>Basic’s 16 Default Color Attributes (non-<a href="DAC.html">DAC</a>)</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+     Attribute        Description     Red   Green   Blue   32 HEX    HTML Name 
+         0            Black            0      0       0    000000    Black
+         1            Dark Blue        0      0      42    00008B    DarkBlue   
+         2            Dark Green       0     42       0    006400    DarkGreen  
+         3            Dark Cyan        0     42      42    008B8B    DarkCyan
+         4            Dark Red        42      0       0    8B0000    DarkRed
+         5            Dark Magenta    42      0      42    8B008B    DarkMagenta
+         6            Dark Yellow     42     21       0    DAA520    GoldenRod
+         7            Light Grey      42     42      42    D3D3D3    LightGrey
+         8            Dark Grey       21     21      21    696969    DimGray
+         9            Blue            21     21      63    0000FF    Blue
+        10            Green           21     63      21    15FF15    Lime
+        11            Cyan            21     63      63    15FFFF    Cyan
+        12            Red             63     21      21    FF1515    Red
+        13            Magenta         63     21      63    FF15FF    Magenta
+        14            Yellow          63     63      21    FFFF00    Yellow
+        15            White           63     63      63    FFFFFF    White 
+
+</code></pre></div></div>
+
+<p><a href="http://www.w3schools.com/html/html_colornames.asp">HTML Color Table Values and Names</a> or <a href="http://www.tayloredmktg.com/rgb/#OR">Other RGB colors</a></p>
+<ul>
+  <li><em>Note:</em> <strong>QB64</strong> 32 bit color intensity values from 0 to 255 can be found by multiplying above values by 4.</li>
+</ul>
+
+<p><em>Summary:</em> The red, green, and blue intensity values can be changed using <a href="OUT.html">OUT</a> or <a href="PALETTE.html">PALETTE</a> statements. Some <strong>QBasic</strong> RGB color attribute values can be changed in <a href="DAC.html">DAC</a> <a href="SCREEN-(statement).html">SCREEN (statement)</a> modes and the <a href="DAC.html">DAC</a> RGB intensity settings may be different.</p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Creating custom background colors in SCREEN 0 that follow the text. <a href="CLS.html">CLS</a> makes entire background one color.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">_PALETTECOLOR</span> <span class="mi">1</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="c1">' white.</span>
+<span class="n">_PALETTECOLOR</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">170</span><span class="p">)</span> <span class="c1">' lighter red.</span>
+<span class="n">_PALETTECOLOR</span> <span class="mi">3</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">85</span><span class="p">)</span> <span class="c1">' light red.</span>
+<span class="n">_PALETTECOLOR</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">' red.</span>
+<span class="n">_PALETTECOLOR</span> <span class="mi">5</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">' dark red.</span>
+<span class="n">_PALETTECOLOR</span> <span class="mi">6</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">' darker red.</span>
+
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"black on white."</span>
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"black on lighter red."</span>
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"black on light red."</span>
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"black on red."</span>
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"black on dark red."</span>
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"black on darker red. 
+
+COLOR 1, 6: PRINT "</span><span class="n">white</span> <span class="n">on</span> <span class="n">darker</span> <span class="n">red</span><span class="s">"
+COLOR 2, 6: PRINT "</span><span class="n">ligher</span> <span class="n">red</span> <span class="n">on</span> <span class="n">darker</span> <span class="n">red</span><span class="s">" 
+
+</span></code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> <a href="_PALETTECOLOR.html">_PALETTECOLOR</a> expects <a href="LONG.html">LONG</a> <a href="_RGB32.html">_RGB32</a> or <a href="_RGBA32.html">_RGBA32</a> 32 bit color values, not <a href="_RGB.html">_RGB</a> or <a href="_RGBA.html">_RGBA</a> palette attribute values.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="COLOR.html">COLOR</a>, <a href="_RGB32.html">_RGB32</a>, <a href="_RGBA32.html">_RGBA32</a></li>
+  <li><a href="_PALETTECOLOR-(function).html">_PALETTECOLOR (function)</a></li>
+  <li><a href="PALETTE.html">PALETTE</a>, <a href="OUT.html">OUT</a>, <a href="INP.html">INP</a></li>
+  <li><a href="Images.html">Images</a></li>
+  <li><a href="HEX%24-32-Bit-Values.html">HEX$ 32 Bit Values</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_PALETTECOLOR by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:55 GMT -->
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/ON-TIMER(n).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="ON-TIMER(n)-2.html" />
+<meta property="og:url" content="ON-TIMER(n)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/ON-TIMER(n).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="ON-TIMER(n).html">ON_TIMER(n)</a> statement sets up a timed event to be repeated at specified intervals throughout a program when enabled.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>ON TIMER</strong>(seconds%) <a href="GOSUB.html">GOSUB</a> {lineLabel</td>
+        <td>lineNumber}</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>ON TIMER</strong>([number%,] seconds!) { <a href="SUB.html">SUB</a>procedure</td>
+        <td><a href="GOSUB.html">GOSUB</a> {lineLabel</td>
+        <td>lineNumber} }</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<h3 id="legacy-syntax">Legacy syntax</h3>
+
+<ul>
+  <li>In the first syntax, the <a href="INTEGER.html">INTEGER</a> seconds% parameter can be from 1 to 86400 seconds (one day).</li>
+  <li>A <a href="TIMER-(statement).html">TIMER (statement)</a> statement must follow an <strong>ON TIMER</strong> event setup to initiate it.</li>
+  <li><a href="TIMER-(statement).html">TIMER (statement)</a> disables timer events but remembers previous events when enabled again by a <a href="TIMER-(statement).html">TIMER (statement)</a> statement, and the recorded events may be executed immediately if a timer event has occurred.</li>
+  <li><a href="TIMER-(statement).html">TIMER (statement)</a> disables timer event trapping. Events will not be remembered in a subsequent <a href="TIMER-(statement).html">TIMER (statement)</a> statement.</li>
+  <li><strong>ON TIMER</strong> events will interrupt a <a href="SLEEP.html">SLEEP</a> call and <a href="RETURN.html">RETURN</a> to running program procedures.</li>
+  <li>Only one TIMER event can be set at a time using this legacy syntax and all TIMER code must be in the main code, as it uses <a href="GOSUB.html">GOSUB</a>.</li>
+</ul>
+
+<h3 id="qb64-syntax">QB64 syntax</h3>
+
+<ul>
+  <li><strong>QB64</strong> can use multiple numbered timer events and <a href="SINGLE.html">SINGLE</a> floating point second values down to one millisecond (.001).</li>
+  <li>The <strong>TIMER</strong> number% must be obtained from the <a href="_FREETIMER.html">_FREETIMER</a> function. Store _FREETIMER numbers in a variable or an array to be able to reference them later.</li>
+  <li>If the <strong>TIMER</strong> number is omitted or <code class="language-plaintext highlighter-rouge">**ON TIMER**(0, seconds!)</code> is used, then the TIMER used is the <em>base TIMER</em> (same as in the legacy syntax above).</li>
+  <li><a href="SUB.html">SUB</a> procedures are allowed to be referenced, but <a href="CALL.html">CALL</a> must not be used.</li>
+  <li><strong><a href="SUB.html">SUB</a> parameter values are passed by value and should be <a href="SHARED.html">SHARED</a> or literal values.</strong></li>
+  <li>Specific <strong>TIMER</strong> events can be turned on, suspended, turned off or freed using <a href="TIMER-(statement).html">TIMER (statement)</a> ON, STOP, OFF or FREE.</li>
+  <li>Use <strong>TIMER(n) FREE</strong> to release a timer event after it has been turned off or is no longer used.
+    <ul>
+      <li>The <em>base TIMER</em> cannot be freed.</li>
+    </ul>
+  </li>
+  <li><strong>QB64</strong> allows TIMER statements to also be inside of SUB and FUNCTION procedures.</li>
+  <li><strong>ON TIMER</strong> events will interrupt a <a href="SLEEP.html">SLEEP</a> call and <a href="RETURN.html">RETURN</a> to running program procedures.</li>
+  <li><a href="%24CHECKING.html">$CHECKING</a>:OFF can disable all QB64 event checking. <strong>Setting $CHECKING:OFF is only designed for 100% stable, error-less sections of code, where every CPU cycle saved counts.</strong></li>
+</ul>
+
+<h2 id="qb64-timing-alternatives">QB64 Timing Alternatives</h2>
+
+<ul>
+  <li>The <a href="TIMER.html">TIMER</a> function can be used to find timed intervals down to 1 millisecond(.001) accuracy.</li>
+  <li>The <a href="_DELAY.html">_DELAY</a> statement can be used to delay program execution for intervals down to milliseconds.</li>
+  <li><a href="_LIMIT.html">_LIMIT</a> can slow down loops to a specified number of frames per second. This can also alleviate a program’s CPU usage.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using a numbered TIMER to check the mouse button press status in <strong>QB64</strong>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Button</span> <span class="n">AS</span> <span class="n">LONG</span>    <span class="c1">'share variable value with Sub</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">_FREETIMER</span>              <span class="c1">'get a timer number from _FREETIMER ONLY!</span>
+<span class="n">ON</span> <span class="n">TIMER</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="p">.</span><span class="err">05)</span> <span class="n">MouseClick</span>
+<span class="n">TIMER</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="n">ON</span>
+
+<span class="n">DO</span>
+  <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">Button</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="s">"Mouse button"</span><span class="err">;</span> <span class="n">Button</span><span class="err">;</span> <span class="s">"is pressed."</span><span class="err">;</span>
+  <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">_DISPLAY</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">TIMER</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="n">OFF</span>
+<span class="n">TIMER</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="n">FREE</span> <span class="c1">'release timer</span>
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">MouseClick</span>
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span>
+  <span class="n">IF</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span>
+    <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">Button</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">ELSEIF</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">THEN</span>
+    <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">Button</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">ELSE</span> <span class="n">Button</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="TIMER.html">TIMER</a>, <a href="_FREETIMER.html">_FREETIMER</a></li>
+  <li><a href="TIMER-(statement).html">TIMER (statement)</a>, <a href="_DELAY.html">_DELAY</a>, <a href="_LIMIT.html">_LIMIT</a></li>
+  <li><a href="%24CHECKING.html">$CHECKING</a> (QB64 <a href="Metacommand.html">Metacommand</a>)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/ON-TIMER(n).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+</html>

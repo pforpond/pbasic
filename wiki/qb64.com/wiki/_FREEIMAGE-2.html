@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_FREEIMAGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_FREEIMAGE-2.html" />
+<meta property="og:url" content="_FREEIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_FREEIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>_FREEIMAGE</strong> statement releases the designated file image created by the <a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_NEWIMAGE.html">_NEWIMAGE</a> or <a href="_COPYIMAGE.html">_COPYIMAGE</a> functions from memory when they are no longer needed.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_FREEIMAGE.html">_FREEIMAGE</a> [handle&amp;]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If handle&amp; is omitted, the current destination image is freed from memory.</li>
+  <li>Freeing the destination image or source image will result in the display page being selected instead.</li>
+  <li><strong>Invalid image handle values of -1 or 0 cannot be freed or an <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</strong> Check the handle value first.</li>
+  <li><strong><a href="SCREEN.html">SCREEN</a> modes in use cannot be freed or an <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</strong> Change SCREEN modes before freeing.</li>
+  <li>Once a specific image handle is no longer used or referenced by your program, it can be freed with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</li>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+  <li><strong>It is important to free unused or unneeded images with <a href="_FREEIMAGE.html">_FREEIMAGE</a> to prevent memory overflow errors.</strong></li>
+  <li><strong>Do not try to free image handles currently being used as the active <a href="SCREEN.html">SCREEN</a>. Change screen modes first.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Loading a program splash screen and freeing image when no longer necessary:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">s&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"SPLASH.BMP"</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>  <span class="c1">'load 32 bit(24 BPP) image</span>
+<span class="n">IF</span> <span class="n">s&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">SCREEN</span> <span class="n">s&amp;</span>   <span class="c1">'use image as a 32 bit SCREEN </span>
+<span class="n">_DELAY</span> <span class="mi">6</span>                          <span class="c1">'display splash screen for 6 seconds</span>
+<span class="n">SCREEN</span> <span class="mi">0</span>       <span class="c1">'MUST change screen mode before freeing a SCREEN image!</span>
+<span class="n">IF</span> <span class="n">s&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">_FREEIMAGE</span> <span class="n">s&amp;</span>  <span class="c1">'handle value MUST be less than -1 or error!</span>
+<span class="n">CLS</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> A valid image file name must be used by <a href="_LOADIMAGE.html">_LOADIMAGE</a> or the invalid handle memory value will not need to be freed.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a></li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="_SCREENIMAGE.html">_SCREENIMAGE</a></li>
+  <li><a href="_COPYIMAGE.html">_COPYIMAGE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_FREEIMAGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+</html>

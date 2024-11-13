@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/VAL by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="VAL-2.html" />
+<meta property="og:url" content="VAL-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/VAL.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="VAL.html">VAL</a> Function returns the decimal numerical equivalent value of a <a href="STRING.html">STRING</a> numerical value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>value = <a href="VAL.html">VAL</a>(string_value$)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>VAL converts string numbers to numerical values including decimal point values and prefixed “<a href="%26H.html">&amp;H</a>” hexadecimal, “<a href="%26O.html">&amp;O</a>” octal.</li>
+  <li>VAL conversion stops at non-numeric characters except for letter “D” or “E” exponential notation values.
+    <blockquote>
+      <p>String values with “D” and “E” letters between numbers may be converted also! EX: <strong>VAL(“9D4”) = 90000</strong></p>
+    </blockquote>
+  </li>
+  <li>If the first string character is not a number VAL returns 0. VAL may return erratic values with “%” or “&amp;” starting characters.</li>
+  <li>Hexadecimal <a href="HEX%24.html">HEX$</a> string values with the “<a href="%26H.html">&amp;H</a>” prefix can be converted to a decimal value with digits 0 to 9 and letters A to F, like; dec = VAL(“&amp;H”+hexvar$).</li>
+  <li>Octal <a href="OCT%24.html">OCT$</a> string values with the “<a href="%26O.html">&amp;O</a>” prefix can be converted to a decimal value with digits from 0 to 7 only.</li>
+  <li>Presently VAL <strong>cannot</strong> convert QB64 binary <a href="%26B.html">&amp;B</a> prefixed strings from binary to decimal in <strong>QB64</strong>.</li>
+  <li>For character values of <a href="ASCII.html">ASCII</a> data use <a href="ASC.html">ASC</a> to get the value.</li>
+  <li>In QB64 use an <a href="INTEGER.html">INTEGER</a> return variable to hold integer values  returned by VAL <a href="HEX%24.html">HEX$</a> strings: <strong>value% = VAL(“&amp;HFFFF”) = -1</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Differences in values returned with QBasic and QB64:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;H"</span><span class="p">)</span> <span class="c1">'203 in QB, 0 in QB64</span>
+<span class="n">PRINT</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;HFFFF"</span><span class="p">)</span> <span class="c1">' -1 QB, 65535 in QB64</span>
+<span class="n">PRINT</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;HFFFF&amp;"</span><span class="p">)</span> <span class="c1">'65535 in both </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> A quirk in QBasic returned VAL values of 203 for “&amp;” and “&amp;H” that was never fixed until PDS(7.1).</p>
+</blockquote>
+
+<p>Converting a string with some number characters</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">text$</span> <span class="o">=</span> <span class="s">"1.23Hello"</span>
+ <span class="n">number!</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span>
+ <span class="n">PRINT</span> <span class="n">number!</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+1.23
+
+</code></pre></div></div>
+
+<p>Converting literal and variable <a href="STRING.html">STRING</a> values to numerical values.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">"33"</span>
+<span class="n">PRINT</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"10"</span><span class="p">)</span> <span class="o">+</span> <span class="n">VAL</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+44
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> 10 + 33 + 1 = 44, the strings were converted to values.</p>
+</blockquote>
+
+<blockquote>
+  <p>You have to convert the string to values in order to use them in a mathematical expression also since mixing strings with numbers isn’t allowed. VAL will stop at a text letter so VAL(“123G56) would return 123.</p>
+</blockquote>
+
+<blockquote>
+  <p>If VAL wasn’t used the program would break with an error, as you can’t add the value 1 to a string, if the 1 was a string (“1”) then the program would return “10331”, but now since we used VAL, the numbers were added as they should.</p>
+</blockquote>
+
+<p>Converting a hexadecimal value to decimal value using HEX$ with VAL.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">decnumber%</span> <span class="o">=</span> <span class="mi">96</span>
+<span class="n">hexnumber$</span> <span class="o">=</span> <span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">decnumber%</span><span class="p">)</span>  <span class="c1">'convert decimal value to hex and add hex prefix</span>
+<span class="n">PRINT</span> <span class="n">hexnumber$</span>
+<span class="n">decimal%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">hexnumber$</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">decimal%</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&amp;H60
+ 96
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <a href="HEX%24.html">HEX$</a> converts a decimal number to hexadecimal, but <a href="VAL.html">VAL</a> will only recognize it as a valid value with the “&amp;H” prefix. Especially since hexadecimal numbers can use “A” through “F” in them. Create a converter function from this code!</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="STR%24.html">STR$</a>, <a href="HEX%24.html">HEX$</a></li>
+  <li><a href="OCT%24.html">OCT$</a>, <a href="ASC.html">ASC</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/VAL by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:25 GMT -->
+</html>

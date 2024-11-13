@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/samples/tile-demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:41:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="index.html" />
+<meta property="og:url" content="index.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/samples/tile-demo/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="../../index.html">Home</a> • <a href="../../news.html">News</a> • <a href="https://github.com/QB64Official/qb64">GitHub</a> • <a href="wiki.html">Wiki</a> • <a href="../../samples.html">Samples</a> • <a href="../../inform.html">InForm</a> • <a href="../../gx.html">GX</a> • <a href="../../qbjs.html">QBjs</a> • <a href="../../community.html">Community</a> • <a href="../../more.html">More…</a></p>
+
+<h2 id="sample-tile-demo">SAMPLE: TILE DEMO</h2>
+
+<p><img src="img/screenshot.png" alt="screenshot.png" /></p>
+
+<h3 id="author">Author</h3>
+
+<p><a href="../greg-ennen.html">🐝 Greg Ennen</a></p>
+
+<h3 id="description">Description</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' TILEDEMO.BAS
+'   by Greg Ennen
+' Copyright (C) 1995 DOS World
+' Published in Issue #21, May 1995, page 57
+
+***************************************************************************** 
+ 
+ TILE.BAS 
+ TILEDEMO.BAS 
+   by Greg Ennen 
+ Copyright (C) 1995 DOS World 
+ Published in Issue #21, May 1995, page 57 
+ 
+When your thoughts turn to redecoration, one of the first options you  
+probably consider is wallpaper.  TILE.BAS is a program that helps you create  
+computerized wallpaper that you can incorporate into your QBasic programs to  
+provide an interesting background pattern to otherwise boring screen  
+displays. 
+ 
+TILE.BAS assists you in developing repeating pattern blocks, or "tiles," then  
+converting the tile into program code (a "tile string") that QBasic programs  
+can understand and use.  TILEDEMO.BAS demonstrates how to use the tile  
+strings in a program. 
+ 
+To run the TILE.BAS from the DOS command line, change to the directory  
+containing TILE.BAS, then type: 
+ 
+QBASIC /RUN TILE 
+ 
+ 
+To run the TILEDEMO.BAS from the DOS command line, change to the directory  
+containing TILEDEMO.BAS, then type: 
+ 
+QBASIC /RUN TILEDEMO 
+ 
+ 
+When you run TILE.BAS, you fill in a design grid pixel by pixel, using any of  
+the 16 colors available from QBasic's screen 9, then press a key to view the  
+wallpaper effect your design will produce.  If you like what you see, you can  
+save the tile string in a file. 
+ 
+From there, it's a simple matter of copying the file containing the tile  
+string into your own program and painting it into an object.  TILEDEMO.BAS  
+shows how you might incorporate several tile strings created with TILE.BAS  
+into a single screen. 
+ 
+TILE.BAS's program screen contains four main elements: a tile-design window,  
+where you create your pattern; a color bar, which indicates your color  
+options; a tile-display window, which shows how your pattern will look when  
+tiled; and a command and message area. 
+ 
+When you start the program, the cursor is in the upper-left corner of the  
+tile-design grid, so that you can begin designing a pattern block  
+immediately.  To move the cursor left, right, up, or down, press the arrow  
+keys; to move diagonally, use Home, Page Up, End, or Page Down.  To mark a  
+square with a particular color, position the cursor, then press the number or  
+letter corresponding to the color you want.  For instance, to color a square  
+white, press F. 
+ 
+When you are ready to see what sort of wallpaper effect your tile produces  
+when repeated, press the T key.  The screen's message line displays the tile  
+string used to create that effect. (If the string is long, only its final  
+characters are visible.) 
+ 
+When you edit the tile pattern and press the T key to update the tile-display  
+window, the tile string changes.  To clear the existing pattern, press the N  
+key to display a new grid.  By default, the design grid is 8 pixels by 8  
+pixels.  To choose an 8-by-12-pixel grid or an 8-by-16-pixel grid, press the  
+G key. 
+ 
+When you're satisfied with your tile, save it to disk by pressing the S key.   
+The program prompts you for a path and filename.  For instance, to save a  
+file called FRET and store it in a directory called C:\QBASIC\TILE, type this  
+line: 
+ 
+  C:\QBASIC\TILE\FRET 
+ 
+Laying Tiles 
+------------ 
+After creating a few tile strings, you're ready to begin filling objects with  
+them.  To understand the process, take a look at TILEDEMO.BAS.  It start by  
+clearing the screen and issuing a SCREEN 9 statement, the same screen  
+TILE.BAS uses when creating tile strings. (If you prefer another QBasic  
+screen, you must modify the tiling formula in the DISPLAY subroutine.) 
+ 
+Next comes the demo's three tile strings: TILE1$, the blue-and-gray  
+background; TILE2$, the red-brick pattern; and TILE3$, the squiggle pattern. 
+ 
+The LINE and CIRCLE statements in the next section of TILEDEMO.BAS draw the  
+objects.  In QBasic, the fundamental syntax for the outline of a box is as  
+follows: 
+ 
+   LINE (x1, x2)-(y1, y2), c, b 
+ 
+where x1 is the distance (in pixels) from the left edge of the screen to the  
+upper-left corner of the box; x2 is the distance from the top of the screen;  
+y1 is the distance from the right edge of the screen; y2 is the distance from  
+the bottom of the screen; the letter c represents a color value from zero  
+through 15; and b indicates you are drawing a box rather than a line. 
+ 
+For screen 9, the display's resolution is 640 pixels across by 350 pixels  
+down.  The first screen location is (0,0), so the highest permissible x value  
+is 639, and the highest y value is 349. 
+ 
+For a CIRCLE statement, the basic syntax is as follows: 
+ 
+   CIRCLE (x, y), r, bc 
+ 
+where (x, y) provides the coordinates of the center point; r is the radius in  
+pixels; and bc is the color value of the border. 
+ 
+The first LINE statement in TILEDEMO.BAS draws a box at the top of the  
+screen.  The next two LINE statements superimpose a large box on a smaller  
+box.  The smaller, top box holds explanatory text, and the bottom one holds  
+the red-brick pattern.  The two CIRCLE statements create two concentric  
+circles; the doughnut shape holds the pattern; and the hole contains the  
+text. 
+ 
+With the screen chosen, tile strings defined, and the object and text in  
+place, only one task remains: painting in the tile strings.  QBasic's PAINT  
+statement handles the task.  Here's the appropriate syntax: 
+ 
+   PAINT (x, y), s, c 
+ 
+where (x, y) provides the screen coordinates of the point where you want to  
+start painting; the letter s represents the name of the tile string you want  
+to use; and c is the number of the colored border.  (You may omit that value,  
+as has been done in TILEDEMO.BAS.) 
+ 
+The starting point for painting may name any x and y values that fall within  
+the object you're painting; QBasic paints the tile string right up to the  
+object's boundaries.  Of course, for QBasic to paint a tile string, the  
+string must precede the PAINT statement; that's why TILE1$, TILE2$, and  
+TILE3$ are placed near the top of TILEDEMO.BAS. 
+ 
+So far, so good, but what if you want to substitute a different tile string  
+for TILEDEMO.BAS's dotted blue-and-gray background?  That's no problem: 
+ 
+1. Start QBasic, and load a new tile string created with TILE.BAS.  Select  
+and copy the tile string. 
+ 
+2. Load the TILEDEMO.BAS listing into QBasic, then delete the existing tile  
+string and or paste the new one into the listing. 
+ 
+3. Save the program under a different name--perhaps TILEDEM2.BAS--and then  
+run the new listing to see the new tile string in action. 
+ 
+Tiling opens up so many possibilities for improving the look of your QBasic  
+programs that you owe yourself a couple of hours of play time with TILE.BAS  
+and TILEDEMO.BAS.
+</code></pre></div></div>
+
+<h3 id="qbjs">QBjs</h3>
+
+<blockquote>
+  <p>Please note that QBjs is still in early development and support for these examples is extremely experimental (meaning will most likely not work). With that out of the way, give it a try!</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://qbjs.org/index.html?src=https://qb64.com/samples/tile-demo/src/tiledemo.bas">LOAD “tiledemo.bas”</a></li>
+  <li><a href="https://qbjs.org/index.html?mode=auto&amp;src=https://qb64.com/samples/tile-demo/src/tiledemo.bas">RUN “tiledemo.bas”</a></li>
+  <li><a href="https://qbjs.org/index.html?mode=play&amp;src=https://qb64.com/samples/tile-demo/src/tiledemo.bas">PLAY “tiledemo.bas”</a></li>
+</ul>
+
+<h3 id="files">File(s)</h3>
+
+<ul>
+  <li><a href="src/tiledemo.bas">tiledemo.bas</a></li>
+</ul>
+
+<p>🔗 <a href="../tile.html">tile</a>, <a href="../dos-world.html">dos world</a>, <a href="../qbjs.html">qbjs</a></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/samples/tile-demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:41:57 GMT -->
+</html>

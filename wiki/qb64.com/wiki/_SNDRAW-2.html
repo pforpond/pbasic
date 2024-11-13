@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_SNDRAW.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_SNDRAW-2.html" />
+<meta property="og:url" content="_SNDRAW-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_SNDRAW.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_SNDRAW.html">_SNDRAW</a> statement plays sound wave sample frequencies created by a program.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_SNDRAW.html">_SNDRAW</a> leftSample[, rightSample][, pipeHandle&amp;]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The leftSample and rightSample value(s) can be any <a href="SINGLE.html">SINGLE</a> or <a href="DOUBLE.html">DOUBLE</a> literal or variable frequency value from -1.0 to 1.0.</li>
+  <li>The pipeHandle&amp; parameter refers to the sound pipe opened using <a href="_SNDOPENRAW.html">_SNDOPENRAW</a>.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Specifying pipeHandle&amp; allows sound to be played through two or more channels at the same time (<strong>version 1.000 and up</strong>).</li>
+  <li>If only leftSample value is used, the sound will come out of both speakers.</li>
+  <li>Using _SNDRAW will pause any currently playing music.</li>
+  <li>_SNDRAW is designed for continuous play. It will not produce any sound until a significant number of samples have been queued. No sound is played if only a few samples are queued.</li>
+  <li>Ensure that <a href="_SNDRAWLEN.html">_SNDRAWLEN</a> is comfortably above 0 (until you’ve actually finished playing sound). If you are getting occasional unintended random clicks, this generally means that <a href="_SNDRAWLEN.html">_SNDRAWLEN</a> has dropped to 0.</li>
+  <li>_SNDRAW is not intended to queue up many minutes worth of sound. It will probably work but will chew up a lot of memory (and if it gets swapped to disk, your sound could be interrupted abruptly).</li>
+  <li><a href="_SNDRATE.html">_SNDRATE</a> determines how many samples are played per second, but timing is done by the sound card, not your program.</li>
+  <li><strong>Do not attempt to use <a href="_TIMER.html">_TIMER</a> or <a href="_DELAY.html">_DELAY</a> or <a href="_LIMIT.html">_LIMIT</a> to control the timing of _SNDRAW. You may use them for delays or to limit your program’s CPU usage, but how much to queue should only be based on the <a href="_SNDRAWLEN.html">_SNDRAWLEN</a>.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Sound using a sine wave with _SNDRAW Amplitude * SIN(8 * ATN(1) * Duration * (Frequency / _SNDRATE))</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FREQ</span> <span class="o">=</span> <span class="mi">400</span>                             <span class="c1">'any frequency desired from 36 to 10,000</span>
+<span class="n">Pi2</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                       <span class="c1">'2 * pi </span>
+<span class="n">Amplitude</span> <span class="o">=</span> <span class="p">.</span><span class="err">3</span>                         <span class="c1">'amplitude of the signal from -1.0 to 1.0</span>
+<span class="n">SampleRate</span> <span class="o">=</span> <span class="n">_SNDRATE</span>                  <span class="c1">'sets the sample rate</span>
+<span class="n">FRate</span> <span class="o">=</span> <span class="n">FREQ</span> <span class="o">/</span> <span class="n">SampleRate</span><span class="c1">'</span>
+<span class="n">FOR</span> <span class="n">Duration</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">SampleRate</span>     <span class="c1">'play 5 seconds</span>
+        <span class="n">_SNDRAW</span> <span class="n">Amplitude</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">Pi2</span> <span class="o">*</span> <span class="n">Duration</span> <span class="o">*</span> <span class="n">FRate</span><span class="p">)</span>            <span class="c1">'sine wave</span>
+       <span class="c1">'_SNDRAW Amplitude * SGN(SIN(Pi2 * Duration * FRate))       'square wave</span>
+<span class="n">NEXT</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">_SNDRAWLEN</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The loop Duration is determined by the number of seconds times the <a href="_SNDRATE.html">_SNDRATE</a> number of samples per second. Square waves can use the same formula with Amplitude * <a href="SGN.html">SGN</a>(SIN(8 * ATN(1) * Duration * (Frequency/_SNDRATE))).</p>
+</blockquote>
+
+<p>A simple ringing bell tone that tapers off.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tmp$</span> <span class="o">=</span> <span class="s">"Sample = ##.#####   Time = ##.#####"</span>
+<span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Rate:"</span><span class="err">;</span> <span class="n">_SNDRATE</span>
+<span class="n">DO</span>
+  <span class="c1">'queue some sound</span>
+  <span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_SNDRAWLEN</span> <span class="o">&lt;</span> <span class="mf">0.1</span>             <span class="c1">'you may wish to adjust this    </span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">SIN</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="mi">440</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1">'440Hz sine wave (t * 440 * 2π)   </span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span> <span class="o">*</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>       <span class="c1">'fade out eliminates clicks after sound</span>
+    <span class="n">_SNDRAW</span> <span class="n">sample</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">_SNDRATE</span>                <span class="c1">'sound card sample frequency determines time</span>
+  <span class="n">LOOP</span>
+
+  <span class="c1">'do other stuff, but it may interrupt sound</span>
+  <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">tmp$</span><span class="err">;</span> <span class="n">sample</span><span class="err">;</span> <span class="n">t</span>
+<span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">3.0</span>                      <span class="c1">'play for 3 seconds</span>
+
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_SNDRAWLEN</span> <span class="o">&gt;</span> <span class="mi">0</span>                 <span class="c1">'Finish any left over queued sound!</span>
+<span class="n">LOOP</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<p>Routine uses _SNDRAW to display and play 12 notes from octaves 1 through 9.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">rate&amp;</span>
+<span class="n">rate&amp;</span> <span class="o">=</span> <span class="n">_SNDRATE</span>
+<span class="n">DO</span>
+  <span class="n">PRINT</span> <span class="s">"Enter the octave 1 to 8 (0 quits!):"</span><span class="err">;</span>
+  <span class="n">oct%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span> <span class="n">PRINT</span> <span class="n">oct%</span>
+  <span class="n">IF</span> <span class="n">oct%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+  <span class="n">octave</span> <span class="o">=</span> <span class="n">oct%</span> <span class="o">-</span> <span class="mi">4</span> <span class="c1">'440 is in the 4th octave, 9th note</span>
+  <span class="n">COLOR</span> <span class="n">oct%</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"Octave: ##"</span><span class="err">;</span> <span class="n">oct%</span>
+  <span class="n">FOR</span> <span class="n">Note</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">11</span>  <span class="c1">'notes C to B</span>
+    <span class="n">fq</span> <span class="o">=</span> <span class="n">FreQ</span><span class="p">(</span><span class="n">octave</span><span class="p">,</span> <span class="n">Note</span><span class="p">,</span> <span class="n">note$</span><span class="p">)</span>
+    <span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"#####.## \\"</span><span class="err">;</span> <span class="n">fq</span><span class="p">,</span> <span class="n">note$</span>
+    <span class="n">PlaySound</span> <span class="n">fq</span>
+    <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+  <span class="n">NEXT</span>
+<span class="n">LOOP</span>
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">FreQ</span> <span class="p">(</span><span class="n">octave</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">note$</span><span class="p">)</span>
+<span class="n">FreQ</span> <span class="o">=</span> <span class="mi">440</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">^</span> <span class="p">(</span><span class="n">octave</span> <span class="o">+</span> <span class="p">(</span><span class="n">note</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">'* 12 note octave starts at C (3 notes up)</span>
+<span class="n">note$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="s">"C C#D D#E F F#G G#A A#B "</span><span class="p">,</span> <span class="n">note</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">SUB</span> <span class="n">PlaySound</span> <span class="p">(</span><span class="n">frq!</span><span class="p">)</span>    <span class="c1">' plays sine wave fading in and out</span>
+<span class="n">SndLoop</span><span class="p">!</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">SndLoop</span><span class="p">!</span> <span class="o">&lt;</span> <span class="n">rate&amp;</span>
+  <span class="n">_SNDRAW</span> <span class="n">SIN</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">SndLoop</span><span class="p">!</span> <span class="o">/</span> <span class="n">rate&amp;</span><span class="p">)</span> <span class="o">*</span> <span class="n">frq!</span><span class="p">)</span> <span class="o">*</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">SndLoop</span><span class="p">!</span> <span class="o">/</span> <span class="n">rate&amp;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="n">SndLoop</span><span class="p">!</span> <span class="o">=</span> <span class="n">SndLoop</span><span class="p">!</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">LOOP</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">_SNDRAWLEN</span>   <span class="c1">'flush the sound playing buffer</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_SNDRATE.html">_SNDRATE</a>, <a href="_SNDRAWLEN.html">_SNDRAWLEN</a></li>
+  <li><a href="_SNDOPENRAW.html">_SNDOPENRAW</a>, <a href="_SNDRAWDONE.html">_SNDRAWDONE</a></li>
+  <li><a href="_SNDOPEN.html">_SNDOPEN</a></li>
+  <li><a href="PLAY.html">PLAY</a>, <a href="BEEP.html">BEEP</a></li>
+  <li>Music Frequency table in <a href="SOUND.html">SOUND</a>.</li>
+  <li><a href="DTMF-Phone-Demo.html">DTMF Phone Demo</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_SNDRAW.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+</html>

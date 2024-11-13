@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/ThirtyTwoBit-MEM-SUB.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="ThirtyTwoBit-MEM-SUB-2.html" />
+<meta property="og:url" content="ThirtyTwoBit-MEM-SUB-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/ThirtyTwoBit-MEM-SUB.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Fast Bitmap Export routine using memory for use with 32-bit color images ONLY</strong></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"This program will create a 32 bit bitmap of the desktop!"</span>
+<span class="n">PRINT</span> <span class="s">"                 IN 2 SECONDS..."</span>
+<span class="n">_DELAY</span> <span class="mi">2</span>
+
+<span class="n">picture&amp;</span> <span class="o">=</span> <span class="n">_SCREENIMAGE</span>
+<span class="n">x1%</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">y1%</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x2%</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">picture&amp;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">y2%</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">picture&amp;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">SaveBMP32</span> <span class="n">x1%</span><span class="p">,</span> <span class="n">x2%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">y2%</span><span class="p">,</span> <span class="n">picture&amp;</span><span class="p">,</span> <span class="s">"ScreenShot.bmp"</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+SUB SaveBMP32 (x1%, x2%, y1%, y2%, image&amp;, Filename$)
+
+TYPE BMPFormat ' Description                          Bytes    QB64 Function
+    ID AS STRING * 2 'File ID("BM" or 19778 AS Integer) 2  CVI("BM")
+    Size AS LONG ' Total Size of the file               4  LOF
+    Blank AS LONG ' Reserved                            4
+    Offset AS LONG ' Start offset of image pixel data   4 (add one for GET)
+    Hsize AS LONG ' Info header size (always 40)        4
+    PWidth AS LONG ' Image width                        4  _WIDTH(handle&amp;)
+    PDepth AS LONG ' Image height (doubled in icons)    4  _HEIGHT(handle&amp;)
+    Planes AS INTEGER ' Number of planes (normally 1)   2
+    BPP AS INTEGER 'Bits per pixel(palette 1, 4, 8, 24) 2  _PIXELSIZE(handle&amp;)
+    Compression AS LONG ' Compression type(normally 0)  4
+    ImageBytes AS LONG ' (Width + padder) * Height      4
+    Xres AS LONG ' Width in PELS per metre(normally 0)  4
+    Yres AS LONG ' Depth in PELS per metre(normally 0)  4
+    NumColors AS LONG ' Number of Colors(normally 0)    4    2 ^ BPP
+    SigColors AS LONG ' Significant Colors(normally 0)  4
+END TYPE '                     ' Total Header bytes =  54
+
+DIM BMP AS BMPFormat
+DIM x AS LONG, y AS LONG
+DIM temp AS STRING * 3
+DIM m AS _MEM, n AS _MEM
+DIM o AS _OFFSET
+m = _MEMIMAGE(image&amp;) 'get image information from memory handle
+DIM Colors8%(255)
+
+IF x1% &gt; x2% THEN SWAP x1%, x2%
+IF y1% &gt; y2% THEN SWAP y1%, y2%
+_SOURCE image&amp;
+pixelbytes&amp; = 4
+OffsetBITS&amp; = 54 'no palette in 24/32 bit
+BPP% = 24
+NumColors&amp; = 0 '24/32 bit say zero
+BMP.PWidth = (x2% - x1%) + 1
+BMP.PDepth = (y2% - y1%) + 1
+
+ImageSize&amp; = BMP.PWidth * BMP.PDepth
+
+BMP.ID = "BM"
+BMP.Size = ImageSize&amp; * 3 + 54
+BMP.Blank = 0
+BMP.Offset = 54
+BMP.Hsize = 40
+BMP.Planes = 1
+BMP.BPP = 24
+BMP.Compression = 0
+BMP.ImageBytes = ImageSize&amp;
+BMP.Xres = 3780
+BMP.Yres = 3780
+BMP.NumColors = 0
+BMP.SigColors = 0
+
+Compression&amp; = 0
+WidthPELS&amp; = 3780
+DepthPELS&amp; = 3780
+SigColors&amp; = 0
+f = FREEFILE
+n = _MEMNEW(BMP.Size) 'allocate memory for file data
+_MEMPUT n, n.OFFSET, BMP 'place bitmap header in memory
+o = n.OFFSET + 54   'offset after header for RGB color data
+'                   'run memory reads without error checking!
+$CHECKING:OFF
+y = y2% + 1
+w&amp; = _WIDTH(image&amp;)
+DO
+    y = y - 1: x = x1% - 1
+    DO
+        x = x + 1
+        _MEMGET m, m.OFFSET + (w&amp; * y + x) * 4, temp 'read 3 color bytes
+        _MEMPUT n, o, temp  'place into n memory after o offset
+        o = o + 3  'increase offset 3 bytes per loop
+    LOOP UNTIL x = x2%
+LOOP UNTIL y = y1%
+$CHECKING:ON
+_MEMFREE m
+OPEN Filename$ FOR BINARY AS #f
+t$ = SPACE$(BMP.Size)
+_MEMGET n, n.OFFSET, t$
+PUT #f, , t$
+_MEMFREE n
+CLOSE #f
+END SUB
+
+</code></pre></div></div>
+<p><sub>Code by Steve McNeill</sub></p>
+
+<p><strong>SUB for 32 BIT COLOR IMAGES ONLY!</strong></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (QB64 Image to Bitmap SUB by Galleon)</li>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a> (Member program for legacy screen modes)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (QB64 Image area to bitmap)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/ThirtyTwoBit-MEM-SUB.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:50 GMT -->
+</html>

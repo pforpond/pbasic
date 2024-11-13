@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_SNDBAL by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_SNDBAL-2.html" />
+<meta property="og:url" content="_SNDBAL-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_SNDBAL.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_SNDBAL.html">_SNDBAL</a> statement attempts to set the balance or 3D position of a sound.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_SNDBAL.html">_SNDBAL</a> handle&amp;[, x!][, y!][, z!][, channel&amp;]]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li><em>handle&amp;</em> is a valid sound handle created by the <a href="_SNDOPEN.html">_SNDOPEN</a> function.</li>
+  <li>x! distance values go from left (negative) to right (positive).</li>
+  <li>y! distance values go from below (negative) to above (positive).</li>
+  <li>z! distance values go from behind (negative) to in front (positive).</li>
+  <li>channel&amp; value 1 denotes left (mono) and 2 denotes right (stereo) channel (beginning with <strong>build 20170811/60</strong>)</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Attempts to position a sound in 3D space, or as close to it as the underlying software libraries allow. In some cases, this will be true 3D positioning, in others, a mere volume adjustment based on distance alone.</li>
+  <li>Omitted x!, y! or z! <a href="SINGLE.html">SINGLE</a> values are set to 0 or not changed in <strong>build 20170811/60 onward</strong>.</li>
+  <li>By setting the x! value to -1 or 1 it plays the sound at full volume from the appropriate speaker.</li>
+  <li>Sounds at a distance of 1 or -1 are played at full volume. Sounds further than a distance of 1000 cannot be heard.</li>
+  <li>The volume decreases linearly (at a constant gradient) over distance. Half volume = 500.</li>
+  <li>An “<strong>Illegal Function Call</strong>” error can occur if another sound is using the primary or same channel position.</li>
+  <li>Opened sound files must have the <a href="_SNDOPEN.html">_SNDOPEN</a> capability to use this statement in versions <strong>before build 20170811/60.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">h&amp;</span> <span class="o">=</span> <span class="n">_SNDOPEN</span><span class="p">(</span><span class="s">"LOL.wav"</span><span class="p">,</span> <span class="s">"SYNC,VOL"</span><span class="p">)</span>
+<span class="n">_SNDBAL</span> <span class="n">h&amp;</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">_SNDPLAY</span> <span class="n">h&amp;</span> 
+
+</code></pre></div></div>
+
+<p>Loading a sound after <strong>build 20170811/60</strong> - no need to specify “sound capabilities” in <a href="_SNDOPEN.html">_SNDOPEN</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">s&amp;</span> <span class="o">=</span> <span class="n">_SNDOPEN</span><span class="p">(</span><span class="s">"song.ogg"</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"READY"</span><span class="err">;</span> <span class="n">s&amp;</span>
+<span class="n">_SNDPLAY</span> <span class="n">s&amp;</span>
+<span class="n">_SNDLOOP</span> <span class="n">s&amp;</span>
+
+<span class="n">xleft</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">xright</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">DO</span>
+    <span class="n">k$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">k$</span>
+        <span class="n">CASE</span> <span class="s">"f"</span>
+            <span class="n">xleft</span> <span class="o">=</span> <span class="n">xleft</span> <span class="o">-</span> <span class="mf">0.1</span>
+            <span class="n">_SNDBAL</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="n">xleft</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="mi">1</span>
+        <span class="n">CASE</span> <span class="s">"g"</span>
+            <span class="n">xleft</span> <span class="o">=</span> <span class="n">xleft</span> <span class="o">+</span> <span class="mf">0.1</span>
+            <span class="n">_SNDBAL</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="n">xleft</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="mi">1</span>
+        <span class="n">CASE</span> <span class="s">"h"</span>
+            <span class="n">xright</span> <span class="o">=</span> <span class="n">xright</span> <span class="o">-</span> <span class="mf">0.1</span>
+            <span class="n">_SNDBAL</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="n">xright</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="mi">2</span>
+        <span class="n">CASE</span> <span class="s">"j"</span>
+            <span class="n">xright</span> <span class="o">=</span> <span class="n">xright</span> <span class="o">+</span> <span class="mf">0.1</span>
+            <span class="n">_SNDBAL</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="n">xright</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="mi">2</span>
+        <span class="n">CASE</span> <span class="s">"n"</span>
+            <span class="n">volume</span> <span class="o">=</span> <span class="n">volume</span> <span class="o">-</span> <span class="mf">0.1</span>
+            <span class="n">_SNDVOL</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="n">volume</span>
+        <span class="n">CASE</span> <span class="s">"m"</span>
+            <span class="n">volume</span> <span class="o">=</span> <span class="n">volume</span> <span class="o">+</span> <span class="mf">0.1</span>
+            <span class="n">_SNDVOL</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="n">volume</span>
+        <span class="n">CASE</span> <span class="s">"p"</span>
+            <span class="n">_SNDPAUSE</span> <span class="n">s&amp;</span>
+        <span class="n">CASE</span> <span class="s">" "</span>
+            <span class="n">_SNDPLAY</span> <span class="n">s&amp;</span>
+        <span class="n">CASE</span> <span class="s">"i"</span>
+            <span class="n">PRINT</span> <span class="n">_SNDPLAYING</span><span class="p">(</span><span class="n">s&amp;</span><span class="p">)</span>
+            <span class="n">PRINT</span> <span class="n">_SNDPAUSED</span><span class="p">(</span><span class="n">s&amp;</span><span class="p">)</span>
+            <span class="n">SLEEP</span>
+        <span class="n">CASE</span> <span class="s">"b"</span>
+            <span class="n">_SNDSETPOS</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="mi">110</span>
+        <span class="n">CASE</span> <span class="s">"l"</span>
+            <span class="n">_SNDLIMIT</span> <span class="n">s&amp;</span><span class="p">,</span> <span class="mi">10</span>
+            <span class="n">PRINT</span> <span class="s">"LIM"</span>
+            <span class="n">SLEEP</span>
+        <span class="n">CASE</span> <span class="s">"k"</span>
+            <span class="n">_SNDSTOP</span> <span class="n">s&amp;</span>
+        <span class="n">CASE</span> <span class="s">"c"</span>
+            <span class="n">_SNDCLOSE</span> <span class="n">s&amp;</span>
+            <span class="n">SLEEP</span>
+            <span class="n">s2&amp;</span> <span class="o">=</span> <span class="n">_SNDOPEN</span><span class="p">(</span><span class="s">"song.ogg"</span><span class="p">)</span>
+        <span class="n">CASE</span> <span class="s">"d"</span>
+            <span class="n">s2&amp;</span> <span class="o">=</span> <span class="n">_SNDCOPY</span><span class="p">(</span><span class="n">s&amp;</span><span class="p">)</span>
+            <span class="n">_SNDPLAY</span> <span class="n">s2&amp;</span>
+    <span class="n">END</span> <span class="n">SELECT</span>
+    <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="n">PRINT</span> <span class="n">xleft</span><span class="p">,</span> <span class="n">xright</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">_SNDGETPOS</span><span class="p">(</span><span class="n">s&amp;</span><span class="p">)</span><span class="err">;</span> <span class="s">"   "</span>
+<span class="n">LOOP</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_SNDOPEN.html">_SNDOPEN</a>, <a href="_SNDVOL.html">_SNDVOL</a>, <a href="_SNDLIMIT.html">_SNDLIMIT</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_SNDBAL by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:41 GMT -->
+</html>

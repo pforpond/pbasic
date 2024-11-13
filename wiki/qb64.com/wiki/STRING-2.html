@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/STRING.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="STRING-2.html" />
+<meta property="og:url" content="STRING-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/STRING.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>STRING</strong> variables or literal values are one byte per character length text or <a href="ASCII.html">ASCII</a> characters.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DIM.html"><strong>DIM</strong></a> variable <a href="AS.html"><strong>AS</strong></a> <strong>STRING</strong> [* byte_length]</p>
+</blockquote>
+
+<ul>
+  <li><em>Byte length</em> is optional in <a href="DIM.html">DIM</a> statements, but is required in <a href="TYPE.html">TYPE</a> definitions as a literal or <a href="CONST.html">CONST</a> <a href="INTEGER.html">INTEGER</a> value.</li>
+  <li>Literal strings are defined by quotation marks on each end. The quotes will not <a href="PRINT.html">PRINT</a> to the screen.</li>
+  <li>Quotation marks cannot be placed inside of literal string values! Use <a href="CHR%24.html">CHR$</a>(34) to display “ quotes.</li>
+  <li>Semicolons and commas outside of the string can be used to combine strings in a <a href="PRINT.html">PRINT</a> statement only.</li>
+  <li><a href="LEN.html">LEN</a> determines the number of bytes and number of string characters that are in a particular string.</li>
+  <li>Literal string ends are designated by quotation marks such as: “text”. Use <a href="CHR%24.html">CHR$</a>(34) to add quotes to string values.</li>
+  <li>Variable suffix type definition is $ such as: text$.</li>
+  <li>STRING values are compared according to the <a href="ASCII.html">ASCII</a> code values from left to right until one string code value exceeds the other.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Creating a fixed length STRING variable</strong></p>
+</blockquote>
+
+<ul>
+  <li>Variable$ = “ “ ‘ 1 space creates a one <a href="_BYTE.html">_BYTE</a> string length in a procedure(not fixed)</li>
+  <li>Variable$ = SPACE$(n%) ‘ defined as a n% length string in a procedure(not fixed)</li>
+  <li><a href="DIM.html">DIM</a> variable AS STRING * n% ‘ fixed string length cannot be changed later</li>
+  <li>Variable AS STRING * n% ‘ fixed string length in a <a href="SUB.html">SUB</a> parameter or <a href="TYPE.html">TYPE</a> definition.</li>
+  <li><a href="CONST.html">CONST</a> variables can also be used after the constant value is defined.</li>
+  <li>Fixed length strings may not be initialized with spaces and may contain only a series of CHR$(0) at program start.</li>
+</ul>
+
+<blockquote>
+  <p><strong>QB64 fixed length string type suffixes</strong></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>A number after the string variable name $ suffix denotes the fixed string length: <strong>X$2</strong> denotes a 2 byte string.</p>
+
+    <ul>
+      <li><strong>String <a href="Concatenation.html">Concatenation</a> (addition)</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><em>Must be used when defining a string variable’s literal value!</em></p>
+</blockquote>
+
+<ul>
+  <li>Concatenation uses the + addition symbol to add literal or variable parts to a string variable value.</li>
+  <li>Quotation marks cannot be added. Use <a href="CHR%24.html">CHR$</a>(34) as quotes are used to define the ends of strings.</li>
+  <li>Numerical values added must be converted to strings in string variable definitions. See the <a href="STR%24.html">STR$</a> function.</li>
+  <li>Concatenation can be used in PRINT statements along with semicolons and commas used by PRINT ONLY.</li>
+  <li>Semicolons or commas outside of quotes cannot be used to make a string variable’s literal string value!</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using a string type suffix with a fixed length byte size in QB64 only. The number designates the fixed string length.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">var$</span><span class="mi">5</span> <span class="o">=</span> <span class="s">"1234567"</span>
+
+<span class="n">PRINT</span> <span class="n">var$</span><span class="mi">5</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+12345
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The suffix must keep the same byte length or it is considered a different string variable with a different value!</p>
+</blockquote>
+
+<p>Creating a string variable value by adding variable and literal string values. This procedure is called string <a href="concatenation-2.html">concatenation</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">age%</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">"I am "</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">age%</span><span class="p">))</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s">" years old."</span>
+<span class="n">b$</span> <span class="o">=</span> <span class="s">"How old are you?"</span>
+<span class="n">question$</span> <span class="o">=</span> <span class="n">a$</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b$</span>
+<span class="n">PRINT</span> <span class="n">question$</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+I am "10" years old. How old are you? 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Since quotation marks are used to denote the ends of literal strings, <a href="CHR%24.html">CHR$</a>(34) must be used to place quotes inside them.</p>
+</blockquote>
+
+<p>How QB64 string type suffixes can fix the length by adding a number of bytes after it.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">strings$</span><span class="mi">5</span> <span class="o">=</span> <span class="s">"Hello world"</span>
+
+<span class="n">PRINT</span> <span class="n">strings$</span><span class="mi">5</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Hello
+
+</code></pre></div></div>
+
+<p>STRING values can be compared by the <a href="ASC.html">ASC</a> code value according to <a href="ASCII.html">ASCII</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Enter a letter, number or punctuation mark from the keyboard: "</span><span class="err">;</span>
+<span class="n">valu$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">value$</span>
+<span class="n">value1$</span> <span class="o">=</span> <span class="s">"A"</span>
+<span class="n">value2$</span> <span class="o">=</span> <span class="s">"m"</span>
+<span class="n">value3$</span> <span class="o">=</span> <span class="s">"z"</span>
+
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">value$</span>
+  <span class="n">CASE</span> <span class="n">value1$</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"A only"</span>
+  <span class="n">CASE</span> <span class="n">value1$</span> <span class="n">TO</span> <span class="n">value2$</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"B to m"</span> <span class="c1">'A is already evaluated</span>
+  <span class="n">CASE</span> <span class="n">value1$</span><span class="p">,</span> <span class="n">value2$</span><span class="p">,</span> <span class="n">value3$</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"z only"</span> <span class="c1">'A and m are already evaluated</span>
+  <span class="n">CASE</span> <span class="n">IS</span> <span class="o">&gt;</span> <span class="n">value2$</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"greater than m but not z"</span> <span class="c1">'z is already evaluated</span>
+  <span class="n">CASE</span> <span class="n">ELSE</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"other value"</span> <span class="c1">'key entry below A including all numbers</span>
+<span class="n">END</span> <span class="n">SELECT</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Notes:</em> <a href="STRING.html">STRING</a> values using multiple characters will be compared by the <a href="ASCII.html">ASCII</a> code values sequentially from left to right. Once the equivalent code value of one string is larger than the other the evaluation stops. This allows string values to be compared and sorted alphabetically using <a href="Greater-Than.html">Greater Than</a> or <a href="Less-Than.html">Less Than</a> and to <a href="SWAP.html">SWAP</a> values in <a href="arrays-2.html">arrays</a> irregardless of the string lengths.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DIM.html">DIM</a>, <a href="DEFSTR.html">DEFSTR</a></li>
+  <li><a href="CHR%24.html">CHR$</a>, <a href="ASC.html">ASC</a></li>
+  <li><a href="LEFT%24.html">LEFT$</a>, <a href="RIGHT%24.html">RIGHT$</a>, <a href="MID%24.html">MID$</a></li>
+  <li><a href="LTRIM%24.html">LTRIM$</a>, <a href="RTRIM%24.html">RTRIM$</a></li>
+  <li><a href="LCASE%24.html">LCASE$</a>, <a href="UCASE%24.html">UCASE$</a></li>
+  <li><a href="STR%24.html">STR$</a> (decimal to string value)</li>
+  <li><a href="HEX%24.html">HEX$</a> (decimal to <a href="%26H.html">&amp;H</a> string value)</li>
+  <li><a href="MKI%24.html">MKI$</a>, <a href="MKL%24.html">MKL$</a>, <a href="MKS%24.html">MKS$</a>, <a href="MKD%24.html">MKD$</a>, <a href="_MK%24.html">_MK$</a> (numerical to <a href="ASCII.html">ASCII</a> string)</li>
+  <li><a href="CVI.html">CVI</a>, <a href="CVL.html">CVL</a>, <a href="CVS.html">CVS</a>, <a href="CVD.html">CVD</a>, <a href="_CV.html">_CV</a> (<a href="ASCII.html">ASCII</a> string to numerical value)</li>
+  <li><a href="LEN.html">LEN</a>, <a href="VAL.html">VAL</a> (function converts string to numerical value)</li>
+  <li><a href="ASCII.html">ASCII</a>, <a href="DRAW.html">DRAW</a></li>
+  <li><a href="PRINT.html">PRINT</a>, <a href="PRINT-USING.html">PRINT USING</a>, <a href="WRITE.html">WRITE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/STRING.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:52 GMT -->
+</html>

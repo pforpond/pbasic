@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/LINE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="LINE-2.html" />
+<meta property="og:url" content="LINE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/LINE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="LINE.html">LINE</a> statement is used in graphic <a href="SCREEN-(statement).html">SCREEN (statement)</a> modes to create lines or boxes.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="LINE.html">LINE</a> [<strong>STEP</strong>] [<strong>(</strong><em>column1</em><strong>,</strong> <em>row1</em><strong>)</strong>]-<strong>[STEP]</strong> <strong>(</strong> <em>column2</em>, <em>row2</em> <strong>),</strong> <em>color</em>[, [{B</td>
+        <td>BF}], style%]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <a href="STEP.html">STEP</a> keyword make <em>column</em> and <em>row</em> coordinates relative to the previously coordinates set by any graphic statement.</li>
+  <li>The optional parameters (<em>column1</em>, <em>row1</em>) set the line’s starting point.</li>
+  <li>The dash and second coordinate parameters (<em>column2</em>, <em>row2</em>) must be designated to complete the line or box.</li>
+  <li>The <a href="INTEGER.html">INTEGER</a> <em>color</em> attribute or <a href="LONG.html">LONG</a> <a href="_RGB32.html">_RGB32</a> 32 bit color value sets the drawing color.  If omitted, the current <a href="_DEST.html">_DEST</a> page’s <a href="_DEFAULTCOLOR.html">_DEFAULTCOLOR</a> is used.</li>
+  <li>Optional <strong>B</strong> keyword creates a rectangle (<strong>b</strong>ox) using the start and end coordinates as diagonal corners. <strong>BF</strong> creates a <strong>b</strong>ox <strong>f</strong>illed.</li>
+  <li>The <em>style%</em> signed <a href="INTEGER.html">INTEGER</a> value sets a dotted pattern to draw the line or rectangle outline.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Creates a colored line between the given coordinates. Can be drawn partially off screen.</li>
+  <li><strong>B</strong> creates a box outline with each side parallel to the program screen sides. <strong>BF</strong> creates a filled box.</li>
+  <li>style% can be used to create a dotted pattern to draw the line.
+    <ul>
+      <li><strong>B</strong> can be used with a <em>style%</em> to draw the rectangle outline using the desired pattern.</li>
+      <li><strong>BF</strong> ignores the style% parameter. See examples 2, 3 and 4 below.</li>
+    </ul>
+  </li>
+  <li>The graphic cursor is set to the center of the program window on program start. Using the <a href="STEP.html">STEP</a> keyword makes the coordinates relative to the current graphic cursor.</li>
+  <li><a href="LINE.html">LINE</a> <strong>can be used in any graphic screen mode, but cannot be used in the default screen mode 0 as it is text only.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Following one line with another by omitting the second line’s first coordinate parameter bracket entirely:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="mi">10</span>    <span class="c1">'creates a line</span>
+<span class="n">LINE</span> <span class="o">-</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="mi">12</span>              <span class="c1">'creates a second line from end of first</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The full equivalent LINE statement would be: <strong>LINE(200, 200)-(400, 200), 12</strong></p>
+</blockquote>
+
+<p>Creating styled lines and boxes with the LINE statement. Different style values create different dashed line spacing.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="p">,</span> <span class="mi">63</span>    <span class="c1">'creates a styled line</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mi">255</span>  <span class="c1">'creates styled box shape</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The first diagonal dashed green line bisects the red dashed square from Top Left to Bottom Right Corners.</p>
+</blockquote>
+
+<p>The <em>style</em> value sets each 16 pixel line section as the value’s bits are set on or off:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">_FULLSCREEN</span> <span class="c1">'required in QB64 only</span>
+<span class="n">_DELAY</span> <span class="mi">5</span>
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">2</span> <span class="o">^</span> <span class="mi">15</span> <span class="c1">'use exponential value instead of -32768</span>
+    <span class="n">COLOR</span> <span class="mi">15</span><span class="p">:</span><span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">i%</span><span class="err">;</span>
+    <span class="n">LINE</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="mi">0</span> <span class="c1">'erase previous lines</span>
+    <span class="n">LINE</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="p">,</span> <span class="n">i%</span>
+    <span class="n">tmp$</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">FOR</span> <span class="n">b%</span> <span class="o">=</span> <span class="mi">15</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'create binary text value showing bits on as █, off as space</span>
+        <span class="n">IF</span> <span class="n">i%</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">b%</span> <span class="n">THEN</span> <span class="n">tmp$</span> <span class="o">=</span> <span class="n">tmp$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">219</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">tmp$</span> <span class="o">=</span> <span class="n">tmp$</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">NEXT</span>
+    <span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span><span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">tmp$</span><span class="err">;</span>
+    <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span> <span class="c1">'any key exit</span>
+    <span class="n">_DELAY</span> <span class="p">.</span><span class="err">001</span> <span class="c1">'set delay time as required</span>
+<span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <em>style</em> value’s Most Significant Bit (MSB) is set to the left with LSB on right as 16 text blocks are set on or off.</p>
+</blockquote>
+
+<p>Using <a href="%26B.html">&amp;B</a> to design a style pattern:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="p">,</span> <span class="o">&amp;</span><span class="n">B0000111100001111</span> <span class="c1">'16-bits</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span> <span class="mi">11</span><span class="p">,</span> <span class="p">,</span> <span class="o">&amp;</span><span class="n">B0011001100110011</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="p">,</span> <span class="o">&amp;</span><span class="n">B0101010101010101</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">130</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span> <span class="mi">13</span><span class="p">,</span> <span class="p">,</span> <span class="o">&amp;</span><span class="n">B1000100010001000</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The binary pattern created with 0s and 1s using the <a href="%26B.html">&amp;B</a> number prefix define the pattern to draw the colored lines.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a>, <a href="COLOR.html">COLOR</a></li>
+  <li><a href="DRAW.html">DRAW</a>, <a href="CIRCLE.html">CIRCLE</a>, <a href="STEP.html">STEP</a></li>
+  <li><a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a></li>
+  <li><a href="AND.html">AND</a>, <a href="OR.html">OR</a> (logical operators)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/LINE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:31 GMT -->
+</html>

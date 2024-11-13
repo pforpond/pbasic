@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_SETALPHA by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_SETALPHA-2.html" />
+<meta property="og:url" content="_SETALPHA-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_SETALPHA.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_SETALPHA.html">_SETALPHA</a> statement sets the alpha channel transparency level of some or all of the pixels of an image.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_SETALPHA.html">_SETALPHA</a> alpha&amp;[, color1&amp;][ <a href="TO.html">TO</a> colour2&amp;] [, imageHandle&amp;]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>alpha&amp; is the new alpha level to set, ranging from 0 (transparent) to 255 (opaque).</li>
+  <li>color1&amp; designates the 32-bit <a href="LONG.html">LONG</a> color value or range of color values color1&amp; TO colour2&amp; to set the transparency.</li>
+  <li>If no color value or range of colors is given, the entire image’s alpha is changed, including any <a href="_CLEARCOLOR.html">_CLEARCOLOR</a> settings.</li>
+  <li>If imageHandle&amp; is omitted, it is assumed to be the current write page or <a href="_DEST.html">_DEST</a> image.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>In the first syntax, the alpha level of all pixels is set to alpha&amp;.</li>
+  <li>In the second syntax, the alpha level of all pixels matching the color color1&amp; is set to alpha&amp;.</li>
+  <li>In the third syntax, the alpha level of all pixels with red, green, blue and alpha channels in the range [color1&amp; TO color2&amp;] are set.</li>
+  <li>The <a href="_ALPHA.html">_ALPHA</a> setting makes a 32-bit color transparent, opaque or something in between. Zero is clear and 255 totally blocks underlying images. Use it to see through backgrounds or image colors.</li>
+  <li>If alpha&amp; is outside that range, an <a href="ERROR-Codes.html">ERROR Codes</a> error will occur.</li>
+  <li>If the image specified by imageHandle&amp; uses a palette, an <a href="ERROR-Codes.html">ERROR Codes</a> error will occur.</li>
+  <li>If imageHandle&amp; is an invalid handle, an <a href="ERROR-Codes.html">ERROR Codes</a> error will occur.</li>
+  <li><strong>NOTE: 32-bit <a href="_NEWIMAGE.html">_NEWIMAGE</a> screen page backgrounds are transparent black or <a href="_ALPHA.html">_ALPHA</a> 0. Use <a href="_DONTBLEND.html">_DONTBLEND</a> or <a href="CLS.html">CLS</a> for opaque.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using a _SETALPHA color range to fade an image in and out while not affecting the transparent white background.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">main</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> 
+<span class="n">SCREEN</span> <span class="n">main</span>
+<span class="n">_SCREENMOVE</span> <span class="n">_MIDDLE</span>
+
+<span class="n">Image1</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"qb64_trans.png"</span><span class="p">)</span> <span class="c1">'&lt;&lt;&lt; PNG file with white background to hide</span>
+<span class="n">_SOURCE</span> <span class="n">Image1</span><span class="o">&amp;</span>
+<span class="n">clr</span><span class="err">~</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'find background color of image</span>
+<span class="n">_CLEARCOLOR</span> <span class="n">clr</span><span class="err">~</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Image1</span><span class="o">&amp;</span> <span class="c1">'set background color as transparent</span>
+
+<span class="n">topclr</span><span class="err">~</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">clr</span><span class="err">~</span><span class="o">&amp;</span> <span class="o">-</span> <span class="n">_RGBA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">'get topmost color range just below full white</span>
+<span class="n">_DEST</span> <span class="n">main</span>
+
+<span class="n">a&amp;</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">DO</span>
+  <span class="n">_LIMIT</span> <span class="mi">10</span> <span class="c1">'regulate speed of fade in and out</span>
+  <span class="n">CLS</span> <span class="c1">', _RGB(255, 0, 0)</span>
+  <span class="n">a&amp;</span> <span class="o">=</span> <span class="n">a&amp;</span> <span class="o">+</span> <span class="n">d</span>
+  <span class="n">IF</span> <span class="n">a&amp;</span> <span class="o">=</span> <span class="mi">255</span> <span class="n">THEN</span> <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="n">d</span>
+  <span class="n">_SETALPHA</span> <span class="n">a&amp;</span><span class="p">,</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">topclr</span><span class="err">~</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Image1</span><span class="o">&amp;</span> <span class="c1">'affects all colors below bright white</span>
+  <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">342</span><span class="p">),</span> <span class="n">Image1</span><span class="o">&amp;</span> 
+  <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Alpha: "</span><span class="err">;</span> <span class="n">a&amp;</span>
+  <span class="n">_DISPLAY</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">a&amp;</span> <span class="o">=</span> <span class="mi">0</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="POINT.html">POINT</a> value minus <a href="_RGBA.html">_RGBA</a>(1, 1, 1, 0) subtracts a small amount from the bright white color value so that the top <a href="_SETALPHA.html">_SETALPHA</a> color range will not affect the <a href="_CLEARCOLOR.html">_CLEARCOLOR</a> transparency of the bright white PNG background.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_ALPHA.html">_ALPHA</a>, <a href="_ALPHA32.html">_ALPHA32</a></li>
+  <li><a href="_RGBA.html">_RGBA</a>, <a href="_RGBA32.html">_RGBA32</a></li>
+  <li><a href="_CLEARCOLOR.html">_CLEARCOLOR</a></li>
+  <li><a href="_CLEARCOLOR-(function).html">_CLEARCOLOR (function)</a></li>
+  <li><a href="_BLEND.html">_BLEND</a>, <a href="_DONTBLEND.html">_DONTBLEND</a></li>
+  <li><a href="COLOR.html">COLOR</a>, <a href="Images.html">Images</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_SETALPHA by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:34 GMT -->
+</html>

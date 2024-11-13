@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SIN by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SIN-2.html" />
+<meta property="og:url" content="SIN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SIN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The SIN function returns the vertical component or sine of an angle measured in radians.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>value! = <strong>SIN(</strong><em>radian_angle!</em><strong>)</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <em>radian_angle</em> must be measured in radians from 0 to 2 * Pi.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>To convert from degrees to radians, multiply degrees * π/180.</li>
+  <li><a href="SIN.html">SIN</a>E is the vertical component of a unit vector in the direction theta (θ).</li>
+  <li>Accuracy can be determined as <a href="SINGLE.html">SINGLE</a> by default or <a href="DOUBLE.html">DOUBLE</a> by following the parameter value with a # suffix.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Converting degree angles to radians for QBasic’s trig functions and drawing the line at the angle.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">PI</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"PI = 4 * ATN(1) ="</span><span class="err">;</span> <span class="n">PI</span>
+<span class="n">PRINT</span> <span class="s">"COS(PI) = "</span><span class="err">;</span> <span class="n">COS</span><span class="p">(</span><span class="n">PI</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"SIN(PI) = "</span><span class="err">;</span> <span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">)</span>
+<span class="n">DO</span>
+  <span class="n">PRINT</span>
+  <span class="n">INPUT</span> <span class="s">"Enter the degree angle (0 quits): "</span><span class="p">,</span> <span class="n">DEGREES</span><span class="err">%</span>
+  <span class="n">RADIANS</span> <span class="o">=</span> <span class="n">DEGREES</span><span class="err">%</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">/</span> <span class="mi">180</span>
+  <span class="n">PRINT</span> <span class="s">"RADIANS = DEGREES% * PI / 180 = "</span><span class="err">;</span> <span class="n">RADIANS</span>
+  <span class="n">PRINT</span> <span class="s">"X = COS(RADIANS) = "</span><span class="err">;</span> <span class="n">COS</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">)</span>
+  <span class="n">PRINT</span> <span class="s">"Y = SIN(RADIANS) = "</span><span class="err">;</span> <span class="n">SIN</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">)</span>
+  <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">400</span> <span class="o">+</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">)),</span> <span class="mi">240</span> <span class="o">+</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">))),</span> <span class="mi">11</span>
+  <span class="n">DEGREES</span><span class="err">%</span> <span class="o">=</span> <span class="n">RADIANS</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="n">PI</span>
+  <span class="n">PRINT</span> <span class="s">"DEGREES% = RADIANS * 180 / PI ="</span><span class="err">;</span> <span class="n">DEGREES</span><span class="err">%</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">DEGREES</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+PI = 4 * ATN(1) = 3.141593
+COS(PI) = -1
+SIN(PI) = -8.742278E-08
+
+Enter the degree angle (0 quits): 45
+RADIANS = DEGREES% * PI / 180 = .7853982
+X = COS(RADIANS) = .7071068
+Y = SIN(RADIANS) = .7071068
+DEGREES% = RADIANS * 180 / PI = 45
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When 8.742278E-08(.00000008742278) is returned by SIN or <a href="COS.html">COS</a> the value  is essentially zero.</p>
+</blockquote>
+
+<p>Displays rotating gears made using SIN and <a href="COS.html">COS</a> to place the teeth lines.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">9</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Pi</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+<span class="n">Pi</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">DO</span>
+    <span class="n">FOR</span> <span class="n">G</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">Pi</span> <span class="o">*</span> <span class="mi">2</span> <span class="n">STEP</span> <span class="n">Pi</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="n">CLS</span>                                   <span class="c1">'erase previous</span>
+        <span class="n">CALL</span> <span class="n">GEARZ</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">GEARZ</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="n">G</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">GEARZ</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">GEARZ</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="n">G</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">GEARZ</span><span class="p">(</span><span class="mi">320</span> <span class="o">+</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">140</span> <span class="o">+</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+        <span class="n">CALL</span> <span class="n">GEARZ</span><span class="p">(</span><span class="mi">320</span> <span class="o">+</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">140</span> <span class="o">+</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="n">G</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="n">_DISPLAY</span> 
+        <span class="n">_LIMIT</span> <span class="mi">20</span>                 <span class="c1">'regulates gear speed and CPU usage</span>
+    <span class="n">NEXT</span> <span class="n">G</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">GEARZ</span> <span class="p">(</span><span class="n">XP</span><span class="p">,</span> <span class="n">YP</span><span class="p">,</span> <span class="n">RAD</span><span class="p">,</span> <span class="n">Teeth</span><span class="p">,</span> <span class="n">TH</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">CLR</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">XP</span> <span class="o">+</span> <span class="p">(</span><span class="n">RAD</span> <span class="o">+</span> <span class="n">TH</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">YP</span> <span class="o">+</span> <span class="p">(</span><span class="n">RAD</span> <span class="o">+</span> <span class="n">TH</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">PRESET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Teeth</span> <span class="o">*</span> <span class="n">G</span>
+<span class="n">FOR</span> <span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="n">Pi</span> <span class="o">/</span> <span class="mi">70</span> <span class="n">TO</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Pi</span> <span class="n">STEP</span> <span class="n">Pi</span> <span class="o">/</span> <span class="mi">70</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">XP</span> <span class="o">+</span> <span class="p">(</span><span class="n">RAD</span> <span class="o">+</span> <span class="n">TH</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">((</span><span class="n">Teeth</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">m</span><span class="p">))</span> <span class="o">^</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">YP</span> <span class="o">+</span> <span class="p">(</span><span class="n">RAD</span> <span class="o">+</span> <span class="n">TH</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">((</span><span class="n">Teeth</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">m</span><span class="p">))</span> <span class="o">^</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">LINE</span> <span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">CLR</span>
+    <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">END</span>
+<span class="n">NEXT</span> <span class="n">t</span>
+<span class="n">PAINT</span> <span class="p">(</span><span class="n">XP</span><span class="p">,</span> <span class="n">YP</span><span class="p">),</span> <span class="n">CLR</span>            <span class="c1">'gear colors optional      </span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<p>Displaying the current seconds for an analog clock. See <a href="COS.html">COS</a> for the clock face hour markers.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">Pi2</span><span class="p">!</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">sec!</span> <span class="o">=</span> <span class="n">Pi2</span><span class="p">!</span> <span class="o">/</span> <span class="mi">60</span>  <span class="c1">' (2 * pi) / 60 movements per rotation </span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">DO</span>
+  <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">TIME</span><span class="err">$</span>
+  <span class="n">Seconds</span><span class="err">%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="mi">15</span> <span class="c1">' update seconds</span>
+  <span class="n">S</span><span class="p">!</span> <span class="o">=</span> <span class="n">Seconds</span><span class="err">%</span> <span class="o">*</span> <span class="n">sec!</span> <span class="c1">' radian from the TIME$ value</span>
+  <span class="n">Sx</span><span class="err">%</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">COS</span><span class="p">(</span><span class="n">S</span><span class="p">!)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>   <span class="c1">' pixel columns (60 = circular radius) </span>
+  <span class="n">Sy</span><span class="err">%</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">SIN</span><span class="p">(</span><span class="n">S</span><span class="p">!)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>   <span class="c1">' pixel rows</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">Sx</span><span class="err">%</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="n">Sy</span><span class="err">%</span> <span class="o">+</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">12</span>
+  <span class="n">DO</span><span class="p">:</span> <span class="n">Check</span><span class="err">%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="mi">15</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">Check</span><span class="err">%</span> <span class="o">&lt;&gt;</span> <span class="n">Seconds</span><span class="err">%</span>  <span class="c1">' wait loop</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">Sx</span><span class="err">%</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="n">Sy</span><span class="err">%</span> <span class="o">+</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">0</span> <span class="c1">' erase previous line</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="c1">' escape keypress exits</span>
+
+</code></pre></div></div>
+
+<p>The value of 2 π is used to determine the sec! multiplier that determines the radian value as S! The value is divided by 60 second movements. To calculate the seconds the <a href="TIME%24.html">TIME$</a> function is used and that value is subtracted 15 seconds because the 0 value of pi is actually the 3 hour of the clock (15 seconds fast). SIN and COS will work with negative values the same as positive ones! Then the column and row coordinates for one end of the line are determined using SIN and <a href="COS.html">COS</a> multiplied by the radius of the circular line movements. The minute and hour hands could use similar procedures to read different parts of TIME$.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_PI.html">_PI</a> (QB64 function)</li>
+  <li><a href="COS.html">COS</a> (cosine)</li>
+  <li><a href="ATN.html">ATN</a> (arctangent)</li>
+  <li><a href="TAN.html">TAN</a> (tangent)</li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SIN by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:02 GMT -->
+</html>

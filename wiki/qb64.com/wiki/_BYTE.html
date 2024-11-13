@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_BYTE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:18:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_BYTE-2.html" />
+<meta property="og:url" content="_BYTE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_BYTE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>A <a href="_BYTE.html">_BYTE</a> variable can hold signed variable values from -128 to 127 (one byte or 8 <a href="_BIT.html">_BIT</a>s). <a href="_UNSIGNED.html">_UNSIGNED</a> from 0 to 255.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DIM.html">DIM</a> byte <a href="AS.html">AS</a> [<a href="%5b_UNSIGNED.html">_UNSIGNED</a>] [[_BYTE]]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Signed _BYTE values can range from -128 to 127.</li>
+  <li><a href="_UNSIGNED.html">_UNSIGNED</a> _BYTEs can hold values from 0 to 255. <a href="_UNSIGNED.html">_UNSIGNED</a> expands the range of positive values.</li>
+  <li>Can be defined in a <strong>QB64</strong> <a href="_DEFINE.html">_DEFINE</a> statement using a starting letter range of variable names.</li>
+  <li>Also can be used in a subroutine parameter <a href="AS.html">AS</a> _BYTE variable definitions.</li>
+  <li>Define a byte using the suffix %% after the variable name: variable%% = -54</li>
+  <li>Define an unsigned byte by adding the suffix ~%% after the variable name: variable~%% = 54</li>
+  <li><strong>When a variable has not been assigned or has no type suffix, the value defaults to <a href="SINGLE.html">SINGLE</a>.</strong></li>
+</ul>
+
+<p><strong><a href="_BIT.html">_BIT</a></strong></p>
+
+<ul>
+  <li>
+    <p>The <strong>MSB</strong> is the most significant(largest) bit value and <strong>LSB</strong> is the least significant bit of a binary or register memory address value. The order in which the bits are read determines the binary or decimal byte value. There are two common ways to read a byte:</p>
+
+    <ul>
+      <li><strong>“Big-endian”</strong>: MSB is the first bit encountered, decreasing to the LSB as the last bit by position, memory address or time.</li>
+      <li><strong>“Little-endian”</strong>: LSB is the first bit encountered, increasing to the MSB as the last bit by position, memory address or time.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+         **Offset or Position:    0    1   2   3   4   5   6   7      Example: 11110000**
+                              ----------------------------------             --------
+    **Big-Endian Bit On Value:**   128  64  32  16   8   4   2   1                 240
+ **Little-Endian Bit On Value:**    1    2   4   8  16  32  64  128                 15
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>The big-endian method compares exponents of 2<sup>7</sup> down to 2<sup>0</sup> while the little-endian method does the opposite.</p>
+</blockquote>
+
+<p><strong><a href="_BYTE.html">_BYTE</a></strong></p>
+
+<ul>
+  <li><a href="INTEGER.html">INTEGER</a> values consist of 2 bytes called the <strong>HI</strong> and <strong>LO</strong> bytes. Anytime that the number of binary digits is a multiple of 16 (2bytes, 4 bytes, etc.) and the HI byte’s MSB is on(1), the value returned will be negative. Even with <a href="SINGLE.html">SINGLE</a> or <a href="DOUBLE.html">DOUBLE</a> values!</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                 **16 BIT INTEGER OR REGISTER**
+              **AH (High Byte Bits)                         AL (Low Byte Bits)**
+   BIT:    15    14   13   12   11   10   9   8  |   7   6    5   4    3    2   1    0
+          ---------------------------------------|--------------------------------------
+   HEX:   8000  4000 2000 1000  800 400  200 100 |  80   40  20   10   8    4   2    1
+                                                 |
+   DEC: -32768 16384 8192 4096 2048 1024 512 256 | 128   64  32   16   8    4   2    1
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>The HI byte’s <strong>MSB</strong> is often called the <strong>sign</strong> bit! When all 16 of the integer binary bits are on, the decimal return is -1.</p>
+</blockquote>
+
+<h2 id="examples">Example(s)</h2>
+
+<blockquote>
+  <p>How negative assignments affect the _UNSIGNED value returned by a byte (8 bits).</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">unsig</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+<span class="n">DIM</span> <span class="n">sig</span> <span class="n">AS</span> <span class="n">_BYTE</span>
+
+<span class="n">CLS</span>
+<span class="n">unsig</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">PRINT</span> <span class="s">"00000001 = unsigned &amp; signed are both"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">unsig</span> <span class="n">AND</span> <span class="n">sig</span><span class="p">)</span>
+
+<span class="n">unsig</span> <span class="o">=</span> <span class="mi">127</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">127</span>
+<span class="n">PRINT</span> <span class="s">"&amp;B01111111 = unsigned &amp; signed are both"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">unsig</span> <span class="n">AND</span> <span class="n">sig</span><span class="p">)</span>
+
+<span class="n">unsig</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">PRINT</span> <span class="s">"&amp;B11111111 = unsigned is"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">unsig</span><span class="p">)</span> <span class="o">+</span> <span class="s">" but signed is "</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="n">unsig</span> <span class="o">=</span> <span class="mi">254</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">254</span>
+<span class="n">PRINT</span> <span class="s">"&amp;B11111110 = unsigned is"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">unsig</span><span class="p">)</span> <span class="o">+</span> <span class="s">" but signed is "</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="n">unsig</span> <span class="o">=</span> <span class="mi">253</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">253</span>
+<span class="n">PRINT</span> <span class="s">"&amp;B11111101 = unsigned is"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">unsig</span><span class="p">)</span> <span class="o">+</span> <span class="s">" but signed is "</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"The signed value needs the MSB bit for the sign."</span>
+<span class="n">PRINT</span> <span class="s">"The most significant bit is furthest to the left."</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&amp;B00000001 = unsigned &amp; signed are both 1
+&amp;B01111111 = unsigned &amp; signed are both 127
+&amp;B11111111 = unsigned is 255 but signed is -1
+&amp;B11111110 = unsigned is 254 but signed is -2
+&amp;B11111101 = unsigned is 253 but signed is -3
+
+The signed value needs the MSB bit for the sign.
+The most significant bit is furthest to the left.
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_BIT.html">_BIT</a>, <a href="%26B.html">&amp;B</a></li>
+  <li><a href="_DEFINE.html">_DEFINE</a>, <a href="DIM.html">DIM</a></li>
+  <li><a href="_UNSIGNED.html">_UNSIGNED</a></li>
+  <li><a href="_SHL.html">_SHL</a>, <a href="_SHR.html">_SHR</a></li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+  <li><a href="Screen-Memory.html">Screen Memory</a></li>
+  <li><a href="Variable-Types.html">Variable Types</a></li>
+  <li><a href="Converting-Bytes-to-Bits.html">Converting Bytes to Bits</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_BYTE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:18:15 GMT -->
+</html>

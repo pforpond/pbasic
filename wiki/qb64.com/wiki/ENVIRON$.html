@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/ENVIRON$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="ENVIRON%24-2.html" />
+<meta property="og:url" content="ENVIRON%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/ENVIRON$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="ENVIRON%24.html">ENVIRON$</a> function returns a <a href="STRING.html">STRING</a> environmental value from the Operating System’s environmental settings list.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>setting$ = <a href="ENVIRON%24.html">ENVIRON$</a>({listIndex%</td>
+        <td>systemID$})</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The function can use an <a href="INTEGER.html">INTEGER</a> listIndex% value or <a href="STRING.html">STRING</a> systemID$ parameter.</li>
+  <li>listIndex% refers to the number order of the environmental list. Returns are not in any particular numerical order.</li>
+  <li>systemID$ is the specific <a href="STRING.html">STRING</a> parameter requested. Returns only the specified environmental <a href="STRING.html">STRING</a> setting (examples based on Windows):
+    <ul>
+      <li>“BLASTER” = current Sound Blaster settings if installed.</li>
+      <li>“COMPUTERNAME” or “USERDOMAIN” = OEM PC serial number or the computer name assigned by owner.</li>
+      <li>“HOMEDRIVE” or “SystemDrive” = Windows root drive, normally C: on single partition drives.</li>
+      <li>“HOMEPATH” = current user’s Administrator or the single user’s “OWNER” folder path.</li>
+      <li>“OS” = Windows Operating System version. Often WindowsNT in modern computers.</li>
+      <li>“PATH” = full path setting that Windows uses to look for file extensions in PATHEXT below.</li>
+      <li>“PATHEXT = Windows extensions used:  COM, EXE, BAT, CMD, VBS, VBE, JS, JSE, WSF, WSH, MSC</li>
+      <li>“PROCESSOR_ARCHITECTURE” = x86 for 32 or 64 bit.</li>
+      <li>“PROGRAMFILES” = path to <em>Program files</em> folder, normally “C:\PROGRAM FILES”</li>
+      <li>“PROMPT” = normally “$P$G” on Windows NT.</li>
+      <li>“SYSTEMROOT” or “windir” = path to the Windows folder including the drive letter like “C:\WINDOWS”</li>
+      <li>“TEMP” or “TMP” = path to TEMP folder. “C:\TEMP” or the user specific temp folder on later versions.</li>
+      <li>“USERNAME” = current Administrator name or “OWNER”.
+        <blockquote>
+          <p><em>Note:</em> There are other possible system settings that are not listed or never used on older versions. Run <em>Example 1</em> below for a complete list in your system.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li><em>Note:</em> <strong>QB64</strong> may not return the same environment list as QBasic or SET did in DOS.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Viewing the list of environmental parameter settings using a counter loop like SET does in DOS.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">setting$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">' get a setting from the list</span>
+  <span class="n">PRINT</span> <span class="n">setting$</span>
+  <span class="n">IF</span> <span class="n">i</span> <span class="n">MOD</span> <span class="mi">20</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Press a key"</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">CLS</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">setting$</span> <span class="o">=</span> <span class="s">""</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ALLUSERSPROFILE=C:\ProgramData
+COMPUTERNAME=TED-LAPTOP
+ComSpec=C:\WINDOWS\system32\cmd.exe
+HOMEDRIVE=C:
+HOMEPATH=\Users\Ted
+LOCALAPPDATA=C:\Users\Ted\AppData\Local
+OS=Windows_NT
+Path=C:\PROGRAMDATA\ORACLE\JAVA\JAVAPATH;C:\WINDOWS\SYSTEM32;C:\WINDOWS;
+C:\WINDOWS\SYSTEM32\WBEM;C:\WINDOWS\SYSTEM32\WINDOWSPOWERSHELL\V1.0\;C:\
+WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32
+\WindowsPowerShell\v1.0\
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PROCESSOR_ARCHITECTURE=x86
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 14 Stepping 8, GenuineIntel
+ProgramFiles=C:\Program Files
+PROMPT=$P$G
+PSModulePath=C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+SystemRoot=C:\WINDOWS
+TEMP=C:\Users\TED\AppData\Local\Temp
+TMP=C:\Users\TED\AppData\Local\Temp
+USERDOMAIN=TED-LAPTOP
+USERNAME=Ted
+USERPROFILE=C:\Users\Ted
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Windows environmental settings are listed alphabetically, 20 at a time. <strong>QB64 may not read all of them or may return an empty string.</strong> The settings above were returned with SET in DOS. PROMPT returned nothing where SET returned $P$G.</p>
+</blockquote>
+
+<p>Creating a shortcut on a user’s desktop for QB64.EXE using the program’s icon. Must be run in program’s folder to work!</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'=== Enter the EXE file and ICON or BMP image for the shortcut.</span>
+
+<span class="n">Program</span><span class="err">$</span> <span class="o">=</span> <span class="s">"QB64.EXE"</span>  <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Enter the **exact** program name for shortcut</span>
+<span class="n">ICON</span><span class="err">$</span> <span class="o">=</span> <span class="s">"QB64ICON.BMP"</span> <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Enter icon or bitmap to use from program's folder</span>
+
+<span class="n">DeskTopShortcut</span> <span class="n">Program</span><span class="err">$</span><span class="p">,</span> <span class="n">ICON</span><span class="err">$</span>
+
+<span class="n">END</span>             <span class="c1">'====== END DEMO CODE ======</span>
+
+<span class="n">SUB</span> <span class="n">DeskTopShortcut</span> <span class="p">(</span><span class="n">Program</span><span class="err">$</span><span class="p">,</span> <span class="n">ICON</span><span class="err">$</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"CD &gt; PRGMDIR.INF"</span>  <span class="c1">'get the current program path</span>
+<span class="n">OPEN</span> <span class="s">"PRGMDIR.INF"</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="n">PATH</span><span class="err">$</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="n">f</span>
+<span class="n">KILL</span> <span class="s">"PRGMDIR.INF"</span>
+<span class="n">PATH</span><span class="err">$</span> <span class="o">=</span> <span class="n">PATH</span><span class="err">$</span> <span class="o">+</span> <span class="s">"\"</span><span class="p">:</span> <span class="n">FILE</span><span class="err">$</span> <span class="o">=</span> <span class="n">PATH</span> <span class="o">+</span> <span class="n">Program</span><span class="err">$</span>
+<span class="n">PRINT</span> <span class="n">PATH</span><span class="err">$</span>                         <span class="c1">'DEMO print</span>
+<span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"HOMEDRIVE"</span><span class="p">)</span>          <span class="c1">'=== Get Current User setting from Environment.</span>
+<span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"HOMEPATH"</span><span class="p">)</span>
+<span class="n">C</span><span class="err">$</span> <span class="o">=</span> <span class="n">A</span><span class="err">$</span> <span class="o">+</span> <span class="n">B</span><span class="err">$</span>                        <span class="c1">'shortcut to user's desktop if found</span>
+
+<span class="n">IF</span> <span class="n">C</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">C</span><span class="err">$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"ALLUSERSPROFILE"</span><span class="p">)</span> <span class="c1">'try desktop for all users</span>
+<span class="n">PRINT</span> <span class="n">C</span><span class="err">$</span>                            <span class="c1">'DEMO print</span>
+<span class="n">URLFILE</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">Program</span><span class="err">$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">Program</span><span class="err">$</span><span class="p">,</span> <span class="s">"."</span><span class="p">))</span> <span class="o">+</span> <span class="s">"URL"</span> <span class="c1">'change EXE to URL</span>
+
+<span class="n">IF</span> <span class="n">C</span><span class="err">$</span> <span class="o">&gt;</span> <span class="s">""</span> <span class="n">THEN</span>  
+     <span class="n">SHORTCUT</span><span class="err">$</span> <span class="o">=</span> <span class="n">C</span><span class="err">$</span> <span class="o">+</span> <span class="s">"\Desktop\"</span> <span class="o">+</span> <span class="n">URLFILE</span><span class="err">$</span> <span class="c1">'create filename for the desktop</span>
+<span class="n">ELSE</span> <span class="n">SHORTCUT</span><span class="err">$</span> <span class="o">=</span> <span class="n">PATH</span><span class="err">$</span> <span class="o">+</span> <span class="n">URLFILE</span><span class="err">$</span>   <span class="c1">'if all else fails put in program folder</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">PRINT</span> <span class="n">SHORTCUT</span>                      <span class="c1">'DEMO print</span>
+<span class="n">OPEN</span> <span class="n">SHORTCUT</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">APPEND</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f</span>
+<span class="n">IF</span> <span class="n">LOF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="n">f</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">SUB</span>   <span class="c1">'=== if filesize is NOT Zero don't overwrite!</span>
+
+<span class="n">Q</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>                       <span class="c1">'=== Write URL Shortcut file info.</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="s">"[InternetShortcut]"</span>                    <span class="c1">'URL type</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="s">"URL="</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="o">+</span> <span class="s">"file://"</span> <span class="o">+</span> <span class="n">FILE</span><span class="err">$</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span>    <span class="c1">'URL program file</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="s">"WorkingDirectory="</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="o">+</span> <span class="n">PATH</span><span class="err">$</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span>   <span class="c1">'Working path</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="s">"IconIndex = "</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="o">+</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span>          <span class="c1">'0 is first index</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="s">"IconFile = "</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="o">+</span> <span class="n">PATH</span><span class="err">$</span> <span class="o">+</span> <span class="n">ICON</span><span class="err">$</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="c1">'Icon path in working folder</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="n">f</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The SUB program finds the current program’s path and user’s desktop path. It then creates the shortcut on the desktop with a program icon. The custom icon should be in the program’s folder. If an environmental path is not found, the shortcut is placed in the program’s folder. The SUB can be added to any program. 
+<strong>NOTE:</strong> A temorary file named PRGMDIR.INF is created and deleted in the example above.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="ENVIRON.html">ENVIRON</a> (statement), <a href="_ENVIRONCOUNT.html">_ENVIRONCOUNT</a></li>
+  <li><a href="_DEVICES.html">_DEVICES</a>, <a href="_DEVICE%24.html">_DEVICE$</a></li>
+  <li><a href="_LASTBUTTON.html">_LASTBUTTON</a>, <a href="_OS%24.html">_OS$</a></li>
+  <li><a href="Windows-Environment.html">Windows Environment</a></li>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/ENVIRON$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:25 GMT -->
+</html>

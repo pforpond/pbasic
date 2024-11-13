@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/C-Libraries by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="C-Libraries-2.html" />
+<meta property="og:url" content="C-Libraries-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/C-Libraries.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>QB64</strong> uses C++ to compile a BAS program into an executable program. The following is a list of the <strong>C <a href="FUNCTION.html">FUNCTION</a>s</strong> that can be used.</p>
+
+<p><strong>Note: C++ Header files should be placed in the QB64 folder and are not required after a program is compiled.</strong></p>
+
+<h2 id="c-variable-types"><strong>C++ Variable Types</strong></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>C Name</th>
+      <th>Description</th>
+      <th>Size</th>
+      <th>QB64 Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="_BYTE.html">_BYTE</a></td>
+      <td>Character or small integer.</td>
+      <td>1 byte</td>
+      <td><a href="_BYTE.html">_BYTE</a></td>
+    </tr>
+    <tr>
+      <td><a href="INTEGER.html">INTEGER</a></td>
+      <td>Short Integer(Word)</td>
+      <td>2 byte</td>
+      <td><a href="INTEGER.html">INTEGER</a></td>
+    </tr>
+    <tr>
+      <td><a href="LONG.html">LONG</a></td>
+      <td>Integer(Dword)</td>
+      <td>4 byte</td>
+      <td><a href="LONG.html">LONG</a></td>
+    </tr>
+    <tr>
+      <td><a href="LONG.html">LONG</a></td>
+      <td>Int32, Long integer or Long</td>
+      <td>4 byte</td>
+      <td><a href="LONG.html">LONG</a></td>
+    </tr>
+    <tr>
+      <td><a href="_INTEGER64.html">_INTEGER64</a></td>
+      <td>Long long (Qword)</td>
+      <td>8 byte</td>
+      <td><a href="_INTEGER64.html">_INTEGER64</a></td>
+    </tr>
+    <tr>
+      <td><a href="Boolean.html">Boolean</a></td>
+      <td>Boolean value true or false.</td>
+      <td>1 byte</td>
+      <td><a href="_BYTE.html">_BYTE</a></td>
+    </tr>
+    <tr>
+      <td><a href="SINGLE.html">SINGLE</a></td>
+      <td>Floating point number</td>
+      <td>4 byte</td>
+      <td><a href="SINGLE.html">SINGLE</a></td>
+    </tr>
+    <tr>
+      <td><a href="DOUBLE.html">DOUBLE</a></td>
+      <td>Double precision floating.</td>
+      <td>8 byte</td>
+      <td><a href="DOUBLE.html">DOUBLE</a></td>
+    </tr>
+    <tr>
+      <td><a href="_FLOAT.html">_FLOAT</a></td>
+      <td>Long double precision float</td>
+      <td>10 byte</td>
+      <td><a href="_FLOAT.html">_FLOAT</a></td>
+    </tr>
+    <tr>
+      <td><a href="Unicode.html">Unicode</a></td>
+      <td>Wide character(<a href="Unicode.html">Unicode</a>)</td>
+      <td>2 or 4</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><a href="_OFFSET.html">_OFFSET</a></td>
+      <td>void pointer(void *)</td>
+      <td>ANY</td>
+      <td><a href="_OFFSET.html">_OFFSET</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="c-functions-and-subs">C Functions and Subs</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">LIBRARY</span>
+                           <span class="o">**</span><span class="c1">'ctime.h**</span>
+<span class="n">FUNCTION</span> <span class="n">clock</span> <span class="p">()</span> <span class="c1">'arithmetic type elapsed processor representing time.</span>
+<span class="n">FUNCTION</span> <span class="n">difftime#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">time2</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">time1</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+                                      <span class="c1">'seconds between time2 and time1</span>
+                           <span class="o">**</span><span class="c1">'ctype.h**</span>
+<span class="n">FUNCTION</span> <span class="n">isalnum%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is an alphabet letter(isalpha(c) or isdigit(c))</span>
+<span class="n">FUNCTION</span> <span class="n">isalpha%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is letter (isupper(c) or islower(c))</span>
+<span class="n">FUNCTION</span> <span class="n">isdigit%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is a decimal digit</span>
+<span class="n">FUNCTION</span> <span class="n">isgraph%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is a printing character other than space</span>
+<span class="n">FUNCTION</span> <span class="n">islower%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is a lower-case letter</span>
+<span class="n">FUNCTION</span> <span class="n">isprint%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is printing character. ASCII: &amp;H20 (" ") to &amp;H7E (~)</span>
+<span class="n">FUNCTION</span> <span class="n">ispunct%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is printing character other than space, letter, digit</span>
+<span class="n">FUNCTION</span> <span class="n">isspace%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is space, formfeed, newline, return, tab, vertical tab</span>
+<span class="n">FUNCTION</span> <span class="n">isupper%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'is upper-case letter</span>
+<span class="n">FUNCTION</span> <span class="n">isxdigit%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span><span class="c1">'is a hexdecimal digit character(0 thru 9 or A thru F)</span>
+<span class="n">FUNCTION</span> <span class="n">tolower%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'return lower-case equivalent</span>
+<span class="n">FUNCTION</span> <span class="n">toupper%</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'return upper-case equivalent</span>
+
+                           <span class="o">**</span><span class="c1">'math.h**</span>
+<span class="n">FUNCTION</span> <span class="n">acos#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span>
+<span class="n">FUNCTION</span> <span class="n">asin#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span>
+<span class="n">FUNCTION</span> <span class="n">atan#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span>  <span class="c1">'arc tangent of x does not designate the quadrant</span>
+<span class="n">FUNCTION</span> <span class="n">atan2#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">y</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span> <span class="c1">'arc-tangent of y/x designates quadrant</span>
+<span class="n">FUNCTION</span> <span class="n">cosh#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span>
+<span class="n">FUNCTION</span> <span class="n">ldexp#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">base</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">exponent</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'base times 2 to exponent</span>
+<span class="n">FUNCTION</span> <span class="n">pow#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">base</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">exponent</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span> <span class="c1">'base number raised to exponent</span>
+<span class="n">FUNCTION</span> <span class="n">sinh#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span>
+<span class="n">FUNCTION</span> <span class="n">tanh#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">)</span>
+
+                           <span class="o">**</span><span class="c1">'stdio.h**   return non-zero INTEGER on failure.</span>
+<span class="n">FUNCTION</span> <span class="n">remove%</span> <span class="p">(</span><span class="n">filename</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>    <span class="c1">'removes specified file</span>
+<span class="n">FUNCTION</span> <span class="n">rename%</span> <span class="p">(</span><span class="n">oldname</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">newname</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span> <span class="c1">'renames file oldname to newname.</span>
+
+                           <span class="o">**</span><span class="c1">'stdlib.h**</span>
+<span class="n">FUNCTION</span> <span class="n">atol&amp;</span> <span class="p">(</span><span class="n">str</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>  <span class="c1">'convert string to Long (errno not necessarily set)</span>
+<span class="n">FUNCTION</span> <span class="n">atoi%</span> <span class="p">(</span><span class="n">str</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>  <span class="c1">'convert string to Integer (errno not necessarily set)</span>
+<span class="n">FUNCTION</span> <span class="n">atof#</span> <span class="p">(</span><span class="n">str</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>  <span class="c1">'convert string to Double (errno not necessarily set)</span>
+<span class="n">FUNCTION</span> <span class="n">rand&amp;</span> <span class="p">()</span>               <span class="c1">'random number</span>
+<span class="n">SUB</span> <span class="n">srand</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">seed</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span> <span class="c1">'random seeded number</span>
+
+                           <span class="o">**</span><span class="c1">'string.h**</span>
+<span class="n">FUNCTION</span> <span class="n">memchr&amp;</span> <span class="p">(</span><span class="n">BasePtr</span><span class="p">,</span> <span class="n">value</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Bytes</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span> <span class="c1">' returns pointer to first</span>
+ <span class="c1">'occurance of string in a set number of bytes at the memory block pointer designated.</span>
+
+<span class="n">FUNCTION</span> <span class="n">memcmp</span> <span class="p">(</span><span class="n">pointer1</span><span class="p">,</span> <span class="n">pointer2</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Bytes</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="p">)</span>
+ <span class="c1">'compares pointer bytes. Returns 0 if match, positive if ptr1&gt;ptr2, negative if ptr1&lt;ptr2</span>
+
+<span class="n">SUB</span> <span class="n">memcpy</span> <span class="p">(</span><span class="n">DestPtr</span><span class="p">,</span> <span class="n">SourcePtr</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Bytes</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+         <span class="c1">'copies the number of source bytes from source pointer to destination pointer</span>
+
+<span class="n">SUB</span> <span class="n">memmove</span> <span class="p">(</span><span class="n">DestPtr</span> <span class="n">AS</span> <span class="n">var_TYPE</span><span class="p">,</span> <span class="n">SourcePtr</span> <span class="n">AS</span> <span class="n">var_TYPE</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">bytesize</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+         <span class="c1">'moves a variable pointer value to destination from a source as a type byte size.</span>
+
+<span class="n">SUB</span> <span class="n">memset</span> <span class="p">(</span><span class="n">pointer</span> <span class="n">AS</span> <span class="o">**</span><span class="n">var_TYPE</span><span class="o">**</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">value</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">nbytes</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="c1">'The **var_TYPE** MUST match the type of the argument passed! Fills a block of memory. Sets the</span>
+<span class="c1">'first bytes of the block of memory at pointer to the specified value as a character.</span>
+
+<span class="n">FUNCTION</span> <span class="n">strcspn%</span> <span class="p">(</span><span class="n">str1</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">str2</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+  <span class="c1">'length of prefix of str1 consisting of characters not in str2.</span>
+
+<span class="n">FUNCTION</span> <span class="n">strcmp%</span> <span class="p">(</span><span class="n">str1</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">str2</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span> <span class="c1">'compares str1 with str2, negative value if</span>
+ <span class="c1">'str1&lt;str2, zero if str1=str2, positive if str1&gt;str2</span>
+
+<span class="n">FUNCTION</span> <span class="n">strncmp%</span> <span class="p">(</span><span class="n">str1</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">str2</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Bytes</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span><span class="c1">'compares first byte</span>
+ <span class="c1">'characters of str1 and str2, negative if str1&lt;str2, 0 if str1=str2, positive if str1&gt;str2</span>
+
+<span class="n">SUB</span> <span class="n">strncpy</span> <span class="p">(</span><span class="n">dest</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">Bytes</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> <span class="c1">'Copies first</span>
+ <span class="c1">'bytes of source to destination. If source ends before number of bytes, dest padded with 0's</span>
+<span class="n">END</span> <span class="n">DECLARE</span> 
+
+</code></pre></div></div>
+
+<p>How to use the <a href="SUB.html">SUB</a> <strong>memmove</strong> to transfer <a href="TYPE.html">TYPE</a> data when using Libraries.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">a</span>   <span class="c1">'Note: the TYPE must be placed before the DECLARE LIBRARY if used in it!</span>
+  <span class="n">b</span> <span class="n">AS</span> <span class="n">DOUBLE</span>
+  <span class="n">c</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">DECLARE</span> <span class="n">LIBRARY</span>
+  <span class="n">SUB</span> <span class="n">memmove</span> <span class="p">(</span><span class="n">Dest</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">Source</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">bytesize</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+
+<span class="n">DIM</span> <span class="n">d</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">AS</span> <span class="n">a</span>
+<span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">b</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">c</span> <span class="o">=</span> <span class="mi">99</span>
+
+<span class="n">memmove</span> <span class="n">d</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">LEN</span><span class="p">(</span><span class="n">d</span><span class="p">())</span> <span class="c1">'LEN gives the total byte size of the TYPE</span>
+
+<span class="n">PRINT</span> <span class="n">d</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">b</span>
+<span class="n">PRINT</span> <span class="n">d</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">c</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+1.5
+99 
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When a <a href="TYPE.html">TYPE</a> variable is moved to another variable or array index, all <a href="TYPE.html">TYPE</a> dot values are moved with it.</p>
+</blockquote>
+
+<p>Creating different <strong>memset</strong> functions for each variable type to be used.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">LIBRARY</span>
+<span class="n">FUNCTION</span> <span class="n">memsetB&amp;</span> <span class="n">ALIAS</span> <span class="o">**</span><span class="n">memset</span><span class="o">**</span> <span class="p">(</span><span class="n">p</span> <span class="n">AS</span> <span class="n">_BYTE</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">n</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">FUNCTION</span> <span class="n">memsetI&amp;</span> <span class="n">ALIAS</span> <span class="o">**</span><span class="n">memset</span><span class="o">**</span> <span class="p">(</span><span class="n">p</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">n</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">FUNCTION</span> <span class="n">memsetL&amp;</span> <span class="n">ALIAS</span> <span class="o">**</span><span class="n">memset</span><span class="o">**</span> <span class="p">(</span><span class="n">p</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">c</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">n</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">DIM</span> <span class="n">Barray</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span><span class="p">)</span> <span class="n">AS</span> <span class="n">_BYTE</span>
+<span class="n">res&amp;</span> <span class="o">=</span> <span class="n">memsetB</span><span class="p">(</span><span class="n">Barray</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+  <span class="n">PRINT</span> <span class="n">Barray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span>                       <span class="c1">'display BYTE array decimal values</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span>
+
+<span class="n">DIM</span> <span class="n">Larray</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span><span class="p">)</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">res&amp;</span> <span class="o">=</span> <span class="n">memsetL</span><span class="p">(</span><span class="n">Larray</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+  <span class="n">PRINT</span> <span class="n">Larray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span>                       <span class="c1">'displays LONG array decimal values</span>
+<span class="n">NEXT</span> <span class="n">i</span>
+<span class="n">PRINT</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+  <span class="n">PRINT</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">Larray</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="err">;</span>           <span class="c1">'displays each byte value &amp;H41 = 65</span>
+<span class="n">NEXT</span> <span class="n">i</span>  
+
+</code></pre></div></div>
+<p><sub>Code example by stylin</sub></p>
+
+<blockquote>
+  <p><em>Explanation:</em> When 5 bytes are put into a 4 byte LONG array value, the fifth byte goes into the next array element.</p>
+</blockquote>
+
+<h2 id="bit-casting">Bit Casting</h2>
+
+<p>Header file: <em>Cast.h</em></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kt">float</span> <span class="nf">bitcast</span><span class="p">(</span><span class="kt">int</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">swap_endian</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">k</span><span class="o">&gt;&gt;</span><span class="mi">24</span><span class="p">)</span><span class="o">|</span><span class="p">((</span><span class="n">k</span><span class="o">&lt;&lt;</span><span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x00FF0000</span><span class="p">)</span><span class="o">|</span><span class="p">((</span><span class="n">k</span><span class="o">&gt;&gt;</span><span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x0000FF00</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">k</span><span class="o">&lt;&lt;</span><span class="mi">24</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><sub>Courtesy of Darth Who</sub></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">LIBRARY</span> <span class="s">"Cast"</span>
+    <span class="n">FUNCTION</span> <span class="n">bitcast#</span><span class="p">#</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">t</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">swap_endian</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">k</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+<span class="n">Value</span><span class="o">&amp;</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HE7750340</span>
+<span class="n">PRINT</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">Value</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">bitcast#</span><span class="p">#(</span><span class="n">Value</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">bitcast#</span><span class="p">#(</span><span class="n">swap_endian</span><span class="p">(</span><span class="n">Value</span><span class="o">&amp;</span><span class="p">))</span> 
+
+</code></pre></div></div>
+
+<h2 id="fast-math">Fast Math</h2>
+
+<p><strong>Fastmath.h</strong> header file. Library to speed up program calculations. Use with <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> “Fastmath”</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">xrander</span><span class="o">=</span><span class="mi">123456789</span><span class="p">,</span> <span class="n">yrander</span><span class="o">=</span><span class="mi">362436069</span><span class="p">,</span> <span class="n">zrander</span> <span class="o">=</span> <span class="mi">521288629</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">trander</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">compbase</span> <span class="o">=</span> <span class="mf">2.3025850929940456840179914546844</span><span class="n">d</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">basecomp</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">d</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">shift1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">shift2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">shift3</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+
+<span class="kt">float</span> <span class="nf">Fast_Sqrt</span><span class="p">(</span><span class="kt">float</span> <span class="n">val</span><span class="p">)</span> <span class="c1">//log2(n) approximation  //this is not used in the LN approximation</span>
+ <span class="p">{</span>
+  <span class="c1">//float chk</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="c1">//vals.tmp = (1&lt;&lt;29) + (vals.tmp &gt;&gt; 1) - (1&lt;&lt;22) + 0x4C000;  // I am working on a way to improve this value</span>
+  <span class="c1">// that represents (e/2)-64 but want e/2</span>
+  <span class="k">return</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">float</span> <span class="nf">Fast_InvSqrt</span><span class="p">(</span> <span class="kt">float</span> <span class="n">number</span> <span class="p">)</span> <span class="c1">// originally by Silicon Graphics slightly higher accuracy variant below.</span>
+ <span class="p">{</span>
+  <span class="kt">long</span> <span class="n">i</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">threehalfs</span> <span class="o">=</span> <span class="mf">1.5</span><span class="n">F</span><span class="p">;</span>
+  <span class="n">x2</span> <span class="o">=</span> <span class="n">number</span> <span class="o">*</span> <span class="mf">0.5</span><span class="n">F</span><span class="p">;</span>
+  <span class="n">y</span>  <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+  <span class="n">i</span>  <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">long</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">;</span>                       <span class="c1">// evil floating point bit level hacking [sic]</span>
+  <span class="n">i</span>  <span class="o">=</span> <span class="mh">0x5f375a86</span> <span class="o">-</span> <span class="p">(</span> <span class="n">i</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span> <span class="p">);</span>               <span class="c1">// what the fuck? [sic]   original silicon graphics constant: 0x5f3759df</span>
+  <span class="n">y</span>  <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">float</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+  <span class="n">y</span>  <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span> <span class="n">threehalfs</span> <span class="o">-</span> <span class="p">(</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="p">)</span> <span class="p">);</span>   <span class="c1">// 1st iteration</span>
+<span class="c1">//y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed</span>
+  <span class="k">return</span> <span class="n">y</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Pow</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">)</span> <span class="c1">//fastpower originally developed by Martin Ankerl</span>
+ <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">));</span>
+  <span class="kt">int</span> <span class="n">tmp2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">tmp</span> <span class="o">-</span> <span class="mi">1072632447</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1072632447</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="n">p</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="p">)</span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp2</span><span class="p">;</span>
+  <span class="c1">//p = p * a / 2.71828F ; failed attempt to auto correct the accuracy</span>
+  <span class="k">return</span> <span class="n">tmp</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Exp</span><span class="p">(</span><span class="kt">double</span> <span class="n">y</span><span class="p">)</span> <span class="c1">//2.87921</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">d</span><span class="p">;</span>
+  <span class="c1">//*((int*)(&amp;d) + 0) = 0;</span>
+  <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="mi">1512775</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1072632447</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+ <span class="p">}</span>
+
+
+<span class="kt">double</span> <span class="nf">Fast_XLnX</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="c1">//Borchardt's algorithm only accurate close to the origin</span>
+ <span class="p">{</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_LnX</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">));</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Log10</span> <span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mf">2.302585092994</span><span class="n">F</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">));</span>
+ <span class="p">}</span>
+
+
+<span class="kt">double</span> <span class="nf">Fast_LogPi</span> <span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mf">1.1447298858494</span><span class="n">F</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">));</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Sin</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="c1">//currently only supports range between -3 * pi and 3 * pi</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">sine</span><span class="p">;</span>
+  <span class="c1">//always wrap input angle to -PI..PI I know it is abit of a compicated algorithm but hey</span>
+  <span class="kt">int</span> <span class="n">Piintdiv</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.15915494309189</span><span class="n">F</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">Pix</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">6.2831853071796</span><span class="n">F</span> <span class="o">*</span> <span class="n">Piintdiv</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Pix</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+   <span class="n">Pix</span> <span class="o">+=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">else</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">Pix</span> <span class="o">&gt;</span>  <span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+    <span class="n">Pix</span> <span class="o">-=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Pix</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.405284735</span><span class="n">F</span> <span class="o">*</span> <span class="n">Pix</span> <span class="o">+</span> <span class="mf">1.27323954</span><span class="n">F</span><span class="p">)</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">;</span>
+   <span class="c1">//sine = 1.27323954 * x + .405284735 * x * x; // I do so love horner form</span>
+  <span class="k">else</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">)</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">sine</span><span class="p">;</span>
+ <span class="p">}</span>
+
+
+<span class="kt">double</span> <span class="nf">Fast_Cos</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">Cosine</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">Piintdiv</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.15915494309189</span><span class="n">F</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">Pix</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">6.2831853071796</span><span class="n">F</span> <span class="o">*</span> <span class="n">Piintdiv</span><span class="p">;</span>
+  <span class="n">Pix</span> <span class="o">+=</span> <span class="mf">1.57079632</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Pix</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+   <span class="n">Pix</span> <span class="o">+=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">else</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">Pix</span> <span class="o">&gt;</span>  <span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+    <span class="n">Pix</span> <span class="o">-=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Pix</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">+</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">)</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">)</span> <span class="o">*</span> <span class="n">Pix</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">Cosine</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Tan</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">Cosine</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">sine</span><span class="p">;</span>
+  <span class="c1">//always wrap input angle to -PI..PI</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+   <span class="n">x</span> <span class="o">+=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">else</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span>  <span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="c1">//compute sine</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.405284735</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">1.27323954</span><span class="n">F</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// I do so love horner form the alernative on the nex line is slower</span>
+   <span class="c1">//sine = 1.27323954 * x + .405284735 * x * x;</span>
+  <span class="k">else</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">x</span> <span class="o">+=</span> <span class="mf">1.57079632</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">+</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span>  <span class="n">sine</span> <span class="o">/</span> <span class="n">Cosine</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_CoTan</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">Cosine</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">sine</span><span class="p">;</span>
+  <span class="c1">//always wrap input angle to -PI..PI</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+   <span class="n">x</span> <span class="o">+=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">else</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span>  <span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="c1">//compute sine</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.405284735</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">1.27323954</span><span class="n">F</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// I do so love horner form the alernative on the nex line is slower</span>
+   <span class="c1">//sine = 1.27323954 * x + .405284735 * x * x;</span>
+  <span class="k">else</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">x</span> <span class="o">+=</span> <span class="mf">1.57079632</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">+</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span>  <span class="n">Cosine</span> <span class="o">/</span> <span class="n">sine</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Sec</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">Cosine</span><span class="p">;</span>
+  <span class="n">x</span> <span class="o">+=</span> <span class="mf">1.57079632</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span>  <span class="mf">3.14159265</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mf">6.28318531</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">+</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">Cosine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">Cosine</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_Csc</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">sine</span><span class="p">;</span>
+  <span class="c1">//always wrap input angle to -PI..PI</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+   <span class="n">x</span> <span class="o">+=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">else</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span>  <span class="mf">3.14159265</span><span class="n">F</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mf">6.28318531</span><span class="n">F</span><span class="p">;</span>
+  <span class="c1">//compute sine</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.405284735</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">1.27323954</span><span class="n">F</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+   <span class="c1">//sine = 1.27323954 * x + .405284735 * x * x; // I do so love horner form</span>
+  <span class="k">else</span>
+   <span class="n">sine</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.27323954</span> <span class="o">-</span> <span class="mf">0.405284735</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sine</span><span class="p">;</span>
+ <span class="p">}</span>
+
+
+<span class="c1">// |error| &lt; 0.005</span>
+<span class="kt">float</span> <span class="nf">Fast_Atan2</span><span class="p">(</span><span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">float</span> <span class="n">PIBY2_FLOAT</span> <span class="o">=</span> <span class="mf">1.5707963</span><span class="n">F</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">PI_FLOAT</span> <span class="o">=</span> <span class="mf">3.14159265</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="err">##</span>  <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="k">return</span> <span class="n">PIBY2_FLOAT</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="err">##</span>  <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="k">return</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">PIBY2_FLOAT</span><span class="p">;</span>
+   <span class="p">}</span>
+  <span class="kt">float</span> <span class="n">atan</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">fabsf</span><span class="p">(</span> <span class="n">z</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="n">f</span> <span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">atan</span> <span class="o">=</span> <span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="n">f</span> <span class="o">+</span> <span class="mf">0.28</span><span class="n">f</span><span class="o">*</span><span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">)</span>
+     <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">)</span> <span class="k">return</span> <span class="n">atan</span> <span class="o">-</span> <span class="n">PI_FLOAT</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">atan</span> <span class="o">+</span> <span class="n">PI_FLOAT</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="k">else</span>
+   <span class="p">{</span>
+    <span class="n">atan</span> <span class="o">=</span> <span class="n">PIBY2_FLOAT</span> <span class="o">-</span> <span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mf">0.28</span><span class="n">f</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">)</span>
+     <span class="k">return</span> <span class="n">atan</span> <span class="o">-</span> <span class="n">PI_FLOAT</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">atan</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">float</span> <span class="nf">Fast_Atan</span><span class="p">(</span><span class="kt">float</span> <span class="n">y</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">PIBY2_FLOAT</span> <span class="o">=</span> <span class="mf">1.5707963</span><span class="n">F</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">PI_FLOAT</span> <span class="o">=</span> <span class="mf">3.14159265</span><span class="n">F</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">atan</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">fabsf</span><span class="p">(</span> <span class="n">z</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="n">f</span> <span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">atan</span> <span class="o">=</span> <span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="n">f</span> <span class="o">+</span> <span class="mf">0.28</span><span class="n">f</span><span class="o">*</span><span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">)</span>
+     <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">)</span> <span class="k">return</span> <span class="n">atan</span> <span class="o">-</span> <span class="n">PI_FLOAT</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">atan</span> <span class="o">+</span> <span class="n">PI_FLOAT</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="k">else</span>
+   <span class="p">{</span>
+    <span class="n">atan</span> <span class="o">=</span> <span class="n">PIBY2_FLOAT</span> <span class="o">-</span> <span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mf">0.28</span><span class="n">f</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">)</span>
+     <span class="k">return</span> <span class="n">atan</span> <span class="o">-</span> <span class="n">PI_FLOAT</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">atan</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ACos</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">float</span> <span class="n">retval</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.69813170079773212</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.87266462599716477</span><span class="n">F</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">1.5707963267948966</span><span class="n">F</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">retval</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ASin</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">float</span> <span class="n">retval</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.69813170079773212</span><span class="n">F</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.87266462599716477</span><span class="n">F</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">retval</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_SinH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">k</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">d</span><span class="p">;</span>
+  <span class="c1">//*((int*)(&amp;d) + 0) = 0;</span>
+  <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="mi">1512775</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1072632447</span><span class="p">);</span>
+  <span class="c1">//*((int*)(&amp;k) + 0) = 0;</span>
+  <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="mi">1512775</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1072632447</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_CosH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">k</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">d</span><span class="p">;</span>
+  <span class="c1">//*((int*)(&amp;d) + 0) = 0;</span>
+  <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="mi">1512775</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1072632447</span><span class="p">);</span>
+  <span class="c1">//*((int*)(&amp;k) + 0) = 0;</span>
+  <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="mi">1512775</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1072632447</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_TanH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="c1">// from http://www.musicdsp.org/showone.php?id=238</span>
+ <span class="p">{</span>
+  <span class="c1">//double xt;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+  <span class="p">{</span>
+   <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+   <span class="kt">double</span> <span class="n">xz</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">27</span> <span class="o">+</span> <span class="n">xz</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">27</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">*</span> <span class="n">xz</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">//return xt</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ATanH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">mlnx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">plnx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals2</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">plnx</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">mlnx</span><span class="p">;</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">mlnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">mlnx</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mlnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">mlnx</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">))</span> <span class="o">-</span> <span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">plnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">plnx</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">plnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">plnx</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals2</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">)))</span> <span class="o">*</span> <span class="mf">0.5</span><span class="n">f</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ACosH</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">zsqrz</span><span class="p">;</span>
+  <span class="c1">//float chk</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">val2s</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="n">zsqrz</span> <span class="o">=</span> <span class="n">val</span> <span class="o">+</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">*</span> <span class="n">val2s</span><span class="p">.</span><span class="n">val</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">zsqrz</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ASinH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ASecH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">zsqrz</span><span class="p">;</span>
+  <span class="c1">//float chk</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">val2s</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">val2s</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="n">zsqrz</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="o">+</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">*</span> <span class="n">val2s</span><span class="p">.</span><span class="n">val</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">zsqrz</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ACscH</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">val</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="c1">// tmp is now an approximation to logbase2(val)</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">Fast_ACotH</span><span class="p">(</span><span class="kt">double</span> <span class="n">valts</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">valts</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">mlnx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">plnx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals</span><span class="p">;</span>
+  <span class="k">union</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">vals2</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">plnx</span><span class="p">;</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">mlnx</span><span class="p">;</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">tmp</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">23</span><span class="p">;</span> <span class="c1">// Remove last bit so 1.0 gives 1.0</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">tmp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// divide by 2</span>
+  <span class="n">vals2</span><span class="p">.</span><span class="n">tmp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">29</span><span class="p">;</span> <span class="c1">// add 64 to exponent: (e+127)/2 =(e/2)+63;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">mlnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">mlnx</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mlnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">mlnx</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">))</span> <span class="o">-</span> <span class="mf">6.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">plnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">plnx</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">plnx</span> <span class="o">*</span> <span class="p">(</span><span class="n">plnx</span> <span class="o">+</span> <span class="mf">4.0</span><span class="n">F</span> <span class="o">*</span> <span class="n">vals2</span><span class="p">.</span><span class="n">val</span> <span class="o">++</span><span class="p">)))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Fast_RandInit</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+ <span class="p">{</span>
+   <span class="kt">float</span> <span class="n">ftl</span><span class="p">;</span>
+   <span class="kt">float</span> <span class="n">ftl2</span><span class="p">;</span>
+   <span class="kt">float</span> <span class="n">ftl3</span><span class="p">;</span>
+   <span class="n">ftl</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">7</span><span class="p">);</span>
+   <span class="n">xrander</span> <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">long</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">ftl</span><span class="p">;</span>
+   <span class="n">ftl2</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span>
+   <span class="n">yrander</span> <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">long</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">ftl2</span><span class="p">;</span>
+   <span class="n">ftl3</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+   <span class="n">zrander</span> <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">long</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">ftl3</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">((</span><span class="n">i</span> <span class="err">##</span>  <span class="mi">0</span><span class="p">)</span><span class="o">||</span><span class="p">(</span><span class="n">j</span> <span class="err">##</span>  <span class="mi">0</span><span class="p">)</span><span class="o">||</span><span class="p">(</span> <span class="n">k</span> <span class="err">##</span>  <span class="mi">0</span> <span class="p">))</span>
+    <span class="p">{</span>
+     <span class="n">shift1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+     <span class="n">shift2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+     <span class="n">shift3</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+    <span class="p">}</span>
+   <span class="k">else</span>
+    <span class="p">{</span>
+     <span class="n">shift1</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">//8 * sin(x) + 9;</span>
+     <span class="n">shift3</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="c1">//8 * cos(x) + 9;</span>
+     <span class="n">shift2</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span> <span class="c1">//(shift1 + shift3) / 2;</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+
+<span class="kr">inline</span> <span class="kt">float</span> <span class="nf">Fast_Rand</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">//based off of George Marsaglia's XORSHIFT algorithms</span>
+ <span class="p">{</span>     <span class="c1">//</span>
+  <span class="n">xrander</span> <span class="o">^=</span> <span class="n">xrander</span> <span class="o">&lt;&lt;</span> <span class="n">shift1</span><span class="p">;</span>
+  <span class="n">xrander</span> <span class="o">^=</span> <span class="n">xrander</span> <span class="o">&gt;&gt;</span> <span class="n">shift2</span><span class="p">;</span>
+  <span class="n">xrander</span> <span class="o">^=</span> <span class="n">xrander</span> <span class="o">&lt;&lt;</span> <span class="n">shift3</span><span class="p">;</span>
+  <span class="n">trander</span> <span class="o">=</span> <span class="n">xrander</span><span class="p">;</span>
+  <span class="n">xrander</span> <span class="o">=</span> <span class="n">yrander</span><span class="p">;</span>
+  <span class="n">yrander</span> <span class="o">=</span> <span class="n">zrander</span><span class="p">;</span>
+  <span class="n">zrander</span> <span class="o">=</span> <span class="n">trander</span> <span class="o">^</span> <span class="n">xrander</span> <span class="o">^</span> <span class="n">yrander</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kt">float</span> <span class="p">(</span><span class="n">zrander</span><span class="p">)</span><span class="o">/</span><span class="mi">4294967295</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kr">inline</span> <span class="kt">float</span> <span class="nf">Fast_Sign</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="kt">float</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">;</span>
+ <span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="p">)</span><span class="n">r</span> <span class="o">|=</span> <span class="p">((</span><span class="kt">int</span><span class="o">&amp;</span><span class="p">)</span><span class="n">f</span> <span class="o">&amp;</span> <span class="mh">0x80000000</span><span class="p">);</span>
+ <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">High_ATanH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">High_ACosH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">High_ASinH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">High_ASecH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">xz</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">xz</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">xz</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">xz</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">High_ACscH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="p">);</span>
+ <span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">High_ACotH</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">xz</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">xz</span><span class="p">)</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">xz</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kr">inline</span> <span class="kt">float</span> <span class="nf">High_Sign</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//this may or may not be used in QB64 in the future</span>
+  <span class="k">if</span> <span class="p">(((</span><span class="kt">int</span><span class="o">&amp;</span><span class="p">)</span><span class="n">f</span> <span class="o">&amp;</span> <span class="mh">0x7FFFFFFF</span><span class="p">)</span><span class="err">##</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+     <span class="k">return</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+     <span class="kt">float</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">;</span>
+     <span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="p">)</span><span class="n">r</span> <span class="o">|=</span> <span class="p">((</span><span class="kt">int</span><span class="o">&amp;</span><span class="p">)</span><span class="n">f</span> <span class="o">&amp;</span> <span class="mh">0x80000000</span><span class="p">);</span>
+     <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">Misc_TrailZCount</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="c1">//unsigned int v;     // 32-bit word input to count zero bits on right</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>     <span class="c1">// c will be the number of zero bits on the right,</span>
+                    <span class="c1">// so if v is 1101000 (base 2), then c will be 3</span>
+ <span class="c1">// NOTE: if 0 ##  v, then c = 31.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">)</span>
+  <span class="p">{</span>
+   <span class="c1">// special case for odd v (assumed to happen half of the time)</span>
+   <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+   <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">((</span><span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">)</span> <span class="err">##</span>  <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">v</span> <span class="o">&gt;&gt;=</span> <span class="mi">16</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">+=</span> <span class="mi">16</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">if</span> <span class="p">((</span><span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">)</span> <span class="err">##</span>  <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">v</span> <span class="o">&gt;&gt;=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">+=</span> <span class="mi">8</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">if</span> <span class="p">((</span><span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="p">)</span> <span class="err">##</span>  <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">v</span> <span class="o">&gt;&gt;=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">if</span> <span class="p">((</span><span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0x3</span><span class="p">)</span> <span class="err">##</span>  <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">v</span> <span class="o">&gt;&gt;=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="n">c</span> <span class="o">-=</span> <span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Misc_Parity</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span><span class="c1">// is the number of 1 bits odd? true if so</span>
+ <span class="p">{</span>
+  <span class="c1">//unsigned int v; // 32-bit word</span>
+  <span class="n">v</span> <span class="o">^=</span> <span class="n">v</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">^=</span> <span class="n">v</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0x11111111U</span><span class="p">)</span> <span class="o">*</span> <span class="mh">0x11111111U</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;&gt;</span> <span class="mi">28</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Misc_BitSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1">//u//nsigned int v; // count the number of bits set in v</span>
+ <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">c</span><span class="p">;</span> <span class="c1">// c accumulates the total bits set in v</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">v</span><span class="p">;</span> <span class="n">c</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+   <span class="n">v</span> <span class="o">&amp;=</span> <span class="n">v</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// clear the least significant bit set</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">long</span> <span class="nf">Misc_FloatToLong</span><span class="p">(</span><span class="kt">float</span> <span class="n">y</span><span class="p">)</span> <span class="c1">//1132462080</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">long</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">float</span> <span class="nf">Misc_LongToFloat</span><span class="p">(</span><span class="kt">long</span> <span class="n">y</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">float</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">;</span>
+ <span class="p">}</span>
+
+<span class="kt">long</span> <span class="nf">Misc_UnSetRMBit</span><span class="p">(</span><span class="kt">long</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="p">}</span> 
+
+</code></pre></div></div>
+
+<p><sub>Library created by DarthWho</sub></p>
+
+<p><strong><a href="http://dl.dropbox.com/u/12359848/fastmath.h">Latest Fast Math Update</a></strong></p>
+
+<p>Using <strong>trailzcount</strong> to speed up the process of finding the prime factors of a number.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">LIBRARY</span> <span class="s">"fastmath"</span>
+    <span class="n">FUNCTION</span> <span class="n">TrailZCount</span><span class="err">%</span> <span class="n">ALIAS</span> <span class="n">Misc_TrailZCount</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">vals</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+<span class="n">INPUT</span> <span class="s">"enter a number: "</span><span class="p">,</span> <span class="n">xt&amp;</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">TrailZCount</span><span class="err">%</span><span class="p">(</span><span class="n">xt&amp;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"the prime factors of"</span><span class="err">;</span> <span class="n">xt&amp;</span><span class="err">;</span> <span class="s">" are:"</span><span class="err">;</span>
+<span class="n">IF</span> <span class="n">tabs</span> <span class="n">THEN</span>
+    <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">tabs</span>
+        <span class="n">PRINT</span> <span class="mi">2</span><span class="err">;</span>
+    <span class="n">NEXT</span> <span class="n">i</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">x&amp;</span> <span class="o">=</span> <span class="n">xt&amp;</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">^</span> <span class="n">tabs</span><span class="p">)</span>
+<span class="n">c&amp;</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">WHILE</span> <span class="n">c&amp;</span> <span class="o">&lt;=</span> <span class="n">x&amp;</span>
+    <span class="n">WHILE</span> <span class="n">x&amp;</span> <span class="n">MOD</span> <span class="n">c&amp;</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">x&amp;</span> <span class="o">=</span> <span class="n">x&amp;</span> <span class="o">/</span> <span class="n">c&amp;</span>
+        <span class="n">PRINT</span> <span class="n">c&amp;</span><span class="err">;</span>
+    <span class="n">WEND</span>
+    <span class="n">c&amp;</span> <span class="o">=</span> <span class="n">c&amp;</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">WEND</span>
+<span class="n">PRINT</span> 
+
+</code></pre></div></div>
+
+<p>Using <strong>parity</strong> to detect single bit errors simulated using <strong>unsetrmbit</strong>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'parity checking code which may be used in order to detect a download error:</span>
+<span class="c1">'will also use the bitset function to simulate a download error .bitset unsets the lowest set bit</span>
+<span class="c1">'parity checking code which may be used in order to detect a download error:</span>
+<span class="c1">'will also use the bitset function to simulate a download error .bitset unsets the lowest set bit</span>
+<span class="n">DECLARE</span> <span class="n">LIBRARY</span> <span class="s">"fastmath"</span>
+    <span class="n">FUNCTION</span> <span class="n">parity&amp;</span> <span class="n">ALIAS</span> <span class="n">Misc_Parity</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">val</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">unsetrmbit&amp;</span> <span class="n">ALIAS</span> <span class="n">Misc_UnSetRMBit</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">vals</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+<span class="n">TYPE</span> <span class="n">DLDATA</span>
+    <span class="n">par</span> <span class="n">AS</span> <span class="n">_BIT</span>
+    <span class="n">dataa</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+<span class="n">DIM</span> <span class="n">values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'here is where the data is created</span>
+<span class="n">g&amp;</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">h&amp;</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">values</span><span class="p">.</span><span class="n">par</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">parity&amp;</span><span class="p">(</span><span class="n">g&amp;</span><span class="p">)</span>
+<span class="n">values</span><span class="p">.</span><span class="n">dataa</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">g&amp;</span>
+<span class="n">values</span><span class="p">.</span><span class="n">par</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">parity&amp;</span><span class="p">(</span><span class="n">h&amp;</span><span class="p">)</span>
+<span class="n">values</span><span class="p">.</span><span class="n">dataa</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">h&amp;</span> <span class="c1">'transfer and error in values.dataa(1)</span>
+<span class="n">values</span><span class="p">.</span><span class="n">dataa</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">unsetrmbit&amp;</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="n">dataa</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1">'checking for single bit errors in download</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">1</span>
+    <span class="n">IF</span> <span class="n">values</span><span class="p">.</span><span class="n">par</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">parity&amp;</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="n">dataa</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="n">THEN</span>
+        <span class="n">PRINT</span> <span class="s">"no single bit errors detected in in data packet"</span><span class="err">;</span> <span class="n">i</span>
+    <span class="n">ELSE</span>
+        <span class="n">PRINT</span> <span class="s">"error found in data packet"</span><span class="err">;</span> <span class="n">i</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a>, <a href="BYVAL.html">BYVAL</a></li>
+  <li><a href="_OFFSET.html">_OFFSET</a>, <a href="_OFFSET-(function).html">_OFFSET (function)</a> (lp, ptr and p names)</li>
+  <li><a href="DLL-Libraries.html">DLL Libraries</a>, <a href="Windows-Libraries.html">Windows Libraries</a></li>
+  <li><a href="Libraries.html">Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/C-Libraries by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:34 GMT -->
+</html>

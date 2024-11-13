@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_FREEFONT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_FREEFONT-2.html" />
+<meta property="og:url" content="_FREEFONT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_FREEFONT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_FREEFONT.html">_FREEFONT</a> statement frees a font handle that was created by <a href="_LOADFONT.html">_LOADFONT</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_FREEFONT.html">_FREEFONT</a> (fontHandle&amp;)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Unloads fonts that are no longer in use or needed in order to free program memory and resources.</li>
+  <li>You cannot free a font which is in use. Change the font to a QB64 default font size before freeing the handle (see example below).</li>
+  <li>Predefined <strong>QB64</strong> font handle numbers can be used before freeing a font:
+    <ul>
+      <li><strong>_FONT 8</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 1, 2, 7, 8 or 13</li>
+      <li><strong>_FONT 14</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 9 or 10</li>
+      <li><strong>_FONT 16</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 0 (<a href="WIDTH.html">WIDTH</a> 80, 25 text only), 11 or 12</li>
+      <li><strong>_FONT 9, 15</strong> and <strong>17</strong> are the double width versions of 8, 14 and 16 respectively in text <strong>SCREEN 0</strong>.</li>
+    </ul>
+  </li>
+  <li>If the font handle is invalid (equals -1 or 0), an <a href="ERROR-Codes.html">ERROR Codes</a> will occur. <strong>Check handle values before using or freeing them.</strong></li>
+  <li>You cannot free inbuilt/default QB64 fonts nor do they ever need freed.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Previews and creates a file list of valid MONOSPACE TTF fonts by checking the <a href="_LOADFONT.html">_LOADFONT</a> handle values.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">path$</span> <span class="o">=</span> <span class="s">"C:\WINDOWS\Fonts\"</span>                  <span class="c1">'path to the font folder</span>
+<span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"DIR /b "</span> <span class="o">+</span> <span class="n">path$</span> <span class="o">+</span> <span class="s">"\*.ttf &gt; TTFonts.INF"</span>  
+<span class="n">style$</span> <span class="o">=</span> <span class="s">"monospace"</span>                         <span class="c1">'set style to MONOSPACE</span>
+<span class="n">OPEN</span> <span class="s">"TTFonts.INF"</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>           <span class="c1">'list of TTF fonts only</span>
+<span class="n">OPEN</span> <span class="s">"TTFMono.INF"</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span>          <span class="c1">'will hold list of valid MONOSPACE fonts</span>
+
+<span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">found</span> <span class="o">=</span> <span class="n">found</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">font$</span>          
+  <span class="n">f&amp;</span> <span class="o">=</span><span class="n">_LOADFONT</span><span class="p">(</span><span class="n">path$</span> <span class="o">+</span> <span class="n">font$</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">style$</span><span class="p">)</span>   
+  <span class="n">IF</span> <span class="n">f&amp;</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>                  <span class="c1">'check for valid handle values &gt; 0</span>
+    <span class="n">OK</span> <span class="o">=</span> <span class="n">OK</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">PRINT</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="n">font$</span>
+    <span class="n">_FONT</span> <span class="n">f&amp;</span>                      <span class="c1">'will create error if handle is invalid!</span>
+    <span class="n">PRINT</span> <span class="s">"Hello World!"</span>    
+    <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">font$</span><span class="err">;</span> <span class="n">f&amp;</span> 
+    <span class="n">PRINT</span> <span class="s">"Press any key."</span>   
+    <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">_FONT</span> <span class="mi">16</span>                      <span class="c1">'use QB64 default font to free tested font</span>
+    <span class="n">_FREEFONT</span> <span class="n">f&amp;</span>                  <span class="c1">'returns an error if handle &lt;= 0! </span>
+    <span class="n">CLS</span>  
+  <span class="n">END</span> <span class="n">IF</span>     
+  <span class="n">PRINT</span>
+<span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">LOOP</span>
+<span class="n">CLOSE</span>
+<span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Found"</span><span class="err">;</span> <span class="n">found</span><span class="err">;</span> <span class="s">"TTF files,"</span><span class="err">;</span> <span class="n">OK</span><span class="err">;</span> <span class="s">"can use Monospace,"</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Found 106 TTF files, 13 can use Monospace.
+
+</code></pre></div></div>
+
+<p>Using a _FREEFONT sub-procedure.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">fontpath$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"SYSTEMROOT"</span><span class="p">)</span> <span class="o">+</span> <span class="s">"\fonts\lucon.ttf"</span> 
+<span class="n">style$</span> <span class="o">=</span> <span class="s">"MONOSPACE, ITALIC, BOLD"</span>
+<span class="n">fontsize%</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">_FONT</span> <span class="mi">16</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"This is the QB64 default _FONT 16! To change, press any key!"</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">GOSUB</span> <span class="n">ClearFont</span>  <span class="c1">'call will not free anything if font&amp; = 0</span>
+
+<span class="n">font&amp;</span> <span class="o">=</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="n">fontpath$</span><span class="p">,</span> <span class="n">fontsize%</span><span class="p">,</span> <span class="n">style$</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">font</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FONT</span> <span class="n">font&amp;</span>  <span class="c1">'NEVER try to load a font value less than 1!</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"A NEW _FONT style. To change to default, press any key!"</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">GOSUB</span> <span class="n">ClearFont</span>  <span class="c1">'call will free a valid font handle from memory</span>
+
+<span class="n">END</span>
+
+<span class="n">ClearFont</span><span class="p">:</span> 
+<span class="n">IF</span> <span class="n">font&amp;</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">_FONT</span> <span class="mi">16</span>   <span class="c1">'change used font to the QB64 8x16 default font</span>
+    <span class="n">_FREEFONT</span> <span class="n">font&amp;</span>
+    <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"The previous font was freed with _FREEFONT!"</span>
+<span class="n">ELSE</span> <span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"_FREEFONT was not used!"</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">RETURN</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FONT.html">_FONT</a></li>
+  <li><a href="_LOADFONT.html">_LOADFONT</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_FREEFONT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:37 GMT -->
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Alternative-circle-routine.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Alternative-circle-routine-2.html" />
+<meta property="og:url" content="Alternative-circle-routine-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Alternative-circle-routine.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Circle.BI Include file or <a href="SUB.html">SUB</a> to use when using <a href="PAINT.html">PAINT</a> with pie charts or arc slices:</strong></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="c1">'CIRCLE.BI</span>
+<span class="c1">'**</span>
+<span class="c1">'** QB64 replacement CIRCLE command.</span>
+<span class="c1">'**</span>
+<span class="c1">'** The CIRCLE command in QB64 has a few issues:</span>
+<span class="c1">'**</span>
+<span class="c1">'** - radian end points are not calculate properly when creating arcs</span>
+<span class="c1">'** - center line to radian end points do not close properly due to previous bug listed</span>
+<span class="c1">'**</span>
+<span class="c1">'** This circle command replacement works very similiarly to the native CIRCLE command:</span>
+<span class="c1">'**</span>
+<span class="c1">'** SYNTAX: CIRCLES x%, y%, radius!, color~&amp;, start_radian!, end_radian!, aspect_ratio!</span>
+<span class="c1">'**</span>
+<span class="c1">'**   x%            - center X coordinate of circle</span>
+<span class="c1">'**   y%            - center Y coordinate of circle</span>
+<span class="c1">'**   radius!       - the radius of the circle</span>
+<span class="c1">'**   color~&amp;       - the circle's color</span>
+<span class="c1">'**   start_radian! - the radian on circle curcunference to begin drawing at</span>
+<span class="c1">'**   end_radian!   - the radian on circle circumference to end drawing at</span>
+<span class="c1">'**   aspect_ratio! - the aspect ratio of the circle</span>
+<span class="c1">'**</span>
+<span class="c1">'** **NOTE: unlike the native CIRCLE command, all arguments MUST be supplied.** For example,</span>
+<span class="c1">'**       with the native command this will draw a perfect circle with the default color,</span>
+<span class="c1">'**       start radian, end radian and aspect ratio:</span>
+<span class="c1">'**</span>
+<span class="c1">'**       CIRCLE (319, 239), 100</span>
+<span class="c1">'**</span>
+<span class="c1">'**       To do the same thing with this replacement command you must supply everything:</span>
+<span class="c1">'**</span>
+<span class="c1">'**       CIRCLES 319, 239, 100, _RGB32(255, 255, 255), 0, 0, 0</span>
+<span class="c1">'**</span>
+<span class="c1">'** ACKNOWLEGEMENTS: The FOR/NEXT step formula was was written by Codeguy for Unseen</span>
+<span class="c1">'**                  Machine's Visual library EllipseXS command. Specifically:</span>
+<span class="c1">'**                         MinStep! = 1 / (2 * 3.1415926535 * Radius!)</span>
+<span class="c1">'**</span>
+<span class="c1">'**</span>
+<span class="c1">'** Includes performance tweaks made by SMcNeill on 02/02/13 - specifically removing a few redundant * -1</span>
+<span class="c1">'** statements and converting the FOR/NEXT loop to a DO loop for a ~3% increase in performance.</span>
+<span class="c1">'**</span>
+<span class="c1">'** Corrected bug in which variables being passed in were being modified and passed back - 02/02/13</span>
+<span class="c1">'**</span>
+<span class="o">**</span><span class="n">SUB</span> <span class="n">CIRCLES</span> <span class="p">(</span><span class="n">cx%</span><span class="p">,</span> <span class="n">cy%</span><span class="p">,</span> <span class="n">r!</span><span class="p">,</span> <span class="n">c</span><span class="err">~</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">s!</span><span class="p">,</span> <span class="n">e!</span><span class="p">,</span> <span class="n">a!</span><span class="p">)</span><span class="o">**</span>
+<span class="n">DIM</span> <span class="n">s%</span><span class="p">,</span> <span class="n">e%</span><span class="p">,</span> <span class="n">nx%</span><span class="p">,</span> <span class="n">ny%</span><span class="p">,</span> <span class="n">xr!</span><span class="p">,</span> <span class="n">yr!</span><span class="p">,</span> <span class="n">st!</span><span class="p">,</span> <span class="n">en!</span><span class="p">,</span> <span class="n">asp!</span> <span class="c1">'     local variables used</span>
+
+<span class="n">st!</span> <span class="o">=</span> <span class="n">s!</span> <span class="c1">'                                           copy start radian to local variable</span>
+<span class="n">en!</span> <span class="o">=</span> <span class="n">e!</span> <span class="c1">'                                           copy end radian to local variable</span>
+<span class="n">asp!</span> <span class="o">=</span> <span class="n">a!</span> <span class="c1">'                                          copy aspect ratio to local variable</span>
+<span class="n">IF</span> <span class="n">asp!</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">asp!</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'                         keep aspect ratio between 0 and 4</span>
+<span class="n">IF</span> <span class="n">asp!</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">asp!</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">IF</span> <span class="n">asp!</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">xr!</span> <span class="o">=</span> <span class="n">r!</span> <span class="o">*</span> <span class="n">asp!</span> <span class="o">*</span> <span class="mi">4</span> <span class="n">ELSE</span> <span class="n">xr!</span> <span class="o">=</span> <span class="n">r!</span> <span class="c1">' calculate x/y radius based on aspect ratio</span>
+<span class="n">IF</span> <span class="n">asp!</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">yr!</span> <span class="o">=</span> <span class="n">r!</span> <span class="o">*</span> <span class="n">asp!</span> <span class="n">ELSE</span> <span class="n">yr!</span> <span class="o">=</span> <span class="n">r!</span>
+<span class="n">IF</span> <span class="n">st!</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">s%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">st!</span> <span class="o">=</span> <span class="o">-</span><span class="n">st!</span> <span class="c1">'                remember if line needs drawn from center to start radian</span>
+<span class="n">IF</span> <span class="n">en!</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">e%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">en!</span> <span class="o">=</span> <span class="o">-</span><span class="n">en!</span> <span class="c1">'                remember if line needs drawn from center to end radian</span>
+<span class="n">IF</span> <span class="n">s%</span> <span class="n">THEN</span> <span class="c1">'                                         draw line from center to start radian?</span>
+    <span class="n">nx%</span> <span class="o">=</span> <span class="n">cx%</span> <span class="o">+</span> <span class="n">xr!</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">st!</span><span class="p">)</span> <span class="c1">'                     yes, compute starting point on circle's circumference</span>
+    <span class="n">ny%</span> <span class="o">=</span> <span class="n">cy%</span> <span class="o">+</span> <span class="n">yr!</span> <span class="o">*</span> <span class="o">-</span><span class="n">SIN</span><span class="p">(</span><span class="n">st!</span><span class="p">)</span>
+    <span class="n">LINE</span> <span class="p">(</span><span class="n">cx%</span><span class="p">,</span> <span class="n">cy%</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">nx%</span><span class="p">,</span> <span class="n">ny%</span><span class="p">),</span> <span class="n">c</span><span class="err">~</span><span class="o">&amp;</span> <span class="c1">'                draw line from center to radian</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">IF</span> <span class="n">en!</span> <span class="o">&lt;=</span> <span class="n">st!</span> <span class="n">THEN</span> <span class="n">en!</span> <span class="o">=</span> <span class="n">en!</span> <span class="o">+</span> <span class="mf">6.2831852</span> <span class="c1">'           come back around to proper location (draw counterclockwise)</span>
+<span class="n">stepp!</span> <span class="o">=</span> <span class="mf">0.159154945806</span> <span class="o">/</span> <span class="n">r!</span>
+<span class="n">c!</span> <span class="o">=</span> <span class="n">st!</span> <span class="c1">'                                           cycle from start radian to end radian</span>
+<span class="n">DO</span>
+    <span class="n">nx%</span> <span class="o">=</span> <span class="n">cx%</span> <span class="o">+</span> <span class="n">xr!</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">c!</span><span class="p">)</span> <span class="c1">'                      compute next point on circle's circumfrerence</span>
+    <span class="n">ny%</span> <span class="o">=</span> <span class="n">cy%</span> <span class="o">+</span> <span class="n">yr!</span> <span class="o">*</span> <span class="o">-</span><span class="n">SIN</span><span class="p">(</span><span class="n">c!</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">nx%</span><span class="p">,</span> <span class="n">ny%</span><span class="p">),</span> <span class="n">c</span><span class="err">~</span><span class="o">&amp;</span> <span class="c1">'                           draw the point</span>
+    <span class="n">c!</span> <span class="o">=</span> <span class="n">c!</span> <span class="o">+</span> <span class="n">stepp!</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">c!</span> <span class="o">&gt;=</span> <span class="n">en!</span>
+<span class="n">IF</span> <span class="n">e%</span> <span class="n">THEN</span> <span class="n">LINE</span> <span class="o">-</span><span class="p">(</span><span class="n">cx%</span><span class="p">,</span> <span class="n">cy%</span><span class="p">),</span> <span class="n">c</span><span class="err">~</span><span class="o">&amp;</span> <span class="c1">'                   draw line from center to end radian if needed</span>
+<span class="o">**</span><span class="n">END</span> <span class="n">SUB</span><span class="o">**</span>
+
+</code></pre></div></div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Alternative-circle-routine.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+</html>

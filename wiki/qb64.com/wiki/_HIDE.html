@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_HIDE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_HIDE-2.html" />
+<meta property="og:url" content="_HIDE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_HIDE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_HIDE.html">_HIDE</a> action is used to hide the console window opened by a <a href="SHELL.html">SHELL</a> statement.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="SHELL.html">SHELL</a> [<strong>_HIDE</strong>] StringCommandLine$</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Allows any command line window to be hidden from view without affecting the program.</li>
+  <li><a href="_HIDE.html">_HIDE</a> must be used when sending (“piping”) screen information to a file.</li>
+  <li><strong>Note:</strong> Some commands may not work without adding CMD /C to the start of the command line.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Subprogram that displays long and short filenames using the DIR /X option (WindowsNT or above) in SCREEN 12:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">LFN</span>
+ <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"OS"</span><span class="p">))</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">SUB</span>   <span class="c1">' /X not available Win 9X and ME </span>
+ <span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"cmd /c dir /x &gt; DOS-DATA.INF"</span> <span class="c1">' load display data to a file</span>
+ <span class="n">OPEN</span> <span class="s">"DOS-DATA.INF"</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+ <span class="n">IF</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span>
+   <span class="n">Header</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s">"Short"</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s">"Long"</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="s">"Last Modified"</span>
+   <span class="n">tmp$</span> <span class="o">=</span> <span class="s">"\   \  \          \      &amp;"</span> <span class="c1">' print using template format</span>
+   <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">Header</span><span class="err">$</span>
+   <span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">line$</span>
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">line$</span><span class="p">)</span> <span class="n">AND</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="c1">' ignore other file data</span>
+      <span class="n">cnt%</span> <span class="o">=</span> <span class="n">cnt%</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">last$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span> <span class="n">DIR</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+      <span class="n">IF</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="c1">' found line with short and long name </span>
+        <span class="n">SHFN</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">line$</span><span class="p">,</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">LGFN</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">53</span><span class="p">)</span>
+      <span class="n">ELSE</span> <span class="p">:</span> <span class="n">SHFN</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">line$</span><span class="p">,</span> <span class="mi">53</span><span class="p">):</span> <span class="n">LGFN</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span> <span class="c1">' found short name only</span>
+      <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">IF</span> <span class="n">cnt%</span> <span class="n">MOD</span> <span class="mi">25</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="c1">' pause every 25 files</span>
+        <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">27</span> <span class="s">"Press a key for more files!"</span>
+        <span class="n">DO</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+        <span class="n">CLS</span><span class="p">:</span> <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">Header</span><span class="err">$</span>
+      <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="p">(</span><span class="n">cnt%</span> <span class="n">MOD</span> <span class="mi">25</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+      <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">tmp$</span><span class="err">;</span> <span class="n">DIR</span><span class="err">$;</span> <span class="n">SHFN</span><span class="err">$;</span> <span class="n">LGFN</span><span class="err">$</span>
+      <span class="n">LOCATE</span> <span class="p">(</span><span class="n">cnt%</span> <span class="n">MOD</span> <span class="mi">25</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">58</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">last$</span>
+    <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">LOOP</span>
+ <span class="n">END</span> <span class="n">IF</span>
+ <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="n">CSRLIN</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">27</span> <span class="s">"Total folders and files ="</span><span class="err">;</span> <span class="n">cnt%</span>
+ <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The above routine can also be used to place the file name info into string arrays by using the count variable cnt% to determine the index. Long file names are normally returned by <strong>QB64</strong>. To keep older QBasic programs compatible, you may want to only use the short names when displaying the files on the screen.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SHELL.html">SHELL</a>, <a href="_DONTWAIT.html">_DONTWAIT</a></li>
+  <li><a href="FILELIST%24-(function).html">FILELIST$ (function)</a> (<a href="FILES.html">FILES</a> function, member-contributed)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_HIDE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:47 GMT -->
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PUT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PUT-2.html" />
+<meta property="og:url" content="PUT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PUT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>PUT #</strong> file or port statement writes data to a specific byte or record location.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>PUT #<em>filenumber&amp;</em>,</strong> [<em>position</em>][, {<em>holdingvariable</em></td>
+        <td><em>holdingarray()</em>}]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<ul>
+  <li>File/port number is the number used in the <a href="OPEN.html">OPEN</a> statement.</li>
+  <li>The <a href="INTEGER.html">INTEGER</a> or <a href="LONG.html">LONG</a> file byte <em>position</em> in a <a href="BINARY.html">BINARY</a> file or the record <em>position</em> in a <a href="RANDOM.html">RANDOM</a> file <strong>must be greater than zero</strong>.</li>
+  <li>The file byte or record <em>position</em> can be omitted if the <a href="PUT.html">PUT</a> or <a href="GET.html">GET</a> is consecutive or when creating new file data sequentially.</li>
+  <li>The <em>holding variable</em> <a href="TYPE.html">TYPE</a> determines byte size and the next byte position in the file when the <em>position</em> is ommitted.</li>
+  <li>The first byte or record position is 1. This may require adding one to an offset value when documentation uses that position as 0.</li>
+  <li>Both the file <em>position</em> and <em>holding variable</em>(and comma) can be omitted when using a <a href="FIELD.html">FIELD</a> definition.</li>
+  <li>If a <a href="LEN.html">LEN</a> = record length statement is omitted in an <a href="OPEN.html">OPEN</a> FOR <a href="RANDOM.html">RANDOM</a>  statement the record size defaults to 128 bytes!</li>
+  <li><strong>Warning: Not designating a PUT position can overwrite previous file data based on the current file <em>position</em>!</strong></li>
+  <li>When using a numeric <em>holding variable</em>, values do NOT require conversion using <a href="MKI%24.html">MKI$</a>, <a href="MKL%24.html">MKL$</a>, <a href="MKS%24.html">MKS$</a> or <a href="MKD%24.html">MKD$</a>.</li>
+  <li><strong>QB64</strong> can load <a href="Arrays.html">Arrays</a> data directly(brackets required) to a <a href="BINARY.html">BINARY</a> file using <strong>one</strong> PUT to a <a href="BINARY.html">BINARY</a> file: <strong>PUT #1, , array()</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using a <a href="TYPE.html">TYPE</a> record variable(Contact) to enter a new <a href="RANDOM.html">RANDOM</a> record to a file.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">ContactType</span>
+  <span class="n">first</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">10</span>
+  <span class="n">last</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">20</span>
+  <span class="n">age</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+<span class="n">DIM</span> <span class="n">Contact</span> <span class="n">AS</span> <span class="n">ContactType</span>
+
+<span class="n">INPUT</span> <span class="s">"Enter a first name: "</span><span class="p">,</span> <span class="n">Contact</span><span class="p">.</span><span class="n">first</span>
+<span class="n">INPUT</span> <span class="s">"Enter a last name: "</span><span class="p">,</span> <span class="n">Contact</span><span class="p">.</span><span class="n">last</span>
+<span class="n">INPUT</span> <span class="s">"Enter an age: "</span><span class="p">,</span> <span class="n">Contact</span><span class="p">.</span><span class="n">age</span>
+
+<span class="n">OPEN</span> <span class="s">"Record.lst"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Contact</span><span class="p">)</span>
+<span class="n">NumRecords</span><span class="err">%</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">\</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Contact</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">NumRecords</span><span class="err">%;</span> <span class="s">"previous records"</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">NumRecords</span><span class="err">%</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Contact</span> <span class="c1">' add a new record TYPE record value</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The DOT record variable values were created or changed before the PUT. The record length is 32 bytes.</p>
+</blockquote>
+
+<p>Placing the contents of a numerical array into a <a href="BINARY.html">BINARY</a> file. You may want to put the array size at the beginning too.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">array</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">100</span>
+  <span class="n">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span>
+<span class="n">NEXT</span>
+<span class="n">showme</span>  <span class="c1">'display array contents</span>
+
+<span class="n">OPEN</span> <span class="s">"BINFILE.BIN"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">array</span><span class="p">()</span>
+
+<span class="n">ERASE</span> <span class="n">array</span> <span class="c1">'clear element values from array and display empty</span>
+<span class="n">showme</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">OPEN</span> <span class="s">"BINFILE.BIN"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="p">,</span> <span class="n">array</span><span class="p">()</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">2</span>
+<span class="n">showme</span>  <span class="c1">'display array after transfer from file</span>
+
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">showme</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">100</span>
+  <span class="n">PRINT</span> <span class="n">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="s">"done"</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Use empty brackets in QB64 when using <a href="GET.html">GET</a> to create an array or <a href="PUT.html">PUT</a> to create a <a href="BINARY.html">BINARY</a> data file.</p>
+</blockquote>
+
+<h2 id="see-examples">See Example(s)</h2>
+
+<ul>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a></li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="GET.html">GET</a></li>
+  <li><a href="SEEK.html">SEEK</a>, <a href="SEEK-(statement).html">SEEK (statement)</a></li>
+  <li><a href="PRINT-(file-statement).html">PRINT (file statement)</a></li>
+  <li><a href="FIELD.html">FIELD</a></li>
+  <li><a href="PUT-(graphics-statement).html">PUT (graphics statement)</a></li>
+  <li><a href="PUT-(TCP-IP-statement).html">PUT (TCP/IP statement)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PUT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:33 GMT -->
+</html>

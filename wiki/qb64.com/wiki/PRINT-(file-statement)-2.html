@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PRINT-(file-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PRINT-(file-statement)-2.html" />
+<meta property="og:url" content="PRINT-(file-statement)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PRINT-(file-statement).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="PRINT-(file-statement).html">PRINT (file statement)</a> statement prints numeric or string expressions to a sequential file, IO port or device.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>PRINT #<em>fileNumber&amp;</em></strong>, [ [expression] [{;</td>
+        <td>,] … ]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>fileNumber&amp; is the file number of a file or device opened for writing. See <a href="OPEN.html">OPEN</a>.</li>
+  <li>expression is a numeric or string expression to be written to the file. Quotes will be removed from strings.</li>
+  <li>The print statement can be followed by a <a href="semicolon-2.html">semicolon</a> to stop the print cursor or a <a href="comma-2.html">comma</a> to tab the next print.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li><a href="STRING.html">STRING</a> values will be stripped of leading and trailing quotation marks when printed to the file. Use <a href="CHR%24.html">CHR$</a>(34) to add quotes to a file.</li>
+  <li>separator is used to separate multiple expressions and specifies how the file cursor is to be moved before writing the next expression. It can be one of the following:
+    <ul>
+      <li>semi-colon (;) - specifies that the print cursor stop immediately after the print. A subsequent print will start there.</li>
+      <li>comma (,) - specifies that the file cursor is to move to the next 14-column tab-stop. If the file cursor is at column 56 or greater, it is moved to the next file row at column 1.</li>
+    </ul>
+  </li>
+  <li>If separator is not used at the end of the expression list, the file cursor moves to the next file row at column 1.</li>
+  <li>PRINT # can use the <strong>+ concatenation</strong> operator or semicolons to combine strings.</li>
+  <li><a href="SPC.html">SPC</a>(n%) - specifies that n% space characters will be written in a print.</li>
+  <li><a href="TAB.html">TAB</a>(column%) - specifies that the file cursor is to move to a column number column%. If the file cursor is beyond that column, it is moved to that column on the next file row.</li>
+  <li>When printing literal or variable numerical values the following rules apply:
+    <ul>
+      <li>If the value is positive, the number is prefixed with a space character, otherwise, the number is prefixed with a negative sign (-).</li>
+      <li>If the value is an <a href="INTEGER.html">INTEGER</a> (whole number), no decimal point or fractional part will be written.</li>
+      <li>If the value is not an integer (whole number) and has zero for a coefficient, no leading zero is written. For example, -0.123 is written as “-.123 “</li>
+      <li>If a numeric literal is in scientific notation, the number is also written in scientific notation. <a href="PRINT-USING-(file-statement).html">PRINT USING (file statement)</a> can return actual rounded numerical values in string form.</li>
+      <li>The numerical value is always followed by a space character unless <a href="STR%24.html">STR$</a> is used to convert it to a string value.</li>
+    </ul>
+  </li>
+  <li>Whenever <a href="PRINT-(file-statement).html">PRINT (file statement)</a> moves the file cursor to a new file row, a carriage return character (CHR$(13)) followed by a line feed character (CHR$(10)) is written. The combination are referred to as the “CRLF” character.</li>
+  <li><strong>Note: <a href="RANDOM.html">RANDOM</a> and <a href="BINARY.html">BINARY</a> files are not affected by PRINT # statements to them and will create a syntax error in QB64!</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Prints data to a text file sequentially and reads it back to the program screen as one line of text.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">filename$</span> <span class="o">=</span> <span class="s">"testfile.dat"</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span> <span class="n">z$</span> <span class="o">=</span> <span class="s">"Three"</span> 
+
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">'opens and clears an existing file or creates new empty file </span>
+
+<span class="n">PRINT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z$</span> 
+
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+
+<span class="n">PRINT</span> <span class="s">"File created with data. Press a key!"</span> 
+
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'press a key </span>
+
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span> <span class="c1">'opens a file to read it </span>
+
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="n">text$</span> 
+
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">2</span> 
+
+<span class="n">PRINT</span> <span class="n">text$</span> 
+<span class="n">WRITE</span> <span class="n">text$</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>File content:</em> <a href="PRINT-(file-statement).html">PRINT (file statement)</a> string file values will not include the enclosing quotation marks but can be read by <a href="LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a> as text.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 1             2            Three 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Screen output:</em> <a href="PRINT.html">PRINT</a> string values will not display enclosing quotation marks. <a href="WRITE.html">WRITE</a> screen displays will.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 1             2            Three
+" 1             2            Three"
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SPC.html">SPC</a>, <a href="SPACE%24.html">SPACE$</a>, <a href="TAB.html">TAB</a></li>
+  <li><a href="PRINT-USING-(file-statement).html">PRINT USING (file statement)</a></li>
+  <li><a href="PRINT.html">PRINT</a></li>
+  <li><a href="WRITE-(file-statement).html">WRITE (file statement)</a>, <a href="INPUT-(file-statement).html">INPUT (file statement)</a></li>
+  <li><a href="LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a></li>
+  <li><a href="OPEN.html">OPEN</a>, <a href="LPRINT.html">LPRINT</a>, <a href="WRITE.html">WRITE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PRINT-(file-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:47 GMT -->
+</html>

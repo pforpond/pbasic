@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Keywords-currently-not-supported-by-QB64.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Keywords-currently-not-supported-by-QB64-2.html" />
+<meta property="og:url" content="Keywords-currently-not-supported-by-QB64-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Keywords-currently-not-supported-by-QB64.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The keywords listed here are not supported in QB64. QB64 is meant to be compatible with <strong>QB 4.5 or lower</strong> versions. <strong>PDS (7.1) is not supported</strong>. Older code that uses these keywords won’t generate errors, as these are ignored by the compiler.</p>
+
+<ul>
+  <li><a href="ALIAS.html">ALIAS</a> (supported in <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> only)</li>
+  <li>ANY (See <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a>)</li>
+  <li><a href="BYVAL.html">BYVAL</a> (supported in <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> only)</li>
+  <li>CALLS</li>
+  <li>CDECL</li>
+  <li>DATE$ (statement) (reading the current <a href="DATE%24.html">DATE$</a> is supported)</li>
+  <li>DECLARE (non-BASIC statement)</li>
+  <li>DEF FN, EXIT DEF, END DEF</li>
+  <li>ERDEV, ERDEV$</li>
+  <li>FILEATTR</li>
+  <li>FRE</li>
+  <li>IOCTL, IOCTL$</li>
+  <li><a href="OPEN.html">OPEN</a> with devices like <strong>LPT, CON, KBRD</strong>, and other devices is not supported. <a href="LPRINT.html">LPRINT</a> and <a href="OPEN-COM.html">OPEN COM</a> are supported.</li>
+  <li>ON PEN, PEN (statement), PEN (function)</li>
+  <li>ON PLAY(n), PLAY(n) ON/OFF/STOP. (<a href="PLAY.html">PLAY</a> music is supported.)</li>
+  <li>ON UEVENT</li>
+  <li>SETMEM</li>
+  <li>SIGNAL</li>
+  <li>TIME$ (statement) (reading the current <a href="TIME%24.html">TIME$</a> is supported)</li>
+  <li>TRON, TROFF</li>
+  <li><strong><a href="WIDTH.html">WIDTH</a> <a href="LPRINT.html">LPRINT</a></strong> combined statement is not supported.</li>
+</ul>
+
+<h2 id="keywords-not-supported-in-linux-or-mac-osx-versions">Keywords Not Supported in Linux or MAC OSX versions</h2>
+
+<p>The commands listed here contain platform-specific calls and may be implemented in the future in Linux and macOS. These commands currently result in stub calls which do nothing.</p>
+
+<p>NOTE: The IDE does not support the opening or retrieval of more than one program at a time, but multiple instances of the IDE can be used simultaneously.</p>
+
+<p>Some OS Specific window/desktop calls:</p>
+
+<ul>
+  <li><a href="_ACCEPTFILEDROP.html">_ACCEPTFILEDROP</a>, <a href="_TOTALDROPPEDFILES.html">_TOTALDROPPEDFILES</a>, <a href="_DROPPEDFILE.html">_DROPPEDFILE</a>, <a href="_FINISHDROP.html">_FINISHDROP</a></li>
+  <li><a href="_SCREENPRINT.html">_SCREENPRINT</a></li>
+  <li><a href="_SCREENCLICK.html">_SCREENCLICK</a></li>
+  <li><a href="_SCREENMOVE.html">_SCREENMOVE</a> (available in macOS, and available in MOST Linux distros)</li>
+  <li><a href="_CLIPBOARDIMAGE.html">_CLIPBOARDIMAGE</a>, <a href="_CLIPBOARDIMAGE-(function).html">_CLIPBOARDIMAGE (function)</a></li>
+  <li><a href="_WINDOWHASFOCUS.html">_WINDOWHASFOCUS</a> (available in Linux, not available in macOS)</li>
+  <li><a href="_WINDOWHANDLE.html">_WINDOWHANDLE</a></li>
+  <li><a href="_CAPSLOCK.html">_CAPSLOCK</a>, <a href="_NUMLOCK.html">_NUMLOCK</a>, <a href="_SCROLLLOCK.html">_SCROLLLOCK</a> (statements and functions)</li>
+</ul>
+
+<p>Modular: QB64 has no limit on file size so BAS file modules can be combined.</p>
+
+<ul>
+  <li><a href="CHAIN.html">CHAIN</a></li>
+  <li><a href="RUN.html">RUN</a></li>
+</ul>
+
+<p>Mouse related:</p>
+
+<ul>
+  <li><a href="_MOUSEWHEEL.html">_MOUSEWHEEL</a> (available in Linux, not available in macOS)</li>
+</ul>
+
+<p>Printing:</p>
+
+<ul>
+  <li><a href="LPRINT.html">LPRINT</a></li>
+  <li><a href="_PRINTIMAGE.html">_PRINTIMAGE</a></li>
+</ul>
+
+<p>Port access:</p>
+
+<ul>
+  <li><a href="OPEN-COM.html">OPEN COM</a></li>
+</ul>
+
+<p>File locking:</p>
+
+<ul>
+  <li><a href="LOCK.html">LOCK</a></li>
+  <li><a href="UNLOCK.html">UNLOCK</a></li>
+</ul>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="QB64-FAQ.html">QB64 FAQ</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Keywords-currently-not-supported-by-QB64.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+</html>

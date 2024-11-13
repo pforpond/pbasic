@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SelectScreen by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SelectScreen-2.html" />
+<meta property="og:url" content="SelectScreen-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SelectScreen.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>This screen mode selector shows a list of common video modes found on desktop and laptops graphics cards, and some square modes. It has full mouse support. It also has the ability to filter video modes for a specific aspect ratio.</p>
+
+<p>Some of you might have seen this in my previous graphics program. I’m now releasing it as a library.</p>
+
+<p>It’s a two-part library that can be plugged into any program (using <a href="%24INCLUDE.html">$INCLUDE</a>). It’s two-part because it contains definitions at the start of the program, and subroutines. Originally, <a href="%24INCLUDE.html">$INCLUDE</a> was made for compiled libraries, so there’s no default support to include QuickBASIC code inside them, which is just what I’ve done. Therefore you need two <strong>text</strong> files included at different locations in a graphics program.</p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><em>Example BAS Code:</em> SelectResolution.BAS Demo example should be compiled by QB64 only.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+
+<span class="c1">'$INCLUDE: 'selectResolution.bi'</span>
+
+<span class="n">PRINT</span> <span class="s">"This is screen mode 0. Select another screen mode after pressing a key."</span>
+<span class="n">PRINT</span> <span class="s">"Press any key..."</span>
+<span class="n">i$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">selectResolution</span> <span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
+<span class="n">IF</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span>
+    <span class="n">PRINT</span> <span class="s">"ESC pressed. Exiting."</span>
+    <span class="n">END</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">' '</span>
+<span class="n">PRINT</span> <span class="s">"This is your selected screen"</span>
+<span class="n">PRINT</span> <span class="s">"mode. Press any key to select"</span>
+<span class="n">PRINT</span> <span class="s">"another mode. To demonstrate"</span>
+<span class="n">PRINT</span> <span class="s">"that it keeps your screen mode"</span>
+<span class="n">PRINT</span> <span class="s">"in case you cancel, press ESC"</span>
+<span class="n">PRINT</span> <span class="s">"when selecting a mode."</span>
+<span class="n">i$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">selectResolution</span> <span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span>
+<span class="n">IF</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span>
+    <span class="n">PRINT</span> <span class="s">"ESC pressed. Exiting."</span>
+    <span class="n">END</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"This is your selected screen mode."</span>
+<span class="n">PRINT</span> <span class="s">"Press any key to end."</span>
+<span class="n">i$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1">'$INCLUDE: 'selectResolution.bm'</span>
+
+</code></pre></div></div>
+
+<p><a href="%24INCLUDE.html">$INCLUDE</a> the .bi file on top of your program and the .bm file at the bottom, after your own SUBs.</p>
+
+<p><strong>To create the BI and BM files, copy them to Notepad and Save as <em>ALL FILES</em> with appropriate filename extensions!</strong></p>
+
+<p><em>SelectResolution.bi Code:</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+'#########################################################################################
+'# Resolution selector v1.2 (include at top of program code)
+'# By Zom-B
+'#########################################################################################
+
+videoaspect:
+DATA "all aspect",15
+DATA "4:3",11
+DATA "16:10",10
+DATA "16:9",14
+DATA "5:4",13
+DATA "3:2",12
+DATA "5:3",9
+DATA "1:1",7
+DATA "other",8
+DATA ,
+
+videomodes:
+DATA 256,256,7
+DATA 320,240,1
+DATA 400,300,1
+DATA 512,384,1
+DATA 512,512,7
+DATA 640,480,1
+DATA 720,540,1
+DATA 768,576,1
+DATA 800,480,2
+DATA 800,600,1
+DATA 854,480,3
+DATA 1024,600,8
+DATA 1024,640,2
+DATA 1024,768,1
+DATA 1024,1024,7
+DATA 1152,768,5
+DATA 1152,864,1
+DATA 1280,720,3
+DATA 1280,768,6
+DATA 1280,800,2
+DATA 1280,854,5
+DATA 1280,960,1
+DATA 1280,1024,4
+DATA 1366,768,3
+DATA 1400,1050,1
+DATA 1440,900,2
+DATA 1440,960,5
+DATA 1600,900,3
+DATA 1600,1200,1
+DATA 1680,1050,2
+DATA 1920,1080,3
+DATA 1920,1200,2
+DATA 2048,1152,3
+DATA 2048,1536,1
+DATA 2048,2048,7
+DATA ,,
+
+
+</code></pre></div></div>
+
+<p>The <a href="%24INCLUDE.html">$INCLUDE</a> of the function should be after your main program!</p>
+
+<p>Otherwise you would get the error “Statement cannot be placed between SUB/FUNCTIONs”</p>
+
+<p><em>SelectResolution.bm Code:</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+'####################################################################################################################
+'# Resolution selector v1.3 (routines)
+'# By Zom-B
+'# 'Start in any mode' feature by codeguy.
+'####################################################################################################################
+
+SUB selectResolution (row%, width%, height%)
+    backupScreen&amp; = _COPYIMAGE
+    SCREEN 0
+
+    ' Start neatly.
+    COLOR 7
+
+    yOffset% = row% - 1
+
+    'READ the DATA from the include file, while storing it in local arrays.
+    DIM aspectName$(0 to 9), aspectCol%(0 to 9)
+    RESTORE videoaspect
+    FOR y% = 0 TO 10
+        READ aspectName$(y%), aspectCol%(y%)
+        IF aspectCol%(y%) = 0 THEN numAspect% = y% - 1: EXIT FOR
+    NEXT
+
+    DIM vidX%(1 to 100), vidY%(1 to 100), vidA%(1 to 100)
+    RESTORE videomodes
+    FOR y% = 1 TO 100
+        READ vidX%(y%), vidY%(y%), vidA%(y%)
+        IF vidX%(y%) &lt;= 0 THEN numModes% = y% - 1: EXIT FOR
+    NEXT
+
+    ' If not called from SCREEN 0, set the number of screen rows to maximum.
+    ' Otherwise, the height of the old screen is re-used.
+    IF _PIXELSIZE(backupScreen&amp;) THEN WIDTH , numModes% + row%: _FONT 16
+
+    ' Clip the number of modes to the height of the screen.
+    IF numModes% &gt; _HEIGHT - yOffset% - 1 THEN numModes% = _HEIGHT - yOffset% - 1
+
+    ' Select the text mode's segment for later SCREEN 0 POKEing.
+    DEF SEG = &amp;HB800
+
+    LOCATE yOffset% + 1, 1
+    PRINT "Select video mode:"; TAB(61); "Click"
+
+    ' Print the down-pointing triangle (which isn't a PRINTable character! (try it))
+    POKE (yOffset% * 80 + 66) * 2, 31
+
+    'Initialize some things before entering the loop.
+    selectedAspect% = 0 ' The selected aspect ratio item
+    lastY% = 0 ' The screen Y coordinate of the previously highlighted item
+    reprint% = -1 ' Used to signal that a reprint of the screen is needed
+    lastButton% = 0 ' memory variable to detect a 'depress' of the mouse button
+    DO
+        ' Cancel on ESC.
+        IF INKEY$ = CHR$(27) THEN
+            width% = 0
+            height% = 0
+            EXIT DO
+        END IF
+
+        ' Don't reprint every iteration, only when something changed.
+        IF reprint% THEN
+            reprint% = 0
+
+            FOR x% = 1 TO numModes%
+                LOCATE yOffset% + x% + 1, 1
+
+                ' Print the video mode number in gray.
+                COLOR 7, 0
+                PRINT USING "##:"; x%;
+
+                ' Print the video mode data in it's assigned aspect ratio color (if no aspect ratio is selected),
+                ' otherwise, make matching video modes white and others dark gray.
+                IF selectedAspect% = 0 THEN
+                    COLOR aspectCol%(vidA%(x%))
+                ELSEIF selectedAspect% = vidA%(x%) THEN
+                    COLOR 15
+                ELSE
+                    COLOR 8
+                END IF
+                PRINT STR$(vidX%(x%)); ","; vidY%(x%);
+            NEXT
+
+            FOR x% = 0 TO numAspect%
+                ' Print the aspect ratios. The selected one (if any) with dark cyan background.
+                IF x% &gt; 0 AND selectedAspect% = x% THEN
+                    COLOR aspectCol%(x%), 3
+                ELSE
+                    COLOR aspectCol%(x%), 0
+                END IF
+                LOCATE yOffset% + x% + 2, 64
+                PRINT "&lt;"; aspectName$(x%); "&gt;"
+            NEXT
+        END IF
+
+        IF _MOUSEINPUT THEN
+            IF lastY% &gt; 0 THEN
+                ' Un-highlight any selected item by reverting the color of the entire screen row (while leaving text intact).
+                FOR x% = 0 TO 159 STEP 2
+                    POKE lastY% + x%, PEEK(lastY% + x%) AND &amp;HEF
+                NEXT
+            END IF
+
+            x% = _MOUSEX
+            y% = _MOUSEY - yOffset% - 1
+
+            ' Check if we should highlight a video mode or aspect ratio.
+            IF x% &lt;= 60 THEN
+                IF y% &gt; 0 AND y% &lt;= numModes% THEN
+                    ' Exit if the highlighted video mode has been 'clicked' (ie. when the mouse button is depressed).
+                    IF _MOUSEBUTTON(1) = 0 AND lastButton% THEN
+                        width% = vidX%(y%)
+                        height% = vidY%(y%)
+                        EXIT DO
+                    END IF
+
+                    ' Highlight selected video mode by changing the color of the entire item (while leaving text intact).
+                    y% = (yOffset% + y%) * 160 + 1
+                    FOR x% = 0 TO 119 STEP 2
+                        POKE y% + x%, PEEK(y% + x%) OR &amp;H10
+                    NEXT
+                ELSE
+                    y% = 0
+                END IF
+            ELSE
+                IF y% &gt; 0 AND y% - 1 &lt;= numAspect% THEN
+                    IF _MOUSEBUTTON(1) THEN
+                        selectedAspect% = y% - 1
+                        reprint% = -1
+                    END IF
+
+                    ' Highlight selected aspect ratio by changing the color of the entire item (while leaving text intact).
+                    y% = (yOffset% + y%) * 160 + 1
+                    FOR x% = 120 TO 159 STEP 2
+                        POKE y% + x%, PEEK(y% + x%) OR &amp;H10
+                    NEXT
+                ELSE
+                    y% = 0
+                END IF
+            END IF
+            lastY% = y%
+            lastButton% = _MOUSEBUTTON(1)
+        END IF
+    LOOP
+
+    ' Exit neatly.
+    SCREEN backupScreen&amp;
+END SUB
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="%24INCLUDE.html">$INCLUDE</a> (<a href="Metacommand.html">Metacommand</a>)</li>
+  <li><a href="PEEK.html">PEEK</a>, <a href="POKE.html">POKE</a></li>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SelectScreen by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:07 GMT -->
+</html>

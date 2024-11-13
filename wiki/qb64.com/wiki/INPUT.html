@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/INPUT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="INPUT-2.html" />
+<meta property="og:url" content="INPUT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/INPUT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="INPUT.html">INPUT</a> statement requests a <a href="STRING.html">STRING</a> or numerical keyboard entry from the user.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="INPUT.html">INPUT</a> [;] “[Question or statement text]”{,</td>
+        <td>;} variable[, …]</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a href="INPUT.html">INPUT</a> ; variable[, …]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>A <a href="semicolon-2.html">semicolon</a> after the <a href="INPUT.html">INPUT</a> keyword keeps the entry on the same row after enter is pressed  and prevents the screen contents from rolling up.</li>
+  <li>The optional prompt “Question or statement text” must be a literal predefined <a href="STRING.html">STRING</a>. <strong>The prompt cannot use a variable.</strong></li>
+  <li><a href="Quotation-mark.html">Quotation mark</a>s are required except when a semicolon follows <a href="INPUT.html">INPUT</a>. A question mark will appear before the cursor.</li>
+  <li>A <a href="semicolon-2.html">semicolon</a> immediately after the text statement will display a question mark with a space after it. Use a <a href="comma-2.html">comma</a> for input statements.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><strong>QB64</strong> does not return <em>Redo from start</em> errors like QBasic did, as user input is limited to the scope of the variable <a href="Data-types.html">Data types</a> used.</li>
+  <li>Text entries (with a <a href="STRING.html">STRING</a> variable]] can receive any characters, including numerical. <strong>QB64 will ignore commas in single variable text entries.</strong></li>
+  <li>The <a href="Data-types.html">Data types</a> of the variable used to store user input determines the valid numerical range for value entries in QB64, with non-numerical characters limited to D, E, <a href="%26H.html">&amp;H</a>, <a href="%26O.html">&amp;O</a> or <a href="%26B.html">&amp;B</a>.
+    <ul>
+      <li>For example, if you use an <a href="INTEGER.html">INTEGER</a> variable, as in <code class="language-plaintext highlighter-rouge">INPUT "Initial value: ", myValue%</code>, the valid range is -32768 to 32767.</li>
+      <li><a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a>, and <a href="_INTEGER64.html">_INTEGER64</a> entries will ignore decimal points entered and will use all numbers.</li>
+      <li>INPUT can be used to get more than one variable value from the user. Do so by separating input variables with commas in the code.</li>
+      <li>The program must inform the user that more than one variable is requested, in order to enter each value separated with a comma at runtime.</li>
+      <li><a href="STRING.html">STRING</a> and numerical variables can both be used in multiple entry requests separated by commas.</li>
+      <li><strong>QB64</strong>  allows comma separated entries to be skipped by the user without generating an error.</li>
+    </ul>
+  </li>
+  <li><strong>Use <a href="LINE-INPUT.html">LINE INPUT</a> for text input entries that may contain commas such as address or name entries.</strong></li>
+  <li>The user must press enter for the INPUT procedure to end. <!-- redundant: Multiple entries can be skipped. --></li>
+  <li><a href="INPUT.html">INPUT</a> accepts the <a href="scientific-notation.html">scientific notation</a> letters D or E in <a href="SINGLE.html">SINGLE</a> or <a href="DOUBLE.html">DOUBLE</a> numerical values.</li>
+  <li>Numerical values starting with <a href="%26H.html">&amp;H</a>, <a href="%26O.html">&amp;O</a> and <a href="%26B.html">&amp;B</a> can also be entered.</li>
+  <li>INPUT removes all leading or trailing spaces in a string value entry. <strong>QB64 does NOT remove those spaces!</strong></li>
+  <li>The statement halts a program until enter is pressed, which may not be desired in programs using mouse input (see <a href="INKEY%24.html">INKEY$</a> loops).</li>
+  <li>Use <a href="_DEST.html">_DEST</a> <a href="_CONSOLE.html">_CONSOLE</a> before INPUT statements to receive input from a <a href="%24CONSOLE.html">$CONSOLE</a> window.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using a variable in an input text message using PRINT. INPUT prompts cannot use variables.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INPUT</span> <span class="s">"Enter your name: "</span><span class="p">,</span> <span class="n">name$</span>
+<span class="n">PRINT</span> <span class="n">name$</span> <span class="o">+</span> <span class="s">" please enter your age: "</span><span class="err">;</span><span class="p">:</span> <span class="n">INPUT</span> <span class="s">""</span><span class="p">,</span> <span class="n">age%</span> <span class="c1">'empty string with comma</span>
+<span class="n">PRINT</span> <span class="n">name$</span> <span class="o">+</span> <span class="s">" how much do you weigh"</span><span class="err">;</span> <span class="p">:</span> <span class="n">INPUT</span> <span class="n">weight%</span>   <span class="c1">'no text adds ? </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Use an empty string with a comma to eliminate the question mark that would appear without the string.</p>
+</blockquote>
+
+<p>How QB64 avoids a <em>Redo from start</em> multiple entry error. Use commas between values.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">INPUT</span> <span class="s">"What is your name, age, and sex(M/F)"</span><span class="err">;</span> <span class="n">name$</span><span class="p">,</span> <span class="n">age%</span><span class="p">,</span> <span class="n">sex$</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">age%</span>        <span class="c1">'loop until age is not 0</span>
+<span class="n">IF</span> <span class="n">age%</span> <span class="o">&gt;=</span> <span class="mi">21</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"You can drink beer!"</span> <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"You cannot drink beer yet!"</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+What is your name, age, and sex(M/F)? Tom,24,M
+You can drink beer!
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Try to enter text for the age value and it will not work. E or D should be allowed as decimal point numerical entries.</p>
+</blockquote>
+
+<p>Preventing screen roll after an input entry on the bottom 2 screen rows.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">2</span> <span class="c1">'          place cursor at beginning of prompt line</span>
+<span class="n">PRINT</span> <span class="s">"Enter a name to search for... "</span><span class="err">;</span> <span class="c1">'print prompt on screen with input to follow</span>
+<span class="n">COLOR</span> <span class="mi">15</span><span class="p">:</span> <span class="n">INPUT</span> <span class="err">;</span> <span class="s">""</span><span class="p">,</span> <span class="n">name$</span> <span class="c1">'       get search name from user</span>
+<span class="n">LOCATE</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPC</span><span class="p">(</span><span class="mi">78</span><span class="p">)</span><span class="err">;</span> <span class="c1">'       erase previous prompt</span>
+<span class="n">n$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">name$</span><span class="p">)</span> <span class="c1">'                 convert search name to upper case</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="c1">'                        change foreground color to yellow</span>
+<span class="n">LOCATE</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Searching..."</span><span class="err">;</span> <span class="c1">'print message</span>
+<span class="n">SLEEP</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Enter a name to search for... █
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The red <a href="semicolon-2.html">semicolon</a> after INPUT acts like a semicolon after a <a href="PRINT.html">PRINT</a>, which keeps the print cursor on the same row.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="INPUT%24.html">INPUT$</a>, <a href="INKEY%24.html">INKEY$</a></li>
+  <li><a href="LINE-INPUT.html">LINE INPUT</a>, <a href="LOCATE.html">LOCATE</a></li>
+  <li><a href="INPUT-(file-statement).html">INPUT (file statement)</a>, <a href="LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a> (file input)</li>
+  <li><a href="_KEYHIT.html">_KEYHIT</a>, <a href="_KEYDOWN.html">_KEYDOWN</a></li>
+  <li><a href="Scancodes.html">Scancodes</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/INPUT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:08 GMT -->
+</html>

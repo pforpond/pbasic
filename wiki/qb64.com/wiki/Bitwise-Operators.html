@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Bitwise-Operators by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Bitwise-Operators-2.html" />
+<meta property="og:url" content="Bitwise-Operators-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Bitwise-Operators.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Bitwise operators are much like the regular mathematics operators (+, * etc.) but are defined in terms of the individual bits of their operands. The full list of bitwise operators, with a brief summary of its operation:</p>
+
+<ul>
+  <li>AND: True if both inputs are true</li>
+  <li>OR: True if one or both inputs are true</li>
+  <li>NOT: Invert all bits</li>
+  <li>XOR: True if exactly one input is true</li>
+  <li>IMP: True if both inputs are the same</li>
+  <li>EQV: True unless first input is true and second is false</li>
+</ul>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>With the exception of NOT, all the bitwise operators take two operands:</p>
+
+<p><code class="language-plaintext highlighter-rouge">result = value1 AND value2</code></p>
+
+<p>NOT goes before the value it operates on:</p>
+
+<p><code class="language-plaintext highlighter-rouge">result = NOT value1</code></p>
+
+<p>If <em>value1</em> or <em>value2</em> are non-integer numeric types, they are rounded to the nearest integer.</p>
+
+<h2 id="details">Details</h2>
+
+<p>Bitwise operators work by comparing the corresponding bits in each of the input values to generate a single bit in the output value. The operators differ in how they do the comparison. The table below shows the output bit for each pair of input bits:</p>
+
+<p>MISSING: Truth Table</p>
+
+<p>Again, note that the NOT operator only has one operand. It is shown in the same table for convenience.</p>
+
+<p>If one input has more bits than the other (say, an INTEGER vs a LONG) the shorter will be considered to have 0’s in the missing bit positions if it is positive, or 1’s if it is negative. This scheme comes about because of the <a href="https://en.wikipedia.org/wiki/Two%27s_complement">Two’s Complement</a> system for representing negative numbers. As a general rule, there should not be any surprises.</p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Use <strong>AND</strong> to mask certain bits in a value. In this example, the 1’s in the mask (y&amp;) specify which bits in (x&amp;) we are interested in, forcing all others to 0.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">x&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B101010"</span><span class="p">)</span> <span class="c1">'Arbitrary collection of bits </span>
+<span class="n">y&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B001100"</span><span class="p">)</span> <span class="c1">'A bit mask </span>
+<span class="n">PRINT</span> <span class="s">"Input 1: "</span><span class="err">;</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="n">x&amp;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">'6 indicates we want 6 bits of output </span>
+<span class="n">PRINT</span> <span class="s">"Input 2: "</span><span class="err">;</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="n">y&amp;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Output: "</span><span class="err">;</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="n">x&amp;</span> <span class="n">AND</span> <span class="n">y&amp;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="c1">'Converts the number n&amp; to a string of binary digits, digits&amp; long (padding or truncating as necessary). </span>
+
+<span class="n">FUNCTION</span> <span class="n">BIN</span><span class="err">$</span> <span class="p">(</span><span class="n">n&amp;</span><span class="p">,</span> <span class="n">digits&amp;</span><span class="p">)</span>
+  <span class="n">FOR</span> <span class="n">i&amp;</span> <span class="o">=</span> <span class="n">digits&amp;</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">n&amp;</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">i&amp;</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">B</span><span class="err">$</span> <span class="o">+</span> <span class="s">"1"</span> <span class="n">ELSE</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">B</span><span class="err">$</span> <span class="o">+</span> <span class="s">"0"</span>
+  <span class="n">NEXT</span>
+  <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="n">B</span><span class="err">$</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Input 1: 101010
+Input 2: 001100
+Output:  001000
+
+</code></pre></div></div>
+
+<p>Use <strong>OR</strong> to combine bit flags into a single value. The presence of a flag can then be tested by using the flag as a mask with <strong>AND</strong>:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'The trick here is to give each flag a value corresponding to a different bit being 1</span>
+<span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B0001"</span><span class="p">)</span> 
+<span class="n">FLAG_B</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B0010"</span><span class="p">)</span> 
+<span class="n">FLAG_C</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B0100"</span><span class="p">)</span> 
+<span class="n">FLAG_D</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B1000"</span><span class="p">)</span>
+
+<span class="n">flags&amp;</span> <span class="o">=</span> <span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="n">OR</span> <span class="n">FLAG_C</span><span class="o">&amp;</span> <span class="c1">'Set flags A, C</span>
+
+<span class="c1">'Use each flag as a bitmask to test for its presence: </span>
+
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag A is set"</span> 
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_B</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag B is set"</span> 
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_C</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag C is set"</span> 
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_D</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag D is set"</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Flag A is set
+Flag C is set
+
+</code></pre></div></div>
+
+<p>Use <strong>XOR</strong> to toggle a bit flag (that is, change its state to the opposite of what it was). This example is the same as the <strong>OR</strong> example above, but with one extra line added. This time we enable flags A &amp; C, then toggle flags A &amp; B. This will disable flag A and enable B.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'The trick here is to give each flag a value corresponding to a different bit being 1</span>
+<span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B0001"</span><span class="p">)</span> 
+<span class="n">FLAG_B</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B0010"</span><span class="p">)</span> 
+<span class="n">FLAG_C</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B0100"</span><span class="p">)</span> 
+<span class="n">FLAG_D</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;B1000"</span><span class="p">)</span>
+
+<span class="n">flags&amp;</span> <span class="o">=</span> <span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="n">OR</span> <span class="n">FLAG_C</span><span class="o">&amp;</span> <span class="c1">'Set flags A, C </span>
+<span class="n">flags&amp;</span> <span class="o">=</span> <span class="n">flags&amp;</span> <span class="n">XOR</span> <span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="n">XOR</span> <span class="n">FLAG_B</span><span class="o">&amp;</span> <span class="c1">'Toggle flags A, B</span>
+
+<span class="c1">'Use each flag as a bitmask to test for its presence: </span>
+
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_A</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag A is set"</span> 
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_B</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag B is set"</span> 
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_C</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag C is set"</span> 
+<span class="n">IF</span> <span class="n">flags&amp;</span> <span class="n">AND</span> <span class="n">FLAG_D</span><span class="o">&amp;</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Flag D is set"</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Flag B is set
+Flag C is set
+
+</code></pre></div></div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Bitwise-Operators by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:46 GMT -->
+</html>

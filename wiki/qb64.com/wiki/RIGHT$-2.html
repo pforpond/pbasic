@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/RIGHT$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="RIGHT%24-2.html" />
+<meta property="og:url" content="RIGHT%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/RIGHT$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>RIGHT$</strong> function returns a set number of characters in a <a href="STRING.html">STRING</a> variable starting from the end and counting backwards.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>RIGHT$(</strong><em>stringvalue$, numberofcharacters%</em><strong>)</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <em>stringvalue$</em> can be any string of <a href="ASCII.html">ASCII</a> characters as a <a href="STRING.html">STRING</a> variable.</li>
+  <li>The <em>numberofcharacters</em> <a href="INTEGER.html">INTEGER</a> value determines the number of characters to return from the right end of the string.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If the number of characters exceeds the string length(<a href="LEN.html">LEN</a>) the entire string is returned.</li>
+  <li>RIGHT$ returns always start at the last character of the string, even if a space. <a href="RTRIM%24.html">RTRIM$</a> can remove ending spaces.</li>
+  <li><strong>Number of characters cannot be a negative value.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Getting the right portion of a string value such as a person’s last name.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">name$</span> <span class="o">=</span> <span class="s">"Tom Williams"</span>
+
+<span class="n">Last</span><span class="err">$</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">name$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">name$</span><span class="p">)</span> <span class="o">-</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">name$</span><span class="p">,</span> <span class="s">" "</span><span class="p">))</span> <span class="c1">'subtract space position from string length</span>
+
+<span class="n">PRINT</span> <span class="n">Last</span><span class="err">$</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Williams 
+
+</code></pre></div></div>
+
+<p>Adding the leading zero in single digit <a href="HEX%24.html">HEX$</a> values using RIGHT to take the right two hexadecimal string digits.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">'32 bit screen modes ONLY!</span>
+<span class="n">red</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">green</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">Color32</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span>
+<span class="n">PRINT</span> <span class="s">"Colored text"</span>
+
+<span class="n">SUB</span> <span class="n">Color32</span> <span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">R</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">HFF</span><span class="p">:</span> <span class="n">G</span> <span class="o">=</span> <span class="n">G</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">HFF</span><span class="p">:</span> <span class="n">B</span> <span class="o">=</span> <span class="n">B</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">HFF</span> <span class="c1">'    limit values to 0 to 255</span>
+<span class="n">hexadecimal$</span> <span class="o">=</span> <span class="s">"&amp;HFF"</span> <span class="o">+</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="s">"0"</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="s">"0"</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="s">"0"</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">hexadecimal$</span>
+<span class="n">COLOR</span> <span class="n">VAL</span><span class="p">(</span><span class="n">hexadecimal$</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+**&amp;HFFFF0080**
+**Colored text**
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> When a single hexadecimal digit is returned the resulting value will need the leading zero added. Otherwise the hexa- decimal value created will have a byte missing from the value. EX: Color &amp;HFF000000 is valid while &amp;HFF000 is not.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="LEFT%24.html">LEFT$</a>, <a href="MID%24.html">MID$</a></li>
+  <li><a href="LTRIM%24.html">LTRIM$</a>, <a href="RTRIM%24.html">RTRIM$</a></li>
+  <li><a href="INSTR.html">INSTR</a>, <a href="HEX%24.html">HEX$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/RIGHT$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SUB by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:11:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SUB-2.html" />
+<meta property="og:url" content="SUB-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SUB.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>A <strong>SUB</strong> procedure is a procedure within a program that can calculate and return multiple parameter values just like a full program.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>SUB Procedure_name</strong> [(<em>parameter</em>[, <em>list</em>…])] [<a href="STATIC.html">STATIC</a>]</p>
+
+  <p>‘procedure variable definitions and statements</p>
+
+  <p><strong><a href="END.html">END</a> SUB</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Parameters passed after the procedure call must match the variable types in the SUB parameters in order.</li>
+  <li>If there are no <em>parameter</em>s passed or they are <a href="SHARED.html">SHARED</a> the parameters and parenthesis are not required in the procedure.</li>
+  <li>Parameter <a href="Variable.html">Variable</a> names in the procedure do not have to match the names used in the <a href="CALL.html">CALL</a>, just the value types.</li>
+  <li>All parameters/variables are internally passed by Reference, this is, the adress is</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><a href="STATIC.html">STATIC</a> can be used after the procedure name to force all variables to retain their values between calls.</li>
+  <li>All <a href="%24DYNAMIC.html">$DYNAMIC</a> <a href="variable-2.html">variable</a> values return to 0 or null strings when the procedure is exited except for <a href="STATIC.html">STATIC</a> variable values.</li>
+  <li>SUB procedures can return multiple values through the parameters unlike functions.</li>
+  <li>SUB procedures return to the next code statement after the call in the main or other procedures.</li>
+  <li><a href="EXIT.html">EXIT</a> SUB can be used to exit early or to exit before <a href="GOSUB.html">GOSUB</a> procedures using <a href="RETURN.html">RETURN</a>.</li>
+  <li><a href="TYPE.html">TYPE</a> and <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> declarations can be made inside of SUB procedures in QB64 only.</li>
+  <li>SUB procedures can save program memory as all memory used in a SUB is released on procedure exit except for <a href="STATIC.html">STATIC</a> values.</li>
+  <li><a href="_DEFINE.html">_DEFINE</a> can be used to define all new or old QB64 variable <a href="TYPE.html">TYPE</a> definitions instead of DEF***.</li>
+  <li><a href="%24INCLUDE.html">$INCLUDE</a> text library files with needed SUB and <a href="FUNCTION.html">FUNCTION</a> procedures can be included in programs after all sub-procedures.</li>
+  <li><strong>QB64 ignores all procedural DECLARE statements.</strong> Define all <em>parameter</em> <a href="TYPE.html">TYPE</a>s in the SUB procedure.</li>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+  <li>In order to use OpenGL commands you need a <a href="SUB.html">SUB</a> <a href="_GL.html">_GL</a> in your program.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Text <a href="PRINT.html">PRINT</a> screen centering using <a href="PEEK.html">PEEK</a> to find the SCREEN mode width. Call and SUB procedure code:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">Center</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s">"This text is centered."</span> <span class="c1">' example module sub call</span>
+<span class="n">END</span>
+
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span> <span class="c1">' only code allowed before SUB line is a DEF statement or a comment</span>
+<span class="n">SUB</span> <span class="n">Center</span> <span class="p">(</span><span class="n">Tclr</span><span class="p">,</span> <span class="n">Trow</span><span class="p">,</span> <span class="n">Text</span><span class="err">$</span><span class="p">)</span>
+<span class="n">Columns</span> <span class="o">=</span> <span class="n">_WIDTH</span> <span class="o">/</span> <span class="n">_FONTWIDTH</span> <span class="c1">'Convert _WIDTH (in pixels) to width in characters</span>
+<span class="n">Middle</span> <span class="o">=</span> <span class="p">(</span><span class="n">Columns</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">' reads any screen mode width</span>
+<span class="n">Tcol</span> <span class="o">=</span> <span class="n">Middle</span> <span class="o">-</span> <span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">Text</span><span class="err">$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">COLOR</span> <span class="n">Tclr</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="n">Trow</span><span class="p">,</span> <span class="n">Tcol</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">Text</span><span class="err">$;</span> <span class="c1">' end semicolon prevents screen roll</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The procedure centers text printed to the screen. The parameters are the text color, row and the text itself as a string or string variable. The maximum width of the screen mode in characters is found and divided in half to find the center point. The text string’s length is also divided in half and subtracted from the screen’s center position. The procedure will also work when the <a href="WIDTH.html">WIDTH</a> statement has been used. When adding variables to Text$ use the + concatenation operator. Not semicolons!</p>
+</blockquote>
+
+<p>SUB and <a href="FUNCTION.html">FUNCTION</a> procedures always return to the place they were called in the main or other sub-procedures:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Add1</span> <span class="n">a</span>
+<span class="n">PRINT</span> <span class="n">a</span>  <span class="c1">'Add1 returns final 'a' value here</span>
+
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">Add1</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">Add2</span> <span class="n">n</span>
+<span class="n">PRINT</span> <span class="s">"exit 1"</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">Add2</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">PRINT</span> <span class="s">"exit 2"</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+exit 2
+exit 1
+ 13
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Parameter <strong>a</strong> is used to call the sub-procedures even though parameters <strong>n</strong> and <strong>m</strong> are used internally.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="FUNCTION.html">FUNCTION</a>, <a href="CALL.html">CALL</a></li>
+  <li><strong>SUB</strong> <a href="_GL.html">_GL</a></li>
+  <li><a href="BYVAL.html">BYVAL</a>, <a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+  <li><a href="EXIT.html">EXIT</a>, <a href="END.html">END</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SUB by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:02 GMT -->
+</html>

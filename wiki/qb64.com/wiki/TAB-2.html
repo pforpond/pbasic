@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/TAB.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="TAB-2.html" />
+<meta property="og:url" content="TAB-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/TAB.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The TAB function is used in <a href="PRINT.html">PRINT</a> and <a href="LPRINT.html">LPRINT</a> statements to move to a specified column position.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>TAB(column%)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Space characters are printed until the print cursor reaches the designated column%, overwriting existing characters.</li>
+  <li>If a subsequent TAB <em>column%</em> is less than the current position, TAB moves the next print to that column on the next row.</li>
+  <li><a href="ASCII.html">ASCII</a> <a href="CHR%24.html">CHR$</a>(9) can be substituted for sequencial 9 space column moves.</li>
+  <li><a href="Comma.html">Comma</a> PRINT spacing is up to 15 column places (IE: TAB(15)) to a maximum column of 57.</li>
+  <li>When printing to a file, a carriage return(<a href="CHR%24.html">CHR$</a>(13)) and linefeed(<a href="CHR%24.html">CHR$</a>(10)) character are output when it moves to the next row.</li>
+  <li><strong>Note:</strong> QBasic did not allow a TAB to be <a href="concatenation-2.html">concatenation</a> to a string value. In <a href="PRINT.html">PRINT</a> statements the <a href="%2b.html">+</a> would be changed to a <a href="semicolon-2.html">semicolon</a>.
+    <blockquote>
+      <p>In QB64, TAB <a href="concatenation-2.html">concatenation</a> is allowed instead of <a href="semicolon-2.html">semicolon</a>s. Example: PRINT “text” + TAB(9) + “here”</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Comparing TAB to <a href="comma-2.html">comma</a> print spacing which moves the next text print 15 columns.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="err">;</span> <span class="s">"T"</span> <span class="c1">'TAB spacing</span>
+
+<span class="n">PRINT</span> <span class="p">,</span> <span class="s">"T"</span> <span class="c1">'comma spacing</span>
+
+<span class="n">PRINT</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="err">;</span> <span class="s">"T"</span><span class="err">;</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="err">;</span> <span class="s">"A"</span><span class="err">;</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="err">;</span> <span class="s">"B"</span> <span class="c1">'semicolons add nothing to position</span>
+
+<span class="n">PRINT</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="err">;</span> <span class="s">"T"</span><span class="p">,</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="err">;</span> <span class="s">"A"</span><span class="err">;</span> <span class="n">TAB</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="err">;</span> <span class="s">"B"</span> <span class="c1">'comma moves column position beyond 20 </span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+              T
+              T
+              T    A
+              B 
+              T
+                   A
+              B
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> TAB moves the PRINT down to the next row when the current column position is more than the TAB position.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PRINT.html">PRINT</a>, <a href="LPRINT.html">LPRINT</a></li>
+  <li><a href="SPC.html">SPC</a>, <a href="SPACE%24.html">SPACE$</a></li>
+  <li><a href="STRING%24.html">STRING$</a></li>
+  <li><a href="CHR%24.html">CHR$</a>, <a href="ASCII.html">ASCII</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/TAB.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+</html>

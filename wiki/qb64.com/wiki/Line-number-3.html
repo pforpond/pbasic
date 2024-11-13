@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Line-number.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Line-number-3.html" />
+<meta property="og:url" content="Line-number-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Line-number.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Line numbers</strong> or line labels are used in QBasic as references to code lines. Numbers are required with <a href="GOTO.html">GOTO</a> and numbers or label names are required with <a href="GOSUB.html">GOSUB</a>. Although not required in QBasic, other older programming languages such as GW Basic often required them. Line labels require a colon after them to differentiate them from keywords and variable names.</p>
+
+<p><strong><a href="ftp://ftp.microsoft.com/services/technet/windows/msdos/RESKIT/SUPPDISK/REMLINE.BAS">Microsoft’s REMLINE.BAS program removes unnecessary line numbers</a></strong></p>
+
+<p>The following program can remove line numbers where they are not required by <a href="IF...html">IF…THEN</a>, <a href="GOTO.html">GOTO</a>, <a href="GOSUB.html">GOSUB</a>, <a href="ERL.html">ERL</a>, <a href="RUN.html">RUN</a> or <a href="RESUME.html">RESUME</a>:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CLS</span>
+<span class="n">REDIM</span> <span class="n">linenumber</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"This Program removes unnecessary line numbers."</span><span class="p">:</span> <span class="n">PRINT</span>
+<span class="n">INPUT</span> <span class="s">"Name of file: "</span><span class="p">,</span> <span class="n">filename$</span><span class="p">:</span> <span class="n">PRINT</span>
+
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">a$</span>
+<span class="c1">REM Get rid of quotes and REM statements.</span>
+<span class="n">DO</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span><span class="p">:</span> <span class="c1">REM Mismatched quotes. Illegal code.</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ELSE</span>
+<span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">),</span> <span class="s">"REM "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">a$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">),</span> <span class="s">"REM "</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">),</span> <span class="s">"' "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">a$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"' "</span><span class="p">))</span>
+
+<span class="n">DO</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">REM Break down compound statements and get line numbers.</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"GOTO "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"GOTO "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"GOSUB "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"GOSUB "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">6</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"THEN "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"THEN "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"ELSE "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"ELSE "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"RUN "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"RUN "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"RESUME "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"RESUME "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">7</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"RETURN "</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">n</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"RETURN "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">7</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">tracknumber</span>
+<span class="n">IF</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span> <span class="n">ELSE</span> <span class="n">a$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">LOOP</span>
+<span class="n">LOOP</span>
+<span class="n">PRINT</span> <span class="s">"Number of line-numbered statements kept:"</span><span class="err">;</span> <span class="n">count</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">OPEN</span> <span class="s">"filename.tmp"</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span>
+<span class="n">DO</span> <span class="n">UNTIL</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">a$</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IF</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span>
+<span class="n">IF</span> <span class="n">VAL</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">=</span> <span class="n">linenumber</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span>
+<span class="n">IF</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">a$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="n">a$</span>
+<span class="n">LOOP</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">#</span><span class="mi">2</span>
+<span class="n">SHELL</span> <span class="n">_DONTWAIT</span> <span class="s">"notepad filename.tmp"</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"Back up original file as .org and give edited file original file name? [Y/N]"</span>
+<span class="n">DO</span>
+<span class="n">b$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">b$</span>
+<span class="n">CASE</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">):</span> <span class="n">SYSTEM</span>
+<span class="n">CASE</span> <span class="s">"N"</span>
+<span class="n">ON</span> <span class="n">ERROR</span> <span class="n">GOTO</span> <span class="n">RESNXT</span>
+<span class="n">KILL</span> <span class="s">"filename.tmp"</span>
+<span class="n">ON</span> <span class="n">ERROR</span> <span class="n">GOTO</span> <span class="mi">0</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"Temporary "</span><span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s">"filename.tmp"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s">" was removed and no changes were made to original file."</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"Press any key to end."</span>
+<span class="n">EXIT</span> <span class="n">DO</span>
+
+<span class="n">CASE</span> <span class="s">"Y"</span>
+<span class="n">ON</span> <span class="n">ERROR</span> <span class="n">GOTO</span> <span class="n">resnxt</span>
+<span class="n">KILL</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">filename$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">filename$</span><span class="p">,</span> <span class="s">"."</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">".org"</span>
+<span class="n">ON</span> <span class="n">ERROR</span> <span class="n">GOTO</span> <span class="mi">0</span>
+<span class="n">NAME</span> <span class="n">filename$</span> <span class="n">AS</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">filename$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">filename$</span><span class="p">,</span> <span class="s">"."</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">".org"</span>
+<span class="n">NAME</span> <span class="s">"filename.tmp"</span> <span class="n">AS</span> <span class="n">filename$</span>
+<span class="n">PRINT</span> <span class="p">:</span> <span class="n">PRINT</span> <span class="s">"File conversion completed. Press any key to end."</span>
+<span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">LOOP</span>
+<span class="n">SLEEP</span>
+<span class="n">SYSTEM</span>
+
+<span class="n">tracknumber</span><span class="p">:</span>
+<span class="n">DO</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">linenumber</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"ON"</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"GOSUB"</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"ON"</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="s">"GOTO"</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="s">"0"</span> <span class="n">AND</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="s">","</span> <span class="n">AND</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="s">" "</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">IF</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s">", "</span> <span class="n">THEN</span> <span class="n">n</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span>
+<span class="n">IF</span> <span class="n">n</span> <span class="o">&lt;&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">ELSE</span>
+<span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+<span class="n">RETURN</span>
+
+<span class="n">resnxt</span><span class="p">:</span>
+<span class="n">RESUME</span> <span class="n">NEXT</span> 
+
+</code></pre></div></div>
+<p><sub>Code courtesy of Pete from the Network 54 Qbasic Forum</sub></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="GOTO.html">GOTO</a> , <a href="RUN.html">RUN</a></li>
+  <li><a href="GOSUB.html">GOSUB</a> , <a href="RETURN.html">RETURN</a></li>
+  <li><a href="RESUME.html">RESUME</a>, <a href="NEXT.html">NEXT</a></li>
+  <li><a href="RESTORE.html">RESTORE</a></li>
+  <li><a href="IF...html">IF…THEN</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Line-number.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:49 GMT -->
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/TIMER by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="TIMER-2.html" />
+<meta property="og:url" content="TIMER-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/TIMER.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>TIMER</strong> function returns the number of seconds past the previous midnite down to an accuracy of 1/18th of a second.</p>
+
+<h2 id="qb-syntax">QB Syntax</h2>
+
+<blockquote>
+  <p>seconds! = TIMER</p>
+</blockquote>
+
+<h2 id="qb64-syntax">QB64 Syntax</h2>
+
+<blockquote>
+  <p>seconds# = TIMER[(<em>accuracy!</em>)]</p>
+</blockquote>
+
+<ul>
+  <li>TIMER return values range from 0 at midnight to 86399! A comparison value must stay within that range!</li>
+  <li><a href="INTEGER.html">INTEGER</a> or <a href="LONG.html">LONG</a> second values range from 0 at midnight to 86399 seconds each day.</li>
+  <li>QBasic can return <a href="SINGLE.html">SINGLE</a> values down to about .04 or 1/18th (one tick) of a second accurately.</li>
+  <li><strong>QB64</strong> can read <a href="DOUBLE.html">DOUBLE</a> <em>accuracy</em> down to 1 millisecond. Example: start# = TIMER(.001)</li>
+  <li>Use <a href="DOUBLE.html">DOUBLE</a> variables for millisecond accuracy as <a href="SINGLE.html">SINGLE</a> values are only accurate to 100ths of a second later in the day!</li>
+  <li>TIMER loops should use a midnight adjustment to avoid non-ending loops in QBasic.</li>
+  <li>TIMER can also be used for timing program Events. See <a href="ON-TIMER(n).html">ON TIMER(n)</a> or the <a href="TIMER-(statement).html">TIMER (statement)</a></li>
+  <li><strong>QB64</strong> can use a <a href="_DELAY.html">_DELAY</a> down to .001(one millisecond) or <a href="_LIMIT.html">_LIMIT</a> loops per second. Both help limit program CPU usage.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Delay SUB with a midnight correction for when TIMER returns to 0. <strong>QB64</strong> can use <a href="_DELAY.html">_DELAY</a> for delays down to .001.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">PRINT</span> <span class="s">"Hello"</span><span class="err">;</span>
+  <span class="n">Delay</span> <span class="p">.</span><span class="err">5</span>  <span class="c1">'accuracy down to .05 seconds or 1/18th of a second in QBasic</span>
+  <span class="n">PRINT</span> <span class="s">"World!"</span><span class="err">;</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="c1">'escape key exit</span>
+
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">Delay</span> <span class="p">(</span><span class="n">dlay!</span><span class="p">)</span>
+<span class="n">start!</span> <span class="o">=</span> <span class="n">TIMER</span>
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">start!</span> <span class="o">+</span> <span class="n">dlay!</span> <span class="o">&gt;=</span> <span class="n">TIMER</span>
+  <span class="n">IF</span> <span class="n">start!</span> <span class="o">&gt;</span> <span class="n">TIMER</span> <span class="n">THEN</span> <span class="n">start!</span> <span class="o">=</span> <span class="n">start!</span> <span class="o">-</span> <span class="mi">86400</span>
+<span class="n">LOOP</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When the delay time is added to the present TIMER value, it could be over the maximum number of 86399 seconds. So when TIMER becomes less than start it has reached midnight. The delay value then must be corrected by subtracting 86400.</p>
+</blockquote>
+
+<p>Looping one TIMER tick of 1/18th of a second (ticks per second can be changed)</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">' set to PEEK and POKE TIMER Ticks</span>
+<span class="n">DO</span> <span class="c1">' main program loop</span>
+  <span class="c1">' program code</span>
+  <span class="n">POKE</span> <span class="mi">1132</span><span class="p">,</span> <span class="mi">0</span> <span class="c1">' zero Timer ticks</span>
+  <span class="n">DO</span> <span class="c1">' delay loop</span>
+    <span class="n">x%</span> <span class="o">=</span> <span class="n">PEEK</span><span class="p">(</span><span class="mi">1132</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">x%</span> <span class="o">&lt;&gt;</span> <span class="n">px%</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="n">x%</span><span class="err">;</span>
+    <span class="n">px%</span> <span class="o">=</span> <span class="n">x%</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">x%</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="c1">'18 ticks in one second</span>
+  <span class="n">PRINT</span> <span class="s">"code "</span> <span class="c1">' program code</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="c1">' reset segment to default</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 code
+ 0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 code
+ 0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 code
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="POKE.html">POKE</a> before the delay loop sets the tick count to 0. The <a href="PEEK.html">PEEK</a> count increases until the tick count returns 18 ticks and ends the loop. The same thing could be approximated by using a delay loop with: second! = <strong>TIMER</strong> + 1</p>
+</blockquote>
+
+<p>Using a <a href="DOUBLE.html">DOUBLE</a> variable for <a href="TIMER.html">TIMER</a>(.001) millisecond accuracy in <strong>QB64</strong> throughout the day.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">ts!</span> <span class="o">=</span> <span class="n">TIMER</span><span class="p">(.</span><span class="err">001)</span>     <span class="c1">'single variable</span>
+ <span class="n">td</span><span class="p">#</span> <span class="o">=</span> <span class="n">TIMER</span><span class="p">(.</span><span class="err">001)</span>     <span class="c1">'double variable</span>
+
+ <span class="n">PRINT</span> <span class="s">"Single ="</span><span class="err">;</span> <span class="n">ts!</span>
+ <span class="n">PRINT</span> <span class="s">"Double ="</span><span class="err">;</span> <span class="n">td#</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ Single = 77073.09
+ Double = 77073.094 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <a href="SINGLE.html">SINGLE</a> variables will cut off the millisecond accuracy returned so <a href="DOUBLE.html">DOUBLE</a> variables should be used. TIMER values will also exceed <a href="INTEGER.html">INTEGER</a> limits. When displaying TIMER values, use <a href="LONG.html">LONG</a> for seconds and <a href="DOUBLE.html">DOUBLE</a> for milliseconds.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_DELAY.html">_DELAY</a>, <a href="_LIMIT.html">_LIMIT</a>, <a href="SLEEP.html">SLEEP</a></li>
+  <li><a href="RANDOMIZE.html">RANDOMIZE</a>, <a href="Scancodes.html">Scancodes</a>(example)</li>
+  <li><a href="ON-TIMER(n).html">ON TIMER(n)</a>, <a href="TIMER-(statement).html">TIMER (statement)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/TIMER by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:50 GMT -->
+</html>

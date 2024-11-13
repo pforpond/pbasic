@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/&H.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="%26H-2.html" />
+<meta property="og:url" content="%26H-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/&H.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>&amp;H</strong> prefix denotes that an integer value is expressed in a Hexadecimal base 16 format. Every 2 digits represent a <a href="_BYTE.html">_BYTE</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>a&amp; = &amp;HFACE</p>
+</blockquote>
+
+<ul>
+  <li>The base 16 numbering system uses hexadecimal digit values of 0 to F. A = 10, B = 11, C = 12, D = 13, E = 14 and F = 15.</li>
+  <li>Leading zero values can be omitted just like in decimal values as they add nothing to the return value.</li>
+  <li>Decimal values returned can be any <strong>signed</strong> <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a> integer, or <a href="_INTEGER64.html">_INTEGER64</a> value so use those type of variables when converting directly as shown above in the Syntax. The program <a href="ERROR-Codes.html">“overflow”</a> error limits are listed as:
+    <ul>
+      <li><a href="_BYTE.html">_BYTE</a>: 2 hex digits or a decimal value range from -128 to 127. <a href="_UNSIGNED.html">_UNSIGNED</a>: 0 to 255.</li>
+      <li><a href="INTEGER.html">INTEGER</a>: 4 hex digits or a decimal value range from -32,768 to 32,767. <a href="_UNSIGNED.html">_UNSIGNED</a>: 0 to 65535.</li>
+      <li><a href="LONG.html">LONG</a>: 8 hex digits or a decimal value range from -2,147,483,648 to 2,147,483,647. <a href="_UNSIGNED.html">_UNSIGNED</a>: 0 to 4294967295.</li>
+      <li><a href="_INTEGER64.html">_INTEGER64</a>: 16 hex digits or decimal values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.</li>
+      <li><a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_INTEGER64.html">_INTEGER64</a>: 0 to 18446744073709551615.</li>
+    </ul>
+  </li>
+  <li>The maximum hexadecimal value for each numerical type is the maximum number of digits listed above, each valued at F.</li>
+  <li>Convert hexadecimal to [[LONG]] values by appending the values with &amp;. Example: &amp;H8000 = -32768: &amp;H8000&amp; = 32768</li>
+  <li><a href="LONG.html">LONG</a> 32-bit <a href="_RGB.html">_RGB</a> values can be made using hexadecimal values from <strong>&amp;HFF000000</strong> to <strong>&amp;HFFFFFFFF</strong> with full <a href="_ALPHA.html">_ALPHA</a> only.</li>
+  <li>[LONG] 32-bit <a href="_RGBA.html">_RGBA</a> values can be made using hexadecimal values from <strong>&amp;H00000000</strong> to <strong>&amp;HFFFFFFFF</strong> with any <a href="_ALPHA.html">_ALPHA</a>.</li>
+  <li>Hexadecimal <strong>0x</strong> is often used to prefix <a href="HEX%24.html">HEX$</a> port addresses in documentation. Replace 0x with <a href="%26H.html">&amp;H</a> in QB64 or QBasic.</li>
+  <li>To convert hex strings returned from <a href="HEX%24.html">HEX$</a> with <a href="VAL.html">VAL</a> you need to prefix the string with &amp;H (for example; if the string is “FF” you should do VAL(“&amp;HFF”) or VAL(“&amp;H” + hexvalue$).</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>The maximum octal values of decimal value -1 in each numerical type are:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c&amp;</span><span class="o">&amp;</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">d&amp;</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">e%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">f%</span><span class="err">%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">hx$</span> <span class="o">=</span> <span class="n">HEX</span><span class="p">(</span><span class="n">f%</span><span class="err">%</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max hex _BYTE = "</span><span class="err">;</span> <span class="n">hx$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">hx$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">hx$</span><span class="p">)</span>
+<span class="n">hx$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">e%</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max hex INTEGER = "</span><span class="err">;</span> <span class="n">hx$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">hx$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">hx$</span><span class="p">)</span>
+<span class="n">hx$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">d&amp;amp</span><span class="err">;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max hex LONG = "</span><span class="err">;</span> <span class="n">hx$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">hx$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">hx$</span><span class="p">)</span>
+<span class="n">hx$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max hex _INTEGER64 = "</span><span class="err">;</span> <span class="n">hx$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">hx$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">hx$</span><span class="p">)</span>
+<span class="n">hx$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="mi">9223372036854775807</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max _INTEGER64 value = "</span><span class="err">;</span> <span class="n">hx$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">hx$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits"</span>
+<span class="n">hx$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="o">-</span><span class="mi">9223372036854775808</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Min _INTEGER64 value = "</span><span class="err">;</span> <span class="n">hx$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">hx$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits"</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Max hex _BYTE = FF with 2 digits = 255
+Max hex INTEGER = FFFF with 4 digits = 65535
+Max hex LONG = FFFFFFFF with 8 digits = 4294967295
+Max hex _INTEGER64 = FFFFFFFFFFFFFFFF with 16 digits =-1
+Max _INTEGER64 value = 7FFFFFFFFFFFFFFF with 16 digits
+Min _INTEGER64 value = 8000000000000000 with 16 digits
+
+</code></pre></div></div>
+
+<p>Converting a decimal number to a binary string value using <a href="HEX%24.html">HEX$</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FUNCTION</span> <span class="n">BIN</span><span class="err">$</span> <span class="p">(</span><span class="n">n&amp;</span><span class="p">)</span>
+  <span class="n">h$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">n&amp;</span><span class="p">)</span>                     <span class="c1">'get hexadecimal string value</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">h$</span><span class="p">)</span>              <span class="c1">'scan the HEX$ digits</span>
+    <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">h$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1">'read each HEX$ digit</span>
+        <span class="n">CASE</span> <span class="s">"0"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0000"</span>
+        <span class="n">CASE</span> <span class="s">"1"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0001"</span>
+        <span class="n">CASE</span> <span class="s">"2"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0010"</span>
+        <span class="n">CASE</span> <span class="s">"3"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0011"</span>
+        <span class="n">CASE</span> <span class="s">"4"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0100"</span>
+        <span class="n">CASE</span> <span class="s">"5"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0101"</span>
+        <span class="n">CASE</span> <span class="s">"6"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0110"</span>
+        <span class="n">CASE</span> <span class="s">"7"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"0111"</span>
+        <span class="n">CASE</span> <span class="s">"8"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1000"</span>
+        <span class="n">CASE</span> <span class="s">"9"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1001"</span>
+        <span class="n">CASE</span> <span class="s">"A"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1010"</span>
+        <span class="n">CASE</span> <span class="s">"B"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1011"</span>
+        <span class="n">CASE</span> <span class="s">"C"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1100"</span>
+        <span class="n">CASE</span> <span class="s">"D"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1101"</span>
+        <span class="n">CASE</span> <span class="s">"E"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1110"</span>
+        <span class="n">CASE</span> <span class="s">"F"</span><span class="p">:</span> <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="s">"1111"</span>
+    <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">NEXT</span> <span class="n">i</span>
+  <span class="n">b$</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">b$</span><span class="p">)</span> <span class="o">-</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="s">"1"</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">'eliminate leading zeroes</span>
+  <span class="n">IF</span> <span class="n">VAL</span><span class="p">(</span><span class="n">b$</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="n">b$</span> <span class="n">ELSE</span> <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="s">"0"</span>       <span class="c1">'return zero if n&amp; = 0</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<p><sub>Code by CodeGuy</sub></p>
+
+<blockquote>
+  <p><em>Explanation:</em> Hexadecimal digits can be any value up to 15 which also corresponds to all four bits on in binary. The function above just adds every four-bit binary string value together to return the binary value. After they are concatenated, the leading bit on is found by <a href="INSTR.html">INSTR</a> and everything from that point is kept removing the leading zeros.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="HEX%24.html">HEX$</a>, <a href="OCT%24.html">OCT$</a></li>
+  <li><a href="%26B.html">&amp;B</a> (binary), <a href="%26O.html">&amp;O</a> (octal)</li>
+  <li><a href="Base-Comparisons.html">Base Comparisons</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/&H.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+</html>

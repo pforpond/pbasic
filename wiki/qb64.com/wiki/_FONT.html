@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_FONT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_FONT-2.html" />
+<meta property="og:url" content="_FONT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_FONT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_FONT.html">_FONT</a> statement sets the current <a href="_LOADFONT.html">_LOADFONT</a> function font handle to be used by <a href="PRINT.html">PRINT</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_FONT.html">_FONT</a> fontHandle&amp;[, imageHandle&amp;]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>fontHandle&amp; is the handle retrieved from <a href="_LOADFONT.html">_LOADFONT</a> function, the <a href="_FONT-(function).html">_FONT (function)</a> function, or a predefined handle.</li>
+  <li>If the image handle is omitted the current image <a href="_DEST.html">_DEST</a>ination is used. Zero can designate the current program <a href="SCREEN.html">SCREEN</a>.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Predefined <strong>QB64</strong> font handle numbers can be used before freeing a font:
+    <ul>
+      <li><strong>_FONT 8</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 1, 2, 7, 8 or 13</li>
+      <li><strong>_FONT 14</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 9 or 10</li>
+      <li><strong>_FONT 16</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 0 (<a href="WIDTH.html">WIDTH</a> 80, 25 text only), 11 or 12</li>
+      <li><strong>_FONT 9, 15</strong> and <strong>17</strong> are the double width versions of 8, 14 and 16 respectively in text <strong>SCREEN 0 only</strong>.</li>
+    </ul>
+  </li>
+  <li><a href="Unicode.html">Unicode</a> characters can be assigned to a monospace font that contains those unicode characters using the <a href="_MAPUNICODE.html">_MAPUNICODE</a> TO <a href="ASCII.html">ASCII</a> mapping statement. The optional <strong>IME cyberbit.ttf</strong> font included with QB64 can also be used.</li>
+  <li>Can alpha blend a font with a background screen created by <a href="_NEWIMAGE.html">_NEWIMAGE</a> in 32 bit color.</li>
+  <li><strong>Check for valid handle values greater than 0 before using or freeing font handles.</strong></li>
+  <li>Free <strong>unused</strong> font handles with <a href="_FREEFONT.html">_FREEFONT</a>. Freeing invalid handles will create an <a href="ERROR-Codes.html">ERROR Codes</a> error.</li>
+  <li><strong>NOTE: SCREEN 0 can only use one font type and style per viewed SCREEN page. Font size may also affect the window size.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Previewing a font in SCREEN 0. A different true type font can be substituted below.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">fontpath$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"SYSTEMROOT"</span><span class="p">)</span> <span class="o">+</span> <span class="s">"\fonts\lucon.ttf"</span> <span class="c1">'Find Windows Folder Path.</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">CLS</span>
+  <span class="n">DO</span>
+    <span class="n">style$</span> <span class="o">=</span> <span class="s">"MONOSPACE"</span>
+    <span class="n">PRINT</span>
+    <span class="n">INPUT</span> <span class="s">"Enter A FONT Size 8 TO 25: "</span><span class="p">,</span> <span class="n">fontsize%</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">fontsize%</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="n">and</span> <span class="n">fontsize%</span> <span class="o">&lt;</span> <span class="mi">26</span>
+  <span class="n">DO</span>
+    <span class="n">PRINT</span>
+    <span class="n">INPUT</span> <span class="s">"Enter (0) for REGULAR OR (1) for ITALIC FONT: "</span><span class="p">,</span> <span class="n">italic%</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">DO</span>
+    <span class="n">PRINT</span>
+    <span class="n">INPUT</span> <span class="s">"Enter (0) for REGULAR OR (1) for BOLD FONT: "</span><span class="p">,</span> <span class="n">bold%</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">style$</span> <span class="o">=</span> <span class="n">style$</span> <span class="o">+</span> <span class="s">", ITALIC"</span>
+  <span class="n">IF</span> <span class="n">bold%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">then</span> <span class="n">style$</span> <span class="o">=</span> <span class="n">style$</span> <span class="o">+</span> <span class="s">", BOLD"</span>
+
+  <span class="n">GOSUB</span> <span class="n">ClearFont</span>
+  <span class="n">font&amp;</span> <span class="o">=</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="n">fontpath$</span><span class="p">,</span> <span class="n">fontsize%</span><span class="p">,</span> <span class="n">style$</span><span class="p">)</span>
+  <span class="n">_FONT</span> <span class="n">font&amp;</span>  
+  <span class="n">PRINT</span>
+  <span class="n">PRINT</span> <span class="s">"This is your LUCON font! Want to try another STYLE?(Y/N): "</span><span class="err">;</span> 
+  <span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">):</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">OR</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"N"</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"N"</span>
+<span class="n">GOSUB</span> <span class="n">ClearFont</span>
+
+<span class="n">PRINT</span> <span class="s">"This is the QB64 default _FONT 16!"</span>
+<span class="n">END</span>
+
+<span class="n">ClearFont</span><span class="p">:</span> 
+<span class="n">IF</span> <span class="n">font&amp;</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">_FONT</span> <span class="mi">16</span>   <span class="c1">'select inbuilt 8x16 default font</span>
+    <span class="n">_FREEFONT</span> <span class="n">font&amp;</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">RETURN</span>
+
+</code></pre></div></div>
+
+<p><strong>NOTE:</strong> <a href="ENVIRON%24.html">ENVIRON$</a>(“SYSTEMROOT”) returns a string value of: “C:\WINDOWS”. Add the “\FONTS" folder and the <strong>.TTF</strong> font file name.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FONT-(function).html">_FONT (function)</a></li>
+  <li><a href="_LOADFONT.html">_LOADFONT</a>, <a href="_FREEFONT.html">_FREEFONT</a></li>
+  <li><a href="Unicode.html">Unicode</a>, <a href="_MAPUNICODE.html">_MAPUNICODE</a></li>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_FONT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:31 GMT -->
+</html>

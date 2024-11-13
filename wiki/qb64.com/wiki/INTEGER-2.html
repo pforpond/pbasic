@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/INTEGER.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="INTEGER-2.html" />
+<meta property="og:url" content="INTEGER-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/INTEGER.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="INTEGER.html">INTEGER</a> is a 2-byte number type definition that can hold whole numerical values.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DIM.html">DIM</a> <em>variable</em> AS <a href="INTEGER.html">INTEGER</a></p>
+</blockquote>
+
+<ul>
+  <li>Integers do not use decimal point values but will round those off to the nearest even whole number.</li>
+  <li>QBasic integer values can range from -32768 to 32767 without an “overflow” error.</li>
+  <li>For larger integer values use the <a href="LONG.html">LONG</a> integer type.</li>
+  <li><strong>QB64</strong> <a href="INTEGER.html">INTEGER</a> values greater than 32767 become negative signed values instead of throwing an “overflow” error, as the top bit designates a negative value. See example 1 below.</li>
+  <li><strong>QB64</strong> <a href="_UNSIGNED.html">_UNSIGNED</a> integers can range from  0 to 65535.</li>
+  <li><strong>QB64</strong> _UNSIGNED <a href="_INTEGER64.html">_INTEGER64</a> values range from 0 to 18446744073709551615</li>
+  <li>Many graphic programs require <a href="INTEGER.html">INTEGER</a> arrays.</li>
+  <li>Variable type suffix is % or ~% for <a href="_UNSIGNED.html">_UNSIGNED</a>. Suffix can also be placed after a literal or hexadecimal numerical value.</li>
+  <li><a href="LONG.html">LONG</a> integers use the <strong>&amp;</strong> suffix and <a href="_INTEGER64.html">_INTEGER64</a> use the <strong>&amp;&amp;</strong> suffix.</li>
+  <li>Values can be converted to 2 byte <a href="ASCII.html">ASCII</a> string values using <a href="MKI%24.html">MKI$</a> and back with <a href="CVI.html">CVI</a>.</li>
+  <li><strong>When a variable has not been defined or has no type suffix, the value defaults to <a href="SINGLE.html">SINGLE</a>.</strong></li>
+  <li><strong>Warning: QBasic keyword names cannot be used as numerical variable names with or without the type suffix.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>QBasic signed integers were limited from -32768 to 32767, but could not exceed 32767 or it would error:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">2000</span>
+  <span class="n">i%</span> <span class="o">=</span> <span class="n">i%</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">PRINT</span> <span class="n">i%</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">0</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> In <strong>QB64</strong> the count will go to 32767, then count up from -32768 to 0 before repeating the process without error.</p>
+</blockquote>
+
+<p>When a signed <strong>QB64</strong> INTEGER value exceeds 32767, the value may become a negative value:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">i%</span> <span class="o">=</span> <span class="mi">38000</span>
+<span class="n">PRINT</span> <span class="n">i%</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+-27536
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Use an <a href="_UNSIGNED.html">_UNSIGNED</a> INTEGER or a ~% variable type suffix for only positive integer values up to 65535.</p>
+</blockquote>
+
+<p>In <strong>QB64</strong> <a href="_UNSIGNED.html">_UNSIGNED</a> INTEGER values greater than 65535 cycle over again from zero:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">i</span><span class="err">~%</span> <span class="o">=</span> <span class="mi">70000</span>
+<span class="n">PRINT</span> <span class="n">i</span><span class="err">~%</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 4464
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> In QB64 an unsigned integer value of 65536 would be 0 with values increasing by the value minus 65536.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DIM.html">DIM</a>, <a href="DEFINT.html">DEFINT</a></li>
+  <li><a href="LONG.html">LONG</a>, <a href="_INTEGER64.html">_INTEGER64</a></li>
+  <li><a href="LEN.html">LEN</a>, <a href="MKI%24.html">MKI$</a>, <a href="CVI.html">CVI</a></li>
+  <li><a href="_DEFINE.html">_DEFINE</a>, <a href="_UNSIGNED.html">_UNSIGNED</a></li>
+  <li><a href="Variable-Types.html">Variable Types</a></li>
+  <li><a href="%26B.html">&amp;B</a> (binary), <a href="%26O.html">&amp;O</a> (octal), <a href="%26H.html">&amp;H</a> (hexadecimal)</li>
+  <li>[](), <a href="MOD.html">MOD</a> (Integer remainder division)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/INTEGER.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:01 GMT -->
+</html>

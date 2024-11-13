@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/COS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="COS-2.html" />
+<meta property="og:url" content="COS-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/COS.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="COS.html">COS</a> function returns the horizontal component or the cosine of an angle measured in radians.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>value! = <a href="COS.html">COS</a>(radianAngle!)</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The radianAngle! must be measured in radians.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>To convert from degrees to radians, multiply degrees * π / 180.</li>
+  <li><a href="COS.html">COS</a>INE is the horizontal component of a unit vector in the direction theta (θ).</li>
+  <li>COS(x) can be calculated in either <a href="SINGLE.html">SINGLE</a> or <a href="DOUBLE.html">DOUBLE</a> precision depending on its argument.
+    <blockquote>
+      <p>COS(4) = -.6536436 …… COS(4#) = -.6536436208636119</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Converting degree angles to radians for QBasic’s trig functions and drawing the line at the angle.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">PI</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"PI = 4 * ATN(1) ="</span><span class="err">;</span> <span class="n">PI</span>
+<span class="n">PRINT</span> <span class="s">"COS(PI) = "</span><span class="err">;</span> <span class="n">COS</span><span class="p">(</span><span class="n">PI</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"SIN(PI) = "</span><span class="err">;</span> <span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">)</span>
+<span class="n">DO</span>
+  <span class="n">PRINT</span>
+  <span class="n">INPUT</span> <span class="s">"Enter the degree angle (0 quits): "</span><span class="p">,</span> <span class="n">DEGREES</span><span class="err">%</span>
+  <span class="n">RADIANS</span> <span class="o">=</span> <span class="n">DEGREES</span><span class="err">%</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">/</span> <span class="mi">180</span>
+  <span class="n">PRINT</span> <span class="s">"RADIANS = DEGREES% * PI / 180 = "</span><span class="err">;</span> <span class="n">RADIANS</span>
+  <span class="n">PRINT</span> <span class="s">"X = COS(RADIANS) = "</span><span class="err">;</span> <span class="n">COS</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">)</span>
+  <span class="n">PRINT</span> <span class="s">"Y = SIN(RADIANS) = "</span><span class="err">;</span> <span class="n">SIN</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">)</span>
+  <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">400</span> <span class="o">+</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">)),</span> <span class="mi">240</span> <span class="o">+</span> <span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">RADIANS</span><span class="p">))),</span> <span class="mi">11</span>
+  <span class="n">DEGREES</span><span class="err">%</span> <span class="o">=</span> <span class="n">RADIANS</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="n">PI</span>
+  <span class="n">PRINT</span> <span class="s">"DEGREES% = RADIANS * 180 / PI ="</span><span class="err">;</span> <span class="n">DEGREES</span><span class="err">%</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">DEGREES</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+PI = 4 * ATN(1) = 3.141593
+COS(PI) = -1
+SIN(PI) = -8.742278E-08
+
+Enter the degree angle (0 quits): 45
+RADIANS = DEGREES% * PI / 180 = .7853982
+X = COS(RADIANS) = .7071068
+Y = SIN(RADIANS) = .7071068
+DEGREES% = RADIANS * 180 / PI = 45
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When 8.742278E-08(.00000008742278) is returned by <a href="SIN.html">SIN</a> or COS the value  is essentially zero.</p>
+</blockquote>
+
+<p>Creating 12 analog clock hour points using <a href="CIRCLE.html">CIRCLE</a>s and <a href="PAINT.html">PAINT</a></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">PI2</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                  <span class="c1">'2 * π</span>
+ <span class="n">arc!</span> <span class="o">=</span> <span class="n">PI2</span> <span class="o">/</span> <span class="mi">12</span>                          <span class="c1">'arc interval between hour circles</span>
+ <span class="n">SCREEN</span> <span class="mi">12</span>
+ <span class="n">FOR</span> <span class="n">t!</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">PI2</span> <span class="n">STEP</span> <span class="n">arc!</span>
+   <span class="n">cx%</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">COS</span><span class="p">(</span><span class="n">t!</span><span class="p">)</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="c1">' pixel columns (circular radius = 70)</span>
+   <span class="n">cy%</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">SIN</span><span class="p">(</span><span class="n">t!</span><span class="p">)</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="c1">' pixel rows</span>
+   <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">cx%</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="n">cy%</span> <span class="o">+</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span>
+   <span class="n">PAINT</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span>
+ <span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The 12 circles are placed at radian angles that are 1/12 of 6.28318 or .523598 radians apart.</p>
+
+<p>Creating a rotating spiral with COS and <a href="SIN.html">SIN</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="n">DO</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">BF</span>
+  <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">100</span> <span class="n">STEP</span> <span class="p">.</span><span class="err">1</span>
+    <span class="n">LINE</span> <span class="o">-</span><span class="p">(.</span><span class="err">05</span> <span class="err">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="p">.</span><span class="err">05</span> <span class="err">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">240</span><span class="p">)</span>
+  <span class="n">NEXT</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">100</span> <span class="n">STEP</span> <span class="p">.</span><span class="err">1</span>
+    <span class="n">LINE</span> <span class="o">-</span><span class="p">(.</span><span class="err">05</span> <span class="err">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="p">.</span><span class="err">05</span> <span class="err">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">240</span><span class="p">)</span>
+  <span class="n">NEXT</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">100</span> <span class="n">STEP</span> <span class="p">.</span><span class="err">1</span>
+    <span class="n">PAINT</span> <span class="p">(.</span><span class="err">05</span> <span class="err">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">COS</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="p">.</span><span class="err">05</span> <span class="err">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">240</span><span class="p">)</span>
+  <span class="n">NEXT</span>
+
+  <span class="n">_DISPLAY</span>
+  <span class="n">_LIMIT</span> <span class="mi">30</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H60</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'escape exit </span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_PI.html">_PI</a> (QB64 function)</li>
+  <li><a href="SIN.html">SIN</a> (sine)</li>
+  <li><a href="ATN.html">ATN</a> (arctangent)</li>
+  <li><a href="TAN.html">TAN</a> (tangent)
+*<a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/COS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:09 GMT -->
+</html>

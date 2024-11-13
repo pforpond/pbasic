@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/COMMON-SHARED by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="COMMON-SHARED-2.html" />
+<meta property="og:url" content="COMMON-SHARED-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/COMMON-SHARED.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>COMMON SHARED</strong> is used to pass variable values between 2 or more program modules and sub procedures within that module.</p>
+
+<p>The multi-modular technique goes back to when QBasic and QuickBASIC had module size constraints. In QB64 it has been implemented so that that older code can still be compiled, though <strong>it is advisable to use single modules for a single project (not counting <a href="%24INCLUDE.html">$INCLUDE</a> libraries), for ease of sharing and also because the module size constraints no longer exist.</strong></p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>COMMON</strong> [<strong>SHARED</strong>][/block_name/]variable_list</p>
+</blockquote>
+
+<ul>
+  <li>COMMON statements must be made before any program code execution.</li>
+  <li>The <a href="SHARED.html">SHARED</a> statement allows the variable values to also be used in module <a href="SUB.html">SUB</a> and <a href="FUNCTION.html">FUNCTION</a> procedures.</li>
+  <li>The list of variables(separated by commas) to pass MUST be in the same type order in ALL modules used!</li>
+  <li><a href="COMMON.html">COMMON</a> variable list names(but not variable types) can change between modules.</li>
+  <li>The list can hold any variable type.</li>
+  <li>The list cannot define a variable’s value, but can use <a href="AS.html">AS</a> to designate the type.</li>
+  <li>Use <a href="DIM.html">DIM</a> <a href="SHARED.html">SHARED</a> variables when working in a module to pass variable values to SUB procedures.</li>
+  <li>Data files could be used as an alternative to using COMMON SHARED values.</li>
+  <li>In <strong>QB64</strong> COMMON values are sent using files instead of memory presently.</li>
+  <li><strong>Note: Values assigned to shared variables used as procedure call parameters will not be passed to other procedures! The shared variable value MUST be assigned INSIDE of the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedure to be passed!</strong></li>
+</ul>
+
+<h2 id="qbasicquickbasic">QBasic/QuickBASIC</h2>
+
+<ul>
+  <li>Quickbasic 4.5 required you to include BRUN45.EXE when you compile COMMON SHARED values between EXE modules.</li>
+  <li>The COMMON block name designates a certain block of variables that certain program modules may use, the name must be within two forward slashes/ (Ex: /thename/ ). <strong><a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported by QB64</a></strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">COMMON</span> <span class="n">SHARED</span> <span class="n">x%</span><span class="p">,</span> <span class="n">y%</span><span class="p">,</span> <span class="n">user$</span><span class="p">,</span> <span class="n">speed!</span><span class="p">,</span> <span class="n">score&amp;</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="CHAIN.html">CHAIN</a>, <a href="RUN.html">RUN</a></li>
+  <li><a href="COMMON.html">COMMON</a></li>
+  <li><a href="SHARED.html">SHARED</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/COMMON-SHARED by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:49 GMT -->
+</html>

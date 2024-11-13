@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/QB.BI.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="QB.BI.html" />
+<meta property="og:url" content="QB.BI.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/QB.BI.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>QB.BI</strong> file can be used for <a href="INTERRUPT.html">INTERRUPT</a> or <a href="INTERRUPTX.html">INTERRUPTX</a> routines by <a href="%24INCLUDE.html">$INCLUDE</a>ing the file in a program. It is useful for the <a href="TYPE.html">TYPE</a> and <a href="SUB.html">SUB</a> declarations.</p>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Create your own BI files to <a href="%24INCLUDE.html">$INCLUDE</a> to hold your own <a href="TYPE.html">TYPE</a> definitions. Use notepad and save as All Files as <em>filename.BI</em></li>
+  <li>In QBasic the BI library or support file MUST be included in a program package or download!</li>
+  <li><strong>QB64</strong> programs do not require any INCLUDED files once the BAS file is compiled!</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<blockquote>
+  <p><em>The QB.BI file contents:</em></p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'**************************************************************************</span>
+<span class="c1">' QB.BI - Assembly Support Include File</span>
+<span class="c1">'</span>
+<span class="c1">' Copyright &lt;C&gt; 1987 Microsoft Corporation</span>
+<span class="c1">'</span>
+<span class="c1">' Purpose:</span>
+<span class="c1">'      This include file defines the types and gives the DECLARE</span>
+<span class="c1">'       statements for the assembly language routines CALL ABSOLUTE,</span>
+<span class="c1">'       INTERRUPT, INTERRUPTX, INT86OLD, and INT86XOLD.</span>
+<span class="c1">'</span>
+<span class="c1">'***************************************************************************</span>
+<span class="c1">'</span>
+<span class="c1">' Define the [TYPE](TYPE) needed for [INTERRUPT](INTERRUPT)</span>
+<span class="c1">'</span>
+<span class="n">TYPE</span> <span class="n">RegType</span>
+   <span class="n">ax</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">bx</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">cx</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">dx</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">bp</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">si</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">di</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">flags</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+<span class="c1">'</span>
+<span class="c1">' Define the [TYPE](TYPE) needed for [INTERRUPTX](INTERRUPTX)</span>
+<span class="c1">'</span>
+<span class="n">TYPE</span> <span class="n">RegTypeX</span>
+   <span class="n">ax</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">bx</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">cx</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">dx</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">bp</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">si</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">di</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">flags</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">ds</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">es</span>    <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+<span class="c1">'</span>
+<span class="c1">' DECLARE statements for the 5 supported routines</span>
+<span class="c1">' -----------------------------------------</span>
+<span class="c1">'</span>
+<span class="c1">' Generate a software interrupt, loading all but the segment registers</span>
+<span class="c1">'</span>
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">INTERRUPT</span> <span class="p">(</span><span class="n">intnum</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">inreg</span> <span class="n">AS</span> <span class="n">RegType</span><span class="p">,</span> <span class="n">outreg</span> <span class="n">AS</span> <span class="n">RegType</span><span class="p">)</span>
+<span class="c1">'</span>
+<span class="c1">' Generate a software interrupt, loading all registers</span>
+<span class="c1">'</span>
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">INTERRUPTX</span> <span class="p">(</span><span class="n">intnum</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">inreg</span> <span class="n">AS</span> <span class="n">RegTypeX</span><span class="p">,</span> <span class="n">outreg</span> <span class="n">AS</span> <span class="n">RegTypeX</span><span class="p">)</span>
+<span class="c1">'</span>
+<span class="c1">' Call a routine at an absolute address.</span>
+<span class="c1">' NOTE: If the routine called takes parameters, then they will have to</span>
+<span class="c1">'       be added to this declare statement before the parameter given.</span>
+<span class="c1">'</span>
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">ABSOLUTE</span> <span class="p">(</span><span class="n">address</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+<span class="c1">'</span>
+<span class="c1">' Generate a software interrupt, loading all but the segment registers</span>
+<span class="c1">'       (old version)</span>
+<span class="c1">'</span>
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">INT86OLD</span> <span class="p">(</span><span class="n">intnum</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">inarray</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">outarray</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+<span class="c1">'</span>
+<span class="c1">' Gemerate a software interrupt, loading all the registers</span>
+<span class="c1">'       (old version)</span>
+<span class="c1">'</span>
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">INT86XOLD</span> <span class="p">(</span><span class="n">intnum</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">inarray</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">outarray</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Ethan Winer’s compact “RegType.BI” file for <a href="INTERRUPT.html">INTERRUPT</a> or <a href="INTERRUPTX.html">INTERRUPTX</a>:</em></p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="n">TYPE</span> <span class="n">RegType</span>
+   <span class="n">ax</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">bx</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">cx</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">dx</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">bp</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">si</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">di</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">flags</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">ds</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+   <span class="n">es</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">END</span> <span class="n">TYPE</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> DECLARE statements in QB4.5 and PDS(7.1) are not required because the Library MUST be included with <a href="INTERRUPT.html">INTERRUPT</a>, <a href="INTERRUPTX.html">INTERRUPTX</a> and <a href="CALL-ABSOLUTE.html">CALL ABSOLUTE</a> or a “Subprogram not defined” <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="%24INCLUDE.html">$INCLUDE</a>, <a href="INTERRUPT.html">INTERRUPT</a>, <a href="INTERRUPTX.html">INTERRUPTX</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/QB.BI.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+</html>

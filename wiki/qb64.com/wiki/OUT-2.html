@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/OUT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="OUT-2.html" />
+<meta property="og:url" content="OUT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/OUT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="OUT.html">OUT</a> writes values to register and port hardware addresses.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="OUT.html">OUT</a> registerAddress%, value%</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>registerAddress% is a value expressed as a decimal <a href="INTEGER.html">INTEGER</a> or <a href="%26H.html">&amp;H</a>.</li>
+  <li>The <a href="INTEGER.html">INTEGER</a> value% sent is normally only 0 to 255 per byte register (8 bit) address.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><strong>QB64 has limited access to registers. VGA memory and registers are emulated.</strong></li>
+  <li>OUT can be used to change color port and a limited number of other port settings in QB64.</li>
+  <li>Some settings may be set in a specific order to gain access to settings and <a href="INP.html">INP</a> reads.</li>
+  <li><a href="SCREEN.html">SCREEN</a> modes determine the number of available color palette attributes from 2 to 256 in SCREEN 13.</li>
+  <li>Windows NT may block access to Parallel printer and Serial ports. See <a href="Port-Access-Libraries.html">Port Access Libraries</a> or other DLLs.</li>
+  <li><a href="_PALETTECOLOR.html">_PALETTECOLOR</a> can also be used to set RGB intensity values using <a href="_RGB32.html">_RGB32</a> values.</li>
+  <li>OUT can toggle the blinking attribute of SCREEN 0 color 16-31 for legacy code. <a href="_BLINK.html">_BLINK</a> is the preferred method. (starting with build 20170816/61).</li>
+</ul>
+
+<h2 id="color-port-palette-access-using-out">Color Port Palette access using OUT</h2>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">OUT &amp;H3C7, attribute</code> : Set port to read RGB settings for start attribute</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">[INP](INP) &amp;H3C9, colorIntensity</code> : Reads RGB color intensity settings in order</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">OUT &amp;H3C8, attribute</code> : Set port to write RGB settings for start attribute</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">OUT &amp;H3C9, colorIntensity</code> : Writes RGB color intensity settings in order</p>
+</blockquote>
+
+<ul>
+  <li>Every 3 reads or writes, changes to next color attribute without a set</li>
+  <li>Color setting is Red, Green and Blue attribute intensities in order.</li>
+  <li>Color attribute intensity values range from 0 to 63.</li>
+  <li>Some <a href="DAC.html">DAC</a> color attribute intensities cannot be changed using OUT.</li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li>In DOS, OUT accesses memory and hardware directly, unlike <a href="POKE.html">POKE</a>, and could cause PC damage.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Reading the default RGB color settings of color attribute 15.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C7</span><span class="p">,</span> <span class="mi">15</span>      <span class="c1">'set color port attribute 15 for a read</span>
+<span class="n">red%</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+<span class="n">green%</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+<span class="n">blue%</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">red%</span><span class="p">,</span> <span class="n">green%</span><span class="p">,</span> <span class="n">blue%</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 63       63       63
+
+</code></pre></div></div>
+
+<p>Changing the color intensity settings of the <a href="SCREEN.html">SCREEN</a> background <a href="COLOR.html">COLOR</a> 0 to bright white.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span>  <span class="c1">'attribute number. 0 for black screen background</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">63</span> <span class="c1">'red</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">63</span> <span class="c1">'green</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">63</span> <span class="c1">'blue </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> In <a href="SCREEN.html">SCREEN</a> 0 this is one way to make high intensity background colors. <code class="language-plaintext highlighter-rouge">[COLOR](COLOR) ,15</code> is actually grey (7).</p>
+</blockquote>
+
+<p>Toggling blinking colors in SCREEN beginning with build 20170816/61</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H10</span>  <span class="c1">'disables blinking and enables high intensity backgrounds (colors 16-31)</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">^</span> <span class="mi">3</span> <span class="c1">'reenables blinking and disables high intensity backgrounds  (colors 16-31)</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>Note: In QB64, the recommended practice is to use the <a href="_BLINK.html">_BLINK</a> {ON</td>
+        <td>OFF} statement.</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<p>Restoring colors to a bitmap from the Red, Green and Blue <a href="BSAVE.html">BSAVE</a>d indexed array of color values.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">SCREEN</span> <span class="mi">12</span>
+ <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span> <span class="c1">' set color port for output at attribute 0</span>
+ <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">47</span> <span class="c1">' 48 RGB values is (3 * 16) -1 color attributes from 0 in screen 12</span>
+   <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Image</span><span class="err">%</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">' changes to next attribute after 3 RGB loops</span>
+ <span class="n">NEXT</span>
+ <span class="n">PUT</span><span class="p">(</span><span class="n">clm</span><span class="p">,</span> <span class="n">row</span><span class="p">),</span> <span class="n">Image</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="n">PSET</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The color RGB intensity settings were imported from a file to the Image array using <a href="BLOAD.html">BLOAD</a>. The color attribute advances to the next one every 3 writes using OUT. The color information was indexed to the start of the array. The image is after the color settings at index 48. Index 48 is the <a href="GET-(graphics-statement).html">GET (graphics statement)</a> image width and 49 is the height.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PALETTE.html">PALETTE</a>, <a href="_PALETTECOLOR.html">_PALETTECOLOR</a></li>
+  <li><a href="INP.html">INP</a> (read register)</li>
+  <li><a href="PEEK.html">PEEK</a> (read memory)</li>
+  <li><a href="POKE.html">POKE</a> (write to memory)</li>
+  <li><a href="COLOR.html">COLOR</a>, <a href="SCREEN.html">SCREEN</a></li>
+  <li><a href="BSAVE.html">BSAVE</a>, <a href="BLOAD.html">BLOAD</a></li>
+  <li><a href="_BLINK.html">_BLINK</a>, <a href="_BLINK-(function).html">_BLINK (function)</a></li>
+  <li><a href="Port-Access-Libraries.html">Port Access Libraries</a> (COM or LPT registers)</li>
+</ul>
+
+<h3 id="external-links">External Links</h3>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Input/output_base_address#Common_I.2FO_base_address_device_assignments_in_IBM_PC_compatible_computers">PC I/O base address device assignments</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/OUT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+</html>

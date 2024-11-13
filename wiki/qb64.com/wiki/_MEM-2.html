@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_MEM.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_MEM-2.html" />
+<meta property="og:url" content="_MEM-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_MEM.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_MEM.html">_MEM</a> variable type can be used when working with memory blocks. It has no variable <a href="Variable-Types.html">Variable Types</a> suffix.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DIM.html">DIM</a> m <a href="AS.html">AS</a> <a href="_MEM.html">_MEM</a></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The _MEM type contains the following <strong>read-only</strong> elements where <em>name</em> is the _MEM variable name:
+    <ul>
+      <li><em>name</em>.<strong>OFFSET</strong> is the current start position in the memory block <a href="AS.html">AS</a> <a href="_OFFSET.html">_OFFSET</a>. Add bytes to change position.</li>
+      <li><em>name</em>.<strong>SIZE</strong> is the remaining size of the block at current position in bytes <a href="AS.html">AS</a> <a href="_OFFSET.html">_OFFSET</a></li>
+      <li><em>name</em>.<strong>TYPE</strong> is the type (represented as bits combined to form a value) <a href="AS.html">AS</a> <a href="LONG.html">LONG</a>:</li>
+    </ul>
+  </li>
+  <li>Memory DOT values are actually part of the built in memory variable <a href="Variable-Types.html">Variable Types</a> in QB64. The following <a href="TYPE.html">TYPE</a> is built in:</li>
+</ul>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">memory_type</span>
+  <span class="n">OFFSET</span> <span class="n">AS</span> <span class="n">_OFFSET</span>       <span class="c1">'start location of block(changes with byte position)</span>
+  <span class="n">SIZE</span> <span class="n">AS</span> <span class="n">_OFFSET</span>         <span class="c1">'size of block remaining at offset(changes with position)</span>
+  <span class="n">TYPE</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">'type description of variable used(never changes)</span>
+  <span class="n">ELEMENTSIZE</span> <span class="n">AS</span> <span class="n">_OFFSET</span>  <span class="c1">'byte size of values inside the block(never changes)</span>
+  <span class="n">IMAGE</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">'the image handle used when _MEMIMAGE(handle) is used</span>
+  <span class="n">SOUND</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">'the sound handle used when _MEMSOUND(handle) is used</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+</code></pre></div></div>
+
+<p>The above <a href="TYPE.html">TYPE</a> is for clarification purposes only. It <strong>doesn’t need</strong> to be pasted in a program to use _MEM.</p>
+
+<p><strong>IMPORTANT NOTE:</strong> As of Build 20170802/57 onward, <em>mem.TYPE</em> has been changed to be an [<em>OFFSET](_OFFSET), just as _mem.SIZE</em> and <em>mem.ELEMENTSIZE</em>.</p>
+
+<h3 id="type-values-version-1000-and-up">TYPE values (version 1.000 and up)</h3>
+
+<ul>
+  <li>0 = UDT (<a href="TYPE.html">TYPE</a>) or memory created by <a href="_MEMNEW.html">_MEMNEW</a></li>
+  <li>1 = 1 bit   ELEMENT.SIZE=1   * Only used along with specific types (currently integers or floats)</li>
+  <li>2 = 2 bit. ELEMENT.SIZE=2</li>
+  <li>4 = 4 bit. ELEMENT.SIZE=4</li>
+  <li>8 = 8 bit. ELEMENT.SIZE=8</li>
+  <li>16 = 16 bit. ELEMENT.SIZE=16</li>
+  <li>32 = 32 bit. ELEMENT.SIZE=32</li>
+  <li>64 = 64 bit. ELEMENT.SIZE=64</li>
+  <li>128 = 128 bit. ELEMENT.SIZE=128</li>
+  <li>256 = 256 bit. ELEMENT.SIZE=256</li>
+  <li>512(+ bit*) = integer types only(ie. whole numbers)</li>
+  <li>1024(+ bit*) = floating point types only(ie. numbers that can have a decimal point)</li>
+  <li>2048 = <a href="STRING.html">STRING</a> type only</li>
+  <li>4096(+ 512 + bit*) = <a href="_UNSIGNED.html">_UNSIGNED</a> integer type only</li>
+  <li>8192 = <a href="_MEM.html">_MEM</a> type only</li>
+  <li>16384(+ 512 + bit*)= <a href="_OFFSET.html">_OFFSET</a> type only</li>
+</ul>
+
+<p><em>Note: If a future integer, float or other type doesn’t have a size that is 1,2,4,8,16,32,64,128 or 256 it won’t have a size-bit set.</em></p>
+
+<h3 id="versions-prior-to-1000">Versions prior to 1.000</h3>
+
+<ul>
+  <li>1 = Integer types such as <a href="_BYTE.html">_BYTE</a>, <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a>, <a href="_INTEGER64.html">_INTEGER64</a> or <a href="_OFFSET.html">_OFFSET</a></li>
+  <li>2 = <a href="_UNSIGNED.html">_UNSIGNED</a> variable types. Value must be added to the variable type value.(2 cannot be used by itself)</li>
+  <li>3 = ALL <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="INTEGER.html">INTEGER</a> type values.(add 1 + 2)</li>
+  <li>4 = Floating point types such as <a href="SINGLE.html">SINGLE</a>, <a href="DOUBLE.html">DOUBLE</a> or <a href="_FLOAT.html">_FLOAT</a></li>
+  <li>8 = <a href="STRING.html">STRING</a></li>
+  <li>
+    <p>0 = unknown(eg. created with <a href="_MEMNEW.html">_MEMNEW</a>) or <a href="TYPE.html">TYPE</a></p>
+  </li>
+  <li><strong>Note: <a href="_OFFSET.html">_OFFSET</a> values cannot be cast to other variable <a href="Variable-Types.html">Variable Types</a>s reliably. _MEM is a reserved custom variable <a href="Variable-Types.html">Variable Types</a>.</strong></li>
+  <li><strong><a href="_MEM-(function).html">_MEM (function)</a> cannot reference variable length <a href="STRING.html">STRING</a> variable values. String values must be designated as a fixed-<a href="LEN.html">LEN</a> string.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Demonstration of .IMAGE to determine an image’s dimensions, .TYPE to verify the type and <a href="_MEMEXISTS.html">_MEMEXISTS</a> to check image has not been freed</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"qb64_trans.png"</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">i</span>
+<span class="n">DIM</span> <span class="n">m</span> <span class="n">AS</span> <span class="n">_MEM</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">_MEMIMAGE</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="c1">'try uncommenting the following line and see what happens</span>
+<span class="c1">'_MEMFREE m</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">TYPE</span>
+<span class="n">IF</span> <span class="n">t</span> <span class="n">AND</span> <span class="mi">2048</span> <span class="n">THEN</span>
+  <span class="n">PRINT</span> <span class="s">"this is/was an image"</span>
+  <span class="n">IF</span> <span class="n">_MEMEXISTS</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="n">THEN</span> <span class="c1">'check if memory m is still available</span>
+    <span class="n">PRINT</span> <span class="n">t</span> <span class="n">AND</span> <span class="mi">7</span><span class="err">;</span> <span class="s">"bytes per pixel"</span>
+    <span class="n">PRINT</span> <span class="s">"image handle "</span><span class="err">;</span> <span class="n">m</span><span class="p">.</span><span class="n">IMAGE</span>
+    <span class="n">PRINT</span> <span class="s">"image width"</span><span class="err">;</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">IMAGE</span><span class="p">)</span>
+    <span class="n">PRINT</span> <span class="s">"image height"</span><span class="err">;</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">IMAGE</span><span class="p">)</span>
+  <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"Memory already freed!"</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">IF</span> 
+
+</code></pre></div></div>
+
+<p>Converts the current <a href="_DEST.html">_DEST</a> <a href="SCREEN.html">SCREEN</a> 13 image memory altered by <a href="PSET.html">PSET</a> to a <a href="STRING.html">STRING</a> value. SCREEN 13 only.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"H"</span><span class="p">)</span> <span class="c1">'top left corner of screen</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"E"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"L"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"L"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"O"</span><span class="p">)</span>
+
+<span class="n">DIM</span> <span class="n">m</span> <span class="n">AS</span> <span class="n">_MEM</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">_MEMIMAGE</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">'copy the screen memory to m</span>
+<span class="n">x1$</span> <span class="o">=</span> <span class="n">_MEMGET</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">'get at block start position</span>
+<span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="n">x1$</span><span class="p">)</span> <span class="c1">'prints 5 bytes as size is STRING * 5</span>
+<span class="n">PRINT</span> <span class="n">x1$</span> <span class="c1">'prints HELLO as ASCII character values</span>
+<span class="n">PRINT</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="err">;</span> <span class="n">m</span><span class="p">.</span><span class="n">SIZE</span><span class="err">;</span> <span class="n">m</span><span class="p">.</span><span class="n">ELEMENTSIZE</span>
+<span class="n">_MEMFREE</span> <span class="n">m</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 5
+HELLO
+ 5448320  6400  1
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When a numerical <a href="_BYTE.html">_BYTE</a> value is converted to a <a href="STRING.html">STRING</a>, each byte is converted to an <a href="ASCII.html">ASCII</a> character. The QB64 IDE will capitalize _MEM dot values.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                        m.SIZE = 320 * 200 = 6400 bytes
+                                        m.ELEMENTSIZE = 1 byte
+
+</code></pre></div></div>
+
+<p>Using _MEM to convert _OFFSET to _INTEGER64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">DIM</span> <span class="n">m</span> <span class="n">AS</span> <span class="n">_MEM</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span>
+<span class="n">PRINT</span> <span class="n">ConvertOffset</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">)</span>
+
+<span class="n">FUNCTION</span> <span class="n">ConvertOffset</span><span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">value</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+<span class="err">$</span><span class="n">CHECKING</span><span class="p">:</span><span class="n">OFF</span>
+<span class="n">DIM</span> <span class="n">m</span> <span class="n">AS</span> <span class="n">_MEM</span> <span class="c1">'Define a memblock</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1">'Point it to use value</span>
+<span class="err">$</span><span class="n">IF</span> <span class="mi">64</span><span class="n">BIT</span> <span class="n">THEN</span>
+    <span class="c1">'On 64 bit OSes, an OFFSET is 8 bytes in size.  We can put it directly into an Integer64</span>
+    <span class="n">_MEMGET</span> <span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">ConvertOffset</span><span class="o">&amp;&amp;</span> <span class="c1">'Get the contents of the memblock and put the values there directly into ConvertOffset&amp;&amp;</span>
+<span class="err">$</span><span class="n">ELSE</span>
+    <span class="c1">'However, on 32 bit OSes, an OFFSET is only 4 bytes.  We need to put it into a LONG variable first</span>
+    <span class="n">_MEMGET</span> <span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">temp&amp;</span> <span class="c1">'Like this</span>
+    <span class="n">ConvertOffset</span><span class="o">&amp;&amp;</span> <span class="o">=</span> <span class="n">temp&amp;</span> <span class="c1">'And then assign that long value to ConvertOffset&amp;&amp;</span>
+<span class="err">$</span><span class="n">END</span> <span class="n">IF</span>
+<span class="n">_MEMFREE</span> <span class="n">m</span> <span class="c1">'Free the memblock</span>
+<span class="err">$</span><span class="n">CHECKING</span><span class="p">:</span><span class="n">ON</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The above will print two numbers which should match.  These numbers will vary, as they’re representations of where X is stored in memory, and that position is going to vary every time the program is run.  What it should illustrate, however, is a way to convert _OFFSET to _INTEGER64 values, which can sometimes be useful when trying to run calculations involving mem.SIZE, mem.TYPE, or mem.ELEMENTSIZE.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_MEM-(function).html">_MEM (function)</a></li>
+  <li><a href="_MEMELEMENT.html">_MEMELEMENT</a>, <a href="_MEMCOPY.html">_MEMCOPY</a></li>
+  <li><a href="_MEMIMAGE.html">_MEMIMAGE</a>, <a href="_MEMNEW.html">_MEMNEW</a></li>
+  <li><a href="_MEMSOUND.html">_MEMSOUND</a></li>
+  <li><a href="_MEMGET.html">_MEMGET</a>, <a href="_MEMPUT.html">_MEMPUT</a></li>
+  <li><a href="_MEMFILL.html">_MEMFILL</a>, <a href="_MEMFREE.html">_MEMFREE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_MEM.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Creating-Icon-Bitmaps by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Icon Viewer and Bitmap Creator | QB64.com</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Icon Viewer and Bitmap Creator" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Creating-Icon-Bitmaps-2.html" />
+<meta property="og:url" content="Creating-Icon-Bitmaps-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Icon Viewer and Bitmap Creator" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"Icon Viewer and Bitmap Creator","url":"https://qb64.com/wiki/Creating-Icon-Bitmaps.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2 id="icon-viewer-and-bitmap-creator">Icon Viewer and Bitmap Creator</h2>
+
+<p>The following program can be used to view Icon or Cursor images and save them as Bitmaps. When you answer Y the bitmap is saved with a black background so that it can be PUT using <a href="XOR.html">XOR</a> on to the <a href="AND.html">AND</a> image. The AND image will be black and white if the image is irregularly shaped(not a full box image). It is placed first using <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> with the AND action or can be placed using <a href="_PUTIMAGE.html">_PUTIMAGE</a> with the color white <a href="_ALPHA.html">_ALPHA</a> being set to 0. In that case, try just placing the XOR image with the color black 0 <a href="_ALPHA.html">_ALPHA</a> with <a href="_SETALPHA.html">_SETALPHA</a>.</p>
+
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'********************************* IconType.BI INCLUDE FILE ********************************</span>
+
+<span class="n">TYPE</span> <span class="n">IconType</span>            <span class="c1">'Icon or cursor file header</span>
+  <span class="n">Reserved</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'Reserved (always 0)</span>
+  <span class="n">ID</span> <span class="n">AS</span> <span class="n">INTEGER</span>          <span class="c1">'Resource ID (Icon = 1, Cursor = 2)</span>
+  <span class="n">Count</span> <span class="n">AS</span> <span class="n">INTEGER</span>       <span class="c1">'Number of icon bitmaps in Directory of icon entries array</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'6 bytes</span>
+
+<span class="n">TYPE</span> <span class="n">ICONENTRY</span>           <span class="c1">'or unanimated Cursor entry (see ANI for animated cursors)</span>
+  <span class="n">PWidth</span> <span class="n">AS</span> <span class="n">_BYTE</span>        <span class="c1">'Width of icon in pixels (USE THIS)</span>
+  <span class="n">PDepth</span> <span class="n">AS</span> <span class="n">_BYTE</span>        <span class="c1">'Height of icon in pixels (USE THIS)</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">_BYTE</span>     <span class="c1">'Maximum number of colors: (2 or 16 colors. 256 or 24/32 bit = 0}</span>
+  <span class="n">RES2</span> <span class="n">AS</span> <span class="n">_BYTE</span>          <span class="c1">'Reserved. Not used (always 0)</span>
+  <span class="n">HotSpotX</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'Icon: NumberPlanes(normally 0), Cursor: hotspot pixels from left</span>
+  <span class="n">HotSpotY</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'Icon: BitsPerPixel(normally 0), Cursor: hotspot pixels from top</span>
+  <span class="n">DataSize</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">'Length of icon bitmap in bytes (USE THIS)</span>
+  <span class="n">DataOffset</span> <span class="n">AS</span> <span class="n">LONG</span>     <span class="c1">'Offset byte position of icon bitmap data header in file(add 1)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'16 bytes</span>
+
+<span class="n">TYPE</span> <span class="n">ICONHEADER</span>          <span class="c1">'Bitmap type header found using entry DataOffset + 1</span>
+  <span class="n">IconHSize</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'size of ICON header (always 40 bytes) </span>
+  <span class="n">ICONWidth</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'bitmap width in pixels. (width and double height may be missing)</span>
+  <span class="n">ICONDepth</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'Total map height in pixels (TWO TIMES the image height).</span>
+  <span class="n">NumPlanes</span> <span class="n">AS</span> <span class="n">INTEGER</span>   <span class="c1">'number of color planes. Must be set to 1.</span>
+  <span class="n">BPP</span> <span class="n">AS</span> <span class="n">INTEGER</span>         <span class="c1">'bits per pixel  1, 4, 8, 16, 24 or 32.(USE THIS for BPP)</span>
+  <span class="n">Compress</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">'compression method should always be 0.</span>
+  <span class="n">RAWSize</span> <span class="n">AS</span> <span class="n">LONG</span>        <span class="c1">'size of the raw ICON image data(may only be XOR mask size).</span>
+  <span class="n">Hres</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">'horizontal resolution of the image(not normally used)</span>
+  <span class="n">Vres</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">'vertical resolution of the image(not normally used)</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'number of colors in the color palette(not normally used)</span>
+  <span class="n">SigColors</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'number of important colors used(not normally used)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'40 byte</span>
+
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">REM $INCLUDE: 'IconType.BI' </span>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">DIM</span> <span class="n">Icon</span> <span class="n">AS</span> <span class="n">IconType</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Item</span><span class="p">,</span> <span class="n">BPP</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">wide&amp;</span><span class="p">,</span> <span class="n">deep&amp;</span><span class="p">,</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">bmpStretch&amp;</span>
+<span class="n">DIM</span> <span class="n">Image</span><span class="p">(</span><span class="mi">26000</span><span class="p">)</span>
+<span class="n">dst&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="n">dst&amp;</span>
+
+<span class="n">hdr$</span> <span class="o">=</span> <span class="s">" &amp; File  ID = #  ## Image(s) in file  #######, bytes "</span>
+<span class="n">ico$</span> <span class="o">=</span> <span class="s">"              Size = ## X ##   Colors = ##        Planes = #   BPP = ## "</span>
+<span class="n">cur$</span> <span class="o">=</span> <span class="s">"              Size = ## X ##   Colors = ##   HotSpot X = ##      Y = ## "</span>
+<span class="n">dat$</span> <span class="o">=</span> <span class="s">"              DATA Size = #####, bytes        DATA Offset =  ######,    "</span>
+<span class="n">bm1$</span> <span class="o">=</span> <span class="s">"              HeaderSize = ## MaskArea = ## X ##  Planes = #   BPP = ## "</span>
+<span class="n">bm2$</span> <span class="o">=</span> <span class="s">"              Compression = #   RAW Data Size = ######, bytes         "</span>
+
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Enter an ICOn or CURsor file name: "</span><span class="p">,</span> <span class="n">IconName</span><span class="err">$</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">IconName</span><span class="err">$</span><span class="p">)</span> 
+<span class="n">IF</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">SOUND</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">SYSTEM</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">IconName</span><span class="err">$</span><span class="p">,</span> <span class="s">"."</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">dot</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> 
+   <span class="n">Save</span><span class="err">$</span> <span class="o">=</span> <span class="n">IconName</span><span class="err">$</span><span class="p">:</span> <span class="n">IconName</span><span class="err">$</span> <span class="o">=</span> <span class="n">IconName</span><span class="err">$</span> <span class="o">+</span> <span class="s">".ICO"</span> 
+<span class="n">ELSE</span> <span class="n">Save</span><span class="err">$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">IconName</span><span class="err">$</span><span class="p">,</span> <span class="n">dot</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">IF</span>   
+<span class="n">OPEN</span> <span class="n">IconName</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">length&amp;</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">PRINT</span> 
+<span class="n">IF</span> <span class="n">length&amp;</span> <span class="n">THEN</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Icon</span>
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">Icon</span><span class="p">.</span><span class="n">ID</span>
+    <span class="n">CASE</span> <span class="mi">1</span><span class="p">:</span> <span class="n">IC</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Icon"</span><span class="p">:</span> <span class="n">ent$</span> <span class="o">=</span> <span class="n">ico$</span>
+    <span class="n">CASE</span> <span class="mi">2</span><span class="p">:</span> <span class="n">IC</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Cursor"</span><span class="p">:</span> <span class="n">ent$</span> <span class="o">=</span> <span class="n">cur$</span>
+    <span class="n">CASE</span> <span class="n">ELSE</span><span class="p">:</span> <span class="n">IC</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Bitmap?"</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">LOCATE</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">hdr$</span><span class="err">;</span> <span class="n">IC</span><span class="err">$;</span> <span class="n">Icon</span><span class="p">.</span><span class="n">ID</span><span class="err">;</span> <span class="n">Icon</span><span class="p">.</span><span class="n">Count</span><span class="err">;</span> <span class="n">length&amp;</span>
+  <span class="n">IF</span> <span class="n">Icon</span><span class="p">.</span><span class="n">Count</span> <span class="n">THEN</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">Icon</span><span class="p">.</span><span class="n">Count</span>
+    <span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Entry</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="n">AS</span> <span class="n">ICONENTRY</span>
+    <span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Header</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="n">AS</span> <span class="n">ICONHEADER</span>
+    <span class="n">FOR</span> <span class="n">Item</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span>                            <span class="c1">'16 bytes each entry</span>
+      <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">)</span>
+    <span class="n">NEXT</span>
+    <span class="n">VIEW</span> <span class="n">PRINT</span> <span class="mi">24</span> <span class="n">TO</span> <span class="mi">32</span>
+    <span class="n">FOR</span> <span class="n">Item</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span>
+      <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">DataOffset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">)</span> <span class="c1">'ADD 1 to offsets!</span>
+      <span class="n">COLOR</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="n">LOCATE</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">30</span>
+      <span class="n">IF</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">" IMAGE ENTRY #"</span><span class="err">;</span> <span class="n">Item</span> <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">" IMAGE ENTRY"</span>
+      <span class="n">COLOR</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+      <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">ent$</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">PWidth</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">PDepth</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">NumColors</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">HotSpotX</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">HotSpotY</span>
+      <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">dat$</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">DataSize</span><span class="err">;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">DataOffset</span>
+      <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">bm1$</span><span class="err">;</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">IconHSize</span><span class="err">;</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">ICONWidth</span><span class="err">;</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">ICONDepth</span><span class="p">,</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">NumPlanes</span><span class="err">;</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">BPP</span>
+      <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">bm2$</span><span class="err">;</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">Compress</span><span class="err">;</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">RAWSize</span>
+      <span class="n">PRINT</span> 
+      <span class="n">k$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'Palette(4 or 8BPP) and/or XOR mask starts immediately after an ICONHEADER</span>
+      <span class="n">wide&amp;</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">PWidth</span><span class="p">:</span> <span class="n">deep&amp;</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">PDepth</span><span class="p">:</span> <span class="n">BPP</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="n">Item</span><span class="p">).</span><span class="n">BPP</span>
+      <span class="n">IF</span> <span class="n">BPP</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">BitColor</span> <span class="o">=</span> <span class="mi">32</span> <span class="n">ELSE</span> <span class="n">BitColor</span> <span class="o">=</span> <span class="mi">256</span>  <span class="c1">'assign for proper colors</span>
+      <span class="n">bmpStretch&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">wide&amp;</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">deep&amp;</span><span class="p">,</span> <span class="n">BitColor</span><span class="p">)</span> <span class="c1">'set either 256 or 32</span>
+      <span class="n">bmp&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="n">wide&amp;</span><span class="p">,</span> <span class="n">deep&amp;</span><span class="p">,</span> <span class="n">BitColor</span><span class="p">)</span> <span class="c1">'don't bother with _FREEIMAGE, reuse them!</span>
+      <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">BPP</span>
+        <span class="n">CASE</span> <span class="mi">1</span><span class="p">:</span> <span class="n">OneBit</span>
+        <span class="n">CASE</span> <span class="mi">4</span><span class="p">:</span> <span class="n">FourBIT</span>
+        <span class="n">CASE</span> <span class="mi">8</span><span class="p">:</span> <span class="n">EightBIT</span>
+        <span class="n">CASE</span> <span class="n">IS</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="n">TrueCOLOR</span>
+      <span class="n">END</span> <span class="n">SELECT</span>
+      <span class="n">IF</span> <span class="n">BPP</span> <span class="o">&lt;</span> <span class="mi">24</span> <span class="n">THEN</span> <span class="n">_COPYPALETTE</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">bmpStretch&amp;</span>
+      <span class="n">_PUTIMAGE</span> <span class="p">,</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">bmpStretch&amp;</span>
+      <span class="n">_DEST</span> <span class="mi">0</span><span class="p">:</span> <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">bmpStretch&amp;</span>
+      <span class="n">SOUND</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">3</span>
+      <span class="n">COLOR</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">):</span> <span class="n">LOCATE</span> <span class="n">CSRLIN</span><span class="p">,</span> <span class="mi">30</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Save as Bitmap? (Y/N)"</span><span class="err">;</span>
+      <span class="n">k$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">k$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">k$</span><span class="p">)</span>
+      <span class="n">PRINT</span> <span class="n">k$</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="err">;</span>
+      <span class="n">IF</span> <span class="n">k$</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">THEN</span> 
+          <span class="n">SaveFile</span><span class="err">$</span> <span class="o">=</span> <span class="n">Save</span><span class="err">$</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">Item</span><span class="p">))</span> <span class="o">+</span> <span class="s">".BMP"</span>
+          <span class="n">ThirtyTwoBit</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wide&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">SaveFile</span><span class="err">$</span>
+      <span class="n">END</span> <span class="n">IF</span> 
+      <span class="n">IF</span> <span class="n">k$</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Saved!"</span> <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"Not saved"</span>
+      <span class="n">ANDMask</span>
+      <span class="n">IF</span> <span class="n">BPP</span> <span class="o">&lt;</span> <span class="mi">24</span> <span class="n">THEN</span> <span class="n">_COPYPALETTE</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">bmpStretch&amp;</span>
+      <span class="n">_PUTIMAGE</span> <span class="p">,</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">bmpStretch&amp;</span>
+      <span class="n">_DEST</span> <span class="mi">0</span><span class="p">:</span> <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">bmpStretch&amp;</span>
+      <span class="n">IF</span> <span class="n">k$</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">THEN</span> 
+          <span class="n">ANDFile</span><span class="err">$</span> <span class="o">=</span> <span class="n">Save</span><span class="err">$</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">Item</span><span class="p">))</span> <span class="o">+</span> <span class="s">"BG.BMP"</span>
+          <span class="n">ThirtyTwoBit</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wide&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bmp&amp;</span><span class="p">,</span> <span class="n">ANDFile</span><span class="err">$</span>
+      <span class="n">END</span> <span class="n">IF</span> 
+      <span class="n">k$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">CLS</span>
+    <span class="n">NEXT</span>
+    <span class="n">VIEW</span> <span class="n">PRINT</span>
+  <span class="n">ELSE</span> <span class="n">SOUND</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"No images entries found!"</span><span class="p">:</span> <span class="n">END</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">ELSE</span><span class="p">:</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span><span class="p">:</span> <span class="n">SOUND</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">KILL</span> <span class="n">IconName</span><span class="err">$</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">OneBit</span> <span class="c1">'adapted from TheBob's Winbit 'B &amp; W monochrome images ONLY (NO PALETTE data)</span>
+<span class="n">BitsOver</span> <span class="o">=</span> <span class="n">wide&amp;</span> <span class="n">MOD</span> <span class="mi">32</span>
+<span class="n">IF</span> <span class="n">BitsOver</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">32</span> <span class="o">-</span> <span class="n">BitsOver</span><span class="p">)</span> <span class="o">\</span> <span class="mi">8</span><span class="p">)</span> 
+<span class="n">_DEST</span> <span class="n">bmp&amp;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">p$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">p$</span>
+    <span class="n">ByteVAL</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">p$</span><span class="p">)</span>
+    <span class="n">FOR</span> <span class="n">Bit</span><span class="err">%</span> <span class="o">=</span> <span class="mi">7</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'read bits left to right</span>
+      <span class="n">IF</span> <span class="n">ByteVAL</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">Bit</span><span class="err">%</span> <span class="n">THEN</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">15</span> <span class="n">ELSE</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">NEXT</span> <span class="n">Bit</span><span class="err">%</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">wide&amp;</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>  <span class="c1">'         'prevents odd width image skewing  </span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'            </span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">EightBIT</span> <span class="c1">'adapted from TheBob's Winbit      '256 palette data Colors (8 BPP)</span>
+<span class="n">IF</span> <span class="n">wide&amp;</span> <span class="n">MOD</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">wide&amp;</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">))</span> 
+<span class="n">_DEST</span> <span class="n">bmp&amp;</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span><span class="p">:</span> <span class="n">u$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">FOR</span> <span class="n">Colr</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Blu</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Grn</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Red</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Red</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Grn</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Blu</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">u$</span> <span class="c1">'--- unused byte</span>
+<span class="n">NEXT</span> <span class="n">Colr</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">p$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">p$</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">p$</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">wide&amp;</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>  <span class="c1">'           'prevents odd width image skewing</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">FourBIT</span> <span class="c1">'adapted from TheBob's Winbit  '16 palette data colors (4 BPP = 8 or 16 color) </span>
+<span class="n">_DEST</span> <span class="n">bmp&amp;</span>
+<span class="n">IF</span> <span class="n">wide&amp;</span> <span class="n">MOD</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">8</span> <span class="o">-</span> <span class="n">wide&amp;</span> <span class="n">MOD</span> <span class="mi">8</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">'prevents odd width image skewing</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span><span class="p">:</span> <span class="n">u$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">FOR</span> <span class="n">Colr</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="n">Colr</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Blu</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Grn</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Red</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Red</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Grn</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Blu</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">u$</span> <span class="c1">'--- unused byte</span>
+<span class="n">NEXT</span> <span class="n">Colr</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">p$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">p$</span>
+    <span class="n">HiNIBBLE</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">p$</span><span class="p">)</span> <span class="o">\</span> <span class="o">&amp;</span><span class="n">H10</span>
+    <span class="n">LoNIBBLE</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">p$</span><span class="p">)</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">HF</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">HiNIBBLE</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">LoNIBBLE</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">wide&amp;</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>  <span class="c1">'              'prevents odd width image skewing</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">ANDMask</span> <span class="c1">'   'AND MASK is B &amp; W. Black area holds XOR colors, white displays background</span>
+<span class="n">BitsOver</span> <span class="o">=</span> <span class="n">wide&amp;</span> <span class="n">MOD</span> <span class="mi">32</span>
+<span class="n">IF</span> <span class="n">BitsOver</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">32</span> <span class="o">-</span> <span class="n">BitsOver</span><span class="p">)</span> <span class="o">\</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">'look for sizes not multiples of 32 bits</span>
+<span class="n">_DEST</span> <span class="n">bmp&amp;</span>
+<span class="n">IF</span> <span class="n">BPP</span> <span class="o">&lt;</span> <span class="mi">24</span> <span class="n">THEN</span> <span class="n">PALETTE</span> <span class="c1">'        'remove for a PUT using previous XOR mask palette data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span><span class="p">:</span> <span class="n">p$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+    <span class="n">ByteVAL</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="c1">'MSBit is left when calculating 16 X 16 cursor map 2 byte integer</span>
+    <span class="n">FOR</span> <span class="n">Bit</span><span class="err">%</span> <span class="o">=</span> <span class="mi">7</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'values despite M$ documentation that says otherwise!</span>
+      <span class="n">IF</span> <span class="n">ByteVAL</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">Bit</span><span class="err">%</span> <span class="n">THEN</span> <span class="c1">'LONG values cannot be used in a cursor file!</span>
+        <span class="n">IF</span> <span class="n">BPP</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">15</span>
+      <span class="n">ELSE</span><span class="p">:</span> <span class="n">IF</span> <span class="n">BPP</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span>
+      <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>        <span class="c1">'16 X 16 = 32 bytes, 32 X 32 = 128 bytes AND MASK SIZES</span>
+    <span class="n">NEXT</span> <span class="n">Bit</span><span class="err">%</span>          <span class="c1">'48 X 48 = 288 bytes, 64 X 64 = 512 bytes, 128 X 128 = 2048 bytes</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">wide&amp;</span>  
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>   <span class="c1">'16 X 16 and 48 X 48 = 2 byte end padder per row in the AND MASK</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>            <span class="c1">'adds 32 and 96 bytes respectively to the raw data size!</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">TrueCOLOR</span> <span class="c1">'     ' 16 Million colors. NO PALETTE! Colored by pixels (24 or 32 BPP)</span>
+<span class="n">_DEST</span> <span class="n">bmp&amp;</span>
+<span class="n">IF</span> <span class="p">((</span><span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>        <span class="c1">'3 byte pixels</span>
+<span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">4</span> <span class="o">-</span> <span class="p">((</span><span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">R</span><span class="err">$</span> <span class="o">=</span> <span class="s">" "</span><span class="p">:</span> <span class="n">G</span><span class="err">$</span> <span class="o">=</span> <span class="s">" "</span><span class="p">:</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">DO</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">B</span><span class="err">$</span>            <span class="c1">'3 bytes set RGB color intensities</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">G</span><span class="err">$</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">R</span><span class="err">$</span>
+    <span class="n">red&amp;</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">R</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">green&amp;</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">G</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">blue&amp;</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">B</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="n">red&amp;</span><span class="p">,</span> <span class="n">green&amp;</span><span class="p">,</span> <span class="n">blue&amp;</span><span class="p">)</span> <span class="c1">'returns closest attribute in 4 or 8 bit</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">wide&amp;</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>  <span class="c1">'     'prevents odd width image skewing       </span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+<span class="c1">REM $INCLUDE: '32BitSUB.BM'</span>
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'*********************************** 32BitSUB.BM INCLUDE FILE *******************************</span>
+
+<span class="n">SUB</span> <span class="n">ThirtyTwoBit</span> <span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">x2%</span><span class="p">,</span> <span class="n">y2%</span><span class="p">,</span> <span class="n">image&amp;</span><span class="p">,</span> <span class="n">Filename</span><span class="err">$</span><span class="p">)</span>                           
+  <span class="n">DIM</span> <span class="n">Colors8</span><span class="err">%</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">x1%</span> <span class="o">&gt;</span> <span class="n">x2%</span> <span class="n">THEN</span> <span class="n">SWAP</span> <span class="n">x1%</span><span class="p">,</span> <span class="n">x2%</span>
+  <span class="n">IF</span> <span class="n">y1%</span> <span class="o">&gt;</span> <span class="n">y2%</span> <span class="n">THEN</span> <span class="n">SWAP</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">y2%</span>
+
+  <span class="n">_SOURCE</span> <span class="n">image&amp;</span> 
+  <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="n">_PIXELSIZE</span><span class="p">(</span><span class="n">image&amp;</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">BEEP</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">SUB</span> <span class="c1">'no text screens</span>
+
+  <span class="n">FileType</span><span class="err">$</span> <span class="o">=</span> <span class="s">"BM"</span>
+  <span class="n">QB64</span><span class="err">$</span> <span class="o">=</span> <span class="s">"QB64"</span>           <span class="c1">'free advertiising in reserved bytes</span>
+  <span class="n">IF</span> <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">1078</span> <span class="n">ELSE</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">54</span> <span class="c1">'no palette in 24/32 bit</span>
+  <span class="n">InfoHEADER</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">40</span>
+  <span class="n">PictureWidth</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2%</span> <span class="o">-</span> <span class="n">x1%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1">' don't exceed maximum screen resolutions!</span>
+  <span class="n">PictureDepth</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2%</span> <span class="o">-</span> <span class="n">y1%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>   
+  <span class="n">NumPLANES</span><span class="err">%</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">BPP</span><span class="err">%</span> <span class="o">=</span> <span class="mi">8</span> <span class="n">ELSE</span> <span class="n">BPP</span><span class="err">%</span> <span class="o">=</span> <span class="mi">24</span>
+  <span class="n">Compression</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">WidthPELS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">3780</span>
+  <span class="n">DepthPELS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">3780</span>
+  <span class="n">IF</span> <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">NumColors</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">256</span>    <span class="c1">'24/32 bit say none</span>
+
+  <span class="n">IF</span> <span class="p">(</span><span class="n">PictureWidth</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="mi">3</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">PictureWidth</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="mi">3</span><span class="p">))</span>
+
+  <span class="n">ImageSize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">PictureWidth</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">LEN</span><span class="p">(</span><span class="n">ZeroPAD</span><span class="err">$</span><span class="p">))</span> <span class="o">*</span> <span class="n">PictureDepth</span><span class="o">&amp;</span>
+  <span class="n">FileSize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">ImageSIZE</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span>  
+  <span class="n">f</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+  <span class="n">OPEN</span> <span class="n">Filename</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f</span>
+   
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">FileType</span><span class="err">$</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">FileSize</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">QB64</span><span class="err">$</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">InfoHEADER</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">PictureWidth</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">PictureDepth</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">NumPLANES</span><span class="err">%</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">BPP</span><span class="err">%</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">Compression</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">ImageSize</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">WidthPELS</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">DepthPELS</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">NumColors</span><span class="o">&amp;</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">SigColors</span><span class="o">&amp;</span>     <span class="c1">'51 offset</span>
+
+  <span class="n">IF</span> <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span>     <span class="c1">'4 or 8 BPP Palettes set for 256 colors</span>
+    <span class="n">u$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">FOR</span> <span class="n">c&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>  <span class="c1">'PUT as BGR order colors</span>
+      <span class="n">cv&amp;</span> <span class="o">=</span> <span class="n">_PALLETTECOLOR</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">,</span> <span class="n">image&amp;</span><span class="p">)</span>
+      <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">_BLUE32</span><span class="p">(</span><span class="n">cv&amp;</span><span class="p">))</span>                       
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+      <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">_GREEN32</span><span class="p">(</span><span class="n">cv&amp;</span><span class="p">))</span>
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+      <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">_RED32</span><span class="p">(</span><span class="n">cv&amp;</span><span class="p">))</span>
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">u$</span>  <span class="c1">'Unused byte</span>
+    <span class="n">NEXT</span>
+  <span class="n">END</span> <span class="n">IF</span>
+ 
+  <span class="n">FOR</span> <span class="n">y%</span> <span class="o">=</span> <span class="n">y2%</span> <span class="n">TO</span> <span class="n">y1%</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>   <span class="c1">'place bottom up</span>
+    <span class="n">FOR</span> <span class="n">x%</span> <span class="o">=</span> <span class="n">x1%</span> <span class="n">TO</span> <span class="n">x2%</span> 
+     <span class="n">c&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x%</span><span class="p">,</span> <span class="n">y%</span><span class="p">)</span> 
+     <span class="n">IF</span> <span class="n">pixelbytes&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> 
+       <span class="n">a$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">)</span> 
+       <span class="n">Colors8</span><span class="err">%</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">ELSE</span> <span class="p">:</span> <span class="n">a$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+     <span class="n">END</span> <span class="n">IF</span>            
+     <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+    <span class="n">NEXT</span> 
+    <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>
+  <span class="n">NEXT</span> 
+
+  <span class="n">FOR</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>
+    <span class="n">IF</span> <span class="n">Colors8</span><span class="err">%</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">SigColors</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">SigColors</span><span class="o">&amp;</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">NEXT</span> <span class="n">n</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="n">SigColors</span><span class="o">&amp;</span>
+  <span class="n">CLOSE</span> <span class="p">#</span><span class="n">f</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<p><sub>Adapted from code by Bob Seguin</sub></p>
+
+<p><strong>NOTE: Black areas of an image may become “see through” unless another color attribute is used and set to black!</strong></p>
+
+<blockquote>
+  <p>This can be done by changing another color attribute’s RGB settings to 0 or almost 0 and creating a mask after using it in solid black areas of a 4 or 8 BPP palette image. This can also be done using <a href="_PUTIMAGE.html">_PUTIMAGE</a> with 32 bit <a href="_CLEARCOLOR.html">_CLEARCOLOR</a> settings.</p>
+</blockquote>
+
+<p><em>See the following page:</em> <a href="Creating-Sprite-Masks.html">Creating Sprite Masks</a></p>
+
+<h2 id="icon-to-bitmap-conversion-function">Icon to Bitmap Conversion Function</h2>
+
+<p>The following program uses a conversion function with the <a href="TYPE.html">TYPE</a> definitions inside of the function to eliminate an <a href="%24INCLUDE.html">$INCLUDE</a> library file.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">_TITLE</span> <span class="s">"Icon Converter"</span>
+<span class="n">icon$</span> <span class="o">=</span> <span class="s">"daphne.ico"</span> <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; change icon file name</span>
+<span class="n">bitmap$</span> <span class="o">=</span> <span class="s">"tempfile.bmp"</span>
+<span class="n">indx%</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">'1 minimum &lt;&lt;&lt;&lt;&lt;&lt;&lt; higher values than count get highest entry image in icon file</span>
+
+<span class="n">IF</span> <span class="n">Icon2BMP</span><span class="p">(</span><span class="n">icon$</span><span class="p">,</span> <span class="n">bitmap$</span><span class="p">,</span> <span class="n">indx%</span><span class="p">)</span> <span class="n">THEN</span> 
+  <span class="n">img&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="n">bitmap$</span><span class="p">)</span>
+  <span class="n">PRINT</span> <span class="n">img&amp;</span>
+  <span class="n">IF</span> <span class="n">img&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="c1">'           check that handle value is good before loading</span>
+    <span class="n">_ICON</span> <span class="n">img&amp;</span> <span class="c1">'                place image in header</span>
+    <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">img&amp;</span> <span class="c1">'place image on screen</span>
+    <span class="n">_FREEIMAGE</span> <span class="n">img&amp;</span> <span class="c1">'           always free unused handles to save memory</span>
+    <span class="c1">'KILL bitmap$ '              comment out and/or rename to save the bitmaps</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"Could not create bitmap!"</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span>
+<span class="c1">'                ----------------------------------------------------</span>
+
+<span class="n">FUNCTION</span> <span class="n">Icon2BMP</span><span class="err">%</span> <span class="p">(</span><span class="n">filein</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">fileout</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">index</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+<span class="n">TYPE</span> <span class="n">ICONTYPE</span> <span class="c1">'              Icon or cursor file header</span>
+  <span class="n">Reserved</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'         Reserved (always 0)</span>
+  <span class="n">ID</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'               Resource ID (Icon = 1, Cursor = 2)</span>
+  <span class="n">Count</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'            Number of icon bitmaps in Directory of icon entries array</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'6 bytes</span>
+<span class="n">TYPE</span> <span class="n">ENTRYTYPE</span> <span class="c1">'             or unanimated Cursor entry (ANI are animated cursors)</span>
+  <span class="n">Wide</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span> <span class="c1">'     Width of icon in pixels (USE THIS) Use _UNSIGNED over 127</span>
+  <span class="n">High</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span> <span class="c1">'     Height of icon in pixels (USE THIS) Use _UNSIGNED over 127</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">_BYTE</span> <span class="c1">'          Maximum number of colors. (2, 8 or 16 colors. 256 or 24/32 bit = 0)</span>
+  <span class="n">RES2</span> <span class="n">AS</span> <span class="n">_BYTE</span> <span class="c1">'               Reserved. Not used (always 0)</span>
+  <span class="n">HotSpotX</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'         Icon: NumberPlanes(normally 0), Cursor: hotspot pixels from left</span>
+  <span class="n">HotSpotY</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'         Icon: BitsPerPixel(normally 0), Cursor: hotspot pixels from top</span>
+  <span class="n">DataSize</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'            Length of image data in bytes minus Icon and Entry headers (USE THIS)</span>
+  <span class="n">Offset</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'              Start Offset byte position of icon bitmap header(add 1 if TYPE GET)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'16 bytes              </span>
+<span class="n">TYPE</span> <span class="n">PREHEADER</span> <span class="c1">'             Bitmap information not in icon BM header</span>
+  <span class="n">BM</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'               Integer value changed to "BM" by PUT</span>
+  <span class="n">Size</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'                Size of the data file(LOF)</span>
+  <span class="n">Reser</span> <span class="n">AS</span> <span class="n">LONG</span><span class="c1">'                2 reserved integers are zero automatically</span>
+  <span class="n">BOffset</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'             Start offset of pixel data(next byte)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'14 bytes</span>
+<span class="n">TYPE</span> <span class="n">BMPHEADER</span> <span class="c1">'             Bitmap type header found using entry DataOffset + 1</span>
+  <span class="n">IconHSize</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'           size of ICON header (always 40 bytes)</span>
+  <span class="n">PWidth</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'              bitmap width in pixels (signed integer).</span>
+  <span class="n">PDepth</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'              Total map height in pixels (signed integer is 2 times image height)</span>
+  <span class="n">NumPlanes</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'        number of color planes. Must be set to 1.</span>
+  <span class="n">BPP</span> <span class="n">AS</span> <span class="n">INTEGER</span> <span class="c1">'              bits per pixel  1, 4, 8, 16, 24 or 32.(USE THIS)</span>
+  <span class="n">Compress</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'            compression method should always be 0.</span>
+  <span class="n">RAWSize</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'             size of the raw ICON image data(may only be XOR mask size).</span>
+  <span class="n">Hres</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'                horizontal resolution of the image(not normally used)</span>
+  <span class="n">Vres</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'                vertical resolution of the image(not normally used)</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'           number of colors in the color palette(not normally used)</span>
+  <span class="n">SigColors</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'           number of important colors used(not normally used)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'40 bytes              palette and image data immediately follow this header!</span>
+
+<span class="n">DIM</span> <span class="n">ICON</span> <span class="n">AS</span> <span class="n">ICONTYPE</span><span class="p">,</span> <span class="n">ENT</span> <span class="n">AS</span> <span class="n">ENTRYTYPE</span><span class="p">,</span> <span class="n">PRE</span> <span class="n">AS</span> <span class="n">PREHEADER</span><span class="p">,</span> <span class="n">BMP</span> <span class="n">AS</span> <span class="n">BMPHEADER</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">IF</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">filein</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="o">=</span> <span class="s">".ico"</span> <span class="n">THEN</span> <span class="c1">'check file extension is ICO only</span>
+  <span class="n">OPEN</span> <span class="n">filein</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">ACCESS</span> <span class="n">READ</span> <span class="n">AS</span> <span class="n">rf</span>
+<span class="n">ELSE</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">ICON</span> <span class="c1">'GET 6 byte icon header</span>
+<span class="n">IF</span> <span class="n">ICON</span><span class="p">.</span><span class="n">ID</span> <span class="o">&lt;&gt;</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">ICON</span><span class="p">.</span><span class="n">Count</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">CLOSE</span> <span class="n">rf</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">IF</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">ICON</span><span class="p">.</span><span class="n">Count</span> <span class="n">THEN</span> <span class="n">entry</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">entry</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="p">(</span><span class="n">ICON</span><span class="p">.</span><span class="n">Count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">ICON</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">entry</span>
+<span class="n">SEEK</span> <span class="n">rf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">entry</span> <span class="c1">'start of indexed Entry header selected</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">ENT</span> <span class="c1">'GET 16 byte Entry Header set by index request or highest available</span>
+
+<span class="n">SEEK</span> <span class="n">rf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">ENT</span><span class="p">.</span><span class="n">Offset</span> <span class="c1">'go to BMP header offset given in Entry header</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">BMP</span> <span class="c1">'GET 40 byte icon bitmap header information</span>
+<span class="n">IF</span> <span class="n">BMP</span><span class="p">.</span><span class="n">BPP</span> <span class="o">&lt;=</span> <span class="mi">24</span> <span class="n">THEN</span> <span class="n">pixelbytes</span> <span class="o">=</span> <span class="n">BMP</span><span class="p">.</span><span class="n">BPP</span> <span class="o">/</span> <span class="mi">8</span> <span class="n">ELSE</span> <span class="n">pixelbytes</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">IF</span> <span class="n">BMP</span><span class="p">.</span><span class="n">BPP</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">AND</span> <span class="n">BMP</span><span class="p">.</span><span class="n">BPP</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">palettebytes</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">^</span> <span class="n">BMP</span><span class="p">.</span><span class="n">BPP</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">palettebytes</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">datasize&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">ENT</span><span class="p">.</span><span class="n">Wide</span> <span class="o">*</span> <span class="n">ENT</span><span class="p">.</span><span class="n">High</span> <span class="o">*</span> <span class="n">pixelbytes</span><span class="p">)</span> <span class="o">+</span> <span class="n">palettebytes</span> <span class="c1">'no padder should be necessary</span>
+<span class="n">filesize&amp;</span> <span class="o">=</span> <span class="n">datasize&amp;</span> <span class="o">+</span> <span class="mi">14</span> <span class="o">+</span> <span class="mi">40</span> <span class="c1">'                      data and palette + header</span>
+<span class="n">bmpoffset&amp;</span> <span class="o">=</span> <span class="n">palettebytes</span> <span class="o">+</span> <span class="mi">54</span> <span class="c1">'                       data offset from start of bitmap</span>
+<span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">=</span> <span class="n">ENT</span><span class="p">.</span><span class="n">Wide</span>
+<span class="n">BMP</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">=</span> <span class="n">ENT</span><span class="p">.</span><span class="n">High</span>
+<span class="n">BMP</span><span class="p">.</span><span class="n">RAWSize</span> <span class="o">=</span> <span class="n">datasize&amp;</span> <span class="o">-</span> <span class="n">palettebytes</span>
+
+<span class="n">PRE</span><span class="p">.</span><span class="n">BM</span> <span class="o">=</span> <span class="n">CVI</span><span class="p">(</span><span class="s">"BM"</span><span class="p">)</span> <span class="c1">'integer value changes to "BM" in file</span>
+<span class="n">PRE</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">filesize&amp;</span>
+<span class="n">PRE</span><span class="p">.</span><span class="n">BOffset</span> <span class="o">=</span> <span class="n">bmpoffset&amp;</span> <span class="c1">'start of data after header and palette if used</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="n">fileout</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="n">wf</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">PRE</span> <span class="c1">'PUT 14 byte bitmap information</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">BMP</span> <span class="c1">'PUT 40 byte bitmap header information</span>
+<span class="n">SEEK</span> <span class="n">rf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">ENT</span><span class="p">.</span><span class="n">Offset</span> <span class="o">+</span> <span class="mi">40</span>
+<span class="n">dat$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">datasize&amp;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'create string variable the length of remaining image data</span>
+<span class="n">GET</span> <span class="n">rf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dat$</span> <span class="c1">'GET remaining palette and only the XOR image data after the indexed header</span>
+<span class="n">PUT</span> <span class="n">wf</span><span class="p">,</span> <span class="p">,</span> <span class="n">dat$</span> <span class="c1">'PUT remaining data into new bitmap file</span>
+<span class="n">CLOSE</span> <span class="n">rf</span><span class="p">,</span> <span class="n">wf</span>
+<span class="n">Icon2BMP</span> <span class="o">=</span> <span class="n">ICON</span><span class="p">.</span><span class="n">Count</span> <span class="c1">'function returns number of images available in icon file</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<blockquote>
+  <p><em>Note:</em> The index selected or the highest numbered icon image less than the index value is the image displayed.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="Creating-Icons-from-Bitmaps.html">Creating Icons from Bitmaps</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+  <li><a href="_CLEARCOLOR.html">_CLEARCOLOR</a></li>
+  <li><a href="_ALPHA.html">_ALPHA</a>, <a href="_ICON.html">_ICON</a></li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (create icons from any image)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Creating-Icon-Bitmaps by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:18 GMT -->
+</html>

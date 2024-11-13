@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/FIELD.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="FIELD-2.html" />
+<meta property="og:url" content="FIELD-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/FIELD.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="FIELD.html">FIELD</a> statement creates a <a href="STRING.html">STRING</a> type definition for a <a href="RANDOM.html">RANDOM</a>-access file buffer.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="FIELD.html">FIELD</a> [#]fileNumber&amp;, fieldWidth1% AS variable1$[, fieldWidthN% AS variableN$]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>fileNumber% is a file number used in the <a href="OPEN.html">OPEN</a> statement or a value from the <a href="FREEFILE.html">FREEFILE</a> function.</li>
+  <li>Combined size of the fieldWidth% parameters <strong>must not exceed the <a href="LEN.html">LEN</a> = recordsize in the <a href="RANDOM.html">RANDOM</a> <a href="OPEN.html">OPEN</a> statement</strong> or a <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</li>
+  <li>Variables are limited to <a href="STRING.html">STRING</a> types. Use <a href="TYPE.html">TYPE</a> instead of FIELD if you want to use numerical values.</li>
+  <li>Once a <a href="FIELD.html">FIELD</a> is defined in a statement, <a href="GET.html">GET</a> can read and <a href="PUT.html">PUT</a> can write data without placeholders or variables.</li>
+  <li><a href="LSET.html">LSET</a>, <a href="RSET.html">RSET</a>, <a href="PRINT-(file-statement).html">PRINT (file statement)</a>, <a href="PRINT-USING-(file-statement).html">PRINT USING (file statement)</a>, and <a href="WRITE-(file-statement).html">WRITE (file statement)</a> can be used to place characters in the file buffer before a <a href="PUT.html">PUT</a>.</li>
+  <li>All field definitions for a file are removed when the file is <a href="CLOSE.html">CLOSE</a> or <a href="RESET.html">RESET</a> and all strings are set to null (“”).</li>
+  <li><strong>Do not re-assign a field defined variable value or use it in an <a href="INPUT.html">INPUT</a> statement if you want the variable to remain a field</strong>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Comparing a <a href="TYPE.html">TYPE</a> definition with a FIELD <a href="STRING.html">STRING</a> definition. Demo using a <a href="TYPE.html">TYPE</a> definition to create a file:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">ClientType</span>
+   <span class="n">CName</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">30</span>     <span class="c1">'30 bytes</span>
+   <span class="n">Address</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">30</span>   <span class="c1">'30 bytes </span>
+   <span class="n">City</span>   <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">15</span>    <span class="c1">'15 bytes</span>
+   <span class="n">State</span>  <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">2</span>     <span class="c1">' 2 bytes</span>
+   <span class="n">Zip</span>    <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">5</span>     <span class="c1">' 5 bytes</span>
+<span class="n">END</span> <span class="n">TYPE</span>      <span class="c1">' total size = 82 bytes</span>
+<span class="n">DIM</span> <span class="n">Client</span> <span class="n">AS</span> <span class="n">ClientType</span>
+<span class="n">RecordLEN</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Client</span><span class="p">)</span>       <span class="c1">'find the size of each TYPE record</span>
+
+<span class="n">OPEN</span> <span class="s">"ADDRESS.DAT"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">RecordLEN</span>
+<span class="n">RESTORE</span> <span class="n">ClientData</span>         <span class="c1">'restore to start of DATA</span>
+<span class="n">record</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DO</span>
+   <span class="n">READ</span> <span class="n">CName</span><span class="err">$</span><span class="p">,</span> <span class="n">Address</span><span class="err">$</span><span class="p">,</span> <span class="n">City</span><span class="err">$</span><span class="p">,</span> <span class="n">State</span><span class="err">$</span><span class="p">,</span> <span class="n">Zip</span><span class="err">$</span>       <span class="c1">'read DATA</span>
+   <span class="n">IF</span> <span class="n">CName</span><span class="err">$</span> <span class="o">=</span> <span class="s">"END"</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+   <span class="n">record</span> <span class="o">=</span> <span class="n">record</span> <span class="o">+</span> <span class="mi">1</span>               <span class="c1">'increment record number</span>
+   <span class="n">Client</span><span class="p">.</span><span class="n">CName</span> <span class="o">=</span> <span class="n">CName</span><span class="err">$</span>          
+   <span class="n">Client</span><span class="p">.</span><span class="n">Address</span> <span class="o">=</span> <span class="n">Address</span><span class="err">$</span>
+   <span class="n">Client</span><span class="p">.</span><span class="n">City</span> <span class="o">=</span> <span class="n">City</span><span class="err">$</span>
+   <span class="n">Client</span><span class="p">.</span><span class="n">State</span> <span class="o">=</span> <span class="n">State</span><span class="err">$</span>
+   <span class="n">Client</span><span class="p">.</span><span class="n">Zip</span> <span class="o">=</span> <span class="n">Zip</span><span class="err">$</span>
+   <span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">record</span><span class="p">,</span> <span class="n">Client</span>     <span class="c1">'PUT by record number</span>
+<span class="n">LOOP</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+<span class="n">END</span>
+
+<span class="n">ClientData</span><span class="p">:</span>
+   <span class="n">DATA</span> <span class="s">"Bob White"</span><span class="p">,</span><span class="s">"104 Birdland Rd."</span><span class="p">,</span><span class="s">"Bellview"</span><span class="p">,</span><span class="s">"PA"</span><span class="p">,</span><span class="s">"15236"</span>
+   <span class="n">DATA</span> <span class="s">"Ward Cleaver"</span><span class="p">,</span><span class="s">"123 W. Beaver St."</span><span class="p">,</span><span class="s">"Beaver"</span><span class="p">,</span><span class="s">"PA"</span><span class="p">,</span><span class="s">"15255"</span>
+   <span class="n">DATA</span> <span class="s">"Elmer Fudd"</span><span class="p">,</span><span class="s">"45 Wabbit St."</span><span class="p">,</span><span class="s">"Bethel Park"</span><span class="p">,</span><span class="s">"PA"</span><span class="p">,</span><span class="s">"15022"</span>
+   <span class="n">DATA</span> <span class="s">"Wyley Coyote"</span><span class="p">,</span><span class="s">"33 Roadrunner Ave."</span><span class="p">,</span><span class="s">"Clairton"</span><span class="p">,</span><span class="s">"PA"</span><span class="p">,</span><span class="s">"15122"</span>
+   <span class="n">DATA</span> <span class="s">"Jim Morrison"</span><span class="p">,</span><span class="s">"19 Doorway Dr."</span><span class="p">,</span><span class="s">"Belleview"</span><span class="p">,</span><span class="s">"PA"</span><span class="p">,</span><span class="s">"15236"</span>
+   <span class="n">DATA</span> <span class="s">"END"</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> 
+
+</code></pre></div></div>
+
+<p>Demo using the FIELD statement to read the file:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CONST</span> <span class="n">NM</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">AD</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">CT</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">ST</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ZC</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1">' Define field and record lengths with constants.</span>
+<span class="n">CONST</span> <span class="n">RLEN</span> <span class="o">=</span> <span class="n">NM</span> <span class="o">+</span> <span class="n">AD</span> <span class="o">+</span> <span class="n">CY</span> <span class="o">+</span> <span class="n">ST</span> <span class="o">+</span> <span class="n">ZC</span>
+<span class="c1">'</span>
+<span class="n">OPEN</span> <span class="s">"ADDRESS.DAT"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">RLEN</span>
+<span class="n">FIELD</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">NM</span> <span class="n">AS</span> <span class="n">CName</span><span class="err">$</span><span class="p">,</span> <span class="n">AD</span> <span class="n">AS</span> <span class="n">Address</span><span class="err">$</span><span class="p">,</span> <span class="n">CY</span> <span class="n">AS</span> <span class="n">City</span><span class="err">$</span><span class="p">,</span> <span class="n">ST</span> <span class="n">AS</span> <span class="n">State</span><span class="err">$</span><span class="p">,</span> <span class="n">ZC</span> <span class="n">AS</span> <span class="n">Zip</span><span class="err">$</span>
+<span class="n">FIELD</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">RLEN</span> <span class="n">AS</span> <span class="n">Clist</span><span class="err">$</span>         <span class="c1">'define entire record</span>
+
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>                  <span class="c1">'GET does not need a variable to read FIELD records!</span>
+                                  <span class="c1">'Read file for zip codes from 15230 to 15239 .</span>
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">NOT</span> <span class="n">EOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+   <span class="n">ZipCheck</span><span class="err">$</span> <span class="o">=</span> <span class="n">Zip</span><span class="err">$</span>                            <span class="c1">'read zip codes</span>
+   <span class="n">IF</span> <span class="p">(</span><span class="n">ZipCheck</span><span class="err">$</span> <span class="o">&gt;=</span> <span class="s">"15230"</span> <span class="n">AND</span> <span class="n">ZipCheck</span><span class="err">$</span> <span class="o">&lt;=</span> <span class="s">"15239"</span><span class="p">)</span> <span class="n">THEN</span>
+      <span class="n">Info</span><span class="err">$</span> <span class="o">=</span> <span class="n">Clist</span><span class="err">$</span>
+      <span class="n">PRINT</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">Info</span><span class="err">$</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>     <span class="c1">'read name string</span>
+      <span class="n">PRINT</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">Info</span><span class="err">$</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1">'read address string</span>
+      <span class="n">PRINT</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">Info</span><span class="err">$</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>    <span class="c1">'read city, state and zip code</span>
+      <span class="n">PRINT</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span>                               <span class="c1">'simply GET reads each FIELD record after first</span>
+<span class="n">LOOP</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="OPEN.html">OPEN</a>, <a href="TYPE.html">TYPE</a></li>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a></li>
+  <li><a href="LSET.html">LSET</a>, <a href="RSET.html">RSET</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/FIELD.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:21 GMT -->
+</html>

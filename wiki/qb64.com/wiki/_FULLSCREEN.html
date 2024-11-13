@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_FULLSCREEN by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_FULLSCREEN-2.html" />
+<meta property="og:url" content="_FULLSCREEN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_FULLSCREEN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_FULLSCREEN.html">_FULLSCREEN</a> statement attempts to make the program window fullscreen.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="_FULLSCREEN.html">_FULLSCREEN</a> [*_STRETCH</td>
+        <td>_SQUAREPIXELS</td>
+        <td>_OFF<em>][, *_SMOOTH</em>]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>_STRETCH default first choice attempts to mimic QBasic’s full screens if possible. <a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> returns 1.</li>
+  <li>_SQUAREPIXELS alternate choice enlarges the pixels into squares on some monitors. <a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> returns 2</li>
+  <li>_OFF turns _FULLSCREEN off after full screen has been enabled. <a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> returns 0.</li>
+  <li>Second optional parameter <em>_SMOOTH</em> applies anti-aliasing to the stretched screen.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><strong>Set the <a href="SCREEN.html">SCREEN</a> mode and text <a href="WIDTH.html">WIDTH</a> when necessary first.</strong> Otherwise there may be desktop view issues.</li>
+  <li>_FULLSCREEN with no parameters chooses _STRETCH or _SQUAREPIXELS (prioritizes _STRETCH to mimic QBasic if possible)</li>
+  <li>**Check the fullscreen mode with the <a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> function in your programs when a method is required.</li>
+  <li>It is advisable to get <a href="INPUT.html">INPUT</a> from the user to confirm that fullscreen was completed or there were possible monitor incompatibilities.</li>
+  <li>If fullscreen is <strong>not confirmed</strong> with a <a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> return <strong>greater than 0</strong>, then disable with <strong>_FULLSCREEN _OFF</strong>.</li>
+  <li><strong>NOTE:</strong> _FULLSCREEN can also be affected by custom <a href="_FONT.html">_FONT</a> size settings and make program screens too large.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Setting the screen mode first prevents enlargement of the desktop before the program window is set:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">_FULLSCREEN</span>
+<span class="n">IF</span> <span class="n">_FULLSCREEN</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="n">_OFF</span> <span class="c1">'check that a full screen mode initialized</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="mi">13</span><span class="p">,</span> <span class="n">BF</span>
+
+</code></pre></div></div>
+
+<p>How fonts and _FULLSCREEN affect the program’s window size.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">0</span>
+<span class="n">DO</span>
+  <span class="n">PRINT</span>
+  <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Enter MODE 1) ENLARGE WINDOW  2) FULL _SQUAREPIXELS  3) FULL _STRETCH: "</span><span class="p">,</span> <span class="n">WMODE</span><span class="err">$</span>
+  <span class="n">PRINT</span>
+  <span class="n">IF</span> <span class="n">WMODE</span><span class="err">$</span> <span class="o">=</span> <span class="s">"1"</span> <span class="n">THEN</span> <span class="n">INPUT</span> <span class="s">"SIZE 1 TO 9: "</span><span class="p">,</span> <span class="n">ENLARGE</span><span class="err">%</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">ENLARGE</span><span class="err">%</span>
+    <span class="n">CASE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="n">STYLE</span><span class="err">$</span> <span class="o">=</span> <span class="s">"MONOSPACE, BOLD"</span>
+    <span class="n">CASE</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="n">STYLE</span><span class="err">$</span> <span class="o">=</span> <span class="s">"MONOSPACE"</span>
+    <span class="n">CASE</span> <span class="n">ELSE</span><span class="p">:</span> <span class="n">STYLE</span><span class="err">$</span> <span class="o">=</span> <span class="s">"MONOSPACE"</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">WMODE</span><span class="err">$</span>
+    <span class="n">CASE</span> <span class="s">"1"</span>
+      <span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>
+      <span class="n">IF</span> <span class="n">full</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="n">_OFF</span>
+      <span class="n">f&amp;</span> <span class="o">=</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="s">"c:\windows\fonts\lucon.ttf"</span><span class="p">,</span> <span class="mi">13</span> <span class="o">+</span> <span class="n">ENLARGE</span><span class="err">%</span><span class="p">,</span> <span class="n">STYLE</span><span class="err">$</span><span class="p">)</span>
+      <span class="n">_FONT</span> <span class="n">f&amp;</span>
+    <span class="n">CASE</span> <span class="s">"2"</span>
+      <span class="n">_FULLSCREEN</span> <span class="n">_SQUAREPIXELS</span>
+      <span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>
+      <span class="n">IF</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">GOSUB</span> <span class="n">FCHECK</span>
+    <span class="n">CASE</span> <span class="s">"3"</span>
+      <span class="n">_FULLSCREEN</span> <span class="n">_STRETCH</span>
+      <span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>
+      <span class="n">IF</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">GOSUB</span> <span class="n">FCHECK</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">mode</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>
+  <span class="n">PRINT</span>
+  <span class="n">PRINT</span> <span class="s">"_FULLSCREEN mode ="</span><span class="err">;</span> <span class="n">mode</span><span class="p">,</span>
+  <span class="n">PRINT</span> <span class="s">"PRESS ESC TO END OR ENTER TO CONTINUE..."</span>
+
+  <span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="n">OR</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+
+  <span class="n">GOSUB</span> <span class="n">ClearFont</span>
+
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> 
+<span class="n">ClearFont</span>
+<span class="n">END</span>
+
+<span class="n">FCHECK</span><span class="p">:</span>
+<span class="n">Z3</span> <span class="o">=</span> <span class="n">timer</span>
+<span class="n">DO</span>
+<span class="n">IF</span> <span class="n">TIMER</span> <span class="o">&lt;</span> <span class="n">Z3</span> <span class="n">THEN</span> <span class="n">Z3</span> <span class="o">=</span> <span class="n">Z3</span> <span class="o">-</span> <span class="n">TIMER</span>
+<span class="n">IF</span> <span class="n">TIMER</span> <span class="o">-</span> <span class="n">Z3</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">LOOP</span>
+<span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>
+<span class="n">IF</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="n">_OFF</span><span class="p">:</span> <span class="n">SOUND</span> <span class="mi">100</span><span class="p">,</span> <span class="p">.</span><span class="err">75</span>
+<span class="n">RETURN</span>
+
+<span class="n">ClearFont</span><span class="p">:</span> 
+<span class="n">IF</span> <span class="n">f&amp;</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">_FONT</span> <span class="mi">16</span> <span class="c1">'select inbuilt 8x16 default font</span>
+    <span class="n">_FREEFONT</span> <span class="n">f&amp;</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">RETURN</span>    
+
+</code></pre></div></div>
+
+<p>Testing all fullscreen methods.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Hello, world!"</span>
+<span class="n">PRINT</span> <span class="s">"Hit 1 for windowed mode;
+PRINT "</span>    <span class="mi">2</span> <span class="n">for</span> <span class="n">_STRETCH</span><span class="s">"
+PRINT "</span>    <span class="mi">3</span> <span class="n">for</span> <span class="n">_SQUAREPIXELS</span><span class="s">"
+PRINT "</span>    <span class="mi">4</span> <span class="n">for</span> <span class="n">_STRETCH</span><span class="p">,</span> <span class="n">_SMOOTH</span><span class="s">"
+PRINT "</span>    <span class="mi">5</span> <span class="n">for</span> <span class="n">_SQUAREPIXELS</span><span class="p">,</span> <span class="n">_SMOOTH</span><span class="s">"
+DO
+    k$ = INKEY$
+    SELECT CASE VAL(k$)
+        CASE 1
+            _FULLSCREEN _OFF
+        CASE 2
+            _FULLSCREEN _STRETCH
+        CASE 3
+            _FULLSCREEN _SQUAREPIXELS
+        CASE 4
+            _FULLSCREEN _STRETCH, _SMOOTH
+        CASE 5
+            _FULLSCREEN _SQUAREPIXELS, _SMOOTH
+    END SELECT
+    _LIMIT 30
+LOOP UNTIL _EXIT
+SYSTEM
+
+</span></code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a></li>
+  <li><a href="_ALLOWFULLSCREEN.html">_ALLOWFULLSCREEN</a></li>
+  <li><a href="_FONT.html">_FONT</a>, <a href="SCREEN.html">SCREEN</a></li>
+  <li><a href="_SCREENIMAGE.html">_SCREENIMAGE</a></li>
+  <li><a href="_SCREENMOVE.html">_SCREENMOVE</a>, <a href="_SCREENX.html">_SCREENX</a>, <a href="_SCREENY.html">_SCREENY</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_FULLSCREEN by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:40 GMT -->
+</html>

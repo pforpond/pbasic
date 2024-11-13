@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Images.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Images-2.html" />
+<meta property="og:url" content="Images-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Images.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Images are areas of graphics stored in memory, the most common image is the program screen itself, where graphics are displayed. This image is designated as image handle 0 or <a href="_DEST.html">_DEST</a> 0. QB64 refers to the image memory by using negative <a href="LONG.html">LONG</a> handle values. Those values can then be referred to using other functions such as <a href="_WIDTH.html">_WIDTH</a> and <a href="_HEIGHT.html">_HEIGHT</a> to find the image properties. Statements like <a href="SCREEN.html">SCREEN</a> or <a href="_PUTIMAGE.html">_PUTIMAGE</a> can use the image handle to display the image when necessary. QBasic functions like <a href="POINT.html">POINT</a> can read the colors, even 32 bit <a href="_ALPHA.html">_ALPHA</a> colors.</p>
+
+<p>Images are called by other names in other programming languages or in different situations, examples of other names can be “surfaces”, “pages” or “layers”.</p>
+
+<h2 id="qb64-images">QB64 Images</h2>
+
+<p>You can create a program screen image by using the <a href="_NEWIMAGE.html">_NEWIMAGE</a> function. _NEWIMAGE returns a handle for you to use as a reference to that image. The handle is a negative number below -1 where -1 indicates a failure to load an image.</p>
+
+<p>For the image handle parameter in a statement you can also use any positive number and this handle will not need to be defined by <a href="_NEWIMAGE.html">_NEWIMAGE</a> or anything else. In this case the image referred to is the screen page of that value. This is why image handle 0 refers to the screen, specifically screen page 0.</p>
+
+<p>You can also load an image from a file using the <a href="_LOADIMAGE.html">_LOADIMAGE</a> function (click the link for further information), or retrieve the handle to a copy of a image by using the <a href="_COPYIMAGE.html">_COPYIMAGE</a> function.</p>
+
+<p>All images except for the screen are hidden from view unless drawn onto the screen, this enables you to draw multiple things on an image and then display all of it at once, enabling smooth animation (amongst many other things), you can also put multiple images ontop of one image and then display that image to the screen to enable all sorts of effects, like parallax scrolling and objects moving in front of as well as behind each other.</p>
+
+<h2 id="_putimage">_PUTIMAGE</h2>
+
+<p>To set which image you want to draw graphics on, use <a href="_DEST.html">_DEST</a>, all drawing will now go to the desired image instead of the screen (to enable drawing to the screen set _DEST 0), if you want to retrieve information about a image you use <a href="_SOURCE.html">_SOURCE</a> instead, as when you want to know the color a pixel has at a certain coordinate you would use <a href="_SOURCE.html">_SOURCE</a> along with <a href="POINT.html">POINT</a> (see the <a href="_SOURCE.html">_SOURCE</a> example for more information about this). If you have drawn graphics on one image you can display it to the screen using <a href="_PUTIMAGE.html">_PUTIMAGE</a>, like this;</p>
+
+<p><code class="language-plaintext highlighter-rouge">_PUTIMAGE imagehandle, 0</code></p>
+
+<p>Where imagehandle is the handle you have drawn, or if you don’t know the image handle you can use <a href="_DEST-(function).html">_DEST (function)</a> as a function like this;</p>
+
+<p><code class="language-plaintext highlighter-rouge">_PUTIMAGE _DEST, 0</code></p>
+
+<p>You could also use the <a href="SCREEN-(statement).html">SCREEN (statement)</a> statement to display the image to the screen like this;</p>
+
+<p><code class="language-plaintext highlighter-rouge">SCREEN imagehandle</code></p>
+
+<p>or</p>
+
+<p><code class="language-plaintext highlighter-rouge">SCREEN _DEST</code></p>
+
+<p>Just be careful so that <a href="_DEST.html">_DEST</a> is indeed a negative number other than -1.</p>
+
+<h2 id="_alpha">_ALPHA</h2>
+
+<p>If you want a color to be transparent you would use the <a href="_CLEARCOLOR.html">_CLEARCOLOR</a> statement, the _CLEARCOLOR statement also has a optional argument as to which image you want the color to be transparent on, if this argument is set then the color will only be transparent on that particular image. If you want the color to be solid again you would use _NONE as the color argument (see <a href="_CLEARCOLOR.html">_CLEARCOLOR</a> statement for further details).</p>
+
+<p>The <a href="_SETALPHA.html">_SETALPHA</a> statement also enables transparency (_CLEARCOLOR just sets the transparency level to full (which is 0) on images that have an alpha channel), to enable partial transparency you need a 32-bit image which has an alpha channel (a PNG image may already contain alpha information), the alpha level is between <strong>0</strong> (transparent) and <strong>255</strong> (opaque). If you have a 32-bit image but don’t want to alpha blend it you have to turn it off using <a href="_DONTBLEND.html">_DONTBLEND</a>. To turn it on again you can use the <a href="_BLEND.html">_BLEND</a> statement (which is on by default).</p>
+
+<p>To put an image on top of another image you would use <a href="_PUTIMAGE.html">_PUTIMAGE</a>, if you want to put/stretch the whole image on top of another you would just omit the range arguments and if you only want to put part of the image on top of another image you would use the range arguments as necessary. Keep in mind that _PUTIMAGE will stretch the image to fit the destination range. If the coordinates are inverted then the image will be inverted accordingly (enables flipping).</p>
+
+<p>The <a href="_ALPHA.html">_ALPHA</a> function returns the alpha channel level of a color value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">*result&amp;* = [_ALPHA](_ALPHA)(c&amp;[, imageHandle&amp;])</code></p>
+</blockquote>
+
+<p><a href="_RED32.html">_RED32</a>, <a href="_GREEN32.html">_GREEN32</a>, <a href="_BLUE32.html">_BLUE32</a> and <a href="_ALPHA32.html">_ALPHA32</a> are all equivalent to <a href="_RED.html">_RED</a>, <a href="_GREEN.html">_GREEN</a>, <a href="_BLUE.html">_BLUE</a> and <a href="_ALPHA.html">_ALPHA</a> but they are highly optimized and only accept a 32-bit color (B8:G8:R8:A8). Using these in your code (as appose to dividing then ANDing 32-bit color values manually) makes your code easy to read too.</p>
+
+<h2 id="image-file-types">Image file types</h2>
+
+<ul>
+  <li><a href="Bitmaps.html">Bitmaps</a></li>
+  <li><a href="Creating-Icon-Bitmaps.html">Creating Icon Bitmaps</a></li>
+  <li><a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+  <li><a href="GIF-Images.html">GIF Images</a></li>
+  <li><a href="Creating-Icons-from-Bitmaps.html">Creating Icons from Bitmaps</a></li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (convert any image to icon)</li>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (convert any image to bitmap)</li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a></li>
+  <li><a href="%24EXEICON.html">$EXEICON</a></li>
+</ul>
+
+<h2 id="qb64-statements-and-functions">QB64 statements and functions</h2>
+
+<ul>
+  <li><a href="_ALPHA.html">_ALPHA</a> (function)</li>
+  <li><a href="_ALPHA32.html">_ALPHA32</a> (function)</li>
+  <li><a href="_BACKGROUNDCOLOR.html">_BACKGROUNDCOLOR</a> (function)</li>
+  <li><a href="_BLEND.html">_BLEND</a> (sub)</li>
+  <li><a href="_BLEND-(function).html">_BLEND (function)</a></li>
+  <li><a href="_BLUE.html">_BLUE</a> (function)</li>
+  <li><a href="_BLUE32.html">_BLUE32</a> (function)</li>
+  <li><a href="_CLEARCOLOR.html">_CLEARCOLOR</a> (sub)</li>
+  <li><a href="_CLEARCOLOR-(function).html">_CLEARCOLOR (function)</a></li>
+  <li><a href="_COPYIMAGE.html">_COPYIMAGE</a> (function)</li>
+  <li><a href="_COPYPALETTE.html">_COPYPALETTE</a> (sub)</li>
+  <li><a href="_DEFAULTCOLOR.html">_DEFAULTCOLOR</a> (function)</li>
+  <li><a href="_DEST.html">_DEST</a> (sub)</li>
+  <li><a href="_DEST-(function).html">_DEST (function)</a></li>
+  <li><a href="_DISPLAY-(function).html">_DISPLAY (function)</a></li>
+  <li><a href="_DONTBLEND.html">_DONTBLEND</a> (sub)</li>
+  <li><a href="_FONT.html">_FONT</a> (sub)</li>
+  <li><a href="_FONT-(function).html">_FONT (function)</a></li>
+  <li><a href="_FONTHEIGHT-(function).html">_FONTHEIGHT (function)</a></li>
+  <li><a href="_FONTWIDTH-(function).html">_FONTWIDTH (function)</a></li>
+  <li><a href="_FREEFONT.html">_FREEFONT</a> (sub)</li>
+  <li><a href="_FREEIMAGE.html">_FREEIMAGE</a> (sub)</li>
+  <li><a href="_GREEN.html">_GREEN</a> (function)</li>
+  <li><a href="_GREEN32.html">_GREEN32</a> (function)</li>
+  <li><a href="_HEIGHT.html">_HEIGHT</a> (function)</li>
+  <li><a href="_ICON.html">_ICON</a></li>
+  <li><a href="_LOADFONT.html">_LOADFONT</a> (function)</li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a> (function) (cannot use Icons)</li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a> (function)</li>
+  <li><a href="_PALETTECOLOR.html">_PALETTECOLOR</a> (sub)</li>
+  <li><a href="_PALETTECOLOR-(function).html">_PALETTECOLOR (function)</a></li>
+  <li><a href="_PIXELSIZE.html">_PIXELSIZE</a> (function)</li>
+  <li><a href="_PRINTIMAGE.html">_PRINTIMAGE</a> (sub) (printer)</li>
+  <li><a href="_PRINTMODE.html">_PRINTMODE</a> (sub)</li>
+  <li><a href="_PRINTMODE-(function).html">_PRINTMODE (function)</a></li>
+  <li><a href="_PRINTSTRING.html">_PRINTSTRING</a> (sub)</li>
+  <li><a href="_PRINTWIDTH.html">_PRINTWIDTH</a> (sub)</li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a> (sub)</li>
+  <li><a href="_RED.html">_RED</a> (function)</li>
+  <li><a href="_RED32.html">_RED32</a> (function)</li>
+  <li><a href="_RGB.html">_RGB</a> (function)</li>
+  <li><a href="_RGB32.html">_RGB32</a> (function)</li>
+  <li><a href="_RGBA.html">_RGBA</a> (function)</li>
+  <li><a href="_RGBA32.html">_RGBA32</a> (function)</li>
+  <li><a href="SCREEN.html">SCREEN</a> (sub)</li>
+  <li><a href="_SCREENIMAGE.html">_SCREENIMAGE</a> (function) (desktop)</li>
+  <li><a href="_SETALPHA.html">_SETALPHA</a> (sub)</li>
+  <li><a href="_SOURCE.html">_SOURCE</a> (sub)</li>
+  <li><a href="_SOURCE-(function).html">_SOURCE (function)</a></li>
+  <li><a href="_WIDTH.html">_WIDTH</a> (function)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Images.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:53 GMT -->
+</html>

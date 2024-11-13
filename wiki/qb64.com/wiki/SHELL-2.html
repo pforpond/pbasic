@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SHELL.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SHELL-2.html" />
+<meta property="og:url" content="SHELL-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SHELL.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="SHELL.html">SHELL</a> statement allows a program to run external programs or command line statements in Windows, macOS and Linux.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="SHELL.html">SHELL</a> [DOSCommand$]</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="SHELL.html">SHELL</a> [<strong>_DONTWAIT</strong>] [<strong>_HIDE</strong>] [DOSCommand$]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If the <em>DOSCommand$</em> <a href="STRING.html">STRING</a> parameter isn’t used, the “command console” is opened and execution is halted until the user closes it manually.</li>
+  <li>If <a href="_DONTWAIT.html">_DONTWAIT</a> is used, the <strong>QB64</strong> program doesn’t wait for the SHELLed program/command to end.</li>
+  <li>When the <a href="_HIDE.html">_HIDE</a> action is used, the <a href="_CONSOLE.html">_CONSOLE</a> window is hidden and screen info can be “redirected” (using redirection characters like &gt;) to a file (recommended).</li>
+  <li>Commands are external commands, according to the user’s operating system, passed as <a href="STRING.html">STRING</a> enclosed in quotes or string variables.</li>
+  <li>Commands can be a mixture of <a href="STRING.html">STRING</a> and string variables added together using the + <a href="concatenation-2.html">concatenation</a> operator.</li>
+  <li>Command text can be in upper or lower case. Use single spacing between items and options.</li>
+  <li><strong>QB64</strong> automatically uses CMD /C when using <a href="SHELL.html">SHELL</a>, but it is allowed in a command string. Note: CMD alone may lock up program.</li>
+  <li><strong>Note: Some commands may not work without adding CMD /C to the start of the command line.</strong></li>
+  <li><strong>QB64</strong> program screens will not get distorted, minimized or freeze the program like QBasic full-screen modes would.</li>
+  <li><strong>QB64</strong> can use long path folder names and file names and <a href="SHELL.html">SHELL</a> command lines can be longer than 124 characters.</li>
+  <li>In Windows, use additional <a href="CHR%24.html">CHR$</a>(34) quotation marks around folder or file names that contain spaces.</li>
+  <li>For other operating systems, both the quotation mark character and the apostrophe can be used to enclose a file name that contains spaces.</li>
+  <li><strong>NOTE: Use <a href="CHDIR.html">CHDIR</a> instead of CD as SHELL commands cannot affect the current program path.</strong></li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li><strong>QBasic BAS files could be run like compiled programs without returning to the IDE when <a href="SYSTEM.html">SYSTEM</a> was used to <a href="END.html">END</a> them.</strong></li>
+  <li>A user would invoke it with <code class="language-plaintext highlighter-rouge">SHELL "QB.EXE /L /RUN program.BAS"</code></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>When working with file or folder names with spaces, add quotation marks around the path and/or file name with <a href="CHR%24.html">CHR$</a>(34).</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"dir "</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s">"free cell.ico"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s">" /b &gt; temp.dir"</span> 
+<span class="n">SHELL</span> <span class="s">"start Notepad temp.dir"</span> <span class="c1">' display temp file contents in Notepad window </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Contents of <em>temp.dir</em> text file:</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Free Cell.ico
+
+</code></pre></div></div>
+
+<p>Opening a Windows program (Notepad) to read or print a Basic created text file.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INPUT</span> <span class="s">"Enter a file name to read in Notepad: "</span><span class="p">,</span> <span class="n">filename$</span>
+<span class="n">SHELL</span> <span class="s">"CMD /C start /max notepad "</span> <span class="o">+</span> <span class="n">filename$</span>  <span class="c1">' display in Notepad full screen in XP or NT   </span>
+
+<span class="c1">'SHELL "start /min notepad /p " + filename$ ' taskbar print using QB64 CMD /C not necessary</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Notepad is an easy program to open in Windows as no path is needed. Windows NT computers, including XP, use CMD /C where older versions of DOS don’t require any command reference. The top command opens Notepad in a normal window for a user to view the file. They can use Notepad to print it. The second command places Notepad file in the task-bar and prints it automatically. The filename variable is added by the program using proper spacing.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Start</strong> is used to allow a Basic program to run without waiting for Notepad to be closed.</li>
+  <li><strong>/min</strong> places the window into the task-bar. <strong>/max</strong> is full-screen and no option is a normal window.</li>
+  <li>Notepads <strong>/p</strong> option prints the file contents, even with USB printers.</li>
+</ul>
+
+<p>Function that returns the program’s current working path.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">currentpath$</span> <span class="o">=</span> <span class="n">Path</span><span class="err">$</span> <span class="c1">' function call saves a path for later program use</span>
+ <span class="n">PRINT</span> <span class="n">currentpath$</span>
+
+ <span class="n">FUNCTION</span> <span class="n">Path</span><span class="err">$</span>   
+   <span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"CD &gt; D0S-DATA.INF"</span>   <span class="c1">'code to hide window in **QB64**</span>
+   <span class="n">OPEN</span> <span class="s">"D0S-DATA.INF"</span> <span class="n">FOR</span> <span class="n">APPEND</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>  <span class="c1">'this may create the file</span>
+        <span class="n">L</span><span class="err">%</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1">'verify that file and data exist</span>
+   <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>   
+   <span class="n">IF</span> <span class="n">L</span><span class="err">%</span> <span class="n">THEN</span>                       <span class="c1">'read file if it has data</span>
+     <span class="n">OPEN</span> <span class="s">"D0S-DATA.INF"</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+     <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">line$</span>           <span class="c1">'read only line in file</span>
+     <span class="n">Path</span><span class="err">$</span> <span class="o">=</span> <span class="n">line$</span> <span class="o">+</span> <span class="s">"\"</span>            <span class="c1">'add slash to path so only a filename needs added later</span>
+     <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+   <span class="n">ELSE</span> <span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="s">""</span>                 <span class="c1">'returns zero length string if path not found</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">KILL</span> <span class="s">"D0S-DATA.INF"</span>              <span class="c1">'deleting the file is optional</span>
+ <span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <strong>SHELL “CD”</strong> statement requests the current working path. This info is normally printed to the screen, but the <strong>&gt;</strong> pipe character sends the information to the DOS-DATA.INF file instead(<strong>QB64</strong> can use <a href="_HIDE.html">_HIDE</a> to not display the DOS window). The function uses the <a href="OPEN.html">OPEN</a> FOR <a href="APPEND.html">APPEND</a> mode to check for the file and the data(<a href="INPUT-(file-mode).html">INPUT (file mode)</a> would create an error if file does not exist). The current path is listed on one line of the file. The file is opened and <a href="LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a> returns one line of the file text. The function adds a “" so that the Path$ returned can be used in another file statement by just adding a file name. Save the Path$ to another variable for later use when the program has moved to another directory.
+In <strong>QB64</strong> you can simply use the <a href="_CWD%24.html">_CWD$</a> statement for the same purpose of the example above.</p>
+</blockquote>
+
+<p>Determining if a drive or path exists. Cannot use with a file name specification.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Enter a drive or path (no file name): "</span><span class="p">,</span> <span class="n">DirPath</span><span class="err">$</span>
+<span class="n">IF</span> <span class="n">PathExist</span><span class="err">%</span><span class="p">(</span><span class="n">DirPath</span><span class="err">$</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Drive Path exists!"</span> <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"Drive Path does not exist!"</span>
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">PathExist</span><span class="err">%</span> <span class="p">(</span><span class="n">Path</span><span class="err">$</span><span class="p">)</span>
+  <span class="n">PathExist</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Path</span><span class="err">$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span> <span class="c1">'no entry</span>
+  <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"OS"</span><span class="p">))</span> <span class="n">THEN</span> <span class="n">CMD</span><span class="err">$</span> <span class="o">=</span> <span class="s">"CMD /C "</span> <span class="n">ELSE</span> <span class="n">CMD</span><span class="err">$</span> <span class="o">=</span> <span class="s">"COMMAND /C "</span>
+  <span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="n">CMD</span><span class="err">$</span> <span class="o">+</span> <span class="s">"If Exist "</span> <span class="o">+</span> <span class="n">Path</span><span class="err">$</span> <span class="o">+</span> <span class="s">"\nul echo yes &gt; D0S-DATA.INF"</span>
+  <span class="n">OPEN</span> <span class="s">"D0S-DATA.INF"</span> <span class="n">FOR</span> <span class="n">APPEND</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PathExist</span><span class="err">%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>             <span class="c1">'yes will be in file if path exists</span>
+  <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+  <span class="n">KILL</span> <span class="s">"D0S-DATA.INF"</span>               <span class="c1">'delete data file optional</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation: IF Exist</em> checks for the drive path. <em>\Nul</em> allows an empty folder at end of path. <em>Echo</em> prints <strong>yes</strong> in the file if it exists.
+In <strong>QB64</strong> you can simply use the <a href="_FILEEXISTS.html">_FILEEXISTS</a> statement for the same purpose of the example above.</p>
+</blockquote>
+
+<p><em>Snippet 1:</em> When looking for <strong>printers</strong> this command gives you a file list with the default printer marked as <strong>TRUE</strong>:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"CMD /C"</span> <span class="o">+</span> <span class="s">"wmic printer get name,default &gt; default.txt"</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Created file’s text:</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Default  Name                           
+  FALSE    Microsoft XPS Document Writer 
+  TRUE     HP Photosmart C7200 series     
+  FALSE    HP Officejet Pro 8600         
+  FALSE    Fax
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <a href="LINE-INPUT.html">LINE INPUT</a> could be used to find the printer names as <a href="STRING.html">STRING</a> variables.</p>
+</blockquote>
+
+<p><em>Snippet 2:</em> Here is the code to set the default printer to the “HP Officejet Pro 8600”:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"CMD /C"</span> <span class="o">+</span> <span class="s">"wmic printer where name='HP Officejet Pro 8600' call setdefaultprinter"</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>After executing this program, and then running the first snippet again, we see the following contents of the text file:</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Default  Name 
+  FALSE    Microsoft XPS Document Writer 
+  FALSE    HP Photosmart C7200 series     
+  TRUE     HP Officejet Pro 8600         
+  FALSE    Fax
+
+</code></pre></div></div>
+
+<h3 id="more-examples">More examples</h3>
+
+<p><em>See examples in:</em></p>
+
+<ul>
+  <li><a href="FILELIST%24-(function).html">FILELIST$ (function)</a> (member-contributed file search routine)</li>
+  <li><em>File Exist</em> C++ Function that does not create a temp file: <a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SHELL-(function).html">SHELL (function)</a>, <a href="_SHELLHIDE.html">_SHELLHIDE</a></li>
+  <li><a href="FILES.html">FILES</a>, <a href="CHDIR.html">CHDIR</a>, <a href="MKDIR.html">MKDIR</a></li>
+  <li><a href="_CWD%24.html">_CWD$</a>, <a href="_STARTDIR%24.html">_STARTDIR$</a></li>
+  <li><a href="_FILEEXISTS.html">_FILEEXISTS</a>, <a href="_DIREXISTS.html">_DIREXISTS</a></li>
+  <li><a href="RMDIR.html">RMDIR</a>, <a href="NAME.html">NAME</a>, <a href="KILL.html">KILL</a>, <a href="RUN.html">RUN</a></li>
+  <li><a href="_HIDE.html">_HIDE</a>, <a href="_DONTWAIT.html">_DONTWAIT</a></li>
+  <li><a href="_CONSOLE.html">_CONSOLE</a>, <a href="%24CONSOLE.html">$CONSOLE</a></li>
+  <li><a href="%24SCREENHIDE.html">$SCREENHIDE</a>, <a href="%24SCREENSHOW.html">$SCREENSHOW</a> (QB64 <a href="Metacommand.html">Metacommand</a>s)</li>
+  <li><a href="_SCREENHIDE.html">_SCREENHIDE</a>, <a href="_SCREENSHOW.html">_SCREENSHOW</a></li>
+  <li><a href="FILELIST%24.html">FILELIST$</a>, <a href="PDS-(7.html">PDS (7.1) Procedures</a> (member-contributed file list array function)</li>
+</ul>
+
+<h3 id="extra-reference">Extra reference</h3>
+
+<ul>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+  <li><a href="C-Libraries.html">C Libraries</a></li>
+  <li><a href="Windows-Printer-Settings.html">Windows Printer Settings</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SHELL.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:42 GMT -->
+</html>

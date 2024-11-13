@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_SCREENMOVE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_SCREENMOVE-2.html" />
+<meta property="og:url" content="_SCREENMOVE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_SCREENMOVE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_SCREENMOVE.html">_SCREENMOVE</a> statement positions the program window on the desktop using designated coordinates.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_SCREENMOVE.html">_SCREENMOVE</a> {column&amp;, row&amp;}</p>
+
+  <p><a href="_SCREENMOVE.html">_SCREENMOVE _MIDDLE</a></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Positions the program window on the desktop using the column&amp; and row&amp; pixel coordinates for the upper left corner.</li>
+  <li><strong>_MIDDLE</strong> can be used instead to automatically center the program window on the desktop, in any screen resolution.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The program’s <a href="SCREEN.html">SCREEN</a> dimensions may influence the desktop position that can be used to keep the entire window on the screen.</li>
+  <li>Use <a href="_DESKTOPWIDTH.html">_DESKTOPWIDTH</a> and <a href="_DESKTOPHEIGHT.html">_DESKTOPHEIGHT</a> to find the current desktop resolution to place the program’s window.</li>
+  <li>On dual monitors a negative column&amp; position or a value greater than the main screen width can be used to position a window in another monitor.</li>
+  <li><strong>A small delay may be necessary when a program first starts up to properly orient the screen on the desktop properly.</strong> See <a href="_SCREENEXISTS.html">_SCREENEXISTS</a>.</li>
+  <li><strong><a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Calculating the border and header offsets by comparing a coordinate move with _MIDDLE by using trial and error.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">userwidth&amp;</span> <span class="o">=</span> <span class="n">_DESKTOPWIDTH</span><span class="p">:</span> <span class="n">userheight&amp;</span> <span class="o">=</span> <span class="n">_DESKTOPHEIGHT</span> <span class="c1">'get current screen resolution</span>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">scrnwidth&amp;</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">:</span> <span class="n">scrnheight&amp;</span> <span class="o">=</span> <span class="n">_HEIGHT</span>  <span class="c1">'get the dimensions of the program screen</span>
+
+<span class="n">_SCREENMOVE</span> <span class="p">(</span><span class="n">userwidth&amp;</span> <span class="o">\</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">scrnwidth&amp;</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="n">userheight&amp;</span> <span class="o">\</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">scrnheight&amp;</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">29</span>
+<span class="n">_DELAY</span> <span class="mi">4</span>
+<span class="n">_SCREENMOVE</span> <span class="n">_MIDDLE</span>  <span class="c1">'check centering</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>When positioning the window, offset the position by -3 columns and - 29 rows to calculate the top left corner coordinate.</p>
+</blockquote>
+
+<p>Moving a program window to a second monitor positioned to the right of the main desktop.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">wide&amp;</span> <span class="o">=</span> <span class="n">_DESKTOPWIDTH</span>
+<span class="n">high&amp;</span> <span class="o">=</span> <span class="n">_DESKTOPHEIGHT</span>
+
+<span class="n">PRINT</span> <span class="n">wide&amp;</span><span class="err">;</span> <span class="s">"X"</span><span class="err">;</span> <span class="n">high&amp;</span>
+
+<span class="n">_DELAY</span> <span class="mi">4</span>
+<span class="n">_SCREENMOVE</span> <span class="n">wide&amp;</span> <span class="o">+</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span> <span class="c1">'positive value for right monitor 2</span>
+
+<span class="n">img2&amp;</span> <span class="o">=</span> <span class="n">_SCREENIMAGE</span>
+<span class="n">wide2&amp;</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">img2&amp;</span><span class="p">)</span>
+<span class="n">high2&amp;</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">img2&amp;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">wide2&amp;</span><span class="err">;</span> <span class="s">"X"</span><span class="err">;</span> <span class="n">high2&amp;</span>
+<span class="n">_DELAY</span> <span class="mi">4</span>
+<span class="n">_SCREENMOVE</span> <span class="n">_MIDDLE</span> <span class="c1">'moves program back to main monitor 1 </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Notes:</em> Change the <a href="_SCREENMOVE.html">_SCREENMOVE</a> column to negative for a left monitor.</p>
+</blockquote>
+
+<p><strong><a href="_FULLSCREEN.html">_FULLSCREEN</a> works in the primary monitor and may push all running programs to a monitor on the right.</strong></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_SCREENX.html">_SCREENX</a>, <a href="_SCREENY.html">_SCREENY</a></li>
+  <li><a href="_SCREENIMAGE.html">_SCREENIMAGE</a>, <a href="_DESKTOPWIDTH.html">_DESKTOPWIDTH</a>, <a href="_DESKTOPHEIGHT.html">_DESKTOPHEIGHT</a></li>
+  <li><a href="_SCREENPRINT.html">_SCREENPRINT</a></li>
+  <li><a href="_SCREENEXISTS.html">_SCREENEXISTS</a></li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a>, <a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_SCREENMOVE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+</html>

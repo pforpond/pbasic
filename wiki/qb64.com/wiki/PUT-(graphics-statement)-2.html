@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PUT-(graphics-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PUT-(graphics-statement)-2.html" />
+<meta property="og:url" content="PUT-(graphics-statement)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PUT-(graphics-statement).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>PUT</strong> graphics statement is used to place <a href="GET-(graphics-statement).html">GET (graphics statement)</a> or <a href="BSAVE.html">BSAVE</a> file images stored in the designated array.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>PUT</strong> [<a href="STEP.html">STEP</a>]<strong>(<em>column</em>, <em>row</em>), Array(</strong>[<em>index</em>]<strong>)</strong>[,] [<a href="_CLIP.html">_CLIP</a>]  [{PSET</td>
+        <td>PRESET</td>
+        <td>AND</td>
+        <td>OR</td>
+        <td>XOR}]][, <em>omitcolor</em>]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <a href="STEP.html">STEP</a> keyword can be used to for coordinates relative to the last graphic coordinates used.</li>
+  <li><em>column</em> and <em>row</em> <a href="INTEGER.html">INTEGER</a> coordinate values designate the top left corner where the image is to be placed and cannot be off screen.</li>
+  <li>The <a href="INTEGER.html">INTEGER</a> <em>array</em> holds data of an image box area created by <a href="GET-(graphics-statement).html">GET (graphics statement)</a>. The brackets can be empty or designate a starting <em>index</em>.</li>
+  <li><a href="_CLIP.html">_CLIP</a> can be used in QB64 when part of an image must be off screen.</li>
+  <li><a href="XOR.html">XOR</a>, <a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a>, <a href="OR.html">OR</a> or <a href="AND.html">AND</a> actions will affect the coloring of the image on certain background colors. See below.</li>
+  <li><em>omitcolor</em> is the pixel color attribute to ignore in QB64 only. This may be used instead of using an <a href="AND.html">AND</a> mask.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li><strong>The entire box area of the image MUST be on the screen or an “Illegal function call” <a href="ERROR-Codes.html">ERROR Codes</a> will occur!</strong></li>
+  <li>In <strong>QB64</strong> <a href="_CLIP.html">_CLIP</a> can be used when part of the image may be off of the screen. This will also prevent off screen errors!
+    <ul>
+      <li>PUT (-10, 10), mypic(0), PSET ‘ this causes an illegal function call without <a href="_CLIP.html">_CLIP</a></li>
+      <li>PUT (-10, 10), mypic(0), _CLIP PSET ‘ allows a graphic to be placed partially off-screen</li>
+      <li>PUT (-10, 10), mypic(0), _CLIP ‘ uses the default PUT XOR operation</li>
+      <li>PUT (-10, 10), mypic(0), _CLIP PSET, 4 ‘ doesn’t place the red pixels of the image</li>
+    </ul>
+  </li>
+  <li>In <strong>QB64</strong> a background color attribute can be removed from the PUT image using the <em>omit color</em> option instead of creating a mask.</li>
+  <li>The <a href="arrays-2.html">arrays</a> must have image data at the array index given. <a href="GET-(graphics-statement).html">GET (graphics statement)</a> or <a href="BLOAD.html">BLOAD</a> should be used to place image data into the array.</li>
+  <li>The <a href="INTEGER.html">INTEGER</a> array size can be calculated as slightly larger than the box area width times the height. A closer estimate can be done by reading the array indices from <a href="UBOUND.html">UBOUND</a> to <a href="LBOUND.html">LBOUND</a> after a <a href="GET-(graphics-statement).html">GET (graphics statement)</a> of a white box area. In QB64 a <a href="LONG.html">LONG</a> array can be used for large or full screen images.</li>
+  <li>If no <a href="arrays-2.html">arrays</a> index (brackets optional in QB) is designated, the image will be assumed to be at the array’s starting index.</li>
+  <li>The first two indices of the <a href="arrays-2.html">arrays</a> or array offset will hold the width and height of the stored image area. In <a href="SCREEN.html">SCREEN</a> 13 divide the width by 8.</li>
+  <li>More than one image can be stored in the <a href="INTEGER.html">INTEGER</a> array by indexing the <a href="GET-(graphics-statement).html">GET (graphics statement)</a> array offset. Be sure the index is not already used!</li>
+  <li>A <a href="_DEST.html">_DEST</a> <a href="handle.html">handle</a> can be set to PUT images elsewhere other than on the current screen. Use <a href="_SOURCE.html">_SOURCE</a> to <a href="GET-(graphics-statement).html">GET (graphics statement)</a> images there.</li>
+  <li>If no color action is listed after the image array, the action will be assumed to be the default <a href="XOR.html">XOR</a>.
+    <ul>
+      <li><a href="XOR.html">XOR</a> may blend with background colors, but can be used to erase an image when placed a second time.</li>
+      <li><a href="PSET.html">PSET</a> completely overwrites any background with the identical image.</li>
+      <li><a href="PRESET.html">PRESET</a> creates a inverted coloring of the original image completely overwriting the background.</li>
+      <li><a href="AND.html">AND</a> merges background colors with the black areas of the image where a white image mask is used.</li>
+      <li><a href="OR.html">OR</a> blends the background and foreground colors together.</li>
+    </ul>
+  </li>
+  <li>In QB64 <a href="_PUTIMAGE.html">_PUTIMAGE</a> is recommended over PUT as it can also do the <a href="GET-(graphics-statement).html">GET (graphics statement)</a> directly from the image source without requiring an array.</li>
+  <li><a href="PUT.html">PUT</a> and <a href="GET.html">GET</a> file statements can also write and read image array data using <a href="BINARY.html">BINARY</a> files instead of using <a href="BSAVE.html">BSAVE</a> or <a href="BLOAD.html">BLOAD</a>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>How <a href="GET.html">GET</a> and PUT can be used with images loaded with <a href="_LOADIMAGE.html">_LOADIMAGE</a>. The background color is omitted or “masked”.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">_SCREENMOVE</span> <span class="n">_MIDDLE</span>
+<span class="n">image&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"QB64.png"</span><span class="p">)</span>  <span class="c1">'replace with your own image</span>
+
+<span class="n">wide&amp;</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">image&amp;</span><span class="p">):</span> <span class="n">deep&amp;</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">image&amp;</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">Array</span><span class="p">(</span><span class="n">wide&amp;</span> <span class="o">*</span> <span class="n">deep&amp;</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+<span class="n">_SOURCE</span> <span class="n">image&amp;</span>              <span class="c1">'REQUIRED to GET the proper image area!</span>
+<span class="n">GET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">wide&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">_DEST</span> <span class="mi">0</span>
+<span class="n">_COPYPALETTE</span> <span class="n">image&amp;</span><span class="p">,</span> <span class="mi">0</span>      <span class="c1">'necessary for custom image colors other than screen defaults</span>
+<span class="n">PUT</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">Array</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">PSET</span> <span class="p">,</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>   <span class="c1">'mask white background color</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <strong>QB64</strong> allows one PUT color to be “masked” to allow odd shaped sprite image backgrounds to be transparent.</p>
+</blockquote>
+
+<p>Using a <a href="STRING.html">STRING</a> instead of an <a href="arrays-2.html">arrays</a> to store <a href="GET.html">GET</a> image data that can be PUT later. For images up to 256 colors only.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">a$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span>            <span class="c1">'4 byte header + 100 pixels for a 10 X 10 image</span>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">319</span><span class="p">,</span> <span class="mi">199</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="n">BF</span>   <span class="c1">'color 4 = CHR$(4) = ♦</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">49</span><span class="p">),</span> <span class="mi">14</span><span class="p">,</span> <span class="n">B</span>   <span class="c1">'color 14 = CHR$(14) = ♫</span>
+<span class="n">GET</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">49</span><span class="p">),</span> <span class="n">a$</span>
+
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">CLS</span>
+<span class="n">PRINT</span> <span class="n">a$</span>                        <span class="c1">'display string data. Width = CHR$(10 * 8) = "P"</span>
+<span class="n">PUT</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">a$</span><span class="p">,</span> <span class="n">PSET</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The header holds the <a href="INTEGER.html">INTEGER</a> width and depth of the image area as 2 bytes each. Screen 13 width is multiplied by 8.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a>, <a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="_MAPTRIANGLE.html">_MAPTRIANGLE</a></li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a>, <a href="BSAVE.html">BSAVE</a>, <a href="BLOAD.html">BLOAD</a></li>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a>, <a href="Scancodes.html">Scancodes</a>(Example 3)</li>
+  <li><a href="Creating-Sprite-Masks.html">Creating Sprite Masks</a> (for non-box shaped sprites)</li>
+  <li><a href="GET-and-PUT-Demo.html">GET and PUT Demo</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PUT-(graphics-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+</html>

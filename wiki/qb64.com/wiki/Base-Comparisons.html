@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Base-Comparisons by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Base-Comparisons-2.html" />
+<meta property="og:url" content="Base-Comparisons-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Base-Comparisons.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                        **Comparing the Base Numbering Systems**
+
+     **Decimal (base 10)    Binary (base 2)    Hexadecimal (base 16)    Octal (base 8)**
+
+          0                  0000                  0                     0
+          1                  0001                  1                     1
+          2                  0010                  2                     2
+          3                  0011                  3                     3
+          4                  0100                  4                     4
+          5                  0101                  5                     5
+          6                  0110                  6                     6
+          7                  0111                  7                     7 -- maxed
+          8                  1000                  8                    10
+  maxed-- 9                  1001                  9                    11
+         10                  1010                  A                    12
+         11                  1011                  B                    13
+         12                  1100                  C                    14
+         13                  1101                  D                    15
+         14                  1110                  E                    16
+         15  -------------   1111 &lt;--- Match ---&gt;  F  ----------------  17 -- max 2
+         16                 10000                 10                    20
+        
+      When the Decimal value is 15, the other 2 base systems are all maxed out!
+      The Binary values can be compared to all of the HEX value digit values so
+      it is possible to convert between the two quite easily. To convert a HEX
+      value to Binary just add the 4 binary digits for each HEX digit place so:
+
+                        F      A      C      E 
+              &amp;HFACE = 1111 + 1010 + 1100 + 1101 = &amp;B1111101011001101
+
+      To convert a Binary value to HEX you just need to divide the number into
+      sections of four digits starting from the right(LSB) end. If one has less
+      than 4 digits on the left end you could add the leading zeros like below:
+ 
+             &amp;B101011100010001001 = 0010 1011 1000 1000 1001  
+                       hexadecimal =  2  + B  + 8 +  8  + 9 = &amp;H2B889 
+
+    See the Decimal to Binary conversion function that uses **[HEX$](HEX$)** on the **[&amp;H](&amp;H)** page.
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="HEX%24.html">HEX$</a>, <a href="OCT%24.html">OCT$</a>, <a href="VAL.html">VAL</a></li>
+  <li><a href="%26H.html">&amp;H</a> (hexadecimal), <a href="%26O.html">&amp;O</a> (octal), <a href="%26B.html">&amp;B</a> (binary)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Base-Comparisons by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:27 GMT -->
+</html>

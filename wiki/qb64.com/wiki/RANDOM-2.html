@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/RANDOM.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="RANDOM-2.html" />
+<meta property="og:url" content="RANDOM-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/RANDOM.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>RANDOM</strong> is used in an <a href="OPEN.html">OPEN</a> statement to read(<a href="GET.html">GET</a>) from or write(<a href="PUT.html">PUT</a>) to a file.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>OPEN Filename$ FOR RANDOM AS #1 [LEN = <em>recordlength%</em>]</p>
+</blockquote>
+
+<ul>
+  <li>RANDOM is the Default mode if no mode is given in the <a href="OPEN.html">OPEN</a> statement.</li>
+  <li>It creates the file if the legal file name given does NOT exist.</li>
+  <li>As a RANDOM file, it can read or write any record using <a href="GET.html">GET</a> and/or <a href="PUT.html">PUT</a> statements.</li>
+  <li><em>Recordlength%</em> is determined by getting the LEN of a <a href="TYPE.html">TYPE</a> variable or a <a href="FIELD.html">FIELD</a> statement.
+    <ul>
+      <li><a href="STRING.html">STRING</a> = 1 byte/character, <a href="INTEGER.html">INTEGER</a> = 2 bytes, <a href="LONG.html">LONG</a> = 4 bytes, <a href="SINGLE.html">SINGLE</a> = 4 bytes <a href="DOUBLE.html">DOUBLE</a> = 8 bytes</li>
+      <li><a href="_BYTE.html">_BYTE</a> = 1 byte, <a href="_INTEGER64.html">_INTEGER64</a> = 8 bytes, <a href="_FLOAT.html">_FLOAT</a> = 10 bytes (so far)</li>
+    </ul>
+  </li>
+  <li>If no record length is used in the <a href="OPEN.html">OPEN</a> statement, the default record size is 128 bytes except for the last record.</li>
+  <li>A record length cannot exceed 32767 or an <a href="ERROR-Codes.html">ERROR Codes</a> will occur!</li>
+  <li>To determine the number of records in a file the records% = <a href="LOF.html">LOF</a> \ recordlength%.</li>
+  <li>When <strong>variable length strings</strong> are PUT into RANDOM files the record length must exceed the maximum string entry by:
+    <ul>
+      <li>2 bytes are reserved for recording variable string lengths up to 32767 bytes (LEN = longest + 2)</li>
+      <li>8 bytes are reserved for recording variable string lengths exceeding 32767 bytes (LEN = longest + 8)</li>
+    </ul>
+  </li>
+  <li>A serial communication port can also be opened for RANDOM in an <a href="OPEN-COM.html">OPEN COM</a> statement.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Function that finds a RANDOM file’s record number for a string value such as a phone number.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">customer</span>
+  <span class="n">age</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+  <span class="n">phone</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">cust</span> <span class="n">AS</span> <span class="n">customer</span><span class="p">,</span> <span class="n">recLEN</span>
+<span class="n">recLEN</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">cust</span><span class="p">)</span>            <span class="c1">'get the length of the record type</span>
+<span class="n">PRINT</span> <span class="s">"RecLEN:"</span><span class="err">;</span> <span class="n">recLEN</span>
+
+<span class="n">OPEN</span> <span class="s">"randfile.rec"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">recLEN</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">4</span>
+  <span class="n">READ</span> <span class="n">cust</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">cust</span><span class="p">.</span><span class="n">phone</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">cust</span>
+<span class="n">NEXT</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">RP</span> <span class="o">=</span> <span class="n">RecordPos</span><span class="p">(</span><span class="s">"randfile.rec"</span><span class="p">,</span> <span class="s">"2223456789"</span><span class="p">)</span>  <span class="c1">'returns 0 if record not found!</span>
+
+<span class="n">PRINT</span> <span class="n">RP</span>  
+
+<span class="n">IF</span> <span class="n">RP</span> <span class="n">THEN</span>
+  <span class="n">OPEN</span> <span class="s">"randfile.rec"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">recLEN</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="n">RP</span><span class="p">,</span> <span class="n">cust</span>
+  <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">2</span>
+<span class="n">PRINT</span> <span class="n">cust</span><span class="p">.</span><span class="n">age</span><span class="p">,</span> <span class="n">cust</span><span class="p">.</span><span class="n">phone</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">END</span>
+
+<span class="n">DATA</span> <span class="mi">59</span><span class="p">,</span><span class="mi">2223456789</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">4122776477</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">3335551212</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="mi">1234567890</span>
+
+<span class="n">FUNCTION</span> <span class="n">RecordPos</span> <span class="p">(</span><span class="n">file$</span><span class="p">,</span> <span class="n">search$</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f</span>
+<span class="n">FL</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">dat$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="n">FL</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">CLOSE</span> <span class="n">f</span>
+<span class="n">recpos</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">dat$</span><span class="p">,</span> <span class="n">search$</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">recpos</span> <span class="n">THEN</span> <span class="n">RecordPos</span> <span class="o">=</span> <span class="n">recpos</span> <span class="o">\</span> <span class="n">recLEN</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">ELSE</span> <span class="n">RecordPos</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Random files can store records holding various variable types using a <a href="TYPE.html">TYPE</a> definition or a <a href="FIELD.html">FIELD</a> statement.</p>
+</blockquote>
+
+<p>When not using a <a href="TYPE.html">TYPE</a> or fixed length strings, QB4.5 allows RANDOM files to hold variable length strings up to 2 bytes less than the LEN = record length statement:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">_CONTROLCHR</span> <span class="n">OFF</span>
+<span class="n">OPEN</span> <span class="s">"myfile.txt"</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span><span class="p">:</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span><span class="p">:</span> <span class="c1">' clears former file of all entries.</span>
+<span class="n">OPEN</span> <span class="s">"myfile.txt"</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">LEN</span> <span class="o">=</span> <span class="mi">13</span> <span class="c1">'strings can be up to 11 bytes with 2 byte padder</span>
+
+<span class="n">a$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ABCDEFGHI"</span>
+<span class="n">b$</span> <span class="o">=</span> <span class="s">"ABCDEFGHI"</span>
+<span class="n">c$</span> <span class="o">=</span> <span class="s">"1234"</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a$</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b$</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">c$</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">3</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a$</span>
+  <span class="n">PRINT</span> <span class="n">a$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+<span class="n">NEXT</span>
+
+<span class="n">CLOSE</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+☺ ABCDEFGHI       11
+ABCDEFGHI         9
+1234              4
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The 2 byte file padders before each string PUT will show the length of a string for GET as <a href="ASCII.html">ASCII</a> characters. Padders will always be 2 bytes and strings up to the last one will be 13 bytes each no matter the length up to 11, so the file size can be determined as (2 + 11) + (2 + 9 + 2) + (2 + 4) or 13 + 13 + 2 + 4 = 32 bytes.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a>, <a href="FIELD.html">FIELD</a></li>
+  <li><a href="BINARY.html">BINARY</a></li>
+  <li><a href="SEEK.html">SEEK</a>, <a href="SEEK-(statement).html">SEEK (statement)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/RANDOM.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+</html>

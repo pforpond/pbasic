@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_COPYIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:18:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_COPYIMAGE-2.html" />
+<meta property="og:url" content="_COPYIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_COPYIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_COPYIMAGE.html">_COPYIMAGE</a> function creates an identical designated image in memory with a different negative <a href="LONG.html">LONG</a> handle value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>newhandle&amp; = <a href="_COPYIMAGE.html">_COPYIMAGE</a>[(imageHandle&amp;[, mode%)]]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <a href="LONG.html">LONG</a> <em>newhandle&amp;</em> value returned will be different than the source handle value supplied.</li>
+  <li>If <em>imageHandle&amp;</em> parameter is omitted or zero is designated, the current software <a href="_DEST.html">_DEST</a> screen or image is copied.</li>
+  <li>If 1 is designated instead of an <em>imageHandle&amp;</em>, it designates the last OpenGL hardware surface to copy.</li>
+  <li><em>Mode</em> 32 can be used to convert 256 color images to 32 bit colors.</li>
+  <li><em>Mode</em> 33 images are hardware accelerated in <strong>version 1.000 and up</strong>, and are created using <a href="_LOADIMAGE.html">_LOADIMAGE</a> or <a href="_COPYIMAGE.html">_COPYIMAGE</a>.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The function copies any image or screen handle to a new and unique negative <a href="LONG.html">LONG</a> handle value.</li>
+  <li>Valid copy handles are less than -1. Invalid handles return -1 or 0 if it was never created.</li>
+  <li>Every attribute of the passed image or program screen is copied to a new handle value in memory.</li>
+  <li><strong>32 bit screen surface backgrounds (black) have zero <a href="_ALPHA.html">_ALPHA</a> so that they are transparent when placed over other surfaces.</strong></li>
+</ul>
+
+<blockquote>
+  <p>Use <a href="CLS.html">CLS</a> or <a href="_DONTBLEND.html">_DONTBLEND</a> to make a new surface background <a href="_ALPHA.html">_ALPHA</a> 255 or opaque.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+  <li><strong>It is important to free discarded images with <a href="_FREEIMAGE.html">_FREEIMAGE</a> to prevent PC memory allocation errors!</strong></li>
+  <li><strong>Do not try to free image handles currently being used as the active <a href="SCREEN.html">SCREEN</a>. Change screen modes first.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Restoring a Legacy SCREEN using the _COPYIMAGE return value.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="c1">'backup screen before changing SCREEN mode</span>
+<span class="n">oldmode&amp;</span> <span class="o">=</span> <span class="n">_COPYIMAGE</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">'the 0 value designates the current destination SCREEN</span>
+
+<span class="n">s&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="n">s&amp;</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">BF</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">SCREEN</span> <span class="n">oldmode&amp;</span>        <span class="c1">'restore original screen</span>
+<span class="n">IF</span> <span class="n">s&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">_FREEIMAGE</span> <span class="n">s&amp;</span>
+<span class="n">END</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Only free valid handle values with <a href="_FREEIMAGE.html">_FREEIMAGE</a> AFTER a new <a href="SCREEN.html">SCREEN</a> mode is being used by the program.</p>
+</blockquote>
+
+<p>Program that copies desktop to a hardware image to form a 3D triangle:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">my_hardware_handle</span> <span class="o">=</span> <span class="n">_COPYIMAGE</span><span class="p">(</span><span class="n">_SCREENIMAGE</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span> <span class="c1">'take a screenshot and use it as our texture</span>
+<span class="n">_MAPTRIANGLE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="n">my_hardware_handle</span> <span class="n">TO_</span> 
+<span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="p">,</span> <span class="n">_SMOOTH</span>
+<span class="n">_DISPLAY</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">30</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_NEWIMAGE.html">_NEWIMAGE</a></li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a>, <a href="_MAPTRIANGLE.html">_MAPTRIANGLE</a></li>
+  <li><a href="_SOURCE.html">_SOURCE</a>, <a href="_DEST.html">_DEST</a></li>
+  <li><a href="_FREEIMAGE.html">_FREEIMAGE</a></li>
+  <li><a href="FILELIST%24-(function).html">FILELIST$ (function)</a> (Demo of _COPYIMAGE)</li>
+  <li><a href="_DISPLAYORDER.html">_DISPLAYORDER</a></li>
+  <li><a href="Hardware-images.html">Hardware images</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_COPYIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:18:47 GMT -->
+</html>

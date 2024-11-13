@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_OFFSET by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_OFFSET-2.html" />
+<meta property="og:url" content="_OFFSET-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_OFFSET.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_OFFSET.html">_OFFSET</a> variable type stores the location of a value in memory. The byte size varies as required by the system.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DIM.html">DIM</a> variable <a href="AS.html">AS</a> <strong><a href="_OFFSET.html">_OFFSET</a></strong></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><a href="_OFFSET.html">_OFFSET</a> types can be created as signed or <a href="_UNSIGNED.html">_UNSIGNED</a> at the programmer’s discretion.</li>
+  <li>The type suffix for <a href="_OFFSET.html">_OFFSET</a> is <strong>%&amp;</strong> which designates the integer value’s flexible size.</li>
+  <li>Offset values are only useful when used in conjunction with <a href="_MEM.html">_MEM</a> or <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> procedures.</li>
+  <li>OFFSET values are used as a part of the <a href="_MEM.html">_MEM</a> variable <a href="Variable-Types.html">Variable Types</a> in QB64. Variable.OFFSET returns or sets the current position in memory.</li>
+  <li>API <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> parameter or <a href="TYPE.html">TYPE</a> names may include <strong>lp, ptr</strong> or <strong>p</strong> which designates them as a pointer type.</li>
+  <li><strong>Warning: <a href="_OFFSET.html">_OFFSET</a> values cannot be cast to other variable type values reliably.</strong></li>
+  <li><strong>Warning: Variable length <a href="STRING.html">STRING</a> values can move about in memory at any time.</strong> If you get the <a href="_OFFSET.html">_OFFSET</a> of a variable length sting on one code line and use it on the next it may not be there anymore.** To be safe, move variable length strings into fixed length strings first.**</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>The SHBrowseForFolder function receives information about the folder selected by the user in Windows XP and 7.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">CUSTOMTYPE</span> <span class="n">LIBRARY</span>
+    <span class="n">FUNCTION</span> <span class="n">FindWindow</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">ClassName</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">WindowName</span><span class="err">$</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">_TITLE</span> <span class="s">"Super Window"</span>
+<span class="n">hwnd&amp;</span> <span class="o">=</span> <span class="n">FindWindow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">"Super Window"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="n">TYPE</span> <span class="n">BROWSEINFO</span>  <span class="c1">'typedef struct _browseinfo '[Microsoft MSDN](http://msdn.microsoft.com/en-us/library/bb773205%28v=vs.85%29.aspx)</span>
+  <span class="n">hwndOwner</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'              '  HWND </span>
+  <span class="n">pidlRoot</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'            '  PCIDLIST_ABSOLUTE</span>
+  <span class="n">pszDisplayName</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'      '  LPTSTR </span>
+  <span class="n">lpszTitle</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'           '  LPCTSTR       </span>
+  <span class="n">ulFlags</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>        <span class="c1">'  UINT   </span>
+  <span class="n">lpfn</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'                '  BFFCALLBACK  </span>
+  <span class="n">lParam</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'              '  LPARAM  </span>
+  <span class="n">iImage</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="c1">'                 '  int  </span>
+<span class="n">END</span> <span class="n">TYPE</span>  <span class="c1">'BROWSEINFO, *PBROWSEINFO, *LPBROWSEINFO;</span>
+
+<span class="n">DECLARE</span> <span class="n">DYNAMIC</span> <span class="n">LIBRARY</span> <span class="s">"shell32"</span>
+  <span class="n">FUNCTION</span> <span class="n">SHBrowseForFolder</span><span class="err">%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="n">AS</span> <span class="n">BROWSEINFO</span><span class="p">)</span> <span class="c1">'[Microsoft MSDN](http://msdn.microsoft.com/en-us/library/bb762115%28v=vs.85%29.aspx)</span>
+  <span class="n">SUB</span> <span class="n">SHGetPathFromIDList</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">lpItem</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">szDir</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span> <span class="c1">'[Microsoft MSDN](http://msdn.microsoft.com/en-us/library/bb762194%28VS.85%29.aspx)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">DIM</span> <span class="n">b</span> <span class="n">AS</span> <span class="n">BROWSEINFO</span>
+<span class="n">b</span><span class="p">.</span><span class="n">hwndOwner</span> <span class="o">=</span> <span class="n">hwnd</span>
+<span class="n">DIM</span> <span class="n">s</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1024</span>
+<span class="n">b</span><span class="p">.</span><span class="n">pszDisplayName</span> <span class="o">=</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">s$</span><span class="p">)</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">"Choose a folder!!!"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">b</span><span class="p">.</span><span class="n">lpszTitle</span> <span class="o">=</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">o</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">SHBrowseForFolder</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">o</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">s$</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">s$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">DIM</span> <span class="n">s2</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1024</span>
+    <span class="n">SHGetPathFromIDList</span> <span class="n">o</span><span class="p">,</span> <span class="n">_OFFSET</span><span class="p">(</span><span class="n">s2$</span><span class="p">)</span>
+    <span class="n">PRINT</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">s2$</span><span class="p">,</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">s2$</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ELSE</span>
+    <span class="n">PRINT</span> <span class="s">"Cancel?"</span>
+<span class="n">END</span> <span class="n">IF</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_WINDOWHANDLE.html">_WINDOWHANDLE</a></li>
+  <li><a href="Using--OFFSET.html">Using _OFFSET</a></li>
+  <li><a href="_OFFSET-(function).html">_OFFSET (function)</a>, <a href="_MEM.html">_MEM</a></li>
+  <li><a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a></li>
+  <li><a href="DECLARE-DYNAMIC-LIBRARY.html">DECLARE DYNAMIC LIBRARY</a></li>
+  <li><a href="Variable-Types.html">Variable Types</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_OFFSET by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:47 GMT -->
+</html>

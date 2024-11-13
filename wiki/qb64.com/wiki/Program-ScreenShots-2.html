@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Program-ScreenShots.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Program-ScreenShots-2.html" />
+<meta property="og:url" content="Program-ScreenShots-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Program-ScreenShots.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Creating Screenshot Bitmaps inside of your Programs</strong></p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>EightBit Minimum_Column%, Minimum_Row%, Maximum_Column%, Maximum_Row%, NewFileName$</p>
+</blockquote>
+
+<ul>
+  <li>The values of x1%, y%1, x2% and y2% can be any ON SCREEN area coordinates in the screen mode used.</li>
+  <li>You MUST subtract one when using the <strong>QB64</strong>  FULL SCREEN <a href="_WIDTH.html">_WIDTH</a> and <a href="_HEIGHT.html">_HEIGHT</a> values! Otherwise <a href="POINT.html">POINT</a> will return an <a href="ERROR-Codes.html">ERROR Codes</a>! The maximum is one pixel less than the <a href="SCREEN-(statement).html">SCREEN (statement)</a> resolution or the screen dimensions.</li>
+  <li>Both <a href="SUB.html">SUB</a>s can be used in <strong>QB64</strong> or QBasic! The FourBit SUB takes about 8 seconds in QB.</li>
+  <li>FourBit SUB creates 4 BPP(16 color) and EightBit SUB creates 8 BPP(256 color) bitmaps.</li>
+</ul>
+
+<p><strong>QB64 Custom Screens</strong></p>
+
+<ul>
+  <li>See the <a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> routine to create QB64 screenshots of <a href="_NEWIMAGE.html">_NEWIMAGE</a> screen pages or copy images loaded using  <a href="_LOADIMAGE.html">_LOADIMAGE</a>. Creates 256 or 24/32 bit color bitmaps using the QB64 image and page handles.</li>
+</ul>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'----------------- Freeware by Bob Seguin 2003 -- (TheBOB) --------------------------|</span>
+<span class="c1">'|                                                                                   |</span>
+<span class="c1">'|   ---- Decreased POINT time of 4 bit fullscreen to 8 seconds in QBasic ----       |</span>
+<span class="c1">'|                     by Ted Weissgerber July, 2008                                 |</span>
+<span class="c1">'|     - Add a special keypress to a game program to create a Screenshot -           |</span>
+<span class="c1">'|                                                                                   |</span>
+<span class="c1">'--------------------------------- DEMO CODE -----------------------------------------</span>
+
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">FourBIT</span> <span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">x2%</span><span class="p">,</span> <span class="n">y2%</span><span class="p">,</span> <span class="n">Filename</span><span class="err">$</span><span class="p">)</span>  <span class="c1">'12 or 13 using 16 colors</span>
+<span class="n">DECLARE</span> <span class="n">SUB</span> <span class="n">EightBIT</span> <span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">x2%</span><span class="p">,</span> <span class="n">y2%</span><span class="p">,</span> <span class="n">Filename</span><span class="err">$</span><span class="p">)</span> <span class="c1">'13 using 256 colors</span>
+
+<span class="n">DO</span><span class="p">:</span> <span class="n">CLS</span>
+<span class="n">INPUT</span> <span class="s">"ENTER Screen Mode 12 or 13 (0 quits): "</span><span class="p">,</span> <span class="n">scrn%</span>
+
+<span class="n">IF</span> <span class="n">scrn%</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">THEN</span>
+  <span class="n">SCREEN</span> <span class="mi">13</span>              <span class="c1">'8 bit (256 colors) only</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">319</span><span class="p">,</span> <span class="mi">199</span><span class="p">),</span> <span class="mi">13</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">11</span>
+  <span class="n">PAINT</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span>
+  <span class="n">Start</span><span class="p">!</span> <span class="o">=</span> <span class="n">TIMER</span>
+  <span class="n">EightBIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">319</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="s">"Purple8"</span>
+
+<span class="n">ELSEIF</span> <span class="n">scrn%</span> <span class="o">=</span> <span class="mi">12</span> <span class="n">THEN</span>
+  <span class="n">SCREEN</span> <span class="mi">12</span>              <span class="c1">'4 bit(16 colors) only</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">639</span><span class="p">,</span> <span class="mi">479</span><span class="p">),</span> <span class="mi">13</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span>
+  <span class="n">PAINT</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span>
+  <span class="n">Start</span><span class="p">!</span> <span class="o">=</span> <span class="n">TIMER</span>
+  <span class="n">FourBIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">639</span><span class="p">,</span> <span class="mi">479</span><span class="p">,</span> <span class="s">"Purple4"</span>  <span class="c1">'469, 239</span>
+<span class="n">ELSE</span> <span class="p">:</span> <span class="n">SYSTEM</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">Finish</span><span class="p">!</span> <span class="o">=</span> <span class="n">TIMER</span>  <span class="c1">'elapsed times valid for QB only</span>
+<span class="n">PRINT</span> <span class="s">"Elapsed time ="</span><span class="err">;</span> <span class="n">Finish</span><span class="p">!</span> <span class="o">-</span> <span class="n">Start</span><span class="p">!</span><span class="err">;</span> <span class="s">"secs."</span><span class="err">;</span> <span class="s">"Press Escape to quit!"</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">SYSTEM</span>      
+
+            <span class="c1">'****************  End DEMO code ***********************</span>
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+<span class="n">SUB</span> <span class="n">EightBit</span> <span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">x2%</span><span class="p">,</span> <span class="n">y2%</span><span class="p">,</span> <span class="n">Filename</span><span class="err">$</span><span class="p">)</span>   <span class="c1">'SCREEN 13(256 color) bitmap maker</span>
+<span class="c1">'NOTE: Adjust x2% = 319 and y2% = 199 for legal POINTs when fullscreen in SCREEN 13 </span>
+<span class="n">DIM</span> <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">768</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">Colors8</span><span class="err">%</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">x1%</span> <span class="o">&gt;</span> <span class="n">x2%</span> <span class="n">THEN</span> <span class="n">SWAP</span> <span class="n">x1%</span><span class="p">,</span> <span class="n">x2%</span>
+<span class="n">IF</span> <span class="n">y1%</span> <span class="o">&gt;</span> <span class="n">y2%</span> <span class="n">THEN</span> <span class="n">SWAP</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">y2%</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">Filename</span><span class="err">$</span><span class="p">,</span> <span class="s">".BMP"</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+<span class="n">Filename</span><span class="err">$</span> <span class="o">=</span> <span class="n">RTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">Filename</span><span class="err">$</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="o">+</span> <span class="s">".BMP"</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">FileTYPE</span><span class="err">$</span> <span class="o">=</span> <span class="s">"BM"</span>
+<span class="n">Reserved1</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Reserved2</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">OffsetBITS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">1078</span>
+<span class="n">InfoHEADER</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2%</span> <span class="o">-</span> <span class="n">x1%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">PictureDEPTH</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2%</span> <span class="o">-</span> <span class="n">y1%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NumPLANES</span><span class="err">%</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">BPP</span><span class="err">%</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Compression</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">WidthPELS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">3780</span>
+<span class="n">DepthPELS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">3780</span>
+<span class="n">NumCOLORS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">256</span>
+
+<span class="n">IF</span> <span class="p">(</span><span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="mi">3</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">x&amp;</span> <span class="n">AND</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">ImageSIZE</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">LEN</span><span class="p">(</span><span class="n">ZeroPAD</span><span class="err">$</span><span class="p">))</span> <span class="o">*</span> <span class="n">PictureDEPTH</span><span class="o">&amp;</span>
+<span class="n">FileSize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">ImageSIZE</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span>
+
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C7</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">FOR</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">768</span> <span class="n">STEP</span> <span class="mi">3</span>
+  <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+  <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+  <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">n</span>
+<span class="n">f%</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="n">Filename</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f%</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">FileTYPE</span><span class="err">$</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">FileSize</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Reserved1</span><span class="err">%</span> <span class="c1">'should be zero</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Reserved2</span><span class="err">%</span> <span class="c1">'should be zero</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">InfoHEADER</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">PictureWIDTH</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">PictureDEPTH</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">NumPLANES</span><span class="err">%</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">BPP</span><span class="err">%</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Compression</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">ImageSIZE</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">WidthPELS</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">DepthPELS</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">NumCOLORS</span><span class="o">&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span>     <span class="c1">'51 to 54</span>
+
+<span class="n">u$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">FOR</span> <span class="n">n%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">768</span> <span class="n">STEP</span> <span class="mi">3</span>  <span class="c1">'PUT as BGR order colors</span>
+  <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n%</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+  <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n%</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+  <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">u$</span> <span class="c1">'Unused byte</span>
+<span class="n">NEXT</span> <span class="n">n%</span>
+
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y2%</span> <span class="n">TO</span> <span class="n">y1%</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>   <span class="c1">'place bottom up</span>
+  <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x1%</span> <span class="n">TO</span> <span class="n">x2%</span>
+    <span class="n">a$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">POINT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="n">Colors8</span><span class="err">%</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+  <span class="n">NEXT</span> <span class="n">x</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+
+<span class="n">FOR</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>
+  <span class="n">IF</span> <span class="n">Colors8</span><span class="err">%</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NEXT</span> <span class="n">n</span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="n">f%</span>
+<span class="n">END</span> <span class="n">SUB</span>    
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">FourBit</span> <span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">x2%</span><span class="p">,</span> <span class="n">y2%</span><span class="p">,</span> <span class="n">Filename</span><span class="err">$</span><span class="p">)</span>   <span class="c1">' SCREEN 12(16 color) bitmap maker</span>
+       <span class="c1">'fullscreen takes about 8 seconds in QB</span>
+<span class="c1">'NOTE: Adjust x2% = 639 and y2% = 479 for legal POINTs when fullscreen in SCREEN 12 </span>
+<span class="n">DIM</span> <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">48</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">Colors4</span><span class="err">%</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">x1%</span> <span class="o">&gt;</span> <span class="n">x2%</span> <span class="n">THEN</span> <span class="n">SWAP</span> <span class="n">x1%</span><span class="p">,</span> <span class="n">x2%</span>
+<span class="n">IF</span> <span class="n">y1%</span> <span class="o">&gt;</span> <span class="n">y2%</span> <span class="n">THEN</span> <span class="n">SWAP</span> <span class="n">y1%</span><span class="p">,</span> <span class="n">y2%</span>
+<span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">Filename</span><span class="err">$</span><span class="p">,</span> <span class="s">".BMP"</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">Filename</span><span class="err">$</span> <span class="o">=</span> <span class="n">RTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">Filename</span><span class="err">$</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="o">+</span> <span class="s">".BMP"</span>
+<span class="n">END</span> <span class="n">IF</span>
+  
+<span class="n">FileTYPE</span><span class="err">$</span> <span class="o">=</span> <span class="s">"BM"</span>
+<span class="n">Reserved1</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Reserved2</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">OffsetBITS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">118</span>
+<span class="n">InfoHEADER</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2%</span> <span class="o">-</span> <span class="n">x1%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">PictureDEPTH</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2%</span> <span class="o">-</span> <span class="n">y1%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NumPLANES</span><span class="err">%</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">BPP</span><span class="err">%</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">Compression</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">WidthPELS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">3780</span>
+<span class="n">DepthPELS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">3780</span>
+<span class="n">NumCOLORS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="n">IF</span> <span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="n">MOD</span> <span class="mi">8</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+   <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">8</span> <span class="o">-</span> <span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="n">MOD</span> <span class="mi">8</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">ImageSIZE</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">(((</span><span class="n">PictureWIDTH</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">LEN</span><span class="p">(</span><span class="n">ZeroPAD</span><span class="err">$</span><span class="p">))</span> <span class="o">*</span> <span class="n">PictureDEPTH</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">+</span> <span class="p">.</span><span class="err">1)</span> <span class="err">/</span> <span class="err">2</span>
+<span class="n">FileSize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">ImageSIZE</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span>
+  
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C7</span><span class="p">,</span> <span class="mi">0</span>                    <span class="c1">'start at color 0</span>
+<span class="n">FOR</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">48</span> <span class="n">STEP</span> <span class="mi">3</span>
+  <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+  <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+  <span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">n</span>
+<span class="n">f%</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="n">Filename</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f%</span>
+                                   <span class="c1">'Header bytes</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">FileTYPE</span><span class="err">$</span>                   <span class="c1">'2 '1 to 2</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">FileSize</span><span class="o">&amp;</span>                   <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Reserved1</span><span class="err">%</span> <span class="c1">'should be zero  '2</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Reserved2</span><span class="err">%</span> <span class="c1">'should be zero  '2</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">OffsetBITS</span><span class="o">&amp;</span>                 <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">InfoHEADER</span><span class="o">&amp;</span>                 <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">PictureWIDTH</span><span class="o">&amp;</span>               <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">PictureDEPTH</span><span class="o">&amp;</span>               <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">NumPLANES</span><span class="err">%</span>                  <span class="c1">'2</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">BPP</span><span class="err">%</span>                        <span class="c1">'2</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Compression</span><span class="o">&amp;</span>                <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">ImageSIZE</span><span class="o">&amp;</span>                  <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">WidthPELS</span><span class="o">&amp;</span>                  <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">DepthPELS</span><span class="o">&amp;</span>                  <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">NumCOLORS</span><span class="o">&amp;</span>                  <span class="c1">'4</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span>                  <span class="c1">'4 '51 - 54</span>
+
+<span class="n">u$</span> <span class="o">=</span> <span class="s">" "</span>             <span class="c1">'unused byte</span>
+<span class="n">FOR</span> <span class="n">n%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">46</span> <span class="n">STEP</span> <span class="mi">3</span>   <span class="c1">'PUT as BGR order colors</span>
+  <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n%</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+  <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n%</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+  <span class="n">Colr</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">FileCOLORS</span><span class="err">%</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">Colr</span><span class="err">$</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="p">,</span> <span class="n">u$</span> <span class="c1">'add Unused byte</span>
+<span class="n">NEXT</span> <span class="n">n%</span>
+
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y2%</span> <span class="n">TO</span> <span class="n">y1%</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>    <span class="c1">'Place from bottom up</span>
+  <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x1%</span> <span class="n">TO</span> <span class="n">x2%</span> <span class="n">STEP</span> <span class="mi">2</span>   <span class="c1">'nibble steps</span>
+    <span class="n">HiX</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="n">Colors4</span><span class="err">%</span><span class="p">(</span><span class="n">HiX</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1">'added here</span>
+    <span class="n">LoX</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="n">Colors4</span><span class="err">%</span><span class="p">(</span><span class="n">LoX</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">HiNIBBLE</span><span class="err">$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">HiX</span><span class="p">)</span>
+    <span class="n">LoNIBBLE</span><span class="err">$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">LoX</span><span class="p">)</span>
+    <span class="n">HexVAL</span><span class="err">$</span> <span class="o">=</span> <span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">HiNIBBLE</span><span class="err">$</span> <span class="o">+</span> <span class="n">LoNIBBLE</span><span class="err">$</span>
+    <span class="n">a$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">HexVAL</span><span class="err">$</span><span class="p">))</span>
+    <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+  <span class="n">NEXT</span> <span class="n">x</span>
+  <span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+
+<span class="n">FOR</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+  <span class="n">IF</span> <span class="n">Colors4</span><span class="err">%</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NEXT</span> <span class="n">n</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f%</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="n">SigCOLORS</span><span class="o">&amp;</span>     
+
+<span class="n">CLOSE</span> <span class="p">#</span><span class="n">f%</span>
+<span class="c1">'BEEP         'optional sound not needed in QB64 as speed is fast</span>
+<span class="n">END</span> <span class="n">SUB</span>   
+
+</code></pre></div></div>
+
+<p><strong>If full code is not displayed, refresh your browser!</strong></p>
+
+<h2 id="see-examples">See Example(s)</h2>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (QB64 full screen Image to Bitmap SUB by Galleon)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (QB64 saves partial Image area to bitmap)</li>
+  <li><a href="Bitmaps.html">Bitmaps</a></li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="POINT.html">POINT</a>, <a href="PUT.html">PUT</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Program-ScreenShots.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:47 GMT -->
+</html>

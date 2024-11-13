@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/CASE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="CASE-2.html" />
+<meta property="og:url" content="CASE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/CASE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>See <a href="SELECT-CASE.html">SELECT CASE</a>.</p>
+
+<p><a href="CASE.html">CASE</a> is used within a <a href="SELECT-CASE.html">SELECT CASE</a> block to specify a conditional value of the compared variable.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="CASE.html">CASE</a> comparisonValues[:] {code}</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<p>*comparisonValues can be any literal string or number, depending on the value specified in the <a href="SELECT-CASE.html">SELECT CASE</a> statement.
+*Code is executed until the next case, so each case can handle multiple lines of code.</p>
+<ul>
+  <li><a href="CASE.html">CASE</a> conditions are normally listed in some logical order going down the page.</li>
+  <li><a href="CASE.html">CASE</a> order can affect the SELECT CASE code execution when more than one CASE can be true. This is specially true when multiple conditional operators, CASE IS or TO ranges are used.</li>
+  <li><a href="CASE.html">CASE</a> lists can also be listed horizontally by using colon separators between cases.</li>
+  <li>Supports individual CASE values and ranges or lists of values as below:
+    <ul>
+      <li><a href="CASE.html">CASE</a> value</li>
+      <li><a href="CASE.html">CASE</a> value1 <a href="TO.html">TO</a> value2</li>
+      <li><a href="CASE.html">CASE</a> value1, value2, value3</li>
+      <li><a href="CASE-IS.html">CASE IS</a> value1 &gt; value2</li>
+      <li><a href="CASE-ELSE.html">CASE ELSE</a></li>
+    </ul>
+  </li>
+  <li>The first time a <a href="CASE.html">CASE</a> value matches the compared variable’s value, that <a href="CASE.html">CASE</a> code is executed and <a href="SELECT-CASE.html">SELECT CASE</a> is exited, unless <strong>EVERYCASE</strong> is used.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">a</span>
+   <span class="n">CASE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Odd values under 10 will be shown."</span>
+   <span class="n">CASE</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"10 will be shown."</span>
+   <span class="n">CASE</span> <span class="mi">50</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"50 will be shown."</span>
+   <span class="n">CASE</span> <span class="mi">100</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"This will be shown. (a is 100)"</span>
+             <span class="n">PRINT</span> <span class="s">"(and this)"</span>
+   <span class="n">CASE</span> <span class="mi">150</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"150 will be shown."</span>
+   <span class="n">CASE</span> <span class="n">IS</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Less than 150 will be shown. (a which is 100 is under 150)"</span>
+   <span class="n">CASE</span> <span class="mi">50</span> <span class="n">TO</span> <span class="mi">150</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"50 to 150 will be shown. (a which is 100 is between 50 TO 150)"</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+
+
+</code></pre></div></div>
+
+<p><em>Returns:</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ This will be shown. (a is 100)
+ (and this)
+
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <a href="SELECT-CASE.html">SELECT CASE</a> compares the variable’s value to each descending CASE until ONE is true, executes the <a href="CASE.html">CASE</a> code and exits the SELECT CASE. <a href="CASE.html">CASE</a> statements should be placed in a increasing or decreasing order for the best results.</p>
+</blockquote>
+
+<blockquote>
+  <p>What happens is that since 5 isn’t 100 then the code until the next CASE is ignored, the same obviously goes for 10 and 50 but then comes 100 which is what a is so the code in that <a href="CASE.html">CASE</a> is executed.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>A <a href="CASE.html">CASE</a> can list several values separated by commas for the same program option to be executed.</p>
+  </li>
+  <li>
+    <p><a href="CASE-IS.html">CASE IS</a> is used when we need to compare the value to a conditional expression range such as a value is “=” equal to, “&lt;” less than, “&gt;” greater than, “&lt;&gt;” not equal to or <a href="NOT.html">NOT</a> a value.</p>
+  </li>
+  <li>
+    <p>A <a href="CASE.html">CASE</a> range can be specified (in the example; 50 <a href="TO.html">TO</a> 150) if needed.
+<em>Note:</em> A <a href="SELECT-CASE.html">SELECT CASE</a> block has to end with <a href="END-SELECT.html">END SELECT</a>.</p>
+  </li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="CASE-ELSE.html">CASE ELSE</a>, <a href="CASE-IS.html">CASE IS</a></li>
+  <li><a href="SELECT-CASE.html">SELECT CASE</a>, <a href="END-SELECT.html">END SELECT</a></li>
+  <li><a href="IF...html">IF…THEN</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/CASE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:59 GMT -->
+</html>

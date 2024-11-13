@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Screen-Memory by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Screen-Memory-2.html" />
+<meta property="og:url" content="Screen-Memory-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Screen-Memory.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>SCREEN Memory Segments</strong></p>
+
+<p><strong>Screen 0 Text Segment &amp;HB800</strong></p>
+
+<ul>
+  <li>The text video memory segment is located at hexadecimal memory address B800 or 47104 decimal.</li>
+  <li>The normal <a href="SCREEN.html">SCREEN</a> 0 <a href="WIDTH.html">WIDTH</a> is 25 rows by 80 columns wide capable of up to 2000 text characters.</li>
+  <li>Each text block memory offset consists of a text character byte followed by a color byte.</li>
+  <li>Each <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_BYTE.html">_BYTE</a> can hold values from 0 to 255 only. <a href="PEEK.html">PEEK</a> can read and <a href="POKE.html">POKE</a> can write positive values to those bytes.</li>
+  <li>Text ASCII code values range from 0 to 127 with the extended codes ranging from 128 to 255.</li>
+  <li>Color values from 0 to 127 are the normal 16 text colors with background color attributes ranging from 0 to 7.</li>
+  <li>Color values from 128 to 255 are the high intensity blinking color values with background color attributes ranging from 0 to 7.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Printing text with blinking colors in <a href="SCREEN.html">SCREEN</a> 0 only.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">s</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">i</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">j</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">CLS</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s">"Hello, World!"</span>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HB800</span>
+<span class="n">FOR</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">15</span>
+ <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="n">POKE</span> <span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ASC</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">s$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>        <span class="c1">'text characters</span>
+  <span class="n">POKE</span> <span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H80</span> <span class="n">OR</span> <span class="n">j</span> <span class="c1">'blinking color</span>
+ <span class="n">NEXT</span>
+<span class="n">NEXT</span>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="c1">'restore to default segment</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<p>Displaying and coloring the 256 <a href="ASCII.html">ASCII</a> characters using <a href="POKE.html">POKE</a> in <a href="SCREEN.html">SCREEN</a> 0.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span> <span class="c1">'set full screen in QBasic only for flashing colors</span>
+<span class="n">SCREEN</span> <span class="mi">0</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">20</span>
+
+<span class="n">_FONT</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="s">"C:\Windows\Fonts\Cour.ttf"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">"MONOSPACE"</span><span class="p">)</span> <span class="c1">'select monospace font. QB64 only!</span>
+
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">HB800</span>                        <span class="c1">'SCREEN 0 text ONLY!</span>
+<span class="n">FOR</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>
+  <span class="n">POKE</span> <span class="mi">640</span> <span class="o">+</span> <span class="n">code</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">code</span>             <span class="c1">'poke the even text offsets with space between</span>
+<span class="n">NEXT</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">27</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press a key to add color!"</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">colr</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>
+  <span class="n">POKE</span> <span class="mi">641</span> <span class="o">+</span> <span class="n">colr</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">colr</span>             <span class="c1">'poke the ODD color offsets(second byte)</span>
+<span class="n">NEXT</span>
+<span class="n">DEF</span> <span class="n">SEG</span>                                 <span class="c1">'reset to default segment</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<blockquote>
+  <p><em>Explanation:</em> To <a href="POKE.html">POKE</a> text characters to the screen in SCREEN 0, DEF SEG sets the memory segment to &amp;HB800. Text values are poked at the even segment offsets starting 640 bytes(4 rows * 80 columns wide * 2 bytes) from the upper left corner 0 offset of the screen memory segment. To space the text it skips an even offset by multiplying by 4 instead of 2. The odd offsets can be written to to set the color. Using the same 4 byte offsets, the text and background are colored using values up to 128. Values over 128 cause the text to flash and the background colors 0 to 7 are repeated. The background color is incremented every 16 values.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                **4000 byte Video Memory Segment**
+
+Text block #:   1                  321     322     323     324     325     326     327             
+Text position:  1, 1                5, 1    5, 2    5, 3    5, 4    5, 5    5, 6    5, 7
+Byte offset:    0, 1               640     642     644     646     648     650     652
+**Segment: (CHR$(0), COLOR 0),.......(0, 0), (0, 0), (1, 1), (0, 0), (2, 2), (0, 0), (3, 3),...**
+
+            Row% = Offset% \ 160 + 1          Column% = (Offset% MOD 160) \ 2 + 1
+
+                         Offset% = (160 * (Row% - 1)) + (2 * (Column% - 1))
+
+</code></pre></div></div>
+
+<p><strong>Graphic Screen Segment &amp;HA000</strong></p>
+
+<ul>
+  <li>The graphic video memory segment is located at hexadecimal memory address A000 or 40960 decimal.</li>
+  <li>Legacy graphic screen modes include 1, 2, 7, 8, 9, 10, 11, 12 and 13 with varying pixel widths, heights and color attributes.</li>
+  <li><strong>QB64</strong> <a href="_NEWIMAGE.html">_NEWIMAGE</a> or <a href="_LOADIMAGE.html">_LOADIMAGE</a> screen modes can use the legacy modes above, 256 color or 32 bit color modes.</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PEEK.html">PEEK</a>, <a href="POKE.html">POKE</a></li>
+  <li><a href="DEF-SEG-%3d-0.html">DEF SEG = 0</a></li>
+  <li><a href="SCREEN.html">SCREEN</a></li>
+  <li><a href="SCREEN-(function).html">SCREEN (function)</a></li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a> (screen pages)</li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a> (image files)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Screen-Memory by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:08 GMT -->
+</html>

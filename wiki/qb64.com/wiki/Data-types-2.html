@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Data-types.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Data-types-2.html" />
+<meta property="og:url" content="Data-types-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Data-types.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Any <a href="Expression.html">Expression</a>, including <a href="CONST.html">CONST</a> and <a href="Variable.html">Variable</a> all have an associated type to describe their value. QB64 has various built-in data types used to represent number and text values. <a href="#Numeric types">#Numeric types</a> represent number values, while <a href="#String types">#String types</a> represent text values.</p>
+
+<h2 id="numeric-types">Numeric types</h2>
+
+<p>QB64 supports several numeric types, capable of representing a wide range of numbers. There are two kinds of numeric data type: <em>integer types</em> and <em>floating-point types</em>.</p>
+
+<h3 id="integer-types">Integer types</h3>
+
+<p>Integer types represent integer (whole number) values, such as 1 and 100. They are divided into two flavors: <em>signed</em> and <em>unsigned</em>.</p>
+
+<h4 id="signed-integer-types">Signed Integer types</h4>
+
+<p>Signed integers can represent positive and negative integer (whole number) values, such as 3, 10 and -16. These values are stored as a series of bits in <a href="http://en.wikipedia.org/wiki/Two's_complement">two’s complement form</a>, a common representation that makes them both straightforward and efficient to perform calculations with.</p>
+
+<p>Signed integers are typically used in simple mathematical equations.</p>
+
+<p>The range of values that these types can represent is based on their size, in bits; the greater number of bits, the larger positive and lesser negative value the types can represent.</p>
+
+<p>The signed integer types are: <a href="_BYTE.html">_BYTE</a>, <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a>, <a href="_INTEGER64.html">_INTEGER64</a> and <a href="_OFFSET.html">_OFFSET</a></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">n</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">PRINT</span> <span class="n">n</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+-1
+
+</code></pre></div></div>
+
+<h4 id="unsigned-integer-types">Unsigned Integer types</h4>
+
+<p>Unsigned integers can represent positive integer values only, such as 3, 10 and 16. These values are also stored as a series of bits, but unlike signed integers, all of the bits contribute to their value. Thus, these types can represent larger positive integer values than their signed counterparts.</p>
+
+<p>Unsigned integers are typically used to represent a simple quantity, like a <em>count</em> or a <em>length</em>. They are also often used as <em>bit masks</em>, where certain bits that make up the value represent separate information (such as the state of one or more <em>flags</em>).</p>
+
+<p>Types: <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_BYTE.html">_BYTE</a>, <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="INTEGER.html">INTEGER</a>, <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a>, <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_INTEGER64.html">_INTEGER64</a>, <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_OFFSET.html">_OFFSET</a></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">' display the largest value representable by an _UNSIGNED INTEGER:</span>
+<span class="n">DIM</span> <span class="n">n</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+<span class="n">n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">PRINT</span> <span class="n">n</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+65535
+
+</code></pre></div></div>
+
+<h4 id="_offset-integer-types">_OFFSET Integer types</h4>
+
+<p>Offset Integer types can be any byte size integer value that can be used to designate pointer offset positions in memory. DO NOT TRANSFER offset values to other Integer types!</p>
+
+<h3 id="floating-point-types">Floating-point types</h3>
+
+<p>Floating-point types can represent both positive and negative number values, as well as fractional number values, such as 1.2 and -34.56.</p>
+
+<p>Floating-point types are used in mathematical equations where fractional precision is important, such as trigonometry.</p>
+
+<p>The floating-point types are: <a href="SINGLE.html">SINGLE</a>, <a href="DOUBLE.html">DOUBLE</a> and <a href="_FLOAT.html">_FLOAT</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">f!</span> <span class="o">=</span> <span class="mf">76.0</span>
+<span class="n">c!</span> <span class="o">=</span> <span class="p">(</span><span class="mf">5.0</span> <span class="o">/</span> <span class="mf">9.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">f!</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span>
+
+<span class="n">PRINT</span> <span class="n">f!</span> <span class="err">;</span> <span class="s">"degrees Fahrenheit is"</span> <span class="err">;</span> <span class="n">c!</span> <span class="err">;</span> <span class="s">"degrees Celcius."</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+76 degrees Fahrenheit is 24.44444 degrees Celcius.
+
+</code></pre></div></div>
+
+<h2 id="string-types">String types</h2>
+
+<p>QB64 has built-in support for strings, which are contiguous sequences of characters represented as <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_BYTE.html">_BYTE</a> values. Strings are usually used to store and manipulate text, but can also be used as a general storage area for arbitrary data (like a binary file).</p>
+
+<p>Strings have a property called <em>length</em>, which is the number of characters currently stored in the string, and QB64 supports two kinds of string types based on this property: <em>variable-length strings</em> and <em>fixed-length strings</em>.</p>
+
+<h3 id="variable-length-strings">Variable-length strings</h3>
+
+<p>Variable length strings are undefined length string variables. Fixed length strings MUST be defined in a program before they are used. Undefined strings can be up to 32767 characters in QBasic.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">message$</span> <span class="o">=</span> <span class="s">"Hello"</span>
+<span class="n">message$</span> <span class="o">=</span> <span class="n">message$</span> <span class="o">+</span> <span class="s">" world!"</span> <span class="c1">'add to string variables using string concatenation only! </span>
+<span class="n">PRINT</span> <span class="n">message$</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ Hello world!
+
+</code></pre></div></div>
+
+<h3 id="fixed-length-strings">Fixed-length strings</h3>
+
+<p>Fixed length strings must be defined in a <a href="DIM.html">DIM</a> statement, <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> parameter or <a href="TYPE.html">TYPE</a> definition. The designated multiple is the maximum number of <a href="STRING.html">STRING</a> character bytes that the variable or <a href="Arrays.html">Arrays</a> can hold. Excess bytes will not be included. No error is created.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">message</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">message$</span> <span class="o">=</span> <span class="s">"Hello"</span>
+<span class="n">message$</span> <span class="o">=</span> <span class="n">message$</span> <span class="o">+</span> <span class="s">" world!"</span>
+<span class="n">PRINT</span> <span class="n">message$</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Hello
+
+</code></pre></div></div>
+
+<h2 id="data-type-limits">Data type limits</h2>
+
+<p>The following table lists the numerical and string data types, their type suffix symbol, and the range of the values they can represent:</p>
+
+<h3 id="numerical-types">Numerical Types</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type Name</th>
+      <th>Symbol</th>
+      <th>Minimum Value</th>
+      <th>Maximum Value</th>
+      <th>Size (Bytes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>_BIT</td>
+      <td>`</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>1/8</td>
+    </tr>
+    <tr>
+      <td>_BIT * n</td>
+      <td>`n</td>
+      <td>-128</td>
+      <td>127</td>
+      <td>n/8</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _BIT</td>
+      <td>~`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1/8</td>
+    </tr>
+    <tr>
+      <td>_BYTE</td>
+      <td>%%</td>
+      <td>-128</td>
+      <td>127</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _BYTE</td>
+      <td>~%%</td>
+      <td>0</td>
+      <td>255</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>INTEGER</td>
+      <td>%</td>
+      <td>-32,768</td>
+      <td>32,767</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED INTEGER</td>
+      <td>~%</td>
+      <td>0</td>
+      <td>65,535</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>LONG</td>
+      <td>&amp;</td>
+      <td>-2,147,483,648</td>
+      <td>2,147,483,647</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED LONG</td>
+      <td>~&amp;</td>
+      <td>0</td>
+      <td>4,294,967,295</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>_INTEGER64</td>
+      <td>&amp;&amp;</td>
+      <td>-9,223,372,036,854,775,808</td>
+      <td>9,223,372,036,854,775,807</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _INTEGER64</td>
+      <td>~&amp;&amp;</td>
+      <td>0</td>
+      <td>18,446,744,073,709,551,615</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>SINGLE</td>
+      <td>! or none</td>
+      <td>-2.802597E-45</td>
+      <td>+3.402823E+38</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>DOUBLE</td>
+      <td>#</td>
+      <td>-4.490656458412465E-324</td>
+      <td>+1.797693134862310E+308</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>_FLOAT</td>
+      <td>##</td>
+      <td>-1.18E−4932</td>
+      <td>+1.18E+4932</td>
+      <td>32 (10 used)</td>
+    </tr>
+    <tr>
+      <td>_OFFSET</td>
+      <td>%&amp;</td>
+      <td>-9,223,372,036,854,775,808</td>
+      <td>9,223,372,036,854,775,807</td>
+      <td>Use LEN</td>
+    </tr>
+    <tr>
+      <td>_UNSIGNED _OFFSET</td>
+      <td>~%&amp;</td>
+      <td>0</td>
+      <td>18,446,744,073,709,551,615</td>
+      <td>Use LEN</td>
+    </tr>
+    <tr>
+      <td>_MEM</td>
+      <td>none</td>
+      <td>combined memory variable type</td>
+      <td>N/A</td>
+      <td>Use LEN</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note: For the floating-point numeric types <a href="SINGLE.html">SINGLE</a> (default when not assigned), <a href="DOUBLE.html">DOUBLE</a> and <a href="_FLOAT.html">_FLOAT</a>, the minimum values represent the smallest values closest to zero, while the maximum values represent the largest values closest to ±infinity. OFFSET dot values are used as a part of the <a href="_MEM.html">_MEM</a> variable type in QB64 to return or set the position in memory.</em></p>
+
+<h3 id="string-text-type">String Text Type</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type Name</th>
+      <th>Symbol</th>
+      <th>Minimum Length</th>
+      <th>Maximum Length</th>
+      <th>Size (Bytes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>STRING</td>
+      <td>$</td>
+      <td>0</td>
+      <td>2,147,483,647</td>
+      <td>Use LEN</td>
+    </tr>
+    <tr>
+      <td>STRING * <em>n</em></td>
+      <td>$n</td>
+      <td>1</td>
+      <td>2,147,483,647</td>
+      <td>n</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note: For the fixed-length string type <a href="STRING.html">STRING * n</a>, where n is an integer length value from 1 (one) to 2,147,483,647.</em></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Data-types.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:43 GMT -->
+</html>

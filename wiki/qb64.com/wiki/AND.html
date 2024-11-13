@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/AND by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="AND-2.html" />
+<meta property="og:url" content="AND-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/AND.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The logical <a href="AND.html">AND</a> numerical operator compares two values in respect of their bits. If both bits at a certain position in both values are set, then that bit position is set in the result.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result = firstvalue <strong><a href="AND.html">AND</a></strong> secondvalue</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><a href="AND.html">AND</a> compares the bits of the firstvalue against the bits of the secondvalue, the result is stored in the result variable.</li>
+  <li>If both bits are on (1) then the result is on (1).</li>
+  <li>All other conditions return 0 (bit is off).</li>
+  <li>AND is often used to see if a bit is on by comparing a value to an exponent of 2.</li>
+  <li>Can turn off a bit by subtracting the bit on value from 255 and using that value to AND a byte value.</li>
+</ul>
+
+<p>The results of the bitwise logical operations, where <em>A</em> and <em>B</em> are operands, and <em>T</em> and <em>F</em> indicate that a bit is set or not set:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th> </th>
+      <th><a href="NOT.html">NOT</a> B</th>
+      <th>A <a href="AND.html">AND</a> B</th>
+      <th>A <a href="OR.html">OR</a> B</th>
+      <th>A <a href="XOR.html">XOR</a> B</th>
+      <th>A <a href="EQV.html">EQV</a> B</th>
+      <th>A <a href="IMP.html">IMP</a> B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td> </td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td> </td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td> </td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td> </td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><a href="Relational-Operations.html">Relational Operations</a> return negative one (-1, all bits set) and zero (0, no bits set) for <em>true</em> and <em>false</em>, respectively.</strong>
+This allows relational tests to be inverted and combined using the bitwise logical operations.</p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><em>Example 1:</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+         101
+         AND
+         011
+        -----
+         001
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>The 101 bit pattern equals 5 and the 011 bit pattern equals 3, it returns the bit pattern 001 which equals 1. Only the Least Significant Bits (LSB) match. So decimal values 5 AND 3 = 1.</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      11111011
+        AND
+      11101111
+     ----------
+      11101011
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Both bits have to be set for the resulting bit to be set. You can use the <a href="AND.html">AND</a> operator to get one byte of a two byte integer this way:</p>
+</blockquote>
+
+<blockquote>
+  <p>firstbyte = twobyteint AND 255</p>
+</blockquote>
+
+<blockquote>
+  <p>Since 255 is 11111111 in binary, it will represent the first byte completely when compared with AND.</p>
+</blockquote>
+
+<blockquote>
+  <p>To find the second (HI) byte’s decimal value of two byte <a href="INTEGER.html">INTEGER</a>s use: secondbyte = twobyteint \ 256</p>
+</blockquote>
+
+<p>Finding the binary bits on in an <a href="INTEGER.html">INTEGER</a> value.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">INPUT</span> <span class="s">"Enter Integer value from -32768 to 32767 (Enter quits): "</span><span class="p">,</span> <span class="n">INTvalue</span><span class="o">&amp;</span> 
+  <span class="n">IF</span> <span class="n">INTvalue</span><span class="o">&amp;</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">32768</span> <span class="n">OR</span> <span class="n">INTvalue</span><span class="o">&amp;</span> <span class="o">&gt;</span> <span class="mi">32767</span> <span class="n">OR</span> <span class="n">INTval</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+  <span class="n">FOR</span> <span class="n">exponent</span> <span class="o">=</span> <span class="mi">15</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">INTvalue</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">exponent</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"1"</span><span class="err">;</span> <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"0"</span><span class="err">;</span>
+  <span class="n">NEXT</span>
+  <span class="n">PRINT</span> <span class="s">" "</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INTvalue</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'zero entry quits</span>
+
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Example output for 6055.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+0001011110100111
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The value of 32767 sets 15 bits. -1 sets all 16 bits. Negative values will all have the highest bit set. Use <a href="LONG.html">LONG</a> variables for input values to prevent overflow errors.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="OR.html">OR</a>, <a href="XOR.html">XOR</a>, <a href="NOT.html">NOT</a> (logical operators)</li>
+  <li><a href="AND-(boolean).html">AND (boolean)</a></li>
+  <li><a href="Binary-2.html">Binary</a>, <a href="Boolean.html">Boolean</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/AND by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:04 GMT -->
+</html>

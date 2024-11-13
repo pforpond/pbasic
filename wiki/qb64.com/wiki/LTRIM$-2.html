@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/LTRIM$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="LTRIM%24-2.html" />
+<meta property="og:url" content="LTRIM%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/LTRIM$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="LTRIM%24.html">LTRIM$</a> function removes leading space characters from a <a href="STRING.html">STRING</a> value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>return$ = <a href="LTRIM%24.html">LTRIM$</a>(text$)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>text$ is the <a href="STRING.html">STRING</a> value to trim.</li>
+  <li>If text$ contains no leading space characters, it is returned unchanged.</li>
+  <li>Convert fixed length <a href="STRING.html">STRING</a> values by using a different return$ variable.</li>
+  <li>Can be used to trim the leading space of a positive numerical value converted to a string value by <a href="STR%24.html">STR$</a>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Trimming a positive string number.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">value</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">number$</span> <span class="o">=</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="c1">'converting number to string removes right PRINT space</span>
+<span class="n">PRINT</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">number$</span> <span class="o">+</span> <span class="s">"]"</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+[12345]
+
+</code></pre></div></div>
+
+<p>Trimming leading spaces from text strings.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="s">"some text"</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="s">"   some text"</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+some text
+some text
+
+</code></pre></div></div>
+
+<p>A TRIM$ function to trim spaces off of both ends of a string.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">text$</span> <span class="o">=</span> <span class="s">"        Text String           "</span>
+<span class="n">trimmed$</span> <span class="o">=</span> <span class="n">TRIM</span><span class="err">$</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span> <span class="o">+</span> <span class="n">trimmed$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> 
+
+<span class="n">FUNCTION</span> <span class="n">TRIM</span><span class="err">$</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span>
+<span class="n">TRIM</span><span class="err">$</span> <span class="o">=</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">RTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">text$</span><span class="p">))</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+→Text String←
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="RTRIM%24.html">RTRIM$</a>, <a href="STR%24.html">STR$</a></li>
+  <li><a href="LEFT%24.html">LEFT$</a>, <a href="RIGHT%24.html">RIGHT$</a></li>
+  <li><a href="HEX%24.html">HEX$</a>, <a href="MID%24.html">MID$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/LTRIM$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:32 GMT -->
+</html>

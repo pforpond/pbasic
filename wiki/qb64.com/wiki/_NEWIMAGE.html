@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_NEWIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_NEWIMAGE-2.html" />
+<meta property="og:url" content="_NEWIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_NEWIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_NEWIMAGE.html">_NEWIMAGE</a> function prepares a window image surface and returns the <a href="LONG.html">LONG</a> <a href="handle.html">handle</a> value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>handle&amp; = <a href="_NEWIMAGE.html">_NEWIMAGE</a>(width&amp;, height&amp;[, {<em>0</em></td>
+        <td><em>1</em></td>
+        <td><em>2</em></td>
+        <td><em>7</em></td>
+        <td><em>8</em></td>
+        <td><em>9</em></td>
+        <td><em>10</em></td>
+        <td><em>11</em></td>
+        <td><em>12</em></td>
+        <td><em>13</em></td>
+        <td><em>256</em></td>
+        <td><em>32</em>}])</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Minimum <a href="LONG.html">LONG</a> screen dimensions are width&amp; &gt;= 1, height&amp; &gt;= 1 measured in pixels as <a href="INTEGER.html">INTEGER</a> or <a href="LONG.html">LONG</a> values.
+    <ul>
+      <li>For mode 0 (text), width&amp; and height&amp; are measured in character blocks, not pixels.</li>
+    </ul>
+  </li>
+  <li>Mode is either a QBasic type <a href="SCREEN.html">SCREEN</a> mode (0 to 2 or 7 to 13), 256 colors or 32 bit (16 million colors) compatible.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If the mode is omitted, an image will be created with the same BPP mode, font (which may block freeing of that font), palette, selected colors, transparent color, blend state and print method settings as the current <a href="_DEST.html">_DEST</a>ination image/<a href="SCREEN.html">SCREEN</a> page.</li>
+  <li>Valid <a href="LONG.html">LONG</a> <a href="handle.html">handle</a> returns are less than -1. Invalid handles equal -1 and a zero or positive value is also invalid.</li>
+  <li>You can create any sized window (limited by the OS) in any emulated <a href="SCREEN.html">SCREEN</a> mode or 32 bit using this function.</li>
+  <li>Default text block size in emulated <a href="SCREEN.html">SCREEN</a> modes 1, 2, 7, 8 and 13 is 8 X 8; 9 and 10 is 8 X 14; 11, 12, 256 and 32 bit is 8 X 16. The text block pixel size will allow you to calculate the available text rows and columns in a custom sized screen.</li>
+  <li>To view the image page, just use <a href="SCREEN.html">SCREEN</a> handle&amp;. Even if another procedure changes the screen mode and clears the screen, the image can be restored later by using the same SCREEN handle mode.</li>
+  <li>Use the <a href="_COPYIMAGE.html">_COPYIMAGE</a> function to preserve a SCREEN handle value when changing to another screen mode to restore it later.</li>
+  <li><strong>32 bit screen surface backgrounds (black) have zero <a href="_ALPHA.html">_ALPHA</a> so that they are transparent when placed over other surfaces.</strong></li>
+</ul>
+
+<blockquote>
+  <p>Use <a href="CLS.html">CLS</a> or <a href="_DONTBLEND.html">_DONTBLEND</a> to make a new surface background <a href="_ALPHA.html">_ALPHA</a> 255 or opague.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+  <li><strong>It is important to free unused or uneeded images with <a href="_FREEIMAGE.html">_FREEIMAGE</a> to prevent CPU <a href="ERROR-Codes.html">ERROR_Codes</a>.</strong></li>
+  <li><strong>Do not try to free image handles currently being used as the active <a href="SCREEN.html">SCREEN</a>. Change screen modes first.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Shrinking a SCREEN 0 text window’s size:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<p>Creating an 800 by 600 window version of SCREEN 12 with 256 colors (text 37 X 100):</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">handle&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> 
+<span class="n">SCREEN</span> <span class="n">handle&amp;</span> 
+
+</code></pre></div></div>
+
+<p>Setting up a 32 bit SCREEN with _NEWIMAGE for page flipping in QB64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> <a href="_DISPLAY.html">_DISPLAY</a> may be used as a substitute for page flipping or <a href="PCOPY.html">PCOPY</a>.</p>
+</blockquote>
+
+<p>Switching between two different SCREEN modes</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">_TITLE</span> <span class="s">"Switching SCREEN modes"</span>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span> <span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">mode1&amp;</span> <span class="o">=</span> <span class="n">_DEST</span>               <span class="c1">'get current screen mode handle</span>
+<span class="n">mode2&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+
+<span class="n">_DEST</span> <span class="n">mode2&amp;</span>                  <span class="c1">'prepare small window</span>
+<span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"mode2&amp; = "</span><span class="err">;</span> <span class="n">mode2&amp;</span>
+<span class="n">COLOR</span> <span class="mi">13</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"First"</span>
+
+<span class="n">_DEST</span> <span class="n">mode1&amp;</span>  <span class="c1">'work in main window</span>
+<span class="n">LOCATE</span> <span class="mi">5</span>
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">248</span> 
+   <span class="n">Color</span> <span class="n">c</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">c</span><span class="err">;</span>
+<span class="n">NEXT</span> 
+<span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">44</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"mode1&amp; = "</span><span class="err">;</span> <span class="n">mode1&amp;</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press a key to goto Pop-up Window"</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">SCREEN</span> <span class="n">mode2&amp;</span>  <span class="c1">'switch to small window</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">SCREEN</span> <span class="n">mode1&amp;</span>  <span class="c1">'back to main window</span>
+<span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">43</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"One more time!"</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+
+<span class="n">SCREEN</span> <span class="n">mode2&amp;</span>  <span class="c1">'back to small window</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"LAST "</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="_DEST-(function).html">_DEST (function)</a> function can determine the present screen mode destination handle. The second _NEWIMAGE  handle is created using a SCREEN 13 palette(256 colors also). Each SCREEN is worked on after changing the destination with <a href="_DEST.html">_DEST</a> <em>handle&amp;</em> statement. Images can be created before viewing them. When a key is pressed the second SCREEN created is displayed and so on.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Legacy SCREEN modes can also return a _DEST value, but the value will create a handle error.</strong> To restore legacy screens get the<a href="_COPYIMAGE.html">_COPYIMAGE</a> function value before changing screens. Then restore it using SCREEN oldmode&amp;.</p>
+</blockquote>
+
+<h3 id="more-examples">More examples</h3>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (Bitmap creation)</li>
+  <li><a href="_FILE%24.html">_FILE$</a> (restoring previous screen)</li>
+  <li><a href="_PIXELSIZE.html">_PIXELSIZE</a> (GetImage function example)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_COPYIMAGE.html">_COPYIMAGE</a></li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="_FREEIMAGE.html">_FREEIMAGE</a></li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a></li>
+  <li><a href="_SCREENIMAGE.html">_SCREENIMAGE</a></li>
+  <li><a href="_CLIPBOARDIMAGE-(function).html">_CLIPBOARDIMAGE (function)</a></li>
+  <li><a href="SCREEN.html">SCREEN</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_NEWIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:42 GMT -->
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/COMMAND$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="COMMAND%24-2.html" />
+<meta property="og:url" content="COMMAND%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/COMMAND$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>COMMAND$</strong> function returns the command line argument(s) passed when a program is run.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>commandLine$ = <a href="COMMAND%24.html">COMMAND$</a>[(count%)]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The <a href="STRING.html">STRING</a> return value is anything typed after a program’s executable file name in command line (or using the <a href="RUN.html">RUN</a> statement).</li>
+  <li>Unlike QuickBASIC, <strong>QB64</strong> does not return all <a href="UCASE%24.html">UCASE$</a> values so keep that in mind when checking parameters.</li>
+  <li>In <strong>QB64</strong>, COMMAND$ works as an array to return specific elements passed to the command line. COMMAND$(2) would return the second parameter passed at the command line. Arguments can contain spaces if they are passed inside quotation marks. This can be used to properly retrieve file names and arguments which contain spaces.</li>
+  <li>Use the <a href="_COMMANDCOUNT.html">_COMMANDCOUNT</a> function to find the number of parameters passed to a program via the command line. See <em>Example 2</em> below.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Compile both programs. ProgramA <a href="RUN.html">RUN</a>s ProgramB with a parameter passed following the filename:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LOCATE</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">36</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"ProgramA"</span>
+
+<span class="n">LOCATE</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press any key to run ProgramB"</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">RUN</span> <span class="s">"ProgramB FS"</span>  <span class="c1">'pass FS parameter to ProgramB in QB64 or QB4.5</span>
+
+<span class="n">SYSTEM</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>ProgramB</em> checks for fullscreen parameter pass in QB64 and goes full screen.</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">36</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"ProgramB"</span>
+<span class="n">parameter$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">COMMAND</span><span class="err">$</span><span class="p">)</span> <span class="c1">'UCASE$ is needed in QB64 only, as QB4.5 will always return upper case</span>
+<span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Parameter = "</span> <span class="o">+</span> <span class="n">parameter$</span>
+<span class="n">IF</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">parameter$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s">"FS"</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="c1">'parameter changes to full screen</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                    ProgramB
+
+                                 Parameter = FS.EXE
+
+</code></pre></div></div>
+
+<p>Program gets the number of parameters passed to the program, and then prints those parameters to the screen one at a time.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">count</span> <span class="o">=</span> <span class="n">_COMMANDCOUNT</span>
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span>
+    <span class="n">PRINT</span> <span class="n">COMMAND</span><span class="err">$</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">'or process commands sent</span>
+<span class="n">NEXT</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+-1
+a data file
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation: If we start *ThisProgram.exe</em> with the command line <strong>ThisProgram -l “a data file”</strong>, COMMAND$ will return a single string of “-1 a data file” which might be hard to process and interpret properly, but COMMAND$(1) would return “-l” and COMMAND$(2) would return the quoted “a data file” option as separate entries for easier parsing and processing.</p>
+</blockquote>
+
+<p>As part of the command array syntax, you can also just read the array to see how many commands were sent (or simply check <a href="_COMMANDCOUNT.html">_COMMANDCOUNT</a>):</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">cmd$</span> <span class="o">=</span> <span class="n">COMMAND</span><span class="err">$</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">cmd$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span> <span class="c1">'read until an empty return</span>
+    <span class="n">PRINT</span> <span class="n">cmd$</span> <span class="c1">'or process commands sent</span>
+<span class="n">LOOP</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'save the number of parameters sent to this program when run</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SHELL.html">SHELL</a>, <a href="RUN.html">RUN</a></li>
+  <li><a href="UCASE%24.html">UCASE$</a>, <a href="LCASE%24.html">LCASE$</a></li>
+  <li><a href="_COMMANDCOUNT.html">_COMMANDCOUNT</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/COMMAND$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:09 GMT -->
+</html>

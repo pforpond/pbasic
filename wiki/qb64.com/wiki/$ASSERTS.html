@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/$ASSERTS by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="%24ASSERTS-2.html" />
+<meta property="og:url" content="%24ASSERTS-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/$ASSERTS.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="%24ASSERTS.html">$ASSERTS</a> metacommand enables debug tests with the <a href="_ASSERT.html">_ASSERT</a> macro.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="%24ASSERTS.html">$ASSERTS</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24ASSERTS.html">$ASSERTS</a>:CONSOLE</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If an error message is passed to the <a href="_ASSERT.html">_ASSERT</a> statement, it is displayed in the console window if <a href="%24ASSERTS.html">$ASSERTS</a>:CONSOLE is used.</li>
+</ul>
+
+<h2 id="availability">Availability</h2>
+
+<ul>
+  <li>Version 1.4 and up.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Adding test checks for parameter inputs in a function.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="err">$</span><span class="n">ASSERTS</span><span class="p">:</span><span class="n">CONSOLE</span>
+
+<span class="n">DO</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">b$</span> <span class="o">=</span> <span class="n">myFunc$</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">PRINT</span> <span class="n">a</span><span class="p">,</span> <span class="p">,</span> <span class="n">b$</span>
+    <span class="n">_LIMIT</span> <span class="mi">3</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">_KEYHIT</span>
+
+<span class="n">FUNCTION</span> <span class="n">myFunc$</span> <span class="p">(</span><span class="n">value</span> <span class="n">AS</span> <span class="n">SINGLE</span><span class="p">)</span>
+    <span class="n">_ASSERT</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"Value cannot be zero"</span>
+    <span class="n">_ASSERT</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"Value cannot exceed 10"</span>
+
+    <span class="n">IF</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">plural$</span> <span class="o">=</span> <span class="s">"s"</span>
+    <span class="n">myFunc$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">" star"</span> <span class="o">+</span> <span class="n">plural$</span> <span class="o">+</span> <span class="s">" :-)"</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_ASSERT.html">_ASSERT</a></li>
+  <li><a href="%24CHECKING.html">$CHECKING</a></li>
+  <li><a href="Relational-Operations.html">Relational Operations</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/$ASSERTS by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:53 GMT -->
+</html>

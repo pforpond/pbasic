@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_LOADIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_LOADIMAGE-2.html" />
+<meta property="og:url" content="_LOADIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_LOADIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_LOADIMAGE.html">_LOADIMAGE</a> function loads an image into memory and returns valid <a href="LONG.html">LONG</a> image handle values that are less than -1.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>handle&amp; = <a href="_LOADIMAGE.html">_LOADIMAGE</a>(filename$[, mode%])</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>filename$ is literal or variable <a href="STRING.html">STRING</a> file name value.</li>
+  <li>Optional mode% <a href="INTEGER.html">INTEGER</a> values can be:
+    <ul>
+      <li>32 = 32-bit</li>
+      <li>33 = hardware image</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Various common image file formats supported, like BMP, JPG, PNG, etc. A path can also be given.</li>
+  <li>The mode% can designate 32-bit color or 33 (<strong>version 1.000 and up</strong>). Omit to use the current graphic screen settings.</li>
+  <li>Mode 33 images are <strong>hardware</strong> accelerated and are created using <a href="_LOADIMAGE.html">_LOADIMAGE</a> or <a href="_COPYIMAGE.html">_COPYIMAGE</a> (<strong>version 1.000 and up</strong>).</li>
+  <li>Loaded images can be read invisibly using <a href="POINT.html">POINT</a>. Image coordinates start at 0 up to the <a href="_WIDTH-(function).html">_WIDTH (function)</a> - 1 and <a href="_HEIGHT.html">_HEIGHT</a> - 1.</li>
+  <li>Images can be made into a program <a href="SCREEN-(statement).html">SCREEN (statement)</a> or page adopting the size and palette settings or placed using <a href="_PUTIMAGE.html">_PUTIMAGE</a>.</li>
+  <li>Returns -1 as an invalid handle if it can’t load the image. Valid <a href="LONG.html">LONG</a> handle returns are less than -1 (handle&amp; &lt; -1).</li>
+  <li>Valid images only need to be loaded once. The handle can be used repeatedly until freed.</li>
+  <li><strong>Images are not deallocated when the <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> they are created in ends. Free them with <a href="_FREEIMAGE.html">_FREEIMAGE</a>.</strong></li>
+</ul>
+
+<h2 id="errors">Error(s)</h2>
+
+<ul>
+  <li>Some picture file images may not load when a mode% value is designated. Try loading it without a mode% designation.</li>
+  <li><strong>It is important to free unused or discarded images with <a href="_FREEIMAGE.html">_FREEIMAGE</a> to prevent CPU memory overflow errors.</strong></li>
+  <li><strong>In text-only <a href="SCREEN.html">SCREEN</a> 0, mode% 32 must be specified.</strong> When loading an <a href="_ICON.html">_ICON</a> image use 32 for the mode% too.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>To display an image in 32-bit color using its resolution as a program screen:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">i&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"mypic.jpg"</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="n">i&amp;</span> 
+
+</code></pre></div></div>
+
+<p><a href="DRAW.html">DRAW</a>ing and rotating an image 360 degrees using Turn Angle. <a href="POINT.html">POINT</a> is used to read the invisible image source.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">img&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"QB64.PNG"</span><span class="p">)</span>                           <span class="c1">'load the image file to be drawn</span>
+
+<span class="n">wide%</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">img&amp;</span><span class="p">):</span> <span class="n">deep%</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">img&amp;</span><span class="p">)</span>
+<span class="n">TLC</span><span class="err">$</span> <span class="o">=</span> <span class="s">"BL"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">wide%</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s">"BU"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">deep%</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1">'start draw at top left corner</span>
+<span class="n">RET</span><span class="err">$</span> <span class="o">=</span> <span class="s">"BD BL"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">wide%</span><span class="p">)</span>                            <span class="c1">'return to left side of image</span>
+<span class="n">_SOURCE</span> <span class="n">img&amp;</span>
+<span class="n">_DEST</span> <span class="mi">0</span>
+<span class="n">DO</span>
+  <span class="n">FOR</span> <span class="n">angle%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">360</span> <span class="n">STEP</span> <span class="mi">15</span>
+    <span class="n">CLS</span>
+    <span class="n">DRAW</span> <span class="s">"BM400, 300"</span> <span class="o">+</span> <span class="s">"TA="</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">angle%</span><span class="p">)</span> <span class="o">+</span> <span class="n">TLC</span><span class="err">$</span>
+    <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">deep%</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">wide%</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">DRAW</span> <span class="s">"C"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">POINT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span> <span class="s">"R1"</span>            <span class="c1">'color and DRAW each pixel</span>
+      <span class="n">NEXT</span>
+      <span class="n">DRAW</span> <span class="n">RET</span><span class="err">$</span>
+    <span class="n">NEXT</span>
+    <span class="n">_DISPLAY</span>                         <span class="c1">'NOTE: CPU usage will be HIGH!</span>
+  <span class="n">NEXT</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&gt;</span> <span class="s">""</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>NOTE:</em> Speed varies with image size.</p>
+</blockquote>
+
+<h3 id="more-examples">More examples</h3>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (QB64 Image to Bitmap SUB by Galleon)</li>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a> (Member-contributed program for legacy screen modes)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (QB64 Image area to bitmap)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FREEIMAGE.html">_FREEIMAGE</a>, <a href="_ICON.html">_ICON</a></li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a>, <a href="_MAPTRIANGLE.html">_MAPTRIANGLE</a></li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a>, <a href="_COPYIMAGE.html">_COPYIMAGE</a></li>
+  <li><a href="_PRINTIMAGE.html">_PRINTIMAGE</a> (printer)</li>
+  <li><a href="_PALETTECOLOR-(function).html">_PALETTECOLOR (function)</a>, <a href="_COPYPALETTE.html">_COPYPALETTE</a>, <a href="_ICON.html">_ICON</a></li>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+  <li><a href="Hardware-images.html">Hardware images</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Icons-and-Cursors.html">Icons and Cursors</a>, <a href="GIF-Images.html">GIF Images</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_LOADIMAGE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:54 GMT -->
+</html>

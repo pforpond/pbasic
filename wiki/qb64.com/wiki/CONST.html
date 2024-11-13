@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/CONST by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:13:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="CONST-2.html" />
+<meta property="og:url" content="CONST-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/CONST.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="CONST.html">CONST</a> statement globally defines one or more named numeric or string values which will not change while the program is running.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="CONST.html">CONST</a> constantName = value[, …]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>constantName is the constant name or list of names assigned by the programmer.</li>
+  <li>value is the value to initialize the global constant which cannot change once defined.
+    <ul>
+      <li>If constantName specifies a numeric type, value must be a numeric expression containing literals and other constants.</li>
+      <li>If constantName specifies a string type, the value must be a literal value.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The constantName does not have to include a type suffix. The datatype is automatically infered by the compiler using the value.</li>
+  <li>Constant values cannot reference a variable or <a href="FUNCTION.html">FUNCTION</a> return values.
+    <ul>
+      <li>The exception to the above are the internal functions: <a href="_PI.html">_PI</a>, <a href="_ACOS.html">_ACOS</a>, <a href="_ASIN.html">_ASIN</a>, <a href="_ARCSEC.html">_ARCSEC</a>, <a href="_ARCCSC.html">_ARCCSC</a>, <a href="_ARCCOT.html">_ARCCOT</a>, <a href="_SECH.html">_SECH</a>, <a href="_CSCH.html">_CSCH</a>, <a href="_COTH.html">_COTH</a>, <a href="COS.html">COS</a>, <a href="SIN.html">SIN</a>, <a href="TAN.html">TAN</a>, <a href="LOG.html">LOG</a>, <a href="EXP.html">EXP</a>, <a href="ATN.html">ATN</a>, <a href="_D2R.html">_D2R</a>, <a href="_D2G.html">_D2G</a>, <a href="_R2D.html">_R2D</a>, <a href="_R2G.html">_R2G</a>, <a href="_G2D.html">_G2D</a>, <a href="_G2R.html">_G2R</a>, <a href="ABS.html">ABS</a>, <a href="SGN.html">SGN</a>, <a href="INT.html">INT</a>, <a href="_ROUND.html">_ROUND</a>, <a href="_CEIL.html">_CEIL</a>, <a href="FIX.html">FIX</a>, <a href="_SEC.html">_SEC</a>, <a href="_CSC.html">_CSC</a>, <a href="_COT.html">_COT</a>, <a href="ASC.html">ASC</a>, <a href="_RGB32.html">_RGB32</a>, <a href="_RGBA32.html">_RGBA32</a>, <a href="_RGB.html">_RGB</a>, <a href="_RGBA.html">_RGBA</a>, <a href="_RED32.html">_RED32</a>, <a href="_GREEN32.html">_GREEN32</a>, <a href="_BLUE32.html">_BLUE32</a>, <a href="_ALPHA32.html">_ALPHA32</a>, <a href="_RED.html">_RED</a>, <a href="_GREEN.html">_GREEN</a>, <a href="_BLUE.html">_BLUE</a>, <a href="_ALPHA.html">_ALPHA</a> (See Example 2 below).</li>
+    </ul>
+  </li>
+  <li>Constants cannot be reassigned values. They retain the same value throughout all of the program procedures.</li>
+  <li>Constants defined in module-level code have <a href="SHARED.html">SHARED</a> scope, so they can also be used in <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures.</li>
+  <li>Constants defined in <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures are local to those procedures.</li>
+  <li><a href="CLEAR.html">CLEAR</a> will not affect or change constant values.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Display the circumference and area of circles:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">' Declare a numeric constant approximately equal to the ratio of a circle's</span>
+<span class="c1">' circumference to its diameter:</span>
+<span class="n">CONST</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.141593</span>
+
+<span class="c1">' Declare some string constants:</span>
+<span class="n">CONST</span> <span class="n">circumferenceText</span> <span class="o">=</span> <span class="s">"The circumference of the circle is"</span>
+<span class="n">CONST</span> <span class="n">areaText</span> <span class="o">=</span> <span class="s">"The area of the circle is"</span>
+
+<span class="n">DO</span>
+    <span class="n">INPUT</span> <span class="s">"Enter the radius of a circle or zero to quit"</span><span class="err">;</span> <span class="n">radius</span>
+    <span class="n">IF</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">END</span>
+    <span class="n">PRINT</span> <span class="n">circumferenceText</span><span class="err">;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">radius</span> 
+    <span class="n">PRINT</span> <span class="n">areaText</span><span class="err">;</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span> <span class="c1">' radius squared</span>
+    <span class="n">PRINT</span>
+<span class="n">LOOP</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Enter the radius of a circle or zero to quit? *10*
+The circumference of the circle is 62.83186
+The area of the circle is 314.1593
+
+Enter the radius of a circle or zero to quit? *123.456*
+The circumference of the circle is 775.697
+The area of the circle is 47882.23
+
+Enter the radius of a circle or zero to quit? *0*
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> PI cannot change as it is a mathematical constant so it is fitting to define it as a constant. Trying to change PI will result in a calculation error.</p>
+</blockquote>
+
+<p><em>Example 2</em>: Using _RGB32 to set a constant’s value.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CONST</span> <span class="n">Red</span> <span class="o">=</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">COLOR</span> <span class="n">Red</span>
+<span class="n">PRINT</span> <span class="s">"Hello World"</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DIM.html">DIM</a>, <a href="SHARED.html">SHARED</a></li>
+  <li><a href="STATIC.html">STATIC</a>, <a href="COMMON.html">COMMON</a></li>
+  <li><a href="_PI.html">_PI</a>, <a href="_RGB32.html">_RGB32</a>, <a href="_RGBA32.html">_RGBA32</a></li>
+  <li><a href="http://doc.pcsoft.fr/en-US/?6510001">Windows 32 API constant values</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/CONST by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:13:29 GMT -->
+</html>

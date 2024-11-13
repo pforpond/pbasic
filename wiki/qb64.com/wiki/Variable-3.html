@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Variable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Variable-3.html" />
+<meta property="og:url" content="Variable-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Variable.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>A <strong>variable</strong> is a “container” name that can hold a numerical or string value which can be referenced or changed by the program (as opposed to <a href="CONST.html">CONST</a>ant values which never change).</p>
+
+<p><strong>Variable names</strong></p>
+
+<p>Variables in QB64 can be any name except the names of QB64 or QBasic keywords and may not contain spaces or non-alphabetical/non-numerical characters (except “.” and “_”). Numerical characters cannot be  used as the first character of a variable or array name! <strong>QB64 reserves the use of a leading underscore to QB64 procedural or variable type names only!</strong></p>
+
+<p>Variable values can be passed to sub-procedures by using the name as a <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> parameter in a <a href="CALL.html">CALL</a>. Variable names in the main program module can be passed to sub-procedures by using <a href="DIM.html">DIM</a> <a href="SHARED.html">SHARED</a> without using them as <a href="CALL.html">CALL</a> parameters.</p>
+
+<p>Variable names dimensioned in <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures can be the same as names used in the main procedure and can hold different values. <a href="SHARED.html">SHARED</a> sub-procedure variables can only be shared with the main program module!</p>
+
+<p>Dot variable names are normally used with <a href="TYPE.html">TYPE</a> variable definitions. The first name before the dot is the name of the variable <a href="DIM.html">DIM</a> <a href="AS.html">AS</a> the type. The name after the dot is the name of the variable assigned inside of the <a href="TYPE.html">TYPE</a>.</p>
+
+<p><strong>Variable types</strong></p>
+
+<p>Variables can be defined as a specific type using a variable type suffix or by using a <a href="DIM.html">DIM</a> or <a href="REDIM.html">REDIM</a>(for dynamic arrays only) statement <a href="AS.html">AS</a> a variable type of <a href="_BIT.html">_BIT</a>, <a href="_BYTE.html">_BYTE</a>, <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a>, <a href="SINGLE.html">SINGLE</a>, <a href="DOUBLE.html">DOUBLE</a>, <a href="_INTEGER64.html">_INTEGER64</a>, <a href="_FLOAT.html">_FLOAT</a> or <a href="STRING.html">STRING</a> in QB64.</p>
+
+<p>Groups of variable names can be type defined by the first letter or list of letters of the names using <a href="DEFINT.html">DEFINT</a>, <a href="DEFLNG.html">DEFLNG</a>, <a href="DEFSNG.html">DEFSNG</a>, <a href="DEFDBL.html">DEFDBL</a>, <a href="DEFSTR.html">DEFSTR</a> or <a href="_DEFINE.html">_DEFINE</a> <a href="AS.html">AS</a> in QB64.</p>
+
+<p><a href="%24DYNAMIC.html">$DYNAMIC</a> arrays can be resized and can retain their remaining element values when used with <a href="REDIM.html">REDIM</a> <a href="_PRESERVE.html">_PRESERVE</a> in QB64. <a href="ERASE.html">ERASE</a> or <a href="CLEAR.html">CLEAR</a> removes the array entirely from memory!</p>
+
+<p><a href="%24STATIC.html">$STATIC</a> arrays cannot be resized, but cannot be removed either. <a href="ERASE.html">ERASE</a> or <a href="CLEAR.html">CLEAR</a> will clear the array element values only!</p>
+
+<p><strong>Variable values</strong></p>
+
+<p>All numerical variables default to 0 and all string variables default to “” at the start of a program and when first referenced inside of a <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedure except when the variable is defined as a <a href="STATIC.html">STATIC</a> value.</p>
+
+<p><a href="Arrays.html">Arrays</a> variable names can hold many values in one variable name by specifying a reference index enclosed in parentheses.</p>
+
+<p><a href="STATIC.html">STATIC</a> sub-procedure values keep their value after the sub-procedure is exited. They will hold an empty value when first used.</p>
+
+<p>Variables are used to hold program data information that is attained through the program flow, either by user input, calculations or by other ways of communication (as with I/O, memory, TCP/IP or files).</p>
+
+<p>Assignment of variable values can be done using the = assignment symbol (variable1.number = 500, for example).</p>
+
+<p>To pass variable values to a sub-procedure without altering or affecting the variable name’s value, parenthesis can be used around the variable name in the <a href="CALL.html">CALL</a>.</p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><em>Example of different usages of variables:</em></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">max</span> <span class="o">=</span> <span class="mi">1000</span> 
+<span class="n">DIM</span> <span class="n">d</span><span class="p">(</span><span class="n">max</span><span class="p">)</span> 
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">max</span> 
+<span class="n">d</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="s">"Show the result of the addition from 1 to n (1+2+3...+n)"</span> 
+<span class="n">PRINT</span> <span class="s">"n = (0-"</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">max</span><span class="p">))</span> <span class="o">+</span> <span class="s">"): "</span><span class="err">;</span> 
+<span class="n">INPUT</span> <span class="s">""</span><span class="p">,</span> <span class="n">n</span> 
+<span class="n">IF</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">max</span> <span class="n">AND</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="n">d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">PRINT</span> <span class="s">"Invalid value (only 0 to"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">max</span><span class="p">)</span> <span class="o">+</span> <span class="s">" is permitted)."</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Show the result of the addition from 1 to n (1+2+3...+n)
+n = (1-1000): 10
+ 55
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="Argument-2.html">Argument</a>, <a href="Expression.html">Expression</a>, <a href="Arrays.html">Arrays</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Variable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:44 GMT -->
+</html>

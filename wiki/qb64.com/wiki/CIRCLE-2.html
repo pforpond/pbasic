@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/CIRCLE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="CIRCLE-2.html" />
+<meta property="og:url" content="CIRCLE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/CIRCLE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="CIRCLE.html">CIRCLE</a> statement is used in graphic <a href="SCREEN-(statement).html">SCREEN (statement)</a> modes to create circles, arcs or ellipses.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="CIRCLE.html">CIRCLE</a> [STEP]<strong>(</strong>column<strong>,</strong> row<strong>),</strong> radius%<strong>,</strong> [drawColor%][, startRadian!, stopRadian!] [, aspect!]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Can use <a href="STEP.html">STEP</a> for relative coordinate moves from the previous graphic coordinates.</li>
+  <li>Coordinates designate the center position of the circle. Can be partially drawn offscreen.</li>
+  <li>radius% is an <a href="INTEGER.html">INTEGER</a> value for half of the total circle diameter.</li>
+  <li>drawColor% is any available color attribute in the <a href="SCREEN-(statement).html">SCREEN (statement)</a> mode used.</li>
+  <li>startRadian! and stopRadian! can be any <a href="SINGLE.html">SINGLE</a> value from 0 to 2 * π to create partial circles or ellipses.</li>
+  <li>aspect! <a href="SINGLE.html">SINGLE</a> values of 0 to 1 affect the vertical height and values over 1 affect the horizontal width of an ellipse. Aspect = 1 is a normal circle.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>When using aspect! the startRadian! and stopRadian! commas must be included even if not used.</li>
+  <li>Radians move in a counter clockwise direction from 0 to 2 * π. Zero and 2 * π are the same circle radian at 3 o’clock.</li>
+  <li>Negative radian values can be used to draw lines from the end of an arc or partial ellipse to the circle center.</li>
+  <li>Commas after the drawColor% parameter are not required when creating a normal circle. drawColor% can also be omitted to use the last color used in a draw statement.</li>
+  <li>The graphic cursor is set to the center of the program window on program start for <a href="STEP.html">STEP</a> relative coordinates.</li>
+  <li><strong>CIRCLE can be used in any graphic screen mode, but cannot be used in the default screen mode 0 as it is text only.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Finding when the mouse is inside of a circular area:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">r&amp;</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1">'radius    change circle size and position here</span>
+<span class="n">cx&amp;</span> <span class="o">=</span> <span class="mi">320</span> <span class="c1">'center x horizontal</span>
+<span class="n">cy&amp;</span> <span class="o">=</span> <span class="mi">240</span> <span class="c1">'center y vertical</span>
+
+<span class="n">DO</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="n">_MOUSEINPUT</span>
+  <span class="n">x&amp;</span> <span class="o">=</span> <span class="n">_MOUSEX</span>
+  <span class="n">y&amp;</span> <span class="o">=</span> <span class="n">_MOUSEY</span>
+  <span class="n">xy&amp;</span> <span class="o">=</span> <span class="p">((</span><span class="n">x&amp;</span> <span class="o">-</span> <span class="n">cx&amp;</span><span class="p">)</span> <span class="o">^</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">y&amp;</span> <span class="o">-</span> <span class="n">cy&amp;</span><span class="p">)</span> <span class="o">^</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">'Pythagorean theorem</span>
+  <span class="n">IF</span> <span class="n">r&amp;</span> <span class="o">^</span> <span class="mi">2</span> <span class="o">&gt;=</span> <span class="n">xy&amp;</span> <span class="n">THEN</span> <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">cx&amp;</span><span class="p">,</span> <span class="n">cy&amp;</span><span class="p">),</span> <span class="n">r&amp;</span><span class="p">,</span> <span class="mi">10</span> <span class="n">ELSE</span> <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">cx&amp;</span><span class="p">,</span> <span class="n">cy&amp;</span><span class="p">),</span> <span class="n">r&amp;</span><span class="p">,</span> <span class="mi">12</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="c1">'escape key exit </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The square of the circle radius will be greater than or equal to the sum of the square of the mouse coordinates minus the center position when the pointer is inside of the circle. In this example the circle color will change from red to green.</p>
+</blockquote>
+
+<p>Program illustrates how the CIRCLE command using a negative radian value can be used to create the hands of a clock.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CONST</span> <span class="n">PI</span> <span class="o">=</span> <span class="mf">3.141593</span> <span class="c1">'The mathematical value of PI to six places. You can also use QB64's native _PI.</span>
+<span class="n">DIM</span> <span class="n">clock</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>             <span class="c1">'A dimensioned array to hold 60 radian points</span>
+<span class="n">clockcount%</span> <span class="o">=</span> <span class="mi">15</span>          <span class="c1">'A counter to keep track of the radians</span>
+
+<span class="c1">'* Start at radian 2*PI and continue clockwise to radian 0</span>
+<span class="c1">'* Since radian 2*PI points directly right, we need to start clockcount%</span>
+<span class="c1">'* at 15 (for 15 seconds).  The FOR/NEXT loop counts backwards in increments</span>
+<span class="c1">'* of 60 giving us the 60 second clock points.  These points are then stored</span>
+<span class="c1">'* in the dimensioned array clock() to be used later.</span>
+<span class="c1">'*</span>
+<span class="n">FOR</span> <span class="n">radian</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="n">clock</span><span class="p">(</span><span class="n">clockcount%</span><span class="p">)</span> <span class="o">=</span> <span class="n">radian</span>
+    <span class="n">clockcount%</span> <span class="o">=</span> <span class="n">clockcount%</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">IF</span> <span class="n">clockcount%</span> <span class="o">=</span> <span class="mi">61</span> <span class="n">THEN</span> <span class="n">clockcount%</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NEXT</span> <span class="n">radian</span>
+<span class="c1">'* Change to a graphics screen and draw the clock face</span>
+<span class="n">SCREEN</span> <span class="mi">7</span>
+<span class="n">CLS</span>
+<span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">PRINT</span> <span class="s">"Ritchie's Clock"</span>
+<span class="n">COLOR</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">PRINT</span> <span class="s">"Uses CIRCLE to"</span>
+<span class="n">PRINT</span> <span class="s">"draw hands!"</span>
+<span class="n">COLOR</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">8</span> <span class="c1">'circle with radius of 110 and dark gray</span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">8</span> <span class="c1">'circle with radius of 102 and dark gray</span>
+<span class="n">PAINT</span> <span class="p">(</span><span class="mi">265</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span> <span class="c1">'fill between the two dark gray circles with gray</span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">7</span> <span class="c1">'circle with radius of 110 and light gray</span>
+<span class="c1">'*</span>
+<span class="c1">'* Get the current time from the QuickBASIC built in variable TIME$</span>
+<span class="c1">'* Since TIME$ is a string, we need to extract the hours, minutes and</span>
+<span class="c1">'* seconds from it using LEFT$, RIGHT$ and MID$. Then, each of these</span>
+<span class="c1">'* extractions need to be converted to a numeric value using VAL and</span>
+<span class="c1">'* stored in their respective variables.</span>
+<span class="c1">'*</span>
+<span class="n">seconds%</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">'extract seconds from TIME$</span>
+<span class="n">IF</span> <span class="n">seconds%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">seconds%</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1">'array counts 1 to 60 not 0 to 59</span>
+<span class="n">previoussecond%</span> <span class="o">=</span> <span class="n">seconds%</span> <span class="c1">'hold current second for later use</span>
+<span class="n">minutes%</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">'extract minutes from TIME$</span>
+<span class="n">IF</span> <span class="n">minutes%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">minutes%</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1">'array counts 1 to 60 not 0 to 59</span>
+<span class="n">previousminute%</span> <span class="o">=</span> <span class="n">minutes%</span> <span class="c1">'hold current minute for later use</span>
+<span class="n">hours%</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">'extract hour from TIME$</span>
+<span class="n">IF</span> <span class="n">hours%</span> <span class="o">&gt;=</span> <span class="mi">12</span> <span class="n">THEN</span> <span class="n">hours%</span> <span class="o">=</span> <span class="n">hours%</span> <span class="o">-</span> <span class="mi">12</span> <span class="c1">'convert from military time</span>
+<span class="n">IF</span> <span class="n">hours%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">hours%</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1">'count from 1 to 12 not 0 to 11</span>
+<span class="n">previoushour%</span> <span class="o">=</span> <span class="n">hours%</span> <span class="c1">'hold current hour for later use</span>
+<span class="c1">'*</span>
+<span class="c1">'* Start of main program loop</span>
+<span class="c1">'*</span>
+<span class="n">DO</span>
+    <span class="n">IF</span> <span class="n">seconds%</span> <span class="o">&lt;&gt;</span> <span class="n">previoussecond%</span> <span class="n">THEN</span> <span class="c1">'has a second elapsed?</span>
+        <span class="n">LOCATE</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">17</span> <span class="c1">'print the time on the screen at</span>
+        <span class="n">PRINT</span> <span class="n">TIME</span><span class="err">$;</span> <span class="c1">'position 22, 17</span>
+        <span class="c1">'* Since a second has elapsed we need to erase the old second hand</span>
+        <span class="c1">'* position and draw the new position</span>
+     
+        <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">clock</span><span class="p">(</span><span class="n">previoussecond%</span><span class="p">),</span> <span class="n">clock</span><span class="p">(</span><span class="n">previoussecond%</span><span class="p">)</span>
+        <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="n">clock</span><span class="p">(</span><span class="n">seconds%</span><span class="p">),</span> <span class="n">clock</span><span class="p">(</span><span class="n">seconds%</span><span class="p">)</span>
+        <span class="n">previoussecond%</span> <span class="o">=</span> <span class="n">seconds%</span> <span class="c1">'hold current second for later use</span>
+        <span class="n">IF</span> <span class="n">minutes%</span> <span class="o">&lt;&gt;</span> <span class="n">previousminute%</span> <span class="n">THEN</span> <span class="c1">'has a minute elapsed?</span>
+            <span class="c1">'* Since a minute has elapsed we need to erase the old hour hand position</span>
+            <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">clock</span><span class="p">(</span><span class="n">previousminute%</span><span class="p">),</span> <span class="n">clock</span><span class="p">(</span><span class="n">previousminute%</span><span class="p">)</span>
+            <span class="n">previousminute%</span> <span class="o">=</span> <span class="n">minutes%</span> <span class="c1">'hold current minute for later use</span>
+        <span class="n">END</span> <span class="n">IF</span>
+        <span class="c1">'*</span>
+        <span class="c1">'* Draw the current minute hand position</span>
+        <span class="c1">'*</span>
+        <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="o">-</span><span class="n">clock</span><span class="p">(</span><span class="n">minutes%</span><span class="p">),</span> <span class="n">clock</span><span class="p">(</span><span class="n">minutes%</span><span class="p">)</span>
+        <span class="n">IF</span> <span class="n">hours%</span> <span class="o">&lt;&gt;</span> <span class="n">previoushour%</span> <span class="n">THEN</span> <span class="c1">'has an hour elapsed?</span>
+            <span class="c1">'* Since an hour has elapsed we need to erase the old hour hand position        </span>
+            <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">clock</span><span class="p">(</span><span class="n">previoushour%</span> <span class="o">*</span> <span class="mi">5</span><span class="p">),</span> <span class="n">clock</span><span class="p">(</span><span class="n">previoushour%</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">previoushour%</span> <span class="o">=</span> <span class="n">hours%</span> <span class="c1">'hold current hour for later use</span>
+        <span class="n">END</span> <span class="n">IF</span>
+        <span class="c1">'*</span>
+        <span class="c1">'* Draw the current hour hand position</span>
+        <span class="c1">'*</span>
+        <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="n">clock</span><span class="p">(</span><span class="n">hours%</span> <span class="o">*</span> <span class="mi">5</span><span class="p">),</span> <span class="n">clock</span><span class="p">(</span><span class="n">hours%</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">seconds%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">'extract time again and do all over</span>
+    <span class="n">IF</span> <span class="n">seconds%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">seconds%</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="n">minutes%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">IF</span> <span class="n">minutes%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">minutes%</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="n">hours%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">IF</span> <span class="n">hours%</span> <span class="o">&gt;=</span> <span class="mi">12</span> <span class="n">THEN</span> <span class="n">hours%</span> <span class="o">=</span> <span class="n">hours%</span> <span class="o">-</span> <span class="mi">12</span>
+    <span class="n">IF</span> <span class="n">hours%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">hours%</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="c1">'stop program if user presses a key </span>
+
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="STEP.html">STEP</a>, <a href="DRAW.html">DRAW</a></li>
+  <li><a href="LINE.html">LINE</a>, <a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a></li>
+  <li><a href="SCREEN.html">SCREEN</a>, <a href="SCREEN-(function).html">SCREEN (function)</a></li>
+  <li><a href="Alternative-circle-routine.html">Alternative circle routine</a> (member-contributed program)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/CIRCLE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:01 GMT -->
+</html>

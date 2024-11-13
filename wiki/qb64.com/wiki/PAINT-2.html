@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PAINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PAINT-2.html" />
+<meta property="og:url" content="PAINT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PAINT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="PAINT.html">PAINT</a> statement is used to fill a delimited area in a graphic screen mode with color.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="PAINT.html">PAINT</a> [<strong>STEP</strong>] (column%, row%), fillColor[, borderColor%]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Can use the <a href="STEP.html">STEP</a> keyword for relative coordinate placements. See example 1 below.</li>
+  <li>fillColor is an <a href="INTEGER.html">INTEGER</a> or <a href="LONG.html">LONG</a> 32-bit value to paint the inside of an object. Colors are limited to the <a href="SCREEN.html">SCREEN</a> mode used.</li>
+  <li>Optional <a href="INTEGER.html">INTEGER</a> or <a href="LONG.html">LONG</a> 32-bit borderColor% is the color of the border of the shape to be filled when this is different from the fill color.</li>
+  <li>fillColor can be a string made up of a sequence of <a href="CHR%24.html">CHR$</a> values, each representing a tiling pattern to fill the shape. See Example 3 below.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Graphic column% and row% <a href="INTEGER.html">INTEGER</a> pixel coordinates should be inside of a fully closed “shape”, whether it’s a rectangle, circle or custom-drawn shape using <a href="DRAW.html">DRAW</a>.</li>
+  <li>If the coordinates passed to the <a href="PAINT.html">PAINT</a> statement are on a pixel that matches the border colors, no filling will occur.</li>
+  <li>If the shape’s border isn’t continuous, the “paint” will “leak”.</li>
+  <li>If the shape is not totally closed, every color except the border color may be painted over.</li>
+  <li><a href="DRAW.html">DRAW</a> shapes can be filled using the string “P fillColor, borderColor”. Use a “B” blind move to offset from the shape’s border.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Painting a <a href="CIRCLE.html">CIRCLE</a> immediately after it is drawn using <a href="STEP.html">STEP</a>(0, 0) to paint from the circle’s center point.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">200</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span>
+<span class="n">PAINT</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Results:</em> A circle located at x and y with a bright green border filled in dark green. The last coordinate used was the circle’s center point and PAINT used it also with the <a href="STEP.html">STEP</a> relative coordinates being zero.</p>
+</blockquote>
+
+<p>Routine to check a <a href="DRAW.html">DRAW</a> string to make sure that the drawn shape is fully closed so that a PAINT does not “leak”.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">drw$</span> <span class="o">=</span> <span class="s">"C15S20R9D4R6U3R3D3R7U5H3U2R9D3G2D6F1D3F5L10D1G1L4H2L7G2L3H2L3U8L2U5R1BF4"</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">drw$</span><span class="p">)</span>
+  <span class="n">tmp$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">drw$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">tmp$</span>
+    <span class="n">CASE</span> <span class="s">"U"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CASE</span> <span class="s">"D"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CASE</span> <span class="s">"E"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">CASE</span> <span class="s">"F"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">CASE</span> <span class="s">"G"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">CASE</span> <span class="s">"H"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">CASE</span> <span class="s">"L"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">CASE</span> <span class="s">"R"</span><span class="p">:</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">hor</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">CASE</span> <span class="n">ELSE</span><span class="p">:</span> <span class="n">check</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">IF</span> <span class="n">check</span> <span class="n">THEN</span>
+    <span class="n">snum$</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">FOR</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">4</span> <span class="c1">'set for up to 4 digits and spaces</span>
+      <span class="n">IF</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">drw$</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+      <span class="n">n$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">drw$</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">num</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">n$</span><span class="p">)</span>
+      <span class="n">IF</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">47</span> <span class="n">AND</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">58</span><span class="p">)</span> <span class="n">OR</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">32</span> <span class="n">THEN</span>
+        <span class="n">snum$</span> <span class="o">=</span> <span class="n">snum$</span> <span class="o">+</span> <span class="n">n$</span>
+      <span class="n">ELSE</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+      <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">NEXT</span>
+    <span class="n">vertical</span> <span class="o">=</span> <span class="n">vertical</span> <span class="o">+</span> <span class="p">(</span><span class="n">ver</span> <span class="o">*</span> <span class="n">VAL</span><span class="p">(</span><span class="n">snum$</span><span class="p">))</span>
+    <span class="n">horizont</span> <span class="o">=</span> <span class="n">horizont</span> <span class="o">+</span> <span class="p">(</span><span class="n">hor</span> <span class="o">*</span> <span class="n">VAL</span><span class="p">(</span><span class="n">snum$</span><span class="p">))</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">PRINT</span> <span class="n">tmp$</span><span class="p">,</span> <span class="n">horizont</span><span class="p">,</span> <span class="n">vertical</span>
+  <span class="c1">'SLEEP</span>
+<span class="n">NEXT</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">):</span> <span class="n">DRAW</span> <span class="n">drw$</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> If the <a href="DRAW.html">DRAW</a> string is fully closed, the end values should each be 0. In the example, the proper result should be 4, 4 as there is a BF4 offset for PAINT which cannot be on a border. The result is 4, 5 because the shape is not completely closed.</p>
+</blockquote>
+
+<p>Tiling using PAINT to create a red brick pattern inside a yellow border:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">8</span><span class="p">)</span> 
+<span class="n">SCREEN</span> <span class="mi">12</span>
+ 
+   <span class="c1">'make red-brick wall</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">HFE</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">HFE</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">HEF</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="o">&amp;</span><span class="n">HEF</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">Tile</span><span class="err">$</span> <span class="o">=</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="n">Row</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+ 
+    <span class="n">LINE</span> <span class="p">(</span><span class="mi">59</span><span class="p">,</span> <span class="mi">124</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">581</span><span class="p">,</span> <span class="mi">336</span><span class="p">),</span> <span class="mi">14</span><span class="p">,</span> <span class="n">B</span> <span class="c1">'yellow box border to paint inside</span>
+    <span class="n">PAINT</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="n">Tile</span><span class="err">$</span><span class="p">,</span> <span class="mi">14</span> <span class="c1">'paints brick tiles within yellow border</span>
+
+</code></pre></div></div>
+
+<p>Generating a tiling pattern for PAINT from <a href="DATA.html">DATA</a> statements:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">ptndata</span><span class="p">:</span>
+<span class="n">DATA</span> <span class="s">"c4444444"</span>
+<span class="n">DATA</span> <span class="s">"c4444444"</span>
+<span class="n">DATA</span> <span class="s">"cccccccc"</span>
+<span class="n">DATA</span> <span class="s">"444c4444"</span>
+<span class="n">DATA</span> <span class="s">"444c4444"</span>
+<span class="n">DATA</span> <span class="s">"444c4444"</span>
+<span class="n">DATA</span> <span class="s">"cccccccc"</span>
+<span class="n">DATA</span> <span class="s">"c4444444"</span>
+<span class="n">DATA</span> <span class="o">---</span>
+
+<span class="n">RESTORE</span> <span class="n">ptndata</span><span class="p">:</span> <span class="n">ptn$</span> <span class="o">=</span> <span class="n">loadpattern$</span>
+
+<span class="n">SCREEN</span> <span class="mi">7</span>
+<span class="n">DRAW</span> <span class="s">"c15l15f10g10r30g10f10l50u80r100m160,100"</span>
+<span class="n">PAINT</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="n">ptn$</span><span class="p">,</span> <span class="mi">15</span>
+
+<span class="n">FUNCTION</span> <span class="n">loadpattern$</span>
+    <span class="n">DIM</span> <span class="n">quad</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="mi">3</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+    <span class="n">res$</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">DO</span>
+        <span class="n">READ</span> <span class="n">row$</span>
+        <span class="n">IF</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">row$</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="s">"---"</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+        <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">7</span>
+            <span class="n">pixel</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;h"</span> <span class="o">+</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">row$</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">FOR</span> <span class="n">bit</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">3</span>
+                <span class="n">IF</span> <span class="n">pixel</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">bit</span> <span class="n">THEN</span>
+                    <span class="n">quad</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="n">OR</span> <span class="p">(</span><span class="mi">2</span> <span class="o">^</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span>
+                <span class="n">END</span> <span class="n">IF</span>
+            <span class="n">NEXT</span>
+        <span class="n">NEXT</span>
+        <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">3</span>
+            <span class="n">res$</span> <span class="o">=</span> <span class="n">res$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">quad</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">quad</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">NEXT</span>
+    <span class="n">LOOP</span>
+    <span class="n">loadpattern$</span> <span class="o">=</span> <span class="n">res$</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a></li>
+  <li><a href="CIRCLE.html">CIRCLE</a>, <a href="LINE.html">LINE</a>, <a href="DRAW.html">DRAW</a></li>
+  <li><a href="SCREEN.html">SCREEN</a>, <a href="CHR%24.html">CHR$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PAINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:35 GMT -->
+</html>

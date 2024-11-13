@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/DRAW by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="DRAW-2.html" />
+<meta property="og:url" content="DRAW-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/DRAW.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="DRAW.html">DRAW</a> statement uses a <a href="STRING.html">STRING</a> expression to draw lines on the screen.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DRAW.html">DRAW</a> drawString$</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The drawString$ can be <a href="DRAW.html">DRAW</a> instructions in quotation marks or a <a href="STRING.html">STRING</a> variable using <a href="DRAW.html">DRAW</a> instructions.</li>
+  <li><a href="DRAW.html">DRAW</a> starting coordinates can be set using <a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a>, <a href="CIRCLE.html">CIRCLE</a> or <a href="LINE.html">LINE</a> ending positions.</li>
+  <li>Other graphic objects can be located at or relative to the last DRAW position using <a href="STEP.html">STEP</a>.</li>
+  <li><a href="DRAW.html">DRAW</a> can inherit colors from other graphic statements such as <a href="PSET.html">PSET</a>, <a href="LINE.html">LINE</a> and <a href="CIRCLE.html">CIRCLE</a>.</li>
+  <li>Draw strings use letters followed by the number of pixels to move, an angle, coordinate or a color value.</li>
+  <li>Draw strings are flexible with spacing. <strong>Spacing is not required.</strong> <a href="DRAW.html">DRAW</a> will look for a number value after a valid letter.</li>
+  <li>DRAW statements are not case sensitive.
+    <ul>
+      <li>“<strong>B</strong>” (blind) before a line move designates that the line move will be hidden. Use to offset from a “P” or <a href="PAINT.html">PAINT</a> border.</li>
+      <li>“<strong>C</strong> n” designates the color attribute or <a href="_RGB.html">_RGB</a> <a href="STR%24.html">STR$</a> numerical color value to be used in the draw statement immediately after.</li>
+      <li>“<strong>M</strong> x, y” can move to another coordinate area of the screen. When a + or - sign is used before a coordinate, it is a relative coordinate move similar to using the <a href="STEP.html">STEP</a> graphics keyword. DRAW “M+=” + <a href="VARPTR%24.html">VARPTR$</a>(variable%)</li>
+      <li>“<strong>N</strong>” before a line move designates that the graphic cursor will return to the starting position after the line is drawn.</li>
+      <li>“<strong>P</strong> f [, b]” is used to <a href="PAINT.html">PAINT</a> enclosed objects. f denotes the fill color and b the border color, if needed.</li>
+      <li>“<strong>S</strong> n” changes the pixel move size of the lines. Default is 4 (1 pixel) minimum. “S8” would double the pixel line moves.</li>
+      <li>“<strong>X</strong>” + <a href="VARPTR%24.html">VARPTR$</a>(value) can draw another substring.</li>
+    </ul>
+  </li>
+  <li>Certain letter designations create line moves on the SCREEN. Each move is followed by the number of pixels:
+    <ul>
+      <li>“<strong>D</strong> n” draws a line vertically DOWN n pixels.</li>
+      <li>“<strong>E</strong> n” draws a diagonal / line going UP and RIGHT n pixels each direction.</li>
+      <li>“<strong>F</strong> n” draws a diagonal \ line going DOWN and RIGHT n pixels each direction.</li>
+      <li>“<strong>G</strong> n” draws a diagonal / LINE going DOWN and LEFT n pixels each direction.</li>
+      <li>“<strong>H</strong> n” draws a diagonal \ LINE going UP and LEFT n pixels each direction.</li>
+      <li>“<strong>L</strong> n” draws a line horizontally LEFT n pixels.</li>
+      <li>“<strong>R</strong> n” draws a line horizontally RIGHT n pixels.</li>
+      <li>“<strong>U</strong> n” draws a line vertically UP n pixels.</li>
+    </ul>
+  </li>
+  <li>Angles are used to rotate all subsequent draw moves.
+    <ul>
+      <li>“<strong>A</strong> n” can use values of 1 to 3 to rotate up to 3 90 degree(270) angles.</li>
+      <li><strong>TA</strong> n” can use any n angle from -360 to 0 to 360 to rotate a DRAW (Turn Angle). “TA0” resets to normal.</li>
+      <li>When <a href="VARPTR%24.html">VARPTR$</a> is used, DRAW functions such as <strong>TA</strong> angles use an equal sign: “TA=” + VARPTR$(angle%)</li>
+    </ul>
+  </li>
+  <li>The graphic cursor is set to the center of the program window on program start for <a href="STEP.html">STEP</a> relative coordinates.</li>
+  <li><strong>DRAW can be used in any graphic screen mode, but cannot be used in the default screen mode 0 as it is text only.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Placing an octagon shape DRAW across the the screen using PSET.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">octagon$</span> <span class="o">=</span> <span class="s">"C12 R10 F10 D10 G10 L10 H10 U10 E10"</span>  <span class="c1">'create a DRAW string value</span>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">11</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="n">i%</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">15</span>
+  <span class="n">_DELAY</span> <span class="p">.</span><span class="err">5</span>         <span class="c1">' delay for demo</span>
+  <span class="n">DRAW</span> <span class="n">octagon$</span>     <span class="c1">' DRAW the octagon using variable</span>
+  <span class="n">_DELAY</span> <span class="p">.</span><span class="err">5</span>         <span class="c1">' delay for demo </span>
+<span class="n">NEXT</span> <span class="n">i%</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> Once a DRAW string variable is created, it can be used to draw a shape throughout the program at any time.</p>
+
+<p>Creating an analog clock’s hour markers using “TA=” + <a href="VARPTR%24.html">VARPTR$</a>(angle).</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">FOR</span> <span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">360</span> <span class="n">STEP</span> <span class="mi">30</span>             <span class="c1">' 360/12 hour circles = 30 degrees apart  </span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">6</span> <span class="c1">' stay at center point of clock</span>
+  <span class="n">DRAW</span> <span class="s">"TA="</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="s">"BU100"</span> <span class="c1">' move invisibly to set next circle's center point</span>
+  <span class="n">CIRCLE</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span> <span class="c1">' circle placed at end of blind line</span>
+  <span class="n">DRAW</span> <span class="s">"P9, 12"</span> <span class="c1">' paint inside of circle </span>
+  <span class="n">SLEEP</span> <span class="mi">1</span>     <span class="c1">' slowed for demo only</span>
+<span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> To place 12 circles in a circle each move is 30 degrees. PSET sets the center of the circular path every loop. TA moves counter-clockwise with positive degree angles. Once TA sets the angle a blind Up move is at that angle. The hour circles use the end point of the blind line as centers using the STEP relative coordinates of 0. After the circles are drawn, a draw “P” string paints the circle centers. DRAW paint strings use the last coordinate position also.</p>
+
+<p>Creating a moving second hand for the clock above (SCREEN 12). (See <a href="TIME%24.html">TIME$</a> example 1)</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span><span class="p">:</span> <span class="n">sec$</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">' get actual seconds from TIME$ function</span>
+  <span class="n">degree$</span> <span class="o">=</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">sec$</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="c1">' 60 second moves. TA uses negative angles for clockwise moves</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">9</span> <span class="c1">' stay at clock center</span>
+  <span class="n">DRAW</span> <span class="s">"TA"</span> <span class="o">+</span> <span class="n">degree$</span> <span class="o">+</span> <span class="s">"U90"</span> <span class="c1">' up becomes TA directional line</span>
+  <span class="n">DO</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">sec$</span> <span class="c1">' wait for a new second value</span>
+  <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span> <span class="c1">' any key exit</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">0</span> <span class="c1">' set at clock center to erase line</span>
+  <span class="n">DRAW</span> <span class="s">"TA"</span> <span class="o">+</span> <span class="n">degree$</span> <span class="o">+</span> <span class="s">"U90"</span> <span class="c1">' erases old second hand line using color 0 from PSET</span>
+<span class="n">LOOP</span>
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The degrees to move from the original UP line move is calculated by dividing 360/60 seconds in a full rotation. That value of 6 is made negative to use TA correctly and multiplied by the <a href="VAL.html">VAL</a>ue of seconds from the TIME$ function. The degree angle is converted by <a href="STR%24.html">STR$</a> to a string and added to the DRAW string using the <a href="STRING.html">STRING</a> <strong>concatenation +</strong> operator. Do not use semicolons to create DRAW strings. Once the second hand is placed on the screen, a loop waits for the second value to change. It then erases the hand and it repeats the process again.</p>
+
+<p>Creating digital displays using DRAW format strings to create the LED segments. (See <a href="SELECT-CASE.html">SELECT CASE</a> example 5)</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">DO</span>
+  <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INPUT</span> <span class="s">"Enter a number 0 to 9: "</span><span class="p">,</span> <span class="n">num</span>
+  <span class="n">CLS</span>
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="n">TO</span> <span class="mi">9</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"E2R30F2G2L30H2BR5P12,12"</span> <span class="c1">'top horiz</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span> <span class="n">TO</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"F2D30G2H2U30E2BD5P12,12"</span> <span class="c1">'left top vert</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">54</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"F2D30G2H2U30E2BD5P12, 12"</span> <span class="c1">'left bot vert</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">2</span> <span class="n">TO</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">54</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"E2R30F2G2L30H2BR5P12, 12"</span> <span class="c1">'middle horiz</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span> <span class="n">TO</span> <span class="mi">9</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"F2D30G2H2U30E2BD5P12,12"</span> <span class="c1">'top right vert</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="n">TO</span> <span class="mi">9</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">54</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"F2D30G2H2U30E2BD5P12,12"</span> <span class="c1">'bottom right vert</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">num</span>
+    <span class="n">CASE</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">88</span><span class="p">),</span> <span class="mi">12</span>
+      <span class="n">DRAW</span> <span class="s">"E2R30F2G2L30H2BR5P12,12"</span> <span class="c1">'bottom horiz</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">9</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The DRAW strings can be used more than once with different <a href="PSET.html">PSET</a> positions to create more digits.</p>
+</blockquote>
+
+<p>Using 32 bit or <a href="_RGB.html">_RGB</a> color <a href="STR%24.html">STR$</a> values when using the DRAW C text statement</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">_ALPHA</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">_RED</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">_GREEN</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">_BLUE</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">SLEEP</span>
+
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">'comment out this line to use the non-32 bit screen mode 12</span>
+<span class="n">PRINT</span> <span class="n">_ALPHA</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">_RED</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">_GREEN</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">_BLUE</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="mi">0</span> <span class="c1">' move to 320, 240... draw will start where pset leaves off</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">DIM</span> <span class="n">k</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">repeat</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">16</span>
+  <span class="n">FOR</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">359</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="mi">14</span>
+    <span class="n">DRAW</span> <span class="s">"c"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s">" ta"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="s">" bu "</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="s">"l7 u7 r7 d7 bd "</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+  <span class="n">NEXT</span> <span class="n">p</span>
+<span class="n">NEXT</span> <span class="n">repeat</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> DRAW strings will ignore spaces between letters and numbers so string trimming is not necessary.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="LINE.html">LINE</a>, <a href="PSET.html">PSET</a>, <a href="PRESET.html">PRESET</a>, <a href="CIRCLE.html">CIRCLE</a></li>
+  <li><a href="PAINT.html">PAINT</a>, <a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+  <li><a href="COLOR.html">COLOR</a>, <a href="PLAY.html">PLAY</a></li>
+  <li><a href="TIME%24.html">TIME$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/DRAW by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:05 GMT -->
+</html>

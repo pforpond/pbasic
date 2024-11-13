@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SOUND.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SOUND-2.html" />
+<meta property="og:url" content="SOUND-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SOUND.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>SOUND</strong> sets frequency and duration of sounds from the internal PC speaker if the computer has one or the sound card in QB64.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>SOUND <em>frequency</em>, <em>duration</em></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><em>Frequency</em> is any literal or variable value from 37 to 32767, but 0 is allowed for delays.</li>
+  <li><em>Duration</em> is any literal or variable number of <a href="TIMER.html">TIMER</a> ticks with a duration of 1/18th second. 18 = one second.</li>
+  <li>In <strong>QB64</strong> the sound comes from the soundcard and the volume can be adjusted through the OS.</li>
+</ul>
+
+<h2 id="errors">Error(s)</h2>
+
+<ul>
+  <li>Low <em>frequency</em> values between 0 and 37 will create an <a href="ERROR-Codes.html">ERROR Codes</a>.</li>
+  <li><strong>Warning:</strong> SOUND may not work when the program is not in focus. Use SOUND 0, 0 at sound procedure start to set focus.</li>
+  <li><strong>Note:</strong> SOUND 0, 0 will not stop previous <strong>QB64</strong> sounds like it did in QBasic!</li>
+  <li>SOUND may have clicks or pauses between the sounds generated. <a href="PLAY.html">PLAY</a> can be used for musical sounds.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+        **                     The Seven Music Octaves ** 
+      
+        ** Note     Frequency      Note     Frequency      Note      Frequency**
+       **1*** D#1 ...... 39           G3 ....... 196          A#5 ...... 932 
+          E1 ....... 41           G#3 ...... 208          B5 ....... 988 
+          F1 ....... 44           A3 ....... 220       **6*** C6 ....... 1047 
+          F#1 ...... 46           A#3 ...... 233          C#6 ...... 1109 
+          G1 ....... 49           B3 ....... 247          D6 ....... 1175 
+          G#1 ...... 51        **4*** C4 ....... 262          D#6 ...... 1245 
+          A1 ....... 55           C#4 ...... 277          E6 ....... 1318 
+          A#1 ...... 58           D4 ....... 294          F6 ....... 1397 
+          B1 ....... 62           D#4 ...... 311          F#6 ...... 1480 
+       **2*** C2 ....... 65           E4 ....... 330          G6 ....... 1568 
+          C#2 ...... 69           F4 ....... 349          G# ....... 1661 
+          D2 ....... 73           F#4 ...... 370          A6 ....... 1760 
+          D#2 ...... 78           G4 ....... 392          A#6 ...... 1865 
+          E2 ....... 82           G#4 ...... 415          B6 ....... 1976 
+          F2 ....... 87           A4 ....... 440       **7*** C7 ....... 2093 
+          F#2 ...... 92           A# ....... 466          C#7 ...... 2217 
+          G2 ....... 98           B4 ....... 494          D7 ....... 2349 
+          G#2 ...... 104       **5*** C5 ....... 523          D#7 ...... 2489 
+          A2 ....... 110          C#5 ...... 554          E7 ....... 2637 
+          A#2 ...... 117          D5 ....... 587          F7 ....... 2794 
+          B2 ....... 123          D#5 ...... 622          F#7 ...... 2960 
+       **3*** C3 ....... 131          E5 ....... 659          G7 ....... 3136 
+          C#3 ...... 139          F5 ....... 698          G#7 ...... 3322 
+          D3 ....... 147          F#5 ...... 740          A7 ....... 3520 
+          D#3 ...... 156          G5 ....... 784          A#7 ...... 3729 
+          E3 ....... 165          G#5 ...... 831          B7 ....... 3951 
+          F3 ....... 175          A5 ....... 880       **8*** C8 ....... 4186 
+          F#3 ...... 185  
+                                 **# denotes sharp**
+
+</code></pre></div></div>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Playing the seven octaves based on the base note DATA * 2 ^ (octave - 1).</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">notes$</span> <span class="o">=</span> <span class="s">"C C#D D#E F F#G G#A A#B "</span>
+<span class="n">COLOR</span> <span class="mi">9</span><span class="p">:</span><span class="n">LOCATE</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Select an octave (1 - 7) to play (8 quits):"</span>
+<span class="n">DO</span>			
+  <span class="n">DO</span><span class="p">:</span> <span class="n">octa$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">IF</span> <span class="n">octa$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span>
+      <span class="n">IF</span> <span class="n">ASC</span><span class="p">(</span><span class="n">octa$</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">48</span> <span class="n">AND</span> <span class="n">ASC</span><span class="p">(</span><span class="n">octa$</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">58</span> <span class="n">THEN</span> <span class="n">octave%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">octa$</span><span class="p">):</span> <span class="n">EXIT</span> <span class="n">DO</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">octave%</span> <span class="o">&gt;</span> <span class="mi">7</span> 
+  <span class="n">IF</span> <span class="n">octave%</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">octave%</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="n">THEN</span>
+    <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+    <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+    <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Octave"</span><span class="err">;</span> <span class="n">octave%</span><span class="err">;</span> <span class="s">":"</span><span class="err">;</span>
+    <span class="n">RESTORE</span> <span class="n">Octaves</span>
+    <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">12</span>
+      <span class="n">READ</span> <span class="n">note!</span>
+      <span class="n">snd%</span> <span class="o">=</span> <span class="n">CINT</span><span class="p">(</span><span class="n">note!</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">^</span> <span class="p">(</span><span class="n">octave%</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>  <span class="c1">'calculate note frequency</span>
+      <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">snd%</span><span class="p">)</span><span class="err">;</span>
+      <span class="n">c0l</span> <span class="o">=</span> <span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+      <span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="n">c0l</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">notes$</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="n">c0l</span>
+      <span class="n">IF</span> <span class="n">snd%</span> <span class="o">&gt;</span> <span class="mi">36</span> <span class="n">THEN</span> <span class="n">SOUND</span> <span class="n">snd%</span><span class="p">,</span> <span class="mi">12</span>  <span class="c1">'error if sound value is &lt; 36</span>
+      <span class="n">_DELAY</span> <span class="p">.</span><span class="err">8</span>
+    <span class="n">NEXT</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">octave%</span> <span class="o">&gt;</span> <span class="mi">7</span> 
+<span class="n">END</span>
+
+<span class="n">Octaves</span><span class="p">:</span>
+<span class="n">DATA</span> <span class="mf">32.7</span><span class="p">,</span><span class="mf">34.65</span><span class="p">,</span><span class="mf">36.71</span><span class="p">,</span><span class="mf">38.9</span><span class="p">,</span><span class="mf">41.2</span><span class="p">,</span><span class="mf">43.65</span><span class="p">,</span><span class="mf">46.25</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="mf">51.91</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mf">58.27</span><span class="p">,</span><span class="mf">61.74</span> 
+
+</code></pre></div></div>
+
+<p>Playing a song called “Bonnie” with <a href="SOUND.html">SOUND</a> frequencies.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">_FULLSCREEN</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">COLOR</span> <span class="mi">1</span>
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">21</span>
+  <span class="n">LOCATE</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">i%</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">178</span><span class="p">)</span>
+  <span class="n">LOCATE</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">i%</span><span class="p">,</span> <span class="mi">39</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">178</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">i%</span>
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">TO</span> <span class="mi">39</span>
+  <span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i%</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+  <span class="n">LOCATE</span> <span class="mi">23</span><span class="p">,</span> <span class="n">i%</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">220</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">i%</span>
+<span class="n">COLOR</span> <span class="mi">9</span>
+<span class="n">LOCATE</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span><span class="err">;</span> <span class="s">"MY BONNIE"</span><span class="err">;</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+<span class="n">SLEEP</span> <span class="mi">3</span>
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">34</span>
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">i%</span>
+    <span class="n">CASE</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
+    <span class="n">CASE</span> <span class="mi">10</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span>
+    <span class="n">CASE</span> <span class="mi">18</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span>
+    <span class="n">CASE</span> <span class="mi">27</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">READ</span> <span class="n">note%</span><span class="p">,</span> <span class="n">duration%</span><span class="p">,</span> <span class="n">word$</span>
+  <span class="n">SOUND</span> <span class="n">note%</span><span class="p">,</span> <span class="n">duration%</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">word$</span><span class="err">;</span>
+<span class="n">NEXT</span> <span class="n">i%</span>
+<span class="n">SLEEP</span> <span class="mi">2</span>
+<span class="n">LOCATE</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Thank You!"</span>
+<span class="n">SLEEP</span> <span class="mi">4</span>
+<span class="n">SYSTEM</span>
+
+<span class="n">DATA</span> <span class="mi">392</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"My "</span><span class="p">,</span><span class="mi">659</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"Bon-"</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"nie "</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"lies "</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"O-"</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"Ver "</span><span class="p">,</span><span class="mi">440</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"the "</span>
+<span class="n">DATA</span> <span class="mi">392</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"O-"</span><span class="p">,</span><span class="mi">330</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="s">"cean "</span><span class="p">,</span><span class="mi">392</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"My "</span><span class="p">,</span><span class="mi">659</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"Bon-"</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"nie "</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"lies "</span>
+<span class="n">DATA</span> <span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"O-"</span><span class="p">,</span><span class="mi">494</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"ver "</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"the "</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s">"sea "</span><span class="p">,</span><span class="mi">392</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"My "</span><span class="p">,</span><span class="mi">659</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"Bon-"</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"nie"</span>
+<span class="n">DATA</span> <span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">" lies "</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"O-"</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"ver "</span><span class="p">,</span><span class="mi">440</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"the "</span><span class="p">,</span><span class="mi">392</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"O-"</span><span class="p">,</span><span class="mi">330</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="s">"cean "</span><span class="p">,</span><span class="mi">392</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"Oh "</span>
+<span class="n">DATA</span> <span class="mi">440</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"bring "</span><span class="p">,</span><span class="mi">587</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"back "</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"my "</span><span class="p">,</span><span class="mi">494</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"Bon-"</span><span class="p">,</span><span class="mi">440</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"nie "</span><span class="p">,</span><span class="mi">494</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s">"to "</span><span class="p">,</span><span class="mi">523</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="s">"me..!"</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PLAY.html">PLAY</a>, <a href="BEEP.html">BEEP</a></li>
+  <li><a href="_SNDOPEN.html">_SNDOPEN</a> (play sound files)</li>
+  <li><a href="_SNDRAW.html">_SNDRAW</a>  (play frequency waves)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SOUND.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+</html>

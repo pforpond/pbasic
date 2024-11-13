@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_PIXELSIZE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_PIXELSIZE-2.html" />
+<meta property="og:url" content="_PIXELSIZE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_PIXELSIZE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_PIXELSIZE.html">_PIXELSIZE</a> function returns the color depth (Bits Per Pixel) of an image as 0 for text, 1 for 1 to 8 BPP or 4 for 32 bit.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>pixelSize% = <a href="_PIXELSIZE.html">_PIXELSIZE</a>[(imageHandle&amp;)]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>If imageHandle&amp; is omitted, it is assumed to be the current write page.</li>
+  <li>Returns:
+    <ul>
+      <li>0 if the image or screen page specified by imageHandle&amp; is in text mode.</li>
+      <li>1 if the image specified by imageHandle&amp; is in 1 (B &amp; W), 4 (16 colors) or 8 (256 colors) BPP mode.</li>
+      <li>4 if the image specified is a 24/32-bit compatible mode. Pixels use three bytes, one per red, green and blue color intensity.</li>
+    </ul>
+  </li>
+  <li>The <a href="SCREEN.html">SCREEN</a> or <a href="_NEWIMAGE.html">_NEWIMAGE</a> or <a href="_LOADIMAGE.html">_LOADIMAGE</a> color mode (256 or 32) can influence the pixel sizes that can be returned.</li>
+  <li>If imageHandle&amp; is an invalid handle, then an <a href="ERROR-Codes.html">ERROR Codes</a> error occurs.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><em>Snippet:</em> Saving Images for later program use. Handle values could be saved to an array.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+handle1&amp; = _Getimage(sx1, sy1, sx2, sy2, sourcehandle&amp;) ' function call
+
+FUNCTION GetImage&amp; (sx1, sy1, sx2, sy2, sourcehandle&amp;)
+bytespp = _PIXELSIZE(sourcehandle&amp;)
+IF bytespp = 4 THEN Pal = 32 ELSE IF bytespp = 1 THEN Pal = 256 ELSE EXIT FUNCTION
+h&amp; = _NEWIMAGE(ABS(sx2 - sx1) + 1, ABS(sy2 - sy1) + 1, Pal)
+_PUTIMAGE (0, 0), sourcehandle&amp;, h&amp;, (sx1, sy1)-(sx2, sy2) 'image is not displayed
+GetImage&amp; = h&amp;
+END FUNCTION 
+
+</code></pre></div></div>
+
+<h3 id="more-examples">More examples</h3>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (SUB to convert image to bitmap)</li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (convert any image to icon)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (convert partial image to bitmap)</li>
+  <li><a href="Bitmaps.html">Bitmaps</a></li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="_NEWIMAGE.html">_NEWIMAGE</a></li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a></li>
+  <li><a href="_COPYPALETTE.html">_COPYPALETTE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_PIXELSIZE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+</html>

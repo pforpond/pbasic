@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/INKEY$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="INKEY%24-2.html" />
+<meta property="og:url" content="INKEY%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/INKEY$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="INKEY%24.html">INKEY$</a> function returns user input as <a href="ASCII.html">ASCII</a> <a href="STRING.html">STRING</a> character(s) from the keyboard buffer.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>keypress$ = <a href="INKEY%24.html">INKEY$</a></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Returns <a href="ASCII.html">ASCII</a> character string values in upper or lower cases. See: <a href="UCASE%24.html">UCASE$</a> and <a href="LCASE%24.html">LCASE$</a></li>
+  <li>Returns “” if no key has been pressed since the last keyboard read.</li>
+  <li>Some control keys cannot be read by INKEY$ or will return 2 byte <a href="ASCII.html">ASCII</a> codes.</li>
+  <li>INKEY$ can also be used to clear a <a href="SLEEP.html">SLEEP</a> key press or the keyboard buffer in a loop.</li>
+  <li>Assign the INKEY$ return to a string variable to save the key entry.</li>
+  <li><code class="language-plaintext highlighter-rouge">LOCATE , , 1</code> displays the INKEY$ cursor. Use <code class="language-plaintext highlighter-rouge">LOCATE , , 0</code> to turn it off.</li>
+  <li>To receive input from a <a href="%24CONSOLE.html">$CONSOLE</a> window, use <a href="_CINP.html">_CINP</a>.</li>
+  <li>Returns can be evaluated as certain <a href="ASCII.html">ASCII</a> characters or codes.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+'                                **ASCII Keyboard Codes**
+'
+**' Esc  F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  Sys ScL Pause**
+'  27 +59 +60 +61 +62 +63 +64 +65 +66 +67 +68  +133 +134   -   -    -
+**' `~  1!  2@  3#  4$  5%  6^  7&amp;  8*  9(  0) -_ =+ BkSp   Ins Hme PUp   NumL  /   *    -**
+' 126 33  64  35  36  37  94  38  42  40  41 95 43   8    +82 +71 +73    -    47  42   45
+**  96 49  50  51  52  53  54  55  56  57  48 45 61*
+**' Tab Q   W   E   R   T   Y   U   I   O   P  [{  ]}  \|   Del End PDn   7Hme 8/▲  9PU  + **
+'  9  81  87  69  82  84  89  85  73  79  80 123 125 124  +83 +79 +81   +71  +72  +73  43
+**    113 119 101 114 116 121 117 105 111 112  91  93  92                 55   56   57 *
+**' CapL  A   S   D   F   G   H   J   K   L   ;:  '" Enter                4/◄-  5   6/-►
+'   -   65  83  68  70  71  72  74  75  76  58  34  13                  +75  +76  +77  **E**
+**       97 115 100 102 103 104 106 107 108  59  39                       52   53   54 * **n**
+**' Shift  Z   X   C   V   B   N   M   ,&lt;  .&gt;  /?    Shift       ▲        1End 2/▼  3PD  t**
+'   *    90  88  67  86  66  78  77  60  62  63      *        +72       +79  +80  +81  **e**
+**       122 120  99 118  98 110 109  44  46  47                          49   50   51 * **r**
+**' Ctrl Win Alt       Spacebar          Alt Win Menu Ctrl   ◄-  ▼   -►   0Ins     .Del **
+'  *    -   *           32              *   -   -    *    +75 +80 +77   +82       +83  13
+'                                                                   *     48        46*
+'
+' **    *Italics* = LCase/NumLock On  * = 2 byte combo only,  + = 2 Byte: CHR$(0) + CHR$(code)**
+'
+
+</code></pre></div></div>
+
+<h2 id="two-byte-combinations">Two Byte Combinations</h2>
+
+<ul>
+  <li>INKEY$ 2 byte combinations always begin with <a href="CHR%24.html">CHR$</a>(0). <a href="ASC.html">ASC</a> will always read the first byte code as zero.</li>
+  <li>Read the second byte code using: <strong>code2 = ASC(press$, 2)</strong></li>
+</ul>
+
+<p><strong><a href="ASCII.html">ASCII</a></strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                    **Two Byte Characters        Key                 CHR$(0) + "?" **
+
+                    CHR$(0) + CHR$(16-50)      [Alt] + letter
+                    CHR$(0) + CHR$(59)         [F1]                 ";"
+                    CHR$(0) + CHR$(60)         [F2]                 "&lt;"
+                    CHR$(0) + CHR$(61)         [F3]                 "="
+                    CHR$(0) + CHR$(62)         [F4]                 "&gt;"
+                    CHR$(0) + CHR$(63)         [F5]                 "?"
+                    CHR$(0) + CHR$(64)         [F6]                 "@"
+                    CHR$(0) + CHR$(65)         [F7]                 "A"
+                    CHR$(0) + CHR$(66)         [F8]                 "B"
+                    CHR$(0) + CHR$(67)         [F9]                 "C"
+                    CHR$(0) + CHR$(68)         [F10]                "D"
+                    CHR$(0) + CHR$(71)         [Home]               "G"
+                    CHR$(0) + CHR$(72)         [↑] Arrow            "H"
+                    CHR$(0) + CHR$(73)         [Page Up]            "I"
+                    CHR$(0) + CHR$(75)         [←] Arrow            "K"
+                    CHR$(0) + CHR$(76)         [5 NumberPad]        "L" (NumLock off in QB64)
+                    CHR$(0) + CHR$(77)         [→] Arrow            "M"
+                    CHR$(0) + CHR$(79)         [End]                "O"
+                    CHR$(0) + CHR$(80)         [↓] Arrow            "P"
+                    CHR$(0) + CHR$(81)         [Page Down]          "Q"
+                    CHR$(0) + CHR$(82)         [Insert]             "R"
+                    CHR$(0) + CHR$(83)         [Delete]             "S"
+                    CHR$(0) + CHR$(84-93)      [Shift] + F1-10
+                    CHR$(0) + CHR$(94-103)     [Ctrl] + F1-10
+                    CHR$(0) + CHR$(104-113)    [Alt] + F1-10
+                    CHR$(0) + CHR$(114-119)    [Ctrl] + keypad
+                    CHR$(0) + CHR$(120-129)    [Alt] + number
+                    CHR$(0) + CHR$(130 or 131) [Alt] + _/- or +/=   "é" or "â"
+                    CHR$(0) + CHR$(133)        [F11]                "à"
+                    CHR$(0) + CHR$(134)        [F12]                "å"
+                    CHR$(0) + CHR$(135)        [Shift] + [F11]      "ç"
+                    CHR$(0) + CHR$(136)        [Shift] + [F12]      "ê"
+                    CHR$(0) + CHR$(137)        [Ctrl] + [F11]       "ë"
+                    CHR$(0) + CHR$(138)        [Ctrl] + [F12]       "è"
+                    CHR$(0) + CHR$(139)        [Alt] + [F11]        "ï"
+                    CHR$(0) + CHR$(140)        [Alt] + [F12]        "î"
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>In <strong>QB64</strong>, <a href="CVI.html">CVI</a> can be used to get the <a href="_KEYDOWN.html">_KEYDOWN</a> 2-byte code value. Example: <strong>status = _KEYDOWN(CVI(CHR$(0) + “P”))</strong></p>
+</blockquote>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Clearing the keyboard buffer after <a href="SLEEP.html">SLEEP</a> delays for later <a href="INPUT.html">INPUT</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Press any keyboard typing key to end SLEEP"</span>
+<span class="n">SLEEP</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">K</span><span class="err">$</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <a href="SLEEP.html">SLEEP</a> key presses will be kept in the keyboard buffer and may be added into an <a href="INPUT.html">INPUT</a> later.</p>
+</blockquote>
+
+<blockquote>
+  <p>See also: <a href="_KEYCLEAR.html">_KEYCLEAR</a></p>
+</blockquote>
+
+<p>Entering a Ctrl + letter keypress combination will print <a href="ASCII.html">ASCII</a> Control characters 1 to 26. .</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+    <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="n">K</span><span class="err">$;</span> <span class="s">" "</span><span class="err">;</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="c1">'Esc key exit </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The above code will print Esc arrow, Backspace symbol, and 2 byte characters led by CHR$(0) in addition to normal keys.</p>
+</blockquote>
+
+<p>Use <a href="UCASE%24.html">UCASE$</a>(INKEY$) in a keyboard read loop looking for uppercase “Y” or “N” user inputs to avoid multiple IF statements.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">PRINT</span> <span class="s">"Do you want to continue? (Y/N): "</span><span class="err">;</span>  <span class="c1">'semicolon saves position for user entry</span>
+  <span class="n">DO</span><span class="p">:</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">)</span> <span class="c1">'change any user key press to uppercase</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Y"</span> <span class="n">OR</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"N"</span>
+  <span class="n">PRINT</span> <span class="n">K</span><span class="err">$</span>  <span class="c1">'print valid user entry</span>
+  <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"N"</span> <span class="n">THEN</span> <span class="n">END</span>
+<span class="n">LOOP</span>  
+
+</code></pre></div></div>
+
+<p>Getting just number values entered by a user in an INKEY$ input loop.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Enter a number value: "</span><span class="err">;</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">SLEEP</span>
+  <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+  <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">&gt;=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="n">AND</span> <span class="n">K</span><span class="err">$</span> <span class="o">&lt;=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">57</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">entry$</span> <span class="o">=</span> <span class="n">entry$</span> <span class="o">+</span> <span class="n">K</span><span class="err">$</span> <span class="c1">' numbers only</span>
+  <span class="n">L</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">entry$</span><span class="p">)</span> <span class="c1">' check entry length for possible backspace</span>
+  <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">46</span><span class="p">)</span> <span class="n">AND</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">entry$</span> <span class="o">=</span> <span class="n">entry$</span> <span class="o">+</span> <span class="n">K</span><span class="err">$</span><span class="p">:</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">mark</span> <span class="o">=</span> <span class="n">L</span> <span class="c1">' decimal point</span>
+  <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="n">AND</span> <span class="n">L</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="c1">' backspace pressed and entry has a length</span>
+    <span class="n">entry$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">entry$</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">' remove one character from entry$</span>
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">entry$</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">mark</span> <span class="n">THEN</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">' allow decimal point entry if other was removed.</span>
+    <span class="n">LOCATE</span> <span class="n">CSRLIN</span><span class="p">,</span> <span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="err">;</span> <span class="c1">' remove end character from screen</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">entry$</span><span class="err">;</span> <span class="c1">' display entry to user (semicolon required for correct POS)</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="n">AND</span> <span class="n">L</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1">'assures something is entered </span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> <a href="SLEEP.html">SLEEP</a> waits for a keypress. It also allows background programs to share the processor and it leaves the keypress in the buffer for INKEY$. Keyboard string number characters range from <a href="ASCII.html">ASCII</a> codes 48 to 57. Any other entry is ignored by the IF statement. A decimal point (code 46) entry is allowed once in the input. The flag value stops further decimal point additions. Backspacing (code 8) is also allowed if the entry has at least one character. The cursor column returned by <a href="POS.html">POS</a>(0) reverts too after the end of the entry when printed each loop. The loop exits when [Enter] (code 13) is pressed and the entry has a length.</p>
+</blockquote>
+
+<p>Using arrow keys to move a text character. A change from a previous position tells program when to PRINT:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">movey</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">movex</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'text coordinates can never be 0</span>
+<span class="n">at$</span> <span class="o">=</span> <span class="s">"@"</span>  <span class="c1">'text sprite could be almost any ASCII character</span>
+<span class="n">LOCATE</span> <span class="n">movey</span><span class="p">,</span> <span class="n">movex</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">at$</span><span class="err">;</span>
+<span class="n">DO</span>
+    <span class="n">px</span> <span class="o">=</span> <span class="n">movex</span><span class="p">:</span> <span class="n">py</span> <span class="o">=</span> <span class="n">movey</span> <span class="c1">'previous positions</span>
+    <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">IF</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span> <span class="n">AND</span> <span class="n">movey</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">movey</span> <span class="o">=</span> <span class="n">movey</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'rows 1 to 23 only</span>
+    <span class="n">IF</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="n">AND</span> <span class="n">movey</span> <span class="o">&lt;</span> <span class="mi">23</span> <span class="n">THEN</span> <span class="n">movey</span> <span class="o">=</span> <span class="n">movey</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">IF</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span> <span class="n">AND</span> <span class="n">movex</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">movex</span> <span class="o">=</span> <span class="n">movex</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'columns 1 to 80 only</span>
+    <span class="n">IF</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">77</span><span class="p">)</span> <span class="n">AND</span> <span class="n">movex</span> <span class="o">&lt;</span> <span class="mi">80</span> <span class="n">THEN</span> <span class="n">movex</span> <span class="o">=</span> <span class="n">movex</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">IF</span> <span class="n">px</span> <span class="o">&lt;&gt;</span> <span class="n">movex</span> <span class="n">OR</span> <span class="n">py</span> <span class="o">&lt;&gt;</span> <span class="n">movey</span> <span class="n">THEN</span> <span class="c1">'only changes when needed</span>
+        <span class="n">LOCATE</span> <span class="n">py</span><span class="p">,</span> <span class="n">px</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="err">;</span> <span class="c1">'erase old sprite</span>
+        <span class="n">LOCATE</span> <span class="n">movey</span><span class="p">,</span> <span class="n">movex</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">at$</span><span class="err">;</span> <span class="c1">'show new position</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="c1">'ESCape key exit</span>
+<span class="n">END</span>
+
+</code></pre></div></div>
+
+<p>Using INKEY$ with the arrow or WASD keys to move the QB64 bee image sprite with <a href="_PUTIMAGE.html">_PUTIMAGE</a>:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">image</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">DIM</span> <span class="n">y</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">DIM</span> <span class="n">Keypress</span> <span class="n">AS</span> <span class="n">STRING</span>
+
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"QB64bee.png"</span><span class="p">)</span> <span class="c1">'Here I actually used the QB64 icon</span>
+
+<span class="n">DO</span>
+  <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">image</span>
+  <span class="n">DO</span>
+    <span class="n">Keypress</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">)</span>
+    <span class="c1">' ***** The following line detects the arrow keys *****</span>
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Keypress</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">Keypress</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">Keypress</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">Keypress</span> <span class="o">&gt;</span> <span class="s">""</span>
+
+  <span class="n">CLS</span> <span class="c1">' blank screen after valid key press to avoid smearing image on page</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">Keypress</span>
+    <span class="n">CASE</span> <span class="s">"W"</span><span class="p">,</span> <span class="s">"H"</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">10</span> <span class="c1">'Up</span>
+    <span class="n">CASE</span> <span class="s">"A"</span><span class="p">,</span> <span class="s">"K"</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">10</span> <span class="c1">'Left</span>
+    <span class="n">CASE</span> <span class="s">"S"</span><span class="p">,</span> <span class="s">"P"</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">10</span> <span class="c1">'Down</span>
+    <span class="n">CASE</span> <span class="s">"D"</span><span class="p">,</span> <span class="s">"M"</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span> <span class="c1">'Right</span>
+    <span class="n">CASE</span> <span class="s">"Q"</span><span class="p">,</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">):</span> <span class="n">END</span> <span class="c1">'Q or Esc Ends prog.</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">image</span>
+<span class="n">LOOP</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The image can be placed off of the screen without error. The image moves 10 pixels to move faster. <a href="CLS.html">CLS</a> eliminates any background.</p>
+</blockquote>
+
+<p>Creating upper <a href="ASCII.html">ASCII</a> characters in a QB program using <strong>Alt +</strong> three number keys:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+    <span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span><span class="p">:</span> <span class="n">WHILE</span> <span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span><span class="p">:</span> <span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span><span class="p">:</span> <span class="n">WEND</span>
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">A</span><span class="err">$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="c1">'2 byte INKEY$ return</span>
+        <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">A</span><span class="err">$</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">'read second byte</span>
+        <span class="n">b%</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">B</span><span class="err">$</span><span class="p">)</span>        <span class="c1">'read second byte code</span>
+        <span class="n">IF</span> <span class="n">b%</span> <span class="o">&gt;</span> <span class="mi">119</span> <span class="n">AND</span> <span class="n">b%</span> <span class="o">&lt;</span> <span class="mi">130</span> <span class="n">THEN</span> <span class="c1">' Alt + number codes only</span>
+           <span class="n">C</span><span class="err">%</span> <span class="o">=</span> <span class="n">b%</span> <span class="o">-</span> <span class="mi">119</span>  <span class="c1">' convert to actual number</span>
+           <span class="n">IF</span> <span class="n">C</span><span class="err">%</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="n">THEN</span> <span class="n">C</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+           <span class="n">num$</span> <span class="o">=</span> <span class="n">num$</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">C</span><span class="err">%</span><span class="p">))</span>
+        <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">LEN</span><span class="p">(</span><span class="n">num$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">' 3 digit codes only</span>
+
+<span class="n">PRINT</span> <span class="n">num$</span>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">num$</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 155 ¢ 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Hold down Alt key and press 3 keyboard code number keys. <strong>Number pad keys may not work.</strong> Note that <a href="INKEY%24.html">INKEY$</a> cannot read Alt, Ctrl or Shift key presses without a key combination and the return is CHR$(0) + CHR$(code).</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_KEYHIT.html">_KEYHIT</a>, <a href="_KEYDOWN.html">_KEYDOWN</a>, <a href="_MAPUNICODE.html">_MAPUNICODE</a></li>
+  <li><a href="_KEYCLEAR.html">_KEYCLEAR</a></li>
+  <li><a href="INPUT.html">INPUT</a>, <a href="LINE-INPUT.html">LINE INPUT</a></li>
+  <li><a href="INPUT%24.html">INPUT$</a>, <a href="INP.html">INP</a></li>
+  <li><a href="CHR%24.html">CHR$</a>, <a href="ASCII.html">ASCII</a></li>
+  <li><a href="ASC.html">ASC</a>, <a href="Scancodes.html">Scancodes</a> (keyboard)</li>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/INKEY$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:06 GMT -->
+</html>

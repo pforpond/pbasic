@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Icons-and-Cursors by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Icons-and-Cursors-2.html" />
+<meta property="og:url" content="Icons-and-Cursors-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Icons-and-Cursors.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Icons</strong> and <strong>Cursors</strong> are image files with ICO or CUR filename extensions.</p>
+
+<ul>
+  <li>Both can use 1 BPP(B &amp; W), 4 BPP(16), 8 BPP(256) or 24/32 BPP(16 million) colors.</li>
+  <li>They are formatted similar to bitmaps, but each file can hold more than one image.</li>
+  <li>Images can be different sizes and use different color palettes. The image width and depth are usually the same and multiples of 16 up to 128. Use <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="_BYTE.html">_BYTE</a> values in the Entry header.</li>
+  <li>Normal Icon and Cursor sizes are multiples of 16 such as 16 X 16, 32 X 32, 48 X 48 and 64 X 64.</li>
+  <li>Each image has an XOR and an AND image mask to allow background transparency in the white pixel areas. Change background areas to white in the <a href="AND.html">AND</a> mask for irregular shapes.</li>
+  <li>The <a href="XOR.html">XOR</a> mask is normally different colors while the <a href="AND.html">AND</a> mask is 1 BPP where black is translucent(solid) and white transparent.</li>
+  <li>The AND image mask is placed on a background using a process like <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> with the AND action by the Operating System.</li>
+  <li>Then the <a href="XOR.html">XOR</a> mask is placed on top of the blackened areas to display the image colors.</li>
+  <li>The resulting image can allow any background to be seen through the <a href="AND.html">AND</a> mask parts of the image that are white.</li>
+</ul>
+
+<h2 id="icon-headers">Icon Headers</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">' ******************* ICONCUR.BI</span>
+<span class="c1">' INCLUDE this BI file at the start of a program</span>
+<span class="c1">'</span>
+<span class="n">TYPE</span> <span class="n">ICONTYPE</span>            <span class="c1">'Icon or cursor file header</span>
+  <span class="n">Reserved</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'Reserved (always 0)</span>
+  <span class="n">ID</span> <span class="n">AS</span> <span class="n">INTEGER</span>          <span class="c1">'Resource ID (Icon = 1, Cursor = 2)</span>
+  <span class="n">Count</span> <span class="n">AS</span> <span class="n">INTEGER</span>       <span class="c1">'Number of icon bitmaps in Directory of icon entries array</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'6 bytes</span>
+
+<span class="n">TYPE</span> <span class="n">ICONENTRY</span>           <span class="c1">'or unanimated Cursor entry (ANI are animated cursors)</span>
+  <span class="n">PWidth</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span> <span class="c1">'Width of icon in pixels (USE THIS)</span>
+  <span class="n">PDepth</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span> <span class="c1">'Height of icon in pixels (USE THIS)</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">_BYTE</span>     <span class="c1">'Maximum number of colors. (2, 8 or 16 colors. 256 or 24/32 bit = 0)</span>
+  <span class="n">RES2</span> <span class="n">AS</span> <span class="n">_BYTE</span>          <span class="c1">'Reserved. Not used (always 0)</span>
+  <span class="n">HotSpotX</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'Icon: NumberPlanes(normally 0), Cursor: hotspot pixels from left</span>
+  <span class="n">HotSpotY</span> <span class="n">AS</span> <span class="n">INTEGER</span>    <span class="c1">'Icon: BitsPerPixel(normally 0), Cursor: hotspot pixels from top</span>
+  <span class="n">DataSize</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">'Length of image data in bytes minus Icon and Entry headers (USE THIS)</span>
+  <span class="n">DataOffset</span> <span class="n">AS</span> <span class="n">LONG</span>     <span class="c1">'Start Offset byte position of icon bitmap header(add 1 if [TYPE](TYPE) GET)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'16 bytes      ** 'BMP header and image data follow ALL entry data(after 22, 38, 54, etc.)**</span>
+
+<span class="n">TYPE</span> <span class="n">BMPHEADER</span>           <span class="c1">'Bitmap type header found using entry DataOffset + 1</span>
+  <span class="n">IconHSize</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'size of ICON header (always 40 bytes)</span>
+  <span class="n">ICONWidth</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'bitmap width in pixels (signed integer).</span>
+  <span class="n">ICONDepth</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'Total map height in pixels (signed integer is 2 times image height)</span>
+  <span class="n">NumPlanes</span> <span class="n">AS</span> <span class="n">INTEGER</span>   <span class="c1">'number of color planes. Must be set to 1.</span>
+  <span class="n">BPP</span> <span class="n">AS</span> <span class="n">INTEGER</span>         <span class="c1">'bits per pixel  1, 4, 8, 16, 24 or 32.(USE THIS)</span>
+  <span class="n">Compress</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">'compression method should always be 0.</span>
+  <span class="n">RAWSize</span> <span class="n">AS</span> <span class="n">LONG</span>        <span class="c1">'size of the raw ICON image data(may only be XOR mask size).</span>
+  <span class="n">Hres</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">'horizontal resolution of the image(not normally used)</span>
+  <span class="n">Vres</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">'vertical resolution of the image(not normally used)</span>
+  <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'number of colors in the color palette(not normally used)</span>
+  <span class="n">SigColors</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">'number of important colors used(not normally used)</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'40 bytes     **  'palette and/or image data immediately follow this header! **</span>
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">ICO</span> <span class="n">AS</span> <span class="n">ICONTYPE</span>
+<span class="n">items%</span> <span class="o">=</span> <span class="n">ICO</span><span class="p">.</span><span class="n">Count</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Entry</span><span class="p">(</span><span class="n">items%</span><span class="p">)</span> <span class="n">AS</span> <span class="n">ICONENTRY</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">BMP</span><span class="p">(</span><span class="n">items%</span><span class="p">)</span> <span class="n">AS</span> <span class="n">BMPHEADER</span> 
+
+</code></pre></div></div>
+
+<p><strong>ICON File Header Information</strong></p>
+
+<ul>
+  <li>The Icon header is only six bytes. The first <a href="INTEGER.html">INTEGER</a> value is reserved and is always 0.</li>
+  <li>The second <a href="INTEGER.html">INTEGER</a> indicates the type of file:
+    <ul>
+      <li>1 indicates that the file is an ICO Icon file which may hold more than one image.</li>
+      <li>2 indicates that the file is a CUR Cursor file which may hold more than one image.</li>
+    </ul>
+  </li>
+  <li>The third <a href="INTEGER.html">INTEGER</a> value indicates the number of images contained in the file. This will also tell you the number of Icon Entry information headers follow. A <a href="TYPE.html">TYPE</a> array can be used to reference the entry and BMP header information later when there is more than one image. The start of all bitmap header and image data information is after 6 + (count * 16) bytes.</li>
+</ul>
+
+<p><strong>ICON Entry Information</strong></p>
+
+<p>The Entry header information for all icon images contained in the icon file follow the icon header. No image data will be found until after all of the Entry information. Each entry  contains the dimensions, size of data and the location of the start of image data.</p>
+
+<ul>
+  <li>The image width and height are <a href="_BYTE.html">_BYTE</a> numerical values or <a href="ASC.html">ASC</a> <a href="ASCII.html">ASCII</a> code <a href="STRING.html">STRING</a> values.</li>
+  <li>The number of colors is a <a href="_BYTE.html">_BYTE</a> value which may be zero. Use the Bitmap header’s BPP value instead.</li>
+  <li>The reserved <a href="_BYTE.html">_BYTE</a> value is always zero.</li>
+  <li>The 2 Hotspot <a href="INTEGER.html">INTEGER</a> values are always 0 unless the file is a CUR cursor file. Cursor files position the click spot.</li>
+  <li>The <a href="LONG.html">LONG</a> Data Size value should indicate the size of the image data including bitmap header, palette and pixel data.</li>
+  <li>The <a href="LONG.html">LONG</a> Data Offset value will indicate the byte position of the image bitmap header. Add one byte in QB and QB64.</li>
+</ul>
+
+<p><strong>Bitmap Header Information</strong></p>
+
+<p>The Bitmap header information is located one byte after the Data Offset position because QBasic sets the first byte of a file as 1 instead of zero. This bitmap image information is identical to a bitmap image header’s last 40 bytes, but the height is doubled.</p>
+
+<ul>
+  <li>The <a href="LONG.html">LONG</a> header size is always 40 bytes. This can be used to verify the start position of the header.</li>
+  <li>The <a href="LONG.html">LONG</a> image width should be the same as the Entry header width.</li>
+  <li>The <a href="LONG.html">LONG</a> image height should be <strong>2 times</strong> the actual image height as read in the Entry header.</li>
+  <li>The number of planes <a href="INTEGER.html">INTEGER</a> value should always be 1.</li>
+  <li>The BPP <a href="INTEGER.html">INTEGER</a> value is always used to find the number of colors, palette size(if any) and pixel byte size.
+    <ul>
+      <li>1 indicates a black and white(2 ^ 1) color, one bit(on or off) per pixel image with no palette. Each bit on is white.</li>
+      <li>4 indicates a 16(2 ^ 4) color, 4 bits(attributes 0 to 15) per pixel image with a 64 byte palette.</li>
+      <li>8 indicates a 256(2 ^ 8) color, one byte(attributes 0 to 255) per pixel image with a 1024 byte palette.</li>
+      <li>24 or 32 indicates a 16 million(2 ^ 24) color, 3 bytes(BGR intensities 0 to 255) per pixel image with no palette.</li>
+    </ul>
+  </li>
+  <li>The <a href="LONG.html">LONG</a> compression value should always be zero.</li>
+  <li>The <a href="LONG.html">LONG</a> Raw data size should indicate the image data size, but it is unreliable. Calculate it when necessary.</li>
+  <li>The four remaining <a href="LONG.html">LONG</a> bitmap header values can be ignored as they will normally be zero.</li>
+</ul>
+
+<h2 id="xor-image-data">XOR Image Data</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                 **Single Image Icon or Cursor**
+
+              ┌──────┐   ┌─────┐    ┌──────┐    ┌───────┐     ┌───────┐     ┌───────┐
+              │ ICON │   │Entry│    │BMP[1]│    │PALETTE│     │  XOR  │     │  AND  │
+              │Header├─6─┤ [1] ├─22─┤Header├─62─┤ 4 BPP ├─126─┤ 4 BPP ├─638─┤ 1 BPP │
+              │  6B  │   │16 B │    │ 40 B │    │½ byte │     │32*32*½│     │32*32\8│
+              └──────┘   └─────┘    └──────┘    │ 64 B  │     │ 512 B │     │ 128 B │
+                                                └───────┘     └───────┘     └───────┘
+
+                                     **Multiple Image (3)**
+
+                  ┌──────┐   ┌───────┐    ┌───────┐    ┌───────┐
+                  │ ICON │   │ Entry │    │ Entry │    │ Entry │
+                  │Header├─6─┤  [1]  ├─22─┤  [2]  ├─38─┤  [3]  ├─54─┐ Entry precedes all data
+                  │  6B  │   │ 16 B  │    │ 16 B  │    │ 16 B  │    │
+                  └──────┘   └───────┘    └───────┘    └───────┘    │
+                                 ┌───◄ GET Offset + 1 = 55◄─────────┘
+                             ┌───┴───┐    ┌───────┐    ┌───────┐
+                             │ BMP[1]│    │ BMP[2]│    │ BMP[3]│
+                             │Header │  ┌─┤Header │  ┌─┤Header │  Image settings
+                             │ 40 B  │  │ │ 40 B  │  │ │ 40 B  │
+                             └───┬───┘  │ └───┬───┘  │ └───┬───┘
+                             ┌───┴───┐  ▲ ┌───┴───┐  ▲     │
+                             │PALETTE│  O │PALETTE│  O     │
+                             │ 4 BPP │  f │ 8 BPP │  f   24 BPP   RGB color intensities
+                             │½ byte │  f │1 byte │  f   3 byte
+                             │ 64 B  │  s │1024 B │  s     │
+                             └───┬───┘  e └───┬───┘  e     │
+                             ┌───┴───┐  t ┌───┴───┐  t ┌───┴───┐
+                             │  XOR  │  + │  XOR  │  + │  XOR  │
+                             │16*16*½│  1 │32*32*1│  1 │48*48*3│  Image color data
+                             │ 128 B │  ▲ │1024 B │  ▲ │6912 B │
+                             └───┬───┘  │ └───┬───┘  │ └───┬───┘
+                            ┌────┴───┐  │ ┌───┴───┐  │ ┌───┴────┐
+                            │   AND  │  │ │  AND  │  │ │  AND   │
+                            │ 1 BPP  ├──┘ │ 1 BPP ├──┘ │ 1 BPP  │ B &amp; W mask
+                            │16*(2+2)│    │32*32\8│    │48*(6+2)│
+                            │  64 B  │    │ 128 B │    │ 384 B  │
+                            └────────┘    └───────┘    └────────┘
+
+      Add one to Offset position when using one TYPE definition GET for the BMP Header data!
+                       BPP = bits per pixel B = bytes +2 = padder bytes
+
+</code></pre></div></div>
+
+<p><strong>Palette Data</strong></p>
+
+<p>The Palette is only used in <strong>4 BPP</strong> and <strong>8 BPP</strong> Icons or Cursors. It is exactly the same format as a bitmap. The number of available colors determines the size of palette data. The data is read as blue, green, red <a href="_BYTE.html">_BYTE</a>s with a zero(<a href="CHR%24.html">CHR$</a>(0)) spacer so the palette size is 4 times the number of available colors: 4 BPP = 4 * (2 ^ 4) = 64 bytes and 8 BPP = 4 * (2 ^ 8) = 1024 bytes.</p>
+
+<p>The palette sets the Blue, Green and Red color intensities before each color attribute value is read in the image’s pixel data.</p>
+
+<p><strong>XOR Mask Image Data</strong></p>
+
+<p>The <a href="XOR.html">XOR</a> mask is found after the Palette in 4 BPP or 8 BPP or immediately after the icon BMP Header if 1 BPP or 24 BPP colors. The XOR data is also read the same as a bitmap. The BPP determines the size of the data as bits per pixel:</p>
+
+<ul>
+  <li>1 BPP is one bit per pixel (on white or off black) or bytes = (width * height) / 8 bits</li>
+  <li>4 BPP is four bits per pixel attribute or bytes = (4 * width * height) / 8 bits</li>
+  <li>8 BPP is one byte per pixel attribute or bytes = (8 * width * height) /8 bits</li>
+  <li>24 BPP is 3 bytes per pixel (blue, green, red) or bytes = (24 * width * height) / 8 bits</li>
+</ul>
+
+<p>All color settings use 4 byte padding to prevent image skewing although most icons use multiples of 8 pixels and won’t need it.</p>
+
+<p>The color intensity of each 24 bit pixel is read as blue, green and red bytes. See the <a href="Bitmaps.html">Bitmaps</a> page for more information.</p>
+
+<h2 id="and-mask-data">AND Mask Data</h2>
+
+<p>The AND mask is read as a <strong>one BPP</strong> black and white image with each <a href="_BIT.html">_BIT</a> being on(white) or off(black). It is white where the background may show and black where the colors (including black) from the XOR mask will show. It is placed using the AND action by Windows first. Then the XOR mask is placed on top using an XOR action. The following SUB procedure can adapt to 24 bit colors so that colors will not be affected. Make sure that the BPP value is <a href="SHARED.html">SHARED</a> or pass it using a parameter!</p>
+
+<p>A <a href="CHR%24.html">CHR$</a> byte or <a href="SPACE%24.html">SPACE$</a> padder is used in the AND mask for image widths that are not multiples of 4 bytes(32 pixels).</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">ANDMask</span>   <span class="c1">'MASK is B &amp; W. Black area holds XOR colors, white displays background</span>
+<span class="n">BitsOver</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span><span class="o">&amp;</span> <span class="n">MOD</span> <span class="mi">32</span>
+<span class="n">IF</span> <span class="n">BitsOver</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">32</span> <span class="o">-</span> <span class="n">BitsOver</span><span class="p">)</span> <span class="o">\</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">'look for sizes not multiples of 32 bits</span>
+<span class="n">_DEST</span> <span class="n">bmp&amp;</span>  <span class="c1">'destination handle if used</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span><span class="p">:</span> <span class="n">p$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>   <span class="c1">'position is immediately AFTER XOR mask data</span>
+    <span class="n">ByteVAL</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>   <span class="c1">'MSBit is left when calculating 16 X 16 cursor map 2 byte integer</span>
+    <span class="n">FOR</span> <span class="n">Bit</span><span class="err">%</span> <span class="o">=</span> <span class="mi">7</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>   <span class="c1">'values despite M$ documentation that says otherwise!</span>
+      <span class="n">IF</span> <span class="n">ByteVAL</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">Bit</span><span class="err">%</span> <span class="n">THEN</span>
+        <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="c1">'_RGB can be used in 1, 4, 8 or 24/32 BPP</span>
+      <span class="n">ELSE</span><span class="p">:</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>        <span class="c1">'16 X 16 = 32 bytes, 32 X 32 = 128 bytes AND MASK SIZES</span>
+    <span class="n">NEXT</span> <span class="n">Bit</span><span class="err">%</span>          <span class="c1">'48 X 48 = 288 bytes, 64 X 64 = 512 bytes, 128 X 128 = 2048 bytes</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>   <span class="c1">'16 X 16 and 48 X 48 = 2 byte end padder per row in the AND MASK</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>            <span class="c1">'adds 32 and 96 bytes respectively to the raw data size!</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Icon widths that are not multiples of 32, such as 16 or 48, are padded 2 extra zero bytes to bring them to specifications.</p>
+</blockquote>
+
+<h2 id="calculating-data-size">Calculating Data Size</h2>
+
+<p>The size of the data is based on the pixel size of the image, any bit padding and the BPP palette intensity data required.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">Entry</span><span class="p">(</span><span class="n">item%</span><span class="p">).</span><span class="n">DataSize</span> <span class="o">=</span> <span class="n">DataSize</span><span class="o">&amp;</span><span class="p">(</span><span class="n">item%</span><span class="p">)</span> <span class="c1">'example function call</span>
+
+<span class="n">FUNCTION</span> <span class="n">DataSize</span><span class="o">&amp;</span><span class="p">(</span><span class="n">i</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+<span class="n">PixelBytes</span><span class="p">!</span> <span class="o">=</span> <span class="n">BMP</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="n">BPP</span> <span class="o">/</span> <span class="mi">8</span>      <span class="c1">'1 BPP = 1/8; 4 BPP = 1/2; 8 BPP = 1; 24 BPP = 3</span>
+
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">BPP</span>
+  <span class="n">CASE</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PaletteBytes</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">IF</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">32</span> <span class="n">THEN</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="p">(</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">32</span><span class="p">))</span> <span class="o">\</span> <span class="mi">8</span> <span class="n">ELSE</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">CASE</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PaletteBytes</span><span class="err">%</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">IF</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="p">(</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">8</span><span class="p">))</span> <span class="o">\</span> <span class="mi">2</span> <span class="n">ELSE</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">CASE</span> <span class="mi">8</span><span class="p">:</span> <span class="n">PaletteBytes</span><span class="err">%</span> <span class="o">=</span> <span class="mi">1024</span>
+    <span class="n">IF</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">CASE</span> <span class="n">IS</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="n">PaletteBytes</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">IF</span> <span class="p">((</span><span class="n">PictureMOD</span> <span class="mi">4</span><span class="p">)</span> <span class="n">THEN</span>
+      <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="p">((</span><span class="mi">4</span> <span class="o">-</span> <span class="p">((</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)))</span>
+    <span class="n">ELSE</span><span class="p">:</span> <span class="n">Pad</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+
+<span class="n">XORsize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">((</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="o">+</span> <span class="n">Pad</span><span class="err">%</span><span class="p">)</span> <span class="o">*</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PDepth</span><span class="p">)</span> <span class="o">*</span> <span class="n">PixelBytes</span><span class="p">!</span>
+<span class="n">IF</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">32</span> <span class="n">THEN</span> <span class="n">ANDpad</span><span class="err">%</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="p">(</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">32</span><span class="p">))</span> <span class="n">ELSE</span> <span class="n">ANDpad</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ANDsize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="p">((</span><span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PWidth</span> <span class="o">+</span> <span class="n">ANDpad</span><span class="err">%</span><span class="p">)</span> <span class="o">*</span> <span class="n">Entry</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">PDepth</span><span class="p">)</span> <span class="o">\</span> <span class="mi">8</span>
+
+<span class="n">DataSize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">XORsize</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">ANDsize</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">PaletteBytes</span><span class="err">%</span> <span class="o">+</span> <span class="mi">40</span>  <span class="c1">'header is always 40 bytes</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>NOTE:</em> A 2 byte padder adds 32 bytes to 16 X 16 and 96 bytes to 48 X 48 AND mask data. 32 and 64 wide have no padders.</p>
+</blockquote>
+
+<p><em>Snippet:</em> Shows how bit padder is calculated and used to calculate the AND mask data size:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INPUT</span> <span class="s">"Enter an icon width(multiples of 8 or 16 only): "</span><span class="p">,</span> <span class="n">width</span>
+
+<span class="n">IF</span> <span class="p">(</span><span class="n">width</span> <span class="n">MOD</span> <span class="mi">32</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">bitpad</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="p">(</span><span class="n">width</span> <span class="n">MOD</span> <span class="mi">32</span><span class="p">))</span>
+<span class="n">bytes</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span> <span class="o">+</span> <span class="n">bitpad</span><span class="p">)</span> <span class="o">*</span> <span class="n">width</span> <span class="o">\</span> <span class="mi">8</span> <span class="c1">'dividing by 8 returns the byte size</span>
+
+<span class="n">PRINT</span> <span class="s">"AND mask size:"</span><span class="err">;</span> <span class="n">bytes</span><span class="err">;</span> <span class="s">"bytes with a"</span><span class="err">;</span> <span class="n">bitpad</span><span class="err">;</span> <span class="s">"bit padder."</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Enter an icon width(multiples of 8 or 16 only): 16
+AND mask size: 64 bytes with a 16 bit padder.
+
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="Creating-Icon-Bitmaps.html">Creating Icon Bitmaps</a></li>
+  <li><a href="Creating-Icons-from-Bitmaps.html">Creating Icons from Bitmaps</a></li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (create icons from any image)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="%24EXEICON.html">$EXEICON</a></li>
+  <li><a href="_ICON.html">_ICON</a></li>
+  <li><a href="Creating-Sprite-Masks.html">Creating Sprite Masks</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="GIF-Images.html">GIF Images</a></li>
+  <li><a href="Resource-Table-Extraction-2.html">Resource Table Extraction</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Icons-and-Cursors by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:35 GMT -->
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SAVEIMAGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SAVEIMAGE-2.html" />
+<meta property="og:url" content="SAVEIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SAVEIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>The SAVEIMAGE SUB program to create <a href="Bitmaps.html">Bitmaps</a> of other type Images or Screenshots</strong></p>
+
+<p><strong>Bitmaps</strong> are image files with the .BMP file name extension.</p>
+
+<ul>
+  <li>Bitmaps can be 1, 4, 8 or 24/32 bits per pixel(BPP) color palettes. QB64 is capable of working with high color bitmaps.</li>
+  <li>Screen or Image width and height calculations are automatically made using the image handle value.</li>
+  <li>Use an image handle value of 0(zero) to get a screen shot of the entire active program screen.</li>
+  <li><strong>Note: SCREEN 0 text mode cannot be screen saved in QBasic or QB64.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><em>The following example uses a SUB program created to save a 32 bit JPEG image as a bitmap using QB64’s graphic functions:</em></p>
+
+<blockquote>
+  <p>Module Demo Code: Change the _LOADIMAGE filename to an image file you can access.</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">i&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"nice.jpg"</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span> <span class="c1">' loads a 32 bit .JPG file image</span>
+<span class="n">SaveImage</span> <span class="n">i&amp;</span><span class="p">,</span> <span class="s">"nice"</span>      <span class="c1">'saves it as .BMP file "nice.bmp"</span>
+<span class="c1">'SaveImage 0, "screenshot" 'saves entire program screen as "screenshot.bmp"</span>
+<span class="n">END</span>
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">SaveImage</span> <span class="p">(</span><span class="n">image</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">filename</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+<span class="n">bytesperpixel&amp;</span> <span class="o">=</span> <span class="n">_PIXELSIZE</span><span class="p">(</span><span class="n">image&amp;</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">bytesperpixel&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Text modes unsupported!"</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">IF</span> <span class="n">bytesperpixel&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">bpp&amp;</span> <span class="o">=</span> <span class="mi">8</span> <span class="n">ELSE</span> <span class="n">bpp&amp;</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">x&amp;</span> <span class="o">=</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">image&amp;</span><span class="p">)</span>
+<span class="n">y&amp;</span> <span class="o">=</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">image&amp;</span><span class="p">)</span>
+<span class="n">b$</span><span class="o">=</span><span class="s">"BM????QB64????"</span><span class="o">+</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">+</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">x&amp;</span><span class="p">)</span><span class="o">+</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">y&amp;</span><span class="p">)</span><span class="o">+</span><span class="n">MKI</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">MKI</span><span class="err">$</span><span class="p">(</span><span class="n">bpp&amp;</span><span class="p">)</span><span class="o">+</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="s">"????"</span><span class="o">+</span><span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'partial BMP header info(???? to be filled later)</span>
+<span class="n">IF</span> <span class="n">bytesperpixel&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span>
+  <span class="n">FOR</span> <span class="n">c&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span> <span class="c1">' read BGR color settings from JPG image + 1 byte spacer(CHR$(0))</span>
+    <span class="n">cv&amp;</span> <span class="o">=</span> <span class="n">_PALETTECOLOR</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">,</span> <span class="n">image&amp;</span><span class="p">)</span> <span class="c1">' color attribute to read. </span>
+    <span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">_BLUE32</span><span class="p">(</span><span class="n">cv&amp;</span><span class="p">))</span><span class="o">+</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">_GREEN32</span><span class="p">(</span><span class="n">cv&amp;</span><span class="p">))</span><span class="o">+</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">_RED32</span><span class="p">(</span><span class="n">cv&amp;</span><span class="p">))</span><span class="o">+</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">'spacer byte</span>
+  <span class="n">NEXT</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">b$</span><span class="p">))</span> <span class="c1">' image pixel data offset(BMP header)</span>
+<span class="n">lastsource&amp;</span> <span class="o">=</span> <span class="n">_SOURCE</span>
+<span class="n">_SOURCE</span> <span class="n">image&amp;</span>
+<span class="n">IF</span> <span class="p">((</span><span class="n">x&amp;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">padder$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="p">((</span><span class="n">x&amp;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">py&amp;</span> <span class="o">=</span> <span class="n">y&amp;</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">' read JPG image pixel color data </span>
+  <span class="n">r$</span> <span class="o">=</span> <span class="s">""</span>
+  <span class="n">FOR</span> <span class="n">px&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">x&amp;</span> <span class="o">-</span> <span class="mi">1</span>
+   <span class="n">c&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">px&amp;</span><span class="p">,</span> <span class="n">py&amp;</span><span class="p">)</span> <span class="c1">'POINT 32 bit values are large LONG values </span>
+   <span class="n">IF</span> <span class="n">bytesperpixel&amp;</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">r$</span> <span class="o">=</span> <span class="n">r$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">r$</span> <span class="o">=</span> <span class="n">r$</span> <span class="o">+</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="n">NEXT</span> <span class="n">px&amp;</span>  
+  <span class="n">d$</span> <span class="o">=</span> <span class="n">d$</span> <span class="o">+</span> <span class="n">r$</span> <span class="o">+</span> <span class="n">padder$</span>
+<span class="n">NEXT</span> <span class="n">py&amp;</span>
+<span class="n">_SOURCE</span> <span class="n">lastsource&amp;</span>
+<span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">d$</span><span class="p">))</span> <span class="c1">' image size(BMP header)</span>
+<span class="n">b$</span> <span class="o">=</span> <span class="n">b$</span> <span class="o">+</span> <span class="n">d$</span> <span class="c1">' total file data bytes to create file</span>
+<span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">b$</span><span class="p">))</span> <span class="c1">' size of data file(BMP header)</span>
+<span class="n">IF</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">filename$</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="o">&lt;&gt;</span> <span class="s">".bmp"</span> <span class="n">THEN</span> <span class="n">ext$</span> <span class="o">=</span> <span class="s">".bmp"</span>
+<span class="n">f&amp;</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="o">+</span> <span class="n">ext$</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f&amp;</span><span class="p">:</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="n">f&amp;</span> <span class="c1">' erases an existing file</span>
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="o">+</span> <span class="n">ext$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f&amp;</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">f&amp;</span><span class="p">,,</span><span class="n">b$</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="n">f&amp;</span>
+<span class="n">END</span> <span class="n">SUB</span> <span class="o">*</span> <span class="o">*</span>     
+
+</code></pre></div></div>
+<p><sub>Code by Galleon</sub></p>
+
+<p><strong>This SUB program can also be <a href="%24INCLUDE.html">$INCLUDE</a> with any program!</strong></p>
+
+<p><em>SUB Explanation:</em> b$ and d$ assemble the entire string of data to create a bitmap file. Some of the bitmap header info is placed later using a <a href="MID%24-(statement).html">MID$ (statement)</a> to add final header numerical data converted to <a href="ASCII.html">ASCII</a> characters by <a href="MKI%24.html">MKI$</a> or <a href="MKL%24.html">MKL$</a>.</p>
+
+<p>After the header, the <a href="RGB.html">RGB</a> color settings are created using <a href="ASCII.html">ASCII</a> characters read backwards as Blue, Green, Red and CHR$(0) as a spacer. <a href="MKL%24.html">MKL$</a> places the byte values in reverse order too. Bitmaps and icons require that format. <a href="LEFT%24.html">LEFT$</a> trims off the <a href="_ALPHA.html">_ALPHA</a> byte.</p>
+
+<p>The actual image is read as pixel attributes from the image bottom to the top for proper formatting with zero padding when necessary.</p>
+
+<p><strong>* Note:</strong> 32-bit images will be saved as 24-bit BMP files. All palette indexed images/modes will be saved as 256 color BMP files. Text modes cannot be saved. As QB64 has no official _SAVEIMAGE command yet and QBasic programs to save screen-shots don’t work in QB64 yet this is a very useful alternative.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_ICON.html">_ICON</a>, <a href="%24EXEICON.html">$EXEICON</a></li>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+  <li><a href="TYPE.html">TYPE</a>, <a href="MKI%24.html">MKI$</a>, <a href="MKL%24.html">MKL$</a></li>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a> (member SUB program)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (member SUB captures selected area)</li>
+  <li><a href="ThirtyTwoBit-MEM-SUB.html">ThirtyTwoBit MEM SUB</a> (Fast SUB uses memory instead of POINT)</li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (converts any image to icon)</li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SAVEIMAGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:48 GMT -->
+</html>

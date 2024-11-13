@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_MOUSESHOW by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_MOUSESHOW-2.html" />
+<meta property="og:url" content="_MOUSESHOW-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_MOUSESHOW.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_MOUSESHOW.html">_MOUSESHOW</a> statement displays the mouse cursor and can change its shape.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_MOUSESHOW.html">_MOUSESHOW</a> [cursorShape$]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Simply use the statement whenever <a href="_MOUSEHIDE.html">_MOUSEHIDE</a> has been used previously.</li>
+  <li>In <strong>version 1.000 and up</strong> the following cursorShape$ can be displayed:
+    <ul>
+      <li>_MOUSESHOW “LINK” will display an upward pointing hand cursor used to denote hypertext</li>
+      <li>_MOUSESHOW “TEXT” will display the I cursor often used in text entry areas</li>
+      <li>_MOUSESHOW “CROSSHAIR” will display a crosshair cursor</li>
+      <li>_MOUSESHOW “VERTICAL” will display vertical arrow cursor for movement</li>
+      <li>_MOUSESHOW “HORIZONTAL” will display horizontal arrow cursor for movement</li>
+      <li>_MOUSESHOW “TOPLEFT_BOTTOMRIGHT” will display bottom diagonal arrow cursor for movement</li>
+      <li>_MOUSESHOW “TOPRIGHT_BOTTOMLEFT” will display bottom diagonal arrow cursor for movement</li>
+      <li>_MOUSESHOW “DEFAULT” can be used after a mouse cursor statement above was previously used.</li>
+    </ul>
+  </li>
+  <li>This statement will also disable <a href="_MOUSEMOVEMENTX.html">_MOUSEMOVEMENTX</a> or <a href="_MOUSEMOVEMENTY.html">_MOUSEMOVEMENTY</a> relative mouse movement reads.</li>
+  <li>The mouse cursor will not interfere with any print or graphic screen changes in <strong>QB64</strong>.</li>
+</ul>
+
+<h3 id="qbasicquickbasic">QBasic/QuickBASIC</h3>
+
+<blockquote>
+  <p>_MOUSESHOW “DEFAULT” can be used after a mouse cursor statement above was previously used.</p>
+</blockquote>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Special cursors can be displayed by using special string parameters:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">_MOUSESHOW</span> <span class="s">"default"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"link"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span> <span class="c1">'a hand, typically used in web browsers</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"text"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"crosshair"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"vertical"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"horizontal"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"topleft_bottomright"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"topright_bottomleft"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span> 
+<span class="n">_MOUSESHOW</span> <span class="s">"wait"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+<span class="n">_MOUSESHOW</span> <span class="s">"help"</span><span class="p">:</span> <span class="n">_DELAY</span> <span class="mf">0.5</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note:</strong> The hourglass and question mark cursors are available in v1.5 and above.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_MOUSEHIDE.html">_MOUSEHIDE</a></li>
+  <li><a href="_MOUSEINPUT.html">_MOUSEINPUT</a></li>
+  <li><a href="_MOUSEMOVE.html">_MOUSEMOVE</a></li>
+  <li><a href="_MOUSEX.html">_MOUSEX</a>, <a href="_MOUSEY.html">_MOUSEY</a></li>
+  <li><a href="_MOUSEBUTTON.html">_MOUSEBUTTON</a></li>
+  <li><a href="_MOUSEMOVEMENTX.html">_MOUSEMOVEMENTX</a>, <a href="_MOUSEMOVEMENTY.html">_MOUSEMOVEMENTY</a></li>
+  <li><a href="_DEVICES.html">_DEVICES</a>, <a href="_DEVICE%24.html">_DEVICE$</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_MOUSESHOW by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:20:36 GMT -->
+</html>

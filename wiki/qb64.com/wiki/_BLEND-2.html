@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_BLEND.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_BLEND-2.html" />
+<meta property="og:url" content="_BLEND-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_BLEND.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_BLEND.html">_BLEND</a> statement turns on 32 bit alpha blending for an image or screen mode and is on by default.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_BLEND.html">_BLEND</a> [imageHandle&amp;]</p>
+</blockquote>
+
+<h3 id="parameters">Parameters</h3>
+
+<ul>
+  <li>imageHandle&amp; refers to an image in memory. If not specified, the current destination page (See <a href="_DEST.html">_DEST</a>) is affected.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Alpha blending is on by default when loading a .PNG image to a 32-bit surface.</li>
+  <li>Normally it is used to turn blending on after a previous <a href="_DONTBLEND.html">_DONTBLEND</a> call.</li>
+  <li><a href="_BLEND.html">_BLEND</a> can only be used on 32-bit surfaces, otherwise it will produce the error <a href="ERROR-Codes.html">ERROR Codes</a>.</li>
+  <li><strong>Note: <a href="_DONTBLEND.html">_DONTBLEND</a> is faster than the default <a href="_BLEND.html">_BLEND</a> unless you really need to use it in 32 bit.</strong></li>
+  <li><strong>32 bit screen surface backgrounds (black) have zero <a href="_ALPHA.html">_ALPHA</a> so that they are transparent when placed over other surfaces.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="c1">'CLS , _RGB(128, 128, 128) 'change background color for other results</span>
+
+<span class="n">_DONTBLEND</span>
+
+<span class="n">bg&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">_RED</span><span class="p">(</span><span class="n">bg&amp;</span><span class="p">),</span> <span class="n">_GREEN</span><span class="p">(</span><span class="n">bg&amp;</span><span class="p">),</span> <span class="n">_BLUE</span><span class="p">(</span><span class="n">bg&amp;</span><span class="p">),</span> <span class="n">_ALPHA</span><span class="p">(</span><span class="n">bg&amp;</span><span class="p">)</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">BF</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">440</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">540</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">BF</span>
+
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">_BLEND</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">370</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">BF</span>
+<span class="n">m&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">303</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">_RED</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">),</span> <span class="n">_GREEN</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">),</span> <span class="n">_BLUE</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">),</span> <span class="n">_ALPHA</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">)</span>
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">370</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">BF</span>
+<span class="n">m&amp;</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">303</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">_RED</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">),</span> <span class="n">_GREEN</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">),</span> <span class="n">_BLUE</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">),</span> <span class="n">_ALPHA</span><span class="p">(</span><span class="n">m&amp;</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+_RGBA(255,128,0,128) onto _RGBA(0,0,255,64)
+
+results in
+
+_RGBA(95,48,64,128)
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_DONTBLEND.html">_DONTBLEND</a>, <a href="_BLEND-(function).html">_BLEND (function)</a></li>
+  <li><a href="Images.html">Images</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_BLEND.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:30 GMT -->
+</html>

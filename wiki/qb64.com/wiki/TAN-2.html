@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/TAN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="TAN-2.html" />
+<meta property="og:url" content="TAN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/TAN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="TAN.html">TAN</a> function returns the ratio of <a href="SIN.html">SIN</a>e to <a href="COS.html">COS</a>ine or tangent value of an angle measured in radians.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>tangent! = <strong>TAN(</strong><em>radian_angle!</em><strong>)</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <em>radian_angle</em> must be measured in radians.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>To convert from degrees to radians, multiply degrees * π/180.</li>
+  <li>TANGENT is the gradient or slope of the circle or arc at <a href="SIN.html">SIN</a>(θ) / <a href="COS.html">COS</a>(θ). Do not use division when the <a href="COS.html">COS</a> = 0 to avoid <a href="ERROR-Codes.html">ERROR Codes</a>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Spiraling text using the <a href="SIN.html">SIN</a> and <a href="TAN.html">TAN</a> functions.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">text</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">text$</span> <span class="o">=</span> <span class="s">"S P I R A L"</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">word</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">16</span><span class="p">)</span>
+
+<span class="n">CALL</span> <span class="n">analyse</span>
+<span class="n">CLS</span>
+<span class="n">CALL</span> <span class="n">redraw</span>
+
+<span class="n">SUB</span> <span class="n">analyse</span>
+<span class="n">CLS</span>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">COLOR</span> <span class="mi">2</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">text$</span>
+<span class="n">DIM</span> <span class="n">px</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">py</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">cnt</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">ltrcnt</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">px</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">py</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">DO</span>
+  <span class="n">word</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">),</span> <span class="mi">1</span>
+  <span class="n">px</span> <span class="o">=</span> <span class="n">px</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">px</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="n">THEN</span>
+    <span class="n">px</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">py</span> <span class="o">=</span> <span class="n">py</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">py</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">redraw</span>
+<span class="n">CLS</span>
+<span class="n">DIM</span> <span class="n">row</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">cnt</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">cstart</span> <span class="n">AS</span> <span class="n">SINGLE</span><span class="p">,</span> <span class="n">cend</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+<span class="n">DIM</span> <span class="n">xrot</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">yrot</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">SCALE</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">pan</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">cstart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">cend</span> <span class="o">=</span> <span class="mf">6.2</span>
+<span class="n">xrot</span> <span class="o">=</span> <span class="mi">6</span><span class="p">:</span> <span class="n">yrot</span> <span class="o">=</span> <span class="mi">6</span><span class="p">:</span> <span class="n">SCALE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">:</span> <span class="n">pan</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="mi">60</span>
+<span class="n">DO</span>
+  <span class="n">row</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">DO</span>
+    <span class="n">DO</span>
+      <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="n">cend</span> <span class="n">TO</span> <span class="n">cstart</span> <span class="n">STEP</span> <span class="o">-</span><span class="p">.</span><span class="err">03</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">SCALE</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">-</span> <span class="p">(</span><span class="n">row</span> <span class="o">*</span> <span class="n">xrot</span> <span class="o">/</span> <span class="mi">4</span><span class="p">))</span> <span class="o">*</span> <span class="n">TAN</span><span class="p">(</span><span class="n">COS</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">SIN</span><span class="p">(</span><span class="n">SCALE</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">-</span> <span class="p">(</span><span class="n">row</span> <span class="o">*</span> <span class="n">yrot</span><span class="p">))</span> <span class="o">*</span> <span class="n">TAN</span><span class="p">(</span><span class="n">SIN</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">pan</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">IF</span> <span class="n">word</span><span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> 
+          <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">320</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">220</span><span class="p">),</span> <span class="n">SCALE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>              <span class="c1">'circled letters</span>
+          <span class="c1">'LINE (x + 320, y + 220)-STEP(12, 12), 1, BF  'boxed letters</span>
+        <span class="n">END</span> <span class="n">IF</span>
+        <span class="n">IF</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">text$</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">DO</span>
+      <span class="n">NEXT</span>
+    <span class="n">LOOP</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">16</span>
+  <span class="n">cend</span> <span class="o">=</span> <span class="n">cend</span> <span class="o">+</span> <span class="p">.</span><span class="err">1</span>
+  <span class="n">cstart</span> <span class="o">=</span> <span class="n">cstart</span> <span class="o">+</span> <span class="p">.</span><span class="err">1</span>
+  <span class="n">now</span><span class="p">!</span> <span class="o">=</span> <span class="n">TIMER</span>
+  <span class="n">DO</span>
+    <span class="n">newnow!</span> <span class="o">=</span> <span class="n">TIMER</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">newnow!</span> <span class="o">-</span> <span class="n">now!</span> <span class="o">&gt;=</span> <span class="p">.</span><span class="err">15</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">639</span><span class="p">,</span> <span class="mi">280</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">BF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_PI.html">_PI</a> (QB64 function)</li>
+  <li><a href="SIN.html">SIN</a>, <a href="COS.html">COS</a></li>
+  <li><a href="ATN.html">ATN</a> (arctangent)</li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a></li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/TAN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:52 GMT -->
+</html>

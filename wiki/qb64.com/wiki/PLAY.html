@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PLAY by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PLAY-2.html" />
+<meta property="og:url" content="PLAY-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PLAY.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>PLAY</strong> is a statement that plays notes of sound through the sound card in QB64 using a command <a href="STRING.html">STRING</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>PLAY</strong> <em>commandstring$</em></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The <em>commandstring</em> can be any literal or variable <a href="STRING.html">STRING</a> consisting of the following uppercase or lowercase commands:
+    <ul>
+      <li><strong>O</strong>n - Sets the current octave (from 0 to 6). Example: <strong>PLAY “O3”</strong></li>
+      <li><strong>&lt;</strong> - Down one octave (cannot be below zero). Example: <strong>PLAY “«“</strong> ‘goes down two octaves.</li>
+      <li><strong>&gt;</strong> - Up one octave (cannot be above 6). Example: <strong>PLAY “»“</strong> ‘ goes up two octaves.</li>
+      <li><strong>A</strong>, <strong>B</strong>, <strong>C</strong>, <strong>D</strong>, <strong>E</strong>, <strong>F</strong> or <strong>G</strong> are the notes in the current octave. Can use the following suffixes:
+        <ul>
+          <li><strong>+</strong> or <strong>#</strong> for a sharp note. Example: <strong>PLAY “C#”</strong></li>
+          <li><strong>-</strong> for a flat note. Example: <strong>PLAY “C-“</strong></li>
+        </ul>
+      </li>
+      <li><strong>N</strong>n - Plays a note n by number(n can be between 0 to 84 in the 7 octaves, where 0 is a rest). Example: <strong>PLAY “N42”</strong></li>
+      <li><strong>L</strong>n - Sets length of a note (n can be 1 to 64 where 1 is a whole note and 4 is a quarter of a note etc.). Example: <strong>PLAY “L4”</strong>
+        <ul>
+          <li><strong>MS</strong> - Each note plays 3/4 of length set by L (staccato)</li>
+          <li><strong>MN</strong> - Each note plays 7/8 of length set by L (normal)</li>
+          <li><strong>ML</strong> - Each note plays full length set by L (legato)</li>
+          <li><strong>P</strong>n - Pause in the duration of n quarternotes (n can be 1 to 64) corresponding to L, Example: <strong>PLAY “P32”</strong></li>
+          <li><strong>T</strong>n - Tempo sets number of L4 quarter notes per minute (n can be 32 to 255 where 120 is the default). Example: <strong>PLAY “T180”</strong></li>
+        </ul>
+      </li>
+      <li>** .**  - period after a note plays 1½ times the note length determined by L * T.</li>
+      <li><strong>..</strong>  - two periods plays 1-3/4 times the note length determined by L * T.</li>
+      <li><strong>,</strong>  - <strong>commas in QB64</strong> stop play advancement to allow more than one note to be played simultaneously. Example: <strong>PLAY “C,E,G,”</strong></li>
+      <li><strong>V</strong>n - Volume in <strong>QB64 only</strong> can be any volume from 0(none) to 100(full).  The default level is 50 when <strong>n</strong> is not specified.</li>
+      <li><strong>MF</strong> - Play music in the foreground (each note must be completed before another can start).</li>
+      <li><strong>MB</strong> - Play music in the background while program code execution continues (QB64 has no note buffer limits).</li>
+      <li><strong>X</strong> <strong>+</strong> <a href="VARPTR%24.html">VARPTR$</a>(string-expression) - executes a command string variable. <strong>MUST be used with variables!</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>MB will allow music to play while program code progresses. MF will wait for code to continue playing notes.</li>
+  <li>Command string values are not case sensitive and spacing is ignored. Use upper or lower case as desired.
+<strong>*NOTE: In QB64, PLAY may NOT delay program progress! Use <a href="_DELAY.html">_DELAY</a> and <a href="END.html">END</a> to allow music completion.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Plays a sound with the volume and note varying from 0 to 50. Maximum note can only be 84.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PLAY</span> <span class="s">"mll64"</span>
+<span class="n">DO</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">50</span>
+        <span class="n">a$</span> <span class="o">=</span> <span class="n">a$</span> <span class="o">+</span> <span class="s">"v"</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="s">"n"</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">NEXT</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">50</span> <span class="n">TO</span> <span class="mi">1</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">a$</span> <span class="o">=</span> <span class="n">a$</span> <span class="o">+</span> <span class="s">"v"</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="s">"n"</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">NEXT</span>
+    <span class="n">PLAY</span> <span class="n">a$</span>
+    <span class="n">a$</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span>
+<span class="n">PLAY</span> <span class="s">"v10l1c,l4egl2o5c,o4l4eg"</span> 
+
+</code></pre></div></div>
+
+<p>Plays “Frosty the snowman”. The lyric printing is not delayed by PLAY in QB64.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CLS</span> <span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Frosty the Snow Man"</span> 
+<span class="n">FOR</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">2</span>
+  <span class="n">PRINT</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Fros-ty the Snow man was a jolly happy soul,"</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Fros-ty the Snow man knew the sun was hot that day"</span>
+  <span class="n">PLAY</span> <span class="s">"t140o2p4g2e4.f8g4o3c2o2b8o3c8d4c4o2b4a8g2."</span>   <span class="c1">'MB removed to print song one line at a time</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"with a corn cob pipe and a button nose and two eyes made out of coal."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"so he said Let's run and we'll have some fun now before I melt away."</span>
+  <span class="n">PLAY</span> <span class="s">"o2b8o3c8d4c4o2b4a8a8g8o3c4o2e8e4g8a8g4f4e4f4g2."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Fros-ty the Snow Man is a fair-y tale, they say,"</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Down to the vil-lage, with a broom-stick in his hand,"</span>
+  <span class="n">PLAY</span> <span class="s">"g2e4.f8g4o3c2o2b8o3c8d4c4o2b4a8g2."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"He was made of snow but the chil-dren knew how he come to life one day."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"run-ning here and there all a-round the square, say-in' catch me if you can."</span>
+  <span class="n">PLAY</span> <span class="s">"o2b8o3c8d4c4o2b4a8a8g8o3c4o2e8e4g8a8g4f4e4d4c2."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"There must have been some magic in that old silk hat they found."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"He led them down the streets of town right to the traffic cop."</span>
+  <span class="n">PLAY</span> <span class="s">"c4a4a4o3c4c4o2b4a4g4e4f4a4g4f4e2."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"For when they placed it on his head he be-gan to dance a round."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"And he on-ly paused a moment when he heard him hol-ler Stop!"</span>
+  <span class="n">PLAY</span> <span class="s">"e8e8d4d4g4g4b4b4o3d4d8o2b8o3d4c4o2b4a4g4p4"</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Oh, Fros-ty the Snow Man was a-live as he could be,"</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"For, Fros-ty the Snow Man had to hur-ry on his way"</span>
+  <span class="n">PLAY</span> <span class="s">"g2g2e4.f8g4o3c2o2b8o3c8d4c4o2b4a8g8g2."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"and the chil-dren say he could laugh and play just the same as you and me."</span>
+  <span class="n">IF</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"but he waved good-bye say-in' Don't you cry, I'll be back a-gain some day."</span>
+  <span class="n">PLAY</span> <span class="s">"o2b8o3c8d4c4o2b4a8a8g8o3c4o2e8e4g8a8g4f4e4d4c2.p4"</span>
+<span class="n">NEXT</span> <span class="n">X</span>
+<span class="n">PRINT</span> <span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Thump-et-y thump thump, thump-et-y thump thump, look at Fros-ty go."</span>
+<span class="n">PLAY</span> <span class="s">"t180g8g8g4g4g4a8g8g4g4g4a4g4e4g4d1"</span>
+<span class="n">PRINT</span> <span class="s">"Thump-et-y thump thump, thump-et-y thump thump, ov-er the hills of snow."</span>
+<span class="n">PLAY</span> <span class="s">"t180g8g8g4g4g4a8g8g4g4g4g8g8g4a4b4o3c2c4p1"</span> 
+<span class="n">END</span>
+
+</code></pre></div></div>
+
+<p>Clicking on the grid enables various notes to be played simultaneously.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">grid</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">grid2</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">cur</span>
+<span class="n">CONST</span> <span class="n">maxx</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">CONST</span> <span class="n">maxy</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">_TITLE</span> <span class="s">"MusicGrid"</span>
+<span class="n">cleargrid</span>
+<span class="n">DO</span>
+    <span class="n">IF</span> <span class="n">TIMER</span> <span class="o">-</span> <span class="n">t#</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">cur</span> <span class="o">=</span> <span class="p">(</span><span class="n">cur</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">15</span><span class="p">:</span> <span class="n">t#</span> <span class="o">=</span> <span class="n">TIMER</span>
+    <span class="n">IF</span> <span class="n">cur</span> <span class="o">&lt;&gt;</span> <span class="n">oldcur</span> <span class="n">THEN</span>
+        <span class="n">figuregrid</span>
+        <span class="n">drawgrid</span>
+        <span class="n">playgrid</span>
+        <span class="n">oldcur</span> <span class="o">=</span> <span class="n">cur</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">domousestuff</span>
+    <span class="n">in$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">IF</span> <span class="n">in$</span> <span class="o">=</span> <span class="s">"C"</span> <span class="n">OR</span> <span class="n">in$</span> <span class="o">=</span> <span class="s">"c"</span> <span class="n">THEN</span> <span class="n">cleargrid</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">in$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+
+<span class="n">SUB</span> <span class="n">drawgrid</span>
+<span class="n">scale!</span> <span class="o">=</span> <span class="n">maxx</span> <span class="o">/</span> <span class="mi">16</span>
+<span class="n">scale2</span> <span class="o">=</span> <span class="n">maxx</span> <span class="o">\</span> <span class="mi">16</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">scale!</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">scale!</span>
+        <span class="n">c&amp;</span> <span class="o">=</span> <span class="n">_RGB32</span><span class="p">(</span><span class="n">grid2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">64</span> <span class="o">+</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">LINE</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">scale2</span><span class="p">,</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">scale2</span><span class="p">),</span> <span class="n">c&amp;</span><span class="p">,</span> <span class="n">BF</span>
+    <span class="n">NEXT</span> <span class="n">x</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">figuregrid</span>
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+        <span class="n">grid2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">NEXT</span> <span class="n">x</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">14</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">14</span>
+        <span class="n">IF</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">AND</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">x</span> <span class="n">THEN</span>
+            <span class="n">grid2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">IF</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">grid2</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">IF</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">grid2</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">IF</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">grid2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">IF</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">grid2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">NEXT</span> <span class="n">x</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">domousestuff</span>
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span>
+    <span class="n">IF</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">_MOUSEX</span> <span class="o">\</span> <span class="p">(</span><span class="n">maxx</span> <span class="o">\</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">_MOUSEY</span> <span class="o">\</span> <span class="p">(</span><span class="n">maxy</span> <span class="o">\</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">playgrid</span>
+<span class="n">n$</span> <span class="o">=</span> <span class="s">"L16 "</span>
+<span class="c1">'scale$ = "O1CO1DO1EO1FO1GO1AO1BO2CO2DO2EO2FO2GO2AO2BO3CO3D"</span>
+<span class="n">scale$</span> <span class="o">=</span> <span class="s">"o1fo1go1ao2co2do2fo2go2ao3co3do3fo3go3ao4co4do4fo"</span>
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">15</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">IF</span> <span class="n">grid</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span>
+        <span class="n">note$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">scale$</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">15</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">n$</span> <span class="o">=</span> <span class="n">n$</span> <span class="o">+</span> <span class="n">note$</span> <span class="o">+</span> <span class="s">","</span>   <span class="c1">'comma plays 2 or more column notes simultaneously</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+<span class="n">n$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">n$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">n$</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">PLAY</span> <span class="n">n$</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">cleargrid</span>
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+        <span class="n">grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">NEXT</span> <span class="n">x</span>
+<span class="n">NEXT</span> <span class="n">y</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<p>Play strings starting with MB allow program code to run while music plays in background.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">' 2012, 2013 mennonite</span>
+<span class="c1">' license: creative commons cc0 1.0 universal</span>
+<span class="c1">' (public domain) http://creativecommons.org/publicdomain/zero/1.0/</span>
+
+<span class="n">SCREEN</span> <span class="mi">12</span> <span class="c1">' the following works in other screen modes, too</span>
+<span class="n">RANDOMIZE</span> <span class="n">TIMER</span>
+
+<span class="n">PLAY</span> <span class="s">"mb l4cf.l8el4fag.l8fl4gl8agl4f.l8fl4a&gt;cl2dl4dl4c.&lt;l8al4afg.l8fl4gl8agl4f.l8dl4dcl2f&gt;l4dc.&lt;l8al4afg.l8fl4g&gt;dc.&lt;l8al4a&gt;cl2dl4dc.&lt;l8al4afg.l8fl4gl8agl4f.l8dl4dcl1f"</span>
+
+<span class="n">DIM</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">415</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">289</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">185</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">108</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">70</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">48</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">48</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">32</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">20</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ccs</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span> <span class="n">ccs</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">FOR</span> <span class="n">extra</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">23</span>
+  <span class="n">FOR</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">9</span>
+    <span class="n">gcolor</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">14</span> <span class="o">-</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="n">_DELAY</span> <span class="p">.</span><span class="err">04</span>
+    <span class="n">CLS</span>
+    <span class="n">gscale</span> <span class="n">p</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">ccs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cl</span> <span class="o">=</span> <span class="n">ccs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">glocate</span> <span class="n">row</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"000000000000000000000000000000000000000000000000000000000000000000000"</span>
+    <span class="n">glocate</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"0x00x0xxxx0xxxx0xxxx0x0x000x00x0xxxx0x000x000x0x0xxxx0xxxx0xxxx000x00"</span>
+    <span class="n">glocate</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"0x00x0x00x0x00x0x00x0x0x000xx0x0x0000x000x000x0x0x0000x00x0x00x000x00"</span>
+    <span class="n">glocate</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"0xxxx0xxxx0xxxx0xxxx0x0x000x0xx0xxx00x0x0x000x0x0xxx00xxxx0xxxx000x00"</span>
+    <span class="n">glocate</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"0x00x0x00x0x0000x00000x0000x00x0x0000x0x0x0000x00x0000x00x0x0x0000000"</span>
+    <span class="n">glocate</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"0x00x0x00x0x0000x00000x0000x00x0xxxx0xx0xx0000x00xxxx0x00x0x00x000x00"</span>
+    <span class="n">glocate</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cl</span>
+    <span class="n">gprint</span> <span class="s">"000000000000000000000000000000000000000000000000000000000000000000000"</span>
+  <span class="n">NEXT</span> <span class="n">p</span>
+  <span class="n">SLEEP</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span> <span class="n">extra</span>
+
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">gscale</span> <span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="n">SHARED</span> <span class="n">gscalep</span>
+<span class="n">gscalep</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">gcolor</span> <span class="p">(</span><span class="n">c</span><span class="p">):</span>
+<span class="n">SHARED</span> <span class="n">gcolorp</span>
+<span class="n">gcolorp</span> <span class="o">=</span> <span class="n">c</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">gbackcolor</span> <span class="p">(</span><span class="n">c</span><span class="p">):</span>
+<span class="n">SHARED</span> <span class="n">gbackcolorp</span>
+<span class="n">gbackcolorp</span> <span class="o">=</span> <span class="n">c</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">glocate</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+<span class="n">SHARED</span> <span class="n">gposxp</span>
+<span class="n">SHARED</span> <span class="n">gposyp</span>
+<span class="n">gposyp</span> <span class="o">=</span> <span class="n">row</span>
+<span class="n">gposxp</span> <span class="o">=</span> <span class="n">column</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">gprint</span> <span class="p">(</span><span class="n">p$</span><span class="p">):</span>
+<span class="n">SHARED</span> <span class="n">gscalep</span>
+<span class="n">SHARED</span> <span class="n">gposxp</span><span class="p">,</span> <span class="n">gposyp</span>
+<span class="n">SHARED</span> <span class="n">gcolorp</span><span class="p">,</span> <span class="n">gbackcolorp</span>
+<span class="c1">' # means "use the foreground color here."</span>
+<span class="c1">' . means "use the background color here."</span>
+<span class="c1">' _ means "transparent - don't draw this block at all" (you can layer!)</span>
+<span class="c1">' 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f means "do color attribute 0 to 15."</span>
+<span class="c1">' any letter after f: "use the foreground color here."</span>
+<span class="n">IF</span> <span class="n">gscalep</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">gscalep</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">pcolorp</span> <span class="o">=</span> <span class="n">gcolorp</span>
+<span class="n">FOR</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">p$</span><span class="p">):</span>
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">p$</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">CASE</span> <span class="s">"#"</span><span class="p">,</span> <span class="s">"g"</span><span class="p">,</span> <span class="s">"h"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"j"</span><span class="p">,</span> <span class="s">"k"</span><span class="p">,</span> <span class="s">"l"</span><span class="p">,</span> <span class="s">"m"</span><span class="p">,</span> <span class="s">"n"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"q"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"t"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">,</span> <span class="s">"v"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"z"</span>
+      <span class="n">pcolorp</span> <span class="o">=</span> <span class="n">gcolorp</span>
+    <span class="n">CASE</span> <span class="s">"."</span>
+      <span class="n">pcolorp</span> <span class="o">=</span> <span class="n">gbackcolorp</span>
+    <span class="n">CASE</span> <span class="s">"_"</span>
+      <span class="n">pcolorp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">CASE</span> <span class="s">"0"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">,</span> <span class="s">"3"</span><span class="p">,</span> <span class="s">"4"</span><span class="p">,</span> <span class="s">"5"</span><span class="p">,</span> <span class="s">"6"</span><span class="p">,</span> <span class="s">"7"</span><span class="p">,</span> <span class="s">"8"</span><span class="p">,</span> <span class="s">"9"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"d"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"f"</span>
+      <span class="n">pcolorp</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="s">"0123456789abcdef"</span><span class="p">,</span> <span class="n">LCASE</span><span class="err">$</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">p$</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">IF</span> <span class="n">NOT</span> <span class="n">pcolorp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span>
+    <span class="n">IF</span> <span class="n">gscalep</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span>
+      <span class="n">LINE</span> <span class="p">((</span><span class="n">gposxp</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">gscalep</span><span class="p">,</span> <span class="p">(</span><span class="n">gposyp</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">gscalep</span><span class="p">)</span><span class="o">-</span><span class="n">STEP</span><span class="p">(</span><span class="n">gscalep</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gscalep</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">pcolorp</span><span class="p">,</span> <span class="n">BF</span>
+    <span class="n">ELSE</span><span class="p">:</span>
+      <span class="n">PSET</span> <span class="p">(</span><span class="n">gposxp</span><span class="p">,</span> <span class="n">gposyp</span><span class="p">),</span> <span class="n">pcolorp</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">glocate</span> <span class="n">gposyp</span><span class="p">,</span> <span class="n">gposxp</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NEXT</span> <span class="n">p</span>
+<span class="n">gposxp</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">glocate</span> <span class="n">gposyp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">'gposyp = gposyp + 1</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<p>This example uses <a href="PRINT.html">PRINT</a> to good effect as string spacing is ignored by PLAY:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">WIDTH</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">28</span>
+<span class="n">PRINT</span> <span class="o">&lt;</span><span class="n">nowiki</span><span class="o">&gt;</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   o3    l4         t         0120c    ml&lt;f1   ,a      1,  "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   &gt;c    1,        mnf        .e  8f   am  l&lt;   e1    ,g   "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   1,    &gt;c       1, mn       g.   f8  ga   8g   8m  l&lt;    "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   f2.,a2.,      &gt;c   2.      ,m  nf   .f  8a     ml&lt;f     "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   ,a,&gt;c,mn     &gt;cd2.,&lt;f2     .,d2     .,&lt;b        -2      "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   .m    lb    -,&gt;d,f,mn&gt;d    ml       &lt;c          1,      "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   &lt;a    1,   f1         ,m   n&gt;       &gt;c          .&lt;      "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   a8    af  ml           c1  ,&lt;       e1          ,g      "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"                                                           "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      1,m      n&gt;  g.f8ga8g8m  l&lt;                   f1     "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      ,d1,     &lt;b  -1           ,m                 n&gt;      "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      &gt;f .d    8d  c&lt;            f2               .,       "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      a2  .,   c2  .,&gt;f2.         ml      &lt;      b-        "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      ,&gt;   d,  f,  mn&gt;dml          &lt;c    1,&lt;    a1         "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      ,f    1, mn  &gt;&gt;               c.  &lt;a 8a  fm          "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      lc     2.,&lt;  e2                .,g2   .,mn           "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"      &gt;g      .f8  gml&lt;b-,&gt;d,         f,     mn            "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"                                                           "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"&gt;d      ml  &lt;&lt;f2.,a2.,         &gt;         c2.,m       n&gt;  c."</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">" &lt;a    8a   ml                &lt;e,        g,  &gt;c      ,m  n&gt;"</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"  cm  l&lt;    &lt;b               -2 .,       &gt;d   2.     ,f  2."</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"   ,mn&gt;     d2.ml&lt;          &lt;b   -,      &gt;d  ,f      ,m  n&gt;"</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"    dm      l&lt;&lt;f1,         a1,&gt;c1,mn     &gt;c.&lt;a       8a  fm"</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"    lc      1,            &lt;e1,g1,mn&gt;g    .f  8g      a8  g8"</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"    ml      &lt;&lt;           b-         1,   &gt;d   1,           "</span>
+<span class="n">x$</span> <span class="o">=</span> <span class="n">x$</span> <span class="o">+</span> <span class="s">"    f1      ,mn&gt;f.d8dc  l1           ml  f,    c,    &lt;a  ,f"</span><span class="o">&lt;/</span><span class="n">nowiki</span><span class="o">&gt;</span>
+<span class="n">PRINT</span> <span class="n">x$</span><span class="err">;</span>
+<span class="n">PLAY</span> <span class="n">x</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="SOUND.html">SOUND</a>, <a href="DRAW.html">DRAW</a></li>
+  <li><a href="_SNDRAW.html">_SNDRAW</a> (play frequency waves)</li>
+  <li><a href="_SNDOPEN.html">_SNDOPEN</a> (play sound files)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PLAY by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:05 GMT -->
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PDS-(7.1)-Procedures.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PDS-(7.1)-Procedures.html" />
+<meta property="og:url" content="PDS-(7.1)-Procedures.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PDS-(7.1)-Procedures.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>QB64 is created to be compatible with Quick Basic 4.5 only as it was the most popular version. The following sub-procedures have been created to do things that were available in PDS versions of Quick Basic 7.0 and 7.1:</p>
+
+<h2 id="currency">CURRENCY</h2>
+
+<h3 id="mkc">MKC$</h3>
+
+<p>PDS could use the CURRENCY variable type and had the MKC$ function to convert those values to <strong>8 byte</strong> <a href="ASCII.html">ASCII</a> string values. QB64 can convert <a href="_FLOAT.html">_FLOAT</a> currency amounts to strings using <a href="_MK%24.html">_MK$</a> with <a href="_INTEGER64.html">_INTEGER64</a> values:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">DIM</span> <span class="n">value</span> <span class="n">AS</span> <span class="n">_FLOAT</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mf">12345678901234.6789</span> <span class="c1">'    any currency value with up to 4 decimal point places</span>
+
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">MKC</span><span class="err">$</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">"]"</span> <span class="c1">' show ASCII string value</span>
+
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">MKC</span><span class="err">$</span> <span class="p">(</span><span class="n">CurrVal</span> <span class="n">AS</span> <span class="n">_FLOAT</span><span class="p">)</span> <span class="c1">'converts currency amount to PDS or VB currency string</span>
+<span class="n">DIM</span> <span class="n">CVal</span> <span class="n">AS</span> <span class="n">_INTEGER64</span>
+<span class="n">CVal</span> <span class="o">=</span> <span class="n">CurrVal</span> <span class="o">*</span> <span class="mi">10000</span> <span class="c1">'        multiply float value by 10 thousand</span>
+<span class="n">MKC</span> <span class="o">=</span> <span class="n">_MK$</span><span class="p">(</span><span class="n">_INTEGER64</span><span class="p">,</span> <span class="n">CVal</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The <a href="_FLOAT.html">_FLOAT</a> currency amount must be multiplied by 10000 before it is converted to the <a href="ASCII.html">ASCII</a> string value.</p>
+</blockquote>
+
+<h3 id="cvc">CVC</h3>
+
+<p>PDS also had the CVC function to convert MKC$ currency string values back to currency amounts. QB64 can use <a href="_CV.html">_CV</a> with <a href="_INTEGER64.html">_INTEGER64</a> to convert those <strong>8 byte</strong> values back to <a href="_FLOAT.html">_FLOAT</a> currency values. The procedure gets the currency string from a file:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">DIM</span> <span class="n">currency</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">8</span>
+<span class="n">OPEN</span> <span class="s">"Currency.bin"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">'binary file with MKC$ values created by PDS or VB</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">currency</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">currency</span> <span class="o">+</span> <span class="s">"]"</span> <span class="c1">'show ASCII string value from file</span>
+
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">CVC</span><span class="p">##(</span><span class="n">currency</span><span class="p">))</span>
+
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">CVC</span><span class="p">##</span> <span class="p">(</span><span class="n">CurrStr</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span> <span class="c1">'converts currency string to a _FLOAT currency amount</span>
+<span class="n">DIM</span> <span class="n">CV</span> <span class="n">AS</span> <span class="n">_INTEGER64</span>
+<span class="n">CV</span> <span class="o">=</span> <span class="n">_CV</span><span class="p">(</span><span class="n">_INTEGER64</span><span class="p">,</span> <span class="n">CurrStr</span><span class="p">)</span>
+<span class="n">CVC</span> <span class="o">=</span> <span class="n">CV</span> <span class="o">/</span> <span class="mi">10000</span> <span class="c1">'                   divide by 10 thousand</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The <a href="_FLOAT.html">_FLOAT</a> currency amount must be divided by 10000 to create up to 4 decimal point places.</p>
+</blockquote>
+
+<h3 id="put">PUT</h3>
+
+<p>Currency values can be <a href="PUT.html">PUT</a> directly into <a href="BINARY.html">BINARY</a> or <a href="RANDOM.html">RANDOM</a> files using an <a href="_INTEGER64.html">_INTEGER64</a> variable value.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">curr</span> <span class="n">AS</span> <span class="n">_INTEGER64</span><span class="p">,</span> <span class="n">currency</span> <span class="n">AS</span> <span class="n">_FLOAT</span>
+
+<span class="n">currency</span> <span class="o">=</span> <span class="mf">9876.543</span>
+<span class="n">curr</span> <span class="o">=</span> <span class="n">currency</span> <span class="o">*</span> <span class="mi">10000</span> <span class="c1">' multiply currency value by 10000</span>
+
+<span class="n">OPEN</span> <span class="s">"currency.bin"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">' a binary file to hold PDS currency values</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">curr</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<h3 id="get">GET</h3>
+
+<p>When currency values are <a href="PUT.html">PUT</a> directly into a <a href="BINARY.html">BINARY</a> or <a href="RANDOM.html">RANDOM</a> file, <a href="_INTEGER64.html">_INTEGER64</a> can <a href="GET.html">GET</a> them directly. Then divide by 10 ^ 4:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">curr</span> <span class="n">AS</span> <span class="n">_INTEGER64</span><span class="p">,</span> <span class="n">currency</span> <span class="n">AS</span> <span class="n">_FLOAT</span>
+<span class="n">OPEN</span> <span class="s">"currency.bin"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">' any binary file holding PDS currency values</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">curr</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">currency</span> <span class="o">=</span> <span class="n">curr</span> <span class="o">/</span> <span class="mi">10000</span> <span class="c1">' use any floating decimal point type within currency range</span>
+
+<span class="n">PRINT</span> <span class="n">currency</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The currency value can be any <a href="SINGLE.html">SINGLE</a>, <a href="DOUBLE.html">DOUBLE</a> or <a href="_FLOAT.html">_FLOAT</a> floating decimal point value that will hold the range of values.</p>
+</blockquote>
+
+<h2 id="dir">DIR$</h2>
+
+<p><em>Not to be confused with QB64’s <a href="_DIR%24.html">_DIR$</a> function.</em></p>
+
+<p>This PDS(7.1) <strong>derived DIR$ function</strong> returns a filename or a list when more than one exist. The file spec can use a path and/or wildcards.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">2</span>
+  <span class="n">PRINT</span>
+  <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Enter a file spec: "</span><span class="p">,</span> <span class="n">spec$</span>
+  <span class="n">file$</span> <span class="o">=</span> <span class="n">DIR</span><span class="err">$</span><span class="p">(</span><span class="n">spec$</span><span class="p">)</span> <span class="c1">'use a file spec ONCE to find the last file name listed</span>
+  <span class="n">PRINT</span> <span class="n">DIRCount</span><span class="err">%</span><span class="p">,</span> <span class="n">file$</span><span class="p">,</span> <span class="c1">'function can return the file count using SHARED variable</span>
+  <span class="n">IF</span> <span class="n">DIRCount</span><span class="err">%</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span>
+    <span class="n">DO</span>
+      <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">file$</span> <span class="o">=</span> <span class="n">DIR</span><span class="err">$</span><span class="p">(</span><span class="s">""</span><span class="p">)</span> <span class="c1">'use an empty string parameter to return a list of files!</span>
+      <span class="n">PRINT</span> <span class="n">file$</span><span class="p">,</span>
+    <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">LEN</span><span class="p">(</span><span class="n">file$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'file list ends with an empty string</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">NEXT</span>
+
+<span class="n">END</span>
+
+<span class="n">FUNCTION</span> <span class="n">DIR</span><span class="err">$</span> <span class="p">(</span><span class="n">spec$</span><span class="p">)</span>
+<span class="n">CONST</span> <span class="n">TmpFile</span><span class="err">$</span> <span class="o">=</span> <span class="s">"DIR$INF0.INF"</span><span class="p">,</span> <span class="n">ListMAX</span><span class="err">%</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">'change maximum to suit your needs</span>
+<span class="n">SHARED</span> <span class="o">**</span><span class="n">DIRCount</span><span class="err">%</span> <span class="c1">'returns file count if desired. MAY conflict with user's existing code**</span>
+<span class="n">STATIC</span> <span class="n">Ready</span><span class="err">%</span><span class="p">,</span> <span class="n">Index</span><span class="err">%</span><span class="p">,</span> <span class="n">DirList</span><span class="err">$</span><span class="p">()</span>
+<span class="n">IF</span> <span class="n">NOT</span> <span class="n">Ready</span><span class="err">%</span> <span class="n">THEN</span> <span class="n">REDIM</span> <span class="n">DirList</span><span class="err">$</span><span class="p">(</span><span class="n">ListMAX</span><span class="err">%</span><span class="p">):</span> <span class="n">Ready</span><span class="err">%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'DIM array first use</span>
+<span class="n">IF</span> <span class="n">spec$</span> <span class="o">&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="c1">'get file names when a spec is given</span>
+  <span class="n">SHELL</span> <span class="n">_HIDE</span> <span class="s">"DIR "</span> <span class="o">+</span> <span class="n">spec$</span> <span class="o">+</span> <span class="s">" /b &gt; "</span> <span class="o">+</span> <span class="n">TmpFile</span><span class="err">$</span>
+  <span class="n">Index</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">DirList</span><span class="err">$</span><span class="p">(</span><span class="n">Index</span><span class="err">%</span><span class="p">)</span> <span class="o">=</span> <span class="s">""</span><span class="p">:</span> <span class="n">ff%</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+  <span class="n">OPEN</span> <span class="n">TmpFile</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">APPEND</span> <span class="n">AS</span> <span class="p">#</span><span class="n">ff%</span>
+  <span class="n">size&amp;</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="n">ff%</span><span class="p">)</span>
+  <span class="n">CLOSE</span> <span class="p">#</span><span class="n">ff%</span>
+  <span class="n">IF</span> <span class="n">size&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">KILL</span> <span class="n">TmpFile</span><span class="err">$</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+  <span class="n">OPEN</span> <span class="n">TmpFile</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="n">ff%</span>
+  <span class="n">DO</span> <span class="n">WHILE</span> <span class="n">NOT</span> <span class="n">EOF</span><span class="p">(</span><span class="n">ff%</span><span class="p">)</span> <span class="n">AND</span> <span class="n">Index</span><span class="err">%</span> <span class="o">&lt;</span> <span class="n">ListMAX</span><span class="err">%</span>
+    <span class="n">Index</span><span class="err">%</span> <span class="o">=</span> <span class="n">Index</span><span class="err">%</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="n">ff%</span><span class="p">,</span> <span class="n">DirList</span><span class="err">$</span><span class="p">(</span><span class="n">Index</span><span class="err">%</span><span class="p">)</span>
+  <span class="n">LOOP</span>
+  <span class="n">DIRCount</span><span class="err">%</span> <span class="o">=</span> <span class="n">Index</span><span class="err">%</span> <span class="c1">'SHARED variable can return the file count</span>
+  <span class="n">CLOSE</span> <span class="p">#</span><span class="n">ff%</span>
+  <span class="n">KILL</span> <span class="n">TmpFile</span><span class="err">$</span>
+<span class="n">ELSE</span> <span class="n">IF</span> <span class="n">Index</span><span class="err">%</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">Index</span><span class="err">%</span> <span class="o">=</span> <span class="n">Index</span><span class="err">%</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'no spec sends next file name</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">DIR</span><span class="err">$</span> <span class="o">=</span> <span class="n">DirList</span><span class="err">$</span><span class="p">(</span><span class="n">Index</span><span class="err">%</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<blockquote>
+  <p><em>Explanation:</em> The function will verify that a file exists (even if it is empty) by returning it’s name or it returns an empty string if no file exists. It can return a list of file names by using an empty string parameter(“”) after sending a wildcard spec to get the first file name. The number of file names found is returned by using the SHARED variable, <strong>DIRCount%</strong>. Unlike the PDS DIR$ function, <strong>it MUST use an empty string parameter until QB64 supports optional parameters!</strong> The function does NOT delete empty files.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="VB-Procedures.html">VB Procedures</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PDS-(7.1)-Procedures.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:52 GMT -->
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/LEN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="LEN-2.html" />
+<meta property="og:url" content="LEN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/LEN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="LEN.html">LEN</a> function returns the number of bytes used by a variable value and the number of characters in a <a href="STRING.html">STRING</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>length% = <a href="LEN.html">LEN</a>(literalTextOrVariable)</p>
+</blockquote>
+
+<ul>
+  <li>Literal or variable <a href="STRING.html">STRING</a> values return the number of string bytes which is the same as the number of string characters.</li>
+  <li>A numerical <em>variable</em> will return the number of bytes used by a numerical variable type.
+    <ul>
+      <li><a href="_BYTE.html">_BYTE</a> variable types return 1 byte.</li>
+      <li><a href="INTEGER.html">INTEGER</a> variable types return 2 bytes.</li>
+      <li><a href="SINGLE.html">SINGLE</a> and <a href="LONG.html">LONG</a> integer variable types return 4 bytes.</li>
+      <li><a href="DOUBLE.html">DOUBLE</a> and <a href="_INTEGER64.html">_INTEGER64</a> variable types return 8 bytes.</li>
+      <li><a href="_FLOAT.html">_FLOAT</a> variable types return 32 bytes.</li>
+      <li><a href="_OFFSET.html">_OFFSET</a> and <a href="_MEM.html">_MEM</a> variable types return varying byte sizes.</li>
+      <li><em>Note:</em> <a href="_BIT.html">_BIT</a> variable types and bit multiples <strong>cannot be measured in bytes</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>LEN cannot return lengths of literal numerical values and will create a “variable required” status error in the IDE.</strong></li>
+  <li><strong>LEN =</strong> can be used with a user defined <a href="TYPE.html">TYPE</a> variable to determine the number of bytes used in <a href="RANDOM.html">RANDOM</a> file records:
+    <blockquote>
+      <p><code class="language-plaintext highlighter-rouge">[OPEN](OPEN) file$ FOR [RANDOM](RANDOM) AS #n LEN = LEN(recordTypeVariable)</code>**</p>
+    </blockquote>
+    <ul>
+      <li>If a LEN = statement is not used, <a href="RANDOM.html">RANDOM</a> default record length is 128 or sequencial is 512 up to a maximum of 32767 bytes.</li>
+      <li><a href="BINARY.html">BINARY</a> OPEN statements will ignore LEN = statements. The byte size of a <a href="GET.html">GET</a> or <a href="PUT.html">PUT</a> is determined by the <a href="Variable-Types.html">Variable Types</a>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>With a string variable the byte size is the same as the number of characters.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LastName</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Williams"</span>
+<span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="n">LastName</span><span class="err">$</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 8 bytes
+
+</code></pre></div></div>
+
+<p>Testing <a href="INPUT.html">INPUT</a> for numerical <a href="STRING.html">STRING</a> entries from a user.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INPUT</span> <span class="s">"number: "</span><span class="p">,</span> <span class="n">num$</span>
+
+<span class="n">value$</span> <span class="o">=</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">VAL</span><span class="p">(</span><span class="n">num$</span><span class="p">)))</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">value$</span><span class="p">)</span>
+
+<span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="n">num$</span><span class="p">),</span> <span class="n">L</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> <a href="%26H.html">&amp;H</a>, <a href="%26O.html">&amp;O</a>, D and E will also be accepted as numerical type data in a <a href="VAL.html">VAL</a> conversion, but will add to the entry length.</p>
+</blockquote>
+
+<p>With numerical value types you MUST use a variable to find the inherent byte length when using LEN.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">I</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">PRINT</span> <span class="s">"INTEGER ="</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">I</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span>
+<span class="n">DIM</span> <span class="n">L</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">PRINT</span> <span class="s">"LONG ="</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span>
+<span class="n">DIM</span> <span class="n">I64</span> <span class="n">AS</span> <span class="n">_INTEGER64</span>
+<span class="n">PRINT</span> <span class="s">"_INTEGER64 ="</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">I64</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span>
+<span class="n">DIM</span> <span class="n">S</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+<span class="n">PRINT</span> <span class="s">"SINGLE ="</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span>
+<span class="n">DIM</span> <span class="n">D</span> <span class="n">AS</span> <span class="n">DOUBLE</span>
+<span class="n">PRINT</span> <span class="s">"DOUBLE ="</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span>
+<span class="n">DIM</span> <span class="n">F</span> <span class="n">AS</span> <span class="n">_FLOAT</span>
+<span class="n">PRINT</span> <span class="s">"_FLOAT ="</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="err">;</span> <span class="s">"bytes"</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+INTEGER = 2 bytes
+LONG = 4 bytes
+_INTEGER64 = 8 bytes
+SINGLE = 4 bytes
+DOUBLE = 8 bytes
+_FLOAT = 32 bytes
+
+</code></pre></div></div>
+
+<p>Opening a RANDOM file using LEN to calculate and LEN = to designate the file record size.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">variabletype</span>
+  <span class="n">x</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="c1">'       '2 bytes</span>
+  <span class="n">y</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">10</span><span class="c1">'  '10 bytes</span>
+  <span class="n">z</span> <span class="n">AS</span> <span class="n">LONG</span><span class="c1">'          '4 bytes</span>
+<span class="n">END</span> <span class="n">TYPE</span><span class="c1">'            '16 bytes total</span>
+<span class="n">DIM</span> <span class="n">record</span> <span class="n">AS</span> <span class="n">variabletype</span>
+<span class="n">DIM</span> <span class="n">newrec</span> <span class="n">AS</span> <span class="n">variabletype</span>
+
+<span class="n">file$</span> <span class="o">=</span> <span class="s">"testrand.inf"</span> <span class="c1">'&lt;&lt;&lt;&lt; filename may overwrite existing file</span>
+<span class="n">number%</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; record number to write cannot be zero</span>
+<span class="n">RecordLEN</span><span class="err">%</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">RecordLEN</span><span class="err">%;</span> <span class="s">"bytes"</span>
+<span class="n">record</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">record</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+<span class="n">record</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="n">PRINT</span> <span class="n">record</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">record</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">record</span><span class="p">.</span><span class="n">z</span>
+
+<span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">RecordLEN</span><span class="err">%</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">number%</span> <span class="p">,</span> <span class="n">record</span> <span class="c1">'change record position number to add records</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+<span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">RANDOM</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span> <span class="n">LEN</span> <span class="o">=</span> <span class="n">RecordLEN</span><span class="err">%</span>
+<span class="n">NumRecords</span><span class="err">%</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">\</span> <span class="n">RecordLEN</span><span class="err">%</span>
+<span class="n">PRINT</span> <span class="n">NumRecords</span><span class="err">%;</span> <span class="s">"records"</span>
+
+<span class="n">GET</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="n">NumRecords</span><span class="err">%</span> <span class="p">,</span> <span class="n">newrec</span> <span class="c1">'GET last record available</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">2</span>
+<span class="n">PRINT</span> <span class="n">newrec</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">newrec</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">newrec</span><span class="p">.</span><span class="n">z</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 16 bytes
+ 255        Hello worl       65535
+ 1 records
+ 255        Hello worl       65535
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The byte size of the record <a href="TYPE.html">TYPE</a> determines the <a href="LOF.html">LOF</a> byte size of the file and can determine the number of records.
+To read the last record <a href="GET.html">GET</a> the number of records. To add a record, use the number of records + 1 to <a href="PUT.html">PUT</a> new record data.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="LOF.html">LOF</a>, <a href="EOF.html">EOF</a></li>
+  <li><a href="AS.html">AS</a>, <a href="TYPE.html">TYPE</a></li>
+  <li><a href="RANDOM.html">RANDOM</a>, <a href="BINARY.html">BINARY</a></li>
+  <li><a href="Variable-Types.html">Variable Types</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/LEN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:30 GMT -->
+</html>

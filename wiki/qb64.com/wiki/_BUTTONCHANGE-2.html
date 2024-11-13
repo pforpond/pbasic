@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_BUTTONCHANGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_BUTTONCHANGE-2.html" />
+<meta property="og:url" content="_BUTTONCHANGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_BUTTONCHANGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_BUTTONCHANGE.html">_BUTTONCHANGE</a> function returns -1 or 1 when a specified button number on a controller device has been pressed or released.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>press% = <a href="_BUTTONCHANGE.html">_BUTTONCHANGE</a>(button_number%)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The <strong><a href="_DEVICEINPUT.html">_DEVICEINPUT</a> function should be read first to specify which device <a href="_BUTTONCHANGE.html">_BUTTONCHANGE</a> is intended to check.</strong></li>
+  <li>Values returned are -1 for a press and 1 when a button is released. No press or release event returns zero.</li>
+  <li>The button_number% must be a number which does not exceed the number of buttons found by the <a href="_LASTBUTTON.html">_LASTBUTTON</a> function.</li>
+  <li><strong>The number of <a href="_DEVICES.html">_DEVICES</a> must be read before using <a href="_DEVICE%24.html">_DEVICE$</a>, <a href="_DEVICEINPUT.html">_DEVICEINPUT</a> or <a href="_LASTBUTTON.html">_LASTBUTTON</a>.</strong></li>
+  <li><strong>Note:</strong> The center mouse button is button number 2. Center can also be read using  <a href="_MOUSEBUTTON.html">_MOUSEBUTTON</a>(3).</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Reading multiple controller device buttons, axis and wheels.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">_DEVICES</span>
+  <span class="n">PRINT</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">") "</span> <span class="o">+</span> <span class="n">_DEVICE$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Buttons:"</span><span class="err">;</span> <span class="n">_LASTBUTTON</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span> <span class="s">",Axis:"</span><span class="err">;</span> <span class="n">_LASTAXIS</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span> <span class="s">",Wheel:"</span><span class="err">;</span> <span class="n">_LASTWHEEL</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">NEXT</span>
+
+<span class="n">DO</span>
+  <span class="n">d&amp;</span> <span class="o">=</span> <span class="n">_DEVICEINPUT</span>
+  <span class="n">IF</span> <span class="n">d&amp;</span> <span class="n">THEN</span> <span class="c1">'             the device number cannot be zero!</span>
+    <span class="n">PRINT</span> <span class="s">"Found"</span><span class="err">;</span> <span class="n">d&amp;</span><span class="err">;</span>
+    <span class="n">FOR</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">_LASTBUTTON</span><span class="p">(</span><span class="n">d&amp;</span><span class="p">)</span>
+      <span class="n">PRINT</span> <span class="n">_BUTTONCHANGE</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="err">;</span> <span class="n">_BUTTON</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="err">;</span>
+    <span class="n">NEXT</span>
+    <span class="n">FOR</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">_LASTAXIS</span><span class="p">(</span><span class="n">d&amp;</span><span class="p">)</span>
+      <span class="n">PRINT</span> <span class="n">_AXIS</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="err">;</span>
+    <span class="n">NEXT</span>
+    <span class="n">FOR</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">_LASTWHEEL</span><span class="p">(</span><span class="n">d&amp;</span><span class="p">)</span>
+      <span class="n">PRINT</span> <span class="n">_WHEEL</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="err">;</span>
+    <span class="n">NEXT</span>
+    <span class="n">PRINT</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="c1">'escape key exit</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> When there is no device control to read, a <a href="FOR...html">FOR…NEXT</a> n = 1 TO 0 loop will not run thus avoiding a control function read error.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LASTWHEEL.html">_LASTWHEEL</a>, <a href="_LASTBUTTON.html">_LASTBUTTON</a>, <a href="_LASTAXIS.html">_LASTAXIS</a></li>
+  <li><a href="_AXIS.html">_AXIS</a>, <a href="_WHEEL.html">_WHEEL</a>, <a href="_BUTTON.html">_BUTTON</a></li>
+  <li><a href="_DEVICE%24.html">_DEVICE$</a>, <a href="_DEVICES.html">_DEVICES</a></li>
+  <li><a href="_MOUSEBUTTON.html">_MOUSEBUTTON</a></li>
+  <li><a href="Controller-Devices.html">Controller Devices</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_BUTTONCHANGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:30 GMT -->
+</html>

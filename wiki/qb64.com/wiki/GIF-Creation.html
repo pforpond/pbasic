@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/GIF-Creation by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="GIF-Creation-2.html" />
+<meta property="og:url" content="GIF-Creation-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/GIF-Creation.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>GIF File Creator</strong></p>
+
+<p>The following routine can be used with QBasic or QB64 to create a Graphic Information File image of a program screen.</p>
+
+<ul>
+  <li>Accommodates <a href="_NEWIMAGE.html">_NEWIMAGE</a> screen pages with up to 256 colors and image files loaded with <a href="_LOADIMAGE.html">_LOADIMAGE</a>.</li>
+  <li>The maximum screen coordinates are always one pixel LESS than the screen mode’s resolution! (SCREEN 13’s are 319 and 199)</li>
+  <li>The <a href="%24INCLUDE.html">$INCLUDE</a> text file can be created using Notepad and is REQUIRED when the program is compiled with QB64 ONLY!</li>
+</ul>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="c1">'*********************************** DEMO CODE **********************************</span>
+<span class="c1">'Save code as a BAS file! Includes the GIFcreate.BI and BM text files. Demo by CodeGuy</span>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">RANDOMIZE</span> <span class="n">TIMER</span>
+
+<span class="n">FOR</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">40</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">320</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">200</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">256</span>
+    <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span> <span class="n">c</span>
+    <span class="n">PAINT</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">256</span><span class="p">,</span> <span class="n">c</span>
+<span class="n">NEXT</span>
+
+<span class="n">MakeGIF</span> <span class="s">"GIFtemp.gif"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_WIDTH</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">_HEIGHT</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span>  <span class="c1">'use 319 and 199 in QBasic</span>
+<span class="c1">'Use the include file in QB64 only! Hard code the SUB in QBasic.</span>
+<span class="c1">'$INCLUDE: 'GIFcreate.BM' </span>
+
+<span class="c1">'************************************ END DEMO *********************************</span>
+
+</code></pre></div></div>
+
+<p><em>GIFcreate.BM text <a href="%24INCLUDE.html">$INCLUDE</a> file:</em></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'-----------------------------------------------------------------------------</span>
+<span class="c1">'             GIFcreate.BM Compression Routine v1.00 By Rich Geldreich 1992</span>
+<span class="c1">'             Converted into one SUB Library routine by Ted Weissgerber 2011   </span>
+<span class="c1">'-----------------------------------------------------------------------------</span>
+<span class="c1">'                   For 1 BPP, 4 BPP or 8 BPP images only!</span>
+<span class="c1">'file$       = save image output filename</span>
+<span class="c1">'XStart      = &lt;-left hand column of area to encode</span>
+<span class="c1">'YStart      = &lt;-upper row of area to encode</span>
+<span class="c1">'Xend        = &lt;-right hand column of area to encode</span>
+<span class="c1">'Yend        = &lt;-lowest row of area to encode                                       "</span>
+<span class="c1">'NumColors   = # of colors on screen: 2(Black &amp; White), 16(SCREEN 12), 256(SCREEN13)</span>
+<span class="c1">'</span>
+
+<span class="n">SUB</span> <span class="n">MakeGIF</span> <span class="p">(</span><span class="n">file$</span><span class="p">,</span> <span class="n">Xstart</span><span class="p">,</span> <span class="n">YStart</span><span class="p">,</span> <span class="n">Xend</span><span class="p">,</span> <span class="n">Yend</span><span class="p">,</span> <span class="n">NumColors</span><span class="p">)</span>
+<span class="n">CONST</span> <span class="k">True</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="k">False</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CONST</span> <span class="n">Table</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">7177</span>   <span class="c1">'hash table's size - must be a prime number!</span>
+
+<span class="n">DIM</span> <span class="n">Prefix</span><span class="p">(</span><span class="n">Table</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Suffix</span><span class="p">(</span><span class="n">Table</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Code</span><span class="p">(</span><span class="n">Table</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">Shift</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">7</span><span class="p">:</span> <span class="n">Shift</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">i</span><span class="p">:</span> <span class="n">NEXT</span> <span class="c1">'create exponent array for speed.</span>
+
+<span class="n">PWidth</span><span class="err">%</span> <span class="o">=</span> <span class="n">ABS</span><span class="p">(</span><span class="n">Xend</span> <span class="o">-</span> <span class="n">Xstart</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">PDepth</span><span class="err">%</span> <span class="o">=</span> <span class="n">ABS</span><span class="p">(</span><span class="n">Yend</span> <span class="o">-</span> <span class="n">Ystart</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1">'MinX, MinY, MaxX, MaxY are maximum and minimum image coordinates</span>
+<span class="n">IF</span> <span class="n">Xstart</span> <span class="o">&gt;</span> <span class="n">Xend</span> <span class="n">THEN</span> <span class="n">MaxX</span> <span class="o">=</span> <span class="n">Xstart</span><span class="p">:</span> <span class="n">MinX</span> <span class="o">=</span> <span class="n">Xend</span> <span class="n">ELSE</span> <span class="n">MaxX</span> <span class="o">=</span> <span class="n">Xend</span><span class="p">:</span> <span class="n">MinX</span> <span class="o">=</span> <span class="n">Xstart</span>
+<span class="n">IF</span> <span class="n">Ystart</span> <span class="o">&gt;</span> <span class="n">Xend</span> <span class="n">THEN</span> <span class="n">MaxY</span> <span class="o">=</span> <span class="n">Ystart</span><span class="p">:</span> <span class="n">MinY</span> <span class="o">=</span> <span class="n">Yend</span> <span class="n">ELSE</span> <span class="n">MaxY</span> <span class="o">=</span> <span class="n">Yend</span><span class="p">:</span> <span class="n">MinY</span> <span class="o">=</span> <span class="n">Ystart</span>
+
+<span class="c1">'Open GIF output file</span>
+<span class="n">GIF</span> <span class="o">=</span> <span class="n">FREEFILE</span> <span class="c1">'use next free file</span>
+<span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="n">GIF</span>
+
+<span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="s">"GIF87a"</span><span class="p">:</span> <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">B</span><span class="err">$</span>  <span class="c1">'Put GIF87a header at beginning of file</span>
+
+<span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">NumColors</span>       <span class="c1">'get color settings</span>
+  <span class="n">CASE</span> <span class="mi">2</span>            <span class="c1">'monochrome (B&amp;W) image</span>
+    <span class="n">BitsPixel</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1">'1 bit per pixel</span>
+    <span class="n">StartSize</span> <span class="o">=</span> <span class="mi">3</span>   <span class="c1">'first LZW code is 3 bits</span>
+    <span class="n">StartCode</span> <span class="o">=</span> <span class="mi">4</span>   <span class="c1">'first free code</span>
+    <span class="n">StartMax</span> <span class="o">=</span> <span class="mi">8</span>    <span class="c1">'maximum code in 3 bits</span>
+  <span class="n">CASE</span> <span class="mi">16</span>           <span class="c1">'16 colors images SCREENS 7, 8, 9, 12, 13</span>
+    <span class="n">BitsPixel</span> <span class="o">=</span> <span class="mi">4</span>   <span class="c1">'4 bits per pixel</span>
+    <span class="n">StartSize</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1">'first LZW code is 5 bits</span>
+    <span class="n">StartCode</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1">'first free code</span>
+    <span class="n">StartMax</span> <span class="o">=</span> <span class="mi">32</span>   <span class="c1">'maximum code in 5 bits</span>
+  <span class="n">CASE</span> <span class="mi">256</span>   <span class="c1">'256 color images SCREEN 13 or _NEWIMAGE 256 </span>
+    <span class="n">BitsPixel</span> <span class="o">=</span> <span class="mi">8</span>   <span class="c1">'8 bits per pixel</span>
+    <span class="n">StartSize</span> <span class="o">=</span> <span class="mi">9</span>   <span class="c1">'first LZW code is 9 bits</span>
+    <span class="n">StartCode</span> <span class="o">=</span> <span class="mi">256</span> <span class="c1">'first free code</span>
+    <span class="n">StartMax</span> <span class="o">=</span> <span class="mi">512</span>  <span class="c1">'maximum code in 9 bits</span>
+<span class="n">END</span> <span class="n">SELECT</span>
+
+<span class="c1">'ColorBits = 2      'for EGA</span>
+<span class="n">ColorBits</span> <span class="o">=</span> <span class="mi">6</span>       <span class="c1">'VGA monitors ONLY </span>
+
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">PWidth</span><span class="err">%</span> <span class="c1">'put screen's dimensions</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">PDepth</span><span class="err">%</span>
+
+<span class="n">CP</span> <span class="o">=</span> <span class="mi">128</span> <span class="o">+</span> <span class="p">(</span><span class="n">ColorBits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="p">(</span><span class="n">BitsPixel</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">'pack colorbits and bits per pixel</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">CP</span>
+
+<span class="n">Zero</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>     <span class="c1">'PUT a zero into the GIF file</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">Zero</span><span class="err">$</span>
+
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C7</span><span class="p">,</span> <span class="mi">0</span>                <span class="c1">'start read at color 0</span>
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">NumColors</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1">'Get the RGB palette from the screen and put into file</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">65280</span><span class="p">)</span> <span class="o">\</span> <span class="mi">16128</span> <span class="c1">'C = R * 4.0476190(for 0-255)</span>
+  <span class="n">G</span> <span class="o">=</span> <span class="p">(</span><span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">65280</span><span class="p">)</span> <span class="o">\</span> <span class="mi">16128</span>
+  <span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">65280</span><span class="p">)</span> <span class="o">\</span> <span class="mi">16128</span>
+  <span class="n">red$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">R</span><span class="p">):</span> <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">red$</span>
+  <span class="n">grn$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">G</span><span class="p">):</span> <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">grn$</span>
+  <span class="n">blu$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">B</span><span class="p">):</span> <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">blu$</span>
+<span class="n">NEXT</span>
+         <span class="c1">'write out an image descriptor</span>
+<span class="n">sep$</span> <span class="o">=</span> <span class="s">","</span>               <span class="c1">'image separator</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">sep$</span>         <span class="c1">'write it</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">Minx</span>         <span class="c1">'image start locations</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">MinY</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">PWidth</span><span class="err">%</span>      <span class="c1">'store them into the file</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">PDepth</span><span class="err">%</span>
+<span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">BitsPixel</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">'# bits per pixel in the image</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">A</span><span class="err">$</span>
+<span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">StartSize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">'store the LZW minimum code size</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">A</span><span class="err">$</span>
+
+<span class="n">CurrentBit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="kt">Char</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1">'Initialize the vars needed by PutCode</span>
+
+<span class="n">MaxCode</span> <span class="o">=</span> <span class="n">StartMax</span>          <span class="c1">'the current maximum code size</span>
+<span class="n">CodeSize</span> <span class="o">=</span> <span class="n">StartSize</span>        <span class="c1">'the current code size</span>
+<span class="n">ClearCode</span> <span class="o">=</span> <span class="n">StartCode</span>       <span class="c1">'ClearCode &amp; EOF code are the</span>
+<span class="n">EOFCode</span> <span class="o">=</span> <span class="n">StartCode</span> <span class="o">+</span> <span class="mi">1</span>     <span class="c1">'first two entries</span>
+<span class="n">StartCode</span> <span class="o">=</span> <span class="n">StartCode</span> <span class="o">+</span> <span class="mi">2</span>   <span class="c1">'first free code that can be used</span>
+<span class="n">NextCode</span> <span class="o">=</span> <span class="n">StartCode</span>        <span class="c1">'the current code</span>
+
+<span class="n">OutBuffer</span><span class="err">$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>    <span class="c1">'output buffer; for speedy disk writes</span>
+<span class="n">Buff</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">SADD</span><span class="p">(</span><span class="n">OutBuffer</span><span class="err">$</span><span class="p">)</span>                  <span class="c1">'find address of buffer</span>
+<span class="n">Buff</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">Buff</span><span class="o">&amp;</span> <span class="o">-</span> <span class="mi">65536</span> <span class="o">*</span> <span class="p">(</span><span class="n">Buff</span><span class="o">&amp;</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Oseg</span> <span class="o">=</span> <span class="n">VARSEG</span><span class="p">(</span><span class="n">OutBuffer</span><span class="err">$</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">Buff</span><span class="o">&amp;</span> <span class="o">\</span> <span class="mi">16</span><span class="p">)</span>  <span class="c1">'get segment + offset &gt;&gt; 4</span>
+<span class="n">OAddress</span> <span class="o">=</span> <span class="n">Buff</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="mi">15</span>                   <span class="c1">'get address into segment</span>
+<span class="n">OEndAddress</span> <span class="o">=</span> <span class="n">OAddress</span> <span class="o">+</span> <span class="mi">5000</span>             <span class="c1">'end of disk buffer</span>
+<span class="n">OStartAddress</span> <span class="o">=</span> <span class="n">OAddress</span>                  <span class="c1">'current location in disk buffer</span>
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="n">Oseg</span>
+
+<span class="n">GOSUB</span> <span class="n">ClearTree</span>            <span class="c1">'clear the tree &amp; output a</span>
+<span class="n">PC</span> <span class="o">=</span> <span class="n">ClearCode</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutCode</span>          <span class="c1">'clear code</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Xstart</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">YStart</span>     <span class="c1">'X &amp; Y have the current pixel</span>
+<span class="n">GOSUB</span> <span class="n">GetByte</span><span class="p">:</span> <span class="n">Prefix</span> <span class="o">=</span> <span class="n">GB</span>           <span class="c1">'the first pixel is a special case</span>
+<span class="n">Done</span> <span class="o">=</span> <span class="k">False</span>               <span class="c1">'True when image is complete</span>
+
+<span class="n">DO</span> <span class="c1">'while there are more pixels to encode</span>
+  <span class="n">DO</span> <span class="c1">'until we have a new string to put into the table</span>
+    <span class="n">IF</span> <span class="n">Done</span> <span class="n">THEN</span> <span class="c1">'write out the last pixel, clear the disk buffer</span>
+<span class="c1">'           'and fix up the last block so its count is correct</span>
+
+      <span class="n">PC</span> <span class="o">=</span> <span class="n">Prefix</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutCode</span>      <span class="c1">'write last pixel</span>
+      <span class="n">PC</span> <span class="o">=</span> <span class="n">EOFCode</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutCode</span>     <span class="c1">'send EOF code</span>
+
+      <span class="n">IF</span> <span class="n">CurrentBit</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutCode</span>    <span class="c1">'flush out the last code...</span>
+      <span class="n">PB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutByte</span>
+      <span class="n">OutBuffer</span><span class="err">$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">OutBuffer</span><span class="err">$</span><span class="p">,</span> <span class="n">OAddress</span> <span class="o">-</span> <span class="n">OStartAddress</span><span class="p">)</span>
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">OutBuffer</span><span class="err">$</span>
+      <span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="s">";"</span> <span class="o">+</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H1A</span><span class="p">)</span>          <span class="c1">'the 8 EOF chars is not standard,</span>
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">A</span><span class="err">$</span>
+      <span class="n">A</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">BlockLength</span><span class="p">)</span>         <span class="c1">'correct the last block's count</span>
+      <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="n">LastLoc</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">A</span><span class="err">$</span>
+      <span class="n">CLOSE</span> <span class="p">#</span><span class="n">GIF</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">SUB</span>          <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; End of procedure     </span>
+    <span class="n">ELSE</span>     <span class="c1">'get a pixel from the screen and find the new string in table</span>
+      <span class="n">GOSUB</span> <span class="n">GetByte</span><span class="p">:</span> <span class="n">Suffix</span> <span class="o">=</span> <span class="n">GB</span>
+      <span class="n">GOSUB</span> <span class="n">Hash</span>                                <span class="c1">'is it in hash table?</span>
+      <span class="n">IF</span> <span class="n">Found</span> <span class="o">=</span> <span class="k">True</span> <span class="n">THEN</span> <span class="n">Prefix</span> <span class="o">=</span> <span class="n">Code</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="c1">'replace prefix:suffix string with code in table</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">Found</span>             <span class="c1">'don't stop unless we find a new string</span>
+
+  <span class="n">PC</span> <span class="o">=</span> <span class="n">Prefix</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutCode</span>               <span class="c1">'output the prefix to the file</span>
+  <span class="n">Prefix</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="o">=</span> <span class="n">Prefix</span>       <span class="c1">'put the new string in the table</span>
+  <span class="n">Suffix</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="o">=</span> <span class="n">Suffix</span>
+  <span class="n">Code</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="o">=</span> <span class="n">NextCode</span>       <span class="c1">'we've got to keep track of code!</span>
+
+  <span class="n">Prefix</span> <span class="o">=</span> <span class="n">Suffix</span> <span class="c1">'Prefix = the last pixel pulled from the screen</span>
+
+  <span class="n">NextCode</span> <span class="o">=</span> <span class="n">NextCode</span> <span class="o">+</span> <span class="mi">1</span>          <span class="c1">'get ready for the next code</span>
+  <span class="n">IF</span> <span class="n">NextCode</span> <span class="o">=</span> <span class="n">MaxCode</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">THEN</span>   <span class="c1">'increase the code size</span>
+    <span class="n">MaxCode</span> <span class="o">=</span> <span class="n">MaxCode</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="c1">'Note: The GIF89a spec mentions something about a deferred clear code</span>
+    <span class="n">IF</span> <span class="n">CodeSize</span> <span class="o">=</span> <span class="mi">12</span> <span class="n">THEN</span>     <span class="c1">'is the code size too big?</span>
+      <span class="n">PC</span> <span class="o">=</span> <span class="n">ClearCode</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutCode</span>      <span class="c1">'yup; clear the table and</span>
+      <span class="n">GOSUB</span> <span class="n">ClearTree</span>         <span class="c1">'start over</span>
+      <span class="n">NextCode</span> <span class="o">=</span> <span class="n">StartCode</span>
+      <span class="n">CodeSize</span> <span class="o">=</span> <span class="n">StartSize</span>
+      <span class="n">MaxCode</span> <span class="o">=</span> <span class="n">StartMax</span>
+    <span class="n">ELSE</span> <span class="n">CodeSize</span> <span class="o">=</span> <span class="n">CodeSize</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">'increase code size if not too high (not &gt; 12)</span>
+    <span class="n">END</span> <span class="n">IF</span> 
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>         <span class="c1">'while we have more pixels</span>
+
+<span class="c1">'                              'GOSUB ROUTINES</span>
+<span class="n">ClearTree</span><span class="p">:</span>
+<span class="n">FOR</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">Table</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'clears the hashing table</span>
+    <span class="n">Prefix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'-1 = invalid entry</span>
+    <span class="n">Suffix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">Code</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">NEXT</span>
+<span class="n">RETURN</span>
+
+<span class="n">Hash</span><span class="p">:</span>   <span class="c1">'hash the prefix &amp; suffix(there are also many ways to do this...)</span>
+<span class="n">Index</span> <span class="o">=</span> <span class="p">((</span><span class="n">Prefix</span> <span class="o">*</span> <span class="mi">256</span><span class="o">&amp;</span><span class="p">)</span> <span class="n">XOR</span> <span class="n">Suffix</span><span class="p">)</span> <span class="n">MOD</span> <span class="n">Table</span><span class="p">.</span><span class="n">size</span>
+
+<span class="c1">'        Note: the table size(7177 in this case) must be a prime number</span>
+<span class="c1">'    Calculate an offset just in case we don't find what we want first try...</span>
+<span class="n">IF</span> <span class="n">Index</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>          <span class="c1">'cannot have Table.Size 0!</span>
+  <span class="n">Offset</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ELSE</span>
+  <span class="n">Offset</span> <span class="o">=</span> <span class="n">Table</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">Index</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">DO</span>      <span class="c1">'loop until we find an empty entry or find what we're lookin for</span>
+  <span class="n">IF</span> <span class="n">Code</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="c1">'is this entry blank?</span>
+    <span class="n">Found</span> <span class="o">=</span> <span class="k">False</span> <span class="c1">' didn't find the string</span>
+    <span class="n">RETURN</span>
+  <span class="n">ELSEIF</span> <span class="n">Prefix</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="o">=</span> <span class="n">Prefix</span> <span class="n">AND</span> <span class="n">Suffix</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="o">=</span> <span class="n">Suffix</span> <span class="n">THEN</span>        
+    <span class="n">Found</span> <span class="o">=</span> <span class="k">True</span>  <span class="c1">'found the string</span>
+    <span class="n">RETURN</span>
+  <span class="n">ELSE</span> <span class="c1">'didn't find anything, must retry - this slows hashing down.</span>
+    <span class="n">Index</span> <span class="o">=</span> <span class="n">Index</span> <span class="o">-</span> <span class="n">Offset</span>
+    <span class="n">IF</span> <span class="n">Index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="c1">'too far down the table? wrap back the index to end of table</span>
+      <span class="n">Index</span> <span class="o">=</span> <span class="n">Index</span> <span class="o">+</span> <span class="n">Table</span><span class="p">.</span><span class="n">size</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+
+<span class="n">PutByte</span><span class="p">:</span>           <span class="c1">'Puts a byte into the GIF file &amp; also takes care of each block.</span>
+<span class="n">BlockLength</span> <span class="o">=</span> <span class="n">BlockLength</span> <span class="o">-</span> <span class="mi">1</span>             <span class="c1">'are we at the end of a block?</span>
+<span class="n">IF</span> <span class="n">BlockLength</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">THEN</span>                  <span class="c1">'end of block</span>
+  <span class="n">BlockLength</span> <span class="o">=</span> <span class="mi">255</span>                       <span class="c1">'block length is now 255</span>
+  <span class="n">LastLoc</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">LOC</span><span class="p">(</span><span class="n">GIF</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">OAddress</span> <span class="o">-</span> <span class="n">OStartAddress</span><span class="p">)</span>  <span class="c1">'remember the position</span>
+  <span class="n">BW</span> <span class="o">=</span> <span class="mi">255</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">BufferWrite</span>             <span class="c1">'for later fixing</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">BW</span> <span class="o">=</span> <span class="n">PB</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">BufferWrite</span> 
+<span class="n">RETURN</span>
+
+<span class="n">BufferWrite</span><span class="p">:</span>                             <span class="c1">'Puts a byte into the buffer</span>
+<span class="n">IF</span> <span class="n">OAddress</span> <span class="o">=</span> <span class="n">OEndAddress</span> <span class="n">THEN</span>           <span class="c1">'are we at the end of the buffer?</span>
+    <span class="n">PUT</span> <span class="p">#</span><span class="n">GIF</span><span class="p">,</span> <span class="p">,</span> <span class="n">OutBuffer</span><span class="err">$</span>               <span class="c1">'write it out and</span>
+    <span class="n">OAddress</span> <span class="o">=</span> <span class="n">OStartAddress</span>             <span class="c1">'start all over</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">POKE</span> <span class="n">OAddress</span><span class="p">,</span> <span class="n">BW</span>                        <span class="c1">'put byte in buffer</span>
+<span class="n">OAddress</span> <span class="o">=</span> <span class="n">OAddress</span> <span class="o">+</span> <span class="mi">1</span>                  <span class="c1">'increment position</span>
+<span class="n">RETURN</span> 
+
+<span class="n">GetByte</span><span class="p">:</span>                 <span class="c1">'This routine gets one pixel from the display</span>
+<span class="n">GB</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>                         <span class="c1">'get the "byte"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">'increment X coordinate</span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">MaxX</span> <span class="n">THEN</span>                         <span class="c1">'are we too far?</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Minx</span>                             <span class="c1">'go back to start</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>                            <span class="c1">'increment Y coordinate</span>
+    <span class="n">IF</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">MaxY</span> <span class="n">THEN</span> <span class="n">Done</span> <span class="o">=</span> <span class="k">True</span>         <span class="c1">'flag if too far down</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">RETURN</span>
+
+<span class="n">PutCode</span><span class="p">:</span>                 <span class="c1">'Puts an LZW variable-bit code into the output file...</span>
+<span class="kt">Char</span><span class="o">&amp;</span> <span class="o">=</span> <span class="kt">Char</span><span class="o">&amp;</span> <span class="o">+</span> <span class="n">PC</span> <span class="o">*</span> <span class="n">Shift</span><span class="p">(</span><span class="n">CurrentBit</span><span class="p">)</span>   <span class="c1">'put the char were it belongs;</span>
+<span class="n">CurrentBit</span> <span class="o">=</span> <span class="n">CurrentBit</span> <span class="o">+</span> <span class="n">CodeSize</span>       <span class="c1">'shifting it to its proper place</span>
+<span class="n">DO</span> <span class="n">WHILE</span> <span class="n">CurrentBit</span> <span class="o">&gt;</span> <span class="mi">7</span>                  <span class="c1">'do we have a least one full byte?</span>
+  <span class="n">PB</span> <span class="o">=</span> <span class="kt">Char</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="mi">255</span><span class="p">:</span> <span class="n">GOSUB</span> <span class="n">PutByte</span>      <span class="c1">'mask it off and write it out</span>
+  <span class="kt">Char</span><span class="o">&amp;</span> <span class="o">=</span> <span class="kt">Char</span><span class="o">&amp;</span> <span class="o">\</span> <span class="mi">256</span>                    <span class="c1">'shift the bit buffer right 8 bits</span>
+  <span class="n">CurrentBit</span> <span class="o">=</span> <span class="n">CurrentBit</span> <span class="o">-</span> <span class="mi">8</span>            <span class="c1">'now we have 8 less bits</span>
+<span class="n">LOOP</span>                                     <span class="c1">'loop until we don't have a full byte</span>
+<span class="n">RETURN</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/GIF-Creation by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:56 GMT -->
+</html>

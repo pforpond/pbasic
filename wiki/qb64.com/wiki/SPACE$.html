@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SPACE$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SPACE%24-2.html" />
+<meta property="og:url" content="SPACE%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SPACE$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The SPACE$ function returns a STRING consisting of a number of space characters.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><em>result$</em> = <strong>SPACE$(count&amp;)</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>count&amp; is the number of space characters to repeat. Cannot use negative values!</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>Semicolons can be used to combine spaces with text <a href="STRING.html">STRING</a> or numerical values.</li>
+  <li><a href="Concatenation.html">Concatenation</a> using + can be used to combine <a href="STRING.html">STRING</a> text values only.</li>
+  <li>Spaces are often used to erase previous text PRINTs from the screen.</li>
+  <li>The function result can also be used to <a href="GET.html">GET</a> and <a href="PUT.html">PUT</a> a number of bytes as zero characters: bytes$ = SPACE$(numbytes)</li>
+  <li>Spaces can also be made using <a href="SPC.html">SPC</a>, <a href="CHR%24.html">CHR$</a>(32) or <a href="STRING%24.html">STRING$</a>(n%, 32).</li>
+</ul>
+
+<p><em>Differences between QB64 and QB 4.5:</em></p>
+
+<ul>
+  <li><strong>QB64</strong> can use <a href="LONG.html">LONG</a> values for count up to 2,147,483,647 while <strong>QB 4.5</strong> could only use <a href="INTEGER.html">INTEGER</a> values up to 32,767.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>How to space text in a <a href="PRINT.html">PRINT</a> statement using SPACE$ with string <a href="concatenation-2.html">concatenation</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FOR</span> <span class="n">count%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">3</span>
+    <span class="n">PRINT</span> <span class="s">"abc"</span> <span class="o">+</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span> <span class="n">count%</span> <span class="p">)</span> <span class="o">+</span> <span class="s">"def"</span>
+<span class="n">NEXT</span> <span class="n">count%</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+abcdef
+abc def
+abc  def
+abc   def
+
+</code></pre></div></div>
+
+<p>In <a href="SCREEN.html">SCREEN</a> 0 SPACE$ can be used to change the background color to make an American flag.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">USA</span> <span class="n">flag</span> <span class="n">centered</span> <span class="n">on</span> <span class="n">screen</span> <span class="n">with</span> <span class="n">thin</span> <span class="n">horizontal</span> <span class="n">red</span> <span class="o">&amp;</span> <span class="n">white</span> <span class="n">stripes</span>
+<span class="c1">' blue corner field with randomly twinkling stars</span>
+<span class="n">CLS</span>
+<span class="n">LOCATE</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">PRINT</span> <span class="s">"Press any key to stop twinkling"</span><span class="err">;</span>
+<span class="n">COLOR</span> <span class="p">,</span> <span class="mi">4</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">TO</span> <span class="mi">19</span>          <span class="c1">'13 red &amp; white stripes (x =5 to 21 for 15 stripes)</span>
+    <span class="n">IF</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">15</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">ELSE</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">COLOR</span> <span class="p">,</span> <span class="n">z</span>
+    <span class="n">LOCATE</span> <span class="n">x</span><span class="p">,</span> <span class="mi">15</span>
+    <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">x</span>
+<span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">TO</span> <span class="mi">11</span>          <span class="c1">'blue field in upper left quadrant (x = 5 to 13 to hold all 50 stars)</span>
+    <span class="n">COLOR</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span>            <span class="c1">'sits above 4th white stripe</span>
+    <span class="n">LOCATE</span> <span class="n">x</span><span class="p">,</span> <span class="mi">15</span>
+    <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">x</span>
+<span class="n">DO</span>
+    <span class="n">stop$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">TO</span> <span class="mi">10</span> <span class="n">STEP</span> <span class="mi">2</span>  <span class="c1">'39 stars staggered across blue field (50 stars if x = 5 to 12)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="mi">16</span>
+        <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">6</span>      <span class="c1">'5 rows of 6 stars</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+            <span class="n">IF</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">31</span> <span class="n">ELSE</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">15</span>
+            <span class="n">IF</span> <span class="n">stop$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="n">z</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">15</span>
+            <span class="n">LOCATE</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">4</span>
+            <span class="n">PRINT</span> <span class="s">"*"</span><span class="err">;</span>
+        <span class="n">NEXT</span> <span class="n">y</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="mi">18</span>
+        <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">5</span>      <span class="c1">'5 rows of 5 stars</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+            <span class="n">IF</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">31</span> <span class="n">ELSE</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">15</span>
+            <span class="n">IF</span> <span class="n">stop$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="n">z</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">15</span>
+            <span class="n">LOCATE</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">4</span>
+            <span class="n">PRINT</span> <span class="s">"*"</span><span class="err">;</span>
+        <span class="n">NEXT</span> <span class="n">y</span>
+    <span class="n">NEXT</span> <span class="n">x</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">6</span>          <span class="c1">'1 row of 6 stars</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+            <span class="n">IF</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">31</span> <span class="n">ELSE</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">15</span>
+        <span class="n">IF</span> <span class="n">stop$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">COLOR</span> <span class="n">z</span> <span class="n">ELSE</span> <span class="n">COLOR</span> <span class="mi">15</span>
+        <span class="n">LOCATE</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">4</span>
+        <span class="n">PRINT</span> <span class="s">"*"</span><span class="err">;</span>
+    <span class="n">NEXT</span> <span class="n">y</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">TIMER</span>
+    <span class="n">DO</span> <span class="n">WHILE</span> <span class="n">t</span> <span class="o">+</span> <span class="p">.</span><span class="err">2</span> <span class="err">&gt;=</span> <span class="n">TIMER</span><span class="p">:</span> <span class="n">LOOP</span>
+<span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">stop$</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">COLOR</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">END</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> In <a href="SCREEN.html">SCREEN</a> 0, the background color is only placed with the the printed text and spaces. <a href="CLS.html">CLS</a> can color the entire screen.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PRINT.html">PRINT</a>, <a href="PRINT-USING.html">PRINT USING</a></li>
+  <li><a href="STRING%24.html">STRING$</a>, <a href="CLS.html">CLS</a></li>
+  <li><a href="SPC.html">SPC</a>, <a href="TAB.html">TAB</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SPACE$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:17:05 GMT -->
+</html>

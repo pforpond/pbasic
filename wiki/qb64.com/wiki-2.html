@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:06:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="wiki-2.html" />
+<meta property="og:url" content="wiki-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="index.html">Home</a> • <a href="https://qb64.boards.net/">Forums</a> • <a href="news.html">News</a> • <a href="https://github.com/QB64Official/qb64">GitHub</a> • <a href="wiki-2.html">Wiki</a> • <a href="samples.html">Samples</a> • <a href="inform.html">InForm</a> • <a href="gx.html">GX</a> • <a href="qbjs.html">QBjs</a> • <a href="community.html">Community</a> • <a href="more.html">More…</a></p>
+
+<h2 id="original-qbasic-keywords">Original QBasic keywords:</h2>
+
+<p><strong>These QBasic keywords (with a few noted exceptions) will work in all versions of QB64.</strong></p>
+
+<h3 id="a">A</h3>
+
+<ul>
+  <li><a href="wiki/ABS.html">ABS</a> (function) converts any negative numerical value to a positive value.</li>
+  <li><a href="wiki/CALL-ABSOLUTE.html">CALL ABSOLUTE</a> (statement) is used to access computer interrupt registers.</li>
+  <li><a href="wiki/ACCESS.html">ACCESS</a> (file statement) sets the read and write access of a file when opened.</li>
+  <li><a href="wiki/ALIAS.html">ALIAS</a> (QB64 <a href="wiki/DECLARE-LIBRARY.html">DECLARE LIBRARY</a> statement) denotes the actual name of an imported <a href="wiki/FUNCTION.html">FUNCTION</a> or <a href="wiki/SUB.html">SUB</a> procedure.</li>
+  <li><a href="wiki/AND.html">AND</a> (logical operator) is used to compare two numerical values bitwise.</li>
+  <li><a href="wiki/AND-(boolean).html">AND (boolean)</a> conditional operator is used to include another evaluation in an <a href="wiki/IF...html">IF…THEN</a> or <a href="wiki/Boolean.html">Boolean</a> statement.</li>
+  <li><a href="wiki/APPEND.html">APPEND</a> (file mode) creates a new file or allows an existing file to have data added using <a href="wiki/WRITE-(file-statement).html">WRITE (file statement)</a> or <a href="wiki/PRINT-(file-statement).html">PRINT (file statement)</a></li>
+  <li><a href="wiki/AS.html">AS</a> is used to denote a variable type or file number.</li>
+  <li><a href="wiki/ASC.html">ASC</a> (function) returns the <a href="wiki/ASCII.html">ASCII</a> code number of a text <a href="wiki/STRING.html">STRING</a> character.</li>
+  <li><a href="wiki/ASC-(statement).html">ASC (statement)</a> (QB64 only) sets the code value of an <a href="wiki/ASCII.html">ASCII</a> text character at a designated <a href="wiki/STRING.html">STRING</a> position.</li>
+  <li><a href="wiki/ATN.html">ATN</a> (function) or arctangent returns the angle in radians of a numerical <a href="wiki/TAN.html">TAN</a> value.</li>
+</ul>
+
+<h3 id="b">B</h3>
+
+<ul>
+  <li><a href="wiki/BEEP.html">BEEP</a> (statement) creates an error sound of a fixed duration.</li>
+  <li><a href="wiki/BINARY.html">BINARY</a> (file mode) creates or opens an existing file for <a href="wiki/GET.html">GET</a> and <a href="wiki/PUT.html">PUT</a> byte-wise access.</li>
+  <li><a href="wiki/BLOAD.html">BLOAD</a> (statement) transfers the contents of a <a href="wiki/BINARY.html">BINARY</a> <a href="wiki/BSAVE.html">BSAVE</a> file to a specific <a href="wiki/Arrays.html">Arrays</a>.</li>
+  <li><a href="wiki/BSAVE.html">BSAVE</a> (statement) transfers the contents of an <a href="wiki/Arrays.html">Arrays</a> to a specified size <a href="wiki/BINARY.html">BINARY</a> file.</li>
+  <li><a href="wiki/BYVAL.html">BYVAL</a> (statement) assigns a numerical variable value by its value, not the name.</li>
+</ul>
+
+<h3 id="c">C</h3>
+
+<ul>
+  <li><a href="wiki/CALL.html">CALL</a> (statement) optional statement that sends the program to a <a href="wiki/SUB.html">SUB</a> procedure.  Requires parameters be enclosed in brackets(parenthesis).</li>
+  <li><a href="wiki/CALL-ABSOLUTE.html">CALL ABSOLUTE</a> (statement) is used to access computer interrupt registers.</li>
+  <li><a href="wiki/CASE.html">CASE</a> (<a href="wiki/SELECT-CASE.html">SELECT CASE</a> condition) designates specific conditions in a <a href="wiki/SELECT-CASE.html">SELECT CASE</a> statement block.</li>
+  <li><a href="wiki/CASE-ELSE.html">CASE ELSE</a> (<a href="wiki/SELECT-CASE.html">SELECT CASE</a> condition) designates an alternative condition to be evaluated in a <a href="wiki/SELECT-CASE.html">SELECT CASE</a> statement block.</li>
+  <li><a href="wiki/CASE-IS.html">CASE IS</a> (<a href="wiki/SELECT-CASE.html">SELECT CASE</a> condition) designates specific conditions in a <a href="wiki/SELECT-CASE.html">SELECT CASE</a> statement block.</li>
+  <li><a href="wiki/CDBL.html">CDBL</a> (function) returns the closest <a href="wiki/DOUBLE.html">DOUBLE</a> value of a number.</li>
+  <li><a href="wiki/CHAIN.html">CHAIN</a> (statement) sends a program to another specified program module or compiled program.</li>
+  <li><a href="wiki/CHDIR.html">CHDIR</a> (statement) changes the current program path for file access.</li>
+  <li><a href="wiki/CHR%24.html">CHR$</a> (function) returns a text <a href="wiki/STRING.html">STRING</a> character by the specified <a href="wiki/ASCII.html">ASCII</a> code number.</li>
+  <li><a href="wiki/CINT.html">CINT</a> (function) returns the closest <a href="wiki/INTEGER.html">INTEGER</a> value of a numerical value.</li>
+  <li><a href="wiki/CIRCLE.html">CIRCLE</a> (statement) creates a circle, ellipse or arc at a designated graphical coordinate position.</li>
+  <li><a href="wiki/CLEAR.html">CLEAR</a> (statement) sets all variable and array values to zero number values or empty <a href="wiki/STRING.html">STRING</a>s.</li>
+  <li><a href="wiki/CLNG.html">CLNG</a> (function) returns the closest <a href="wiki/LONG.html">LONG</a> value of a numerical value.</li>
+  <li><a href="wiki/CLOSE.html">CLOSE</a> (statement) closes specific file number(s) or all files when a number is not specified.</li>
+  <li><a href="wiki/CLS.html">CLS</a> (statement) clears a program <a href="wiki/SCREEN.html">SCREEN</a>, <a href="wiki/VIEW.html">VIEW</a> port or <a href="wiki/WINDOW.html">WINDOW</a>.</li>
+  <li><a href="wiki/COLOR.html">COLOR</a> (statement) sets the current text foreground and/or background color to be used.</li>
+  <li><a href="wiki/COMMAND%24.html">COMMAND$</a> (function) returns the command line arguments passed when a program is run.</li>
+  <li><a href="wiki/COMMON.html">COMMON</a> (statement) sets a variable name as shared by <a href="wiki/CHAIN.html">CHAIN</a>ed program modules.</li>
+  <li><a href="wiki/CONST.html">CONST</a> (statement) sets a variable name and its value as a constant value to be used by all procedures.</li>
+  <li><a href="wiki/COS.html">COS</a> (function) returns the cosine of a radian angle value.</li>
+  <li><a href="wiki/CSNG.html">CSNG</a> (function) returns the closest <a href="wiki/SINGLE.html">SINGLE</a> value of a numerical value.</li>
+  <li><a href="wiki/CSRLIN.html">CSRLIN</a> (function) returns the present <a href="wiki/PRINT.html">PRINT</a> cursor text row <a href="wiki/SCREEN.html">SCREEN</a> coordinate position.</li>
+  <li><a href="wiki/CVD.html">CVD</a> (function) returns the <a href="wiki/DOUBLE.html">DOUBLE</a> numerical value of an 8 byte <a href="wiki/MKD%24.html">MKD$</a> <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/CVDMBF.html">CVDMBF</a> (function) returns the <a href="wiki/DOUBLE.html">DOUBLE</a> numerical value of a <a href="wiki/MKDMBF%24.html">MKDMBF$</a> <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/CVI.html">CVI</a> (function) returns the <a href="wiki/INTEGER.html">INTEGER</a> numerical value of a 2 byte <a href="wiki/MKI%24.html">MKI$</a> <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/CVL.html">CVL</a> (function) returns the <a href="wiki/LONG.html">LONG</a> numerical value of a 4 byte <a href="wiki/MKL%24.html">MKL$</a> <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/CVS.html">CVS</a> (function) returns the <a href="wiki/SINGLE.html">SINGLE</a> numerical value of a 4 byte <a href="wiki/MKS%24.html">MKS$</a> <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/CVSMBF.html">CVSMBF</a> (function) returns the <a href="wiki/SINGLE.html">SINGLE</a> numerical value of a <a href="wiki/MKSMBF%24.html">MKSMBF$</a> <a href="wiki/STRING.html">STRING</a>.</li>
+</ul>
+
+<h3 id="d">D</h3>
+
+<ul>
+  <li><a href="wiki/DATA.html">DATA</a> (statement) creates a line of fixed program information separated by commas.</li>
+  <li><a href="wiki/DATE%24.html">DATE$</a> (function) returns the present Operating System date <a href="wiki/STRING.html">STRING</a> formatted as mm-dd-yyyy.</li>
+  <li><a href="wiki/DATE%24-(statement).html">DATE$ (statement)</a> sets the date of the Operating System using a mm-dd-yyyy <a href="wiki/STRING.html">STRING</a> format.</li>
+  <li>DECLARE <a href="wiki/SUB.html">SUB</a>/<a href="wiki/FUNCTION.html">FUNCTION</a> (BASIC statement) declares a <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> procedure at the start of a program. Not required in QB64.</li>
+  <li><a href="wiki/DECLARE-LIBRARY.html">DECLARE LIBRARY</a> declares a C++, SDL or Operating System <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> to be used.</li>
+  <li><a href="wiki/DECLARE-DYNAMIC-LIBRARY.html">DECLARE DYNAMIC LIBRARY</a> declares DYNAMIC, CUSTOMTYPE or STATIC  library(DLL) <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a>.</li>
+  <li><a href="wiki/DEF-SEG.html">DEF SEG</a> (statement) defines a segment in memory to be accessed by a memory procedure.</li>
+  <li><a href="wiki/DEFDBL.html">DEFDBL</a> (statement) defines a set of undefined variable name starting letters as <a href="wiki/DOUBLE.html">DOUBLE</a> type numerical values.</li>
+  <li><a href="wiki/DEFINT.html">DEFINT</a> (statement) defines a set of undefined variable name starting letters as <a href="wiki/INTEGER.html">INTEGER</a> type numerical values.</li>
+  <li><a href="wiki/DEFLNG.html">DEFLNG</a> (statement) defines a set of undefined variable name starting letters as <a href="wiki/LONG.html">LONG</a> type numerical values.</li>
+  <li><a href="wiki/DEFSNG.html">DEFSNG</a> (statement) defines a set of undefined variable name starting letters as <a href="wiki/SINGLE.html">SINGLE</a> type numerical values.</li>
+  <li><a href="wiki/DEFSTR.html">DEFSTR</a> (statement) defines a set of undefined variable name starting letters as <a href="wiki/STRING.html">STRING</a> type values.</li>
+  <li><a href="wiki/DIM.html">DIM</a> (statement) defines a variable as a specified type and can size a <a href="wiki/STATIC.html">STATIC</a>  array.</li>
+  <li><a href="wiki/DO...html">DO…LOOP</a> (statement) sets a recursive procedure loop that can be ignored or exited using conditional arguments.</li>
+  <li><a href="wiki/DOUBLE.html">DOUBLE</a> (numerical type #) 8 byte value limited to values up to 15 decimal places.</li>
+  <li><a href="wiki/DRAW.html">DRAW</a> (statement) uses a special <a href="wiki/STRING.html">STRING</a> format that draws graphical lines in specific directions.</li>
+  <li><a href="wiki/%24DYNAMIC.html">$DYNAMIC</a> (<a href="wiki/Metacommand.html">Metacommand</a>) used at the start of a program to set all program arrays as changeable in size using <a href="wiki/REDIM.html">REDIM</a>.</li>
+</ul>
+
+<h3 id="e">E</h3>
+
+<ul>
+  <li><a href="wiki/ELSE.html">ELSE</a> (<a href="wiki/IF...html">IF…THEN</a> statement) is used to direct program flow when no other condition is evaluated as true.</li>
+  <li><a href="wiki/ELSEIF.html">ELSEIF</a> (<a href="wiki/IF...html">IF…THEN</a> statement) is used with <a href="wiki/THEN.html">THEN</a> to set alternate conditional evaluations.</li>
+  <li><a href="wiki/END.html">END</a> (statement) sets the end of a program, sub-procedure, statement block, <a href="wiki/DECLARE-LIBRARY.html">DECLARE LIBRARY</a> or <a href="wiki/TYPE.html">TYPE</a> definition.</li>
+  <li><a href="wiki/IF...html">IF…THEN</a> (statement) <a href="wiki/END.html">END</a>s an IF…THEN conditional block statement using more than one line of code.</li>
+  <li><a href="wiki/ENVIRON.html">ENVIRON</a> (statement) temporarily sets an environmental key/pair value.</li>
+  <li><a href="wiki/ENVIRON%24.html">ENVIRON$</a> (function) returns a specified string setting or numerical position as an environmental <a href="wiki/STRING.html">STRING</a> value.</li>
+  <li><a href="wiki/EOF.html">EOF</a> (file function) returns -1 when a file <a href="wiki/INPUT-(file-statement).html">INPUT (file statement)</a> or <a href="wiki/GET.html">GET</a> has reached the end of a file.</li>
+  <li><a href="wiki/EQV.html">EQV</a> (logic operator) is used to compare two numerical values bitwise.</li>
+  <li><a href="wiki/ERASE.html">ERASE</a> (statement) clears the values from <a href="wiki/%24STATIC.html">$STATIC</a> arrays and completely removes <a href="wiki/%24DYNAMIC.html">$DYNAMIC</a> arrays.</li>
+  <li><a href="wiki/ERDEV.html">ERDEV</a> (function) returns an error code from the last device to create an error.</li>
+  <li><a href="wiki/ERDEV%24.html">ERDEV$</a> (function) returns the 8 character name of the last device to declare an error as a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/ERL.html">ERL</a> (error function) returns the closest line number before an error occurred if line numbers are used.</li>
+  <li><a href="wiki/ERR.html">ERR</a> (function) returns the <a href="wiki/ERROR-Codes.html">ERROR Codes</a> when a program error occurs.</li>
+  <li><a href="wiki/ERROR.html">ERROR</a> (statement) sets a specific <a href="wiki/ERROR-Codes.html">ERROR Code</a> to be simulated.</li>
+  <li><a href="wiki/SELECT-CASE.html">EVERYCASE</a> Used on <a href="wiki/SELECT-CASE.html">SELECT CASE</a> statement.</li>
+  <li><a href="wiki/EXIT.html">EXIT</a> (statement) immediately exits a program <a href="wiki/FOR...html">FOR…NEXT</a>, <a href="wiki/DO...html">DO…LOOP</a>, <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> procedure.</li>
+  <li><a href="wiki/EXP.html">EXP</a> (function) returns the value of e to the exponential power specified.</li>
+</ul>
+
+<h3 id="f">F</h3>
+
+<ul>
+  <li><a href="wiki/FIELD.html">FIELD</a> (statement) defines the variable sizes to be written or read from a file.</li>
+  <li><a href="wiki/FILEATTR.html">FILEATTR</a> (function) returns the current file access mode.</li>
+  <li><a href="wiki/FILES.html">FILES</a> (statement) returns a list of files in the current directory path to the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/FIX.html">FIX</a> (function) returns the rounded <a href="wiki/INTEGER.html">INTEGER</a> value of a numerical value.</li>
+  <li><a href="wiki/FOR...html">FOR…NEXT</a> (statement) creates a recursive loop procedure that loop a specified number of times.</li>
+  <li><a href="wiki/FOR-(file-statement).html">FOR (file statement)</a> used in an <a href="wiki/OPEN.html">OPEN</a> file or device statement to indicate the access mode.</li>
+  <li><a href="wiki/FRE.html">FRE</a> (function) returns the number of bytes of Memory available to running programs.</li>
+  <li><a href="wiki/TIMER.html">FREE (QB64 TIMER statement)</a> frees a numbered TIMER event in QB64.</li>
+  <li><a href="wiki/FREEFILE.html">FREEFILE</a> (file function) returns a file number that is currently not in use by the Operating System.</li>
+  <li><a href="wiki/FUNCTION.html">FUNCTION</a> (procedure block) sub-procedure that can calculate and return one value to a program in its name.</li>
+</ul>
+
+<h3 id="g">G</h3>
+
+<ul>
+  <li><a href="wiki/GET.html">GET</a> (file statement) reads a file sequentially or at a specific position and returns the value as the variable type used.</li>
+  <li><a href="wiki/GET-(TCP-IP-statement).html">GET (TCP/IP statement)</a> reads a connection port to return a value.</li>
+  <li><a href="wiki/GET-(graphics-statement).html">GET (graphics statement)</a> maps an area the current <a href="wiki/SCREEN.html">SCREEN</a> video information and places it in an <a href="wiki/INTEGER.html">INTEGER</a> <a href="wiki/arrays-2.html">arrays</a>.</li>
+  <li><a href="wiki/GOSUB.html">GOSUB</a> (statement) sends the program to a designated line label procedure in the main program.</li>
+  <li><a href="wiki/GOTO.html">GOTO</a> (statement) sends the program to a designated line number or line label in a procedure.</li>
+</ul>
+
+<h3 id="h">H</h3>
+
+<ul>
+  <li><a href="wiki/HEX%24.html">HEX$</a> (function) returns the hexadecimal (base 16) <a href="wiki/STRING.html">STRING</a> representation of the <a href="wiki/INTEGER.html">INTEGER</a> part of any value.</li>
+</ul>
+
+<h3 id="i">I</h3>
+
+<ul>
+  <li><a href="wiki/IF...html">IF…THEN</a> (statement) a conditional block statement used control program flow.</li>
+  <li><a href="wiki/IMP.html">IMP</a> (logic operator) is used to compare two numerical values bitwise.</li>
+  <li><a href="wiki/%24INCLUDE.html">$INCLUDE</a> (<a href="wiki/Metacommand.html">Metacommand</a>) designates a text code library file to include with the program.</li>
+  <li><a href="wiki/INKEY%24.html">INKEY$</a> (function) <a href="wiki/ASCII.html">ASCII</a> returns a <a href="wiki/STRING.html">STRING</a> value entry from the keyboard.</li>
+  <li><a href="wiki/INP.html">INP</a> (function) returns a numerical value from a specified port register address. See <a href="wiki/Keyboard-Scancodes.html">Keyboard scancodes</a></li>
+  <li><a href="wiki/INPUT.html">INPUT</a> (statement) a user input that returns a value to one or more specified variable(s).</li>
+  <li><a href="wiki/INPUT-(file-mode).html">INPUT (file mode)</a> <a href="wiki/OPEN.html">OPEN</a> statement that only allows an existing file to be read using <a href="wiki/INPUT-(file-statement).html">INPUT (file statement)</a> or <a href="wiki/INPUT%24.html">INPUT$</a>.</li>
+  <li><a href="wiki/INPUT-(file-statement).html">INPUT (file statement)</a> reads a file sequentially using the variable types designated.</li>
+  <li><a href="wiki/INPUT%24.html">INPUT$</a> (function) returns a designated number of <a href="wiki/STRING.html">STRING</a> bytes from the keyboard entry or a file number.</li>
+  <li><a href="wiki/INSTR.html">INSTR</a> (function) returns the position in a text <a href="wiki/STRING.html">STRING</a> where a character sequence match starts.</li>
+  <li><a href="wiki/INT.html">INT</a> (function) rounds a numerical value to an <a href="wiki/INTEGER.html">INTEGER</a> value by removing the decimal point fraction.</li>
+  <li><a href="wiki/INTEGER.html">INTEGER</a> (% numerical type) 2 byte whole values from -32768 to 32767.</li>
+  <li><a href="wiki/INTERRUPT.html">INTERRUPT</a> (statement) is used to access computer interrupt registers.</li>
+  <li><a href="wiki/INTERRUPTX.html">INTERRUPTX</a> (statement) is used to access computer interrupt registers.</li>
+  <li><a href="wiki/IOCTL.html">IOCTL</a> (statement)</li>
+  <li><a href="wiki/IOCTL%24.html">IOCTL$</a> (function)</li>
+</ul>
+
+<h3 id="k">K</h3>
+
+<ul>
+  <li><a href="wiki/KEY-n.html">KEY n</a> (statement) used with <a href="wiki/ON-KEY(n).html">ON KEY(n)</a> events to assign a “soft key” string to a key or create a  user defined key.</li>
+  <li><a href="wiki/KEY(n).html">KEY(n)</a> (statement) used with <a href="wiki/ON-KEY(n).html">ON KEY(n)</a> events to assign, enable, disable or suspend event trapping.</li>
+  <li><a href="wiki/KEY-LIST.html">KEY LIST</a> (statement) lists the 12 Function key soft key string assignments going down left side of screen.</li>
+  <li><a href="wiki/KILL.html">KILL</a> (statement) deletes the specified file without a warning. Remove empty folders with <a href="wiki/RMDIR.html">RMDIR</a>.</li>
+</ul>
+
+<h3 id="l">L</h3>
+
+<ul>
+  <li><a href="wiki/LBOUND.html">LBOUND</a> (function) returns the lower boundary of the specified array.</li>
+  <li><a href="wiki/LCASE%24.html">LCASE$</a> (function) returns the lower case value of a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/LEFT%24.html">LEFT$</a> (function) returns the specified number of text characters from the left end of a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/LEN.html">LEN</a> (function) returns the length or number of characters in a <a href="wiki/STRING.html">STRING</a> value in bytes.</li>
+  <li><a href="wiki/LET.html">LET</a> (statement) assigns a variable a literal value. Not required.</li>
+  <li><a href="wiki/LINE.html">LINE</a> (statement) creates a graphic line or box on the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/LINE-INPUT.html">LINE INPUT</a> (statement) user input can be any text character including commas and quotes as a <a href="wiki/STRING.html">STRING</a> value only.</li>
+  <li><a href="wiki/LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a> returns an entire text file line and returns it as a <a href="wiki/STRING.html">STRING</a> value.</li>
+  <li><a href="wiki/KEY-LIST.html">KEY LIST</a> displays the current <a href="wiki/ON-KEY(n).html">ON KEY(n)</a> function key (F1 to F10) “soft key” settings.</li>
+  <li><a href="wiki/LOC.html">LOC</a> (function) returns the present file byte position or number of bytes in the <a href="wiki/OPEN-COM.html">OPEN COM</a> buffer.</li>
+  <li><a href="wiki/LOCATE.html">LOCATE</a> (statement) sets the text cursor’s row and column position for a <a href="wiki/PRINT.html">PRINT</a> or <a href="wiki/INPUT.html">INPUT</a> statement.</li>
+  <li><a href="wiki/LOCK.html">LOCK</a> (statement) restricts access to portions or all of a file by other programs or processes.</li>
+  <li><a href="wiki/LOF.html">LOF</a> (function) returns the size of an <a href="wiki/OPEN.html">OPEN</a> file in bytes.</li>
+  <li><a href="wiki/LOG.html">LOG</a> (function) returns the natural logarithm of a specified numerical value</li>
+  <li><a href="wiki/LONG.html">LONG</a> (&amp; numerical type) 4 byte whole values from -2147483648 to 2147483647.</li>
+  <li><a href="wiki/DO...html">DO…LOOP</a> (block statement) bottom end of a recursive DO loop.</li>
+  <li><a href="wiki/LPOS.html">LPOS</a> (function) returns the printer head position.</li>
+  <li><a href="wiki/LPRINT.html">LPRINT</a> (statement) sends <a href="wiki/STRING.html">STRING</a> data to the default LPT or USB printer.</li>
+  <li><a href="wiki/LPRINT-USING.html">LPRINT USING</a> (statement) sends template formatted text to the default LPT or USB  printer.</li>
+  <li><a href="wiki/LSET.html">LSET</a> (statement) left justifies the text in a string so that there are no leading spaces.</li>
+  <li><a href="wiki/LTRIM%24.html">LTRIM$</a> (function) returns a <a href="wiki/STRING.html">STRING</a> value with no leading spaces.</li>
+</ul>
+
+<h3 id="m">M</h3>
+
+<ul>
+  <li><a href="wiki/MID%24.html">MID$</a> (function) returns a designated portion of a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/MID%24-(statement).html">MID$ (statement)</a> redefines existing characters in a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/MKD%24.html">MKD$</a> (function) returns an 8 byte <a href="wiki/ASCII.html">ASCII</a> <a href="wiki/STRING.html">STRING</a> representation of a <a href="wiki/DOUBLE.html">DOUBLE</a> numerical value.</li>
+  <li><a href="wiki/MKDIR.html">MKDIR</a> (statement) creates a new folder in the current or designated program path.</li>
+  <li><a href="wiki/MKDMBF%24.html">MKDMBF$</a> (function) returns an 8 byte Microsoft Binary Format <a href="wiki/STRING.html">STRING</a> representation of a <a href="wiki/DOUBLE.html">DOUBLE</a> numerical value.</li>
+  <li><a href="wiki/MKI%24.html">MKI$</a> (function) returns a 2 byte <a href="wiki/ASCII.html">ASCII</a> <a href="wiki/STRING.html">STRING</a> representation of an <a href="wiki/INTEGER.html">INTEGER</a>.</li>
+  <li><a href="wiki/MKL%24.html">MKL$</a> (function) returns a 4 byte <a href="wiki/ASCII.html">ASCII</a> <a href="wiki/STRING.html">STRING</a> representation of a <a href="wiki/LONG.html">LONG</a> numerical value.</li>
+  <li><a href="wiki/MKS%24.html">MKS$</a> (function) returns a 4 byte <a href="wiki/ASCII.html">ASCII</a> <a href="wiki/STRING.html">STRING</a> representation of a <a href="wiki/SINGLE.html">SINGLE</a> numerical value.</li>
+  <li><a href="wiki/MKSMBF%24.html">MKSMBF$</a> (function) returns an 8 byte Microsoft Binary Format <a href="wiki/STRING.html">STRING</a> representation of a <a href="wiki/DOUBLE.html">DOUBLE</a> numerical value.</li>
+  <li><a href="wiki/MOD.html">MOD</a> (math operator) performs integer remainder division on a numerical value.</li>
+</ul>
+
+<h3 id="n">N</h3>
+
+<ul>
+  <li><a href="wiki/NAME.html">NAME</a> (statement) names an existing file name <a href="wiki/AS.html">AS</a> a new file name.</li>
+  <li><a href="wiki/NEXT.html">NEXT</a> (statement) bottom end of a <a href="wiki/FOR...html">FOR…NEXT</a> counter loop to returns to the start or a <a href="wiki/RESUME.html">RESUME</a> error.</li>
+  <li><a href="wiki/NOT.html">NOT</a> (logical operator) inverts the value of a logic operation or returns True when a <a href="wiki/boolean-2.html">boolean</a> evaluation is False.</li>
+</ul>
+
+<h3 id="o">O</h3>
+
+<ul>
+  <li><a href="wiki/OCT%24.html">OCT$</a> (function) returns the octal (base 8) <a href="wiki/STRING.html">STRING</a> representation of the <a href="wiki/INTEGER.html">INTEGER</a> part of any value.</li>
+  <li><a href="wiki/OFF.html">OFF</a> (event statement) turns off all <a href="wiki/ON.html">ON</a> event checking.</li>
+  <li><a href="wiki/ON-COM(n).html">ON COM(n)</a> (statement) sets up a COM port event procedure call.</li>
+  <li><a href="wiki/ON-ERROR.html">ON ERROR</a> (statement) sets up and activates an error event checking procedure call. Use to avoid program errors.</li>
+  <li><a href="wiki/ON-KEY(n).html">ON KEY(n)</a> (statement) sets up a keyboard key entry event procedure.</li>
+  <li><a href="wiki/ON-PEN.html">ON PEN</a> (statement) sets up a pen event procedure call.</li>
+  <li><a href="wiki/ON-PLAY(n).html">ON PLAY(n)</a> (statement) sets up a <a href="wiki/PLAY.html">PLAY</a> event procedure call.</li>
+  <li><a href="wiki/ON-STRIG(n).html">ON STRIG(n)</a> (statement) sets up a joystick button event procedure call.</li>
+  <li><a href="wiki/ON-TIMER(n).html">ON TIMER(n)</a> (statement) sets up a timed event procedure call.</li>
+  <li><a href="wiki/ON-UEVENT.html">ON UEVENT</a> (statement) <strong>Not implemented in QB64.</strong></li>
+  <li><a href="wiki/ON...html">ON…GOSUB</a> (statement) sets up a numerical event procedure call.</li>
+  <li><a href="wiki/ON..-2.html">ON…GOTO</a> (statement) sets up a numerical event procedure call.</li>
+  <li><a href="wiki/OPEN.html">OPEN</a> (file statement) opens a file name for an access mode with a specific file number.</li>
+  <li><a href="wiki/OPEN-COM.html">OPEN COM</a> (statement) opens a serial communication port for access at a certain speed and mode.</li>
+  <li><a href="wiki/OPTION-BASE.html">OPTION BASE</a> (statement) can set the lower boundary of all arrays to 1.</li>
+  <li><a href="wiki/OR.html">OR</a> (logic operator) is used to compare two numerical values bitwise.</li>
+  <li><a href="wiki/OR-(boolean).html">OR (boolean)</a> conditional operator is used to include an alternative evaluation in an <a href="wiki/IF...html">IF…THEN</a> or <a href="wiki/Boolean.html">Boolean</a> statement.</li>
+  <li><a href="wiki/OUT.html">OUT</a> (statement) writes numerical data to a specified register port.</li>
+  <li><a href="wiki/OUTPUT.html">OUTPUT</a> (file mode) creates a new file or clears all data from an existing file to access the file sequentially.</li>
+</ul>
+
+<h3 id="p">P</h3>
+
+<ul>
+  <li><a href="wiki/PAINT.html">PAINT</a> (statement) fills an enclosed area of a graphics <a href="wiki/SCREEN.html">SCREEN</a> with a color until it encounters a specific colored border.</li>
+  <li><a href="wiki/PALETTE.html">PALETTE</a> (statement) sets the Red, Green and Blue color attribute intensities using a RGB multiplier calculation.</li>
+  <li><a href="wiki/PALETTE-USING.html">PALETTE USING</a> (statement) sets the color intensity settings using a designated <a href="wiki/arrays-2.html">arrays</a>.</li>
+  <li><a href="wiki/PCOPY.html">PCOPY</a> (statement) swaps two designated memory page images when page swapping is enabled in the <a href="wiki/SCREEN.html">SCREEN</a> statement.</li>
+  <li><a href="wiki/PEEK.html">PEEK</a> (function) returns a numerical value from a specified segment address in memory.</li>
+  <li><a href="wiki/PEN.html">PEN</a> (function) returns requested information about the light pen device used.</li>
+  <li><a href="wiki/PEN-(statement).html">PEN (statement)</a> enables/disables or suspends event trapping of a light pen device.</li>
+  <li><a href="wiki/PLAY(n).html">PLAY(n)</a> (function) returns the number of notes currently in the background music queue.</li>
+  <li><a href="wiki/PLAY.html">PLAY</a> (statement) uses a special <a href="wiki/STRING.html">STRING</a> format that can produce musical tones and effects.</li>
+  <li><a href="wiki/PMAP.html">PMAP</a> (function) returns the physical or WINDOW view graphic coordinates.</li>
+  <li><a href="wiki/POINT.html">POINT</a> (function) returns the color attribute number or 32 bit <a href="wiki/_RGB32.html">_RGB32</a> value.</li>
+  <li><a href="wiki/POKE.html">POKE</a> (statement) writes a numerical value to a specified segment address in memory.</li>
+  <li><a href="wiki/POS.html">POS</a> (function) returns the current text column position of the text cursor.</li>
+  <li><a href="wiki/PRESET.html">PRESET</a> (statement) sets a pixel coordinate to the background color unless one is specified.</li>
+  <li><a href="wiki/PRINT.html">PRINT</a> (statement) prints text <a href="wiki/STRING.html">STRING</a> or numerical values to the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/PRINT-(file-statement).html">PRINT (file statement)</a> prints text <a href="wiki/STRING.html">STRING</a> or numerical values to a file.</li>
+  <li><a href="wiki/PRINT-USING.html">PRINT USING</a> (statement) prints a template formatted <a href="wiki/STRING.html">STRING</a> to the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/PRINT-USING-(file-statement).html">PRINT USING (file statement)</a> prints a template formatted <a href="wiki/STRING.html">STRING</a> to a file.</li>
+  <li><a href="wiki/PSET.html">PSET</a> (statement) sets a pixel coordinate to the current color unless a color is designated.</li>
+  <li><a href="wiki/PUT.html">PUT</a> (file I/O statement) writes data sequentially or to a designated position using a variable value.</li>
+  <li><a href="wiki/PUT-(TCP-IP-statement).html">PUT (TCP/IP statement)</a> sends raw data to a user’s connection handle.</li>
+  <li><a href="wiki/PUT-(graphics-statement).html">PUT (graphics statement)</a> places pixel data stored in an <a href="wiki/INTEGER.html">INTEGER</a> array to a specified area of the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+</ul>
+
+<h3 id="r">R</h3>
+
+<ul>
+  <li><a href="wiki/RANDOM.html">RANDOM</a> (file mode) creates a file or opens an existing file to <a href="wiki/GET.html">GET</a> and <a href="wiki/PUT.html">PUT</a> records of a set byte size.</li>
+  <li><a href="wiki/RANDOMIZE.html">RANDOMIZE</a> (statement) sets the random seed value for a specific sequence of random <a href="wiki/RND.html">RND</a> values.</li>
+  <li><a href="wiki/RANDOMIZE.html">RANDOMIZE</a> restarts the designated seed value’s random sequence of values from the beginning.</li>
+  <li><a href="wiki/READ.html">READ</a> (statement) reads values from a <a href="wiki/DATA.html">DATA</a> field. <a href="wiki/ACCESS.html">ACCESS</a> READ is used with the <a href="wiki/OPEN.html">OPEN</a> statement.</li>
+  <li><a href="wiki/REDIM.html">REDIM</a> (statement) creates a new <a href="wiki/%24DYNAMIC.html">$DYNAMIC</a> array or resizes one without losing data when <a href="wiki/_PRESERVE.html">_PRESERVE</a> is used.</li>
+  <li><a href="wiki/REM.html">REM</a> (statement) or an apostrophe tells the program to ignore statements following it on the same line.</li>
+  <li><a href="wiki/RESET.html">RESET</a> (statement)  closes all files and writes the directory information to a diskette before it is removed from a disk drive.</li>
+  <li><a href="wiki/RESTORE.html">RESTORE</a> (statement) resets the <a href="wiki/DATA.html">DATA</a> pointer to the start of a designated field of data.</li>
+  <li><a href="wiki/RESUME.html">RESUME</a> (statement) an <a href="wiki/ERROR-Codes.html">ERROR Codes</a> handling procedure exit that can send the program to a line number or the <a href="wiki/NEXT.html">NEXT</a> code line.</li>
+  <li><a href="wiki/RETURN.html">RETURN</a> (statement) returns the program to the code immediately following a <a href="wiki/GOSUB.html">GOSUB</a> call.</li>
+  <li><a href="wiki/RIGHT%24.html">RIGHT$</a> (function) returns a specific number of text characters from the right end of a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/RMDIR.html">RMDIR</a> (statement) removes an empty folder from the current path or the one designated.</li>
+  <li><a href="wiki/RND.html">RND</a> (function) returns a random number value from 0 to .9999999.</li>
+  <li><a href="wiki/RSET.html">RSET</a> (statement) right justifies a string value so that any end spaces are moved to the beginning.</li>
+  <li><a href="wiki/RTRIM%24.html">RTRIM$</a> (function) returns a <a href="wiki/STRING.html">STRING</a> with all spaces removed from the right end.</li>
+  <li><a href="wiki/RUN.html">RUN</a> (statement) clears and restarts the program currently in memory or executes another specified program.</li>
+</ul>
+
+<h3 id="s">S</h3>
+
+<ul>
+  <li><a href="wiki/SADD.html">SADD</a> (function) returns the address of a STRING variable as an offset from the current data segment.</li>
+  <li><a href="wiki/SCREEN-(function).html">SCREEN (function)</a> can return the <a href="wiki/ASCII.html">ASCII</a> character code or color of the text at a text designated coordinate.</li>
+  <li><a href="wiki/SCREEN.html">SCREEN</a> (statement) sets the display mode and size of the program window.</li>
+  <li><a href="wiki/SEEK.html">SEEK</a> (function) returns the present byte position in an <a href="wiki/OPEN.html">OPEN</a> file.</li>
+  <li><a href="wiki/SEEK-(statement).html">SEEK (statement)</a> moves to a specified position in an <a href="wiki/OPEN.html">OPEN</a> file.</li>
+  <li><a href="wiki/SELECT-CASE.html">SELECT CASE</a> (statement) a program flow block that can handle numerous conditional evaluations.</li>
+  <li><a href="wiki/SETMEM.html">SETMEM</a> (function) sets the memory to use.</li>
+  <li><a href="wiki/SGN.html">SGN</a> (function) returns -1 for negative, 0 for zero, and 1 for positive numerical values.</li>
+  <li><a href="wiki/SHARED.html">SHARED</a> (statement) designates that a variable can be used by other procedures or the main procedure when in a sub-procedure.</li>
+  <li><a href="wiki/SHELL.html">SHELL</a> (statement) sends <a href="wiki/STRING.html">STRING</a> commands to the command line. SHELL calls will not affect the current path.</li>
+  <li><a href="wiki/SHELL-(function).html">SHELL (function)</a> executes an external command or calls another program. Returns codes sent by <a href="wiki/END.html">END</a> or <a href="wiki/SYSTEM.html">SYSTEM</a>.</li>
+  <li><a href="wiki/SIGNAL.html">SIGNAL</a> (OS 2 event)</li>
+  <li><a href="wiki/SIN.html">SIN</a> (function) returns the sine of a radian angle.</li>
+  <li><a href="wiki/SINGLE.html">SINGLE</a> (! numerical type) 4 byte floating decimal point values up to 7 decimal places.</li>
+  <li><a href="wiki/SLEEP.html">SLEEP</a> (statement) pauses the program for a designated number of seconds or until a key is pressed.</li>
+  <li><a href="wiki/SOUND.html">SOUND</a> (statement) creates a sound of a specified frequency and duration.</li>
+  <li><a href="wiki/SPACE%24.html">SPACE$</a> (function) returns a designated number of spaces to a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/SPC.html">SPC</a> (function) moves the text cursor a number of spaces on the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/SQR.html">SQR</a> (function) returns the square root of a non-negative number.</li>
+  <li><a href="wiki/STATIC.html">STATIC</a> (statement) creates a <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> variable that retains its value.</li>
+  <li><a href="wiki/%24STATIC.html">$STATIC</a> (<a href="wiki/Metacommand.html">Metacommand</a>) used at the start of a program to set all program arrays as unchangeable in size using <a href="wiki/DIM.html">DIM</a>.</li>
+  <li><a href="wiki/STEP.html">STEP</a> (keyword) move relatively from one graphic position or change the counting increment in a <a href="wiki/FOR...html">FOR…NEXT</a> loop.</li>
+  <li><a href="wiki/STICK.html">STICK</a> (function) returns the present joystick position.</li>
+  <li><a href="wiki/STOP.html">STOP</a> (statement) stops a program when troubleshooting or stops an <a href="wiki/ON.html">ON</a> event.</li>
+  <li><a href="wiki/STR%24.html">STR$</a> (function) returns a <a href="wiki/STRING.html">STRING</a> value of a number with a leading space when it is positive.</li>
+  <li><a href="wiki/STRIG.html">STRIG</a> (function) returns the joystick button press values when read.</li>
+  <li><a href="wiki/STRIG(n).html">STRIG(n)</a> (statement)</li>
+  <li><a href="wiki/STRING.html">STRING</a> ($ variable type) one byte text variable with <a href="wiki/ASCII.html">ASCII</a> code values from 0 to 255.</li>
+  <li><a href="wiki/STRING%24.html">STRING$</a> (function) returns a designated number of string characters.</li>
+  <li><a href="wiki/SUB.html">SUB</a> (procedure block) sub-procedure that can calculate and return multiple parameter values.</li>
+  <li><a href="wiki/SWAP.html">SWAP</a> (statement) swaps two <a href="wiki/STRING.html">STRING</a> or numerical values.</li>
+  <li><a href="wiki/SYSTEM.html">SYSTEM</a> (statement) ends a program immediately.</li>
+</ul>
+
+<h3 id="t">T</h3>
+
+<ul>
+  <li><a href="wiki/TAB.html">TAB</a> (function) moves a designated number of columns on the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/TAN.html">TAN</a> (function) returns the ratio of <a href="wiki/SIN.html">SIN</a>e to <a href="wiki/COS.html">COS</a>ine or tangent value of an angle measured in radians.</li>
+  <li><a href="wiki/THEN.html">THEN</a> (<a href="wiki/IF...html">IF…THEN</a> keyword) must be used in a one line <a href="wiki/IF...html">IF…THEN</a> program flow statement.</li>
+  <li><a href="wiki/TIME%24.html">TIME$</a> (function) returns the present time setting of the Operating System as a  format hh:mm:ss <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/TIMER.html">TIMER</a> (function) returns the number of seconds since midnight as a <a href="wiki/SINGLE.html">SINGLE</a> value.</li>
+  <li><a href="wiki/TIMER-(statement).html">TIMER (statement)</a> events based on the designated time interval and timer number.</li>
+  <li><a href="wiki/TO.html">TO</a> indicates a range of numerical values or an assignment of one value to another.</li>
+  <li><a href="wiki/TYPE.html">TYPE</a> (definition) defines a variable type or file record that can include any <a href="wiki/STRING.html">STRING</a> or numerical types.</li>
+</ul>
+
+<h3 id="u">U</h3>
+
+<ul>
+  <li><a href="wiki/UBOUND.html">UBOUND</a> (function) returns the upper-most index number of a designated <a href="wiki/arrays-2.html">arrays</a>.</li>
+  <li><a href="wiki/UCASE%24.html">UCASE$</a> (function) returns an uppercase representation of a specified <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/UEVENT.html">UEVENT</a> (statement) <strong>Not implemented in QB64.</strong></li>
+  <li><a href="wiki/UNLOCK.html">UNLOCK</a> (statement) unlocks a designated file or portions of it.</li>
+  <li><a href="wiki/UNTIL.html">UNTIL</a> (condition) evaluates a <a href="wiki/DO...html">DO…LOOP</a> condition until it is True.</li>
+</ul>
+
+<h3 id="v">V</h3>
+
+<ul>
+  <li><a href="wiki/VAL.html">VAL</a> (function) returns the numerical value of a <a href="wiki/STRING.html">STRING</a> number.</li>
+  <li><a href="wiki/VARPTR.html">VARPTR</a> (function) returns the <a href="wiki/Segment.html">segment</a> pointer address in memory.</li>
+  <li><a href="wiki/VARPTR%24.html">VARPTR$</a> (function) returns the string value of a numerical value in memory.</li>
+  <li><a href="wiki/VARSEG.html">VARSEG</a> (function) returns the <a href="wiki/Segment.html">segment</a> address of a value in memory.</li>
+  <li><a href="wiki/VIEW.html">VIEW</a> (graphics statement) sets up a graphic view port area of the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/VIEW-PRINT.html">VIEW PRINT</a> (statement) sets up a text view port area of the <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+</ul>
+
+<h3 id="w">W</h3>
+
+<ul>
+  <li><a href="wiki/WAIT.html">WAIT</a> (statement) waits until a vertical retrace is started or a <a href="wiki/SCREEN.html">SCREEN</a> draw ends.</li>
+  <li><a href="wiki/WEND.html">WEND</a> (statement) the bottom end of a <a href="wiki/WHILE...html">WHILE…WEND</a> loop.</li>
+  <li><a href="wiki/WHILE.html">WHILE</a> (condition) evaluates a <a href="wiki/DO...html">DO…LOOP</a> or <a href="wiki/WHILE...html">WHILE…WEND</a> condition until it is False.</li>
+  <li><a href="wiki/WHILE...html">WHILE…WEND</a> (statement) sets a recursive procedure loop that can only be exited using the <a href="wiki/WHILE.html">WHILE</a> conditional argument.</li>
+  <li><a href="wiki/WIDTH.html">WIDTH</a> (statement) sets the text column and row sizes in several <a href="wiki/SCREEN.html">SCREEN</a> modes.</li>
+  <li><a href="wiki/WINDOW.html">WINDOW</a> (statement) maps a window size different from the program’s window size.</li>
+  <li><a href="wiki/WRITE.html">WRITE</a> (screen I/O statement) prints variable values to the screen with commas separating each value.</li>
+  <li><a href="wiki/WRITE-(file-statement).html">WRITE (file statement)</a> writes data to a file with each variable value separated by commas.</li>
+</ul>
+
+<h3 id="x">X</h3>
+
+<ul>
+  <li><a href="wiki/XOR.html">XOR</a> (logic operator) is used to compare two numerical values bitwise.</li>
+</ul>
+
+<h2 id="qb64-specific-keywords">QB64 specific keywords</h2>
+
+<p>Keywords beginning with underscores are QB64 specific. <strong>To use them without the prefix, use <a href="wiki/%24NOPREFIX.html">$NOPREFIX</a>.</strong> Also note that the underscore prefix is reserved for QB64 KEYWORDS only.</p>
+
+<h3 id="_a">_A</h3>
+
+<ul>
+  <li><a href="wiki/_ACCEPTFILEDROP.html">_ACCEPTFILEDROP</a> (statement) turns a program window into a valid drop destination for dragging files from Windows Explorer.</li>
+  <li><a href="wiki/_ACOS.html">_ACOS</a> (function) arccosine function returns the angle in radians based on an input <a href="wiki/COS.html">COS</a>ine value range from -1 to 1.</li>
+  <li><a href="wiki/_ACOSH.html">_ACOSH</a> (function) Returns the nonnegative arc hyperbolic cosine of x, expressed in radians.</li>
+  <li><a href="wiki/_ALLOWFULLSCREEN.html">_ALLOWFULLSCREEN</a> (statement) allows setting the behavior of the ALT+ENTER combo.</li>
+  <li><a href="wiki/_ALPHA.html">_ALPHA</a> (function) returns the alpha channel transparency level of a color value used on a screen page or image.</li>
+  <li><a href="wiki/_ALPHA32.html">_ALPHA32</a> (function) returns the alpha channel transparency level of a color value used on a 32 bit screen page or image.</li>
+  <li><a href="wiki/_ASIN.html">_ASIN</a> (function) Returns the principal value of the arc sine of x, expressed in radians.</li>
+  <li><a href="wiki/_ASINH.html">_ASINH</a> (function) Returns the arc hyperbolic sine of x, expressed in radians.</li>
+  <li><a href="wiki/_ASSERT.html">_ASSERT</a> (statement) Performs debug tests.</li>
+  <li><a href="wiki/%24ASSERTS.html">$ASSERTS</a> (metacommand) Enables the <a href="wiki/_ASSERT.html">_ASSERT</a> macro</li>
+  <li><a href="wiki/_ATAN2.html">_ATAN2</a> (function) Returns the principal value of the <a href="wiki/ATN.html">ATN</a> of y/x, expressed in radians.</li>
+  <li><a href="wiki/_ATANH.html">_ATANH</a> (function) Returns the arc hyperbolic tangent of x, expressed in radians.</li>
+  <li><a href="wiki/_AUTODISPLAY.html">_AUTODISPLAY</a> (statement) enables the automatic display of the screen image changes previously disabled by <a href="wiki/_DISPLAY.html">_DISPLAY</a>.</li>
+  <li><a href="wiki/_AUTODISPLAY-(function).html">_AUTODISPLAY (function)</a> returns the current display mode as true (-1) if automatic or false (0) if per request using <a href="wiki/_DISPLAY.html">_DISPLAY</a>.</li>
+  <li><a href="wiki/_AXIS.html">_AXIS</a> (function) returns a <a href="wiki/SINGLE.html">SINGLE</a> value between -1 and 1 indicating the maximum distance from the device axis center, 0.</li>
+</ul>
+
+<h3 id="_b">_B</h3>
+
+<ul>
+  <li><a href="wiki/_BACKGROUNDCOLOR.html">_BACKGROUNDCOLOR</a> (function) returns the current <a href="wiki/SCREEN.html">SCREEN</a> background color.</li>
+  <li><a href="wiki/_BIT.html">_BIT</a> (` numerical type) can return only signed values of 0 (bit off) and -1 (bit on). Unsigned 0 or 1.</li>
+  <li><a href="wiki/_BLEND.html">_BLEND</a> (statement) statement turns on 32 bit alpha blending for the current image or screen mode and is default.</li>
+  <li><a href="wiki/_BLEND-(function).html">_BLEND (function)</a> returns -1 if enabled or 0 if disabled by <a href="wiki/_DONTBLEND.html">_DONTBLEND</a> statement.</li>
+  <li><a href="wiki/_BLINK.html">_BLINK</a> (statement) statement turns blinking colors on/off in SCREEN 0</li>
+  <li><a href="wiki/_BLINK-(function).html">_BLINK (function)</a> returns -1 if enabled or 0 if disabled by <a href="wiki/_BLINK.html">_BLINK</a> statement.</li>
+  <li><a href="wiki/_BLUE.html">_BLUE</a> (function) function returns the palette or the blue component intensity of a 32-bit image color.</li>
+  <li><a href="wiki/_BLUE32.html">_BLUE32</a> (function) returns the blue component intensity of a 32-bit color value.</li>
+  <li><a href="wiki/_BUTTON.html">_BUTTON</a> (function) returns -1 when a controller device button is pressed and 0 when button is released.</li>
+  <li><a href="wiki/_BUTTONCHANGE.html">_BUTTONCHANGE</a> (function) returns -1 when a device button has been pressed and 1 when released. Zero indicates no change.</li>
+  <li><a href="wiki/_BYTE.html">_BYTE</a> (%% numerical type) can hold signed values from -128 to 127 (one byte or _BIT * 8). Unsigned from 0 to 255.</li>
+</ul>
+
+<h3 id="_c">_C</h3>
+
+<ul>
+  <li><a href="wiki/_CAPSLOCK-(function).html">_CAPSLOCK (function)</a> returns -1 when Caps Lock is on</li>
+  <li><a href="wiki/_CAPSLOCK.html">_CAPSLOCK</a> (statement) sets Caps Lock key state</li>
+  <li><a href="wiki/%24CHECKING.html">$CHECKING</a> (QB64 C++ <a href="wiki/Metacommand.html">Metacommand</a>) turns event error checking OFF or ON.</li>
+  <li><a href="wiki/_CEIL.html">_CEIL</a> (function) Rounds x upward, returning the smallest integral value that is not less than x.</li>
+  <li><a href="wiki/_CINP.html">_CINP</a> (function) Returns a key code from $CONSOLE input</li>
+  <li><a href="wiki/_CLEARCOLOR-(function).html">_CLEARCOLOR (function)</a> returns the current transparent color of an image.</li>
+  <li><a href="wiki/_CLEARCOLOR.html">_CLEARCOLOR</a> (statement) sets a specific color index of an image to be transparent</li>
+  <li><a href="wiki/_CLIP.html">_CLIP</a> (<a href="wiki/PUT-(graphics-statement).html">PUT (graphics statement)</a> graphics option) allows placement of an image partially off of the screen.</li>
+  <li><a href="wiki/_CLIPBOARD%24.html">_CLIPBOARD$</a> (function) returns the operating system’s clipboard contents as a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/_CLIPBOARD%24-(statement).html">_CLIPBOARD$ (statement)</a> sets and overwrites the <a href="wiki/STRING.html">STRING</a> value in the operating system’s clipboard.</li>
+  <li><a href="wiki/_CLIPBOARDIMAGE-(function).html">_CLIPBOARDIMAGE (function)</a> pastes an image from the clipboard into a new QB64 image in memory.</li>
+  <li><a href="wiki/_CLIPBOARDIMAGE.html">_CLIPBOARDIMAGE</a> (statement) copies a valid QB64 image to the clipboard.</li>
+  <li><a href="wiki/%24COLOR.html">$COLOR</a> (metacommand) includes named color constants in a program</li>
+  <li><a href="wiki/_COMMANDCOUNT.html">_COMMANDCOUNT</a> (function) returns the number of arguments passed to the compiled program from the command line.</li>
+  <li><a href="wiki/_CONNECTED.html">_CONNECTED</a> (function) returns the status of a TCP/IP connection handle.</li>
+  <li><a href="wiki/_CONNECTIONADDRESS%24.html">_CONNECTIONADDRESS$</a> (TCP/IP function) returns a connected user’s STRING IP address value using the handle.</li>
+  <li><a href="wiki/%24CONSOLE.html">$CONSOLE</a> (QB64 <a href="wiki/Metacommand.html">Metacommand</a>) creates a console window that can be used throughout a program.</li>
+  <li><a href="wiki/_CONSOLE.html">_CONSOLE</a> (statement) used to turn a console window OFF or ON or to designate <a href="wiki/_DEST.html">_DEST</a> _CONSOLE for output.</li>
+  <li><a href="wiki/_CONSOLEINPUT.html">_CONSOLEINPUT</a> (function) fetches input data from a <a href="wiki/%24CONSOLE.html">$CONSOLE</a> window to be read later (both mouse and keyboard)</li>
+  <li><a href="wiki/_CONSOLETITLE.html">_CONSOLETITLE</a> (statement) creates the title of the console window using a literal or variable <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/_CONTINUE.html">_CONTINUE</a> (statement) skips the remaining lines in a control block (DO/LOOP, FOR/NEXT or WHILE/WEND)</li>
+  <li><a href="wiki/_CONTROLCHR.html">_CONTROLCHR</a> (statement) <a href="wiki/OFF.html">OFF</a> allows the control characters to be used as text characters. <a href="wiki/ON.html">ON</a> (default) can use them as commands.</li>
+  <li><a href="wiki/_CONTROLCHR-(function).html">_CONTROLCHR (function)</a>   returns the current state of <a href="wiki/_CONTROLCHR.html">_CONTROLCHR</a> as 1 when OFF and 0 when ON.</li>
+  <li><a href="wiki/_COPYIMAGE.html">_COPYIMAGE</a> (function) copies an image handle value to a new designated handle.</li>
+  <li><a href="wiki/_COPYPALETTE.html">_COPYPALETTE</a> (statement) copies the color palette intensities from one 4 or 8 BPP image to another image.</li>
+  <li><a href="wiki/_CV.html">_CV</a> (function) converts any <a href="wiki/_MK%24.html">_MK$</a> <a href="wiki/STRING.html">STRING</a> value to the designated numerical type value.</li>
+  <li><a href="wiki/_CWD%24.html">_CWD$</a> (function) returns the current working directory  as a <a href="wiki/STRING.html">STRING</a> value.</li>
+</ul>
+
+<h3 id="_d">_D</h3>
+
+<ul>
+  <li><a href="wiki/_D2G.html">_D2G</a> (function) converts degrees to gradian angle values.</li>
+  <li><a href="wiki/_D2R.html">_D2R</a> (function) converts degrees to radian angle values.</li>
+  <li><a href="wiki/%24DEBUG.html">$DEBUG</a> (metacommand) enables debugging features, allowing you to step through your code line by line</li>
+  <li><a href="wiki/DECLARE-LIBRARY.html">DECLARE LIBRARY</a> declares a C++, SDL or Operating System <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> to be used.</li>
+  <li><a href="wiki/DECLARE-DYNAMIC-LIBRARY.html">DECLARE DYNAMIC LIBRARY</a> declares <a href="wiki/DYNAMIC.html">DYNAMIC</a>, <a href="wiki/CUSTOMTYPE.html">CUSTOMTYPE</a> or <a href="wiki/STATIC.html">STATIC</a> library (DLL) <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a>.</li>
+  <li><a href="wiki/_DEFAULTCOLOR.html">_DEFAULTCOLOR</a> (function) returns the current default text color for an image handle or page.</li>
+  <li><a href="wiki/_DEFINE.html">_DEFINE</a> (statement) defines a range of variable names according to their first character as a data type.</li>
+  <li><a href="wiki/_DEFLATE%24.html">_DEFLATE$</a> (function) compresses a string</li>
+  <li><a href="wiki/_DELAY.html">_DELAY</a> (statement) suspends program execution for a <a href="wiki/SINGLE.html">SINGLE</a> number of seconds.</li>
+  <li><a href="wiki/_DEPTHBUFFER.html">_DEPTHBUFFER</a> (statement) enables, disables, locks or clears depth buffering.</li>
+  <li><a href="wiki/_DESKTOPHEIGHT.html">_DESKTOPHEIGHT</a> (function) returns the height of the desktop (not program window).</li>
+  <li><a href="wiki/_DESKTOPWIDTH.html">_DESKTOPWIDTH</a> (function) returns the width of the desktop (not program window).</li>
+  <li><a href="wiki/_DEST.html">_DEST</a> (statement) sets the current write image or <a href="wiki/SCREEN.html">SCREEN</a> page destination for prints or graphics.</li>
+  <li><a href="wiki/_DEST-(function).html">_DEST (function)</a> returns the current destination screen page or image handle value.</li>
+  <li><a href="wiki/_DEVICE%24.html">_DEVICE$</a> (function) returns a <a href="wiki/STRING.html">STRING</a> expression listing a designated numbered input device name and types of input.</li>
+  <li><a href="wiki/_DEVICEINPUT.html">_DEVICEINPUT</a> (function) returns the <a href="wiki/_DEVICES.html">_DEVICES</a> number of an <a href="wiki/_AXIS.html">_AXIS</a>, <a href="wiki/_BUTTON.html">_BUTTON</a> or <a href="wiki/_WHEEL.html">_WHEEL</a> event.</li>
+  <li><a href="wiki/_DEVICES.html">_DEVICES</a> (function) returns the number of input devices found on a computer system including the keyboard and mouse.</li>
+  <li><a href="wiki/_DIR%24.html">_DIR$</a> (function) returns common paths in Windows only, like My Documents, My Pictures, My Music, Desktop.</li>
+  <li><a href="wiki/_DIREXISTS.html">_DIREXISTS</a> (function) returns -1 if the Directory folder name <a href="wiki/STRING.html">STRING</a> parameter exists. Zero if it does not.</li>
+  <li><a href="wiki/_DISPLAY.html">_DISPLAY</a> (statement) turns off the <a href="wiki/_AUTODISPLAY.html">_AUTODISPLAY</a> while only displaying the screen changes when called.</li>
+  <li><a href="wiki/_DISPLAY-(function).html">_DISPLAY (function)</a> returns the handle of the current image that is displayed on the screen.</li>
+  <li><a href="wiki/_DISPLAYORDER.html">_DISPLAYORDER</a> (statement) designates the order to render software, hardware and custom-opengl-code.</li>
+  <li><a href="wiki/_DONTBLEND.html">_DONTBLEND</a> (statement) statement turns off default <a href="wiki/_BLEND.html">_BLEND</a> 32 bit <a href="wiki/_ALPHA.html">_ALPHA</a> blending for the current image or screen.</li>
+  <li><a href="wiki/_DONTWAIT.html">_DONTWAIT</a> (<a href="wiki/SHELL.html">SHELL</a> action) specifies that the program should not wait until the shelled command/program is finished.</li>
+  <li><a href="wiki/_DROPPEDFILE.html">_DROPPEDFILE</a> (function)  returns the list of items (files or folders) dropped in a program’s window after <a href="wiki/_ACCEPTFILEDROP.html">_ACCEPTFILEDROP</a> is enabled.</li>
+</ul>
+
+<h3 id="_e">_E</h3>
+
+<ul>
+  <li><a href="wiki/_ECHO.html">_ECHO</a> (statement) used in conjunction with $IF for the pre-compiler.</li>
+  <li><a href="wiki/%24ELSE.html">$ELSE</a> (Pre-Compiler <a href="wiki/Metacommand.html">Metacommand</a>) used in conjunction with $IF for the pre-compiler.</li>
+  <li><a href="wiki/%24ELSEIF.html">$ELSEIF</a> (Pre-Compiler <a href="wiki/Metacommand.html">Metacommand</a>) used in conjunction with $IF for the pre-compiler.</li>
+  <li><a href="wiki/%24END-IF.html">$END IF</a> (Pre-Compiler <a href="wiki/Metacommand.html">Metacommand</a>) used in conjunction with $IF for the pre-compiler.</li>
+  <li><a href="wiki/%24ERROR.html">$ERROR</a>  (precompiler <a href="wiki/metacommand-2.html">metacommand</a>) used to trigger compiler errors.</li>
+  <li><a href="wiki/_ERRORLINE.html">_ERRORLINE</a> (function) returns the source code line number that caused the most recent runtime error.</li>
+  <li><a href="wiki/_ERRORMESSAGE%24.html">_ERRORMESSAGE$</a> (function) returns a human-readable message describing the most recent runtime error.</li>
+  <li><a href="wiki/%24EXEICON.html">$EXEICON</a> (Pre-Compiler <a href="wiki/Metacommand.html">Metacommand</a>) used with a .ICO icon file name to embed the image into the QB64 executable.</li>
+  <li><a href="wiki/_EXIT-(function).html">_EXIT (function)</a> prevents a user exit and indicates if a user has clicked the close X window button or CTRL + BREAK.</li>
+</ul>
+
+<h3 id="_f">_F</h3>
+
+<ul>
+  <li><a href="wiki/_FILEEXISTS.html">_FILEEXISTS</a> (function) returns -1 if the file name <a href="wiki/STRING.html">STRING</a> parameter exists. Zero if it does not.</li>
+  <li><a href="wiki/_FINISHDROP.html">_FINISHDROP</a> (statement)  resets <a href="wiki/_TOTALDROPPEDFILES.html">_TOTALDROPPEDFILES</a> and clears the <a href="wiki/_DROPPEDFILE.html">_DROPPEDFILE</a> list of items (files/folders).</li>
+  <li><a href="wiki/_FLOAT.html">_FLOAT</a> (numerical type ##) offers the maximum floating-point decimal precision available using QB64.</li>
+  <li><a href="wiki/_FONT.html">_FONT</a> (statement) sets the current font handle to be used by PRINT or <a href="wiki/_PRINTSTRING.html">_PRINTSTRING</a>.</li>
+  <li><a href="wiki/_FONT-(function).html">_FONT (function)</a> creates a new font handle from a designated image handle.</li>
+  <li><a href="wiki/_FONTHEIGHT.html">_FONTHEIGHT</a> (function) returns the current text or font height.</li>
+  <li><a href="wiki/_FONTWIDTH.html">_FONTWIDTH</a> (function) returns the current text or font width.</li>
+  <li><a href="wiki/_FREEFONT.html">_FREEFONT</a> (statement) releases the current font handle from memory.</li>
+  <li><a href="wiki/_FREEIMAGE.html">_FREEIMAGE</a> (statement) releases a designated image handle from memory.</li>
+  <li><a href="wiki/_FREETIMER.html">_FREETIMER</a> (function) returns an unused timer number value to use with <a href="wiki/ON-TIMER(n).html">ON TIMER(n)</a>.</li>
+  <li><a href="wiki/_FULLSCREEN.html">_FULLSCREEN</a> (statement) sets the program window to full screen or OFF. Alt + Enter does it manually.</li>
+  <li><a href="wiki/_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> returns the fullscreen mode in use by the program.</li>
+</ul>
+
+<h3 id="_g">_G</h3>
+
+<ul>
+  <li><a href="wiki/_G2D.html">_G2D</a> (function) converts gradian to degree angle values.</li>
+  <li><a href="wiki/_G2R.html">_G2R</a> (function) converts gradian to radian angle values.</li>
+  <li><a href="wiki/_GLRENDER.html">_GLRENDER</a> (statement) sets whether context is displayed, on top of or behind the software rendering.</li>
+  <li><a href="wiki/_GREEN.html">_GREEN</a> (function) function returns the palette or the green component intensity of a 32-bit image color.</li>
+  <li><a href="wiki/_GREEN32.html">_GREEN32</a> (function) returns the green component intensity of a 32-bit color value.</li>
+</ul>
+
+<h3 id="_h">_H</h3>
+
+<ul>
+  <li><a href="wiki/_HEIGHT.html">_HEIGHT</a> (function) returns the height of a designated image handle.</li>
+  <li><a href="wiki/_HIDE.html">_HIDE</a> (<a href="wiki/SHELL.html">SHELL</a> action)  hides the command line display during a shell.</li>
+  <li><a href="wiki/_HYPOT.html">_HYPOT</a> (function) Returns the hypotenuse of a right-angled triangle whose legs are x and y.</li>
+</ul>
+
+<h3 id="_i">_I</h3>
+
+<ul>
+  <li><a href="wiki/%24IF.html">$IF</a> (Pre-Compiler <a href="wiki/Metacommand.html">Metacommand</a>) used to set an IF condition for the precompiler.</li>
+  <li><a href="wiki/_ICON.html">_ICON</a> (statement) designates a <a href="wiki/_LOADIMAGE.html">_LOADIMAGE</a> image file handle to be used as the program’s icon or loads the embedded icon (see <a href="wiki/%24EXEICON.html">$EXEICON</a>).</li>
+  <li><a href="wiki/_INCLERRORFILE%24.html">_INCLERRORFILE$</a> {function) returns the name of the original source code $INCLUDE module that caused the most recent error.</li>
+  <li><a href="wiki/_INCLERRORLINE.html">_INCLERRORLINE</a> (function) returns the line number in an included file that caused the most recent error.</li>
+  <li><a href="wiki/_INFLATE%24.html">_INFLATE$</a> (function) decompresses a string</li>
+  <li><a href="wiki/_INSTRREV.html">_INSTRREV</a> (function) allows searching for a substring inside another string, but unlike <a href="wiki/INSTR.html">INSTR</a> it returns the last occurrence instead of the first one.</li>
+  <li><a href="wiki/_INTEGER64.html">_INTEGER64</a> (&amp;&amp; numerical type) can hold whole numerical values from -9223372036854775808 to 9223372036854775807.</li>
+</ul>
+
+<h3 id="_k">_K</h3>
+
+<ul>
+  <li><a href="wiki/_KEYCLEAR.html">_KEYCLEAR</a> (statement) clears the keyboard buffers for INKEY$, _KEYHIT, and INP.</li>
+  <li><a href="wiki/_KEYHIT.html">_KEYHIT</a> (function) returns <a href="wiki/ASCII.html">ASCII</a> one and two byte, SDL Virtual Key and <a href="wiki/Unicode.html">Unicode</a> keyboard key press codes.</li>
+  <li><a href="wiki/_KEYDOWN.html">_KEYDOWN</a> (function) returns whether CTRL, ALT, SHIFT, combinations and other keys are pressed.</li>
+</ul>
+
+<h3 id="_l">_L</h3>
+
+<ul>
+  <li><a href="wiki/%24LET.html">$LET</a> (Pre-Compiler <a href="wiki/Metacommand.html">Metacommand</a>) used to set a flag variable for the precompiler.</li>
+  <li><a href="wiki/_LASTAXIS.html">_LASTAXIS</a> (function) returns the number of axis available on a specified number device listed by <a href="wiki/_DEVICE%24.html">_DEVICE$</a>.</li>
+  <li><a href="wiki/_LASTBUTTON.html">_LASTBUTTON</a> (function) returns the number of buttons available on a specified number device listed by <a href="wiki/_DEVICE%24.html">_DEVICE$</a>.</li>
+  <li><a href="wiki/_LASTWHEEL.html">_LASTWHEEL</a> (function) returns the number of scroll wheels available on a specified number device listed by <a href="wiki/_DEVICE%24.html">_DEVICE$</a>.</li>
+  <li><a href="wiki/_LIMIT.html">_LIMIT</a> (statement) sets the loops per second rate to slow down loops and limit CPU usage.</li>
+  <li><a href="wiki/_LOADFONT.html">_LOADFONT</a> (function) designates a <a href="wiki/_FONT.html">_FONT</a> TTF file to load and returns a handle value.</li>
+  <li><a href="wiki/_LOADIMAGE.html">_LOADIMAGE</a> (function) designates an image file to load and returns a handle value.</li>
+</ul>
+
+<h3 id="_m">_M</h3>
+
+<ul>
+  <li><a href="wiki/_MAPTRIANGLE.html">_MAPTRIANGLE</a> (statement) maps a triangular image source area to put on a destination area.</li>
+  <li><a href="wiki/_MAPUNICODE.html">_MAPUNICODE</a> (statement) maps a <a href="wiki/Unicode.html">Unicode</a> value to an <a href="wiki/ASCII.html">ASCII</a> code number.</li>
+  <li><a href="wiki/_MAPUNICODE-(function).html">_MAPUNICODE (function)</a> returns the <a href="wiki/Unicode.html">Unicode</a> (UTF32) code point value of a mapped <a href="wiki/ASCII.html">ASCII</a> character code.</li>
+  <li><a href="wiki/_MEM-(function).html">_MEM (function)</a> returns <a href="wiki/_MEM.html">_MEM</a> block referring to the largest continuous memory region beginning at a designated variable’s offset.</li>
+  <li><a href="wiki/_MEM.html">_MEM</a> (variable type) contains read only dot elements for the OFFSET, SIZE, TYPE and ELEMENTSIZE of a block of memory.</li>
+  <li><a href="wiki/_MEMCOPY.html">_MEMCOPY</a> (statement) copies a value from a designated OFFSET and SIZE <a href="wiki/TO.html">TO</a> a block of memory at a designated OFFSET.</li>
+  <li><a href="wiki/_MEMELEMENT.html">_MEMELEMENT</a> (function) returns a <a href="wiki/_MEM.html">_MEM</a> block referring to a variable’s memory (but not past it).</li>
+  <li><a href="wiki/_MEMEXISTS.html">_MEMEXISTS</a> (function) verifies that a memory block exists for a memory variable name or returns zero.</li>
+  <li><a href="wiki/_MEMFILL.html">_MEMFILL</a> (statement) fills a designated memory block OFFSET with a certain SIZE and TYPE of value.</li>
+  <li><a href="wiki/_MEMFREE.html">_MEMFREE</a> (statement) frees a designated memory block in a program. Only free memory blocks once.</li>
+  <li><a href="wiki/_MEMGET.html">_MEMGET</a> (statement) reads a value from a designated memory block at a designated  OFFSET</li>
+  <li><a href="wiki/_MEMGET-(function).html">_MEMGET (function)</a> returns a value from a designated memory block and OFFSET using a designated variable <a href="wiki/TYPE.html">TYPE</a>.</li>
+  <li><a href="wiki/_MEMIMAGE.html">_MEMIMAGE</a> (function) returns a <a href="wiki/_MEM.html">_MEM</a> block referring to a designated image handle’s memory</li>
+  <li><a href="wiki/_MEMNEW.html">_MEMNEW</a> (function) allocates new memory with a designated SIZE and returns a <a href="wiki/_MEM.html">_MEM</a> block referring to it.</li>
+  <li><a href="wiki/_MEMPUT.html">_MEMPUT</a> (statement) places a designated value into a designated memory block OFFSET</li>
+  <li><a href="wiki/_SCREENMOVE.html">_SCREENMOVE</a> (_SCREENMOVE parameter) centers the program window on the desktop in any screen resolution.</li>
+  <li><a href="wiki/_MK%24.html">_MK$</a> (function) converts a numerical value to a designated <a href="wiki/ASCII.html">ASCII</a> <a href="wiki/STRING.html">STRING</a> value.</li>
+  <li><a href="wiki/_MOUSEBUTTON.html">_MOUSEBUTTON</a> (function) returns the status of a designated mouse button.</li>
+  <li><a href="wiki/_MOUSEHIDE.html">_MOUSEHIDE</a> (statement) hides the mouse pointer from view</li>
+  <li><a href="wiki/_MOUSEINPUT.html">_MOUSEINPUT</a> (function) returns a value if the mouse status has changed since the last read.</li>
+  <li><a href="wiki/_MOUSEMOVE.html">_MOUSEMOVE</a> (statement) moves the mouse pointer to a designated position on the program <a href="wiki/SCREEN.html">SCREEN</a>.</li>
+  <li><a href="wiki/_MOUSEMOVEMENTX.html">_MOUSEMOVEMENTX</a> (function) returns the relative horizontal position of the mouse cursor compared to the previous position.</li>
+  <li><a href="wiki/_MOUSEMOVEMENTY.html">_MOUSEMOVEMENTY</a> (function) returns the relative vertical position of the mouse cursor compared to the previous position.</li>
+  <li><a href="wiki/_MOUSEPIPEOPEN.html">_MOUSEPIPEOPEN</a> (function) creates a pipe handle value for a mouse when using a virtual keyboard.</li>
+  <li><a href="wiki/_MOUSESHOW.html">_MOUSESHOW</a> (statement) displays the mouse cursor after it has been hidden or can change the cursor shape.</li>
+  <li><a href="wiki/_MOUSEWHEEL.html">_MOUSEWHEEL</a> (function) returns the number of mouse scroll wheel “clicks” since last read.</li>
+  <li><a href="wiki/_MOUSEX.html">_MOUSEX</a> (function) returns the current horizontal position of the mouse cursor.</li>
+  <li><a href="wiki/_MOUSEY.html">_MOUSEY</a> (function) returns the current vertical position of the mouse cursor.</li>
+</ul>
+
+<h3 id="_n">_N</h3>
+
+<ul>
+  <li><a href="wiki/_NEWIMAGE.html">_NEWIMAGE</a> (function) creates a designated size program <a href="wiki/SCREEN.html">SCREEN</a> or page image and returns a handle value.</li>
+  <li><a href="wiki/%24NOPREFIX.html">$NOPREFIX</a> (metacommand) allows QB64-specific keywords to be used without the underscore prefix.</li>
+  <li><a href="wiki/_NUMLOCK-(function).html">_NUMLOCK (function)</a> returns -1 when Num Lock is on</li>
+  <li><a href="wiki/_NUMLOCK.html">_NUMLOCK</a> (statement) sets Num Lock key state</li>
+</ul>
+
+<h3 id="_o">_O</h3>
+
+<ul>
+  <li><a href="wiki/_OFFSET-(function).html">_OFFSET (function)</a> returns the memory offset of a variable when used with <a href="wiki/DECLARE-LIBRARY.html">DECLARE LIBRARY</a> or <a href="wiki/_MEM.html">_MEM</a> only.</li>
+  <li><a href="wiki/_OFFSET.html">_OFFSET</a> (%&amp; numerical type) can be used store the value of an offset in memory when using <a href="wiki/DECLARE-LIBRARY.html">DECLARE LIBRARY</a> or <a href="wiki/MEM.html">MEM</a> only.</li>
+  <li><a href="wiki/_OPENCLIENT.html">_OPENCLIENT</a> (TCP/IP function) connects to a Host on the Internet as a Client and returns the Client status handle.</li>
+  <li><a href="wiki/_OPENCONNECTION.html">_OPENCONNECTION</a> (TCP/IP function) open’s a connection from a client that the host has detected and returns a status handle.</li>
+  <li><a href="wiki/_OPENHOST.html">_OPENHOST</a> (TCP/IP function) opens a Host and returns a Host status handle.</li>
+  <li><a href="wiki/OPTION--EXPLICIT.html">OPTION _EXPLICIT</a> (Pre-compiler directive) instructs the compiler to require variable declaration with <a href="wiki/DIM.html">DIM</a> or an equivalent statement.</li>
+  <li><a href="wiki/OPTION--EXPLICITARRAY.html">OPTION _EXPLICITARRAY</a> (Pre-compiler directive) instructs the compiler to require array declaration with <a href="wiki/DIM.html">DIM</a> or an equivalent statement.</li>
+  <li><a href="wiki/_OS%24.html">_OS$</a> (function) returns the QB64 compiler version in which the program was compiled as [WINDOWS], [LINUX] or [MACOSX] and [32BIT] or [64BIT].</li>
+</ul>
+
+<h3 id="_p">_P</h3>
+
+<ul>
+  <li><a href="wiki/_PALETTECOLOR.html">_PALETTECOLOR</a> (statement) sets the color value of a palette entry of an image using 256 colors or less palette modes.</li>
+  <li><a href="wiki/_PALETTECOLOR-(function).html">_PALETTECOLOR (function)</a> return the 32 bit attribute color setting of an image or screen page handle’s palette.</li>
+  <li><a href="wiki/_PI.html">_PI</a> (function) returns the value of <strong>π</strong> or parameter multiples for angle or <a href="wiki/CIRCLE.html">CIRCLE</a> calculations.</li>
+  <li><a href="wiki/_PIXELSIZE.html">_PIXELSIZE</a> (function) returns the pixel palette mode of a designated image handle.</li>
+  <li><a href="wiki/_PRESERVE.html">_PRESERVE</a> (<a href="wiki/REDIM.html">REDIM</a> action) preserves the data presently in an array when <a href="wiki/REDIM.html">REDIM</a> is used.</li>
+  <li><a href="wiki/_PRINTIMAGE.html">_PRINTIMAGE</a> (statement) sends an image to the printer that is stretched to the current printer paper size.</li>
+  <li><a href="wiki/_PRINTMODE.html">_PRINTMODE</a> (statement) sets the text or _FONT printing mode on a background when using PRINT or <a href="wiki/_PRINTSTRING.html">_PRINTSTRING</a>.</li>
+  <li><a href="wiki/_PRINTMODE-(function).html">_PRINTMODE (function)</a> returns the present <a href="wiki/_PRINTMODE.html">_PRINTMODE</a> value number.</li>
+  <li><a href="wiki/_PRINTSTRING.html">_PRINTSTRING</a> (statement) locates and prints a text <a href="wiki/STRING.html">STRING</a> using graphic coordinates.</li>
+  <li><a href="wiki/_PRINTWIDTH.html">_PRINTWIDTH</a> (function) returns the pixel width of a text string to be printed using <a href="wiki/_PRINTSTRING.html">_PRINTSTRING</a>.</li>
+  <li><a href="wiki/_PUTIMAGE.html">_PUTIMAGE</a> (statement) maps a rectangular image source area to an image destination area.</li>
+</ul>
+
+<h3 id="_r">_R</h3>
+
+<ul>
+  <li><a href="wiki/_R2D.html">_R2D</a> (function) converts radians to degree angle values.</li>
+  <li><a href="wiki/_R2G.html">_R2G</a> (function) converts radians to gradian angle values.</li>
+  <li><a href="wiki/_RED.html">_RED</a> (function) function returns the palette or the red component intensity of a 32-bit image color.</li>
+  <li><a href="wiki/_RED32.html">_RED32</a> (function) returns the red component intensity of a 32-bit color value.</li>
+  <li><a href="wiki/_READBIT.html">_READBIT</a> (function) returns the state of the specified bit of an integer variable.</li>
+  <li><a href="wiki/_RESETBIT.html">_RESETBIT</a> (function) is used to set the specified bit of an integer variable to 0.</li>
+  <li><a href="wiki/%24RESIZE.html">$RESIZE</a> (<a href="wiki/Metacommand.html">Metacommand</a>) used with ON allows a user to resize the program window where OFF does not.</li>
+  <li><a href="wiki/_RESIZE.html">_RESIZE</a> (statement) sets resizing of the window ON or OFF and sets the method as _STRETCH or _SMOOTH.</li>
+  <li><a href="wiki/_RESIZE-(function).html">_RESIZE (function)</a> returns -1 when a program user wants to resize the program screen.</li>
+  <li><a href="wiki/_RESIZEHEIGHT.html">_RESIZEHEIGHT</a> (function) returns the requested new user screen height when <a href="wiki/%24RESIZE.html">$RESIZE</a>:ON allows it.</li>
+  <li><a href="wiki/_RESIZEWIDTH.html">_RESIZEWIDTH</a> (function) returns the requested new user screen width when <a href="wiki/%24RESIZE.html">$RESIZE</a>:ON allows it.</li>
+  <li><a href="wiki/_RGB.html">_RGB</a> (function) returns the closest palette index OR the <a href="wiki/LONG.html">LONG</a> 32 bit color value in 32 bit screens.</li>
+  <li><a href="wiki/_RGB32.html">_RGB32</a> (function) returns the <a href="wiki/LONG.html">LONG</a> 32 bit color value in 32 bit screens only</li>
+  <li><a href="wiki/_RGBA.html">_RGBA</a> (function) returns the closest palette index OR the <a href="wiki/LONG.html">LONG</a> 32 bit color value in 32 bit screens with the <a href="wiki/ALPHA.html">ALPHA</a></li>
+  <li><a href="wiki/_RGBA32.html">_RGBA32</a> (function) returns the <a href="wiki/LONG.html">LONG</a> 32 bit color value in 32 bit screens only with the <a href="wiki/ALPHA.html">ALPHA</a></li>
+  <li><a href="wiki/_ROUND.html">_ROUND</a> (function) rounds to the closest <a href="wiki/INTEGER.html">INTEGER</a>, <a href="wiki/LONG.html">LONG</a> or <a href="wiki/_INTEGER64.html">_INTEGER64</a> numerical value.</li>
+</ul>
+
+<h3 id="_s">_S</h3>
+
+<ul>
+  <li><a href="wiki/_SCREENCLICK.html">_SCREENCLICK</a> (statement) simulates clicking on a point on the desktop screen with the left mouse button.</li>
+  <li><a href="wiki/_SCREENEXISTS.html">_SCREENEXISTS</a> (function) returns a -1 value once a screen has been created.</li>
+  <li><a href="wiki/%24SCREENHIDE.html">$SCREENHIDE</a> QB64 <a href="wiki/Metacommand.html">Metacommand</a> hides the program window from view.</li>
+  <li><a href="wiki/_SCREENHIDE.html">_SCREENHIDE</a> (statement) hides the program window from view.</li>
+  <li><a href="wiki/_SCREENICON-(function).html">_SCREENICON (function)</a> returns -1 or 0 to indicate if the window has been minimized to an icon on the taskbar.</li>
+  <li><a href="wiki/_SCREENICON.html">_SCREENICON</a> (statement) minimizes the program window to an icon on the taskbar.</li>
+  <li><a href="wiki/_SCREENIMAGE.html">_SCREENIMAGE</a> (function) creates an image of the current desktop and returns an image handle.</li>
+  <li><a href="wiki/_SCREENMOVE.html">_SCREENMOVE</a> (statement) positions program window on the desktop using designated coordinates or the _MIDDLE option.</li>
+  <li><a href="wiki/_SCREENPRINT.html">_SCREENPRINT</a> (statement) simulates typing text into a Windows program using the keyboard.</li>
+  <li><a href="wiki/%24SCREENSHOW.html">$SCREENSHOW</a> (QB64 <a href="wiki/Metacommand.html">Metacommand</a>) displays that program window after it was hidden by <a href="wiki/%24SCREENHIDE.html">$SCREENHIDE</a>.</li>
+  <li><a href="wiki/_SCREENSHOW.html">_SCREENSHOW</a> (statement) displays the program window after it has been hidden by <a href="wiki/_SCREENHIDE.html">_SCREENHIDE</a>.</li>
+  <li><a href="wiki/_SCREENX.html">_SCREENX</a> (function) returns the program window’s upper left corner horizontal position on the desktop.</li>
+  <li><a href="wiki/_SCREENY.html">_SCREENY</a> (function) returns the program window’s upper left corner vertical position on the desktop.</li>
+  <li><a href="wiki/_SCROLLLOCK-(function).html">_SCROLLLOCK (function)</a> returns -1 when Scroll Lock is on</li>
+  <li><a href="wiki/_SCROLLLOCK.html">_SCROLLLOCK</a> (statement) sets Scroll Lock key state</li>
+  <li><a href="wiki/_SETALPHA.html">_SETALPHA</a> (statement) sets the alpha channel transparency level of some or all of the pixels of an image.</li>
+  <li><a href="wiki/_SETBIT.html">_SETBIT</a> (function) is used to set the specified bit of an integer variable to 1.</li>
+  <li><a href="wiki/_SHELLHIDE.html">_SHELLHIDE</a> (function) returns the code sent by a program exit using <a href="wiki/END.html">END</a> or <a href="wiki/SYSTEM.html">SYSTEM</a> followed by an <a href="wiki/INTEGER.html">INTEGER</a> value.</li>
+  <li><a href="wiki/_SHL.html">_SHL</a> (function) used to shift the bits of a numerical value to the left</li>
+  <li><a href="wiki/_SHR.html">_SHR</a> (function) used to shift the bits of a numerical value to the right.</li>
+  <li><a href="wiki/Mathematical-Operations.html">Mathematical Operations</a> (function) Returns the hyperbolic sine of x radians.</li>
+  <li><a href="wiki/_SNDBAL.html">_SNDBAL</a> (statement) attempts to set the balance or 3D position of a sound file.</li>
+  <li><a href="wiki/_SNDCLOSE.html">_SNDCLOSE</a> (statement) frees and unloads an open sound using the sound handle created by <a href="wiki/_SNDOPEN.html">_SNDOPEN</a>.</li>
+  <li><a href="wiki/_SNDCOPY.html">_SNDCOPY</a> (function) copies a sound handle value to a new designated handle.</li>
+  <li><a href="wiki/_SNDGETPOS.html">_SNDGETPOS</a> (function) returns the current playing position in seconds from a sound file.</li>
+  <li><a href="wiki/_SNDLEN.html">_SNDLEN</a> (function) returns the length of a sound in seconds from a sound file.</li>
+  <li><a href="wiki/_SNDLIMIT.html">_SNDLIMIT</a> (statement) stops playing a sound after it has been playing for a set number of seconds.</li>
+  <li><a href="wiki/_SNDLOOP.html">_SNDLOOP</a> (statement) plays a sound repeatedly until <a href="wiki/_SNDSTOP.html">_SNDSTOP</a> is used.</li>
+  <li><a href="wiki/_SNDOPEN.html">_SNDOPEN</a> (function) loads a sound file and returns a sound handle.</li>
+  <li><a href="wiki/_SNDOPENRAW.html">_SNDOPENRAW</a> (function) opens a new channel to shove <a href="wiki/_SNDRAW.html">_SNDRAW</a> content into without mixing.</li>
+  <li><a href="wiki/_SNDPAUSE.html">_SNDPAUSE</a> (statement) stops playing a sound file until resumed.</li>
+  <li><a href="wiki/_SNDPAUSED.html">_SNDPAUSED</a> (function) returns the current pause status of a sound file handle.</li>
+  <li><a href="wiki/_SNDPLAY.html">_SNDPLAY</a> (statement) plays a sound file handle that was created by <a href="wiki/_SNDOPEN.html">_SNDOPEN</a> or <a href="wiki/_SNDCOPY.html">_SNDCOPY</a>.</li>
+  <li><a href="wiki/_SNDPLAYCOPY.html">_SNDPLAYCOPY</a> (statement) copies a sound handle, plays it and automatically closes the copy when done.</li>
+  <li><a href="wiki/_SNDPLAYFILE.html">_SNDPLAYFILE</a> (statement) directly plays a designated sound file.</li>
+  <li><a href="wiki/_SNDPLAYING.html">_SNDPLAYING</a> (function) returns the current playing status of a sound handle.</li>
+  <li><a href="wiki/_SNDRATE.html">_SNDRATE</a> (function) returns the sound card sample rate to set <a href="wiki/_SNDRAW.html">_SNDRAW</a> durations.</li>
+  <li><a href="wiki/_SNDRAW.html">_SNDRAW</a> (statement) creates mono or stereo sounds from calculated wave frequency values.</li>
+  <li><a href="wiki/_SNDRAWDONE.html">_SNDRAWDONE</a> (statement) pads a <a href="wiki/_SNDRAW.html">_SNDRAW</a> stream so the final (partially filled) buffer section is played.</li>
+  <li><a href="wiki/_SNDRAWLEN.html">_SNDRAWLEN</a> (function) returns a value until the <a href="wiki/_SNDRAW.html">_SNDRAW</a> buffer is empty.</li>
+  <li><a href="wiki/_SNDSETPOS.html">_SNDSETPOS</a> (statement) sets the playing position of a sound handle.</li>
+  <li><a href="wiki/_SNDSTOP.html">_SNDSTOP</a> (statement) stops playing a sound handle.</li>
+  <li><a href="wiki/_SNDVOL.html">_SNDVOL</a> (statement) sets the volume of a sound file handle.</li>
+  <li><a href="wiki/_SOURCE.html">_SOURCE</a> (statement) sets the source image handle.</li>
+  <li><a href="wiki/_SOURCE-(function).html">_SOURCE (function)</a> returns the present source image handle value.</li>
+  <li><a href="wiki/_STARTDIR%24.html">_STARTDIR$</a> (function) returns the user’s program calling path as a <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/_STRCMP.html">_STRCMP</a> (function) compares the relationship between two strings.</li>
+  <li><a href="wiki/_STRICMP.html">_STRICMP</a> (function) compares the relationship between two strings, without regard for case-sensitivity.</li>
+</ul>
+
+<h3 id="_t">_T</h3>
+
+<ul>
+  <li><a href="wiki/Mathematical-Operations.html">Mathematical Operations</a> (function) Returns the hyperbolic tangent of x radians.</li>
+  <li><a href="wiki/_TITLE.html">_TITLE</a> (statement) sets the program title <a href="wiki/STRING.html">STRING</a> value.</li>
+  <li><a href="wiki/_TITLE%24.html">_TITLE$</a> (function) gets the program title <a href="wiki/STRING.html">STRING</a> value.</li>
+  <li><a href="wiki/_TOGGLEBIT.html">_TOGGLEBIT</a> (function) is used to toggle the specified bit of an integer variable from 1 to 0 or 0 to 1.</li>
+  <li><a href="wiki/_TOTALDROPPEDFILES.html">_TOTALDROPPEDFILES</a> (function)  returns the number of items (files or folders) dropped in a program’s window after <a href="wiki/_ACCEPTFILEDROP.html">_ACCEPTFILEDROP</a> is enabled.</li>
+  <li><a href="wiki/_TRIM%24.html">_TRIM$</a> (function) shorthand to <a href="wiki/LTRIM%24.html">LTRIM$</a>(<a href="wiki/RTRIM%24.html">RTRIM$</a>(“text”))</li>
+</ul>
+
+<h3 id="_u">_U</h3>
+
+<ul>
+  <li><a href="wiki/_UNSIGNED.html">_UNSIGNED</a> (numerical type) expands the positive range of numerical <a href="wiki/INTEGER.html">INTEGER</a>, <a href="wiki/LONG.html">LONG</a> or <a href="wiki/_INTEGER64.html">_INTEGER64</a> values returned.</li>
+</ul>
+
+<h3 id="_v">_V</h3>
+
+<ul>
+  <li><a href="wiki/%24VERSIONINFO.html">$VERSIONINFO</a> (<a href="wiki/Metacommand.html">Metacommand</a>) adds metadata to Windows only binaries for identification purposes across the OS.</li>
+  <li><a href="wiki/%24VIRTUALKEYBOARD.html">$VIRTUALKEYBOARD</a> (<a href="wiki/Metacommand.html">Metacommand</a> - Deprecated) turns the virtual keyboard ON or OFF for use in touch-enabled devices</li>
+</ul>
+
+<h3 id="_w">_W</h3>
+
+<ul>
+  <li><a href="wiki/_WHEEL.html">_WHEEL</a> (function) returns -1 when a control device wheel is scrolled up and 1 when scrolled down. Zero indicates no activity.</li>
+  <li><a href="wiki/_WIDTH-(function).html">_WIDTH (function)</a> returns the width of a <a href="wiki/SCREEN.html">SCREEN</a> or image handle.</li>
+  <li><a href="wiki/_WINDOWHANDLE.html">_WINDOWHANDLE</a> (function) returns the window handle assigned to the current program by the OS. Windows-only.</li>
+  <li><a href="wiki/_WINDOWHASFOCUS.html">_WINDOWHASFOCUS</a> (function) returns true (-1) if the current program’s window has focus. Windows-only.</li>
+</ul>
+
+<h2 id="symbols">Symbols</h2>
+
+<h3 id="qb64-and-qb-symbols">QB64 and QB Symbols</h3>
+
+<p><em>Note: All symbols below can also be used inside of literal quoted strings except for quotation marks.</em></p>
+
+<blockquote>
+  <p><strong>Print, Input or File Formatting</strong></p>
+</blockquote>
+
+<ul>
+  <li><a href="wiki/Semicolon.html">Semicolon</a> after a <a href="wiki/PRINT.html">PRINT</a> stops invisible cursor at end of printed value. Can prevent screen rolling. A <a href="wiki/Semicolon.html">Semicolon</a> after the <a href="wiki/INPUT.html">INPUT</a> prompt text will display a question mark after the text.</li>
+  <li><a href="wiki/Comma.html">Comma</a> after a <a href="wiki/PRINT.html">PRINT</a> tabs invisible cursor past end of printed value. After the <a href="wiki/INPUT.html">INPUT</a> prompt text a <a href="wiki/comma-2.html">comma</a> displays no <a href="wiki/Question-mark.html">Question mark</a>.</li>
+  <li><a href="wiki/Quotation-mark.html">Quotation mark</a> delimits the ends of a literal <a href="wiki/STRING.html">STRING</a> value in a <a href="wiki/PRINT.html">PRINT</a>, <a href="wiki/INPUT.html">INPUT</a> or <a href="wiki/LINE-INPUT.html">LINE INPUT</a> statement.</li>
+  <li><a href="wiki/Question-mark.html">Question mark</a> is a shortcut substitute for the <a href="wiki/PRINT.html">PRINT</a> keyword. Will change to PRINT when cursor leaves the code line.</li>
+</ul>
+
+<h3 id="program-code-markers">Program Code Markers</h3>
+
+<ul>
+  <li><a href="wiki/Apostrophe.html">Apostrophe</a> ignores a line of code or program comment and MUST be used before a <a href="wiki/Metacommand.html">Metacommand</a>. Same as using <a href="wiki/REM.html">REM</a>.</li>
+  <li><a href="wiki/Comma.html">Comma</a> is used to separate <a href="wiki/DATA.html">DATA</a>, <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> parameter variables.</li>
+  <li><a href="wiki/Colon.html">Colon</a>s can be used to separate two procedure statements on one code line.</li>
+  <li><a href="wiki/Dollar-Sign.html">Dollar_Sign</a> prefix denotes a QBasic <a href="wiki/Metacommand.html">Metacommand</a>.</li>
+  <li><a href="wiki/Parenthesis.html">Parenthesis</a> enclose a math or conditional procedure order, <a href="wiki/SUB.html">SUB</a> or <a href="wiki/FUNCTION.html">FUNCTION</a> parameters or to pass by value.</li>
+  <li><a href="wiki/%2b.html">+</a> <a href="wiki/Concatenation.html">concatenation</a> operator MUST be used to combine literal string values in a variable definition.</li>
+  <li><a href="wiki/Quotation-mark.html">Quotation mark</a> designates the ends of a literal <a href="wiki/STRING.html">STRING</a> value. Use <a href="wiki/CHR%24.html">CHR$</a>(34) to insert quotes in a text <a href="wiki/STRING.html">STRING</a>.</li>
+  <li><a href="wiki/Underscore.html">Underscore</a> can be used to continue a line of code to the next program line in <strong>QB64</strong>.</li>
+</ul>
+
+<h3 id="variable-name-type-suffixes">Variable Name Type Suffixes</h3>
+
+<ul>
+  <li><a href="wiki/STRING.html">STRING</a> text character type: 1 byte</li>
+  <li><a href="wiki/SINGLE.html">SINGLE</a> floating decimal point numerical type (4 bytes)</li>
+  <li><a href="wiki/DOUBLE.html">DOUBLE</a> floating decimal point numerical type (8 bytes)</li>
+  <li><a href="wiki/_FLOAT.html">_FLOAT</a> <strong>QB64</strong> decimal point numerical type (32 bytes)</li>
+  <li><a href="wiki/_UNSIGNED.html">_UNSIGNED</a> <strong>QB64</strong> <a href="wiki/INTEGER.html">INTEGER</a> positive numerical type when it precedes the 6 numerical suffixes below:</li>
+  <li><a href="wiki/INTEGER.html">INTEGER</a> <a href="wiki/INTEGER.html">INTEGER</a> numerical type (2 bytes)</li>
+  <li><a href="wiki/LONG.html">LONG</a> <a href="wiki/INTEGER.html">INTEGER</a> numerical type (4 bytes}</li>
+  <li><a href="wiki/_INTEGER64.html">_INTEGER64</a> <strong>QB64</strong> <a href="wiki/INTEGER.html">INTEGER</a> numerical type (8 bytes)</li>
+  <li><a href="wiki/_BIT.html">_BIT</a> <strong>QB64</strong> <a href="wiki/INTEGER.html">INTEGER</a> numerical type (1 bit) (Key below tilde (~) or <a href="wiki/CHR%24.html">CHR$</a>(96))</li>
+  <li><a href="wiki/_BYTE.html">_BYTE</a> <strong>QB64</strong> <a href="wiki/INTEGER.html">INTEGER</a> numerical type (1 byte)</li>
+  <li><a href="wiki/_OFFSET.html">_OFFSET</a> <strong>QB64</strong> <a href="wiki/INTEGER.html">INTEGER</a> numerical pointer address type (any byte size required)</li>
+</ul>
+
+<h3 id="numerical-base-prefixes">Numerical Base Prefixes</h3>
+
+<ul>
+  <li><a href="wiki/%26B.html">&amp;B</a>           Base 2:    Digits 0 or 1 [<strong>QB64</strong>]</li>
+  <li><a href="wiki/%26O.html">&amp;O</a>            Base 8:    Digits 0 to 7</li>
+  <li><a href="wiki/%26H.html">&amp;H</a> Base 16: Digits 0 to F</li>
+</ul>
+
+<h3 id="mathematical-operations"><a href="wiki/Mathematical-Operations.html">Mathematical Operations</a></h3>
+
+<ul>
+  <li><a href="wiki/%2b.html">+</a> operator or sign</li>
+  <li><a href="wiki/-.html">-</a> operator or sign</li>
+  <li>[<em>](wiki/</em>) operator</li>
+  <li><a href="wiki.html">/</a> (floating decimal point) operator</li>
+  <li><a href="wiki.html">\</a> operator</li>
+  <li>[^](wiki/^) operator</li>
+  <li><a href="wiki/MOD.html">MOD</a> operator</li>
+</ul>
+
+<h3 id="relational-operations"><a href="wiki/Relational-Operations.html">Relational Operations</a></h3>
+
+<ul>
+  <li><a href="wiki/Equal.html">Equal</a> Equal to condition</li>
+  <li><a href="wiki/Not-Equal.html">Not_Equal</a> Not equal condition</li>
+  <li><a href="wiki/Greater-Than.html">Greater_Than</a> Greater than condition</li>
+  <li><a href="wiki/Less-Than.html">Less_Than</a> Less than condition</li>
+  <li><a href="wiki/Greater-Than-Or-Equal.html">Greater_Than_Or_Equal</a> Greater than or equal to condition</li>
+  <li><a href="wiki/Less-Than-Or-Equal.html">Less_Than_Or_Equal</a> Less than or equal to condition</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<p>Got a question about something?</p>
+
+<ul>
+  <li><a href="wiki/QB64-FAQ.html">QB64 FAQ</a></li>
+  <li><a href="index.html">Visit the QB64 Main Site</a></li>
+</ul>
+
+<p>Links to other QBasic Sites:</p>
+
+<ul>
+  <li><a href="http://qbasicstation.com/index.php?c=p_member">Member programs at QBasic Station</a></li>
+  <li><a href="http://www.network54.com/Index/10167">QBasic Forum at Network 54</a></li>
+  <li><a href="http://www.petesqbsite.com/forum/">Pete’s QBasic Forum</a></li>
+  <li><a href="http://www.petesqbsite.com/downloads/downloads.shtml">Pete’s QBasic Downloads</a></li>
+</ul>
+
+<hr />
+
+<p>This wiki content is a mirror of the <a href="https://github.com/QB64Official/qb64/wiki">QB64 Wiki on GitHub</a> integrated into QB64.com with a primary purpose of providing search landing for the QB64 language when using a web browser to find help. This mirror is an ongoing work in progress - as is the wiki that it is based. You can find the most up to date version of this content utilized by this mirror by jumping over to <a href="https://github.com/QB64Official/qb64/wiki">QB64 Wiki on GitHub</a>.</p>
+
+<p>Old Archive / Backup:</p>
+
+<ul>
+  <li><a href="http://www.studiopond.uk/qb64wiki/index.html">Studio Pond</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:06:41 GMT -->
+</html>

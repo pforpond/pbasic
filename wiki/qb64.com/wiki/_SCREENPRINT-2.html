@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_SCREENPRINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_SCREENPRINT-2.html" />
+<meta property="og:url" content="_SCREENPRINT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_SCREENPRINT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_SCREENPRINT.html">_SCREENPRINT</a> statement simulates typing text into a Windows focused program.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_SCREENPRINT.html">_SCREENPRINT</a> text$</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></li>
+  <li>text$ is the text to be typed into a focused program’s text entry area, one character at a time.</li>
+  <li>Set the focus to a desktop program by using the <a href="_SCREENIMAGE.html">_SCREENIMAGE</a> handle as the <a href="_SOURCE.html">_SOURCE</a>. Use the image to map the desired area.</li>
+  <li><a href="_SCREENCLICK.html">_SCREENCLICK</a> can also be used to set the focus to a program’s text entry area on the desktop.</li>
+  <li><strong>Note: If the focus is not set correctly, the text may be printed to the QB64 IDE, if open, or not printed at all.</strong></li>
+  <li>Ctrl + letter key shortcuts can be simulated using the appropriate <a href="ASCII.html">ASCII</a> Control character codes 1 to 26 shown below:</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ CTRL + A = CHR$(1)   ☺  StartHeader (SOH)    CTRL + B = CHR$(2)   ☻  StartText         (STX)
+ CTRL + C = CHR$(3)   ♥  EndText     (ETX)    CTRL + D = CHR$(4)   ♦  EndOfTransmit     (EOT)
+ CTRL + E = CHR$(5)   ♣  Enquiry     (ENQ)    CTRL + F = CHR$(6)   ♠  Acknowledge       (ACK)
+ CTRL + G = CHR$(7)   •  [BEEP](BEEP)        (BEL)    CTRL + H = CHR$(8)   ◘  **[Backspace]**       (BS)
+ CTRL + I = CHR$(9)   ○  Horiz.Tab   **[Tab]**    CTRL + J = CHR$(10)  ◙  LineFeed(printer) (LF)
+ CTRL + K = CHR$(11)  ♂  Vert. Tab   (VT)     CTRL + L = CHR$(12)  ♀  FormFeed(printer) (FF)
+ CTRL + M = CHR$(13)  ♪  **[Enter]**     (CR)     CTRL + N = CHR$(14)  ♫  ShiftOut          (SO)
+ CTRL + O = CHR$(15)  ☼  ShiftIn     (SI)     CTRL + P = CHR$(16)  ►  DataLinkEscape    (DLE)
+ CTRL + Q = CHR$(17)  ◄  DevControl1 (DC1)    CTRL + R = CHR$(18)  ↕  DeviceControl2    (DC2)
+ CTRL + S = CHR$(19)  ‼  DevControl3 (DC3)    CTRL + T = CHR$(20)  ¶  DeviceControl4    (DC4)
+ CTRL + U = CHR$(21)  §  NegativeACK (NAK)    CTRL + V = CHR$(22)  ▬  Synchronous Idle  (SYN)
+ CTRL + W = CHR$(23)  ↨  EndTXBlock  (ETB)    CTRL + X = CHR$(24)  ↑  Cancel            (CAN)
+ CTRL + Y = CHR$(25)  ↓  EndMedium   (EM)     CTRL + Z = CHR$(26)  →  End Of File(SUB)  (EOF)                           
+
+</code></pre></div></div>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Printing text into a Windows text editor (Notepad) and copying to the clipboard. May not work on all systems.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFLNG</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"OPENing and MAXIMIZING Notepad in 5 seconds..."</span><span class="err">;</span> <span class="p">:</span> <span class="n">_DELAY</span> <span class="mi">5</span>
+<span class="n">SHELL</span> <span class="n">_DONTWAIT</span> <span class="s">"START /MAX NotePad.exe"</span>  <span class="c1">'opens Notepad file "untitled.txt"</span>
+<span class="c1">'detect notepad open and maximized</span>
+<span class="c1">'condition: 80% or more of the screen is white</span>
+<span class="n">DO</span>                     <span class="c1">'read the desktop screen image for maximized window</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">_SCREENIMAGE</span>
+  <span class="n">_SOURCE</span> <span class="n">s</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>   <span class="c1">'scan for large white area</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+       <span class="n">c</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+       <span class="n">IF</span> <span class="n">c</span> <span class="o">=</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">NEXT</span>
+  <span class="n">NEXT</span>
+  <span class="n">IF</span> <span class="n">z</span> <span class="o">/</span> <span class="p">(</span><span class="n">_HEIGHT</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.8</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span> <span class="c1">'when 80% of screen is white</span>
+  <span class="n">_FREEIMAGE</span> <span class="n">s</span>   <span class="c1">'free desktop image</span>
+  <span class="n">_LIMIT</span> <span class="mi">1</span>       <span class="c1">'scans 1 loop per second</span>
+<span class="n">PRINT</span> <span class="s">"."</span><span class="err">;</span>
+<span class="n">LOOP</span>
+<span class="n">PRINT</span>
+<span class="n">PRINT</span> <span class="s">"NOTEPAD detected as OPEN and MAXIMIZED"</span>
+
+<span class="n">_SCREENPRINT</span> <span class="s">"HELLO WORLD"</span>
+<span class="n">SLEEP</span> <span class="mi">2</span>
+<span class="n">_SCREENPRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="c1">'backspace 5 characters</span>
+<span class="n">SLEEP</span> <span class="mi">3</span>
+<span class="n">_SCREENPRINT</span> <span class="s">"QB64!"</span>
+<span class="n">SLEEP</span> <span class="mi">2</span>
+<span class="n">_SCREENPRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'CTRL + A select all</span>
+<span class="n">SLEEP</span> <span class="mi">2</span>
+<span class="n">_SCREENPRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">'CTRL + C copy to clipboard</span>
+<span class="n">SLEEP</span> <span class="mi">2</span>
+<span class="n">PRINT</span> <span class="n">_CLIPBOARD$</span>
+<span class="n">_CLIPBOARD$</span> <span class="o">=</span> <span class="s">"QB64 ROCKS!"</span>
+<span class="n">SLEEP</span> <span class="mi">2</span>
+<span class="n">_SCREENPRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span> <span class="c1">'CTRL + V paste from clipboard</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> If the Windows shortcuts are set up properly, printing ASCII Control characters acts like the user selected the control + letter combinations to <em>Select all</em> (CHR$(1)), <em>Copy</em> (CHR$(3)) and <em>Paste</em> (CHR$(22)) the text with the Windows Clipboard. If the editor program’s CTRL key combinations are different, use the matching letter <a href="ASCII.html">ASCII</a> code from A = 1 to Z = 26 in the text editor.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_SCREENIMAGE.html">_SCREENIMAGE</a>, <a href="_SCREENCLICK.html">_SCREENCLICK</a></li>
+  <li><a href="_SCREENMOVE.html">_SCREENMOVE</a>, <a href="_SCREENX.html">_SCREENX</a>, <a href="_SCREENY.html">_SCREENY</a></li>
+  <li><a href="ASCII.html">ASCII</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_SCREENPRINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+</html>

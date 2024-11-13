@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_CONNECTIONADDRESS by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_CONNECTIONADDRESS-2.html" />
+<meta property="og:url" content="_CONNECTIONADDRESS-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_CONNECTIONADDRESS.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_CONNECTIONADDRESS.html">_CONNECTIONADDRESS</a> function returns a connected user’s <a href="STRING.html">STRING</a> IP address value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result$ = <a href="_CONNECTIONADDRESS.html">_CONNECTIONADDRESS</a>](connectionHandle&amp;)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The handle can come from the <a href="_OPENHOST.html">_OPENHOST</a>, <a href="OPENCLIENT.html">OPENCLIENT</a> or <a href="_OPENCONNECTION.html">_OPENCONNECTION</a> QB64 TCP/IP functions.</li>
+  <li>For <strong><a href="_OPENHOST.html">_OPENHOST</a>s</strong>: It may return “TCP/IP:8080:213.23.32.5” where 8080 is the port it is listening on and 213.23.32.5 is the global IP address which any computer connected to the internet could use to locate your computer. If a connection to the internet is unavailable or your firewall blocks it, it returns your ‘local IP’ address (127.0.0.1). You might like to store this address somewhere where other computers can find it and connect to your host. Dynamic IPs which can change will need to be updated.</li>
+  <li>For <strong><a href="_OPENCLIENT.html">_OPENCLIENT</a>s</strong>: It may return “TCP/IP:8080:213.23.32.5” where 8080 is the port it used to connect to the listening host and 213.23.32.5 is the IP address of the host name it resolved.</li>
+  <li>For <strong><a href="_OPENCONNECTION.html">_OPENCONNECTION</a>s</strong> (from clients): It may return “TCP/IP:8080:34.232.321.25” where 8080 was the host listening port it connected to and 34.232.321.25 is the IP address of the client that connected. This is very useful because the host can log the IP address of clients for future reference (or banning, for example).</li>
+  <li>The $ symbol is optional for compatibility with older versions.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>A Host logging new chat clients in a Chat program. See the <a href="_OPENHOST.html">_OPENHOST</a> example for the rest of the code used.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">f</span> <span class="o">=</span> <span class="n">FREEFILE</span>
+<span class="n">OPEN</span> <span class="s">"ChatLog.dat"</span> <span class="n">FOR</span> <span class="n">APPEND</span> <span class="n">AS</span> <span class="p">#</span><span class="n">f</span> <span class="c1">' code at start of host section before DO loop.</span>
+
+<span class="n">newclient</span> <span class="o">=</span> <span class="n">_OPENCONNECTION</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="c1">' receive any new client connection handles</span>
+<span class="n">IF</span> <span class="n">newclient</span> <span class="n">THEN</span>
+  <span class="n">numclients</span> <span class="o">=</span> <span class="n">numclients</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">' increment index</span>
+  <span class="n">Users</span><span class="p">(</span><span class="n">numclients</span><span class="p">)</span> <span class="o">=</span> <span class="n">newclient</span> <span class="c1">' place handle into array</span>
+  <span class="n">IP</span><span class="err">$</span> <span class="o">=</span> <span class="n">_CONNECTIONADDRESS</span><span class="p">(</span><span class="n">newclient</span><span class="p">)</span>
+  <span class="n">PRINT</span> <span class="n">IP</span><span class="err">$</span> <span class="o">+</span> <span class="s">" has joined."</span> <span class="c1">' displayed to Host only</span>
+  <span class="n">PRINT</span> <span class="p">#</span><span class="n">f</span><span class="p">,</span> <span class="n">IP</span><span class="err">$</span><span class="p">,</span> <span class="n">numclients</span> <span class="c1">' print info to a log file</span>
+  <span class="n">PRINT</span> <span class="p">#</span><span class="n">Users</span><span class="p">(</span><span class="n">numclients</span><span class="p">),</span><span class="s">"Welcome!"</span> <span class="c1">' from Host to new clients only</span>
+<span class="n">END</span> <span class="n">IF</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The function returns the new client’s IP address to the IP$ variable. Prints the IP and the original login position to a log file. The information can later be used by the host for reference  if necessary. The host could set up a ban list too.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_OPENCONNECTION.html">_OPENCONNECTION</a></li>
+  <li><a href="_OPENHOST.html">_OPENHOST</a></li>
+  <li><a href="_OPENCLIENT.html">_OPENCLIENT</a></li>
+  <li><a href="_CONNECTED.html">_CONNECTED</a></li>
+  <li><a href="WGET.html">WGET</a> (HTTP and FTP file transfer)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_CONNECTIONADDRESS by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:33 GMT -->
+</html>

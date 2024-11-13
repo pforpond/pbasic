@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/READ.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="READ-2.html" />
+<meta property="og:url" content="READ-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/READ.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>READ</strong> statement reads values from a <a href="DATA.html">DATA</a> field and assigns them to one or a comma separated list of variables.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="READ.html">READ</a> value1$[, value2!, value3%, …]</p>
+</blockquote>
+
+<ul>
+  <li>READ statements assign variables to <a href="DATA.html">DATA</a> statement values on a one-to-one basis sequentially.</li>
+  <li>A single READ statement may access one or more <a href="DATA.html">DATA</a> values. They are accessed in the order set.</li>
+  <li>Several READ statements may access the same <a href="DATA.html">DATA</a> statement block at the following sequential position.</li>
+  <li><a href="DATA.html">DATA</a> can be READ using <a href="STRING.html">STRING</a> or numerical <a href="TYPE.html">TYPE</a> variables singularly or in a comma separated list:
+    <ul>
+      <li><a href="STRING.html">STRING</a> READ variables can read quoted or unquoted text or numerical DATA values!</li>
+      <li>Numerical type READ variables can only read <strong>unquoted</strong> numerical DATA values!</li>
+      <li><strong>If they do not agree, a <a href="ERROR-Codes.html">ERROR Codes</a> may result when run reading string data as numerical values!</strong></li>
+    </ul>
+  </li>
+  <li>If the number of variables specified is fewer than the number of elements in the DATA statement(s), subsequent READ statements begin reading data at the next unread element. If there are no subsequent READ statements, the extra data is ignored.</li>
+  <li>If variable reads exceed the number of elements in the DATA field(s), an <a href="ERROR-Codes.html">ERROR Codes</a> will occur!</li>
+  <li>Use the <a href="RESTORE.html">RESTORE</a> statement to reread DATA statements from the start, with or without a line label as required.</li>
+  <li><a href="ACCESS.html">ACCESS</a> READ can be used in an <a href="OPEN.html">OPEN</a> statement to limit file access to read only, preserving file data.</li>
+  <li><strong>WARNING! Do not place DATA fields after <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures! QB64 will FAIL to compile properly!</strong>
+    <blockquote>
+      <p>QBasic allowed programmers to add DATA fields anywhere because the IDE separated the main code from other procedures.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Placing data into an array.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">A</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+<span class="n">FOR</span> <span class="n">I</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+   <span class="n">READ</span> <span class="n">A</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">I</span>
+<span class="n">FOR</span> <span class="n">J</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+   <span class="n">PRINT</span> <span class="n">A</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="err">;</span>
+<span class="n">NEXT</span>
+<span class="n">END</span>
+
+<span class="n">DATA</span> <span class="mf">3.08</span><span class="p">,</span> <span class="mf">5.19</span><span class="p">,</span> <span class="mf">3.12</span><span class="p">,</span> <span class="mf">3.98</span><span class="p">,</span> <span class="mf">4.24</span>
+<span class="n">DATA</span> <span class="mf">5.08</span><span class="p">,</span> <span class="mf">5.55</span><span class="p">,</span> <span class="mf">4.00</span><span class="p">,</span> <span class="mf">3.16</span><span class="p">,</span> <span class="mf">3.37</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 3.08  5.19  3.12  3.98  4.24  5.08  5.55  4  3.16  3.37
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> This program reads the values from the DATA statements into array A. After execution, the value of A(1) is 3.08, and so on. The DATA statements may be placed anywhere in the program; they may even be placed ahead of the READ statement.</p>
+</blockquote>
+
+<p>Reading three pieces of data at once.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">PRINT</span> <span class="s">" CITY "</span><span class="p">,</span> <span class="s">" STATE  "</span><span class="p">,</span> <span class="s">" ZIP"</span>
+ <span class="n">PRINT</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="s">"-"</span><span class="p">)</span>  <span class="c1">'divider</span>
+   <span class="n">READ</span> <span class="n">C</span><span class="err">$</span><span class="p">,</span> <span class="n">S</span><span class="err">$</span><span class="p">,</span> <span class="n">Z</span><span class="o">&amp;</span>
+ <span class="n">PRINT</span> <span class="n">C</span><span class="err">$</span><span class="p">,</span> <span class="n">S</span><span class="err">$</span><span class="p">,</span> <span class="n">Z</span><span class="o">&amp;</span>
+
+ <span class="n">DATA</span> <span class="s">"DENVER,"</span><span class="p">,</span> <span class="n">COLORADO</span><span class="p">,</span> <span class="mi">80211</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  CITY        STATE       ZIP
+ ------------------------------
+ DENVER,     COLORADO     80211
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> String DATA values do not require quotes unless they contain commas, end spaces or QBasic keywords.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DATA.html">DATA</a>, <a href="RESTORE.html">RESTORE</a></li>
+  <li><a href="PRINT-USING.html">PRINT USING</a></li>
+  <li><a href="OPEN.html">OPEN</a> FOR <a href="INPUT-(file-mode).html">INPUT (file mode)</a> (file statement)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/READ.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+</html>

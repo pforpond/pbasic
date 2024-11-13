@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_LOADFONT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_LOADFONT-2.html" />
+<meta property="og:url" content="_LOADFONT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_LOADFONT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_LOADFONT.html">_LOADFONT</a> function loads a TrueType font (.TTF) or an OpenType font (.OTF) file in a specific size and style and returns a <a href="LONG.html">LONG</a> font handle.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>handle&amp; = <a href="_LOADFONT.html">_LOADFONT</a>(fontFileName$, size%[, “{MONOSPACE</td>
+        <td>, BOLD</td>
+        <td>, ITALIC</td>
+        <td>, UNDERLINE</td>
+        <td>, UNICODE</td>
+        <td>, DONTBLEND}”])</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The assigned <a href="LONG.html">LONG</a> font handle&amp; variable return value designates a font style to be used somewhere in a program. Valid handle values are greater than 0 (<strong>handle&amp; &gt; 0</strong>).</li>
+  <li>fontFileName$ is the filename of a TrueType or OpenType font. Can include the path to the font file. Best practice is to include font files with a program.</li>
+  <li>If no path is specified for fontFileName$ and the font file isn’t in the same folder as the resulting binary, QB64 attempts to load from the default <em>C:\Windows\Fonts</em> path.</li>
+  <li>size% is the <a href="INTEGER.html">INTEGER</a> height of the font. If the size is too large or small an <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</li>
+  <li>Optional comma separated <em>style</em> parameter(s) used are literal <a href="STRING.html">STRING</a>s (in quotes) or can be contained in variable(s).
+    <ul>
+      <li><strong>“MONOSPACE”</strong> loads a font with all characters occupying the same width. Results may be too spaced out for fonts that aren’t designed for monospace use.</li>
+      <li><strong>“BOLD”, “ITALIC”</strong> or <strong>“UNDERLINE”</strong> create bold, italic or underlined fonts when available in font.
+        <ul>
+          <li>(valid for QB64 versions prior to 1.000).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>For **QB64 1.000 or later</strong>, you must specify the proper file name according to the desired attributes. For example, Courier New is in font <strong>cour.ttf</strong> while Courier New Bold is in font <strong>courbd.ttf</strong>, as shipped with Windows.
+    <ul>
+      <li><strong>“UNICODE”</strong> loads Unicode fonts such as <em>cyberbit.ttf</em> which is included in the QB64 downloads.</li>
+      <li><strong>“DONTBLEND”</strong> turns off <a href="_ALPHA.html">_ALPHA</a> blending of fonts. This can also be done with the <a href="_DONTBLEND.html">_DONTBLEND</a> statement.</li>
+      <li>You can pass different font styles using different predefined <a href="STRING.html">STRING</a> variable lists. You <strong>can</strong> include an empty style string.</li>
+    </ul>
+  </li>
+  <li><strong>Always check that font handle values are greater than 0 (</strong>handle&amp; &gt; 0<strong>) before using them or <a href="ERROR-Codes.html">ERROR Codes</a> may occur.</strong></li>
+  <li><strong>NOTE: SCREEN 0 can only use ONE font on a screen page. Thus a style like underline would affect the entire page.</strong></li>
+  <li>Font sizes can be found using the <a href="_FONTHEIGHT.html">_FONTHEIGHT</a> function. Font <em>size</em>s can also affect <a href="SCREEN-(statement).html">SCREEN (statement)</a> sizes.</li>
+  <li><a href="_FONTWIDTH.html">_FONTWIDTH</a> can only measure monospaced fonts. <strong>“MONOSPACE” can be used to load a variable width font as a monospace font.</strong></li>
+  <li><a href="_PRINTWIDTH.html">_PRINTWIDTH</a> can measure the width of a string of text in <strong>graphics modes only</strong>. Use one character to get the font’s width.</li>
+</ul>
+
+<p><strong>Font Handles</strong></p>
+
+<ul>
+  <li>Multiple fonts will require multiple font variable handles unless used and freed consecutively.</li>
+  <li>Font handles with values greater than 0 that are <strong>no longer used</strong> should be freed using <a href="_FREEFONT.html">_FREEFONT</a>.</li>
+  <li><strong>Predefined QB64</strong> font handle numbers can be substituted before freeing a font handle:
+<strong>_FONT 8</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 1, 2, 7, 8 or 13
+<strong>_FONT 14</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 9 or 10
+<strong>_FONT 16</strong> - default font for <a href="SCREEN-(statement).html">SCREEN (statement)</a> 0 (<a href="WIDTH.html">WIDTH</a> 80, 25 text only), 11 or 12
+<strong>_FONT 9, 15</strong> and <strong>17</strong> are the double width versions of 8, 14 and 16 respectively in text <strong>SCREEN 0 only</strong>.</li>
+  <li>Once the font is changed to a predefined value, the font handle value can be freed using <a href="_FREEFONT.html">_FREEFONT</a> for another font type.</li>
+  <li>Font handle values of -1 (load failure) <strong>do not</strong> need to be freed. <strong>An <a href="ERROR-Codes.html">ERROR Codes</a> will occur if you try to free invalid handles.</strong></li>
+</ul>
+
+<p><strong>Font File Specs</strong></p>
+
+<ul>
+  <li>Windows users should find <strong>TTF</strong> font files in the C:\WINDOWS\FONTS folder, but don’t depend on unusual ones being there.</li>
+  <li><strong>Check the font file name. The name in the “viewer” is not necessarily the file’s name. Use the name in properties (right click a font listed and choose Properties in the contextual menu)</strong></li>
+  <li>If a program is on a different drive than Windows, <a href="ENVIRON%24.html">ENVIRON$</a>(“SYSTEMROOT”) will return the path to the “WINDOWS” folder. Normally “C:\WINDOWS”. Then add the “\FONTS" folder and the font <strong>.TTF</strong> filename to the path <a href="STRING.html">STRING</a>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>You need to know that if you are in a text mode (such as SCREEN 0 - the default) then you will only be able to use mono-spaced (fixed width) fonts.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">rootpath$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"SYSTEMROOT"</span><span class="p">)</span>          <span class="c1">'normally "C:\WINDOWS"</span>
+<span class="n">fontfile$</span> <span class="o">=</span> <span class="n">rootpath$</span> <span class="o">+</span> <span class="s">"\Fonts\cour.ttf"</span>   <span class="c1">'TTF file in Windows </span>
+<span class="n">style$</span> <span class="o">=</span> <span class="s">"monospace"</span>          <span class="c1">'font style is not case sensitive</span>
+<span class="n">f&amp;</span> <span class="o">=</span><span class="n">_LOADFONT</span><span class="p">(</span><span class="n">fontfile$</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">style$</span><span class="p">)</span>
+<span class="n">_FONT</span> <span class="n">f&amp;</span>
+<span class="n">PRINT</span> <span class="s">"Hello!"</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Hello!
+
+</code></pre></div></div>
+
+<p><em>Note:</em> 30 means each row of text (including vertical spacing) will be exactly 30 pixels high. This may make some program screens larger. If you don’t want a style listed just use style$ = “” if using a <a href="STRING.html">STRING</a> variable for different calls.</p>
+
+<p>In a 32-bit graphics mode you can alpha blend onto the background:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">i&amp;</span> <span class="o">=</span><span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="n">i&amp;</span>
+<span class="n">COLOR</span> <span class="o">&amp;</span><span class="n">HC0FFFF00</span><span class="p">,</span><span class="o">&amp;</span><span class="n">H200000FF</span>
+<span class="n">f&amp;</span> <span class="o">=</span><span class="n">_LOADFONT</span><span class="p">(</span><span class="s">"C:\Windows\Fonts\times.ttf"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>  <span class="c1">'normal style</span>
+<span class="n">PRINT</span> <span class="s">"Hello!"</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Hello!
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> You can load a fixed width font file without using the “monospace” option and it will be treated as variable width. This can be useful because LOCATE treats the horizontal position as an offset in pixels for variable width fonts.</p>
+</blockquote>
+
+<p>Loading a <a href="Unicode.html">Unicode</a> font, <em>cyberbit.ttf</em>, which was downloaded with QB64:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">DECLARE</span> <span class="n">CUSTOMTYPE</span> <span class="n">LIBRARY</span> <span class="c1">'Directory Information using KERNEL32 provided by Dav</span>
+    <span class="n">FUNCTION</span> <span class="n">GetModuleFileNameA</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hModule</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">lpFileName</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">nSize</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">GetModuleFileNameW</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">hModule</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">lpFileName</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">nSize</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="c1">'=== SHOW CURRENT PROGRAM</span>
+<span class="n">FileName</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
+
+<span class="n">Result</span> <span class="o">=</span> <span class="n">GetModuleFileNameA</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">FileName</span><span class="err">$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">FileName</span><span class="err">$</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">Result</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"CURRENT PROGRAM (ASCII): "</span><span class="err">;</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">FileName</span><span class="err">$</span><span class="p">,</span> <span class="n">Result</span><span class="p">)</span>
+
+<span class="c1">'load a unicode font</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="s">"cyberbit.ttf"</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="s">"UNICODE"</span><span class="p">)</span>
+<span class="n">_FONT</span> <span class="n">f</span>
+<span class="n">Result</span> <span class="o">=</span> <span class="n">GetModuleFileNameW</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">FileName</span><span class="err">$</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">FileName</span><span class="err">$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">PRINT</span> <span class="n">QuickCP437toUTF32</span><span class="err">$</span><span class="p">(</span><span class="s">"CURRENT PROGRAM (UTF): "</span><span class="p">)</span> <span class="o">+</span> <span class="n">QuickUTF16toUTF32</span><span class="err">$</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">FileName</span><span class="err">$</span><span class="p">,</span> <span class="n">Result</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">_FONT</span> <span class="mi">16</span> <span class="c1">'restore CP437 font</span>
+
+<span class="n">FUNCTION</span> <span class="n">QuickCP437toUTF32</span><span class="err">$</span> <span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+<span class="n">b$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+    <span class="n">ASC</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="n">NEXT</span>
+<span class="n">QuickCP437toUTF32</span><span class="err">$</span> <span class="o">=</span> <span class="n">b$</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">QuickUTF16toUTF32</span><span class="err">$</span> <span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+<span class="n">b$</span> <span class="o">=</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span>
+    <span class="n">ASC</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ASC</span><span class="p">(</span><span class="n">b$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">NEXT</span>
+<span class="n">QuickUTF16toUTF32</span><span class="err">$</span> <span class="o">=</span> <span class="n">b$</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FONT.html">_FONT</a>, <a href="_FONT-(function).html">_FONT (function)</a></li>
+  <li><a href="_FREEFONT.html">_FREEFONT</a></li>
+  <li><a href="_PRINTSTRING.html">_PRINTSTRING</a>, <a href="_PRINTWIDTH.html">_PRINTWIDTH</a></li>
+  <li><a href="_PRINTMODE.html">_PRINTMODE</a>, <a href="_PRINTMODE-(function).html">_PRINTMODE (function)</a></li>
+  <li><a href="_FONTHEIGHT.html">_FONTHEIGHT</a>, <a href="_FONTWIDTH.html">_FONTWIDTH</a></li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a> (Demo)</li>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_LOADFONT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+</html>

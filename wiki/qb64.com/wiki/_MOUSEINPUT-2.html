@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_MOUSEINPUT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_MOUSEINPUT-2.html" />
+<meta property="og:url" content="_MOUSEINPUT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_MOUSEINPUT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_MOUSEINPUT.html">_MOUSEINPUT</a> function is used to monitor any new mouse positions, button presses or movements of the scroll wheel. Must be called before other mouse information becomes available.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>infoExists%% = <a href="_MOUSEINPUT.html">_MOUSEINPUT</a></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Returns -1 if new mouse information is available, otherwise it returns 0.</li>
+  <li>Must be called before reading any of the other mouse functions. The function will not miss any mouse input even during an <a href="INPUT.html">INPUT</a> entry.</li>
+  <li>Use in a loop to monitor the mouse buttons, scroll wheel and coordinate positions.</li>
+  <li>To clear all previous mouse data, use <a href="_MOUSEINPUT.html">_MOUSEINPUT</a> in a loop until it returns 0.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Mouse coordinate, click and scroll events are returned sequentially inside of a _MOUSEINPUT loop.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span> <span class="c1">'      Check the mouse status</span>
+    <span class="n">PRINT</span> <span class="n">_MOUSEX</span><span class="p">,</span> <span class="n">_MOUSEY</span><span class="p">,</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">_MOUSEWHEEL</span>
+  <span class="n">LOOP</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The latest mouse function status can be read after the loop. <a href="_LIMIT.html">_LIMIT</a> and <a href="_DELAY.html">_DELAY</a> loops will slow returns down.</p>
+</blockquote>
+
+<p>How to use a _MOUSEINPUT loop to locate <a href="PSET.html">PSET</a> positions on a screen using a right mouse button click.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+
+<span class="n">DO</span> <span class="c1">' main program loop</span>
+
+  <span class="c1">' your program code</span>
+
+  <span class="n">DO</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span><span class="c1">'mouse status changes only</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">_MOUSEX</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">_MOUSEY</span>
+    <span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">640</span> <span class="n">AND</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">480</span> <span class="n">THEN</span>
+      <span class="n">IF</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">THEN</span>
+        <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">15</span>
+        <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+      <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">LOOP</span> 
+
+  <span class="c1">' your program code</span>
+
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<p>Clearing any mouse data read before or during an <a href="INPUT.html">INPUT</a> entry. Press “I” to enter input:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"Press I to enter input! Press Q to quit"</span>
+<span class="n">DO</span> 
+  <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">)</span> 
+  <span class="n">DO</span>  
+    <span class="n">IF</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"*"</span>    <span class="c1">'indicates a mouse click event</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span>
+  <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"Q"</span> <span class="n">THEN</span> <span class="n">END</span> 
+  <span class="n">IF</span> <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="s">"I"</span> <span class="n">THEN</span>                                          <span class="c1">'press I to enter text</span>
+    <span class="n">INPUT</span> <span class="s">"Click the mouse and enter something: "</span><span class="p">,</span> <span class="n">entry$</span>   <span class="c1">'enter some text </span>
+    <span class="n">GOSUB</span> <span class="n">Clickcheck</span>                                        <span class="c1">'clear mouse data</span>
+  <span class="n">END</span> <span class="n">IF</span> 
+<span class="n">LOOP</span> 
+
+<span class="n">END</span> 
+
+<span class="n">Clickcheck</span><span class="p">:</span> 
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="n">DO</span>  
+  <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span> 
+<span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">_MOUSEINPUT</span>
+<span class="n">PRINT</span> <span class="n">count</span>        <span class="c1">'returns the number of loops before mouse data is cleared</span>
+<span class="n">RETURN</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Click the mouse a few times while entering <a href="INPUT.html">INPUT</a> text. When Enter is pressed, the number of loops are displayed.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_MOUSEX.html">_MOUSEX</a>, <a href="_MOUSEY.html">_MOUSEY</a>, <a href="_MOUSEBUTTON.html">_MOUSEBUTTON</a>, <a href="_MOUSEWHEEL.html">_MOUSEWHEEL</a></li>
+  <li><a href="_MOUSESHOW.html">_MOUSESHOW</a>, <a href="_MOUSEHIDE.html">_MOUSEHIDE</a>, <a href="_MOUSEMOVE.html">_MOUSEMOVE</a></li>
+  <li><a href="Controller-Devices.html">Controller Devices</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_MOUSEINPUT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+</html>

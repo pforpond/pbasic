@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/HEX$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="HEX%24-2.html" />
+<meta property="og:url" content="HEX%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/HEX$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="HEX%24.html">HEX$</a> function returns the base 16 hexadecimal representation of an <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a> or <a href="_INTEGER64.html">_INTEGER64</a> value as a <a href="STRING.html">STRING</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result$ = <a href="HEX%24.html">HEX$</a>(decimalNumber)</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>number can be any <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a> or <a href="_INTEGER64.html">_INTEGER64</a> value, positive or negative.</li>
+  <li>number can also be any <a href="SINGLE.html">SINGLE</a>, <a href="DOUBLE.html">DOUBLE</a> or <a href="_FLOAT.html">_FLOAT</a> value, but only the integer part of the value is converted in that case. That is, from the value <em>-123.45</em> the function would convert the <em>-123</em> only.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The function returns the string hexadecimal (base-16) representation of decimalNumber.</li>
+  <li>The function does not return a leading sign space so <a href="LTRIM%24.html">LTRIM$</a> is not necessary.</li>
+  <li><a href="VAL.html">VAL</a> can convert the string value back to a decimal value by prefixing the string return with “&amp;H”: <code class="language-plaintext highlighter-rouge">dec = VAL("&amp;H" + hexvar$)</code>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Comparing decimal, hexadecimal and octal string values 0 to 15.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LOCATE</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"   Decimal | Hexadecimal | Octal  "</span>
+<span class="n">LOCATE</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"-----------+-------------+--------"</span>
+        <span class="n">template$</span> <span class="o">=</span> <span class="s">"    \ \    |     \\      |    \\  "</span>
+
+<span class="n">FOR</span> <span class="n">n%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>
+  <span class="n">LOCATE</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">n%</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">USING</span> <span class="n">template$</span><span class="err">;</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span><span class="err">;</span> <span class="n">OCT</span><span class="err">$</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">n%</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+          Decimal | Hexadecimal | Octal 
+         ---------+-------------+-------
+            0     |      0      |   0   
+            1     |      1      |   1   
+            2     |      2      |   2   
+            3     |      3      |   3   
+            4     |      4      |   4   
+            5     |      5      |   5   
+            6     |      6      |   6   
+            7     |      7      |   7   
+            8     |      8      |   10  
+            9     |      9      |   11  
+            10    |      A      |   12  
+            11    |      B      |   13  
+            12    |      C      |   14  
+            13    |      D      |   15  
+            14    |      E      |   16  
+            15    |      F      |   17  
+
+</code></pre></div></div>
+
+<p><em>Note:</em> Decimal <a href="STR%24.html">STR$</a> values contain a leading sign space so values require an extra space in the template using the slash format.</p>
+
+<p>Converting hex value to decimal.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">h$</span> <span class="o">=</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Hex: "</span><span class="err">;</span> <span class="n">h$</span>
+<span class="n">PRINT</span> <span class="s">"Converting Hex value to Decimal:"</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">h$</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Hex: FF
+Converting Hex value to Decimal: 255
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="OCT%24.html">OCT$</a>, <a href="STR%24.html">STR$</a>, <a href="VAL.html">VAL</a></li>
+  <li><a href="%26H.html">&amp;H</a> (hexadecimal), <a href="%26O.html">&amp;O</a> (octal), <a href="%26B.html">&amp;B</a> (binary)</li>
+  <li><a href="Base-Comparisons.html">Base Comparisons</a></li>
+  <li><a href="HEX%24-32-Bit-Values.html">HEX$ 32 Bit Values</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/HEX$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:15:04 GMT -->
+</html>

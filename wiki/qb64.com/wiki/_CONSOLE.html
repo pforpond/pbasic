@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_CONSOLE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:18:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_CONSOLE-2.html" />
+<meta property="og:url" content="_CONSOLE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_CONSOLE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_CONSOLE.html">_CONSOLE</a> statement can be used to turn a console window ON/OFF.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_CONSOLE.html">_CONSOLE</a> {OFF|ON}
+_DEST <a href="_CONSOLE.html">_CONSOLE</a></p>
+</blockquote>
+
+<ul>
+  <li><a href="_CONSOLE.html">_CONSOLE</a> OFF or ON must be used after the <a href="%24CONSOLE.html">$CONSOLE</a> <a href="Metacommand.html">Metacommand</a> has established that a console window is desired.</li>
+  <li><a href="_CONSOLE.html">_CONSOLE</a> OFF turns the console window off once a console has been established using <a href="%24CONSOLE.html">$CONSOLE</a>:ON or ONLY.</li>
+  <li><a href="_CONSOLE.html">_CONSOLE</a> ON should only be used after the console window has been turned OFF previously.</li>
+  <li><a href="_DEST.html">_DEST</a> <a href="_CONSOLE.html">_CONSOLE</a> can be used to send screen output to the console window using QB64 commands such as <a href="PRINT.html">PRINT</a>.</li>
+  <li><a href="_SCREENHIDE.html">_SCREENHIDE</a> or <a href="_SCREENSHOW.html">_SCREENSHOW</a> can be used to hide or display the main program window.</li>
+  <li>The <a href="%24SCREENHIDE.html">$SCREENHIDE</a> <a href="Metacommand.html">Metacommand</a> can hide the main program window throughout a program when only the console is used.</li>
+  <li><strong>Note:</strong> Text can be copied partially or totally from console screens in Windows by highlighting and using the title bar menu.
+    <ul>
+      <li>To copy console text output, right click the title bar and select <em>Edit</em> for <em>Mark</em> to highlight and repeat to <em>Copy</em>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Hiding and displaying a console window. Use <a href="_DELAY.html">_DELAY</a> to place console in front of main program window.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="err">$</span><span class="n">CONSOLE</span>
+<span class="n">_CONSOLE</span> <span class="n">OFF</span> <span class="c1">'close original console</span>
+<span class="n">_DELAY</span> <span class="mi">2</span>
+<span class="n">_CONSOLE</span> <span class="n">ON</span> <span class="c1">'place console above program window</span>
+
+<span class="n">_DEST</span> <span class="n">_CONSOLE</span> 
+<span class="n">INPUT</span> <span class="s">"Enter your name: "</span><span class="p">,</span> <span class="n">nme$</span> <span class="c1">'get program input</span>
+<span class="n">_CONSOLE</span> <span class="n">OFF</span> <span class="c1">'close console</span>
+
+<span class="n">_DEST</span> <span class="mi">0</span> <span class="c1">'destination program window</span>
+<span class="n">PRINT</span> <span class="n">nme$</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="_DEST.html">_DEST</a> must be changed with <a href="_DEST.html">_DEST</a> <a href="_CONSOLE.html">_CONSOLE</a> to get <a href="INPUT.html">INPUT</a> from the <a href="%24CONSOLE.html">$CONSOLE</a> screen.</p>
+</blockquote>
+
+<p><a href="_CONSOLETITLE.html">_CONSOLETITLE</a> can be used to create a console title, but it must be redone every time the console window is restored once turned off:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="err">$</span><span class="n">CONSOLE</span>
+
+<span class="n">_CONSOLETITLE</span> <span class="s">"firstone"</span>
+<span class="n">_DELAY</span> <span class="mi">10</span>
+
+<span class="n">_CONSOLE</span> <span class="n">OFF</span>
+<span class="n">_DELAY</span> <span class="mi">10</span>
+
+<span class="n">_CONSOLE</span> <span class="n">ON</span>
+<span class="n">_CONSOLETITLE</span> <span class="s">"secondone"</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> Some versions of Windows may display the program path or Administrator: prefix in console title bars.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="%24CONSOLE.html">$CONSOLE</a>, <a href="_CONSOLETITLE.html">_CONSOLETITLE</a></li>
+  <li><a href="%24SCREENHIDE.html">$SCREENHIDE</a>, <a href="%24SCREENSHOW.html">$SCREENSHOW</a> (QB64 <a href="Metacommand.html">Metacommand</a>s)</li>
+  <li><a href="_SCREENHIDE.html">_SCREENHIDE</a>, <a href="_SCREENSHOW.html">_SCREENSHOW</a></li>
+  <li><a href="_DEST.html">_DEST</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_CONSOLE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:18:39 GMT -->
+</html>

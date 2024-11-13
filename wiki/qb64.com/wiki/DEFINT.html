@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/DEFINT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="DEFINT-2.html" />
+<meta property="og:url" content="DEFINT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/DEFINT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="DEFINT.html">DEFINT</a> statement defines all variables with names starting with the specified letter (or letter range) AS <a href="INTEGER.html">INTEGER</a> variables instead of the <a href="SINGLE.html">SINGLE</a> type default.</p>
+
+<h2 id="legacy-support">Legacy Support</h2>
+
+<ul>
+  <li><strong>DEF</strong> statements (<a href="DEFDBL.html">DEFDBL</a>, <a href="DEFSNG.html">DEFSNG</a>, <a href="DEFLNG.html">DEFLNG</a>, <a href="DEFINT.html">DEFINT</a>, <a href="DEFSTR.html">DEFSTR</a>) were used when storage space was a concern in older computers, as their usage could save up typing. Instead of <code class="language-plaintext highlighter-rouge">**DIM a AS INTEGER, a2 AS INTEGER, a3 AS INTEGER**</code>, simply having <code class="language-plaintext highlighter-rouge">**DEFINT A**</code> in the code before using variables starting with letter <strong>A</strong> would do the same job.</li>
+  <li><strong>For clarity, it is recommended to declare variables with meaningful names</strong>.</li>
+</ul>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="DEFINT.html">DEFINT</a> letter[-range], letter2[-range2], […]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>letter (or range) can be from A-Z or any other range, like <strong>G-M</strong>.</li>
+  <li>You can also use commas for specific undefined variable first letters.</li>
+  <li>Variables <a href="DIM.html">DIM</a>ensioned as another variable type or that use type suffixes are not affected by <a href="DEFINT.html">DEFINT</a>.</li>
+  <li><a href="DEFINT.html">DEFINT</a> sets the <a href="Variable-Types.html">Variable Types</a> of all variable names with the starting letter(s) or letter ranges when encountered in the progression of the program (even in conditional statement blocks not executed and subsequent <a href="SUB.html">SUB</a> procedures).</li>
+  <li>For <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="INTEGER.html">INTEGER</a>, use <a href="_DEFINE.html">_DEFINE</a></li>
+  <li><strong>Warning: QBasic keyword names cannot be used as numerical variable names with or without the type suffix.</strong></li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li>QBasic’s IDE would add DEF statements before any <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a>. QB64 (like QBasic) will change all variable types in subsequent sub-procedures to that default variable type without giving a <a href="ERROR-Codes.html">ERROR Codes</a> warning or adding DEF statement to subsequent procedures. If you do not want that to occur, either remove that DEF statement or add the proper DEF type statements to subsequent procedures. May also affect <a href="%24INCLUDE.html">$INCLUDE</a> procedures.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="p">,</span> <span class="n">F</span><span class="o">-</span><span class="n">H</span><span class="p">,</span> <span class="n">M</span>
+
+<span class="c1">'With the above, all variables with names starting with A, F, G, H and M</span>
+<span class="c1">'will be of type INTEGER, unless they have a type suffix</span>
+<span class="c1">'indicating another type or they are dimensioned differently</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DEFSNG.html">DEFSNG</a>, <a href="DEFLNG.html">DEFLNG</a>, <a href="DEFDBL.html">DEFDBL</a>, <a href="DEFSTR.html">DEFSTR</a></li>
+  <li><a href="_DEFINE.html">_DEFINE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/DEFINT by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:13:58 GMT -->
+</html>

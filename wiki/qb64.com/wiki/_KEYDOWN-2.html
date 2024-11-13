@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_KEYDOWN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_KEYDOWN-2.html" />
+<meta property="og:url" content="_KEYDOWN-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_KEYDOWN.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>_KEYDOWN</strong> function returns whether modifying keys like CTRL, ALT, SHIFT, and any other keys are pressed.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>return% = <strong>_KEYDOWN(</strong><em>code&amp;</em><strong>)</strong></p>
+</blockquote>
+
+<ul>
+  <li>The <em>return</em> value is -1 if a specified key is pressed or 0 if it was not pressed. It can be used to monitor key combinations.</li>
+  <li>The  POSITIVE <a href="LONG.html">LONG</a> <em>code</em> value can be from any function key that needs to be monitored in a key press combination.</li>
+  <li>Unicode references:
+    <ul>
+      <li>1) What is the glyph represented by that UNICODE value: <a href="http://www.fileformat.info/info/unicode/char/search.htm">Unicode Format Info</a></li>
+      <li>2) Which fonts support the characters I want to use: <a href="http://en.wikipedia.org/wiki/Unicode_typefaces#Comparison_of_fonts">Unicode Fonts</a></li>
+      <li>3) What was the format again?: <a href="http://www.birds-eye.net/definition/u/unicode.shtml">Unicode Formats</a></li>
+      <li>A UTF32 value is usually(but by no means always!) the same as a UTF16 value just with the top 2 bytes set to 0.</li>
+    </ul>
+  </li>
+  <li>An important difference between <a href="INKEY%24.html">INKEY$</a> and <a href="_KEYHIT.html">_KEYHIT</a> is how they work when <strong>CTRL, ALT</strong> or <strong>SHIFT</strong> are used. <a href="INKEY%24.html">INKEY$</a> returns a different code if you hold down CTRL, ALT or SHIFT before pressing F1 (for example). <a href="_KEYHIT.html">_KEYHIT</a> will return the same code regardless of which modifiers were used but you can check _KEYDOWN to see which modifying keys are being used.</li>
+  <li><strong>Keyboards with Alt Gr key:</strong> <a href="_KEYHIT.html">_KEYHIT</a> may return both Alt(100307) and Ctrl(100306) codes when key is pressed or released.</li>
+  <li><strong>Linux with foreign keyboards:</strong> <a href="SHELL.html">SHELL</a> <a href="_HIDE.html">_HIDE</a> “setxkbmap us” will setup a keyboard to read US <a href="Scancodes.html">Scancodes</a>.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                       **The QB64 Virtual Key constant values used: **
+
+         **0-255**: [ASCII](ASCII) values (Refer to [http://en.wikipedia.org/wiki/Code_page_437 CP437])
+
+         **256-65535**: [ASCII](ASCII) character codes (unaffected by SHIFT/ALT/CTRL modifiers)
+                  Use [CVI](CVI) to convert ASCII 2-byte codes to _KEYDOWN values.
+
+'                                **_KEYDOWN Keyboard Values**
+'
+**'Esc  F1    F2    F3    F4    F5    F6    F7    F8    F9    F10   F11   F12   Sys  ScL Pause**                  
+' 27 15104 15360 15616 15872 16128 16384 16640 16896 17152 17408 34048 34304 +316 +302 +019
+**'`~  1!  2@  3#  4$  5%  6^  7&amp;  8*  9(  0) -_ =+ BkSp   Ins   Hme   PUp   NumL   /     *    -** 
+'126 33  64  35  36  37  94  38  42  40  41 95 43   8   20992 18176 18688 +300   47    42   45
+** 96 49  50  51  52  53  54  55  56  57  48 45 61*
+**'Tab Q   W   E   R   T   Y   U   I   O   P  [{  ]}  \|   Del   End   PDn   7Hme  8/▲   9PU   + **
+' 9  81  87  69  82  84  89  85  73  79  80 123 125 124 21248 20224 20736 18176 18432 18688 43
+**   113 119 101 114 116 121 117 105 111 112  91  93  92                    55    56    57 *
+**'CapL   A   S   D   F   G   H   J   K   L   ;:  '" Enter                   4/◄-   5    6/-►  
+'+301  65  83  68  70  71  72  74  75  76  58  34  13                     19200 19456 19712  **E**
+**      97 115 100 102 103 104 106 107 108  59  39                          52    53    54 *   **n**                                    
+**'Shift   Z   X   C   V   B   N   M   ,&lt;  .&gt;  /?    Shift       ▲           1End  2/▼   3PD   t**
+'+304   90  88  67  86  66  78  77  60  62  63    +303       18432        20224 20480 20736  **e**
+**      122 120  99 118  98 110 109  44  46  47                             49    50    51 *   **r**
+**'Ctrl   Win  Alt     Spacebar      Alt  Win  Menu  Ctrl   ◄-   ▼   -►      0Ins        .Del **
+'+306  +311 +308       32         +307 +312 +319  +305 19200 20480 19712  20992       21248 13 
+'                                                                     *     48          46*
+'
+'     **    Lower value = LCase/NumLock On __________________ + = add 100000 **
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+         **65536-&amp;H40000000: QB64-specific Virtual Key codes:**
+
+                        CONST KEY_PAUSE&amp; = 100019
+                        CONST KEY_NUMLOCK&amp; = 100300
+                        CONST KEY_CAPSLOCK&amp; = 100301
+                        CONST KEY_SCROLLOCK&amp; = 100302
+                        CONST KEY_RSHIFT&amp; = 100303
+                        CONST KEY_LSHIFT&amp; = 100304
+                        CONST KEY_RCTRL&amp; = 100305
+                        CONST KEY_LCTRL&amp; = 100306
+                        CONST KEY_RALT&amp; = 100307
+                        CONST KEY_LALT&amp; = 100308
+                        CONST KEY_RMETA&amp; = 100309 'Left 'Apple' key (MacOSX)
+                        CONST KEY_LMETA&amp; = 100310 'Right 'Apple' key (MacOSX)
+                        CONST KEY_LSUPER&amp; = 100311 'Left "Windows" key
+                        CONST KEY_RSUPER&amp; = 100312 'Right "Windows"key
+                        CONST KEY_MODE&amp; = 100313 '"AltGr" key
+                        CONST KEY_COMPOSE&amp; = 100314
+                        CONST KEY_HELP&amp; = 100315
+                        CONST KEY_PRINT&amp; = 100316
+                        CONST KEY_SYSREQ&amp; = 100317
+                        CONST KEY_BREAK&amp; = 100318
+                        CONST KEY_MENU&amp; = 100319
+                        CONST KEY_POWER&amp; = 100320
+                        CONST KEY_EURO&amp; = 100321
+                        CONST KEY_UNDO&amp; = 100322 
+                        CONST KEY_KP0&amp; = 100256
+                        CONST KEY_KP1&amp; = 100257
+                        CONST KEY_KP2&amp; = 100258
+                        CONST KEY_KP3&amp; = 100259
+                        CONST KEY_KP4&amp; = 100260
+                        CONST KEY_KP5&amp; = 100261
+                        CONST KEY_KP6&amp; = 100262
+                        CONST KEY_KP7&amp; = 100263
+                        CONST KEY_KP8&amp; = 100264
+                        CONST KEY_KP9&amp; = 100265
+                        CONST KEY_KP_PERIOD&amp; = 100266
+                        CONST KEY_KP_DIVIDE&amp; = 100267
+                        CONST KEY_KP_MULTIPLY&amp; = 100268
+                        CONST KEY_KP_MINUS&amp; = 100269
+                        CONST KEY_KP_PLUS&amp; = 100270
+                        CONST KEY_KP_ENTER&amp; = 100271
+                        CONST KEY_KP_INSERT&amp; = 200000
+                        CONST KEY_KP_END&amp; = 200001
+                        CONST KEY_KP_DOWN&amp; = 200002
+                        CONST KEY_KP_PAGE_DOWN&amp; = 200003
+                        CONST KEY_KP_LEFT&amp; = 200004
+                        CONST KEY_KP_MIDDLE&amp; = 200005
+                        CONST KEY_KP_RIGHT&amp; = 200006
+                        CONST KEY_KP_HOME&amp; = 200007
+                        CONST KEY_KP_UP&amp; = 200008
+                        CONST KEY_KP_PAGE_UP&amp; = 200009
+                        CONST KEY_KP_DELETE&amp; = 200010
+                        CONST KEY_SCROLL_LOCK_MODE&amp; = 200011
+                        CONST KEY_INSERT_MODE&amp; = 200012
+
+         **&amp;H40000000 up**: [Unicode](Unicode) using the **cyberbit.ttf** font when available.
+
+              **Use [_KEYHIT](_KEYHIT) to find the key codes to be monitored by _KEYDOWN! **
+
+
+</code></pre></div></div>
+
+<p>Comparing the _KEYDOWN returns using <a href="CONST.html">CONST</a> values with 2 byte <a href="INKEY%24.html">INKEY$</a> returns.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CONST</span> <span class="n">RSHIFT</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">100303</span>
+<span class="n">CONST</span> <span class="n">LSHIFT</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">100304</span>
+<span class="n">DO</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">_KEYHIT</span>
+    <span class="n">IF</span> <span class="n">x</span> <span class="o">=</span> <span class="n">CVI</span><span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">59</span><span class="p">))</span> <span class="n">THEN</span>
+        <span class="n">IF</span> <span class="n">_KEYDOWN</span><span class="p">(</span><span class="n">LSHIFT</span><span class="o">&amp;</span><span class="p">)</span> <span class="n">OR</span> <span class="n">_KEYDOWN</span><span class="p">(</span><span class="n">RSHIFT</span><span class="o">&amp;</span><span class="p">)</span> <span class="n">THEN</span>
+            <span class="n">PRINT</span> <span class="s">"KEYHIT: SHIFT + F1"</span>
+        <span class="n">ELSE</span>
+            <span class="n">PRINT</span> <span class="s">"KEYHIT: F1"</span>
+        <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">k$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>         <span class="c1">'compare key press return values</span>
+    <span class="n">IF</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">59</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"INKEY$: F1"</span>
+    <span class="n">IF</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"INKEY$: SHIFT+F1"</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>     <span class="c1">'escape key exit</span>
+
+</code></pre></div></div>
+
+<p>How to calculate the _KEYDOWN codes of the 2 byte INKEY$ arrow key codes using <a href="CVI.html">CVI</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">320</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">240</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">DO</span>
+    <span class="n">CLS</span>
+    <span class="n">LOCATE</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Use the arrow keys to move the circle."</span>
+    <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">radius</span><span class="p">,</span> <span class="n">col</span>
+    <span class="n">PAINT</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">col</span>    
+
+    <span class="n">IF</span> <span class="n">_KEYDOWN</span><span class="p">(</span><span class="n">CVI</span><span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"P"</span><span class="p">))</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>   <span class="c1">'_KEYDOWN(20480)</span>
+    <span class="n">IF</span> <span class="n">_KEYDOWN</span><span class="p">(</span><span class="n">CVI</span><span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"H"</span><span class="p">))</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>   <span class="c1">'_KEYDOWN(18432)</span>
+    <span class="n">IF</span> <span class="n">_KEYDOWN</span><span class="p">(</span><span class="n">CVI</span><span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"K"</span><span class="p">))</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>   <span class="c1">'_KEYDOWN(19200)</span>
+    <span class="n">IF</span> <span class="n">_KEYDOWN</span><span class="p">(</span><span class="n">CVI</span><span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"M"</span><span class="p">))</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   <span class="c1">'_KEYDOWN(19712)</span>
+
+    <span class="n">_DISPLAY</span>
+    <span class="n">_LIMIT</span> <span class="mi">100</span> <span class="c1">'limit to 100 frames per second</span>
+<span class="n">LOOP</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When <a href="CVI.html">CVI</a> is used with a 2 byte code, the code of the first character(0) is added to the second character code which is multiplied by 256. In the example, code zero is added to the <a href="ASCII.html">ASCII</a> code of “P” which is 80. CVI multiplies 80 * 256 = 20480.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_KEYHIT.html">_KEYHIT</a>, <a href="Unicode.html">Unicode</a>, <a href="Code-Pages.html">Code Pages</a> (by region)</li>
+  <li><a href="_MAPUNICODE.html">_MAPUNICODE</a>, <a href="_MAPUNICODE-(function).html">_MAPUNICODE (function)</a></li>
+  <li><a href="INKEY%24.html">INKEY$</a>, <a href="ASCII.html">ASCII</a>, <a href="CVI.html">CVI</a></li>
+  <li><a href="INP.html">INP</a>(&amp;H60), <a href="Scancodes.html">Scancodes</a></li>
+  <li><a href="ON-KEY(n).html">ON KEY(n)</a>, <a href="KEY(n).html">KEY(n)</a>, <a href="KEY-n.html">KEY n</a></li>
+  <li><a href="Windows-Libraries.html">Windows Libraries</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_KEYDOWN.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+</html>

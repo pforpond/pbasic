@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/MID$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="MID%24-2.html" />
+<meta property="og:url" content="MID%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/MID$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="MID%24.html">MID$</a> function returns a portion of a <a href="STRING.html">STRING</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>portion$ = <a href="MID%24.html">MID$</a>(stringValue$, startPosition%[, bytes%])</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>stringValue$ can be any literal or variable non-empty <a href="STRING.html">STRING</a> value. Use <a href="LEN.html">LEN</a> to check the length of a string.</li>
+  <li>startPosition% designates the non-zero position of the first character to be returned by the function.</li>
+  <li>bytes% (optional) tells the function how many characters to return including the first character at startPosition%.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>When the bytes% value is not passed, the function returns the remainder of the string from the starting character position.</li>
+  <li>Number of character bytes% should be within the string’s <a href="LEN.html">LEN</a> from the start position, but will only return the string’s remainder when exceeded.</li>
+  <li>If the bytes% value is 0 or the startPosition% is 0 or greater than the <a href="LEN.html">LEN</a> of the string, an empty string is returned (no error is triggered).</li>
+  <li>In <strong>QB64</strong>, <a href="ASC.html">ASC</a> string byte position reads are about <strong>5 times faster</strong> than MID$ when parsing strings. See <em>Example 2</em> below.</li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li>In QBasic the startPosition% could not be zero (0) or an <a href="ERROR-Codes.html">ERROR Codes</a> would occur.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Getting the hour and minutes from <a href="TIME%24.html">TIME$</a></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">TIME</span><span class="err">$</span>
+
+<span class="n">hour$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">minutes$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">' skip hours and the colon (first 3 characters)</span>
+
+<span class="n">PRINT</span> <span class="s">"hour = "</span><span class="err">;</span> <span class="n">hour$</span><span class="err">;</span> <span class="s">": minutes = "</span><span class="err">;</span> <span class="n">minutes$</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+11:23:30
+hour = 11: minutes = 23
+
+</code></pre></div></div>
+
+<p>Comparing MID$, the <strong>QB64</strong> byte position version of <a href="ASC.html">ASC</a> and <a href="_MEMGET.html">_MEMGET</a> speeds parsing string characters:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">_TITLE</span> <span class="s">"String Speed Test"</span>
+<span class="n">DEFLNG</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+
+<span class="c1">'First let's build a string for testing.</span>
+<span class="n">Limit</span> <span class="o">=</span> <span class="mi">100000</span> <span class="c1">'the size of the string</span>
+<span class="n">LoopCount</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">'the number of times we want to deconstruct it</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">Limit</span>
+  <span class="n">t$</span> <span class="o">=</span> <span class="n">t$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">NEXT</span>
+
+<span class="c1">'now for some times</span>
+
+<span class="n">t1#</span> <span class="o">=</span> <span class="n">TIMER</span>
+<span class="n">FOR</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LoopCount</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">Limit</span>
+    <span class="n">m$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">t$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">NEXT</span>
+<span class="n">NEXT</span>
+<span class="n">t2#</span> <span class="o">=</span> <span class="n">TIMER</span>
+<span class="n">FOR</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LoopCount</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">Limit</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">t$</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+  <span class="n">NEXT</span>
+<span class="n">NEXT</span>
+
+<span class="n">t3#</span> <span class="o">=</span> <span class="n">TIMER</span>
+<span class="err">$</span><span class="n">CHECKING</span><span class="p">:</span><span class="n">OFF</span>
+<span class="n">DIM</span> <span class="n">m</span> <span class="n">AS</span> <span class="n">_MEM</span><span class="p">,</span> <span class="n">m1</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m2</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">_MEMNEW</span><span class="p">(</span><span class="n">Limit</span><span class="p">)</span> <span class="c1">'create new memory space for string</span>
+<span class="n">_MEMPUT</span> <span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">t$</span> <span class="c1">'put string t$ into memory space</span>
+<span class="n">FOR</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LoopCount</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">Limit</span>
+    <span class="n">_MEMGET</span> <span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m1</span>
+  <span class="n">NEXT</span>
+<span class="n">NEXT</span>
+<span class="n">t4#</span> <span class="o">=</span> <span class="n">TIMER</span>
+<span class="n">FOR</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LoopCount</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">Limit</span>
+    <span class="n">_MEMGET</span> <span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m2</span>
+  <span class="n">NEXT</span>
+<span class="n">NEXT</span>
+<span class="n">t5#</span> <span class="o">=</span> <span class="n">TIMER</span>
+
+<span class="c1">'results</span>
+
+<span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"##.###### seconds for MID$"</span><span class="err">;</span> <span class="n">t2#</span> <span class="o">-</span> <span class="n">t1#</span>
+<span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"##.###### seconds for ASC"</span><span class="err">;</span> <span class="n">t3#</span> <span class="o">-</span> <span class="n">t2#</span>
+<span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"##.###### seconds for _MEMGET String"</span><span class="err">;</span> <span class="n">t4#</span> <span class="o">-</span> <span class="n">t3#</span>
+<span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"##.###### seconds for _MEMGET Byte"</span><span class="err">;</span> <span class="n">t5#</span> <span class="o">-</span> <span class="n">t4#</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+6.593750 seconds for MID$
+1.044922 seconds for ASC
+0.494141 seconds for _MEMGET String
+0.494141 seconds for _MEMGET Byte
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> <a href="_MEMGET.html">_MEMGET</a> can be used with <a href="%24CHECKING.html">$CHECKING</a>:OFF to cut the parsing speed even more. <a href="STRING.html">STRING</a> * 1 or <a href="_BYTE.html">_BYTE</a> are similar speeds.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="MID%24-(statement).html">MID$ (statement)</a>, <a href="ASC.html">ASC</a></li>
+  <li><a href="LEFT%24.html">LEFT$</a>, <a href="RIGHT%24.html">RIGHT$</a></li>
+  <li><a href="LTRIM%24.html">LTRIM$</a>, <a href="RTRIM%24.html">RTRIM$</a></li>
+  <li><a href="INSTR.html">INSTR</a>, <a href="LEN.html">LEN</a></li>
+  <li><a href="_MEMPUT.html">_MEMPUT</a>, <a href="_MEMGET.html">_MEMGET</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/MID$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:32 GMT -->
+</html>

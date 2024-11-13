@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/QB64-FAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="QB64-FAQ-2.html" />
+<meta property="og:url" content="QB64-FAQ-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/QB64-FAQ.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>As with everything else, this list will be updated to detail progress of QB64, so please make sure that you are using the latest version of <strong>QB64</strong>. Please note that it may take a short time to update this list with implemented changes.</p>
+
+<p><strong>It’s recommended that you exclude (whitelist) “qb64.exe” (and the <em>internal</em> folder) from any real-time anti-virus scanning to prevent IDE Module Errors.</strong></p>
+
+<h2 id="q-what-is-qb64">Q: What is QB64?</h2>
+
+<p>A: <strong>QB64</strong> is a BASIC-compatible editor and C++ emitter that creates working executable files from QBasic BAS files.  These files can be run on 32- and 64-bit PCs using <strong>Windows</strong> (XP to 10), <strong>Linux</strong> or <strong>macOS</strong>. The goal is to be 100% compatible with QuickBASIC 4.5, while adding hundreds of new capabilities such as program icons, custom-sized windows and a retro-style editor with built-in help.</p>
+
+<p><strong>New keywords</strong> add some <strong>new features</strong>, such as playing <strong>music or sound</strong> files and instant access to <strong>32-bit graphics</strong> file images. <strong>TCP/IP</strong> internet communication is also available to <strong>download</strong> files, <strong>email</strong> messages and play <strong>internet games</strong>. Use of <strong>DLL libraries</strong> adds more programming options, and QB64 can incorporate USB game <strong>controllers</strong> and <strong>printers</strong>.</p>
+
+<p>QB is an abbreviation for <strong>QBasic</strong> or <strong>QuickBASIC</strong>, an easy-to-learn programming language very popular in the 90’s. QB uses simple syntax but holds great potential - there are methods to achieve nearly anything.</p>
+
+<p><strong>QBasic is more alive than ever with QB64!</strong></p>
+
+<p><a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></p>
+
+<h2 id="q-does-qb64-have-modern-features-do-they-have-to-be-used">Q: Does QB64 have modern features? Do they HAVE to be used?</h2>
+
+<p>A: QB64 has plenty of modern features, but they do not have to be used. You may just want to run some of your old favorites.
+<strong>QB64 was created to run your old QBasic 4.5 (or less) programs on newer operating systems without any changes.</strong>
+You may code using the original QuickBASIC syntax all the way through and it should work as you expect it, or even better - QB64 is often faster and has none of the memory limitations that plagued QBasic in the past.</p>
+
+<p>QB64 is not meant to run PDS (7.1) QBX code. Most GW-Basic code will run with minor changes.</p>
+
+<p>The modern statements are designed to go along with the BASIC philosophy and propel QBasic into the future!</p>
+
+<p><strong>QB64 FEATURES INCLUDE:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  1) Full graphical functions for [_NEWIMAGE](_NEWIMAGE) up to 32-bit color. [_ALPHA](_ALPHA) transparency supported.
+
+  2) Instant [_LOADIMAGE](_LOADIMAGE) of image files, including BMP, PNG, JPEG, GIF and more.
+
+  3) Supports [_SNDOPEN](_SNDOPEN) files like WAV, OGG and MP3, with speaker and volume control and more.
+
+  4) Animation, using [_DISPLAY](_DISPLAY) instead of page flipping, to achieve flicker-free graphics.
+
+  5) [_CLIPBOARD$](_CLIPBOARD$) reading and writing support.
+
+  6) Networking over TCP/IP and Email.
+
+  7) True type [_FONT](_FONT) and [Unicode](Unicode) support for many languages.
+
+  8) Integrated [_MOUSEINPUT](_MOUSEINPUT) and [_DEVICES](_DEVICES) input including [_MOUSEWHEEL](_MOUSEWHEEL) support.
+
+  9) Support for C++, OpenGL, Windows API and other custom Dynamic Link [Libraries](Libraries).
+
+</code></pre></div></div>
+
+<h2 id="q-how-do-i-install-qb64-on-windows-linux-macos">Q: How do I install QB64 on Windows, Linux, macOS?</h2>
+
+<p>A: See below for specific install instructions.</p>
+
+<p><strong>Windows NT (XP), Windows Vista, Windows 7, 8 and 10:</strong></p>
+
+<blockquote>
+  <p><strong>1)</strong> Download the appropriate package, specific to your OS, from <a href="http://github.com/QB64Official/qb64/releases">GitHub</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>2)</strong> Unpack the package contents to any location on your computer. Avoid unpacking to Program Files or other system folders that may require administrative privileges, as QB64 requires full write permissions to its own folder.</p>
+</blockquote>
+
+<p>Executable programs are portable between like systems by copying the executable file.</p>
+
+<hr />
+
+<p><strong>Most distributions of Linux, both 32- and 64-bit</strong></p>
+
+<blockquote>
+  <p><strong>1)</strong> Download the appropriate package, specific to your OS, from <a href="http://github.com/QB64Official/qb64/releases">GitHub</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>2)</strong> After extracting the downloaded package, run the installation batch/script titled <em>./setup_lnx.sh</em> in the main <em>qb64</em> folder to set up QB64.</p>
+</blockquote>
+
+<p>Note:  Most dependencies should be automatically downloaded by the setup script, but these are the ones you should look for, if compilation fails: OpenGL developement libraries, ALSA development libraries, GNU C++ Compiler (g++)</p>
+
+<p>Executable programs are portable between like systems by copying the executable file.</p>
+
+<p><strong>Note: Some QB64 keywords and procedures are not available for Linux.</strong></p>
+
+<hr />
+<p><strong>macOS</strong></p>
+
+<blockquote>
+  <p><strong>1)</strong> You must install Apple’s <strong>Xcode command line tools</strong> for C++ compilation from their website. The simplest way to do so is by opening a terminal window and typing the following command: <strong>xcode-select –install</strong> (more info here: [http://developer.apple.com/technologies/tools/xcode.html Xcode download])
+    (You won’t be using the Xcode interface, QB64 just needs to have access to the C++ compiler and libraries it installs.)</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>2)</strong> Download the appropriate package from <a href="http://github.com/QB64Official/qb64/releases">GitHub</a>.
+    Extract the downloaded package and run <em>./setup_osx.command</em>, found in the QB64 folder to install the QB64 compiler.</p>
+</blockquote>
+
+<p><strong>After installation, you should run **./qb64</strong> or <strong>./qb64_start_osx.command</strong> to start qb64.**</p>
+
+<p>Executable programs are portable between macOS systems by copying the executable file. To help launch executables without a console, a file called <em>programname_start.command</em> is created along with the program.</p>
+
+<p><strong>Note: Some QB64 keywords and procedures are not available for macOS.</strong></p>
+
+<p><a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></p>
+
+<hr />
+
+<h2 id="q-why-wont-qb64-work-on-my-computer">Q: Why won’t QB64 work on my computer?</h2>
+
+<p>QB64 currently supports Windows versions from XP to the latest version. Most Linux and macOS versions are also supported.</p>
+
+<blockquote>
+  <p><strong>Don’t move QB64 executable out of the QB64 folder. The various sub-folders hold the C++ compiler files and libraries.</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>QB64 does not change any settings on your machine. All required files are in the QB64 folder.</strong></p>
+</blockquote>
+
+<h2 id="q-are-there-any-known-incompatibilities">Q: Are there any known incompatibilities?</h2>
+
+<p>A: There are some things that QB64 cannot do, like direct hardware access, which makes older programs using <a href="CALL-ABSOLUTE.html">CALL ABSOLUTE</a>, <a href="INTERRUPT.html">INTERRUPT</a>, <a href="PEEK.html">PEEK</a>, <a href="POKE.html">POKE</a> and <a href="OUT.html">OUT</a> unable to work properly. Although some older functionality is emulated, if your program doesn’t use these statements, you probably won’t notice any difference between QB 4.5 and QB64 (and if you do, report it as a bug in the forums). You can expect the most common addresses for interrupts, etc. to be functioning.</p>
+
+<p>See: <a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></p>
+
+<p>You should be careful with <strong>CPU usage</strong>. QB64 is a lot faster than QBasic and does not have many of the size limitations that limited QBasic programming abilities. Having said that, <strong>care must be taken to ensure that programs do not hog resources.</strong> To do that, use speed limits when possible to keep the resources used to a minimum. Also, <strong>Monitor Task Manager</strong> while your programs are running to determine which and how system resources are being used in different parts of a program.</p>
+
+<p>The following keywords can reduce the impact of your programs on those resources by releasing them to other programs:</p>
+
+<blockquote>
+  <p><a href="_LIMIT.html">_LIMIT</a>: Limits the loops per second in any loop and thus lowers the overall CPU usage.</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_DELAY.html">_DELAY</a>: Pauses a procedure and releases unused resources for other programs.</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="SLEEP.html">SLEEP</a>: Stops or delays program procedures and shares resources.</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="INPUT.html">INPUT</a> and <a href="INPUT%24.html">INPUT$</a> stop program procedures until an entry or keypress is provided.</p>
+</blockquote>
+
+<p>QB64 can be fast when you need it to be, but take the time to consider the impact of your program on other programs, as people seldom have only one program running and the OS has tasks it must do too.</p>
+
+<h2 id="q-how-do-i-update-the-information-in-qb64s-help-system">Q: How do I update the information in QB64’s help system?</h2>
+
+<p>A: The help provided in the QB64 IDE Help System fetches the pages from this wiki. Use the <strong>Update current page</strong> in the IDE Help menu selection to update a page. Use the <strong>Update all pages</strong> choice to update them all, but this may take longer.</p>
+
+<h2 id="q-can-i-use-the-same-libraries-with-qb64-that-i-used-with-qb-45">Q: Can I use the same libraries with QB64 that I used with QB 4.5?</h2>
+
+<p>A: If the libraries are pure QB 4.5 code then yes, otherwise no. QLB files are not supported but you can easily copy your favorite SUBs or FUNCTIONs to a text BI file and <a href="%24INCLUDE.html">$INCLUDE</a> them at the end of any program. Include them after all SUB and FUNCTION code in the BAS file.</p>
+
+<p><a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> allows users to reference C, Windows, OpenGL and other DLL libraries. If you find some functions that you like, please share them with us at the forum! Our members have found and tested working functions on the following pages list:</p>
+
+<p><a href="C-Libraries.html">C Libraries</a>, <a href="DLL-Libraries.html">DLL Libraries</a>, <a href="Windows-Libraries.html">Windows Libraries</a></p>
+
+<h2 id="q-i-cant-get-my-qb-45-source-code-to-work-in-qb64-why">Q: I can’t get my QB 4.5 source code to work in QB64! Why?</h2>
+
+<p>A: QB64 is 99% compatible with QB4.5 programs. The commands that haven’t been implemented are either obsolete or are too obscure and have been replaced by modern functionality.</p>
+
+<p>See: <a href="Keywords-currently-not-supported-by-QB64.html">Keywords currently not supported</a></p>
+
+<h2 id="q-what-files-are-required-to-run-my-qb64-compiled-program-in-my-os">Q: What files are required to run my QB64 compiled program in my OS?</h2>
+
+<p>A: Programs compiled by QB64 (version 1.000 and up) are stand-alone, so no external files are required to be included with your program’s EXE file.</p>
+
+<h2 id="q-is-there-a-way-to-use-qb64-from-the-command-line">Q: Is there a way to use QB64 from the command line?</h2>
+
+<p>A: Yes! Just type QB64 -? at the command prompt to see a list of available options.</p>
+
+<ul>
+  <li><strong>QB64 -c yourfile.BAS</strong></li>
+  <li><strong>QB64 -x yourfile.BAS</strong> <em>(compiles using the console only)</em></li>
+  <li><strong>QB64 -c yourfile.BAS -o destination_path\destination executable_name.exe</strong> <em>(compiles the .BAS file and outputs the executable to a separate folder)</em></li>
+</ul>
+
+<blockquote>
+  <p>The <strong>-z</strong> option does not even create an executable file, it performs the first compile pass only (syntax checking and generate C code).</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Usage: qb64 [switches] &lt;file&gt;
+
+Options:
+  &lt;file&gt;                  Source file to load
+  -c                      Compile instead of edit
+  -o &lt;output file&gt;        Write output executable to &lt;output file&gt;
+  -x                      Compile instead of edit and output the result to the
+                             console
+  -w                      Show warnings
+  -q                      Quiet mode (does not inhibit warnings or errors)
+  -m                      Do not colorize compiler output (monochrome mode)
+  -e                      Enable OPTION _EXPLICIT, making variable declaration
+                             mandatory (per-compilation; doesn't affect the
+                             source file or global settings)
+  -s[:switch=true/false]  View/edit compiler settings
+  -l:&lt;line number&gt;        Start the IDE at the specified line number
+  -p                      Purge all pre-compiled content first
+  -z                      Generate C code without compiling to executable
+
+</code></pre></div></div>
+
+<h2 id="q-how-do-i-link-modules-or-include-sub-procedures-in-qb64">Q: How do I link modules or include SUB procedures in QB64?</h2>
+
+<p>A: QB64 allows you to <a href="%24INCLUDE.html">$INCLUDE</a> code or BAS modules into one module when it is compiled. Text .BI files containing SUB or FUNCTION code or entire BAS modules can be included in one module that will be compiled.</p>
+
+<p>After the EXE is compiled, you do not have to even use the added code anymore. The EXE will contain ALL of the program code as ONE stand-alone program. This also allows you to add SUB code to any program that you desire.</p>
+
+<p>See: <a href="%24INCLUDE.html">$INCLUDE</a></p>
+
+<h2 id="q-some-screens-look-small-can-i-enlarge-them-or-make-them-fullscreen">Q: Some screens look small. Can I enlarge them or make them fullscreen?</h2>
+
+<ul>
+  <li>You can use the <a href="_FULLSCREEN.html">_FULLSCREEN</a> statement to make your programs run fullscreen.</li>
+  <li><a href="%24RESIZE.html">$RESIZE</a> can be added to a program so you can track window resize events.</li>
+  <li>You can also create custom-size screens with page flipping and up to 32-bit colors using <a href="_NEWIMAGE.html">_NEWIMAGE</a>.</li>
+  <li>Page flipping is available in most screens and the new <a href="_DISPLAY.html">_DISPLAY</a> feature allows the images to be displayed when YOU desire.</li>
+  <li>Picture or image files such as BMP, PNG, JPEG and GIF load using <a href="_LOADIMAGE.html">_LOADIMAGE</a>.</li>
+  <li>Once images are loaded, all you have to do is use the image handle with any of the new statements and functions.</li>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a> GETs and PUTs images fast in ONE call. It can even stretch or compress the image sizes.</li>
+</ul>
+
+<h2 id="q-can-i-have-background-music-as-well-as-sound-play-and-beep">Q: Can I have background music as well as <a href="SOUND.html">SOUND</a>, <a href="PLAY.html">PLAY</a> and <a href="BEEP.html">BEEP</a>?</h2>
+
+<p>A: Yes, they are emulated to use the soundcard.</p>
+
+<p><strong>There are also new sound capabilities that allow the use of WAV, OGG, MP3 files and more.</strong></p>
+
+<p>Capabilities include:</p>
+
+<ul>
+  <li>Multiple sound tracks</li>
+  <li>Volume and speaker control</li>
+  <li>Background music</li>
+</ul>
+
+<p><strong>Get started with <a href="_SNDOPEN.html">_SNDOPEN</a>:</strong></p>
+
+<blockquote>
+  <p><a href="_SNDCLOSE.html">_SNDCLOSE</a> (statement), <a href="_SNDCOPY.html">_SNDCOPY</a> (function), <a href="_SNDGETPOS.html">_SNDGETPOS</a> (function), <a href="_SNDLEN.html">_SNDLEN</a> (function), <a href="_SNDLIMIT.html">_SNDLIMIT</a> (statement)</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_SNDLOOP.html">_SNDLOOP</a> (statement), <a href="_SNDOPEN.html">_SNDOPEN</a> (function), <a href="_SNDPAUSE.html">_SNDPAUSE</a> (statement), <a href="_SNDPAUSED.html">_SNDPAUSED</a> (function), <a href="_SNDPLAY.html">_SNDPLAY</a> (statement)</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_SNDPLAYCOPY.html">_SNDPLAYCOPY</a> (statement), <a href="_SNDPLAYFILE.html">_SNDPLAYFILE</a> (statement), <a href="_SNDPLAYING.html">_SNDPLAYING</a> (function), <a href="_SNDSETPOS.html">_SNDSETPOS</a> (statement)</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="_SNDRAW.html">_SNDRAW</a> (statement), <a href="_SNDSTOP.html">_SNDSTOP</a> (statement), <a href="_SNDVOL.html">_SNDVOL</a> (statement)</p>
+</blockquote>
+
+<h2 id="q-if-qb64-creates-basic-programs-why-is-there-no-immediate-window">Q: If QB64 creates BASIC programs why is there no Immediate Window?</h2>
+
+<p>A: Because there is no <strong>QB64</strong> interpreter. All C code has to be compiled before it can be run.</p>
+
+<p><strong>QB64</strong> uses the Immediate window area to suggest syntax for keyword entries and to indicate the compiler status when compiling.</p>
+
+<h2 id="q-does-qb64-work-on-windows-98-or-any-os-older-than-windows-2000">Q: Does QB64 work on Windows 98 or any OS older than Windows 2000?</h2>
+
+<p>A: No, it doesn’t. QB64 is made to run on newer operating systems (Windows XP and up, Linux and macOS).</p>
+
+<h2 id="q-does-qb64-support-currency-values-from-pds-or-vb-programs">Q: Does QB64 support CURRENCY values from PDS or VB programs?</h2>
+
+<p>A: Not directly, but <a href="_FLOAT.html">_FLOAT</a> currency values up to 4 decimal places can be multiplied by 10000(10 ^ 4) and converted to MKC$ string values using <a href="_MK%24.html">_MK$</a> with an <a href="_INTEGER64.html">_INTEGER64</a> value. <a href="_CV.html">_CV</a> with an <a href="_INTEGER64.html">_INTEGER64</a> value divided by 10000 converts it back to <a href="_FLOAT.html">_FLOAT</a> values.</p>
+
+<p><a href="PUT.html">PUT</a> can write a PDS or VB, 8-byte currency string by multiplying the currency amount by 10000 and using an <a href="_INTEGER64.html">_INTEGER64</a> variable.</p>
+
+<p><a href="GET.html">GET</a> can read a <a href="_FLOAT.html">_FLOAT</a> CURRENCY value as an <a href="INTEGER64.html">INTEGER64</a> variable value divided by 10000.</p>
+
+<h2 id="q-do-you-provide-changelogs">Q: Do you provide changelogs?</h2>
+
+<p>A: We do.  For all recent changelogs, check <a href="../index.html">QB64.com</a> or <a href="https://github.com/QB64Official/qb64/blob/master/CHANGELOG.md">GitHub</a>.</p>
+
+<h2 id="q-where-i-can-view-the-c-code-before-it-gets-compiled">Q: Where I can view the C++ code before it gets compiled?</h2>
+
+<p>Look in the QB64 <strong>internal\temp</strong> folder for <strong>main.txt</strong> to get the C code used to compile the latest program.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/QB64-FAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+</html>

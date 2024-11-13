@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/GET-(graphics-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="GET-(graphics-statement)-2.html" />
+<meta property="og:url" content="GET-(graphics-statement)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/GET-(graphics-statement).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="GET-(graphics-statement).html">GET (graphics statement)</a> statement is used in graphics to store a box area image of the screen into an <a href="INTEGER.html">INTEGER</a> array.</p>
+
+<h2 id="legacy-support">Legacy Support</h2>
+
+<ul>
+  <li><strong>QB64 can manipulate parts of an image using <a href="_PUTIMAGE.html">_PUTIMAGE</a>. For that reason, GET isn’t recommended practice anymore and is supported to maintain compatibility with legacy code.</strong></li>
+</ul>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="GET.html">GET</a> [STEP] (column1, row1)-<a href="column2%2c%20row2.html">STEP</a>, array([index])[, offscreenColor]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li><em>column</em> and <em>row</em> <a href="INTEGER.html">INTEGER</a> coordinates for the box area must be on the screen except when using an <em>offscreenColor</em>.</li>
+  <li><a href="INTEGER.html">INTEGER</a> array sizes must be large enough (use width * height of the box area + 4) to hold the data or an error will occur.</li>
+  <li>The <a href="arrays-2.html">arrays</a> <em>index</em> offset is optional. If the offset is zero the brackets may be empty.</li>
+  <li>The offscreenColor pixels will be returned as the designated color when part of an image is off screen.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The <a href="STEP.html">STEP</a> keyword can be used to for coordinates relative to the last graphic coordinates used.</li>
+  <li>A graphic screen mode must be used. See the <a href="SCREEN.html">SCREEN</a> statement for graphic screen dimensions.</li>
+  <li><strong>QB64</strong> GET statements can use coordinates off of the screen when an ‘offscreenColor is designated. <a href="STEP.html">STEP</a> can be used for relative coordinates.</li>
+  <li>The GET box coordinates are set just like a <a href="LINE.html">LINE</a> box statement is placed. You can use a box to find the correct GET area.</li>
+  <li>Once GET has placed the pixel image data in the array, PUT the image or BSAVE it to a file.</li>
+  <li>Once the image is stored in an array <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> can be used to place the image on the screen.</li>
+  <li>A <a href="_SOURCE.html">_SOURCE</a> <a href="handle.html">handle</a> can be set to GET image areas other than the ones on the current screen. Use <a href="_DEST.html">_DEST</a> to <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> images there.</li>
+  <li>To GET more than one image to the same array, designate an offset index that is not being used and is large enough to hold the data.</li>
+  <li>The <a href="INTEGER.html">INTEGER</a> array size can be calculated as slightly larger than the box area width times the height. A closer estimate can be done by reading the array indices from <a href="UBOUND.html">UBOUND</a> to <a href="LBOUND.html">LBOUND</a> after a <a href="GET-(graphics-statement).html">GET (graphics statement)</a> of a white box area. In QB64, a <a href="LONG.html">LONG</a> array can be used for large or full screen images.</li>
+  <li>RGB color settings can be embedded at the beginning of the array for transferring custom colors. Specify an <em>index</em> for GET image data to be stored after any extra information added to the beginning of the array.</li>
+  <li><strong>In QB64, <a href="_PUTIMAGE.html">_PUTIMAGE</a> is recommended over PUT as it can also do the <a href="GET-(graphics-statement).html">GET (graphics statement)</a> operation directly from the image source without requiring an array.</strong></li>
+  <li><strong><a href="PUT.html">PUT</a> and <a href="GET.html">GET</a> file statements can also write and read image array data using <a href="BINARY.html">BINARY</a> files instead of using <a href="BSAVE.html">BSAVE</a> or <a href="BLOAD.html">BLOAD</a>.</strong></li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li>SCREEN 12 could only GET 1/3 of a full SCREEN 12 image. Rows would increment 160 each GET. <strong>QB64</strong> can save entire screen at once.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>How to use GET and PUT to move a sprite with the arrow keys.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">DIM</span> <span class="n">BG</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span> <span class="n">Box</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span> <span class="n">SC</span><span class="p">(</span><span class="mi">127</span><span class="p">)</span> <span class="c1">' BG holds background images. Box holds the Box image.</span>
+<span class="n">SCREEN</span> <span class="mi">13</span> <span class="c1">' graphic coordinate minimums are 0 to 319 column or 199 row maximums.</span>
+          <span class="c1">' set up screen background</span>
+<span class="n">COLOR</span> <span class="mi">4</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Multikey Keyboard input routine"</span>
+<span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Use the arrow keys to move the box."</span>
+<span class="n">LOCATE</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Note that you can press two or more"</span>
+<span class="n">LOCATE</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"keys at once for diagonal movement!"</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">" Also demonstrates how GET and PUT "</span>
+<span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"are used to preserve the background."</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press [Esc] to quit"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">150</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">50</span><span class="p">:</span> <span class="n">PX</span> <span class="o">=</span> <span class="n">x</span><span class="p">:</span> <span class="n">PY</span> <span class="o">=</span> <span class="n">y</span> <span class="c1">' actual box starting position</span>
+
+<span class="n">GET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">15</span><span class="p">),</span> <span class="n">BG</span>  <span class="c1">' GET original BG at start box position</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">15</span><span class="p">),</span> <span class="mi">9</span><span class="p">,</span> <span class="n">BF</span> <span class="c1">' the plain blue box to move</span>
+<span class="n">GET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">15</span><span class="p">),</span> <span class="n">Box</span>   <span class="c1">' GET to Box Array</span>
+ 
+<span class="n">DO</span>  <span class="c1">'main loop</span>
+  <span class="n">t!</span> <span class="o">=</span> <span class="n">TIMER</span> <span class="o">+</span> <span class="p">.</span><span class="err">05</span>
+  <span class="n">DO</span>         <span class="c1">' 1 Tick (1/18th second) keypress scancode read loop</span>
+    <span class="n">a$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span> <span class="c1">' So the keyboard buffer won't get full</span>
+    <span class="n">code%</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H60</span><span class="p">)</span> <span class="c1">' Get keyboard scan code from port 96</span>
+    <span class="n">IF</span> <span class="n">code%</span> <span class="o">&lt;</span> <span class="mi">128</span> <span class="n">THEN</span> <span class="n">SC</span><span class="p">(</span><span class="n">code%</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">ELSE</span> <span class="n">SC</span><span class="p">(</span><span class="n">code%</span> <span class="o">-</span> <span class="mi">128</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'true/false values to array</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span>  <span class="n">TIMER</span> <span class="o">&gt;</span> <span class="n">t!</span><span class="c1">' loop until one tick has passed</span>
+
+  <span class="n">PX</span> <span class="o">=</span> <span class="n">x</span><span class="p">:</span> <span class="n">PY</span> <span class="o">=</span> <span class="n">y</span>  <span class="c1">' previous coordinates</span>
+  <span class="n">IF</span> <span class="n">SC</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">5</span><span class="p">:</span> <span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">IF</span> <span class="n">SC</span><span class="p">(</span><span class="mi">77</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span> <span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">304</span> <span class="n">THEN</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">304</span>
+  <span class="n">IF</span> <span class="n">SC</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">5</span><span class="p">:</span> <span class="n">IF</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">IF</span> <span class="n">SC</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span> <span class="n">IF</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">184</span> <span class="n">THEN</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">184</span>
+  <span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;&gt;</span> <span class="n">PX</span> <span class="n">OR</span> <span class="n">y</span> <span class="o">&lt;&gt;</span> <span class="n">PY</span> <span class="n">THEN</span>             <span class="c1">' look for a changed coordinate value</span>
+    <span class="n">WAIT</span> <span class="mi">936</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="n">PUT</span><span class="p">(</span><span class="n">PX</span><span class="p">,</span> <span class="n">PY</span><span class="p">),</span> <span class="n">BG</span><span class="p">,</span> <span class="n">PSET</span>  <span class="c1">' replace previous BG first</span>
+    <span class="n">GET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">15</span><span class="p">),</span> <span class="n">BG</span>      <span class="c1">' GET BG at new position before box is set</span>
+    <span class="n">PUT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">Box</span><span class="p">,</span> <span class="n">PSET</span>                <span class="c1">' PUT box image at new position</span>
+  <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">SC</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">' main loop until [Esc] key (scan code 1) is pressed </span>
+
+</code></pre></div></div>
+
+<p>How to GET graphics from an image other than the present screen using <a href="_SOURCE.html">_SOURCE</a> and <a href="_DEST.html">_DEST</a>ination.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">img</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>  <span class="c1">'create img% array to hold 20 by 20 image data </span>
+<span class="n">a&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>     <span class="c1">'larger surface a&amp; emulates screen 13 colors &amp; resolution</span>
+
+<span class="n">SCREEN</span> <span class="mi">13</span>     <span class="c1">'program screen 13</span>
+
+<span class="n">_DEST</span> <span class="n">a&amp;</span>                         <span class="c1">'set desination as the image page a&amp;</span>
+<span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">'draw green circle on image page</span>
+
+<span class="n">_SOURCE</span> <span class="n">a&amp;</span>                       <span class="c1">'set source as image page a&amp;</span>
+<span class="n">GET</span> <span class="p">(</span><span class="mi">690</span><span class="p">,</span> <span class="mi">290</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">710</span><span class="p">,</span> <span class="mi">310</span><span class="p">),</span> <span class="n">img</span><span class="p">()</span> <span class="c1">'GET a square screen area similar to a LINE Box.</span>
+
+<span class="n">_DEST</span> <span class="mi">0</span>                          <span class="c1">'set destination as the program screen</span>
+<span class="n">PUT</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">img</span><span class="p">()</span>            <span class="c1">'PUT the Top Left Corner of box area to pixel 100, 100</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Notes:</em> A <a href="_LOADIMAGE.html">_LOADIMAGE</a> handle could also be used as a <a href="_SOURCE.html">_SOURCE</a> to GET a portion or all of an image file.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_PUTIMAGE.html">_PUTIMAGE</a>, <a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="_MAPTRIANGLE.html">_MAPTRIANGLE</a></li>
+  <li><a href="PUT-(graphics-statement).html">PUT (graphics statement)</a>, <a href="STEP.html">STEP</a></li>
+  <li><a href="BSAVE.html">BSAVE</a>, <a href="BLOAD.html">BLOAD</a></li>
+  <li><a href="Scancodes.html">Scancodes</a>, <a href="Creating-Sprite-Masks.html">Creating Sprite Masks</a> (for non-box shaped sprites)</li>
+  <li><a href="Bitmaps.html">Bitmaps</a>, <a href="GET-and-PUT-Demo.html">GET and PUT Demo</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/GET-(graphics-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:23 GMT -->
+</html>

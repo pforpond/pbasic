@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PRESET.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PRESET-2.html" />
+<meta property="og:url" content="PRESET-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PRESET.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>PRESET</strong> graphic <a href="SCREEN.html">SCREEN</a> statement turns a pixel at a coordinate to the background color or a designated color attribute.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>PRESET</strong> [STEP]<strong>(</strong><em>column%</em>, <em>row%</em><strong>)</strong>[, colorAttribute]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Can use <a href="STEP.html">STEP</a> when relative graphics coordinates are required.</li>
+  <li><em>column</em> and <em>row</em> coordinates can be literal ot variable <a href="INTEGER.html">INTEGER</a> values which can be offscreen.</li>
+  <li>If the <em>colorAttribute</em> is omitted, PRESET will use the current <a href="_DEST.html">_DEST</a> page’s <a href="_BACKGROUNDCOLOR.html">_BACKGROUNDCOLOR</a>.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>Color attributes are limited to those available in the <a href="SCREEN.html">SCREEN</a> mode used. <a href="PSET.html">PSET</a> can be used to adopt previously used colors.</li>
+  <li>Any color value other than 0 will be white in monochrome <a href="SCREEN.html">SCREEN</a> modes 2 and 11 where the <a href="COLOR.html">COLOR</a> statement cannot be used.</li>
+  <li>PRESET can invisibly locate other graphics objects like <a href="CIRCLE.html">CIRCLE</a>s and add color to subsequent graphic objects and <a href="DRAW.html">DRAW</a> when used.</li>
+  <li>The PRESET action can be used in a graphics <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> to produce a color inverted image on any background. See Example 2.</li>
+  <li>The graphic cursor is set to the center of the program window on program start for <a href="STEP.html">STEP</a> relative coordinates.</li>
+  <li><strong>PRESET can be used in any graphic screen mode, but cannot be used in the default screen mode 0 as it is text only!</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using PRESET to locate a <a href="DRAW.html">DRAW</a> statement that draws a box that is bright red.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">PRESET</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">DRAW</span> <span class="s">"C12 U20 R20 D20 L20"</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="DRAW.html">DRAW</a> string required a color designation as PRESET defaulted to the black background color.</p>
+</blockquote>
+
+<p>Displays the flags of countries that use simple horizontal or vertical color blocks with a highlighted arrow key menu.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">c$</span><span class="p">(</span><span class="mi">21</span><span class="p">),</span> <span class="n">x$</span><span class="p">(</span><span class="mi">21</span><span class="p">),</span> <span class="n">gg%</span><span class="p">(</span><span class="mi">477</span><span class="p">)</span>
+
+<span class="n">ARRAY</span>
+<span class="n">SETUP</span>
+<span class="n">SELECTION</span>
+<span class="n">TERMINATE</span>
+
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">ARRAY</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Armenia H040914"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Austria H041504"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Belgium V001404"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Bulgaria H150204"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Chad V011404"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="s">"C“te D'Ivoire V061502"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Estonia H090015"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="s">"France V011504"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Germany H000414"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Hungary H041502"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Ireland V021506"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Italy V021504"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Lithuania H140204"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Luxembourg H041509"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Mali V021404"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Netherlands H041501"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Nigeria V021502"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Romania V091404"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Russia H150104"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Sierra Leone H021509"</span>
+<span class="n">c$</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Yemen H041500"</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">DISPLAY</span><span class="p">.</span><span class="n">FLAG</span> <span class="p">(</span><span class="n">calc%</span><span class="p">)</span>
+<span class="n">f%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">x$</span><span class="p">(</span><span class="n">calc%</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">s%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">x$</span><span class="p">(</span><span class="n">calc%</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">t%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">x$</span><span class="p">(</span><span class="n">calc%</span><span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">IF</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">x$</span><span class="p">(</span><span class="n">calc%</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s">"V"</span> <span class="n">THEN</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">225</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="mi">465</span><span class="p">),</span> <span class="n">f%</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">254</span><span class="p">,</span> <span class="mi">225</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">385</span><span class="p">,</span> <span class="mi">465</span><span class="p">),</span> <span class="n">s%</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">386</span><span class="p">,</span> <span class="mi">225</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">465</span><span class="p">),</span> <span class="n">t%</span><span class="p">,</span> <span class="n">BF</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">IF</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">x$</span><span class="p">(</span><span class="n">calc%</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s">"H"</span> <span class="n">THEN</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">225</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">305</span><span class="p">),</span> <span class="n">f%</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">306</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">386</span><span class="p">),</span> <span class="n">s%</span><span class="p">,</span> <span class="n">BF</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">387</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">465</span><span class="p">),</span> <span class="n">t%</span><span class="p">,</span> <span class="n">BF</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">SELECTION</span> <span class="c1">'menu selection using arrow keys</span>
+<span class="n">x%</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span> <span class="n">y%</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">DO</span>
+  <span class="n">WHILE</span> <span class="p">(</span><span class="n">x%</span> <span class="o">&lt;&gt;</span> <span class="n">prevx%</span> <span class="n">OR</span> <span class="n">y%</span> <span class="o">&lt;&gt;</span> <span class="n">prevy%</span><span class="p">)</span> <span class="n">AND</span> <span class="n">k$</span> <span class="o">&lt;&gt;</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+    <span class="n">k$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+    <span class="n">x%</span> <span class="o">=</span> <span class="n">x%</span> <span class="o">+</span> <span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"K"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">x%</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ABS</span><span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"M"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">x%</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">y%</span> <span class="o">=</span> <span class="n">y%</span> <span class="o">+</span> <span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"H"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">y%</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ABS</span><span class="p">(</span><span class="n">k$</span> <span class="o">=</span> <span class="p">(</span><span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s">"P"</span><span class="p">)</span> <span class="n">AND</span> <span class="n">y%</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">calc%</span> <span class="o">=</span> <span class="p">(</span><span class="n">x%</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="n">y%</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">c$</span><span class="p">(</span><span class="n">calc%</span><span class="p">)</span><span class="err">;</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">x1%</span> <span class="o">=</span> <span class="mi">140</span> <span class="o">+</span> <span class="p">(</span><span class="n">x%</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">128</span>
+    <span class="n">x2%</span> <span class="o">=</span> <span class="n">x1%</span> <span class="o">+</span> <span class="n">LEN</span><span class="p">(</span><span class="n">c$</span><span class="p">(</span><span class="n">calc%</span><span class="p">))</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">7</span>
+    <span class="n">y1%</span> <span class="o">=</span> <span class="mi">48</span> <span class="o">+</span> <span class="n">y%</span> <span class="o">*</span> <span class="mi">16</span>
+    <span class="n">IF</span> <span class="n">x1%</span> <span class="o">&lt;&gt;</span> <span class="n">prevx1%</span> <span class="n">OR</span> <span class="n">y1%</span> <span class="o">&lt;&gt;</span> <span class="n">prevy1%</span> <span class="n">THEN</span>
+      <span class="n">IF</span> <span class="n">g%</span> <span class="n">THEN</span> <span class="n">PUT</span><span class="p">(</span><span class="n">prevx1%</span><span class="p">,</span> <span class="n">prevy1%</span><span class="p">),</span> <span class="n">gg%</span><span class="p">(),</span> <span class="n">PSET</span>
+      <span class="n">GET</span><span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">x2%</span><span class="p">,</span> <span class="n">y1%</span> <span class="o">+</span> <span class="mi">16</span><span class="p">),</span> <span class="n">gg%</span><span class="p">():</span> <span class="n">g%</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="n">PUT</span><span class="p">(</span><span class="n">x1%</span><span class="p">,</span> <span class="n">y1%</span><span class="p">),</span> <span class="n">gg%</span><span class="p">(),</span> <span class="n">PRESET</span>
+      <span class="n">prevx1%</span> <span class="o">=</span> <span class="n">x1%</span><span class="p">:</span> <span class="n">prevx2%</span> <span class="o">=</span> <span class="n">x2%</span><span class="p">:</span> <span class="n">prevy1%</span> <span class="o">=</span> <span class="n">y1%</span>
+      <span class="n">DISPLAY</span><span class="p">.</span><span class="n">FLAG</span> <span class="n">calc%</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">WEND</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">k$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">SETUP</span>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">COLOR</span> <span class="mi">6</span>
+<span class="n">c%</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">FOR</span> <span class="n">x%</span> <span class="o">=</span> <span class="mi">11</span> <span class="n">TO</span> <span class="mi">50</span> <span class="n">STEP</span> <span class="mi">16</span>
+  <span class="n">FOR</span> <span class="n">y%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">7</span>
+    <span class="n">x$</span><span class="p">(</span><span class="n">c%</span><span class="p">)</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">c$</span><span class="p">(</span><span class="n">c%</span><span class="p">),</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">c$</span><span class="p">(</span><span class="n">c%</span><span class="p">)</span> <span class="o">=</span> <span class="n">RTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">c$</span><span class="p">(</span><span class="n">c%</span><span class="p">),</span> <span class="n">LEN</span><span class="p">(</span><span class="n">c$</span><span class="p">(</span><span class="n">c%</span><span class="p">))</span> <span class="o">-</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">LOCATE</span> <span class="n">y%</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="n">x%</span> <span class="o">+</span> <span class="mi">8</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">c$</span><span class="p">(</span><span class="n">c%</span><span class="p">)</span>
+    <span class="n">c%</span> <span class="o">=</span> <span class="n">c%</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NEXT</span> <span class="n">y%</span><span class="p">,</span> <span class="n">x%</span>
+
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Use the Cursor Keys to Select a Country:"</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">119</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">520</span><span class="p">,</span> <span class="mi">466</span><span class="p">),</span> <span class="mi">7</span><span class="p">,</span> <span class="n">B</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">TERMINATE</span>
+<span class="n">FOR</span> <span class="n">c%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">219</span>
+  <span class="n">LINE</span> <span class="p">(</span><span class="mi">116</span> <span class="o">+</span> <span class="n">c%</span><span class="p">,</span> <span class="mi">29</span> <span class="o">+</span> <span class="n">c%</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">523</span> <span class="o">-</span> <span class="n">c%</span><span class="p">,</span> <span class="mi">469</span> <span class="o">-</span> <span class="n">c%</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">B</span>
+<span class="n">NEXT</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Using the <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> PRESET action highlights the menu selection in graphic screen modes by returning a negative image.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PUT-(graphics-statement).html">PUT (graphics statement)</a></li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a></li>
+  <li><a href="CIRCLE.html">CIRCLE</a>, <a href="LINE.html">LINE</a>, <a href="PSET.html">PSET</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PRESET.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+</html>

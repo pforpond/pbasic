@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Metacommand.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Metacommand-3.html" />
+<meta property="og:url" content="Metacommand-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Metacommand.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Metacommands</strong> are program wide commands that start with $.</p>
+
+<h2 id="qbasicquickbasic---legacy-metacommands">QBasic/QuickBASIC - Legacy metacommands</h2>
+
+<h3 id="syntax">Syntax</h3>
+
+<blockquote>
+  <p>REM <a href="%24INCLUDE.html">$INCLUDE</a>: ‘<a href="QB.html">QB.BI</a>’ ‘loads a reference file or library</p>
+</blockquote>
+
+<blockquote>
+  <p>REM <a href="%24DYNAMIC.html">$DYNAMIC</a> ‘enables resizing of array dimensions with REDIM</p>
+</blockquote>
+
+<blockquote>
+  <p>REM <a href="%24STATIC.html">$STATIC</a> ‘arrays cannot be resized once dimensioned</p>
+</blockquote>
+
+<h3 id="description">Description</h3>
+
+<ul>
+  <li>QBasic Metacommands are normally used at the program start and are in effect throughout the program.</li>
+  <li>QBasic Metacommands are always prefixed with $ and MUST be commented with an apostrophe or <a href="REM.html">REM</a>.</li>
+  <li><a href="%24INCLUDE.html">$INCLUDE</a> is always followed by a colon and the full text code file name is commented on both sides.</li>
+  <li><a href="%24DYNAMIC.html">$DYNAMIC</a> allows larger arrays that are changeable in size at runtime.</li>
+  <li><a href="%24STATIC.html">$STATIC</a> makes all arrays unchangeable in size.</li>
+  <li><strong>QBasic metacommands should have their own program line because they are commented.</strong></li>
+</ul>
+
+<h2 id="qb64-metacommands">QB64 metacommands</h2>
+
+<h3 id="syntax-1">Syntax</h3>
+
+<blockquote>
+  <p><a href="%24ASSERTS.html">$ASSERTS</a>:CONSOLE</p>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="%24CHECKING.html">$CHECKING</a>{OFF</td>
+        <td>ON} ‘disables QB64 C++ event and error checking (no spaces)</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24COLOR.html">$COLOR</a>    ‘adds named color <a href="CONST.html">CONST</a>antes to a program</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24CONSOLE.html">$CONSOLE</a> ‘creates a QB64 console window throughout the program</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24DEBUG.html">$DEBUG</a> enables debugging features, allowing you to step through your code line by line</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24ERROR.html">$ERROR</a> <em>MESSAGE</em> triggers a compilation error MESSAGE.</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24EXEICON.html">$EXEICON</a>:’iconfile.ico’ ‘embeds an .ICO file into the final executable (Windows only)</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24IF.html">$IF</a> … <a href="%24IF.html">$ELSEIF</a> … <a href="%24IF.html">$ELSE</a> … <a href="%24END-IF.html">$END IF</a> ‘precompiler directive</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24LET.html">$LET</a> variable = expression</p>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="%24RESIZE.html">$RESIZE</a>:{ON</td>
+        <td>OFF</td>
+        <td>STRETCH</td>
+        <td>SMOOTH} ‘determines if re-sizing of the program screen by the user is allowed</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24SCREENHIDE.html">$SCREENHIDE</a> ‘hides the QB64 program window throughout the program</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24SCREENSHOW.html">$SCREENSHOW</a> ‘displays the main QB64 program window</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="%24VERSIONINFO.html">$VERSIONINFO</a>:key=value ‘embeds version info metadata into the final executable (Windows only)</p>
+</blockquote>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="%24VIRTUALKEYBOARD.html">$VIRTUALKEYBOARD</a>:{ON</td>
+        <td>OFF} ‘DEPRECATED keyword</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h3 id="description-1">Description</h3>
+
+<ul>
+  <li><a href="%24ASSERTS.html">$ASSERTS</a><em>:CONSOLE</em> Enables debug tests with the <a href="_ASSERT.html">_ASSERT</a> macro.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="%24CHECKING.html">$CHECKING</a>_{OFF</td>
+          <td>ON}_ Should only be used with <strong>errorless</strong> code where every CPU cycle counts! Use <strong>ON</strong> to re-enable event checking. Event checking can be turned OFF or ON throughout a program.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><a href="%24COLOR.html">$COLOR</a>  adds named color <a href="CONST.html">CONST</a>antes to a program.</li>
+  <li><a href="%24CONSOLE.html">$CONSOLE</a> creates a console window which can be turned off later with <a href="_CONSOLE.html">_CONSOLE</a> OFF.</li>
+  <li><a href="%24DEBUG.html">$DEBUG</a> enables debugging features, allowing you to step through your code line by line.</li>
+  <li><a href="%24ERROR.html">$ERROR</a> <em>MESSAGE</em> triggers a error MESSAGE only during your program compilation.</li>
+  <li><a href="%24IF.html">$IF</a> … <a href="%24IF.html">$ELSEIF</a> … <a href="%24IF.html">$ELSE</a> … <a href="%24END-IF.html">$END IF</a> allows selective inclusion of code in the final program.</li>
+  <li><a href="%24LET.html">$LET</a> <em>variable = expression</em> sets a precompiler variable to a value.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="%24RESIZE.html">$RESIZE</a>:{ON</td>
+          <td>OFF</td>
+          <td>STRETCH</td>
+          <td>SMOOTH} allows a user to resize the program window. OFF is default.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><a href="%24SCREENHIDE.html">$SCREENHIDE</a> hides the QB64 program window throughout the program until <a href="%24SCREENSHOW.html">$SCREENSHOW</a> is used.</li>
+  <li>
+    <p><a href="%24VERSIONINFO.html">$VERSIONINFO</a>:<em>key=value</em> embeds version info metadata into the final executable (Windows only).</p>
+  </li>
+  <li><strong>Do not comment out with ‘ or <a href="REM.html">REM</a> QB64-specific metacommands.</strong></li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="Statement.html">Statement</a>, <a href="Function-(explanatory).html">Function (explanatory)</a></li>
+  <li><a href="REM.html">REM</a></li>
+  <li><a href="DIM.html">DIM</a>, <a href="REDIM.html">REDIM</a></li>
+  <li><a href="ON-TIMER(n).html">ON TIMER(n)</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Metacommand.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:11 GMT -->
+</html>

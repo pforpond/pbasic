@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Concatenation by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:22:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Concatenation-3.html" />
+<meta property="og:url" content="Concatenation-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Concatenation.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Concatenation</strong> is a process where literal or variable <a href="STRING.html">STRING</a> values are combined using the <a href="%2b.html">+</a> operator.</p>
+
+<h2 id="usage">Usage</h2>
+
+<blockquote>
+  <p>value$ = “Literal text” + string_variable$ + “more text.”</p>
+</blockquote>
+
+<ul>
+  <li>The <a href="STRING.html">STRING</a> values added can be literal or string variable values or a string <a href="FUNCTION.html">FUNCTION</a> value.</li>
+  <li>When combining string values in a variable definition, concatenation MUST be used!</li>
+  <li>Literal or variable numerical values cannot be used in string concatenation.</li>
+  <li>A numerical value can be changed to a string value using the <a href="STR%24.html">STR$</a>(number), <a href="CHR%24.html">CHR$</a>(code), <a href="HEX%24.html">HEX$</a>, <a href="OCT%24.html">OCT$</a>, <a href="MKI%24.html">MKI$</a>, <a href="MKS%24.html">MKS$</a>, <a href="MKD%24.html">MKD$</a>, <a href="MKL%24.html">MKL$</a>, <a href="_MK%24.html">_MK$</a> or <a href="VARPTR%24.html">VARPTR$</a> functions.</li>
+  <li><a href="PRINT.html">PRINT</a> does not require any concatenation, but it can be used instead of using <a href="semicolon-2.html">semicolon</a>s where strings are combined ONLY.</li>
+  <li>String values CANNOT be subtracted from a value! Use <a href="LEFT%24.html">LEFT$</a>, <a href="RIGHT%24.html">RIGHT$</a> or <a href="MID%24.html">MID$</a> to get portions of a string value.</li>
+</ul>
+
+<p>Adding quotation marks to a string value using concatenation. Variables cannot be defined using semicolons!</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">quote$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s">"Hello World!"</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+
+<span class="n">PRINT</span> <span class="s">"Bill Gates never said "</span><span class="err">;</span> <span class="n">quote$</span><span class="err">;</span> <span class="s">" when he answered the telephone!"</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Bill Gates never said "Hello World!" when he answered the telephone!
+
+</code></pre></div></div>
+
+<p>Inserting numerical values in a PRINT string with semicolons, PRINT USING and PRINT with concatenation.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">name$</span> <span class="o">=</span> <span class="s">"Billy"</span>
+<span class="n">boxes%</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="n">sales!</span> <span class="o">=</span> <span class="mf">306.00</span>
+<span class="n">template$</span> <span class="o">=</span> <span class="s">"&amp; sold ### boxes for $$####,.##."</span>
+
+<span class="n">PRINT</span> <span class="n">name$</span><span class="err">;</span> <span class="s">" sold"</span><span class="err">;</span> <span class="n">boxes%</span><span class="err">;</span> <span class="s">"boxes for $"</span><span class="err">;</span> <span class="n">sales!</span><span class="err">;</span> <span class="s">"."</span>
+<span class="n">PRINT</span> <span class="n">USING</span> <span class="n">template$</span><span class="err">;</span> <span class="n">name$</span><span class="err">;</span> <span class="n">boxes%</span><span class="err">;</span> <span class="n">sales!</span>
+<span class="n">PRINT</span> <span class="n">name$</span> <span class="o">+</span> <span class="s">" sold"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">boxes%</span><span class="p">)</span> <span class="o">+</span> <span class="s">" boxes for $"</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">sales!</span><span class="p">))</span> <span class="o">+</span> <span class="s">"."</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Billy sold 102 boxes for $ 306 .
+Billy sold 102 boxes for $306.00.
+Billy sold 102 boxes for $306.
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Printed numerical values using semicolons have a space on each side. <a href="PRINT-USING.html">PRINT USING</a> properly formats the string and displays the cent values when they are zero. <a href="STR%24.html">STR$</a> converts the number to a string and excludes the right number space, but leaves the sign space. <a href="LTRIM%24.html">LTRIM$</a> eliminates the leading sign space between the string number and the $ dollar sign.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PRINT.html">PRINT</a>, <a href="PRINT-USING.html">PRINT USING</a></li>
+  <li><a href="CHR%24.html">CHR$</a>, <a href="STR%24.html">STR$</a>, <a href="VARPTR%24.html">VARPTR$</a></li>
+  <li><a href="Semicolon.html">Semicolon</a>, <a href="Comma.html">Comma</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Concatenation by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:22:21 GMT -->
+</html>

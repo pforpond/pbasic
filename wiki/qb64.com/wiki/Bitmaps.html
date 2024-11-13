@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Bitmaps by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Bitmaps-2.html" />
+<meta property="og:url" content="Bitmaps-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Bitmaps.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Bitmaps</strong> are image files with the .BMP file name extension.</p>
+
+<ul>
+  <li>Bitmaps can use 1, 4, 8 or 24/32 bits per pixel(BPP) color palettes.</li>
+  <li>Unlike QBasic, QB64 is capable of working with 24 bit per pixel color(16 million) bitmaps and can create 32 bit screens to use them with the <a href="_NEWIMAGE.html">_NEWIMAGE</a> function.</li>
+  <li>Text SCREEN mode 0 cannot be screen saved in QBasic or QB64.</li>
+  <li>The structure of the Bitmap header can be placed in a <a href="TYPE.html">TYPE</a> definition as below. This information can be used to find out the bitmap’s <strong>Width</strong> and <strong>Height</strong> dimensions, <strong>Bits Per Pixel</strong> used and the <strong>offset</strong> of the actual image pixel data.</li>
+  <li>It should be noted that <strong>QB64’s</strong> <a href="_LOADIMAGE.html">_LOADIMAGE</a> function can load bitmaps and other type of images directly into a program and be placed simply by using <a href="_PUTIMAGE.html">_PUTIMAGE</a>. <a href="_NEWIMAGE.html">_NEWIMAGE</a> can create 256 or 32 bit <a href="SCREEN-(statement).html">SCREEN (statement)</a> modes to display those images.</li>
+</ul>
+
+<h2 id="bitmap-header">Bitmap Header</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'Bitmap.BI can be included at start of program</span>
+
+<span class="n">TYPE</span> <span class="n">BMPEntry</span>              <span class="o">**</span><span class="c1">' Description                          Bytes    QB64 Function** </span>
+   <span class="n">ID</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">2</span>        <span class="c1">' File ID("BM" text or 19778 AS Integer) 2      CVI("BM")</span>
+   <span class="n">Size</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">' Total Size of the file                 4      LOF</span>
+   <span class="n">Res1</span> <span class="n">AS</span> <span class="n">INTEGER</span>         <span class="c1">' Reserved 1 always 0                    2 </span>
+   <span class="n">Res2</span> <span class="n">AS</span> <span class="n">INTEGER</span>         <span class="c1">' Reserved 2 always 0                    2 </span>
+   <span class="n">Offset</span> <span class="n">AS</span> <span class="n">LONG</span>          <span class="c1">' Start offset of image pixel data       4      (add one for GET)</span>
+<span class="n">END</span> <span class="n">TYPE</span>                   <span class="c1">'                                 Total 14</span>
+
+<span class="n">TYPE</span> <span class="n">BMPHeader</span>          <span class="c1">'BMP header also used in Icon and Cursor files(.ICO and .CUR)</span>
+   <span class="n">Hsize</span> <span class="n">AS</span> <span class="n">LONG</span>           <span class="c1">' Info header size (always 40)           4 </span>
+   <span class="n">PWidth</span> <span class="n">AS</span> <span class="n">LONG</span>          <span class="c1">' Image width                            4      _WIDTH(handle&amp;)</span>
+   <span class="n">PDepth</span> <span class="n">AS</span> <span class="n">LONG</span>          <span class="c1">' Image height (doubled in icons)        4      _HEIGHT(handle&amp;)</span>
+   <span class="n">Planes</span> <span class="n">AS</span> <span class="n">INTEGER</span>       <span class="c1">' Number of planes (normally 1)          2 </span>
+   <span class="n">BPP</span> <span class="n">AS</span> <span class="n">INTEGER</span>          <span class="c1">' Bits per pixel(palette 1, 4, 8, 24)    2      _PIXELSIZE(handle&amp;)</span>
+   <span class="n">Compression</span> <span class="n">AS</span> <span class="n">LONG</span>     <span class="c1">' Compression type(normally 0)           4</span>
+   <span class="n">ImageBytes</span> <span class="n">AS</span> <span class="n">LONG</span>      <span class="c1">' (Width + padder) * Height              4</span>
+   <span class="n">Xres</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">' Width in PELS per metre(normally 0)    4</span>
+   <span class="n">Yres</span> <span class="n">AS</span> <span class="n">LONG</span>            <span class="c1">' Depth in PELS per metre(normally 0)    4</span>
+   <span class="n">NumColors</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">' Number of Colors(normally 0)           4       2 ^ BPP </span>
+   <span class="n">SigColors</span> <span class="n">AS</span> <span class="n">LONG</span>       <span class="c1">' Significant Colors(normally 0)         4</span>
+<span class="n">END</span> <span class="n">TYPE</span>                   <span class="c1">'                 Total Header bytes =  40 </span>
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'$INCLUDE: 'Bitmap.BI'  'use only when including a BI file </span>
+ 
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">ENT</span> <span class="n">AS</span> <span class="n">BMPEntry</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">BMP</span> <span class="n">AS</span> <span class="n">BMPHeader</span> 
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Enter a bitmap file name: "</span><span class="p">,</span> <span class="n">file$</span> <span class="c1">'&lt;&lt;&lt;&lt; enter a bitmap file name</span>
+
+<span class="n">OPEN</span> <span class="n">file$</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ENT</span>   <span class="c1">'get entry header(1 is first file byte in QB64 and Qbasic)</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">BMP</span>    <span class="c1">'get bitmap header information </span>
+
+<span class="n">PRINT</span> <span class="s">"Size:"</span><span class="err">;</span> <span class="n">ENT</span><span class="p">.</span><span class="n">Size</span><span class="err">;</span> <span class="s">"bytes, Offset:"</span><span class="err">;</span> <span class="n">ENT</span><span class="p">.</span><span class="n">Offset</span>
+<span class="n">PRINT</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span><span class="err">;</span> <span class="s">"X"</span><span class="err">;</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PDepth</span>
+<span class="n">PRINT</span> <span class="s">"BPP ="</span><span class="err">;</span> <span class="n">BMP</span><span class="p">.</span><span class="n">BPP</span> 
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Use two <a href="GET.html">GET</a>s to read all of the header information from the start of the bitmap file opened FOR <a href="BINARY.html">BINARY</a>. It reads all 54 bytes as <a href="STRING.html">STRING</a>, <a href="INTEGER.html">INTEGER</a> and <a href="LONG.html">LONG</a> type DOT variable values. <a href="TYPE.html">TYPE</a> DOT variables do not require type suffixes!</p>
+</blockquote>
+
+<p><em>Snippet:</em> Use the DOT variable name values like this <a href="GET-(graphics-statement).html">GET (graphics statement)</a> after you load the bitmap image to the screen:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">GET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Image</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="c1">'index after 16 * 3 RGB palette colors(0 to 47) </span>
+
+</code></pre></div></div>
+
+<p>The bitmap image is now stored in an <a href="Arrays.html">Arrays</a> to <a href="BSAVE.html">BSAVE</a> to a file. The RGB color information follows the file header as <a href="ASCII.html">ASCII</a> character values read using <a href="ASC.html">ASC</a>. The color values could be indexed at the start of the Array with the image being offset to: index = NumberOfColors * 3. As determined by the <a href="SCREEN-(statement).html">SCREEN (statement)</a> mode used. In SCREEN 13(256 colors) the index would be 768.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                               **BITMAP COMPRESSION METHODS**
+
+**Value	Identified by	Compression method	Comments**
+  0	BI_RGB	            none	       Most common
+  1	BI_RLE8	        * RLE 8-bit/pixel      Used only with 8-bit/pixel bitmaps
+  2	BI_RLE4	        * RLE 4-bit/pixel      Used only with 4-bit/pixel bitmaps
+  3	BI_BITFIELDS	  Bit field            Used only with 16 and 32-bit/pixel bitmaps.
+  4	BI_JPEG	          JPEG	               Bitmap contains a JPEG image
+  5	BI_PNG	          PNG	               Bitmap contains a PNG image
+      
+      * RLE stands for *Run Length Encoding* which counts the number of consecutive pixels 
+        that are of the same color instead of assigning each pixel color separately. 
+
+</code></pre></div></div>
+
+<h2 id="image-data">Image Data</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                     **Windows/OS2 Bitmaps**
+
+                                         ┌─────────┐
+                                         │BMP Entry│
+                                         │ 14 Byte │
+                                         │─────────│
+                                         │ Bitmap  │   
+                                         │ Header  │
+                                         │ 40 Byte │
+                                         └────┬────┘
+                               ┌─────────┬────┴────┬─────────┐
+                               │     ┌───┴───┐ ┌───┴───┐     │
+                               │     │ 4 BPP │ │ 8 BPP │     │ 
+                               │     │Palette│ │Palette│     │
+                               │     │64 Byte│ │1024 B │     │
+                           ┌───┴───┐ └───┬───┘ └───┬───┘ ┌───┴───┐      
+                           │ 1 BPP │ ┌───┴───┐ ┌───┴───┐ │24 BPP │
+                           │ IMAGE │ │ IMAGE │ │ IMAGE │ │ IMAGE │
+                           │ DATA  │ │ DATA  │ │ DATA  │ │ DATA  │
+                           │(W*H)\8│ │(W*H)\2│ │(W*H)*1│ │(W*H)*3│
+                           │ bytes │ │ bytes │ │ bytes │ │ bytes │
+                           └───────┘ └───────┘ └───────┘ └───────┘
+
+</code></pre></div></div>
+
+<p><strong>Bits Per Pixel (BPP)</strong></p>
+
+<p>BPP returns <strong>1 bit</strong>(Black and white), <strong>4 bit</strong>(16 colors), <strong>8 bit</strong>(256 colors) or <strong>24 bit</strong>(16 million colors) for each pixel. In QBasic 24 bit can only be in greyscale, but QB64 can display them as True Color. 24 bit is also often referred to as 32 bit, but each pixel uses three bytes of information for the Red, Green and Blue color intensity settings. Intensity settings are read as <a href="ASCII.html">ASCII</a> characters using <a href="ASC.html">ASC</a>.</p>
+
+<p><strong>Palette Data (4 and 8 Bit Only)</strong></p>
+
+<ul>
+  <li><strong>Attribute</strong> color intensities for <strong>4</strong> and <strong>8 BPP</strong> are set by the bitmap itself using the <strong>Palette data</strong> immediately following the bitmap header. The data is read as Blue, Green and Red color intensities with a one byte padder following each BGR setting. This is true for ALL Windows/OS2 bitmap color intensities including 24 bit, which reads the intensities directly from the <strong>image pixel data</strong>!
+<strong>The Four Bit Palette is 64 bytes and the Eight Bit is 1024 bytes. One Bit and 24/32 Bit have no palette data!</strong></li>
+</ul>
+
+<p>Note: <a href="_COPYPALETTE.html">_COPYPALETTE</a> may be required to adapt the <a href="SCREEN.html">SCREEN</a> palette to the custom colors of the bitmap.</p>
+
+<blockquote>
+  <p>Why BGR instead of RGB? Because the <a href="LONG.html">LONG</a> <a href="_RGBA32.html">_RGBA32</a> value with 0 <a href="_ALPHA.html">_ALPHA</a> is written to a file as 4 <a href="MKL%24.html">MKL$</a> <a href="ASCII.html">ASCII</a> characters.</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span> <span class="c1">'8 bit, 256 color screen mode</span>
+<span class="n">Q</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+<span class="n">INPUT</span> <span class="s">"Enter a color number 1 to 255: "</span><span class="p">,</span> <span class="n">colour</span>
+<span class="n">PRINT</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C7</span><span class="p">,</span> <span class="n">colour</span>
+<span class="n">red</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'alpha values &gt; 127 in _RGBA or _RGBA32 should use _UNSIGNED LONG</span>
+
+<span class="n">COLOR</span> <span class="n">_RGB</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span> <span class="c1">'returns closest attribute in 4 or 8 bit screen modes</span>
+<span class="n">rgba</span><span class="err">~</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1">'alpha is actually highest byte</span>
+<span class="n">PRINT</span> <span class="s">"RGBA ="</span><span class="err">;</span> <span class="n">red</span><span class="err">;</span> <span class="n">green</span><span class="err">;</span> <span class="n">blue</span><span class="err">;</span> <span class="n">alpha</span>
+<span class="n">PRINT</span> <span class="s">"_RGBA32 ="</span><span class="err">;</span> <span class="n">rgba</span><span class="err">~</span><span class="o">&amp;</span><span class="err">;</span> <span class="s">" &amp;H"</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">rgba</span><span class="err">~</span><span class="o">&amp;</span><span class="p">)</span>
+
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="s">"BGR0 = "</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="o">+</span> <span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">rgba</span><span class="err">~</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">+</span> <span class="n">Q</span><span class="err">$</span> <span class="c1">'rightmost always CHR$(0) spacer</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> 16 colors at 4 bytes each = 64 bytes. 256 colors at 4 bytes each = 1024 bytes in the palette data with <a href="CHR%24.html">CHR$</a>(0) spacers.</p>
+</blockquote>
+
+<p><strong>Warning! Use <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> when comparing <a href="_RGB.html">_RGB</a> or <a href="_RGB32.html">_RGB32</a> full <a href="_ALPHA.html">_ALPHA</a> values with <a href="POINT.html">POINT</a> values!</strong></p>
+
+<p><strong>Image Data</strong></p>
+
+<ul>
+  <li><strong>Image data</strong> starts immediately after the bitmap header with <strong>One Bit</strong> and <strong>24 Bit</strong> colors. Immediately after the palette data with <strong>4 Bit</strong> and <strong>8 Bit</strong> colors. Image pixel data is read starting with the data from the <strong>BOTTOM</strong> row of the image. This is another idiosyncrasy of the Windows/OS2 bitmap. The pixel columns thankfully are read left to right. You may notice the image being drawn from the bottom up in QBasic. The size of the data in a 24 Bit bitmap is almost triple the size of an 8 Bit one!</li>
+</ul>
+
+<p><strong>NOTE: The header Offset sets the position as the byte preceding the image data!</strong></p>
+
+<p><strong>Image Data Padding Prevents Image Skewing</strong></p>
+
+<ul>
+  <li>Image data is <strong>byte padded</strong> for odd bitmap widths and a minimum pixel byte width as set below:
+    <ul>
+      <li><strong>1 BPP:</strong> minimum pixel widths of multiples of 32 (32 bits = 4 bytes) per row. Use: Padder bytes = 32 - (width MOD 32)</li>
+      <li><strong>4 BPP:</strong> minimum pixel widths of multiples of 8 (32 bits = 4 bytes) per row. Padder bytes = (8 - (width MOD 8)) \ 2</li>
+      <li><strong>8 BPP:</strong> minimum pixel widths of multiples of 4 (4 bytes) per row. Padder bytes = 4 - (width MOD 4)</li>
+      <li><strong>24 BPP:</strong> minimum pixel widths of multiples of 4 (3 bytes/pixel = 12 bytes) per row. Padder bytes = 4 - ((width * 3) MOD 4)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="one-bit">One Bit:##</h2>
+
+<p>Since the pixel value is either on(white) or off(black), eight pixels can be stored in one byte of information. The total byte value determines which pixels are on or off. The <strong>MSB</strong>(highest)value is to the left and each pixel’s on value decreases by an exponent of two down to a value of 1 for the <strong>LSB</strong>. However a minimum of 4 bytes of data must be used for each row of data, so a padder is used for other widths. The padder can be determined before the data is read using the following routine:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+<span class="n">SUB</span> <span class="n">OneBit</span>          <span class="c1">'Any Screen as Black and White        </span>
+<span class="n">BitsOver</span> <span class="o">=</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">32</span>  <span class="c1">'check bitmap width for 4 byte or odd width</span>
+<span class="n">IF</span> <span class="n">BitsOver</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">32</span> <span class="o">-</span> <span class="n">BitsOver</span><span class="p">)</span> <span class="o">\</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">'16 and 48 wide have 2 byte padder</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">BMPHead</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">o$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">BMP</span><span class="p">.</span><span class="n">Offset</span><span class="p">,</span> <span class="n">o$</span>  <span class="c1">' offset is last byte of BMP header data (NO Palette)</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span>       <span class="c1">'define a one byte string to read ASCII characters</span>
+<span class="n">DO</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">DO</span>
+      <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+      <span class="n">CharVAL</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>        <span class="c1">'ASCII value cannot use _BYTE</span>
+      <span class="n">Bit</span> <span class="o">=</span> <span class="mi">128</span>                   <span class="c1">'start at MSB </span>
+      <span class="n">FOR</span> <span class="n">BitCOUNT</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">8</span>
+        <span class="n">IF</span> <span class="n">CharVAL</span> <span class="n">AND</span> <span class="n">Bit</span> <span class="n">THEN</span> 
+          <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="c1">'_RGB works in 1, 4, 8 or 32 bit screen mode</span>
+        <span class="n">ELSE</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'set pixels on as white</span>
+        <span class="n">END</span> <span class="n">IF</span>
+        <span class="n">Bit</span> <span class="o">=</span> <span class="n">Bit</span> <span class="o">/</span> <span class="mi">2</span>            <span class="c1">'decrease exponent of 2 bit value </span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>                <span class="c1">'move one pixel to the right</span>
+      <span class="n">NEXT</span> <span class="n">BitCOUNT</span>
+    <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span>  
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>             <span class="c1">'skip the padder bytes if any</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>                      <span class="c1">'move up one row from bottom</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span> <span class="o">*</span> <span class="o">*</span>   
+
+</code></pre></div></div>
+<p><sub>Code by Bob Seguin</sub></p>
+
+<blockquote>
+  <p>One bit pixels are also used to create <a href="AND.html">AND</a> masks that can blend with a background for icons or cursors which are another form of bitmap. In fact, icons and cursors use a partial (40 byte) bitmap header! They just don’t have the first 14 bytes of information. <a href="PSET.html">PSET</a> can also use the B&amp;W color values <a href="_RGB.html">_RGB</a>(255, 255, 255) and <a href="_RGB.html">_RGB</a>(0, 0, 0) when working in 4, 8 or 32 bit screen modes.</p>
+</blockquote>
+
+<h2 id="four-bit">Four Bit:##</h2>
+
+<p>Pixels can use 16 colors in QBasic legacy <a href="SCREEN-(statement).html">SCREEN (statement)</a> modes 7, 8, 9, 12 and 13. After the bitmap header, the color <strong>palette</strong> is read to set the color intensities as explained above. Then the individual pixel attributes are read from the <strong>image data</strong>. Each <strong>pixel</strong> uses half a byte of color <strong>attribute</strong> information. To determine the pixel’s attribute, each “nibble” is read by dividing the byte’s <a href="ASCII.html">ASCII</a> value by 16 for the first pixel’s value while the second pixel’s value is found using <a href="AND.html">AND</a> 15 as shown below:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">FourBIT</span>  <span class="c1">' 4 bit(16 color) Screens 7, 8, 9, 12 or 13 </span>
+<span class="n">IF</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">8</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">8</span> <span class="o">-</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">8</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span>   
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span>                         <span class="c1">'start at attribute 0 </span>
+<span class="n">FOR</span> <span class="n">Colr</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span>        <span class="c1">'read palette data for intensities    </span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Blu</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>  <span class="c1">'intensity is divided by 4 to use OUT</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Grn</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Red</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+    <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Red</span>          <span class="c1">'NOTE: RGB settings could also be sent directly to an</span>
+    <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Grn</span>          <span class="c1">'array when the data is to be stored by a file using </span>
+    <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Blu</span>          <span class="c1">'BSAVE or with one PUT # to a BINARY file in QB64</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>          <span class="c1">'--- skip unused spacer byte</span>
+<span class="n">NEXT</span> <span class="n">Colr</span>
+<span class="n">o$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">BMP</span><span class="p">.</span><span class="n">Offset</span><span class="p">,</span> <span class="n">o$</span>    <span class="c1">'Offset is the last byte of palette data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>                             <span class="c1">'image placed at left side of screen</span>
+  <span class="n">DO</span>   
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+    <span class="n">HiNIBBLE</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="o">&amp;</span><span class="n">H10</span>       <span class="c1">'ASCII value divided by 16 colors</span>
+    <span class="n">LoNIBBLE</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="n">AND</span> <span class="o">&amp;</span><span class="n">HF</span>      <span class="c1">'ASCII value AND 15</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">HiNIBBLE</span>   
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">LoNIBBLE</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">BMPHead</span><span class="p">.</span><span class="n">PWidth</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>           <span class="c1">'skip padder bytes if any</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>                    <span class="c1">'move up one row from bottom</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+<p><sub>Code by Bob Seguin</sub></p>
+
+<p><strong>How Nibble values are read</strong></p>
+
+<p>Each half of a byte of image pixel data stores a color attribute value from 0 to 15 or from 0000 to 1111 in binary with 1 designating that the bit is on. So when the two halves are added the <a href="Binary-2.html">Binary</a> byte value for two white pixels totals 111111111 binary or 255.</p>
+
+<ul>
+  <li>To get the high nibble, divide the byte value by 16(&amp;H10) using integer division: HiNibble = 255 \ 16 = 15</li>
+  <li>To get the low nibble, use the byte value <a href="AND.html">AND</a> 15(&amp;HF) to get all set bit values up to 15: LoNibble = 255 AND 15 = 15</li>
+</ul>
+
+<blockquote>
+  <p><a href="AND.html">AND</a> 15 will return any lower byte value while integer division by 16 will return any byte value over 15 as attributes 0 to 15.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>QB64</strong> can <a href="GET-(graphics-statement).html">GET (graphics statement)</a> a full Screen 12 image into one <a href="BINARY.html">BINARY</a> file with <a href="PUT.html">PUT</a> using an 80K <a href="INTEGER.html">INTEGER</a> array instead of using 3 in QBasic!</p>
+</blockquote>
+
+<h2 id="eight-bit">Eight Bit:</h2>
+
+<p>Pixels can use 256 colors in QBasic legacy <a href="SCREEN-(statement).html">SCREEN (statement)</a> mode 13 or a <a href="_NEWIMAGE.html">_NEWIMAGE</a> Screen using 256 or “borrowing” screen 13. <strong>Image data</strong> is immediately after the 1024 bytes of <strong>palette data</strong> BGR intensity settings. Pixel <strong>attributes</strong> are each set by reading the byte’s <a href="ASCII.html">ASCII</a> value directly.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">EightBIT</span>   <span class="c1">' 8 Bit (256 color) Screen 13 Only  </span>
+<span class="n">IF</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">'check for padder</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C8</span><span class="p">,</span> <span class="mi">0</span>                           <span class="c1">'start at attribute 0 </span>
+<span class="n">FOR</span> <span class="n">Colr</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">255</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Blu</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Grn</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span><span class="p">:</span> <span class="n">Red</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span> <span class="o">\</span> <span class="mi">4</span>
+    <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Red</span>
+    <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Grn</span>
+    <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C9</span><span class="p">,</span> <span class="n">Blu</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>                        <span class="c1">'--- skip unused spacer byte</span>
+<span class="n">NEXT</span> <span class="n">Colr</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">o$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">BMP</span><span class="p">.</span><span class="n">Offset</span><span class="p">,</span> <span class="n">o$</span>   <span class="c1">'Offset is last byte of palette data.</span>
+<span class="n">p$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">p$</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">p$</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>                  <span class="c1">'skip padder if any</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>                            <span class="c1">'move up one row from bottom</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+<p><sub>Code by Bob Seguin</sub></p>
+
+<h2 id="twenty-four-bit">Twenty Four Bit:</h2>
+
+<p>For screen modes created by <a href="_NEWIMAGE.html">_NEWIMAGE</a> using 24 or 32 bit bitmaps. <strong>Image data</strong> starts immediately after the bitmap header. There is no palette data! Each BGR <strong>color intensity</strong> is one byte of the <a href="ASCII.html">ASCII</a> code value directly. Values range from 0 to 255 using <strong>QB64’s</strong> <a href="_RGB.html">_RGB</a> or <a href="_RGB32.html">_RGB32</a> functions to set the <a href="PSET.html">PSET</a> colors as below:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SUB</span> <span class="n">TrueCOLOR</span>            <span class="c1">'24/32 BIT               </span>
+<span class="n">IF</span> <span class="p">((</span><span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>        <span class="c1">'3 byte pixels</span>
+<span class="n">ZeroPAD</span><span class="err">$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">((</span><span class="mi">4</span> <span class="o">-</span> <span class="p">((</span><span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="n">MOD</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">o$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">BMP</span><span class="p">.</span><span class="n">Offset</span><span class="p">,</span> <span class="n">o$</span>       <span class="c1">'Offset is last byte of BMP header data</span>
+<span class="n">R</span><span class="err">$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">G</span><span class="err">$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="s">" "</span>
+<span class="n">DO</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>                               <span class="c1">'place image to left side of screen</span>
+  <span class="n">DO</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">B</span><span class="err">$</span>             <span class="c1">'intensities read in reverse order BGR like palette</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">G</span><span class="err">$</span>
+    <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">R</span><span class="err">$</span>
+    <span class="n">red&amp;</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">R</span><span class="err">$</span><span class="p">)</span>           <span class="c1">'read ASCII code value 0 to 255 (or use _UNSIGNED _BYTE)</span>
+    <span class="n">green&amp;</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">G</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">blue&amp;</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">B</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="n">red&amp;</span><span class="p">,</span> <span class="n">green&amp;</span><span class="p">,</span> <span class="n">blue&amp;</span><span class="p">)</span> <span class="c1">'legacy screens give closest 4 or 8 bit attribute</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">BMP</span><span class="p">.</span><span class="n">PWidth</span>
+  <span class="n">GET</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">ZeroPAD</span><span class="err">$</span>         <span class="c1">'skip padder if any</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>                         <span class="c1">'move up one row from bottom</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">END</span> <span class="n">SUB</span>    
+
+</code></pre></div></div>
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<blockquote>
+  <p>Why BGR instead of RGB? Because the <a href="_RGB.html">_RGB</a> <a href="LONG.html">LONG</a> value without <a href="_ALPHA.html">_ALPHA</a> is written to the file backwards as <a href="LEFT%24.html">LEFT$</a>(<a href="MKL%24.html">MKL$</a>, 3).</p>
+</blockquote>
+
+<p><strong>Converting to Grey Scale or Black and White</strong></p>
+
+<p>The palettes can be set to greyscale by ignoring the actual <strong>palette data</strong> and/or averaging the pixel’s RGB <strong>image data</strong>.
+ It may also be necessary when trying to view 24 BPP bitmaps in SCREEN 12 or 13.</p>
+
+<p><em>See:</em> <a href="Grey-Scale-Bitmaps.html">Grey Scale Bitmaps</a></p>
+
+<h2 id="creating-bitmaps">Creating Bitmaps</h2>
+
+<p>In <a href="BINARY.html">BINARY</a> files, numerical data can also be converted to <a href="ASCII.html">ASCII</a> characters by using <a href="MKI%24.html">MKI$</a> for <a href="INTEGER.html">INTEGER</a>s or <a href="MKL%24.html">MKL$</a> for <a href="LONG.html">LONG</a> values. <a href="GET.html">GET</a> can convert <a href="_MK%24.html">_MK$</a> values to numerical values and <a href="PUT.html">PUT</a> can convert numerical values to <a href="STRING.html">STRING</a> values. When the <a href="LONG.html">LONG</a> <a href="MKL%24.html">MKL$</a> color values are <a href="PUT.html">PUT</a> into bitmaps the Red value is placed as the third <a href="ASCII.html">ASCII</a> character and the blue becomes the first character. That not only happens to the BGR palette data, but the BGR 24 bit image color values <a href="PUT.html">PUT</a> using the <a href="LEFT%24.html">LEFT$</a> 3 bytes.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="n">pixelcolor$</span> <span class="o">=</span> <span class="n">LEFT</span><span class="err">$</span><span class="p">(</span><span class="n">MKL</span><span class="err">$</span><span class="p">(</span><span class="n">_RGB</span><span class="p">(</span><span class="n">red%</span><span class="p">,</span> <span class="n">green%</span><span class="p">,</span> <span class="n">blue%</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<p>After the header, the RGB <strong>color intensity palette</strong> settings for <strong>16</strong> and <strong>256</strong> color bitmaps are created using <a href="MKL%24.html">MKL$</a> <a href="ASCII.html">ASCII</a> characters set backwards as Blue, Green, Red and <a href="CHR%24.html">CHR$</a>(0) as a spacer. Four and Eight BPP bitmaps require that format.</p>
+
+<p>The actual 4 bit or 8 bit image is read as <a href="ASCII.html">ASCII</a> color attributes from the image bottom to the top for proper bitmap formatting adding padder spacing when needed. 24/32 bit images use 3 color intensity values as <a href="ASCII.html">ASCII</a> character bytes in BGR order.</p>
+
+<p><em>Bitmap creation SUB programs:</em></p>
+
+<ul>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a> (Galleon’s Full Image Bitmap creator)</li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (Creates Icons from any image)</li>
+  <li><a href="Program-ScreenShots.html">Program ScreenShots</a> (Member program for Qbasic’s legacy screen modes)</li>
+  <li><a href="ThirtyTwoBit-SUB.html">ThirtyTwoBit SUB</a> (QB64 32 bit Image area to bitmap)</li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_PUTIMAGE.html">_PUTIMAGE</a></li>
+  <li><a href="SCREEN-(statement).html">SCREEN (statement)</a></li>
+  <li><a href="TYPE.html">TYPE</a>, <a href="_ICON.html">_ICON</a></li>
+  <li><a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+  <li><a href="GIF-Images.html">GIF Images</a></li>
+  <li><a href="Resource-Table-Extraction-2.html">Resource Table Extraction</a></li>
+  <li><a href="%24EXEICON.html">$EXEICON</a> (Icons viewed in Windows Explorer)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Bitmaps by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:56 GMT -->
+</html>

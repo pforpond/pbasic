@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_RGBA by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_RGBA-2.html" />
+<meta property="og:url" content="_RGBA-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_RGBA.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_RGBA.html">_RGBA</a> function returns the closest palette index (legacy SCREEN modes) OR the 32-bit <a href="LONG.html">LONG</a> color value (32-bit screens).</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>colorIndex~&amp; = <a href="_RGBA.html">_RGBA</a>(red&amp;, green&amp;, blue&amp;, alpha&amp;[, imageHandle&amp;]<strong>)</strong></p>
+</blockquote>
+
+<ul>
+  <li>The value returned is either the closest color attribute number or a 32-bit <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> color value.</li>
+  <li><strong>Return variable types must be <a href="LONG.html">LONG</a> or the resulting color may lose the <a href="_BLUE.html">_BLUE</a> value.</strong></li>
+  <li>red&amp; specifies the red component intensity from 0 to 255.</li>
+  <li>green&amp; specifies the green component intensity from 0 to 255.</li>
+  <li>blue&amp; specifies the blue component intensity from 0 to 255.</li>
+  <li>The <a href="_ALPHA.html">_ALPHA</a> value can be set to make the color transparent (0), opaque (255) or somewhere in between.</li>
+  <li>Parameter values outside of the 0 to 255 range are clipped.</li>
+  <li>Returns <a href="LONG.html">LONG</a> 32-bit hexadecimal values from <strong>&amp;H00000000</strong> to <strong>&amp;HFFFFFFFF</strong> with varying <a href="_ALPHA.html">_ALPHA</a> transparency.</li>
+  <li>When <a href="LONG.html">LONG</a> values are <a href="PUT.html">PUT</a> to file, the ARGB values become BGRA. Use <a href="LEFT%24.html">LEFT$</a>(<a href="MKL%24.html">MKL$</a>(colorIndex~&amp;), 3) to place 3 colors.</li>
+  <li>If imageHandle&amp; is omitted, the image is assumed to be the current <a href="_DEST.html">_DEST</a> or <a href="SCREEN.html">SCREEN</a> page.</li>
+  <li>Allows the blending of pixel colors red, green and blue to create any of 16 million colors.</li>
+  <li><strong>NOTE: Default 32-bit backgrounds are clear black or <a href="_RGBA.html">_RGBA</a>(0, 0, 0, 0). Use <a href="CLS.html">CLS</a> to make the black opaque.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Setting a font’s background color alpha to clear to overlay a second text color.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">scrn&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="n">scrn&amp;</span>
+<span class="n">fnt&amp;</span> <span class="o">=</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="s">"C:\WINDOWS\FONTS\ARIAL.TTF"</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+<span class="n">_FONT</span> <span class="n">fnt&amp;</span>
+<span class="n">X</span><span class="err">%</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">Y</span><span class="err">%</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">COLOR</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'Foreground set to WHITE background to BLACK</span>
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="n">X</span><span class="err">%</span><span class="p">,</span> <span class="n">Y</span><span class="err">%</span><span class="p">),</span> <span class="s">"Hello World"</span>
+<span class="n">COLOR</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">_RGBA</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'Foreground set to RED background to TRANSPARENT BLACK</span>
+<span class="n">_PRINTSTRING</span> <span class="p">(</span><span class="n">X</span><span class="err">%</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Y</span><span class="err">%</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="s">"Hello World"</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> <a href="_PRINTSTRING.html">_PRINTSTRING</a> allows text or font colors to be alpha blended in 32 bit screens.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_RGB.html">_RGB</a>, <a href="_RGB32.html">_RGB32</a>, <a href="_RGBA32.html">_RGBA32</a></li>
+  <li><a href="_RED.html">_RED</a>, <a href="_GREEN.html">_GREEN</a>, <a href="_BLUE.html">_BLUE</a></li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a></li>
+  <li><a href="_PRINTSTRING.html">_PRINTSTRING</a></li>
+  <li><a href="HEX%24-32-Bit-Values.html">HEX$ 32 Bit Values</a>, <a href="POINT.html">POINT</a></li>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a></li>
+  <li><a href="http://www.w3schools.com/html/html_colornames.asp">Hexadecimal Color Values</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_RGBA by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:17 GMT -->
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SCREEN-(function) by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SCREEN-(function)-2.html" />
+<meta property="og:url" content="SCREEN-(function)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SCREEN-(function).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>SCREEN</strong> function returns the <a href="ASCII.html">ASCII</a> code of a text character or the color attribute at a set text location on the screen.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>codeorcolor% = <strong>SCREEN (<em>row%</em>, <em>column%</em></strong> [, colorflag%]<strong>)</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li><em>row</em> and <em>column</em> are the <a href="INTEGER.html">INTEGER</a> text coordinates of the <a href="SCREEN.html">SCREEN</a> mode used.</li>
+  <li>Optional <em>colorflag</em> <a href="INTEGER.html">INTEGER</a> value can be omitted or 0 for <a href="ASCII.html">ASCII</a> code values or 1 for color attributes.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>The <em>code</em> value returned is the <a href="ASCII.html">ASCII</a> code from 0 to 255. Returns 32(<a href="SPACE%24.html">SPACE$</a>) when no character is found at a coordinate.</li>
+  <li>If the <em>colorflag</em> value is omitted or it is 0, the function returns the <a href="ASCII.html">ASCII</a> code of the text character at the position designated.</li>
+  <li>When the <em>flag</em> value is greater than 0 in <strong>SCREEN 0</strong>, the function returns the foreground and background color attribute of text position.
+    <ul>
+      <li>The foreground color(0 to 15) is the returned SCREEN color value AND 15: <strong>FG = SCREEN(1, 1, 1) AND 15</strong></li>
+      <li>The background color(0 to 7) is the returned SCREEN color value \ 16: <strong>BG = SCREEN(1, 1, 1) \ 16</strong></li>
+    </ul>
+  </li>
+  <li><strong>QB64</strong> can return color values in screen modes other than <a href="SCREEN.html">SCREEN</a> 0. QBasic returned the wrong color values in graphic screen modes!</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Finding the text foreground and background colors in SCREEN 0 only:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">0</span>
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">15</span>
+<span class="n">CLS</span>
+
+<span class="n">PRINT</span> <span class="s">"SCREEN ="</span><span class="err">;</span> <span class="n">SCREEN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"FG color:"</span><span class="err">;</span> <span class="n">SCREEN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AND</span> <span class="mi">15</span> <span class="c1">'low nibble</span>
+<span class="n">PRINT</span> <span class="s">"BG color:"</span><span class="err">;</span> <span class="n">SCREEN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">\</span> <span class="mi">16</span> <span class="c1">'high nibble </span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+**SCREEN = 112**
+**FG color: 0**
+**BG color: 7**
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> How the SCREEN 0 background color can only be changed to colors 0 through 7! 7 * 16 = 112.</p>
+</blockquote>
+
+<p>Reading the <a href="ASCII.html">ASCII</a> code and color of a text character using the SCREEN function. Graphic colors were not reliable in QBasic!</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">row</span> <span class="o">=</span> <span class="mi">10</span><span class="p">:</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">COLOR</span> <span class="mi">9</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Hello"</span>
+<span class="n">code%</span> <span class="o">=</span> <span class="n">SCREEN</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>     <span class="c1">' character code return parameter 0</span>
+<span class="n">attrib%</span> <span class="o">=</span> <span class="n">SCREEN</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1">' character color return parameter 1</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"ASCII:"</span><span class="err">;</span> <span class="n">code%</span><span class="p">,</span> <span class="s">"COLOR:"</span><span class="err">;</span> <span class="n">attrib%</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+         Hello
+
+         ASCII: 72     COLOR: 9
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The SCREEN function returns the <a href="ASCII.html">ASCII</a> code for “H” and the color 9.</p>
+</blockquote>
+
+<p>Finding the current program path placed on the screen using <a href="FILES.html">FILES</a> and the SCREEN function in SCREEN 0.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">CLS</span>
+<span class="n">PRINT</span> <span class="s">"This is a directory test..."</span>
+<span class="n">SCREEN</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">COLOR</span> <span class="mi">0</span> <span class="c1">'blank out the screen text</span>
+<span class="n">FILES</span> <span class="s">"qb64.exe"</span>        <span class="c1">'the current program's filename can also be used</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">80</span>
+  <span class="n">a$</span> <span class="o">=</span> <span class="n">a$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">SCREEN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="c1">'scan the black text on the screen</span>
+<span class="n">NEXT</span>
+<span class="n">CLS</span>
+<span class="n">COLOR</span> <span class="mi">7</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="n">RTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">)</span>
+<span class="n">SLEEP</span>
+<span class="n">SCREEN</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">LOCATE</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"The current directory is: "</span><span class="err">;</span> <span class="n">a$</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The SCREEN page one is used to hide the <a href="FILES.html">FILES</a> display using COLOR 0. The <a href="SCREEN-(function).html">SCREEN (function)</a> function reads the top of the screen page text and creates the current path string. It is then printed on the visual page.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PRINT.html">PRINT</a>, <a href="SCREEN.html">SCREEN</a></li>
+  <li><a href="COLOR.html">COLOR</a>, <a href="CHR%24.html">CHR$</a>, <a href="POINT.html">POINT</a></li>
+  <li><a href="CSRLIN.html">CSRLIN</a>, <a href="POS.html">POS</a>, <a href="ASCII.html">ASCII</a></li>
+  <li><a href="Screen-Memory.html">Screen Memory</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SCREEN-(function) by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:50 GMT -->
+</html>

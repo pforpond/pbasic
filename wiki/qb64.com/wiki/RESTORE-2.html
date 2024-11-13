@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/RESTORE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="RESTORE-2.html" />
+<meta property="og:url" content="RESTORE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/RESTORE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="RESTORE.html">RESTORE</a> statement is used to reset the DATA pointer to the beginning of the data.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="RESTORE.html">RESTORE</a> [lineNumber</td>
+        <td>lineLabel]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The line label or number enables a labeled data field to be <a href="READ.html">READ</a> more than once as required.</li>
+  <li>Datafield label names are not required when working with ONE or a progression of data fields in the main body of code.</li>
+  <li>Label multiple data fields to restore them to use them again when necessary.</li>
+  <li>If RESTORE is used with unlabeled data fields or no datafield is designated then the first data field is read.</li>
+  <li>Use RESTORE to avoid an <a href="ERROR-Codes.html">ERROR Codes</a> when reading a data field!</li>
+  <li>See the <a href="DATA.html">DATA</a> statement for <a href="STRING.html">STRING</a> data value specifications.</li>
+  <li><strong>Do not place <a href="DATA.html">DATA</a> fields after <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures! QB64 will FAIL to <a href="RESTORE.html">RESTORE</a> properly!</strong>
+    <blockquote>
+      <p>QBasic allowed programmers to add DATA fields anywhere because the IDE separated the main code from other procedures.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Restoring a labeled DATA field to avoid going past the end of DATA.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+   <span class="n">INPUT</span> <span class="s">"Enter a month number(1 to 12): "</span><span class="p">,</span> <span class="n">monthnum%</span>
+
+   <span class="n">RESTORE</span> <span class="n">Months</span>
+   <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">monthnum%</span>
+      <span class="n">READ</span> <span class="n">month$</span><span class="p">,</span> <span class="n">days%</span>   <span class="c1">'variables must match data field types</span>
+   <span class="n">NEXT</span>
+   <span class="n">PRINT</span> <span class="s">"The month "</span><span class="err">;</span> <span class="n">month$</span><span class="err">;</span> <span class="s">" has"</span><span class="err">;</span> <span class="n">days%</span><span class="err">;</span> <span class="s">"days."</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">monthnum%</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">monthnum%</span> <span class="o">&gt;</span> <span class="mi">12</span>
+
+ <span class="n">Months</span><span class="p">:</span>
+ <span class="n">DATA</span> <span class="n">January</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">February</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">March</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">April</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">May</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">June</span><span class="p">,</span> <span class="mi">30</span>
+ <span class="n">DATA</span> <span class="n">July</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">August</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">September</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">October</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">November</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">December</span><span class="p">,</span> <span class="mi">31</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Enter a month number(1 to 12): 6
+The month June has 30 days.
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> String DATA values do not require quotes unless they have commas, end spaces or QBasic keywords in them.</p>
+</blockquote>
+
+<p>Using RESTORE to know the number of elements in the DATA in order to dimension and store the items in a array.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+<span class="n">READ</span> <span class="n">dummy$</span> <span class="c1">'we won't actually use this string for anything else than to know when there is no more DATA.</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">dummy$</span> <span class="o">=</span> <span class="s">"stop"</span> <span class="c1">'when dummy$ = "stop" then we know that it is the last entry so it only does the above loop until then.</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">'since the last string is "stop" and we don't want to store it in the array.</span>
+
+<span class="n">PRINT</span> <span class="s">"The number of relevant entries are:"</span><span class="err">;</span> <span class="n">count</span>
+
+<span class="n">DIM</span> <span class="n">entry$</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="c1">'Now we know how many elements we need to make space for (DIM)</span>
+
+<span class="n">RESTORE</span> <span class="c1">'We restore it so that it begins reading from the first DATA again.</span>
+
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span>
+<span class="n">READ</span> <span class="n">entry$</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">'read the DATA and store it into the array.</span>
+<span class="n">NEXT</span>
+
+<span class="c1">'we can now print the contents of the array:</span>
+
+<span class="n">FOR</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">count</span> 
+<span class="n">PRINT</span> <span class="n">entry$</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">NEXT</span>
+
+<span class="n">END</span> 
+
+<span class="n">DATA</span> <span class="s">"entry1"</span><span class="p">,</span> <span class="s">"entry2"</span><span class="p">,</span> <span class="s">"entry3"</span><span class="p">,</span> <span class="s">"stop"</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+The number of relevant entries are: 3
+entry1
+entry2
+entry3
+
+</code></pre></div></div>
+
+<p><em>Note:</em> Now we can add any number of entries without further compensation to the code.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DATA.html">DATA</a>, <a href="READ.html">READ</a></li>
+  <li><a href="line-numbers.html">line numbers</a> / line labels</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/RESTORE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SQL-Client.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SQL-Client-2.html" />
+<meta property="og:url" content="SQL-Client-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SQL-Client.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>MySQL</strong> is a database manager that is widely used on the internet with languages such as PHP. This is a DECLARE LIBRARY to allow access to MySQL databases.</p>
+
+<p><strong>IMPORTANT</strong></p>
+
+<blockquote>
+  <ul>
+    <li>1) Make sure you are running QB64 V0.942 or higher</li>
+    <li>2) Download ‘mysql.dll’ and place it in your qb64 folder (not provided)</li>
+    <li>3) Create ‘mysql_helper.h’ in your QB64 folder (see below)</li>
+    <li>4) Run &amp; enjoy browsing our sample database as a member with read-only privileges.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p><em>mysql_helper.h</em></p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  void *offset_to_offset(void* offset){
+    return offset;
+  }
+  void *offset_at_offset(void** offset){
+    return *offset;
+  }
+
+</code></pre></div></div>
+
+<p><sub>Code by Galleon</sub></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">CUSTOMTYPE</span> <span class="n">LIBRARY</span> <span class="s">"mysql_helper"</span>
+    <span class="n">FUNCTION</span> <span class="n">offset_to_string$</span> <span class="n">ALIAS</span> <span class="n">offset_to_offset</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">offset</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">offset_at_offset%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">offset</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="c1">'#### mysql.dll not provided ####</span>
+<span class="n">DECLARE</span> <span class="n">DYNAMIC</span> <span class="n">LIBRARY</span> <span class="s">"mysql"</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_get_client_info$</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_init%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_real_connect&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">host</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">user</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">password</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">db</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">port</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">unix_socket</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">client_flag</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_close</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_query</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">what</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_store_result%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_num_fields&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_fetch_row%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_free_result</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">'...</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">DIM</span> <span class="n">conn</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+
+<span class="n">PRINT</span> <span class="s">"MYSQL Client: "</span> <span class="o">+</span> <span class="n">mysql_get_client_info$</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">mysql_init</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">conn</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Could not init MYSQL client!"</span><span class="p">:</span> <span class="n">END</span>
+
+<span class="c1">'*** Open the db ***</span>
+<span class="c1">'PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "", "", "qb64db2", 0, 0, 0)</span>
+<span class="n">PRINT</span> <span class="n">mysql_real_connect</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s">"qb64db2.db.7445102.hostedresource.com"</span><span class="p">,</span> <span class="s">"qb64guest"</span><span class="p">,</span> <span class="s">"QB64forever"</span><span class="p">,</span> <span class="s">"qb64db2"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">'*** Write to the db (not possible as a guest!) ***</span>
+<span class="n">GOTO</span> <span class="n">skip_write</span> <span class="c1">'(guests can't do this anyway)</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"CREATE TABLE writers(name VARCHAR(25))"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Leo Tolstoy')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Jack London')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Honore de Balzac')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Lion Feuchtwanger')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Emile Zola')"</span>
+<span class="n">skip_write</span><span class="p">:</span>
+
+<span class="c1">'*** Read from the db ***</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"SELECT * FROM writers"</span>
+<span class="n">DIM</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mysql_store_result</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">num_fields</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">num_fields</span> <span class="o">=</span> <span class="n">mysql_num_fields</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">row</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">DO</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">mysql_fetch_row</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">row</span> <span class="n">THEN</span>
+        <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">num_fields</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">PRINT</span> <span class="n">offset_to_string</span><span class="p">(</span><span class="n">offset_at_offset</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+        <span class="n">NEXT</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">mysql_free_result</span> <span class="n">result</span>
+
+<span class="c1">'*** Close the db ***</span>
+<span class="n">mysql_close</span> <span class="n">con</span> 
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Here’s some code which uses ‘mysql_fetch_fields’:</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DECLARE</span> <span class="n">CUSTOMTYPE</span> <span class="n">LIBRARY</span> <span class="s">"mysql_helper"</span>
+    <span class="n">FUNCTION</span> <span class="n">offset_to_string$</span> <span class="n">ALIAS</span> <span class="n">offset_to_offset</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">offset</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">offset_at_offset%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">offset</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">TYPE</span> <span class="n">MYSQL_FIELD_TYPE</span> <span class="c1">'  typedef struct st_mysql_field {</span>
+    <span class="n">name</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *name;  </span>
+    <span class="n">org_name</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *org_name;  </span>
+    <span class="n">table</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *table;   </span>
+    <span class="n">org_table</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *org_table;   </span>
+    <span class="n">db</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *db;   </span>
+    <span class="n">catalog</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *catalog;   </span>
+    <span class="n">default</span> <span class="n">AS</span> <span class="n">_OFFSET</span> <span class="c1">'    char *def;   </span>
+    <span class="n">length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_OFFSET</span> <span class="c1">'    unsigned long length;    </span>
+    <span class="n">max_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_OFFSET</span> <span class="c1">'    unsigned long max_length;   </span>
+    <span class="n">name_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int name_length;   </span>
+    <span class="n">org_name_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int org_name_length;   </span>
+    <span class="n">table_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int table_length;    </span>
+    <span class="n">org_table_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="c1">'  unsigned int org_table_length;    </span>
+    <span class="n">db_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int db_length;   </span>
+    <span class="n">catalog_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int catalog_length;    </span>
+    <span class="n">def_length</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int def_length;    </span>
+    <span class="n">flags</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int flags;    </span>
+    <span class="n">decimals</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int decimals;    </span>
+    <span class="n">charsetnr</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    unsigned int charsetnr;    </span>
+    <span class="n">type</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span> <span class="c1">'    enum enum_field_types type;</span>
+<span class="n">END</span> <span class="n">TYPE</span> <span class="c1">'  } MYSQL_FIELD;</span>
+
+<span class="n">DECLARE</span> <span class="n">CUSTOMTYPE</span> <span class="n">LIBRARY</span>
+    <span class="n">SUB</span> <span class="n">OFFSETtoMYSQL_FIELD</span> <span class="n">ALIAS</span> <span class="n">memcpy</span> <span class="p">(</span><span class="n">dest</span> <span class="n">AS</span> <span class="n">MYSQL_FIELD_TYPE</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">bytes</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="c1">'#### mysql.dll not provided ####</span>
+<span class="n">DECLARE</span> <span class="n">DYNAMIC</span> <span class="n">LIBRARY</span> <span class="s">"mysql"</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_get_client_info$</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_init%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_real_connect&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">host</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">user</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">password</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">db</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">port</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">unix_socket</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">client_flag</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_close</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_query</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">what</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_store_result%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_num_fields&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_fetch_row%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_free_result</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_fetch_fields%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">'...</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+<span class="n">DIM</span> <span class="n">conn</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+
+<span class="n">PRINT</span> <span class="s">"MYSQL Client: "</span> <span class="o">+</span> <span class="n">mysql_get_client_info$</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">mysql_init</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">conn</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Could not init MYSQL client!"</span><span class="p">:</span> <span class="n">END</span>
+
+<span class="c1">'*** Open the db ***</span>
+<span class="c1">'PRINT mysql_real_connect(conn, "qb64db2.db.7445102.hostedresource.com", "", "", "qb64db2", 0, 0, 0)</span>
+<span class="n">PRINT</span> <span class="n">mysql_real_connect</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s">"qb64db2.db.7445102.hostedresource.com"</span><span class="p">,</span> <span class="s">"qb64guest"</span><span class="p">,</span> <span class="s">"QB64forever"</span><span class="p">,</span> <span class="s">"qb64db2"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">'*** Write to the db (not possible as a guest!) ***</span>
+<span class="n">GOTO</span> <span class="n">skip_write</span> <span class="c1">'(guests can't do this anyway)</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"CREATE TABLE writers(name VARCHAR(25))"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Leo Tolstoy')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Jack London')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Honore de Balzac')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Lion Feuchtwanger')"</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"INSERT INTO writers VALUES('Emile Zola')"</span>
+<span class="n">skip_write</span><span class="p">:</span>
+
+<span class="c1">'*** Read from the db ***</span>
+<span class="n">mysql_query</span> <span class="n">conn</span><span class="p">,</span> <span class="s">"SELECT * FROM writers"</span>
+<span class="n">DIM</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mysql_store_result</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">num_fields</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">num_fields</span> <span class="o">=</span> <span class="n">mysql_num_fields</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">f%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">mysql_fetch_fields</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">DIM</span> <span class="n">ft</span> <span class="n">AS</span> <span class="n">MYSQL_FIELD_TYPE</span>
+<span class="n">OFFSETtoMYSQL_FIELD</span> <span class="n">ft</span><span class="p">,</span> <span class="n">f%</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">LEN</span><span class="p">(</span><span class="n">ft</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">offset_to_string</span><span class="p">(</span><span class="n">ft</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">offset_to_string</span><span class="p">(</span><span class="n">ft</span><span class="p">.</span><span class="n">org_name</span><span class="p">)</span>
+<span class="n">x%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">ft</span><span class="p">.</span><span class="n">length</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">x%</span><span class="o">&amp;</span> <span class="c1">'***PRINT ft.length doesn't work in QB64 yet, this needs to be addressed***</span>
+
+<span class="n">END</span>
+
+<span class="n">DIM</span> <span class="n">row</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">DO</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">mysql_fetch_row</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">row</span> <span class="n">THEN</span>
+        <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">num_fields</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">PRINT</span> <span class="n">offset_to_string</span><span class="p">(</span><span class="n">offset_at_offset</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+        <span class="n">NEXT</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">mysql_free_result</span> <span class="n">result</span>
+
+<span class="c1">'*** Close the db ***</span>
+<span class="n">mysql_close</span> <span class="n">con</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<h2 id="sql-demo">SQL Demo</h2>
+
+<p>This version has much the same functionality with a few bug fixes, better examples, the ability to switch between multiple open databases and a table-viewer SUB for visualising the results of SELECT queries. If anyone wants to code me up some more examples or suggest improvements feel free, I’ll be glad to add them. Galleon</p>
+
+<p><strong>IMPORTANT</strong></p>
+
+<blockquote>
+  <ul>
+    <li>Download ‘mysql.dll’ and place it in your qb64 folder (not provided)</li>
+    <li>Find a SQL database server to connect to OR download your own [http://dev.mysql.com/downloads/]</li>
+    <li>Setup you IP, username and password in the code below…</li>
+  </ul>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'the following section is used to help you get started with the examples</span>
+<span class="n">WIDTH</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">25</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">sql_database_ip</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">my_password</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">my_username</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="c1">'NOTE: TO PROTECT YOU FROM ACCIDENTLY DISCLOSING YOUR PASSWORD WHEN ASKING FOR CODE SUPPORT</span>
+<span class="c1">'      DO YOURSELF A FAVOUR AND PUT YOUR PASSWORD IN A FILE CALLED "password.txt"</span>
+<span class="n">user_password$</span> <span class="o">=</span> <span class="s">"CREATE A TEXT FILE CALLED password.txt WITH YOUR PASSWORD"</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="n">FREEFILE</span><span class="p">:</span> <span class="n">OPEN</span> <span class="s">"password.txt"</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="n">fh</span><span class="p">:</span> <span class="n">LINE</span> <span class="n">INPUT</span> <span class="p">#</span><span class="n">fh</span><span class="p">,</span> <span class="n">my_password$</span><span class="p">:</span> <span class="n">CLOSE</span> <span class="p">#</span><span class="n">fh</span>
+<span class="n">my_username</span> <span class="o">=</span> <span class="s">"root"</span>
+<span class="n">sql_database_ip</span> <span class="o">=</span> <span class="s">"127.0.0.1"</span>
+
+<span class="c1">'http://dev.mysql.com/doc/refman/5.6/en/c-api-functions.html</span>
+<span class="n">DECLARE</span> <span class="n">DYNAMIC</span> <span class="n">LIBRARY</span> <span class="s">"mysql"</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_init%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">always_0</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">'MYSQL *mysql_init(MYSQL *mysql)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_error$</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">'const char *mysql_error(MYSQL *mysql)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_get_client_info$</span>
+    <span class="c1">' Returns a string that represents the client library version</span>
+    <span class="c1">' const char *mysql_get_client_info(void)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_real_connect%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">host</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">user</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">password</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">db</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">port</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">unix_socket</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">client_flag</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_real_connect_dont_open%</span><span class="o">&amp;</span> <span class="n">ALIAS</span> <span class="n">mysql_real_connect</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">host</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">user</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">password</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">db</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">port</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">unix_socket</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">BYVAL</span> <span class="n">client_flag</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+    <span class="c1">' MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd, const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag)</span>
+    <span class="c1">'  The value of host may be either a host name or an IP address. If host is NULL or the string "localhost", a connection to the local host is assumed.</span>
+    <span class="c1">'  db is the database name. If db is not NULL, the connection sets the default database to this value.</span>
+    <span class="c1">'  If port is not 0, the value is used as the port number for the TCP/IP connection. Note that the host parameter determines the type of the connection.</span>
+    <span class="c1">'  If unix_socket is not NULL, the string specifies the socket or named pipe to use. Note that the host parameter determines the type of the connection.</span>
+    <span class="c1">'  The value of client_flag is usually 0, but can be set to a combination of the following flags to enable certain features.</span>
+    <span class="c1">'  Return Value: A MYSQL* connection handle if the connection was successful, NULL if the connection was unsuccessful. For a successful connection, the return value is the same as the value of the first parameter.</span>
+    <span class="c1">'*** REMEMBER, ALL STRINGS PASSED MUST BE NULL '+CHR$(0)' TERMINATED ***</span>
+    <span class="n">SUB</span> <span class="n">mysql_query</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">mysql_command</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_query&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">mysql_command</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">)</span>
+    <span class="c1">' int mysql_query(MYSQL *mysql, const char *stmt_str)</span>
+    <span class="c1">' Executes the SQL statement pointed to by the null-terminated string stmt_str. Normally, the string must consist of a single SQL statement without a terminating semicolon (“;”) or \g. If multiple-statement execution has been enabled,</span>
+    <span class="c1">'Returns Zero if the statement was successful. Nonzero if an error occurred.</span>
+    <span class="c1">'*** REMEMBER, ALL STRINGS PASSED MUST BE NULL '+CHR$(0)' TERMINATED ***</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_store_result%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">' MYSQL_RES *mysql_store_result(MYSQL *mysql)</span>
+    <span class="c1">' Returns a RESULT STRUCTURE</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_num_fields</span><span class="err">~</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">' unsigned int mysql_num_fields(MYSQL_RES *result)</span>
+    <span class="c1">' To pass a MYSQL* argument instead, use unsigned int mysql_field_count(MYSQL *mysql).</span>
+    <span class="c1">' Returns number of columns in result set</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_num_rows&amp;</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">' my_ulonglong mysql_num_rows(MYSQL_RES *result)</span>
+    <span class="c1">' Returns the number of rows in the result set.</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_fetch_row%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">' MYSQL_ROW mysql_fetch_row(MYSQL_RES *result)</span>
+    <span class="c1">' RETURNS A ROW STRUCTURE</span>
+    <span class="n">FUNCTION</span> <span class="n">mysql_fetch_lengths%</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="c1">' unsigned long *mysql_fetch_lengths(MYSQL_RES *result)</span>
+    <span class="c1">' Returns the lengths of the columns of the current row within a result set.</span>
+    <span class="c1">' Returns a pointer to an array of lengths</span>
+    <span class="n">SUB</span> <span class="n">mysql_close</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">mysql</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+    <span class="n">SUB</span> <span class="n">mysql_free_result</span> <span class="p">(</span><span class="n">BYVAL</span> <span class="n">result</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">DECLARE</span>
+
+
+<span class="n">TYPE</span> <span class="n">DB_TYPE</span>
+    <span class="kt">Object</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">DB_Version</span> <span class="n">AS</span> <span class="n">STRING</span><span class="p">:</span> <span class="n">DB_Version</span> <span class="o">=</span> <span class="n">mysql_get_client_info$</span> <span class="c1">'currently "6.0.0" in Windows</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">DB_Last</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB_Last</span><span class="p">)</span> <span class="n">AS</span> <span class="n">DB_TYPE</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">DB_Last_Error</span> <span class="n">AS</span> <span class="n">STRING</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">DB_Selected</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">DB_Debug_Mode</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">:</span> <span class="n">DB_Debug_Mode</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="c1">'***DO NOT EDIT THIS LINE***</span>
+
+<span class="n">DO</span>
+    <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span>
+    <span class="n">PRINT</span> <span class="s">"CHOOSE AN EXAMPLE:"</span>
+    <span class="n">PRINT</span> <span class="s">"1) Explore an existing database"</span>
+    <span class="n">PRINT</span> <span class="s">"2) Create a new database"</span>
+    <span class="n">INPUT</span> <span class="s">"Which example? (1-3) &gt;"</span><span class="p">,</span> <span class="n">e</span>
+    <span class="n">IF</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">EXAMPLE_1</span> <span class="n">ignore_this_value</span>
+    <span class="n">IF</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">EXAMPLE_2</span> <span class="n">ignore_this_value</span>
+    <span class="n">IF</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+<span class="n">LOOP</span>
+<span class="n">PRINT</span> <span class="s">"Bye!"</span>
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">DB_Critical_Error</span> <span class="p">(</span><span class="n">message$</span><span class="p">)</span>
+<span class="n">SCREEN</span> <span class="mi">2</span>
+<span class="n">PRINT</span> <span class="n">message$</span>
+<span class="n">END</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">FUNCTION</span> <span class="n">DB_Open</span> <span class="p">(</span><span class="n">host_ip$</span><span class="p">,</span> <span class="n">user_name$</span><span class="p">,</span> <span class="n">user_password$</span><span class="p">,</span> <span class="n">DB_name</span><span class="err">$</span><span class="p">)</span> <span class="c1">'if DB_name="" then no database is selected</span>
+<span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="s">""</span>
+<span class="c1">'create new handle</span>
+<span class="n">FOR</span> <span class="n">DB</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">DB_Last</span>
+    <span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span>
+<span class="n">IF</span> <span class="n">DB</span> <span class="o">&gt;</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">Database</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">Database</span><span class="p">(</span><span class="n">UBOUND</span><span class="p">(</span><span class="n">Database</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="n">AS</span> <span class="n">DB_TYPE</span><span class="p">:</span> <span class="n">DB_Last</span> <span class="o">=</span> <span class="n">DB</span>
+<span class="c1">'create new object</span>
+<span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="n">mysql_init</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"mysql_init failed"</span>
+<span class="c1">'attempt to connect</span>
+<span class="n">IF</span> <span class="n">DB_name</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span>
+    <span class="n">object%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">mysql_real_connect_dont_open</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">,</span> <span class="n">host_ip$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">user_name$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">user_password$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ELSE</span>
+    <span class="n">object%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">mysql_real_connect</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">,</span> <span class="n">host_ip$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">user_name$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">user_password$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">DB_name</span><span class="err">$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">IF</span> <span class="n">object%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="n">mysql_error</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">)</span>
+    <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'free index</span>
+    <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">DB_Selected</span> <span class="o">=</span> <span class="n">DB</span>
+<span class="n">DB_Open</span> <span class="o">=</span> <span class="n">DB</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+
+<span class="n">FUNCTION</span> <span class="n">DB_Create</span> <span class="p">(</span><span class="n">host_ip$</span><span class="p">,</span> <span class="n">user_name$</span><span class="p">,</span> <span class="n">user_password$</span><span class="p">,</span> <span class="n">DB_name</span><span class="err">$</span><span class="p">)</span>
+<span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="s">""</span>
+<span class="c1">'create new handle</span>
+<span class="n">FOR</span> <span class="n">DB</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">DB_Last</span>
+    <span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span>
+<span class="n">IF</span> <span class="n">DB</span> <span class="o">&gt;</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">Database</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">Database</span><span class="p">(</span><span class="n">UBOUND</span><span class="p">(</span><span class="n">Database</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="n">AS</span> <span class="n">DB_TYPE</span><span class="p">:</span> <span class="n">DB_Last</span> <span class="o">=</span> <span class="n">DB</span>
+<span class="c1">'create new object</span>
+<span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="n">mysql_init</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"mysql_init failed"</span>
+<span class="c1">'attempt to connect</span>
+<span class="n">object%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">mysql_real_connect_dont_open</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">,</span> <span class="n">host_ip$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">user_name$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">user_password$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">object%</span><span class="o">&amp;</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="n">mysql_error</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">)</span>
+    <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'free index</span>
+    <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="c1">'create new database</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mysql_query</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">,</span> <span class="s">"CREATE DATABASE "</span> <span class="o">+</span> <span class="n">DB_name</span><span class="err">$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">result</span> <span class="n">THEN</span>
+    <span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="n">mysql_error</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">)</span>
+    <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'free index</span>
+    <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="c1">'select new database</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mysql_query</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">,</span> <span class="s">"USE "</span> <span class="o">+</span> <span class="n">DB_name</span><span class="err">$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">result</span> <span class="n">THEN</span>
+    <span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="n">mysql_error</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span><span class="p">)</span>
+    <span class="n">Database</span><span class="p">(</span><span class="n">DB</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">'free index</span>
+    <span class="n">EXIT</span> <span class="n">FUNCTION</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">DB_Selected</span> <span class="o">=</span> <span class="n">DB</span>
+<span class="n">DB_Create</span> <span class="o">=</span> <span class="n">DB</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">SUB</span> <span class="n">DB_Close</span>
+<span class="n">IF</span> <span class="n">DB_Selected</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">DB_Selected</span> <span class="o">&gt;</span> <span class="n">DB_Last</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"DB_Close: Invalid handle"</span>
+<span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB_Selected</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"DB_Close: Invalid handle"</span>
+<span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">mysql_close</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB_Selected</span><span class="p">).</span><span class="n">Object</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">DB_QUERY</span> <span class="p">(</span><span class="n">mysql_command$</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">DB_Selected</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">DB_Selected</span> <span class="o">&gt;</span> <span class="n">DB_Last</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"DB_QUERY: Invalid handle"</span>
+<span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">DB_Selected</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"DB_QUERY: Invalid handle"</span>
+<span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mysql_query</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB_Selected</span><span class="p">).</span><span class="n">Object</span><span class="p">,</span> <span class="n">mysql_command$</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">IF</span> <span class="n">result</span> <span class="n">THEN</span>
+    <span class="n">DB_Last_Error</span> <span class="o">=</span> <span class="n">mysql_error</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB_Selected</span><span class="p">).</span><span class="n">Object</span><span class="p">)</span>
+    <span class="n">EXIT</span> <span class="n">SUB</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">DIM</span> <span class="n">mysql_result</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">mysql_result</span> <span class="o">=</span> <span class="n">mysql_store_result</span><span class="p">(</span><span class="n">Database</span><span class="p">(</span><span class="n">DB_Selected</span><span class="p">).</span><span class="n">Object</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">mysql_result</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="c1">'...todo...</span>
+<span class="n">ELSE</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">mysql_num_fields</span><span class="p">(</span><span class="n">mysql_result</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">mysql_num_rows</span><span class="p">(</span><span class="n">mysql_result</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">DB_Debug_Mode</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Columns:"</span><span class="err">;</span> <span class="n">columns</span><span class="p">,</span> <span class="s">"Rows:"</span><span class="err">;</span> <span class="n">rows</span>
+    <span class="n">REDIM</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span> <span class="n">AS</span> <span class="n">STRING</span>
+    <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">rows</span>
+        <span class="n">DIM</span> <span class="n">mysql_row</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+        <span class="n">mysql_row</span> <span class="o">=</span> <span class="n">mysql_fetch_row</span><span class="p">(</span><span class="n">mysql_result</span><span class="p">)</span>
+        <span class="n">DIM</span> <span class="n">mem_mysql_row</span> <span class="n">AS</span> <span class="n">_MEM</span>
+        <span class="n">mem_mysql_row</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">mysql_row</span><span class="p">,</span> <span class="n">columns</span> <span class="o">*</span> <span class="n">LEN</span><span class="p">(</span><span class="n">an_offset%</span><span class="o">&amp;</span><span class="p">))</span> <span class="c1">'The upper limit is unknown at this point</span>
+        <span class="n">DIM</span> <span class="n">mysql_lengths</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+        <span class="n">mysql_lengths</span> <span class="o">=</span> <span class="n">mysql_fetch_lengths</span><span class="p">(</span><span class="n">mysql_result</span><span class="p">)</span>
+        <span class="n">DIM</span> <span class="n">mem_mysql_lengths</span> <span class="n">AS</span> <span class="n">_MEM</span>
+        <span class="n">mem_mysql_lengths</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">mysql_lengths</span><span class="p">,</span> <span class="n">columns</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">DIM</span> <span class="n">mem_field</span> <span class="n">AS</span> <span class="n">_MEM</span>
+        <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">_MEMGET</span><span class="p">(</span><span class="n">mem_mysql_lengths</span><span class="p">,</span> <span class="n">mem_mysql_lengths</span><span class="p">.</span><span class="n">OFFSET</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_UNSIGNED</span> <span class="n">LONG</span><span class="p">)</span>
+            <span class="n">mem_field</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">_MEMGET</span><span class="p">(</span><span class="n">mem_mysql_row</span><span class="p">,</span> <span class="n">mem_mysql_row</span><span class="p">.</span><span class="n">OFFSET</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">LEN</span><span class="p">(</span><span class="n">an_offset%</span><span class="o">&amp;</span><span class="p">),</span> <span class="n">_OFFSET</span><span class="p">),</span> <span class="n">length</span><span class="p">)</span>
+            <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+            <span class="n">_MEMGET</span> <span class="n">mem_field</span><span class="p">,</span> <span class="n">mem_field</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">_MEMFREE</span> <span class="n">mem_field</span>
+            <span class="n">IF</span> <span class="n">DB_Debug_Mode</span> <span class="n">THEN</span>
+                <span class="n">posx</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span><span class="p">:</span> <span class="n">IF</span> <span class="n">posx</span> <span class="o">&lt;=</span> <span class="n">_WIDTH</span> <span class="n">THEN</span> <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">posx</span>
+                <span class="n">PRINT</span> <span class="s">"["</span> <span class="o">+</span> <span class="n">LTRIM</span><span class="err">$</span><span class="p">(</span><span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">length</span><span class="p">))</span> <span class="o">+</span> <span class="s">"]"</span><span class="err">;</span>
+                <span class="n">posx</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span> <span class="n">IF</span> <span class="n">posx</span> <span class="o">&lt;=</span> <span class="n">_WIDTH</span> <span class="n">THEN</span> <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">posx</span>
+                <span class="n">PRINT</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="err">;</span>
+            <span class="n">END</span> <span class="n">IF</span>
+        <span class="n">NEXT</span>
+        <span class="n">IF</span> <span class="n">DB_Debug_Mode</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="c1">'new line</span>
+        <span class="n">_MEMFREE</span> <span class="n">mem_mysql_lengths</span>
+        <span class="n">_MEMFREE</span> <span class="n">mem_mysql_row</span>
+    <span class="n">NEXT</span>
+    <span class="n">mysql_free_result</span> <span class="n">mysql_result</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">DB_Select</span> <span class="p">(</span><span class="n">database_handle&amp;</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">database_handle&amp;</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">database_handle&amp;</span> <span class="o">&gt;</span> <span class="n">DB_Last</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"DB_Select: Invalid handle"</span>
+<span class="n">IF</span> <span class="n">Database</span><span class="p">(</span><span class="n">database_handle&amp;</span><span class="p">).</span><span class="n">Object</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">DB_Critical_Error</span> <span class="s">"DB_Select: Invalid handle"</span>
+<span class="n">DB_Selected</span> <span class="o">=</span> <span class="n">database_handle&amp;</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+
+<span class="n">SUB</span> <span class="n">DB_PRINT</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">DB_RESULT</span><span class="p">):</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">DB_RESULT</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span>
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">y1</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ELSE</span> <span class="n">y1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">NEXT</span>
+
+<span class="n">width_characters</span> <span class="o">=</span> <span class="n">_WIDTH</span>
+<span class="n">DIM</span> <span class="n">max_width</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">total_width</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span> <span class="n">TO</span> <span class="n">rows</span>
+        <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">max</span> <span class="n">THEN</span> <span class="n">max</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="n">NEXT</span>
+    <span class="n">max_width</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">max</span>
+    <span class="n">total_width</span> <span class="o">=</span> <span class="n">total_width</span> <span class="o">+</span> <span class="n">max</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="s">"Columns:"</span><span class="err">;</span> <span class="n">columns</span><span class="p">,</span> <span class="s">"Rows:"</span><span class="err">;</span> <span class="n">rows</span>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">218</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">max_width</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">196</span><span class="p">))</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">194</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">NEXT</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">191</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">PRINT</span>
+<span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span> <span class="n">TO</span> <span class="n">rows</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span>
+        <span class="n">a$</span> <span class="o">=</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">x2</span>
+        <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">179</span><span class="p">)</span> <span class="o">+</span> <span class="n">a$</span><span class="err">;</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">max_width</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">x2</span>
+        <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">179</span><span class="p">)</span><span class="err">;</span>
+    <span class="n">NEXT</span>
+    <span class="n">PRINT</span>
+    <span class="n">IF</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="n">THEN</span>
+        <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">195</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">max_width</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">196</span><span class="p">))</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">197</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">NEXT</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">PRINT</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">quick</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">IF</span> <span class="n">quick</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_LIMIT</span> <span class="mi">10</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">192</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">columns</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">STRING</span><span class="err">$</span><span class="p">(</span><span class="n">max_width</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">196</span><span class="p">))</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">193</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">NEXT</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="p">,</span> <span class="n">POS</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">217</span><span class="p">)</span><span class="err">;</span><span class="p">:</span> <span class="n">PRINT</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+
+
+<span class="n">SUB</span> <span class="n">EXAMPLE_1</span> <span class="p">(</span><span class="n">you_can_delete_this_sub</span><span class="p">)</span> <span class="c1">'open and explore an existing database</span>
+<span class="n">host_ip$</span> <span class="o">=</span> <span class="n">sql_database_ip</span>
+<span class="n">user_password$</span> <span class="o">=</span> <span class="n">my_password</span>
+<span class="n">user_name$</span> <span class="o">=</span> <span class="n">my_username</span>
+<span class="n">mydb</span> <span class="o">=</span> <span class="n">DB_Open</span><span class="p">(</span><span class="n">host_ip$</span><span class="p">,</span> <span class="n">user_name$</span><span class="p">,</span> <span class="n">user_password$</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">mydb</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Oops! "</span> <span class="o">+</span> <span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">DO</span>
+    <span class="n">DO</span>
+        <span class="n">DB_QUERY</span> <span class="s">"SHOW DATABASES"</span><span class="p">:</span> <span class="n">DB_PRINT</span>
+        <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Use database named &gt;"</span><span class="p">,</span> <span class="n">a$</span>
+        <span class="n">IF</span> <span class="n">a$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">GOTO</span> <span class="n">Try_Again</span>
+        <span class="n">DB_QUERY</span> <span class="s">"USE "</span> <span class="o">+</span> <span class="n">a$</span>
+    <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">DO</span>
+        <span class="n">DB_QUERY</span> <span class="s">"SHOW TABLES"</span><span class="p">:</span> <span class="n">DB_PRINT</span>
+        <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"View table named &gt;"</span><span class="p">,</span> <span class="n">a$</span>
+        <span class="n">IF</span> <span class="n">a$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">GOTO</span> <span class="n">Try_Again</span>
+        <span class="n">DB_QUERY</span> <span class="s">"SELECT column_name FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name='"</span> <span class="o">+</span> <span class="n">a$</span> <span class="o">+</span> <span class="s">"' ORDER BY ordinal_position"</span>
+    <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">'retrieve column headings and store in an array</span>
+    <span class="n">REDIM</span> <span class="n">headings$</span><span class="p">(</span><span class="n">UBOUND</span><span class="p">(</span><span class="n">db_result</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">db_result</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">headings$</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">NEXT</span>
+    <span class="n">DB_QUERY</span> <span class="s">"SELECT * FROM "</span> <span class="o">+</span> <span class="n">a$</span>
+    <span class="c1">'apply headings</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">headings$</span><span class="p">)</span>
+        <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">headings$</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">NEXT</span>
+    <span class="n">DB_PRINT</span>
+    <span class="n">Try_Again</span><span class="p">:</span>
+    <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"View another?"</span><span class="p">,</span> <span class="n">yn$</span>
+    <span class="n">IF</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">yn$</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="s">"Y"</span> <span class="n">THEN</span>
+        <span class="n">DB_Close</span>
+        <span class="n">EXIT</span> <span class="n">SUB</span>
+    <span class="n">END</span> <span class="n">IF</span>
+<span class="n">LOOP</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">EXAMPLE_2</span> <span class="p">(</span><span class="n">you_can_delete_this</span><span class="p">)</span> <span class="c1">'create a new database, a new table, a heading and enter some data</span>
+<span class="n">host_ip$</span> <span class="o">=</span> <span class="n">sql_database_ip</span>
+<span class="n">user_password$</span> <span class="o">=</span> <span class="n">my_password</span>
+<span class="n">user_name$</span> <span class="o">=</span> <span class="n">my_username</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"What will you call your database? &gt;"</span><span class="p">,</span> <span class="n">d$</span>
+<span class="n">mydb</span> <span class="o">=</span> <span class="n">DB_Create</span><span class="p">(</span><span class="n">host_ip$</span><span class="p">,</span> <span class="n">user_name$</span><span class="p">,</span> <span class="n">user_password$</span><span class="p">,</span> <span class="n">d$</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Oops! "</span> <span class="o">+</span> <span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"What will you call your table? &gt;"</span><span class="p">,</span> <span class="n">t$</span>
+<span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"And what will be the first column's heading? &gt;"</span><span class="p">,</span> <span class="n">h$</span>
+<span class="n">DB_QUERY</span> <span class="s">"CREATE TABLE "</span> <span class="o">+</span> <span class="n">t$</span> <span class="o">+</span> <span class="s">"("</span> <span class="o">+</span> <span class="n">h$</span> <span class="o">+</span> <span class="s">" text)"</span>
+<span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Oops! "</span> <span class="o">+</span> <span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">DO</span>
+    <span class="n">DB_QUERY</span> <span class="s">"SELECT column_name FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name='"</span> <span class="o">+</span> <span class="n">t$</span> <span class="o">+</span> <span class="s">"' ORDER BY ordinal_position"</span>
+    <span class="c1">'retrieve column headings and store in an array</span>
+    <span class="n">REDIM</span> <span class="n">headings$</span><span class="p">(</span><span class="n">UBOUND</span><span class="p">(</span><span class="n">db_result</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">FOR</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">db_result</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">headings$</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">DB_RESULT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">NEXT</span>
+    <span class="n">DB_QUERY</span> <span class="s">"SELECT * FROM "</span> <span class="o">+</span> <span class="n">t$</span>
+    <span class="c1">'apply headings</span>
+    <span class="n">FOR</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">headings$</span><span class="p">)</span>
+        <span class="n">DB_RESULT</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">headings$</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">NEXT</span>
+    <span class="n">DB_PRINT</span>
+    <span class="n">LINE</span> <span class="n">INPUT</span> <span class="s">"Type new entry's text &gt;"</span><span class="p">,</span> <span class="n">c$</span>
+    <span class="n">IF</span> <span class="n">c$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Finished!"</span><span class="p">:</span> <span class="n">DB_Close</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">SUB</span>
+    <span class="n">DB_QUERY</span> <span class="s">"INSERT INTO "</span> <span class="o">+</span> <span class="n">t$</span> <span class="o">+</span> <span class="s">" VALUES ('"</span> <span class="o">+</span> <span class="n">c$</span> <span class="o">+</span> <span class="s">"')"</span>
+    <span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Oops! "</span> <span class="o">+</span> <span class="n">DB_Last_Error</span><span class="err">$</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">LOOP</span> <span class="c1">'infinite loop</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<h2 id="linux-install">Linux Install:</h2>
+
+<p>This works in Linux (Ubuntu) too with minimal changes:</p>
+
+<ol>
+  <li>Use the ‘Synaptic Package Manager’ to install ‘mysql-client-5.1’</li>
+  <li>Change: DECLARE DYNAMIC LIBRARY “mysql” to DECLARE DYNAMIC LIBRARY “mysqlclient:16.0.0”</li>
+</ol>
+
+<blockquote>
+  <p>Or just copy this .so lib to your QB64 folder and rename it <em>libmysql.so</em>(do not use <em>.so</em> extension in <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> name).</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a></li>
+  <li><a href="ALIAS.html">ALIAS</a>, <a href="BYVAL.html">BYVAL</a></li>
+  <li><a href="_OFFSET.html">_OFFSET</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SQL-Client.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:43 GMT -->
+</html>

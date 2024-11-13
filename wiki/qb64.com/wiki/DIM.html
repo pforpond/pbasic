@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/DIM by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="DIM-2.html" />
+<meta property="og:url" content="DIM-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/DIM.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="DIM.html">DIM</a> statement is used to declare a variable or a list of variables as a specified data type or to dimension <a href="%24STATIC.html">$STATIC</a> or <a href="%24DYNAMIC.html">$DYNAMIC</a> <a href="Arrays.html">Arrays</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p><em>To declare variables:</em></p>
+<blockquote>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="DIM.html">DIM</a> [SHARED] <em>variable</em>[{suffix</td>
+        <td><a href="AS.html">AS</a> [<a href="_UNSIGNED.html">_UNSIGNED</a>] <em>type</em>}] [, <em>variable2</em>…]]</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>To declare arrays:</em></p>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><a href="DIM.html">DIM</a> [SHARED] <em>array([lowest% <a href="TO.html">TO</a>] highest%])</em>[{suffix</td>
+        <td><a href="AS.html">AS</a> [<a href="_UNSIGNED.html">_UNSIGNED</a>] <em>type</em>}] [, <em>variable2</em>…]</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>QB64 <em>Alternative Syntax:</em></p>
+
+  <p><a href="DIM.html">DIM</a> [SHARED] <a href="AS.html">AS</a> [<a href="_UNSIGNED.html">_UNSIGNED</a>] <em>typevariable</em>  [, <em>variable2</em>…]</p>
+
+  <p><a href="DIM.html">DIM</a> [SHARED] <a href="AS.html">AS</a> [<a href="_UNSIGNED.html">_UNSIGNED</a>] <em>typearray([lowest% <a href="TO.html">TO</a>] highest%])</em> [, <em>array2(elements)</em>…]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Sets the <a href="INTEGER.html">INTEGER</a> range of elements (indices) of a <a href="STATIC.html">STATIC</a> array. If only one number is used, the <a href="LBOUND.html">LBOUND</a> is 0 by default.</li>
+  <li>When used before an array is dimensioned, <strong><a href="OPTION-BASE.html">OPTION BASE</a> 1</strong> can set the default <a href="LBOUND.html">LBOUND</a> of arrays to 1.</li>
+  <li>DIM <a href="SHARED.html">SHARED</a> shares variable values with sub-procedures without passing the value in a parameter.</li>
+  <li>Use the <a href="AS.html">AS</a> keyword to define a variable or array <em>type</em> <a href="AS.html">AS</a>…
+    <ul>
+      <li><a href="INTEGER.html">INTEGER</a> (or use variable suffix <strong>%</strong>)</li>
+      <li><a href="LONG.html">LONG</a> (or use variable suffix <strong>&amp;</strong>)</li>
+      <li><a href="SINGLE.html">SINGLE</a> (or use variable suffix <strong>!</strong> or no suffix by default)</li>
+      <li><a href="DOUBLE.html">DOUBLE</a> (or use variable suffix <strong>#</strong>)</li>
+      <li><a href="STRING.html">STRING</a> (or use variable suffix <strong>$</strong>). An AS multiplier can set the string <a href="LEN.html">LEN</a>. Ex: <code class="language-plaintext highlighter-rouge">DIM *variable* AS STRING * 8</code></li>
+    </ul>
+  </li>
+  <li><strong>QB64</strong> variable types:
+    <ul>
+      <li><a href="_BIT.html">_BIT</a> (or use variable suffix <strong>`</strong>). An AS multiplier can be used for multiple bits. Ex: <code class="language-plaintext highlighter-rouge">DIM *variable* AS _BIT * 8</code></li>
+      <li><a href="_BYTE.html">_BYTE</a> (or use variable suffix <strong>%%</strong>)</li>
+      <li><a href="_INTEGER64.html">_INTEGER64</a> (or use variable suffix <strong>&amp;&amp;</strong>)</li>
+      <li><a href="_FLOAT.html">_FLOAT</a> (or use variable suffix <strong>##</strong>)</li>
+      <li><a href="_OFFSET.html">_OFFSET</a> (or use variable suffix <strong>%&amp;</strong>)</li>
+      <li>DIM <a href="AS.html">AS</a> <a href="_MEM.html">_MEM</a> (the _MEM type has no type suffix).</li>
+    </ul>
+  </li>
+  <li><strong>Note: When a variable has not been defined or has no type suffix, the type defaults to <a href="SINGLE.html">SINGLE</a>.</strong></li>
+  <li>When using the <strong><a href="AS.html">AS</a> type variable-list</strong> syntax, type symbols cannot be used.</li>
+  <li>When the <a href="%24DYNAMIC.html">$DYNAMIC</a> metacommand or <a href="REDIM.html">REDIM</a> is used, array element sizes are changeable (not <a href="%24STATIC.html">$STATIC</a>).</li>
+  <li>Use <a href="REDIM.html">REDIM</a> instead of DIM to dimension arrays as dynamic without the $DYNAMIC metacommand.</li>
+  <li>Use <a href="REDIM.html">REDIM</a> <a href="_PRESERVE.html">_PRESERVE</a> in <strong>QB64</strong> to retain previous array values when changing the size of an array.</li>
+  <li><a href="REDIM.html">REDIM</a> <a href="_PRESERVE.html">_PRESERVE</a> cannot change the number of array dimensions. An <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</li>
+  <li><a href="%24DYNAMIC.html">$DYNAMIC</a> arrays MUST be <a href="REDIM.html">REDIM</a>ensioned if <a href="ERASE.html">ERASE</a> or <a href="CLEAR.html">CLEAR</a> are used, as the arrays are completely removed.</li>
+  <li>All numerical variable types <strong>except</strong> SINGLE, DOUBLE and _FLOAT can be dimensioned as <a href="_UNSIGNED.html">_UNSIGNED</a> (suffix ~) or positive only.</li>
+  <li><strong>NOTE:</strong> Many QBasic keyword variable names can be used with a <a href="STRING.html">STRING</a> suffix ($). You cannot use them without the suffix, use a numerical suffix or use <em>DIM, <a href="REDIM.html">REDIM</a>, <a href="_DEFINE.html">_DEFINE</a>, <a href="BYVAL.html">BYVAL</a> or <a href="TYPE.html">TYPE</a> variable <a href="AS.html">AS</a></em> statements. <strong>Although possible, it’s recommended to avoid using reserved names.</strong></li>
+  <li><strong>Warning: Do not use negative array upper bound index values, or OS access or “Out of Memory” <a href="ERROR-Codes.html">ERROR Codes</a> will occur.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Defines Qt variable as a one byte fixed length string.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Qt</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1</span> 
+
+</code></pre></div></div>
+
+<p>Dimensions and types an array.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Image</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+</code></pre></div></div>
+
+<p>Dimensions array with an <a href="INTEGER.html">INTEGER</a> type suffix.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Image</span><span class="err">%</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>  
+
+</code></pre></div></div>
+
+<p>Dimensions a range of <a href="Arrays.html">Arrays</a> elements as <a href="SHARED.html">SHARED</a> integers.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Image</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">1000</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span> 
+
+</code></pre></div></div>
+
+<p>Dimensions variable as an <a href="Arrays.html">Arrays</a> of 8 elements of the type <a href="UNSIGNED.html">UNSIGNED</a> BIT.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">bit</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BIT</span> 
+
+</code></pre></div></div>
+
+<p>QB64 is more flexible than QBasic when it comes to “Duplicate Definition” errors. The following code does not error:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'x is a SINGLE variable</span>
+<span class="n">PRINT</span> <span class="n">x</span>
+<span class="n">DIM</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">LONG</span>
+<span class="n">PRINT</span> <span class="n">x</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="SINGLE.html">SINGLE</a> variable can be differentiated from the <a href="LONG.html">LONG</a> x variable by using suffixes like x! or x&amp; in later code.</p>
+</blockquote>
+
+<p>The following code will create a “Name already in use” <strong>status error</strong> in QB64 when the variable types are the same.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'x is a SINGLE variable</span>
+<span class="n">PRINT</span> <span class="n">x</span>
+<span class="n">DIM</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+<span class="n">PRINT</span> <span class="n">x</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> QB64 gives an error because the creation of the new variable would make referring to the existing one impossible.</p>
+</blockquote>
+
+<p>Using QB64’s alternative syntax to declare multiple variables/arrays of the same type.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">AS</span> <span class="n">LONG</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">index</span> <span class="c1">'all of these variables are created as type LONG</span>
+<span class="n">DIM</span> <span class="n">AS</span> <span class="n">SINGLE</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>               <span class="c1">'all of these variables are created as type SINGLE</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_DEFINE.html">_DEFINE</a>, <a href="_PRESERVE.html">_PRESERVE</a></li>
+  <li><a href="REDIM.html">REDIM</a>, <a href="TYPE.html">TYPE</a></li>
+  <li><a href="ERASE.html">ERASE</a>, <a href="CLEAR.html">CLEAR</a></li>
+  <li><a href="DEFINT.html">DEFINT</a>, <a href="DEFSNG.html">DEFSNG</a>, <a href="DEFLNG.html">DEFLNG</a>, <a href="DEFDBL.html">DEFDBL</a>, <a href="DEFSTR.html">DEFSTR</a></li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a>, <a href="Arrays.html">Arrays</a></li>
+  <li><a href="Variable-Types.html">Variable Types</a></li>
+  <li><a href="OPTION--EXPLICIT.html">OPTION _EXPLICIT</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/DIM by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:03 GMT -->
+</html>

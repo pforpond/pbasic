@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/BSAVE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="BSAVE-2.html" />
+<meta property="og:url" content="BSAVE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/BSAVE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="BSAVE.html">BSAVE</a> saves the contents of an image array to a <a href="BINARY.html">BINARY</a> file.</p>
+
+<h2 id="legacy-support">Legacy Support</h2>
+
+<ul>
+  <li>QB64 can save larger arrays directly to binary files using <a href="PUT.html">PUT</a> # and <a href="GET.html">GET</a> # without <a href="BSAVE.html">BSAVE</a>. For that reason, use of <a href="BSAVE.html">BSAVE</a> is no longer recommended practice but is supported to maintain compatibility with legacy code.</li>
+</ul>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="BSAVE.html">BSAVE</a> saveFile$, <a href="VARPTR.html">VARPTR</a>(array(index)), fileSize&amp;</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>saveFile$ is the STRING file name of the file designated to be created.</li>
+  <li>array(index) is the image <a href="arrays-2.html">arrays</a> that already holds the <a href="GET-(graphics-statement).html">GET (graphics statement)</a> image data.</li>
+  <li>fileSize&amp; must be a bit over twice the size of the elements used in an <a href="INTEGER.html">INTEGER</a> <a href="Arrays.html">Arrays</a>.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>To place image data into the array, use <a href="GET-(graphics-statement).html">GET (graphics statement)</a> to store a box area image of the screen.</li>
+  <li><a href="SCREEN.html">SCREEN</a> 12 can only GET 1/3 of the screen image at one time using a 26K array.</li>
+  <li>Image arrays are <a href="DIM.html">DIM</a>ensioned as <a href="INTEGER.html">INTEGER</a>. Use <a href="DEFINT.html">DEFINT</a> when working with large graphic arrays.</li>
+  <li>Any arrays can be saved, but image arrays are most common.</li>
+  <li><a href="DEF-SEG.html">DEF SEG</a> = <a href="VARSEG.html">VARSEG</a> must be used to designate the array segment position in memory.</li>
+  <li><a href="VARPTR.html">VARPTR</a> returns the array index offset of the memory segment. Array sizes are limited to 32767 Integer elements due to the use of <a href="VARPTR.html">VARPTR</a> in QBasic and <strong>QB64</strong>’s emulated conventional memory.</li>
+  <li><a href="BSAVE.html">BSAVE</a> files can later be opened with <a href="BLOAD.html">BLOAD</a>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Saving array data to a file quickly.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">LB</span><span class="err">%</span> <span class="o">=</span> <span class="n">LBOUND</span><span class="p">(</span><span class="n">Array</span><span class="p">)</span>
+<span class="n">bytes%</span> <span class="o">=</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Array</span><span class="p">(</span><span class="n">LB</span><span class="err">%</span><span class="p">))</span>
+<span class="n">filesize&amp;</span> <span class="o">=</span> <span class="p">((</span><span class="n">UBOUND</span><span class="p">(</span><span class="n">Array</span><span class="p">)</span> <span class="o">-</span> <span class="n">LB</span><span class="err">%</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">bytes%</span> 
+<span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="n">VARSEG</span><span class="p">(</span><span class="n">Array</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">BSAVE</span> <span class="n">filename$</span><span class="p">,</span> <span class="n">VARPTR</span><span class="p">(</span><span class="n">Array</span><span class="p">(</span><span class="n">LB</span><span class="err">%</span><span class="p">)),</span> <span class="n">filesize&amp;</span>  <span class="c1">' changeable index</span>
+<span class="n">DEF</span> <span class="n">SEG</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Procedure determines the filesize from the array size automatically. <a href="LBOUND.html">LBOUND</a> is used with <a href="UBOUND.html">UBOUND</a> to determine array size and byte size. Works with any type of array except variable-length strings. Used for saving program data fast.</p>
+</blockquote>
+
+<p><a href="BSAVE.html">BSAVE</a>ing a bitmap and calculating the file size</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="n">VARSEG</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+ <span class="n">PSET</span><span class="p">(</span><span class="n">BMPHead</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BMPHead</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">'color lower right corner if black</span>
+ <span class="n">GET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">BMPHead</span><span class="p">.</span><span class="n">PWidth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BMPHead</span><span class="p">.</span><span class="n">PDepth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Image</span><span class="p">(</span><span class="n">NColors</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">' for 16 or 256 colors</span>
+ <span class="n">FOR</span> <span class="n">a&amp;</span> <span class="o">=</span> <span class="mi">26000</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+   <span class="n">IF</span> <span class="n">Image</span><span class="p">(</span><span class="n">a&amp;</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">ArraySize</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">a&amp;</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+ <span class="n">NEXT</span>
+ <span class="n">BSAVE</span> <span class="n">SaveName</span><span class="err">$</span><span class="p">,</span> <span class="n">VARPTR</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ArraySize</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">200</span> <span class="c1">'file size</span>
+ <span class="n">DEF</span> <span class="n">SEG</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The <a href="FOR...html">FOR…NEXT</a> loop reads backwards through the image array until it finds a value not 0. The <a href="LONG.html">LONG</a> ArraySize&amp; value is doubled and 200 is added. BMPhead.PWidth and BMPhead.PDepth are found by reading the bitmap’s information header using a <a href="TYPE.html">TYPE</a> definition. See <a href="Bitmaps.html">Bitmaps</a>.</p>
+</blockquote>
+
+<p>Using <a href="PUT.html">PUT</a> and <a href="GET.html">GET</a> to write and read array data from a file without using BSAVE or <a href="BLOAD.html">BLOAD</a>:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">KILL</span> <span class="s">"example2.BIN"</span> <span class="c1">'removes old image file!</span>
+
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">OPTION</span> <span class="n">BASE</span> <span class="mi">0</span>
+<span class="n">REDIM</span> <span class="n">Graphic</span><span class="err">%</span><span class="p">(</span><span class="mi">1001</span><span class="p">)</span> <span class="c1">'REDIM makes array resize-able later</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="n">B</span> <span class="c1">'create image</span>
+<span class="n">GET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="n">STEP</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">Graphic</span><span class="err">%</span><span class="p">()</span> <span class="c1">'get image to array</span>
+
+<span class="n">FOR</span> <span class="n">i%</span> <span class="o">=</span> <span class="mi">1000</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">'reverse read array for size needed</span>
+    <span class="n">IF</span> <span class="n">Graphic</span><span class="err">%</span><span class="p">(</span><span class="n">i%</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">FOR</span> <span class="c1">'find image color not black</span>
+<span class="n">NEXT</span>
+<span class="n">size%</span> <span class="o">=</span> <span class="n">i%</span> <span class="o">+</span> <span class="mi">4</span> <span class="c1">'size plus 2 integers(4  bytes) for dimensions </span>
+<span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">Graphic</span><span class="err">%</span><span class="p">(</span><span class="n">size%</span><span class="p">)</span> <span class="c1">'resize existing array in QB64 only!</span>
+
+<span class="n">OPEN</span> <span class="s">"example2.BIN"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">' PUT to a file</span>
+<span class="n">PUT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">Graphic</span><span class="err">%</span><span class="p">()</span>
+<span class="n">CLOSE</span>
+
+<span class="n">OPEN</span> <span class="s">"example2.BIN"</span> <span class="n">FOR</span> <span class="n">BINARY</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span> <span class="c1">'GET array and PUT to screen</span>
+<span class="n">DIM</span> <span class="n">CopyBin</span><span class="err">%</span><span class="p">(</span><span class="n">LOF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">\</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">'create new array sized by half of file size</span>
+<span class="n">GET</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="p">,</span> <span class="n">CopyBin</span><span class="err">%</span><span class="p">()</span>
+<span class="n">PUT</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">CopyBin</span><span class="err">%</span><span class="p">(),</span> <span class="n">PSET</span>
+<span class="n">fsize%</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">CLOSE</span>
+
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'Press any key </span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">20</span> <span class="c1">'read all 3 arrays</span>
+    <span class="n">PRINT</span> <span class="n">Graphic</span><span class="err">%</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span> <span class="n">CopyBin</span><span class="err">%</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="s">"Array:"</span><span class="err">;</span> <span class="n">size%</span><span class="p">,</span> <span class="s">"File:"</span><span class="err">;</span> <span class="n">fsize%</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> A 10 by 10 pixel box is saved to an array using the <a href="GET-(graphics-statement).html">GET (graphics statement)</a> and written to a BINARY file using <a href="PUT.html">PUT</a> #1. Then <a href="GET.html">GET</a> #1 places the file contents into another INTEGER array and places it on the screen with the <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>The array contents: 88 is the width in the GET array for <a href="SCREEN.html">SCREEN</a> 13 which needs divided by 8 in that mode only. The area is actually 11 X 11. The array size needed can be found by looping backwards through the array until a color value is found. <strong>IF array(i) &lt;&gt; 0 THEN EXIT FOR</strong> (66 integers) or by dividing the created BINARY file size in half (134 bytes) when known to be array sized already.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a>, <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a></li>
+  <li><a href="BLOAD.html">BLOAD</a>, <a href="OPEN.html">OPEN</a>, <a href="BINARY.html">BINARY</a></li>
+  <li><a href="GET.html">GET</a>, <a href="PUT.html">PUT</a> (file statements)</li>
+  <li><a href="VARSEG.html">VARSEG</a>, <a href="VARPTR.html">VARPTR</a></li>
+  <li><a href="DEF-SEG.html">DEF SEG</a>, <a href="TYPE.html">TYPE</a></li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/BSAVE by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:35 GMT -->
+</html>

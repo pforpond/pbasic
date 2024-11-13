@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/GIF-Images by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="GIF-Images-2.html" />
+<meta property="og:url" content="GIF-Images-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/GIF-Images.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>Animated GIF File Decoder</strong></p>
+
+<p>GIF files can be one frame or animated images made up of many frames that are displayed at a set frame rate. The following program allows you to view either kind of image or use them in a program. <a href="_LOADIMAGE.html">_LOADIMAGE</a> can only return one frame of an animated image.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">'#######################################################################################</span>
+<span class="c1">'# Animated GIF decoder v1.0                                                           #</span>
+<span class="c1">'# By Zom-B                                                                            #</span>
+<span class="c1">'#######################################################################################</span>
+
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="c1">'$DYNAMIC</span>
+
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Dbg</span><span class="p">:</span> <span class="n">Dbg</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">powerOf2&amp;</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">11</span><span class="p">:</span> <span class="n">powerOf2&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">a</span><span class="p">:</span> <span class="n">NEXT</span> <span class="n">a</span>
+
+<span class="n">TYPE</span> <span class="n">GIFDATA</span>
+  <span class="n">file</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+  <span class="n">sigver</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">6</span>
+  <span class="n">width</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">height</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">bpp</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+  <span class="n">sortFlag</span> <span class="n">AS</span> <span class="n">_BYTE</span> <span class="c1">' Unused</span>
+  <span class="n">colorRes</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+  <span class="n">colorTableFlag</span> <span class="n">AS</span> <span class="n">_BYTE</span>
+  <span class="n">bgColor</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+  <span class="n">aspect</span> <span class="n">AS</span> <span class="n">SINGLE</span> <span class="c1">' Unused</span>
+  <span class="n">numColors</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">palette</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">768</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">TYPE</span> <span class="n">FRAMEDATA</span>
+  <span class="n">addr</span> <span class="n">AS</span> <span class="n">LONG</span>
+  <span class="n">left</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">top</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">width</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">height</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">INTEGER</span>
+  <span class="n">localColorTableFlag</span> <span class="n">AS</span> <span class="n">_BYTE</span>
+  <span class="n">interlacedFlag</span> <span class="n">AS</span> <span class="n">_BYTE</span>
+  <span class="n">sortFlag</span> <span class="n">AS</span> <span class="n">_BYTE</span> <span class="c1">' Unused</span>
+  <span class="n">palBPP</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+  <span class="n">minimumCodeSize</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+  <span class="n">transparentFlag</span> <span class="n">AS</span> <span class="n">_BYTE</span> <span class="c1">'GIF89a-specific (animation) values</span>
+  <span class="n">userInput</span> <span class="n">AS</span> <span class="n">_BYTE</span> <span class="c1">' Unused</span>
+  <span class="n">disposalMethod</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+  <span class="n">delay</span> <span class="n">AS</span> <span class="n">SINGLE</span>
+  <span class="n">transColor</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="c1">' Open gif file. This reads the headers and palette but not the image data.</span>
+<span class="c1">' The array will be redimentioned to fit the exact number of frames in the file.</span>
+
+<span class="n">DIM</span> <span class="n">gifData</span> <span class="n">AS</span> <span class="n">GIFDATA</span><span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="mi">0</span><span class="p">)</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span>
+
+<span class="n">filename$</span> <span class="o">=</span> <span class="s">"mygif.gif"</span>  <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Enter a file name here!!!</span>
+
+<span class="n">IF</span> <span class="n">LEN</span><span class="p">(</span><span class="n">filename$</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">END</span>
+<span class="n">openGif</span> <span class="n">filename$</span><span class="p">,</span> <span class="n">gifData</span><span class="p">,</span> <span class="n">frameData</span><span class="p">()</span>
+
+<span class="c1">' Loop away.</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DO</span>
+  <span class="c1">' Request a frame. If it has been requested before, it is re-used,</span>
+  <span class="c1">' otherwise it is read and decoded from the file.</span>
+  <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">getGifFrame&amp;</span><span class="p">(</span><span class="n">gifData</span><span class="p">,</span> <span class="n">frameData</span><span class="p">(),</span> <span class="n">frame</span><span class="p">)</span>
+  <span class="n">_DELAY</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">delay</span>
+  <span class="n">frame</span> <span class="o">=</span> <span class="p">(</span><span class="n">frame</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">MOD</span> <span class="p">(</span><span class="n">UBOUND</span><span class="p">(</span><span class="n">framedata</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">LEN</span><span class="p">(</span><span class="n">INKEY</span><span class="err">$</span><span class="p">)</span>
+
+<span class="c1">'Close the file and free the allocated frames.</span>
+<span class="n">codeGif</span> <span class="n">gifData</span><span class="p">,</span> <span class="n">frameData</span><span class="p">()</span>
+<span class="n">END</span>
+
+<span class="c1">'########################################################################################</span>
+
+<span class="n">SUB</span> <span class="n">openGif</span> <span class="p">(</span><span class="n">filename$</span><span class="p">,</span> <span class="n">gifData</span> <span class="n">AS</span> <span class="n">GIFDATA</span><span class="p">,</span> <span class="n">frameData</span><span class="p">()</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span><span class="p">)</span> <span class="n">STATIC</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">FREEFILE</span><span class="p">:</span> <span class="n">gifData</span><span class="p">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
+<span class="n">OPEN</span> <span class="s">"B"</span><span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">file</span><span class="p">,</span> <span class="n">filename$</span>
+
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">sigver</span>
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">width</span>
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">height</span>
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span>
+<span class="n">gifData</span><span class="p">.</span><span class="n">bpp</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">gifData</span><span class="p">.</span><span class="n">sortFlag</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">gifData</span><span class="p">.</span><span class="n">colorRes</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="o">\</span> <span class="mi">16</span> <span class="n">AND</span> <span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">gifData</span><span class="p">.</span><span class="n">colorTableFlag</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">128</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">gifData</span><span class="p">.</span><span class="n">numColors</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bpp</span>
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bgColor</span>
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span>
+<span class="n">IF</span> <span class="n">byte</span><span class="err">~%%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">gifData</span><span class="p">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ELSE</span> <span class="n">gifData</span><span class="p">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="o">+</span> <span class="mi">15</span><span class="p">)</span> <span class="o">/</span> <span class="mi">64</span>
+
+<span class="n">IF</span> <span class="n">gifData</span><span class="p">.</span><span class="n">sigver</span> <span class="o">&lt;&gt;</span> <span class="s">"GIF87a"</span> <span class="n">AND</span> <span class="n">gifData</span><span class="p">.</span><span class="n">sigver</span> <span class="o">&lt;&gt;</span> <span class="s">"GIF89a"</span> <span class="n">THEN</span> <span class="n">_DEST</span> <span class="mi">0</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Invalid version"</span><span class="p">:</span> <span class="n">END</span>
+<span class="n">IF</span> <span class="n">NOT</span> <span class="n">gifData</span><span class="p">.</span><span class="n">colorTableFlag</span> <span class="n">THEN</span> <span class="n">_DEST</span> <span class="mi">0</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"No Color Table"</span><span class="p">:</span> <span class="n">END</span>
+
+<span class="n">palette$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">gifData</span><span class="p">.</span><span class="n">numColors</span><span class="p">)</span>
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">palette$</span>
+<span class="n">gifData</span><span class="p">.</span><span class="n">palette</span> <span class="o">=</span> <span class="n">palette$</span>
+<span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">1</span> <span class="n">THEN</span> 
+  <span class="n">PRINT</span> <span class="s">"sigver         ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">sigver</span>
+  <span class="n">PRINT</span> <span class="s">"width          ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">width</span>
+  <span class="n">PRINT</span> <span class="s">"height         ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">height</span>
+  <span class="n">PRINT</span> <span class="s">"bpp            ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bpp</span>
+  <span class="n">PRINT</span> <span class="s">"sortFlag       ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">sortFlag</span>
+  <span class="n">PRINT</span> <span class="s">"colorRes       ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">colorRes</span>
+  <span class="n">PRINT</span> <span class="s">"colorTableFlag ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">colorTableFlag</span>
+  <span class="n">PRINT</span> <span class="s">"bgColor        ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bgColor</span>
+  <span class="n">PRINT</span> <span class="s">"aspect         ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">aspect</span>
+  <span class="n">PRINT</span> <span class="s">"numColors      ="</span><span class="err">;</span> <span class="n">gifData</span><span class="p">.</span><span class="n">numColors</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">gifData</span><span class="p">.</span><span class="n">numColors</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">PRINT</span> <span class="n">USING</span> <span class="s">"pal(###) = "</span><span class="err">;</span> <span class="n">i</span><span class="err">;</span>
+    <span class="n">PRINT</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">_RGB32</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">palette</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">palette</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">palette</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)))</span>
+  <span class="n">NEXT</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">DO</span>
+  <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span>
+  <span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Chunk: "</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">byte</span><span class="err">~%%</span><span class="p">)</span>
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">byte</span><span class="err">~%%</span>
+    <span class="n">CASE</span> <span class="o">&amp;</span><span class="n">H2C</span> <span class="c1">' Image Descriptor</span>
+      <span class="n">IF</span> <span class="n">frame</span> <span class="o">&gt;</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">frameData</span><span class="p">)</span> <span class="n">THEN</span>
+        <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">frameData</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="n">frame</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span>
+      <span class="n">END</span> <span class="n">IF</span>
+
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">left</span>
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">top</span>
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">width</span>
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">height</span>
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span>
+      <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">localColorTableFlag</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">128</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">interlacedFlag</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">64</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">sortFlag</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">32</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">palBPP</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">addr</span> <span class="o">=</span> <span class="n">LOC</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+      <span class="n">IF</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">localColorTableFlag</span> <span class="n">THEN</span>
+        <span class="n">SEEK</span> <span class="n">file</span><span class="p">,</span> <span class="n">LOC</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">palBPP</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">minimumCodeSize</span>
+      <span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">2</span> <span class="n">THEN</span> 
+        <span class="n">PRINT</span> <span class="s">"addr                ="</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">addr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">PRINT</span> <span class="s">"left                ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">left</span>
+        <span class="n">PRINT</span> <span class="s">"top                 ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">top</span>
+        <span class="n">PRINT</span> <span class="s">"width               ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">width</span>
+        <span class="n">PRINT</span> <span class="s">"height              ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">height</span>
+        <span class="n">PRINT</span> <span class="s">"localColorTableFlag ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">localColorTableFlag</span>
+        <span class="n">PRINT</span> <span class="s">"interlacedFlag      ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">interlacedFlag</span>
+        <span class="n">PRINT</span> <span class="s">"sortFlag            ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">sortFlag</span>
+        <span class="n">PRINT</span> <span class="s">"palBPP              ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">palBPP</span>
+        <span class="n">PRINT</span> <span class="s">"minimumCodeSize     ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">minimumCodeSize</span>
+      <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">IF</span> <span class="n">localColors</span> <span class="n">THEN</span> <span class="n">_DEST</span> <span class="mi">0</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Local color table"</span><span class="p">:</span> <span class="n">END</span>
+      <span class="n">IF</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">disposalMethod</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Unsupported disposalMethod: "</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">disposalMethod</span><span class="p">:</span> <span class="n">END</span>
+      <span class="n">skipBlocks</span> <span class="n">file</span>
+
+      <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">CASE</span> <span class="o">&amp;</span><span class="n">H3B</span> <span class="c1">' Trailer</span>
+      <span class="n">EXIT</span> <span class="n">DO</span>
+    <span class="n">CASE</span> <span class="o">&amp;</span><span class="n">H21</span> <span class="c1">' Extension Introducer</span>
+      <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span> <span class="c1">' Extension Label</span>
+      <span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"Extension Introducer: "</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">byte</span><span class="err">~%%</span><span class="p">)</span>
+      <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">byte</span><span class="err">~%%</span>
+        <span class="n">CASE</span> <span class="o">&amp;</span><span class="n">HFF</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">HFE</span> <span class="c1">' Application Extension, Comment Extension</span>
+          <span class="n">skipBlocks</span> <span class="n">file</span>
+        <span class="n">CASE</span> <span class="o">&amp;</span><span class="n">HF9</span>
+          <span class="n">IF</span> <span class="n">frame</span> <span class="o">&gt;</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">frameData</span><span class="p">)</span> <span class="n">THEN</span>
+            <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">frameData</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="n">frame</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span>
+          <span class="n">END</span> <span class="n">IF</span>
+
+          <span class="n">GET</span> <span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span> <span class="c1">' Block Size (always 4)</span>
+          <span class="n">GET</span> <span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span>
+          <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transparentFlag</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+          <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">userInput</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="err">~%%</span> <span class="n">AND</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+          <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">disposalMethod</span> <span class="o">=</span> <span class="n">byte</span><span class="err">~%%</span> <span class="o">\</span> <span class="mi">4</span> <span class="n">AND</span> <span class="mi">7</span>
+          <span class="n">GET</span> <span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">delay</span><span class="err">~%</span>
+          <span class="n">IF</span> <span class="n">delay</span><span class="err">~%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">delay</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="n">ELSE</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">delay</span> <span class="o">=</span> <span class="n">delay</span><span class="err">~%</span> <span class="o">/</span> <span class="mi">100</span>
+          <span class="n">GET</span> <span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transColor</span>
+          <span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">2</span> <span class="n">THEN</span> 
+            <span class="n">PRINT</span> <span class="s">"frame           ="</span><span class="err">;</span> <span class="n">frame</span>
+            <span class="n">PRINT</span> <span class="s">"transparentFlag ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transparentFlag</span>
+            <span class="n">PRINT</span> <span class="s">"userInput       ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">userInput</span>
+            <span class="n">PRINT</span> <span class="s">"disposalMethod  ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">disposalMethod</span>
+            <span class="n">PRINT</span> <span class="s">"delay           ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">delay</span>
+            <span class="n">PRINT</span> <span class="s">"transColor      ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transColor</span>
+          <span class="n">END</span> <span class="n">IF</span>
+          <span class="n">skipBlocks</span> <span class="n">file</span>
+        <span class="n">CASE</span> <span class="n">ELSE</span>
+          <span class="n">PRINT</span> <span class="s">"Unsupported extension Label: "</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">byte</span><span class="err">~%%</span><span class="p">):</span> <span class="n">END</span>
+      <span class="n">END</span> <span class="n">SELECT</span>
+    <span class="n">CASE</span> <span class="n">ELSE</span>
+      <span class="n">PRINT</span> <span class="s">"Unsupported chunk: "</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">byte</span><span class="err">~%%</span><span class="p">):</span> <span class="n">END</span>
+  <span class="n">END</span> <span class="n">SELECT</span>
+<span class="n">LOOP</span>
+
+<span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">frameData</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="n">frame</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">SUB</span> <span class="n">skipBlocks</span> <span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">DO</span>
+  <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="err">~%%</span> <span class="c1">' Block Size</span>
+  <span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"block size ="</span><span class="err">;</span> <span class="n">byte</span><span class="err">~%%</span>
+  <span class="n">SEEK</span> <span class="n">file</span><span class="p">,</span> <span class="n">LOC</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="o">+</span> <span class="n">byte</span><span class="err">~%%</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">byte</span><span class="err">~%%</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">FUNCTION</span> <span class="n">getGifFrame&amp;</span> <span class="p">(</span><span class="n">gifData</span> <span class="n">AS</span> <span class="n">GIFDATA</span><span class="p">,</span> <span class="n">frameData</span><span class="p">()</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">addr</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span>
+  <span class="n">IF</span> <span class="n">Dbg</span> <span class="n">AND</span> <span class="mi">4</span> <span class="n">THEN</span>
+    <span class="n">PRINT</span> <span class="s">"addr                ="</span><span class="err">;</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">addr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">PRINT</span> <span class="s">"left                ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">left</span>
+    <span class="n">PRINT</span> <span class="s">"top                 ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">top</span>
+    <span class="n">PRINT</span> <span class="s">"width               ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">width</span>
+    <span class="n">PRINT</span> <span class="s">"height              ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">height</span>
+    <span class="n">PRINT</span> <span class="s">"localColorTableFlag ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">localColorTableFlag</span>
+    <span class="n">PRINT</span> <span class="s">"interlacedFlag      ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">interlacedFlag</span>
+    <span class="n">PRINT</span> <span class="s">"sortFlag            ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">sortFlag</span>
+    <span class="n">PRINT</span> <span class="s">"palBPP              ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">palBPP</span>
+    <span class="n">PRINT</span> <span class="s">"minimumCodeSize     ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">minimumCodeSize</span>
+    <span class="n">PRINT</span> <span class="s">"transparentFlag     ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transparentFlag</span>
+    <span class="n">PRINT</span> <span class="s">"userInput           ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">userInput</span>
+    <span class="n">PRINT</span> <span class="s">"disposalMethod      ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">disposalMethod</span>
+    <span class="n">PRINT</span> <span class="s">"delay               ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">delay</span>
+    <span class="n">PRINT</span> <span class="s">"transColor          ="</span><span class="err">;</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transColor</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">w</span> <span class="o">=</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">width</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">height</span>
+  <span class="n">img&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+  <span class="n">frame&amp;</span> <span class="o">=</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">height</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+
+  <span class="n">_DEST</span> <span class="n">img&amp;</span>
+  <span class="n">decodeFrame</span> <span class="n">gifData</span><span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+
+  <span class="n">_DEST</span> <span class="n">frame&amp;</span>
+  <span class="n">IF</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">localColorTableFlag</span> <span class="n">THEN</span>
+    <span class="n">_COPYPALETTE</span> <span class="n">img&amp;</span>
+  <span class="n">ELSE</span>
+    <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">gifData</span><span class="p">.</span><span class="n">numColors</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="n">_PALETTECOLOR</span> <span class="n">i</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">palette</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">palette</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">gifData</span><span class="p">.</span><span class="n">palette</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">NEXT</span>
+  <span class="n">END</span> <span class="n">IF</span>
+
+  <span class="n">IF</span> <span class="n">frame</span> <span class="n">THEN</span>
+    <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="n">disposalMethod</span>
+      <span class="n">CASE</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="n">_PUTIMAGE</span> <span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="n">addr</span>
+      <span class="n">CASE</span> <span class="mi">2</span>
+        <span class="n">CLS</span> <span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bgColor</span>
+        <span class="n">_CLEARCOLOR</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bgColor</span>
+    <span class="n">END</span> <span class="n">SELECT</span>
+  <span class="n">ELSE</span>
+    <span class="n">CLS</span> <span class="p">,</span> <span class="n">gifData</span><span class="p">.</span><span class="n">bgColor</span>
+  <span class="n">END</span> <span class="n">IF</span>
+
+  <span class="n">IF</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transparentFlag</span> <span class="n">THEN</span>
+    <span class="n">_CLEARCOLOR</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">transColor</span><span class="p">,</span> <span class="n">img&amp;</span>
+  <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">left</span><span class="p">,</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">top</span><span class="p">),</span> <span class="n">img&amp;</span>
+  <span class="n">_FREEIMAGE</span> <span class="n">img&amp;</span>
+
+  <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">addr</span> <span class="o">=</span> <span class="n">frame&amp;</span>
+  <span class="n">_DEST</span> <span class="mi">0</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">getGifFrame&amp;</span> <span class="o">=</span> <span class="n">frameData</span><span class="p">(</span><span class="n">frame</span><span class="p">).</span><span class="n">addr</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+
+<span class="c1">'############################################################################################</span>
+
+<span class="n">SUB</span> <span class="n">decodeFrame</span> <span class="p">(</span><span class="n">gifdata</span> <span class="n">AS</span> <span class="n">GIFDATA</span><span class="p">,</span> <span class="n">framedata</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">byte</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+<span class="n">DIM</span> <span class="n">prefix</span><span class="p">(</span><span class="mi">4095</span><span class="p">),</span> <span class="n">suffix</span><span class="p">(</span><span class="mi">4095</span><span class="p">),</span> <span class="n">colorStack</span><span class="p">(</span><span class="mi">4095</span><span class="p">)</span>
+
+<span class="n">startCodeSize</span> <span class="o">=</span> <span class="n">gifdata</span><span class="p">.</span><span class="n">bpp</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">clearCode</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">gifdata</span><span class="p">.</span><span class="n">bpp</span>
+<span class="n">endCode</span> <span class="o">=</span> <span class="n">clearCode</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">minCode</span> <span class="o">=</span> <span class="n">endCode</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">startMaxCode</span> <span class="o">=</span> <span class="n">clearCode</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">nvc</span> <span class="o">=</span> <span class="n">minCode</span>
+<span class="n">codeSize</span> <span class="o">=</span> <span class="n">startCodeSize</span>
+<span class="n">maxCode</span> <span class="o">=</span> <span class="n">startMaxCode</span>
+
+<span class="n">IF</span> <span class="n">framedata</span><span class="p">.</span><span class="n">interlacedFlag</span> <span class="n">THEN</span> <span class="n">interlacedPass</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">interlacedStep</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">bitPointer</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">blockSize</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">blockPointer</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">gifdata</span><span class="p">.</span><span class="n">file</span>
+<span class="n">SEEK</span> <span class="n">file</span><span class="p">,</span> <span class="n">framedata</span><span class="p">.</span><span class="n">addr</span>
+
+<span class="n">IF</span> <span class="n">framedata</span><span class="p">.</span><span class="n">localColorTableFlag</span> <span class="n">THEN</span>
+  <span class="n">palette$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">framedata</span><span class="p">.</span><span class="n">palBPP</span><span class="p">)</span>
+  <span class="n">GET</span> <span class="mi">1</span><span class="p">,</span> <span class="p">,</span> <span class="n">palette$</span>
+
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">gifdata</span><span class="p">.</span><span class="n">numColors</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">c&amp;</span> <span class="o">=</span> <span class="n">_RGB32</span><span class="p">(</span><span class="n">ASC</span><span class="p">(</span><span class="n">palette$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">palette$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="n">palette$</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">_PALETTECOLOR</span> <span class="n">i</span><span class="p">,</span> <span class="n">c&amp;</span>
+  <span class="n">NEXT</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span> <span class="c1">' minimumCodeSize</span>
+
+<span class="n">DO</span>
+  <span class="n">GOSUB</span> <span class="n">GetCode</span>
+  <span class="n">stackPointer</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">IF</span> <span class="n">code</span> <span class="o">=</span> <span class="n">clearCode</span> <span class="n">THEN</span> <span class="c1">'Reset &amp; Draw next color direct</span>
+    <span class="n">nvc</span> <span class="o">=</span> <span class="n">minCode</span> <span class="c1">'           \</span>
+    <span class="n">codeSize</span> <span class="o">=</span> <span class="n">startCodeSize</span> <span class="c1">' Preset default codes</span>
+    <span class="n">maxCode</span> <span class="o">=</span> <span class="n">startMaxCode</span> <span class="c1">'  /</span>
+
+    <span class="n">GOSUB</span> <span class="n">GetCode</span>
+    <span class="n">currentCode</span> <span class="o">=</span> <span class="n">code</span>
+
+    <span class="n">lastColor</span> <span class="o">=</span> <span class="n">code</span>
+    <span class="n">colorStack</span><span class="p">(</span><span class="n">stackPointer</span><span class="p">)</span> <span class="o">=</span> <span class="n">lastColor</span>
+    <span class="n">stackPointer</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">ELSEIF</span> <span class="n">code</span> <span class="o">&lt;&gt;</span> <span class="n">endCode</span> <span class="n">THEN</span> <span class="c1">'Draw direct color or colors from suffix</span>
+    <span class="n">currentCode</span> <span class="o">=</span> <span class="n">code</span>
+    <span class="n">IF</span> <span class="n">currentCode</span> <span class="o">=</span> <span class="n">nvc</span> <span class="n">THEN</span> <span class="c1">'Take last color too</span>
+      <span class="n">currentCode</span> <span class="o">=</span> <span class="n">oldCode</span>
+      <span class="n">colorStack</span><span class="p">(</span><span class="n">stackPointer</span><span class="p">)</span> <span class="o">=</span> <span class="n">lastColor</span>
+      <span class="n">stackPointer</span> <span class="o">=</span> <span class="n">stackPointer</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">END</span> <span class="n">IF</span>
+
+    <span class="n">WHILE</span> <span class="n">currentCode</span> <span class="o">&gt;=</span> <span class="n">minCode</span> <span class="c1">'Extract colors from suffix</span>
+      <span class="n">colorStack</span><span class="p">(</span><span class="n">stackPointer</span><span class="p">)</span> <span class="o">=</span> <span class="n">suffix</span><span class="p">(</span><span class="n">currentCode</span><span class="p">)</span>
+      <span class="n">stackPointer</span> <span class="o">=</span> <span class="n">stackPointer</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">currentCode</span> <span class="o">=</span> <span class="n">prefix</span><span class="p">(</span><span class="n">currentCode</span><span class="p">)</span> <span class="c1">'Next color from suffix is described in</span>
+    <span class="n">WEND</span> <span class="c1">'                                 the prefix, else prefix is the last col.</span>
+
+    <span class="n">lastColor</span> <span class="o">=</span> <span class="n">currentCode</span> <span class="c1">'              Last color is equal to the</span>
+    <span class="n">colorStack</span><span class="p">(</span><span class="n">stackPointer</span><span class="p">)</span> <span class="o">=</span> <span class="n">lastColor</span> <span class="c1">' last known code (direct, or from</span>
+    <span class="n">stackPointer</span> <span class="o">=</span> <span class="n">stackPointer</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">'      Prefix)</span>
+    <span class="n">suffix</span><span class="p">(</span><span class="n">nvc</span><span class="p">)</span> <span class="o">=</span> <span class="n">lastColor</span> <span class="c1">'Automatically, update suffix</span>
+    <span class="n">prefix</span><span class="p">(</span><span class="n">nvc</span><span class="p">)</span> <span class="o">=</span> <span class="n">oldCode</span> <span class="c1">'Code from the session before (for extracting from suffix)</span>
+    <span class="n">nvc</span> <span class="o">=</span> <span class="n">nvc</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">IF</span> <span class="n">nvc</span> <span class="o">&gt;</span> <span class="n">maxCode</span> <span class="n">AND</span> <span class="n">codeSize</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="n">THEN</span>
+      <span class="n">codeSize</span> <span class="o">=</span> <span class="n">codeSize</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">maxCode</span> <span class="o">=</span> <span class="n">maxCode</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">END</span> <span class="n">IF</span>
+
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="n">stackPointer</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">colorStack</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">IF</span> <span class="n">x</span> <span class="o">=</span> <span class="n">framedata</span><span class="p">.</span><span class="n">width</span> <span class="n">THEN</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">IF</span> <span class="n">framedata</span><span class="p">.</span><span class="n">interlacedFlag</span> <span class="n">THEN</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">interlacedStep</span>
+        <span class="n">IF</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">framedata</span><span class="p">.</span><span class="n">height</span> <span class="n">THEN</span>
+          <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">interlacedPass</span>
+            <span class="n">CASE</span> <span class="mi">0</span><span class="p">:</span> <span class="n">interlacedPass</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+            <span class="n">CASE</span> <span class="mi">1</span><span class="p">:</span> <span class="n">interlacedPass</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">CASE</span> <span class="mi">2</span><span class="p">:</span> <span class="n">interlacedPass</span> <span class="o">=</span> <span class="mi">3</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+          <span class="n">END</span> <span class="n">SELECT</span>
+          <span class="n">interlacedStep</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span>
+        <span class="n">END</span> <span class="n">IF</span>
+      <span class="n">ELSE</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">NEXT</span>
+
+  <span class="n">oldCode</span> <span class="o">=</span> <span class="n">code</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">code</span> <span class="o">=</span> <span class="n">endCode</span>
+
+<span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span>
+<span class="n">EXIT</span> <span class="n">SUB</span>
+
+<span class="n">GetCode</span><span class="p">:</span>
+<span class="n">IF</span> <span class="n">bitPointer</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">GOSUB</span> <span class="n">ReadByteFromBlock</span><span class="p">:</span> <span class="n">bitPointer</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">WorkCode</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">LastChar</span> <span class="o">\</span> <span class="n">powerOf2&amp;</span><span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">bitPointer</span><span class="p">)</span>
+<span class="n">WHILE</span> <span class="n">codeSize</span> <span class="o">&gt;</span> <span class="n">bitPointer</span>
+  <span class="n">GOSUB</span> <span class="n">ReadByteFromBlock</span>
+
+  <span class="n">WorkCode</span><span class="o">&amp;</span> <span class="o">=</span> <span class="n">WorkCode</span><span class="o">&amp;</span> <span class="n">OR</span> <span class="n">LastChar</span> <span class="o">*</span> <span class="n">powerOf2&amp;</span><span class="p">(</span><span class="n">bitPointer</span><span class="p">)</span>
+  <span class="n">bitPointer</span> <span class="o">=</span> <span class="n">bitPointer</span> <span class="o">+</span> <span class="mi">8</span>
+<span class="n">WEND</span>
+<span class="n">bitPointer</span> <span class="o">=</span> <span class="n">bitPointer</span> <span class="o">-</span> <span class="n">codeSize</span>
+<span class="n">code</span> <span class="o">=</span> <span class="n">WorkCode</span><span class="o">&amp;</span> <span class="n">AND</span> <span class="n">maxCode</span>
+<span class="n">RETURN</span>
+
+<span class="n">ReadByteFromBlock</span><span class="p">:</span>
+<span class="n">IF</span> <span class="n">blockPointer</span> <span class="o">=</span> <span class="n">blockSize</span> <span class="n">THEN</span>
+  <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">byte</span><span class="p">:</span> <span class="n">blockSize</span> <span class="o">=</span> <span class="n">byte</span>
+  <span class="n">a$</span> <span class="o">=</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="n">blockSize</span><span class="p">):</span> <span class="n">GET</span> <span class="n">file</span><span class="p">,</span> <span class="p">,</span> <span class="n">a$</span>
+  <span class="n">blockPointer</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">blockPointer</span> <span class="o">=</span> <span class="n">blockPointer</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">LastChar</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">a$</span><span class="p">,</span> <span class="n">blockPointer</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">RETURN</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+
+<span class="n">SUB</span> <span class="n">codeGif</span> <span class="p">(</span><span class="n">gifData</span> <span class="n">AS</span> <span class="n">GIFDATA</span><span class="p">,</span> <span class="n">frameData</span><span class="p">()</span> <span class="n">AS</span> <span class="n">FRAMEDATA</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">UBOUND</span><span class="p">(</span><span class="n">FRAMEDATA</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">frameData</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">addr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FREEIMAGE</span> <span class="n">frameData</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">addr</span>
+<span class="n">NEXT</span>
+
+<span class="n">CLOSE</span> <span class="n">gifData</span><span class="p">.</span><span class="n">file</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+
+</code></pre></div></div>
+
+<p>NOTE: This has been reported to only work using 256-color images, and you need to keep the code loading into a 32-bit image destination as the source?</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="GIF-Creation.html">GIF Creation</a>, <a href="Bitmaps.html">Bitmaps</a></li>
+  <li><a href="Icons-and-Cursors.html">Icons and Cursors</a></li>
+  <li><a href="_LOADIMAGE.html">_LOADIMAGE</a>, <a href="_PUTIMAGE.html">_PUTIMAGE</a></li>
+  <li><a href="FILELIST%24-(function).html">FILELIST$ (function)</a> (member file search routine)</li>
+  <li><a href="SaveIcon32.html">SaveIcon32</a> (create icons from any image)</li>
+  <li><a href="%24EXEICON.html">$EXEICON</a> (Icon visible in Windows Explorer)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/GIF-Images by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+</html>

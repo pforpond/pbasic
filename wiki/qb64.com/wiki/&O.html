@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/&O by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:22:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="%26O-2.html" />
+<meta property="og:url" content="%26O-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/&O.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>&amp;O</strong> prefix denotes that an integer value is expressed in an Octal base 8 format.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>a&amp; = &amp;O12345671234</p>
+</blockquote>
+
+<ul>
+  <li>The base eight numbering system only uses octal digit values of 0 to 7.</li>
+  <li>Leading zero values <strong>can</strong> be omitted as they add nothing to the return value.</li>
+  <li>Decimal values returned can be any <strong>signed</strong> <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a> integer, or <a href="_INTEGER64.html">_INTEGER64</a> value so use those type of variables when converting directly as shown above. The program <a href="ERROR-Codes.html">“overflow”</a> error limits are listed as:
+    <ul>
+      <li><a href="INTEGER.html">INTEGER</a>: 6 octal digits or a decimal value range from -32,768 to 32,767</li>
+      <li><a href="LONG.html">LONG</a>: 11 octal digits or a decimal value range from -2,147,483,648 to 2,147,483,647</li>
+      <li><a href="_INTEGER64.html">_INTEGER64</a>: 22 octal digits or decimal values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.</li>
+    </ul>
+  </li>
+  <li><a href="LONG.html">LONG</a> Octal values can be expressed by appending &amp; after the number. Example: &amp;O100000&amp; = 32768</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p><em>Example:</em> The maximum octal values of decimal value -1 in each numerical type are:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">c&amp;</span><span class="o">&amp;</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">d&amp;</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">e%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">f%</span><span class="err">%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">oc$</span> <span class="o">=</span> <span class="n">OCT</span><span class="err">$</span><span class="p">(</span><span class="n">f%</span><span class="err">%</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max octal _BYTE = "</span><span class="err">;</span> <span class="n">oc$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">oc$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;O"</span> <span class="o">+</span> <span class="n">oc$</span><span class="p">)</span>
+<span class="n">oc$</span> <span class="o">=</span> <span class="n">OCT</span><span class="err">$</span><span class="p">(</span><span class="n">e%</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max octal INTEGER = "</span><span class="err">;</span> <span class="n">oc$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">oc$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;O"</span> <span class="o">+</span> <span class="n">oc$</span><span class="p">)</span>
+<span class="n">oc$</span> <span class="o">=</span> <span class="n">OCT</span><span class="err">$</span><span class="p">(</span><span class="n">d&amp;amp</span><span class="err">;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max octal LONG = "</span><span class="err">;</span> <span class="n">oc$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">oc$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;O}}"</span> <span class="o">+</span> <span class="n">oc$</span><span class="p">)</span>
+<span class="n">oc$</span> <span class="o">=</span> <span class="n">OCT</span><span class="err">$</span><span class="p">(</span><span class="n">c&amp;amp</span><span class="err">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="err">;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Max octal _INTEGER64 = "</span><span class="err">;</span> <span class="n">oc$</span><span class="err">;</span> <span class="s">" with"</span><span class="err">;</span> <span class="n">LEN</span><span class="p">(</span><span class="n">oc$</span><span class="p">)</span><span class="err">;</span> <span class="s">"digits ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="s">"&amp;O"</span> <span class="o">+</span> <span class="n">oc$</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Max octal _BYTE = 377 with 3 digits = 255
+Max octal INTEGER = 177777 with 6 digits = 65535
+Max octal LONG = 37777777777 with 11 digits = 4294967295
+Max octal _INTEGER64 = 1777777777777777777777 with 22 digits =-1
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="OCT%24.html">OCT$</a>, <a href="HEX%24.html">HEX$</a>, <a href="VAL.html">VAL</a></li>
+  <li><a href="%26B.html">&amp;B</a> (binary), <a href="%26H.html">&amp;H</a> (hexadecimal)</li>
+  <li><a href="Base-Comparisons.html">Base Comparisons</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/&O by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:22:24 GMT -->
+</html>

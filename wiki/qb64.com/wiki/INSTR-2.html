@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/INSTR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="INSTR-2.html" />
+<meta property="og:url" content="INSTR-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/INSTR.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="INSTR.html">INSTR</a> function searches for the first occurence of a search <a href="STRING.html">STRING</a> within a base string and returns the position it was found.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>position% = <a href="INSTR.html">INSTR</a>([start%,] baseString$, searchString$)</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The optional literal or variable <a href="INTEGER.html">INTEGER</a> start% indicates where in the baseString$ the search must start.</li>
+  <li>The baseString$ is a literal or variable <a href="STRING.html">STRING</a> value to be searched for an exact match including <a href="UCASE%24.html">UCASE$</a>.</li>
+  <li>The searchString$ is a literal or variable <a href="STRING.html">STRING</a> value being searched.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The function returns the position% in the baseString$ where the searchString$ was found.</li>
+  <li>position% will be 0 if the search found no matches in the base string.</li>
+  <li><a href="INSTR.html">INSTR</a> returns 0 if an empty baseString$ is passed, and returns 1 with an empty searchString$.</li>
+  <li>The start% position is useful when making multiple searches in the same string. See the example below.</li>
+  <li>The searchString$ should be smaller or equal in <a href="LEN.html">LEN</a> to the baseString$, or 0 is returned.</li>
+  <li>Non-zero position% return values can be used as a new start position by adding 1 to re-search the base string. See the example below.</li>
+  <li>In a loop, INSTR can search an entire file for occurences of certain words. See the <a href="MID%24-(statement).html">MID$ (statement)</a> statement example.</li>
+  <li>To search right to left, use <a href="_INSTRREV.html">_INSTRREV</a></li>
+</ul>
+
+<h2 id="qbasic">QBasic</h2>
+
+<ul>
+  <li>The start% position had to be at least 1 or greater when used or there will be an <a href="ERROR-Codes.html">ERROR Codes</a> error. In <strong>QB64</strong>, a start% value of 0 or negative is interpreted as 1 and doesn’t generate an error.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Reading more than one instance of a word in a string using the INSTR return value as the start value plus 1.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">text$</span> <span class="o">=</span> <span class="s">"The cats and dogs where playing, even though dogs don't like cats."</span>
+<span class="n">DO</span>
+  <span class="n">findcats%</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">findcats%</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">text$</span><span class="p">,</span> <span class="s">"cats"</span><span class="p">)</span> <span class="c1">' find another occurance after</span>
+  <span class="n">IF</span> <span class="n">findcats%</span> <span class="n">THEN</span> <span class="n">PRINT</span> <span class="s">"There is 'cats' in the string at position:"</span><span class="err">;</span> <span class="n">findcats%</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">findcats%</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">findmonkey%</span> <span class="o">=</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">text$</span><span class="p">,</span> <span class="s">"monkeys"</span><span class="p">)</span>  <span class="c1">' find any occurance?</span>
+<span class="n">PRINT</span> <span class="n">findmonkey%</span><span class="err">;</span> <span class="s">"'monkeys' were found so it returned:"</span><span class="err">;</span> <span class="n">findmonkey%</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+There is 'cats' in the string at position: 5
+There is 'cats' in the string at position: 62
+ 0 'monkeys' were found so INSTR returned: 0
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When the INSTR return value is 0 there are no more instances of a string in a string so the search loop is exited.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="MID%24.html">MID$</a>, <a href="MID%24-(statement).html">MID$ (statement)</a></li>
+  <li><a href="LEFT%24.html">LEFT$</a>, <a href="RIGHT%24.html">RIGHT$</a></li>
+  <li><a href="LCASE%24.html">LCASE$</a>, <a href="UCASE%24.html">UCASE$</a></li>
+  <li><a href="STRING.html">STRING</a>, <a href="INTEGER.html">INTEGER</a></li>
+  <li><a href="_INSTRREV.html">_INSTRREV</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/INSTR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:28 GMT -->
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_FULLSCREEN-(function).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_FULLSCREEN-(function)-2.html" />
+<meta property="og:url" content="_FULLSCREEN-(function)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_FULLSCREEN-(function).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_FULLSCREEN.html">_FULLSCREEN</a> function returns the present full screen mode setting of the screen window.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>full% = <a href="_FULLSCREEN-(function).html">_FULLSCREEN</a></p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li><em>Function returns:</em>
+    <ul>
+      <li>0 = _OFF (any positive non-0 value means fullscreen is on)</li>
+      <li>1 = _STRETCH</li>
+      <li>2 = _SQUAREPIXELS</li>
+    </ul>
+  </li>
+  <li>It <strong>cannot</strong> be assumed that calling <a href="_FULLSCREEN.html">_FULLSCREEN</a> will succeed. It cannot be assumed that the type of full screen will match the requested one. <strong>Always check the <a href="_FULLSCREEN-(function).html">_FULLSCREEN (function)</a> return in your programs.</strong></li>
+  <li><strong>Warning:</strong> Despite your software, the user’s hardware, drivers and monitor may not function in some modes. Thus, it is highly recommended that you manually confirm with the user whether the switch to full screen was successful. This can be done “quietly” in some cases by getting the user to click on a button on screen with their mouse or press an unusual key. If the user does not respond after about 8 seconds, switch them back to windowed mode.</li>
+</ul>
+
+<p><strong>Using large fonts with <a href="_FULLSCREEN.html">_FULLSCREEN</a> can cause monitor or Windows Desktop problems or kill a program.</strong></p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Shows how fonts and the _FULLSCREEN mode can resize a program window.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">CLS</span>
+<span class="n">fontpath$</span> <span class="o">=</span> <span class="n">ENVIRON</span><span class="err">$</span><span class="p">(</span><span class="s">"SYSTEMROOT"</span><span class="p">)</span> <span class="o">+</span> <span class="s">"\fonts\lucon.ttf"</span> <span class="c1">'Find Windows Folder Path.</span>
+<span class="n">f&amp;</span> <span class="o">=</span> <span class="n">_FONT</span><span class="p">:</span> <span class="n">defaultf&amp;</span> <span class="o">=</span> <span class="n">f&amp;</span>
+<span class="n">DO</span>
+  <span class="n">INPUT</span> <span class="s">"1) DEFAULT  2) SIZE WINDOW  3) FULL SCREEN   4) FULL STRETCHED  Q) QUIT: "</span><span class="p">,</span> <span class="n">winmode$</span>
+
+  <span class="n">IF</span> <span class="n">UCASE</span><span class="err">$</span><span class="p">(</span><span class="n">winmode$</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Q"</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+
+  <span class="n">style$</span> <span class="o">=</span> <span class="s">"MONOSPACE"</span>
+
+  <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">winmode$</span>
+    <span class="n">CASE</span> <span class="s">"1"</span>
+      <span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>  <span class="c1">'get current full screen mode</span>
+      <span class="n">IF</span> <span class="n">full</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="n">_OFF</span>
+      <span class="n">GOSUB</span> <span class="n">ChangeFont</span>
+
+    <span class="n">CASE</span> <span class="s">"2"</span>
+      <span class="n">DO</span>
+        <span class="n">PRINT</span>
+        <span class="n">INPUT</span> <span class="s">"Enter a FONT SIZE 5 to 25: "</span><span class="p">,</span> <span class="n">fontsize%</span>
+      <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">fontsize%</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="n">AND</span> <span class="n">fontsize%</span> <span class="o">&lt;</span> <span class="mi">26</span>
+
+      <span class="n">DO</span>
+        <span class="n">PRINT</span>
+        <span class="n">INPUT</span> <span class="s">"Enter (0) for REGULAR or (1) for ITALIC FONT: "</span><span class="p">,</span> <span class="n">italic%</span>
+      <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="n">DO</span>
+        <span class="n">PRINT</span>
+        <span class="n">INPUT</span> <span class="s">"Enter (0) for REGULAR or (1) for BOLD FONT: "</span><span class="p">,</span> <span class="n">bold%</span>
+      <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="n">IF</span> <span class="n">italic%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">style$</span> <span class="o">=</span> <span class="n">style$</span> <span class="o">+</span> <span class="s">", ITALIC"</span>
+      <span class="n">IF</span> <span class="n">bold%</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">style$</span> <span class="o">=</span> <span class="n">style$</span> <span class="o">+</span> <span class="s">", BOLD"</span>
+      <span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>  <span class="c1">'get current full screen mode</span>
+      <span class="n">IF</span> <span class="n">full</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="n">_OFF</span>            
+      <span class="n">GOSUB</span> <span class="n">ChangeFont</span>
+
+    <span class="n">CASE</span> <span class="s">"3"</span>
+      <span class="n">GOSUB</span> <span class="n">ChangeFont</span>
+      <span class="n">_FULLSCREEN</span> <span class="n">_SQUAREPIXELS</span>
+      <span class="n">GOSUB</span> <span class="n">CheckFull</span>
+
+    <span class="n">CASE</span> <span class="s">"4"</span>
+      <span class="n">GOSUB</span> <span class="n">ChangeFont</span>
+      <span class="n">_FULLSCREEN</span> <span class="n">_STRETCH</span>
+      <span class="n">GOSUB</span> <span class="n">CheckFull</span>
+            
+    <span class="n">END</span> <span class="n">SELECT</span>
+
+    <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"_FullScreen mode ="</span><span class="err">;</span> <span class="n">_FULLSCREEN</span>
+    <span class="n">PRINT</span>
+<span class="n">LOOP</span>
+<span class="n">GOSUB</span> <span class="n">ChangeFont</span>
+<span class="n">END</span>
+
+<span class="n">CheckFull</span><span class="p">:</span>   <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; turn off full screen if function returns 0!</span>
+<span class="n">full</span> <span class="o">=</span> <span class="n">_FULLSCREEN</span>  <span class="c1">'get current full screen mode </span>
+<span class="n">IF</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">_FULLSCREEN</span> <span class="n">_OFF</span><span class="p">:</span> <span class="n">SOUND</span> <span class="mi">100</span><span class="p">,</span> <span class="p">.</span><span class="err">75</span>
+<span class="n">RETURN</span>
+
+<span class="n">ChangeFont</span><span class="p">:</span>
+<span class="n">IF</span> <span class="n">winmode$</span> <span class="o">&lt;&gt;</span> <span class="s">"2"</span> <span class="n">THEN</span>
+  <span class="n">_FONT</span> <span class="mi">16</span> <span class="c1">'select inbuilt 8x16 default font</span>
+    <span class="n">currentf&amp;</span> <span class="o">=</span> <span class="n">_FONT</span>
+<span class="n">ELSE</span>
+  <span class="n">currentf&amp;</span> <span class="o">=</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="n">fontpath$</span><span class="p">,</span> <span class="n">fontsize%</span><span class="p">,</span> <span class="n">style$</span><span class="p">)</span>
+  <span class="n">_FONT</span> <span class="n">currentf&amp;</span>
+<span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">IF</span> <span class="n">currentf&amp;</span> <span class="o">&lt;&gt;</span> <span class="n">f&amp;</span> <span class="n">AND</span> <span class="n">f&amp;</span> <span class="o">&lt;&gt;</span> <span class="n">defaultf&amp;</span> <span class="n">THEN</span> <span class="n">_FREEFONT</span> <span class="n">f&amp;</span>
+<span class="n">f&amp;</span> <span class="o">=</span> <span class="n">currentf&amp;</span>
+<span class="n">RETURN</span> 
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The <strong>_FULLSCREEN</strong> function can avoid screen display and monitor problems when used to monitor the success of the full screen operation. If a full screen mode is <strong>not</strong> achieved (the function will return 0), <strong>call <a href="_FULLSCREEN.html">_FULLSCREEN</a> OFF</strong></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_FULLSCREEN.html">_FULLSCREEN</a> (statement)</li>
+  <li><a href="_ALLOWFULLSCREEN.html">_ALLOWFULLSCREEN</a></li>
+  <li><a href="_SCREENMOVE.html">_SCREENMOVE</a>, <a href="_SCREENX.html">_SCREENX</a>, <a href="_SCREENY.html">_SCREENY</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_FULLSCREEN-(function).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+</html>

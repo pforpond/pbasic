@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/samples/sort/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:40:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="index.html" />
+<meta property="og:url" content="index.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/samples/sort/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="../../index.html">Home</a> • <a href="../../news.html">News</a> • <a href="https://github.com/QB64Official/qb64">GitHub</a> • <a href="wiki.html">Wiki</a> • <a href="../../samples.html">Samples</a> • <a href="../../inform.html">InForm</a> • <a href="../../gx.html">GX</a> • <a href="../../qbjs.html">QBjs</a> • <a href="../../community.html">Community</a> • <a href="../../more.html">More…</a></p>
+
+<h2 id="sample-sort">SAMPLE: SORT</h2>
+
+<p><img src="img/screenshot.png" alt="screenshot.png" /></p>
+
+<h3 id="author">Author</h3>
+
+<p><a href="../a%26a-de-pasquale.html">🐝 A&amp;A De Pasquale</a></p>
+
+<h3 id="description">Description</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' SORT.BAS
+'   by Antonio and Alfonso De Pasquale
+' Copyright (C) 1994 DOS Resource Guide
+' Published in Issue #17, September 1994, page 64
+
+***************************************************************************** 
+ 
+ SORT.BAS 
+   by Antonio and Alfonso De Pasquale 
+ Copyright (C) 1994 DOS Resource Guide 
+ Published in Issue #17, September 1994, page 64 
+ 
+If you're in the habit of using QBasic arrays to store phone lists, personnel  
+information, sales figures, and the like, it's a sure bet that someday you'll  
+want to rearrange your data. 
+ 
+Maybe you'll need to list contacts by area code, or perhaps you'll want to  
+rank employees according to salary. Whatever the reason, you probably won't  
+want to spend hours to write and debug a sort routine. But if you add the two  
+subprograms BUBBLESORT and SHELLSORT contained in the program SORT.BAS to  
+your library of reusable code, lack of time won't pose a problem. 
+ 
+You can decide whether your situation calls for a bubble sort or a shell  
+sort, merge the appropriate subprogram with your existing QBasic program, add  
+a few lines of code, and get right down to the business of sorting your  
+arrays. 
+ 
+To run the program from the DOS command line and see a demonstration of the  
+sorting routines, change to the directory containing SORT.BAS, then type: 
+ 
+QBASIC /RUN SORT 
+ 
+ 
+What Are Arrays? 
+---------------- 
+Arrays are tools for storing, organizing, and processing data efficiently in  
+a computer's memory. They're particularly handy for holding data items of the  
+same type and purpose. 
+ 
+For example, a calendar program might use arrays to hold the names of the  
+days of the week, the number of days in each month, and so on. From a  
+programming standpoint, it makes more sense to store the days of the week in  
+a single array than to declare a different variable for each day of the week.  
+Creating an array involves less coding and uses the computer's memory more  
+efficiently. 
+ 
+QBasic uses a DIM (for dimension) statement to declare arrays. The basic  
+syntax is the key word, DIM, followed by a parenthetical phrase that provides  
+the array's name and size. The following commands, for instance, declare two  
+arrays: a string array consisting of seven elements and a numeric array  
+consisting of 31 elements: 
+ 
+DIM DAY$(7) 
+DIM MONTHS(31) 
+ 
+QBasic lets you declare either numeric or string arrays. As the following  
+example shows, you may also use variables instead of numbers when declaring  
+the size of an array: 
+ 
+ARSIZE=250 
+DIM TOTAL(ARSIZE) 
+ 
+The first line sets the variable ARSIZE to 250; the second sets, or  
+dimensions, the array to the size specified by ARSIZE. 
+ 
+Bubble or Shell? 
+---------------- 
+The simplest method of arranging the elements of a QBasic array is a bubble  
+sort. The procedure involves looking at adjacent elements in the array and  
+swapping their values when the elements are out of order. When you're sorting  
+values in ascending order, swapping values moves the largest values down the  
+array, permitting the smallest values to "bubble" to the top. 
+ 
+To sort data properly, the algorithm for a bubble sort must make several  
+passes through an array. The exact number of passes required is the total  
+number of elements in the array minus one. If your array contains 500 data  
+items, for instance, a bubble sort requires 499 passes to sort it properly. 
+ 
+As you might expect, a bubble sort is best suited for smaller arrays. The  
+algorithm, although easy to understand, is inefficient when working with  
+large arrays, because each element moves up or down by only one position in  
+each pass. 
+ 
+Named after its creator, Donald Shell, a shell sort provides a more efficient  
+method of processing larger arrays. Whereas a bubble sort compares and swaps  
+adjacent elements, the shell sort compares and swaps non-adjacent elements.  
+It begins by comparing the first element of the array with the middle  
+element, referred to as the gap. If no swap is made, the gap is halved and  
+non-adjacent elements are compared again. The gap is compared and halved  
+repeatedly until a swap is made. 
+ 
+Because this algorithm requires fewer comparisons in each pass through the  
+array, a shell sort arranges data more quickly than a bubble sort.  
+Consequently, a shell sort is superior to a bubble sort in most  
+circumstances. The bubble sort's only real advantages are that the routine is  
+compact and its logic is easy to follow. When working with moderate to large  
+arrays, the shell sort should be your routine of choice. 
+ 
+The SORT.BAS Program 
+-------------------- 
+SORT.BAS shows how you might write subprograms to perform these two types of  
+sorts. The first part of the program prompts you for an array size, generates  
+an array of random numbers, and asks whether you want to perform a bubble or  
+a shell sort. The program then displays the starting and ending times of the  
+sort and displays the results on screen. This part of the listing is included  
+strictly for illustrative purposes. The meat of the listing is the pair of  
+subprograms, BUBBLESORT and SHELLSORT. 
+ 
+Using the Program 
+----------------- 
+To run the program if it is already loaded into QBasic, select Start from the  
+Run menu or press Shift-F5. You also may run the program from DOS by changing  
+to the directory containing SORT.BAS, and typing 
+ 
+QBASIC /RUN SORT 
+ 
+ 
+The screen will clear, and a greeting will appear. The program will then ask  
+you to specify the size of the array to be used for demonstrating the sort  
+routines, restricting the size to the range of 50 to 500 elements.  Then the  
+program will take a few moments to create an array of randomly selected  
+numbers. 
+ 
+When the menu appears, you have three choices: pressing B to perform a bubble  
+sort, S to perform a shell sort, or Q to quit the program. When you press B  
+or S, the program displays the starting time and begins the sort. When  
+sorting is complete, the program displays the ending time. Press Enter to  
+view the sorted numbers on screen. As we mentioned earlier, a bubble sort is  
+best suited for small arrays; a shell sort dramatically improves performance  
+with larger arrays. When you specify large array sizes, you'll see the  
+dramatic advantage of the shell sort. 
+ 
+Creating a Sort Library 
+----------------------- 
+To use the two sorting subprograms in your own programs, you must first  
+isolate them from the original program and then add them to your code. Start  
+by using your mouse or the Shift keys in conjunction with the arrow keys to  
+highlight the sections of SORT.BAS that you don't need and delete them. Then,  
+use the File menu's Save As option to save the subprograms under a different  
+name, perhaps SORT.LIB. (You may save each subprogram separately, of course.) 
+ 
+Unfortunately, QBasic doesn't provide an import feature for merging  
+subprograms into a loaded program. You may use a DOS copy command such as the  
+following, however, to append the subprograms to your own QBasic code: 
+ 
+copy filename + sort.lib 
+ 
+Just substitute the name of your QBasic program for filename. This command  
+attaches the two subprograms to the bottom of your QBasic program. The next  
+time you call up QBasic and load your program, the proper declare statements  
+will automatically be added to your code, and the subprograms BUBBLESORT and  
+SHELLSORT will appear in the QBasic Subs list. 
+ 
+Of course, you may also simply type in the BUBBLESORT and SHELLSORT code into  
+your programs as needed.  The above procedure saves you the effort of typing. 
+ 
+Calling the Functions 
+--------------------- 
+Whether you want to perform a bubble sort or a shell sort, you must pass the  
+name of the array to be sorted to the subprogram. The following QBasic code  
+illustrates the proper syntax for calling the subprograms: 
+ 
+BUBBLESORT ARRAY1() 
+SHELLSORT  ARRAY2() 
+ 
+In the first line, ARRAY1() is the name of the array; notice that you must  
+include the parentheses to inform QBasic that this variable refers to an  
+array. The subprogram then takes over and sorts the data in the stated array.  
+In the second line, ARRAY2() is the name of the array. In your own programs,  
+you may substitute any valid numeric array name for ARRAY1() and ARRAY2(). 
+ 
+Further Modifications 
+--------------------- 
+As written, the two sort subprograms are designed to arrange numeric data,  
+but you may modify them to work with string data (alphabetic characters), as  
+well. To do this, simply add a dollar sign ($) to the array name when  
+defining, declaring, or calling the subprograms. The dollar sign informs  
+QBasic that you're working with a string array rather than a numeric array.  
+Your declare statements, for example, would look like this: 
+ 
+DECLARE SUB BUBBLESORT (ARRAY$()) 
+DECLARE SUB SHELLSORT (ARRAY$())  
+ 
+The first lines of the functions themselves would look like this: 
+ 
+SUB BUBBLESORT (ARRAY$()) 
+. 
+.}more work done in these lines 
+. 
+ 
+SUB SHELLSORT (ARRAY$()) 
+. 
+.}more work done in these lines 
+. 
+ 
+The code to call these routines would look like this: 
+BUBBLESORT ARRAY1$() 
+SHELLSORT  ARRAY2$() 
+ 
+Those are the basics of working with arrays. Even if your QBasic programs  
+don't require sort routines right now, you might want to spend a little time  
+experimenting to make sure you grasp the fundamental rules. Then just tuck  
+the subprograms into your QBasic library for future reference.
+</code></pre></div></div>
+
+<h3 id="qbjs">QBjs</h3>
+
+<blockquote>
+  <p>Please note that QBjs is still in early development and support for these examples is extremely experimental (meaning will most likely not work). With that out of the way, give it a try!</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://qbjs.org/index.html?src=https://qb64.com/samples/sort/src/sort.bas">LOAD “sort.bas”</a></li>
+  <li><a href="https://qbjs.org/index.html?mode=auto&amp;src=https://qb64.com/samples/sort/src/sort.bas">RUN “sort.bas”</a></li>
+  <li><a href="https://qbjs.org/index.html?mode=play&amp;src=https://qb64.com/samples/sort/src/sort.bas">PLAY “sort.bas”</a></li>
+</ul>
+
+<h3 id="files">File(s)</h3>
+
+<ul>
+  <li><a href="src/sort.bas">sort.bas</a></li>
+</ul>
+
+<p>🔗 <a href="../sort.html">sort</a>, <a href="../dos-world.html">dos world</a></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/samples/sort/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:40:15 GMT -->
+</html>

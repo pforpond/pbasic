@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/&B.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="%26B-2.html" />
+<meta property="og:url" content="%26B-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/&B.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>&amp;B&amp;</strong> prefix denotes that an integer value is expressed in a binary base 2 format using <strong>QB64</strong> only.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>a&amp; = <strong>&amp;B1110110000111111</strong></p>
+</blockquote>
+
+<ul>
+  <li>The base 2 numbering system uses binary digit values of 1 or 0, or bits on or bits off in computer register switches or memory.</li>
+  <li>Leading zero values <strong>can</strong> be omitted as they add nothing to the byte return value.</li>
+  <li>Eight binary digits would represent a one-byte value ranging from 0 to 255. Four-digit values(“nibbles”) range from 0 to 15.</li>
+  <li>Decimal values returned can be any <strong>signed</strong> <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a> integer, or <a href="_INTEGER64.html">_INTEGER64</a> value so use those type of variables when converting directly as shown in the Syntax. The program <a href="ERROR-Codes.html">“overflow”</a> error limits are listed as:
+    <ul>
+      <li><a href="INTEGER.html">INTEGER</a>: 16 binary digits or a decimal value range from -32,768 to 32,767</li>
+      <li><a href="LONG.html">LONG</a>: 32 binary digits or a decimal value range from -2,147,483,648 to 2,147,483,647</li>
+      <li><a href="_INTEGER64.html">_INTEGER64</a>: 64 binary digits or decimal values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.</li>
+    </ul>
+  </li>
+  <li><a href="LONG.html">LONG</a> values can be returned by appending the &amp; or ~%(<a href="_UNSIGNED.html">_UNSIGNED</a> <a href="INTEGER.html">INTEGER</a>) symbols after the binary number.</li>
+  <li><a href="VAL.html">VAL</a> can be used to convert “&amp;B” prefixed string values to decimal.</li>
+</ul>
+
+<p><strong><a href="_BIT.html">BITS</a></strong></p>
+
+<ul>
+  <li>
+    <p>The <strong>MSB</strong> is the most significant(largest) bit value and <strong>LSB</strong> is the least significant bit of a binary or register memory address value. The order in which the bits are read determines the binary or decimal byte value. There are two common ways to read a byte:</p>
+  </li>
+  <li><strong>“Big-endian”</strong>: MSB is the first bit encountered, decreasing to the LSB as the last bit by position, memory address or time.</li>
+  <li><strong>“Little-endian”</strong>: LSB is the first bit encountered, increasing to the MSB as the last bit by position, memory address or time.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         '''Offset or Position:    0    1   2   3   4   5   6   7      Example: 11110000'''
+                              ----------------------------------             --------
+    '''Big-Endian Bit On Value:'''   128  64  32  16   8   4   2   1                 240
+ '''Little-Endian Bit On Value:'''    1    2   4   8  16  32  64  128                 15
+</code></pre></div></div>
+
+<blockquote>
+  <p>The big-endian method compares exponents of 2 <sup>7</sup> down to 2 <sup>0</sup> while the little-endian method does the opposite.</p>
+</blockquote>
+
+<p><strong><a href="_BYTE.html">BYTES</a></strong></p>
+
+<ul>
+  <li><a href="INTEGER.html">INTEGER</a> values consist of 2 bytes called the <strong>HI</strong> and <strong>LO</strong> bytes. Anytime that the number of binary digits is a multiple of 16 (2bytes, 4 bytes, etc.) and the HI byte’s MSB is on(1), the value returned will be negative. Even with <a href="SINGLE.html">SINGLE</a> or <a href="DOUBLE.html">DOUBLE</a> values!</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                 '''16 BIT INTEGER OR REGISTER'''
+              '''AH (High Byte Bits)                         AL (Low Byte Bits)'''
+   BIT:    15    14   13   12   11   10   9   8  |   7   6    5   4    3    2   1    0
+          ---------------------------------------|--------------------------------------
+   HEX:   8000  4000 2000 1000  800 400  200 100 |  80   40  20   10   8    4   2    1
+                                                 |
+   DEC: -32768 16384 8192 4096 2048 1024 512 256 | 128   64  32   16   8    4   2    1
+</code></pre></div></div>
+
+<blockquote>
+  <p>The HI byte’s <strong>MSB</strong> is often called the <strong>sign</strong> bit! When all 16 of the integer binary bits are on, the decimal return is -1.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                      '''Comparing the Base Numbering Systems'''
+
+     '''Decimal (base 10)    Binary (base 2)    Hexadecimal (base 16)    Octal (base 8)'''
+
+          0                  0000                  0                     0
+          1                  0001                  1                     1
+          2                  0010                  2                     2
+          3                  0011                  3                     3
+          4                  0100                  4                     4
+          5                  0101                  5                     5
+          6                  0110                  6                     6
+          7                  0111                  7                     7 -- maxed
+          8                  1000                  8                    10
+  maxed-- 9                  1001                  9                    11
+         10                  1010                  A                    12
+         11                  1011                  B                    13
+         12                  1100                  C                    14
+         13                  1101                  D                    15
+         14                  1110                  E                    16
+         15  -------------   1111 &lt;--- Match ---&gt;  F  ----------------  17 -- max 2
+         16                 10000                 10                    20
+        
+      When the Decimal value is 15, the other 2 base systems are all maxed out!
+      The Binary values can be compared to all of the HEX value digit values so
+      it is possible to convert between the two quite easily. To convert a HEX
+      value to Binary just add the 4 binary digits for each HEX digit place so:
+
+                        F      A      C      E 
+              &amp;HFACE = 1111 + 1010 + 1100 + 1101 = &amp;B1111101011001101
+
+      To convert a Binary value to HEX you just need to divide the number into
+      sections of four digits starting from the right (LSB) end. If one has less
+      than 4 digits on the left end you could add the leading zeros like below:
+ 
+             &amp;B101011100010001001 = 0010 1011 1000 1000 1001  
+                       hexadecimal = 2  + B  + 8 +  8  + 9 = &amp;H2B889 
+
+    See the Decimal to Binary conversion function that uses **[HEX$](HEX$)** on the **[&amp;H](&amp;H)** page.
+ 
+</code></pre></div></div>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>A Decimal to Binary <a href="STRING.html">STRING</a> function that does not return leading zeroes.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>      <span class="c1">'1 byte(8 bits) maximum</span>
+<span class="n">PRINT</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="mi">32767</span><span class="p">)</span>    <span class="c1">'integer(2 byte, 15 bits) maximum</span>
+<span class="n">PRINT</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="o">-</span><span class="mi">32768</span><span class="p">)</span>   <span class="c1">'integer(2 byte, 16 bits) minimum</span>
+<span class="n">PRINT</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>       <span class="c1">'all 16 bits on </span>
+
+<span class="n">FUNCTION</span> <span class="n">BIN</span><span class="err">$</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span>
+  <span class="n">max%</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">LEN</span><span class="p">(</span><span class="n">n%</span><span class="p">)</span> <span class="c1">': MSB% = 1   'uncomment for 16 (32 or 64) bit returns</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="n">max%</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>    <span class="c1">'read as big-endian MSB to LSB</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">n%</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">i</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">MSB</span><span class="err">%</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">B</span><span class="err">$</span> <span class="o">+</span> <span class="s">"1"</span> <span class="n">ELSE</span> <span class="n">IF</span> <span class="n">MSB</span><span class="err">%</span> <span class="n">THEN</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="n">B</span><span class="err">$</span> <span class="o">+</span> <span class="s">"0"</span>
+  <span class="n">NEXT</span>
+  <span class="n">IF</span> <span class="n">B</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="s">"0"</span> <span class="n">ELSE</span> <span class="n">BIN</span><span class="err">$</span> <span class="o">=</span> <span class="n">B</span><span class="err">$</span>    <span class="c1">'check for empty string</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<p><sub>Code by Ted Weissgerber</sub></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+11111111
+111111111111111
+1000000000000000
+1111111111111111
+
+</code></pre></div></div>
+
+<p><em>Note:</em> The MSB% flag allows zeroes to be added. Uncomment the MSB% = 1 statement for returns with leading zeroes.</p>
+
+<p>QB64 converts the binary values from the example above to <a href="INTEGER.html">INTEGER</a> decimal values automatically.</p>
+
+<pre><code class="language-VB">
+DEFLNG A-Z
+a = &amp;B11111111
+b = &amp;B111111111111111
+c = &amp;B1000000000000000 '&amp; 'or ~%
+d = &amp;B1111111111111111 '&amp; 'or ~%
+
+PRINT a, b, c, d '' ''
+
+</code></pre>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+255               32767              -32768              -1
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Bonus example:</em> Add an <strong>&amp;</strong> symbol after the negative binary numbers to see the <a href="LONG.html">LONG</a> decimal values below.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+255               32767               32768               65535
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The <a href="LONG.html">LONG</a> values returned are the same as the values you can get using <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="INTEGER.html">INTEGER</a> (~%).</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_BIT.html">_BIT</a>, <a href="_BYTE.html">_BYTE</a></li>
+  <li><a href="_SHL.html">_SHL</a>, <a href="_SHR.html">_SHR</a></li>
+  <li><a href="OCT%24.html">OCT$</a>, <a href="%26O.html">&amp;O</a> (octal)</li>
+  <li><a href="HEX%24.html">HEX$</a>, <a href="%26H.html">&amp;H</a> (hexadecimal)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/&B.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:40 GMT -->
+</html>

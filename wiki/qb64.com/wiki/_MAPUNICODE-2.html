@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_MAPUNICODE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_MAPUNICODE-2.html" />
+<meta property="og:url" content="_MAPUNICODE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_MAPUNICODE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_MAPUNICODE.html">_MAPUNICODE</a> statement maps a <a href="Unicode.html">Unicode</a> value to an <a href="ASCII.html">ASCII</a> character code value.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="_MAPUNICODE.html">_MAPUNICODE</a> unicode&amp; <strong>TO</strong> asciiCode%</p>
+</blockquote>
+
+<ul>
+  <li>The <a href="LONG.html">LONG</a> unicode&amp; value is a <a href="HEX%24.html">HEX$</a> or decimal code value from a <a href="Unicode.html">Unicode</a> <a href="Code-Pages.html">Code Pages</a>.</li>
+  <li>The asciiCode% <a href="INTEGER.html">INTEGER</a> parameter is any <a href="ASCII.html">ASCII</a> or Extended code value from 0 to 255.</li>
+  <li>Use the Unicode Page Table values listed here: <a href="http://en.wikipedia.org/wiki/Category:DOS_code_pages">DOS Code Pages</a> or <a href="http://unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/">Windows Mapping</a></li>
+  <li>Once the codes are mapped, key entries will display the unicode character in the **monospace ** <a href="_FONT.html">_FONT</a> selected.</li>
+  <li>The <a href="_MAPUNICODE-(function).html">_MAPUNICODE (function)</a> function can be used to verify or read the present <a href="Unicode.html">Unicode</a> UTF32 code point settings.</li>
+  <li><strong><a href="_MAPUNICODE.html">_MAPUNICODE</a> can place the Unicode characters TO any <a href="ASCII.html">ASCII</a> code space you desire (0 to 255)</strong>.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Converting the extended <a href="ASCII.html">ASCII</a> characters to other characters using DATA from the Unicode <a href="Code-Pages.html">Code Pages</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">0</span>
+<span class="n">_FONT</span> <span class="n">_LOADFONT</span><span class="p">(</span><span class="s">"C:\windows\fonts\cour.ttf"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">"MONOSPACE"</span><span class="p">)</span>
+
+<span class="n">RESTORE</span> <span class="n">Microsoft_pc_cpMIK</span>
+<span class="n">FOR</span> <span class="n">ASCIIcode</span> <span class="o">=</span> <span class="mi">128</span> <span class="n">TO</span> <span class="mi">255</span>
+  <span class="n">READ</span> <span class="n">unicode</span>
+  <span class="n">_MAPUNICODE</span> <span class="n">Unicode</span> <span class="n">TO</span> <span class="n">ASCIIcode</span>
+<span class="n">NEXT</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">128</span> <span class="n">TO</span> <span class="mi">255</span>
+  <span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">" "</span><span class="err">;</span>
+  <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">cnt</span> <span class="n">MOD</span> <span class="mi">16</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">PRINT</span>
+<span class="n">NEXT</span>
+<span class="n">END</span>
+
+<span class="n">Microsoft_pc_cpMIK</span><span class="p">:</span>
+<span class="n">DATA</span> <span class="mi">1040</span><span class="p">,</span><span class="mi">1041</span><span class="p">,</span><span class="mi">1042</span><span class="p">,</span><span class="mi">1043</span><span class="p">,</span><span class="mi">1044</span><span class="p">,</span><span class="mi">1045</span><span class="p">,</span><span class="mi">1046</span><span class="p">,</span><span class="mi">1047</span><span class="p">,</span><span class="mi">1048</span><span class="p">,</span><span class="mi">1049</span><span class="p">,</span><span class="mi">1050</span><span class="p">,</span><span class="mi">1051</span><span class="p">,</span><span class="mi">1052</span><span class="p">,</span><span class="mi">1053</span><span class="p">,</span><span class="mi">1054</span><span class="p">,</span><span class="mi">1055</span>
+<span class="n">DATA</span> <span class="mi">1056</span><span class="p">,</span><span class="mi">1057</span><span class="p">,</span><span class="mi">1058</span><span class="p">,</span><span class="mi">1059</span><span class="p">,</span><span class="mi">1060</span><span class="p">,</span><span class="mi">1061</span><span class="p">,</span><span class="mi">1062</span><span class="p">,</span><span class="mi">1063</span><span class="p">,</span><span class="mi">1064</span><span class="p">,</span><span class="mi">1065</span><span class="p">,</span><span class="mi">1066</span><span class="p">,</span><span class="mi">1067</span><span class="p">,</span><span class="mi">1068</span><span class="p">,</span><span class="mi">1069</span><span class="p">,</span><span class="mi">1070</span><span class="p">,</span><span class="mi">1071</span>
+<span class="n">DATA</span> <span class="mi">1072</span><span class="p">,</span><span class="mi">1073</span><span class="p">,</span><span class="mi">1074</span><span class="p">,</span><span class="mi">1075</span><span class="p">,</span><span class="mi">1076</span><span class="p">,</span><span class="mi">1077</span><span class="p">,</span><span class="mi">1078</span><span class="p">,</span><span class="mi">1079</span><span class="p">,</span><span class="mi">1080</span><span class="p">,</span><span class="mi">1081</span><span class="p">,</span><span class="mi">1082</span><span class="p">,</span><span class="mi">1083</span><span class="p">,</span><span class="mi">1084</span><span class="p">,</span><span class="mi">1085</span><span class="p">,</span><span class="mi">1086</span><span class="p">,</span><span class="mi">1087</span>
+<span class="n">DATA</span> <span class="mi">1088</span><span class="p">,</span><span class="mi">1089</span><span class="p">,</span><span class="mi">1090</span><span class="p">,</span><span class="mi">1091</span><span class="p">,</span><span class="mi">1092</span><span class="p">,</span><span class="mi">1093</span><span class="p">,</span><span class="mi">1094</span><span class="p">,</span><span class="mi">1095</span><span class="p">,</span><span class="mi">1096</span><span class="p">,</span><span class="mi">1097</span><span class="p">,</span><span class="mi">1098</span><span class="p">,</span><span class="mi">1099</span><span class="p">,</span><span class="mi">1100</span><span class="p">,</span><span class="mi">1101</span><span class="p">,</span><span class="mi">1102</span><span class="p">,</span><span class="mi">1103</span>
+<span class="n">DATA</span> <span class="mi">9492</span><span class="p">,</span><span class="mi">9524</span><span class="p">,</span><span class="mi">9516</span><span class="p">,</span><span class="mi">9500</span><span class="p">,</span><span class="mi">9472</span><span class="p">,</span><span class="mi">9532</span><span class="p">,</span><span class="mi">9571</span><span class="p">,</span><span class="mi">9553</span><span class="p">,</span><span class="mi">9562</span><span class="p">,</span><span class="mi">9566</span><span class="p">,</span><span class="mi">9577</span><span class="p">,</span><span class="mi">9574</span><span class="p">,</span><span class="mi">9568</span><span class="p">,</span><span class="mi">9552</span><span class="p">,</span><span class="mi">9580</span><span class="p">,</span><span class="mi">9488</span>
+<span class="n">DATA</span> <span class="mi">9617</span><span class="p">,</span><span class="mi">9618</span><span class="p">,</span><span class="mi">9619</span><span class="p">,</span><span class="mi">9474</span><span class="p">,</span><span class="mi">9508</span><span class="p">,</span><span class="mi">8470</span><span class="p">,</span><span class="mi">167</span><span class="p">,</span><span class="mi">9559</span><span class="p">,</span><span class="mi">9565</span><span class="p">,</span><span class="mi">9496</span><span class="p">,</span><span class="mi">9484</span><span class="p">,</span><span class="mi">9608</span><span class="p">,</span><span class="mi">9604</span><span class="p">,</span><span class="mi">9612</span><span class="p">,</span><span class="mi">9616</span><span class="p">,</span><span class="mi">9600</span>
+<span class="n">DATA</span> <span class="mi">945</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">915</span><span class="p">,</span><span class="mi">960</span><span class="p">,</span><span class="mi">931</span><span class="p">,</span><span class="mi">963</span><span class="p">,</span><span class="mi">181</span><span class="p">,</span><span class="mi">964</span><span class="p">,</span><span class="mi">934</span><span class="p">,</span><span class="mi">920</span><span class="p">,</span><span class="mi">937</span><span class="p">,</span><span class="mi">948</span><span class="p">,</span><span class="mi">8734</span><span class="p">,</span><span class="mi">966</span><span class="p">,</span><span class="mi">949</span><span class="p">,</span><span class="mi">8745</span>
+<span class="n">DATA</span> <span class="mi">8801</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">8805</span><span class="p">,</span><span class="mi">8804</span><span class="p">,</span><span class="mi">8992</span><span class="p">,</span><span class="mi">8993</span><span class="p">,</span><span class="mi">247</span><span class="p">,</span><span class="mi">8776</span><span class="p">,</span><span class="mi">176</span><span class="p">,</span><span class="mi">8729</span><span class="p">,</span><span class="mi">183</span><span class="p">,</span><span class="mi">8730</span><span class="p">,</span><span class="mi">8319</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">9632</span><span class="p">,</span><span class="mi">160</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> The Unicode data field is created by adding DATA before each line listed for the appropriate <a href="Code-Pages.html">Code Pages</a>.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_MAPUNICODE-(function).html">_MAPUNICODE (function)</a></li>
+  <li><a href="ASCII.html">ASCII</a>, <a href="Unicode.html">Unicode</a>, <a href="_FONT.html">_FONT</a></li>
+  <li><a href="_KEYHIT.html">_KEYHIT</a>, <a href="_KEYDOWN.html">_KEYDOWN</a></li>
+  <li><a href="ASC.html">ASC</a>, <a href="INKEY%24.html">INKEY$</a>, <a href="CHR%24.html">CHR$</a></li>
+  <li><a href="Code-Pages.html">Code Pages</a> (by region)</li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_MAPUNICODE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_MEM-(function).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_MEM-(function)-2.html" />
+<meta property="og:url" content="_MEM-(function)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_MEM-(function).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_MEM.html">_MEM</a> function returns a _MEM block referring to the largest possible continuous memory region beginning at a variable’s offset.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>memoryBlock = <a href="_MEM.html">_MEM</a>(referenceVariable)</p>
+</blockquote>
+
+<h3 id="unsecure-syntax">Unsecure syntax</h3>
+
+<blockquote>
+  <p>memoryBlock = <a href="_MEM.html">_MEM</a>(offset, byteSize)</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The memoryBlock created will hold the referenceVariable or <a href="arrays-2.html">arrays</a> value(s), type and byte size in a separate memory area.</li>
+  <li>The secure syntax referenceVariable is an existing variable’s referenced memory block.</li>
+  <li>The unsecure syntax’s designated offset and byteSize cannot be guaranteed. <strong>Avoid if possible.</strong></li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The memoryBlock <a href="_MEM.html">_MEM</a> type variable holds the following read-only elements: OFFSET, SIZE, TYPE and ELEMENTSIZE.</li>
+  <li>All values created by memory functions MUST be freed using <a href="_MEMFREE.html">_MEMFREE</a> with a valid <a href="_MEM.html">_MEM</a> variable type.</li>
+  <li><strong>_MEM function cannot reference variable length <a href="STRING.html">STRING</a> variable values. String values must be designated as a fixed-<a href="LEN.html">LEN</a> string.</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Assigning values to reference variables in memory.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">m</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">AS</span> <span class="n">_MEM</span>
+<span class="n">DIM</span> <span class="n">SHARED</span> <span class="n">Saved</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">m</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">m</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">m</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">_MEM</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">:</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">PRINT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+<span class="n">Save</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">30</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">50</span><span class="p">:</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">PRINT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+
+<span class="n">RestoreIt</span>
+<span class="n">PRINT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+
+<span class="n">_MEMFREE</span> <span class="n">m</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">_MEMFREE</span> <span class="n">m</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">_MEMFREE</span> <span class="n">m</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">END</span>
+
+<span class="n">SUB</span> <span class="n">Save</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">n3</span><span class="p">)</span>
+<span class="n">Saved</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">n1</span>
+<span class="n">Saved</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">n2</span>
+<span class="n">Saved</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">n3</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">RestoreIt</span>
+<span class="n">_MEMPUT</span> <span class="n">m</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">m</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">Saved</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">_MEMPUT</span> <span class="n">m</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">m</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">Saved</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">_MEMPUT</span> <span class="n">m</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">m</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">Saved</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_MEM.html">_MEM</a> (variable type)</li>
+  <li><a href="_MEMNEW.html">_MEMNEW</a>, <a href="_MEMCOPY.html">_MEMCOPY</a></li>
+  <li><a href="_MEMGET.html">_MEMGET</a>, <a href="_MEMPUT.html">_MEMPUT</a></li>
+  <li><a href="_MEMFILL.html">_MEMFILL</a>, <a href="_MEMIMAGE.html">_MEMIMAGE</a></li>
+  <li><a href="_MEMFREE.html">_MEMFREE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_MEM-(function).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:38 GMT -->
+</html>

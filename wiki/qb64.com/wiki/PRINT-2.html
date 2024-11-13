@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PRINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PRINT-2.html" />
+<meta property="og:url" content="PRINT-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PRINT.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The PRINT statement prints numeric or string expressions to the program screen. Typing shortcut <strong>?</strong>  will convert to PRINT.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>PRINT</strong> [expression] [;</td>
+        <td>,] [<em>expression</em>…]</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>expression is a numeric or string expression or list of expressions to be written to the screen. End quotes will not be displayed in strings.</li>
+  <li>The print statement can be followed by a <a href="semicolon-2.html">semicolon</a> to stop the print cursor or a <a href="comma-2.html">comma</a> to tab space the next print.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li><a href="STRING.html">STRING</a> values will eliminate leading and trailing quotation marks when printed to the screen. Use <a href="CHR%24.html">CHR$</a>(34) to add quotes to the <a href="SCREEN.html">SCREEN</a>.</li>
+  <li>PRINT with no parameters moves the print cursor to the next print row at column 1.</li>
+  <li>expression is a numeric or string expression to be printed.
+    <ul>
+      <li><a href="SPACE%24.html">SPACE$</a>(n%) or <a href="SPC.html">SPC</a>(n%) - specifies that n% space characters will be printed.</li>
+      <li><a href="TAB.html">TAB</a>(column%) - specifies that the print cursor is to move to column number column%. If the print cursor is already beyond that column, it is moved to the designated column on the next row.</li>
+    </ul>
+  </li>
+  <li>A <em>separator</em> is used to separate multiple expressions and specifies how the print cursor is to be moved:
+    <ul>
+      <li><a href="Semicolon.html">Semicolon</a>(;) - specifies that the print cursor stops at the end of the printed <em>expression</em> and may append later <em>expressions</em> or prints. PRINT ; or PRINT “”; will stop cursor movement and append later prints. Ending <a href="semicolon-2.html">semicolon</a>s can also stop screen roll.</li>
+      <li><a href="Comma.html">Comma</a>(,) - specifies that the print cursor is to move to the next 14-column tab-stop. If the print cursor is at column 56 or greater, it is moved to the next row at column 1. When used after an <em>expression</em> it may Tab-stop append later prints.</li>
+      <li><a href="%2b.html">+</a>(+) uses <a href="concatenation-2.html">concatenation</a> to add <a href="STRING.html">STRING</a> expressions ONLY with no spacing. <strong>Cannot combine  numerical <em>expression</em>s!</strong></li>
+      <li>If a separator is not used at the end of the expression list, the print cursor moves to the next row at column 1.</li>
+    </ul>
+  </li>
+  <li>When <em>*printing numerical’expressions</em> values, the following rules are used:
+    <ul>
+      <li>If the value is positive, the number is prefixed with a space character, otherwise, the number is prefixed with a negative sign (-).</li>
+      <li>If the value is an integer (whole number), no decimal point or fractional part will be printed.</li>
+      <li>If the value is not an <a href="INTEGER.html">INTEGER</a>(whole number) and has zero for a coefficient, no leading zero is printed. EX: -0.123 prints “-.123 “</li>
+      <li>If the expression is in <a href="scientific-notation.html">scientific notation</a>, the number is also printed in scientific notation.</li>
+      <li>The number is <a href="PRINT.html">PRINT</a> with a space after it unless <a href="STR%24.html">STR$</a>(number) is used to convert it to string text.</li>
+      <li>Numerical values MUST be added to a PRINT statement string using <a href="comma-2.html">comma</a>s or <a href="semicolon-2.html">semicolon</a>s on each side of the value or by using <a href="STR%24.html">STR$</a> to convert the value to a string to use <a href="concatenation-2.html">concatenation</a> (+ string addition).</li>
+    </ul>
+  </li>
+  <li><a href="VIEW-PRINT.html">VIEW PRINT</a> can set up a viewport area for PRINTs. Text printed on the bottom view port row will scroll the text upward.</li>
+  <li>Text to be printed can be a <a href="STRING.html">STRING</a> variable or a literal value inside of quotation marks.</li>
+  <li>Use <a href="semicolon-2.html">semicolon</a> ends on bottom 2 rows of the SCREEN mode used or the PRINT will roll the screen up.</li>
+  <li><strong>Quotes cannot be inside of a literal STRING! Use <a href="CHR%24.html">CHR$</a>(34) <a href="concatenation-2.html">concatenation</a> to insert <a href="quotation-mark-2.html">quotation mark</a>s into a literal string.</strong></li>
+  <li>To better format number and text data placement use PRINT USING.</li>
+  <li>Instead of typing PRINT you can just type a <a href="question-mark-2.html">question mark</a> (?). It will change to PRINT when enter is pressed in the IDE.</li>
+  <li>Use the <a href="_PRINTMODE.html">_PRINTMODE</a> statement before a print to deal with the text background in <strong>QB64</strong>:
+    <ul>
+      <li><strong>1</strong> _KEEPBACKGROUND: Text background transparent. Only the text is displayed over anything behind it.</li>
+      <li><strong>2</strong> _ONLYBACKGROUND: Text background is only displayed. Text is transparent to anything behind it.</li>
+      <li><strong>3</strong> _FILLBACKGROUND: Text and background block anything behind them. Default setting.</li>
+      <li>
+        <ul>
+          <li>Use the <a href="_PRINTMODE-(function).html">_PRINTMODE (function)</a> to find the current _PRINTMODE setting number.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="WRITE.html">WRITE</a> can be used to print a list of comma separated data values to the screen with <a href="comma-2.html">comma</a>s between each value.</li>
+  <li>Use <a href="_DEST.html">_DEST</a> <a href="_CONSOLE.html">_CONSOLE</a> before PRINT statements to be used in a <a href="%24CONSOLE.html">$CONSOLE</a> window.</li>
+  <li>Use <a href="_CONTROLCHR.html">_CONTROLCHR</a> <strong>OFF</strong> to PRINT the unprintable lower <a href="ASCII.html">ASCII</a> control characters in QB64.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using semicolons, comma tabs or concatenation to insert <a href="ASCII.html">ASCII</a> characters and numbers in a PRINT:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span><span class="err">;</span> <span class="s">"Hello world!"</span><span class="err">;</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="c1">' adding quotation marks</span>
+<span class="n">PRINT</span> <span class="mi">123</span> <span class="c1">'demonstrates the positive leading space</span>
+<span class="n">a$</span> <span class="o">=</span> <span class="s">"Hello country!"</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">321</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">321</span>
+<span class="n">PRINT</span> <span class="n">a$</span><span class="p">,</span> <span class="n">a</span> <span class="c1">' demonstrates comma in statement</span>
+<span class="n">PRINT</span> <span class="n">a$</span><span class="err">;</span> <span class="n">a</span> <span class="c1">' demonstrates semicolon in statement</span>
+<span class="n">PRINT</span> <span class="n">a$</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">' concatenation of string numerical values only</span>
+<span class="err">?</span> <span class="s">"Hello city!"</span> <span class="c1">' a ? changes to PRINT after moving cursor from the code line in IDE</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+"Hello world!"
+ 123
+Hello country!      321
+Hello country! 321
+Hello country!-321
+Hello city!
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>First PRINT prints the text between two quotation marks, then it prints the value 123, notice that there are no quotation marks when printing the value, quotation marks mean that it will be treated like a literal string of text. a$ is set to “Hello country” and ‘a’ is set to the value 321, the dollar sign is used when a variable holds the text string. The contents of a$ is then printed and the “,” means that the value of ‘a’ is printed separated by a tab and “;” means that there is no separation from the other text except for the leading positive value space.</p>
+</blockquote>
+
+<p>Changing colors in a line of text using semicolons with colon separators between PRINTs on the same code line.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">COLOR</span> <span class="mi">12</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Start red "</span><span class="err">;</span> <span class="p">:</span> <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"and end green."</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Start aqua "</span><span class="err">;</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"and end blue."</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Start red and end green.
+Start aqua and end blue. 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_PRINTMODE.html">_PRINTMODE</a>, <a href="_PRINTSTRING.html">_PRINTSTRING</a>, <a href="PRINT-USING.html">PRINT USING</a></li>
+  <li><a href="SPC.html">SPC</a>, <a href="TAB.html">TAB</a>, <a href="SPACE%24.html">SPACE$</a>, <a href="SCREEN.html">SCREEN</a></li>
+  <li><a href="CSRLIN.html">CSRLIN</a>, <a href="POS.html">POS</a>, <a href="SCREEN-(function).html">SCREEN (function)</a></li>
+  <li><a href="COLOR.html">COLOR</a>, <a href="LOCATE.html">LOCATE</a>, <a href="VIEW-PRINT.html">VIEW PRINT</a></li>
+  <li><a href="INPUT.html">INPUT</a>, <a href="STR%24.html">STR$</a>, <a href="CHR%24.html">CHR$</a></li>
+  <li><a href="ASCII.html">ASCII</a> (character codes), <a href="_CONTROLCHR.html">_CONTROLCHR</a></li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a> (Demo)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PRINT.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:09 GMT -->
+</html>

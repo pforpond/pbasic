@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_RGB32 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_RGB32-2.html" />
+<meta property="og:url" content="_RGB32-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_RGB32.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_RGB32.html">_RGB32</a> function returns the 32-bit <em>RGBA</em> color value with specified red, green and blue component intensities and optional alpha.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p><em>Original syntax</em>:</p>
+
+<blockquote>
+  <p>color32value~&amp; = <a href="_RGB32.html">_RGB32</a>(red&amp;, green&amp;, blue&amp;)</p>
+</blockquote>
+
+<p><em>Alternative Syntax 2</em>:</p>
+
+<blockquote>
+  <p>color32value~&amp; = <a href="_RGB32.html">_RGB32</a>(red&amp;, green&amp;, blue&amp;, alpha&amp;)</p>
+</blockquote>
+
+<p><em>Alternative Syntax 3</em>:</p>
+
+<blockquote>
+  <p>color32value~&amp; = <a href="_RGB32.html">_RGB32</a>(intensity&amp;, alpha&amp;)</p>
+</blockquote>
+
+<p><em>Alternative Syntax 4</em>:</p>
+
+<blockquote>
+  <p>color32value~&amp; = <a href="_RGB32.html">_RGB32</a>(intensity&amp;)</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>red&amp; specifies the red <a href="LONG.html">LONG</a> component intensity from 0 to 255.</li>
+  <li>green&amp; specifies the green <a href="LONG.html">LONG</a> component intensity from 0 to 255.</li>
+  <li>blue&amp; specifies the blue <a href="LONG.html">LONG</a> component intensity from 0 to 255.</li>
+  <li>alpha&amp; specifies the alpha <a href="LONG.html">LONG</a> component from 0 to 255.</li>
+  <li>intensity&amp; specifies the red, green and blue <a href="LONG.html">LONG</a> components intensity from 0 to 255 simultaneously, to generate a shade of gray.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The value returned is always a 32-bit <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> color value, as is the <a href="POINT.html">POINT</a> value.</li>
+  <li><strong>Return variable types must be <a href="_UNSIGNED.html">_UNSIGNED</a> <a href="LONG.html">LONG</a> or <a href="LONG.html">LONG</a>, otherwise resulting color may lose the <a href="_BLUE.html">_BLUE</a> value.</strong></li>
+  <li>Parameter values outside of the 0 to 255 range are clipped.</li>
+  <li>Returns <a href="LONG.html">LONG</a> 32 bit hexadecimal values from <strong>&amp;H00000000</strong> to <strong>&amp;HFFFFFFFF</strong>.</li>
+  <li>When <a href="LONG.html">LONG</a> values are <a href="PUT.html">PUT</a> to file, the ARGB values become BGRA. Use <a href="LEFT%24.html">LEFT$</a>(<a href="MKL%24.html">MKL$</a>(color32value~&amp;), 3) to place 3 colors.</li>
+  <li><strong>NOTE: Default 32-bit backgrounds are clear black or <a href="_RGB32.html">_RGB32</a>(0, 0). Use <a href="CLS.html">CLS</a> to make the black opaque.</strong></li>
+</ul>
+
+<h2 id="availability">Availability</h2>
+
+<ul>
+  <li>Alternative syntax available with version 1.3 and up.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Converting the color port RGB intensity palette values 0 to 63 to 32 bit hexadecimal values.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">DIM</span> <span class="n">hex32$</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">attribute</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">15</span>
+  <span class="n">OUT</span> <span class="o">&amp;</span><span class="n">H3C7</span><span class="p">,</span> <span class="n">attribute</span>      <span class="c1">'set color attribute to read</span>
+  <span class="n">red</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>      <span class="c1">'multiply by 4 to convert intensity to 0 to 255 RGB values</span>
+  <span class="n">grn</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+  <span class="n">blu</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H3C9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+  <span class="n">hex32$</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span> <span class="o">=</span> <span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">_RGB32</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">grn</span><span class="p">,</span> <span class="n">blu</span><span class="p">))</span>   <span class="c1">'always returns the 32 bit value</span>
+  <span class="n">COLOR</span> <span class="n">attribute</span>
+  <span class="n">PRINT</span> <span class="s">"COLOR"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">_RGB</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">grn</span><span class="p">,</span> <span class="n">blu</span><span class="p">))</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="n">hex32$</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>  <span class="c1">'closest attribute</span>
+<span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+COLOR 1 = &amp;HFF0000A8
+COLOR 2 = &amp;HFF00A800
+COLOR 3 = &amp;HFF00A8A8
+COLOR 4 = &amp;HFFA80000
+COLOR 5 = &amp;HFFA800A8
+COLOR 6 = &amp;HFFA85400
+COLOR 7 = &amp;HFFA8A8A8
+COLOR 8 = &amp;HFF545454
+COLOR 9 = &amp;HFF5454FC
+COLOR 10 = &amp;HFF54FC54
+COLOR 11 = &amp;HFF54FCFC
+COLOR 12 = &amp;HFFFC5454
+COLOR 13 = &amp;HFFFC54FC
+COLOR 14 = &amp;HFFFCFC54
+COLOR 15 = &amp;HFFFCFCFC
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Note:</em> This procedure also shows how the returns from <a href="_RGB.html">_RGB</a> and <a href="_RGB32.html">_RGB32</a> differ in a non-32 bit screen mode.</p>
+</blockquote>
+
+<p>Working with 32 bit colors.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="n">CLS</span> <span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span> <span class="c1">'deep blue background</span>
+
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">540</span><span class="p">,</span> <span class="mi">380</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">BF</span> <span class="c1">' a red box</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">440</span><span class="p">,</span> <span class="mi">280</span><span class="p">),</span> <span class="n">_RGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">BF</span> <span class="c1">' a green box</span>
+
+<span class="n">SLEEP</span> <span class="c1">'Just so we can see our pretty background before we print anything on it.</span>
+
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">0</span> <span class="c1">'White on NO BACKGROUND</span>
+
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+    <span class="n">PRINT</span> <span class="s">"This is just a whole bunch of happy nothing!  Happy World!!"</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span> <span class="n">PRINT</span><span class="p">:</span>
+
+<span class="n">COLOR</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">'And here, we're going with NO COLOR text, with a BLACK background.</span>
+<span class="c1">'Notice how this doesn't change the color on the screen at all, where the text is, but does toss a black background to it.</span>
+
+<span class="n">LOCATE</span> <span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"NOTICE HOW OUR 0 COLOR WORKS?"</span>
+<span class="n">PRINT</span>
+<span class="n">LOCATE</span> <span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"NEAT, HUH?"</span>
+<span class="n">SLEEP</span>
+<span class="n">SYSTEM</span> 
+
+</code></pre></div></div>
+
+<p>Comparing the output of the new _RGB32 syntaxes (starting with version 1.3) and their equivalents in previous versions.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"White"</span>
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"White, too, but with less typing"</span>
+<span class="n">PRINT</span>
+
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Dark gray"</span>
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Same gray, but with less typing"</span>
+<span class="n">PRINT</span>
+
+<span class="n">COLOR</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"White with alpha of 120 (out of 255)"</span>
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"White with alpha of 120 - but with less typing"</span>
+<span class="n">PRINT</span>
+
+<span class="n">COLOR</span> <span class="n">_RGBA32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Magenta, 110 alpha"</span>
+<span class="n">COLOR</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"Magenta too, 110 alpha - but with less typing"</span>
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_RGBA32.html">_RGBA32</a>, <a href="_RGB.html">_RGB</a>, <a href="_RGBA.html">_RGBA</a></li>
+  <li><a href="_RED32.html">_RED32</a>, <a href="_GREEN32.html">_GREEN32</a>, <a href="_BLUE32.html">_BLUE32</a></li>
+  <li><a href="_PALETTECOLOR.html">_PALETTECOLOR</a></li>
+  <li><a href="HEX%24-32-Bit-Values.html">HEX$ 32 Bit Values</a></li>
+  <li><a href="SAVEIMAGE.html">SAVEIMAGE</a></li>
+  <li><a href="http://www.w3schools.com/html/html_colornames.asp">Hexadecimal Color Values</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_RGB32 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:25 GMT -->
+</html>

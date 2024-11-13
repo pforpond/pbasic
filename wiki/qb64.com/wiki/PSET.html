@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/PSET by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="PSET-2.html" />
+<meta property="og:url" content="PSET-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/PSET.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>PSET</strong> graphics <a href="SCREEN-(statement).html">SCREEN (statement)</a> statement sets a pixel to a coordinate with a default or designated color attribute.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><strong>PSET</strong> [STEP]<strong>(</strong><em>column%</em>, <em>row%</em><strong>)</strong>[, <em>colorAttribute</em>]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>Can use <a href="STEP.html">STEP</a> relative graphics coordinates from a previous graphic object.</li>
+  <li><em>Column</em> and <em>row</em> can be literal or variable <a href="INTEGER.html">INTEGER</a> coordinates values which can be offscreen.</li>
+  <li>If the <em>colorAttribute</em> is omitted, PSET will use the current <a href="_DEST.html">_DEST</a> page’s _DEFAULTCOLOR.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li><em>Color attributes</em> are limited to the SCREEN mode used. Any color value other than 0 will be white in <a href="SCREEN-(statement).html">SCREEN (statement)</a>s 2 or 11.</li>
+  <li>PSET can locate other graphics objects and color <a href="DRAW.html">DRAW</a> statements.</li>
+  <li>The PSET action can be used in a graphics <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a> to produce an identical image on any background.</li>
+  <li>The graphic cursor is set to the center of the program window on program start for <a href="STEP.html">STEP</a> relative coordinates.</li>
+  <li><strong>PSET can be used in any graphic screen mode, but cannot be used in the default screen mode 0 as it is text only! (Or in any _NEWIMAGE(x, y, 0) screens which are text only as well.)</strong></li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Using PSET to locate and color a <a href="DRAW.html">DRAW</a> statement.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">PSET</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">12</span>
+<span class="n">DRAW</span> <span class="s">"U20 R20 D20 L20"</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Screen results:</em> A drawn box that is bright red.</p>
+</blockquote>
+
+<p>Magnifying a box portion of a Mandelbrot image with PSET</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFSTR</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">DIM</span> <span class="n">red</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">green</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">blue</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">DIM</span> <span class="n">i</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span><span class="p">:</span> <span class="n">READ</span> <span class="n">red</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">NEXT</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span><span class="p">:</span> <span class="n">READ</span> <span class="n">green</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">NEXT</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span><span class="p">:</span> <span class="n">READ</span> <span class="n">blue</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">NEXT</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">15</span><span class="p">:</span> <span class="n">PALETTE</span> <span class="n">i</span><span class="p">,</span> <span class="mi">65536</span> <span class="o">*</span> <span class="n">blue</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">256</span><span class="o">&amp;</span> <span class="o">*</span> <span class="n">green</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">red</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">NEXT</span>
+<span class="n">DATA</span> <span class="mi">0</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span>
+<span class="n">DATA</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">DATA</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">21</span>
+
+<span class="n">DIM</span> <span class="n">dmag</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">dlogmag</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">DIM</span> <span class="n">a</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">b</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">mag</span> <span class="n">AS</span> <span class="n">DOUBLE</span>
+<span class="n">DIM</span> <span class="n">dx</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">dy</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">DIM</span> <span class="n">mx</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">my</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">mz</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+<span class="n">dmag</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">mag</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="p">.</span><span class="err">75</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DO</span>
+  <span class="n">DIM</span> <span class="n">limitx</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">limit</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+  <span class="n">DIM</span> <span class="n">inc</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">left</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">top</span> <span class="n">AS</span> <span class="n">DOUBLE</span>
+
+  <span class="n">limitx</span> <span class="o">=</span> <span class="mi">150</span> <span class="o">*</span> <span class="p">(</span><span class="n">LOG</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">limitx</span> <span class="o">&gt;</span> <span class="mi">32767</span> <span class="n">THEN</span> <span class="n">limitx</span> <span class="o">=</span> <span class="mi">32767</span>
+  <span class="n">limit</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">limitx</span><span class="p">)</span>
+  <span class="n">inc</span> <span class="o">=</span> <span class="p">.</span><span class="err">004</span> <span class="err">/</span> <span class="n">mag</span>
+  <span class="n">left</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">inc</span> <span class="o">*</span> <span class="mi">319</span>
+  <span class="n">top</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">inc</span> <span class="o">*</span> <span class="mi">239</span>
+  <span class="n">CLS</span>
+
+  <span class="n">DIM</span> <span class="n">yy</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">xx</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+  <span class="n">DIM</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">y</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">z</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+  <span class="n">FOR</span> <span class="n">yy</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">479</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">top</span> <span class="o">-</span> <span class="n">inc</span> <span class="o">*</span> <span class="n">yy</span>
+    <span class="n">FOR</span> <span class="n">xx</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">639</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">inc</span> <span class="o">*</span> <span class="n">xx</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">mandel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+        <span class="n">IF</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">limit</span> <span class="n">THEN</span> <span class="n">PSET</span> <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">z</span> <span class="n">MOD</span> <span class="mi">15</span>
+        <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">SYSTEM</span>
+    <span class="n">NEXT</span>
+  <span class="n">NEXT</span>
+  <span class="n">mz</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">CALL</span> <span class="n">readmouse</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">my</span><span class="p">,</span> <span class="n">mz</span><span class="p">)</span>
+  <span class="n">DO</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="mi">319</span> <span class="o">\</span> <span class="n">dmag</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="mi">239</span> <span class="o">\</span> <span class="n">dmag</span>
+    <span class="n">CALL</span> <span class="n">readmouse</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">my</span><span class="p">,</span> <span class="n">mz</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="n">mz</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+    <span class="n">CALL</span> <span class="n">rectangle</span><span class="p">(</span><span class="n">mx</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">my</span> <span class="o">-</span> <span class="n">dy</span><span class="p">,</span> <span class="n">mx</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">my</span> <span class="o">+</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="n">DIM</span> <span class="n">t</span> <span class="n">AS</span> <span class="n">DOUBLE</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">TIMER</span>
+    <span class="n">WHILE</span> <span class="n">t</span> <span class="o">=</span> <span class="n">TIMER</span>
+      <span class="n">key$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+      <span class="n">SELECT</span> <span class="n">CASE</span> <span class="n">key$</span>
+        <span class="n">CASE</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+          <span class="n">SYSTEM</span>
+        <span class="n">CASE</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
+          <span class="n">dmag</span> <span class="o">=</span> <span class="n">dmag</span> <span class="o">\</span> <span class="mi">2</span>
+          <span class="n">IF</span> <span class="n">dmag</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="n">THEN</span> <span class="n">dmag</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">CASE</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+          <span class="n">dmag</span> <span class="o">=</span> <span class="n">dmag</span> <span class="o">*</span> <span class="mi">2</span>
+          <span class="n">IF</span> <span class="n">dmag</span> <span class="o">&gt;</span> <span class="mi">128</span> <span class="n">THEN</span> <span class="n">dmag</span> <span class="o">=</span> <span class="mi">128</span>
+      <span class="n">END</span> <span class="n">SELECT</span>
+    <span class="n">WEND</span>
+    <span class="n">CALL</span> <span class="n">rectangle</span><span class="p">(</span><span class="n">mx</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">my</span> <span class="o">-</span> <span class="n">dy</span><span class="p">,</span> <span class="n">mx</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">my</span> <span class="o">+</span> <span class="n">dy</span><span class="p">)</span>
+  <span class="n">LOOP</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">inc</span> <span class="o">*</span> <span class="p">(</span><span class="n">mx</span> <span class="o">-</span> <span class="mi">319</span><span class="p">):</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">inc</span> <span class="o">*</span> <span class="p">(</span><span class="n">my</span> <span class="o">-</span> <span class="mi">239</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="p">(</span><span class="n">mz</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">mag</span> <span class="o">=</span> <span class="n">dmag</span> <span class="o">*</span> <span class="n">mag</span> <span class="n">ELSE</span> <span class="n">mag</span> <span class="o">=</span> <span class="n">mag</span> <span class="o">/</span> <span class="n">dmag</span>
+  <span class="n">IF</span> <span class="p">(</span><span class="n">mag</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">mag</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">LOOP</span>
+
+<span class="n">FUNCTION</span> <span class="n">mandel%</span> <span class="p">(</span><span class="n">x</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">y</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">limit</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+  <span class="n">DIM</span> <span class="n">a</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">b</span> <span class="n">AS</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">t</span> <span class="n">AS</span> <span class="n">DOUBLE</span>
+  <span class="n">DIM</span> <span class="n">n</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DO</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">x</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">y</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="n">OR</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">limit</span>
+  <span class="n">mandel</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">SUB</span> <span class="n">readmouse</span> <span class="p">(</span><span class="n">x</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">y</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">z</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+<span class="n">z</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">DO</span>
+<span class="n">if</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="n">OR</span> <span class="mi">1</span>
+<span class="n">if</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="n">OR</span> <span class="mi">2</span>
+<span class="n">if</span> <span class="n">_MOUSEBUTTON</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="n">OR</span> <span class="mi">4</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">_MOUSEINPUT</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">x</span><span class="o">=</span><span class="n">_MOUSEX</span>
+<span class="n">y</span><span class="o">=</span><span class="n">_MOUSEY</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+<span class="n">SUB</span> <span class="n">rectangle</span> <span class="p">(</span><span class="n">x1</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">y1</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">x2</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">y2</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">)</span>
+  <span class="n">DIM</span> <span class="n">i</span> <span class="n">AS</span> <span class="n">INTEGER</span><span class="p">,</span> <span class="n">j</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="n">x1</span> <span class="n">TO</span> <span class="n">x2</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="n">j</span> <span class="n">XOR</span> <span class="mi">15</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="n">j</span> <span class="n">XOR</span> <span class="mi">15</span>
+  <span class="n">NEXT</span>
+  <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="n">y1</span> <span class="n">TO</span> <span class="n">y2</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">j</span> <span class="n">XOR</span> <span class="mi">15</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">POINT</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">PSET</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">j</span> <span class="n">XOR</span> <span class="mi">15</span>
+  <span class="n">NEXT</span>
+<span class="n">END</span> <span class="n">SUB</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Notes:</em> Left click, to zoom in on the rectangle. Right click, to zoom out. Up arrow makes the rectangle bigger and down arrow makes the rectangle smaller.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PRESET.html">PRESET</a>, <a href="CIRCLE.html">CIRCLE</a>, <a href="LINE.html">LINE</a></li>
+  <li><a href="COLOR.html">COLOR</a>, <a href="POINT.html">POINT</a></li>
+  <li><a href="PUT-(graphics-statement).html">PUT (graphics statement)</a></li>
+  <li><a href="GET-(graphics-statement).html">GET (graphics statement)</a></li>
+  <li><a href="Text-Using-Graphics.html">Text Using Graphics</a> (Demo)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/PSET by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:16:29 GMT -->
+</html>

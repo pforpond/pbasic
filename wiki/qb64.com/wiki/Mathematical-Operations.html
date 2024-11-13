@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Mathematical-Operations by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Basic and QB64 Numerical Types | QB64.com</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Basic and QB64 Numerical Types" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Mathematical-Operations-2.html" />
+<meta property="og:url" content="Mathematical-Operations-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Basic and QB64 Numerical Types" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"Basic and QB64 Numerical Types","url":"https://qb64.com/wiki/Mathematical-Operations.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2 id="basic-and-qb64-numerical-types">Basic and QB64 Numerical Types</h2>
+
+<p><strong>QBasic Number Types</strong></p>
+
+<ul>
+  <li><a href="INTEGER.html">INTEGER</a> [<strong>%</strong>]: 2 Byte signed whole number values from -32768 to 32767. 0 to 65535 unsigned. (not checked in QB64)</li>
+  <li><a href="LONG.html">LONG</a> [<strong>&amp;</strong>]: 4 byte signed whole number values from -2147483648 to 2147483647. 0 to 4294967295 unsigned.</li>
+  <li><a href="SINGLE.html">SINGLE</a> [<strong>!</strong>]: 4 byte signed floating decimal point values of up to 7 decimal place accuracy. <strong>Cannot be unsigned.</strong></li>
+  <li><a href="DOUBLE.html">DOUBLE</a> [#]: 8 byte signed floating decimal point values of up to 15 decimal place accuracy. <strong>Cannot be unsigned.</strong></li>
+  <li>To get <strong>one byte</strong> values, can use an <a href="ASCII.html">ASCII</a> <a href="STRING.html">STRING</a> character to represent values from 0 to 255 as in <a href="BINARY.html">BINARY</a> files.</li>
+</ul>
+
+<p><strong>QB64 Number Types</strong></p>
+
+<ul>
+  <li><a href="_BIT.html">_BIT</a> [<strong>`</strong>]: 1 bit signed whole number values of 0 or -1 signed or 0 or 1 unsigned. <a href="_BIT.html">_BIT</a> * 8 can hold a signed or unsigned <a href="_BYTE.html">_BYTE</a> value.</li>
+  <li><a href="_BYTE.html">_BYTE</a> [<strong>%%</strong>]: 1 byte signed whole number values from -128 to 127. Unsigned values from 0 to 255.</li>
+  <li><a href="_INTEGER64.html">_INTEGER64</a> [<strong>&amp;&amp;</strong>]: 8 byte signed whole number values from -9223372036854775808 to 9223372036854775807</li>
+  <li><a href="_FLOAT.html">_FLOAT</a> [##]: currently set as 10 byte signed floating decimal point values up to 1.1897E+4932. <strong>Cannot be unsigned.</strong></li>
+  <li><a href="_OFFSET.html">_OFFSET</a> [%&amp;]: undefined flexible length integer offset values used in <a href="DECLARE-DYNAMIC-LIBRARY.html">DECLARE DYNAMIC LIBRARY</a> declarations.</li>
+</ul>
+
+<p><strong>Signed and Unsigned Integer Values</strong></p>
+
+<p>Negative (signed) numerical values can affect calculations when using any of the BASIC operators. SQR cannot use negative values! There may be times that a calculation error is made using those negative values. The SGN function returns the sign of a value as -1 for negative, 0 for zero and 1 for unsigned positive values. ABS always returns an unsigned value.</p>
+
+<blockquote>
+  <ul>
+    <li><a href="SGN.html">SGN</a>(n) returns the value’s sign as -1 if negative, 0 if zero or 1 if positive.</li>
+    <li><a href="ABS.html">ABS</a>(n) changes negative values to the equivalent positive values.</li>
+    <li><strong>QB64:</strong> <a href="_UNSIGNED.html">_UNSIGNED</a> in a <a href="DIM.html">DIM</a>, <a href="AS.html">AS</a> or <a href="_DEFINE.html">_DEFINE</a> statement for only positive <a href="INTEGER.html">INTEGER</a> values.</li>
+  </ul>
+</blockquote>
+
+<p><a href="_UNSIGNED.html">_UNSIGNED</a> integer, byte and bit variable values can use the tilde ~ suffix before the type suffix to define the type.</p>
+
+<h2 id="mathematical-operation-symbols">Mathematical Operation Symbols</h2>
+
+<p>Most of the BASIC math operators are ones that require no introduction. The addition, subtraction, multiplication and division operators are ones commonly used as shown below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Procedure Type</th>
+      <th>Example Usage</th>
+      <th>Operation Order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>Addition</td>
+      <td>c = a + b</td>
+      <td>Last</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>Subtraction</td>
+      <td>c = a - b</td>
+      <td>Last</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>Negation</td>
+      <td>c = -a</td>
+      <td>Last</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>Multiplication</td>
+      <td>c = a * b</td>
+      <td>Second</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>Division</td>
+      <td>c = a / b</td>
+      <td>Second</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>BASIC can also use two other operators for <strong><a href="INTEGER.html">INTEGER</a> division</strong>. Integer division returns only whole number values. <a href="MOD.html">MOD</a> <strong>remainder division</strong> returns a value only if an integer division cannot divide a number exactly. Returns 0 if a value is exactly divisible.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Procedure Type</th>
+      <th>Example Usage</th>
+      <th>Operation Order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\</td>
+      <td>Integer division</td>
+      <td>c = a \ b</td>
+      <td>Second</td>
+    </tr>
+    <tr>
+      <td>MOD</td>
+      <td>Remainder division</td>
+      <td>c = a MOD b</td>
+      <td>Second</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><em>It is an <a href="ERROR.html">ERROR</a> to divide by zero or to take the remainder modulo zero.</em></strong></p>
+
+<p>There is also an operator for <strong>exponential</strong> calculations. The exponential operator is used to raise a number’s value to a designated exponent of itself. In QB the exponential return values are <a href="DOUBLE.html">DOUBLE</a> values. The <a href="SQR.html">SQR</a> function can return a number’s Square Root. For other <strong>exponential roots</strong> the operator can be used with fractions such as (1 / 3) designating the cube root of a number.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Procedure</th>
+      <th>Example Usage</th>
+      <th>Operation Order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>^</td>
+      <td>Exponent</td>
+      <td>c = a ^ (1 / 2)</td>
+      <td>First</td>
+    </tr>
+    <tr>
+      <td>SQR</td>
+      <td>Square Root</td>
+      <td>c = SQR(a ^ 2 + b ^ 2)</td>
+      <td>First</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="notes">Notes</h3>
+
+<ul>
+  <li>Exponent fractions should be enclosed in () brackets in order to be treated as a root rather than as division.</li>
+  <li>Negative exponential values must be enclosed in () brackets in QB64.</li>
+</ul>
+
+<h2 id="basics-order-of-operations">Basic’s Order of Operations</h2>
+
+<p>When a normal calculation is made, BASIC works from left to right, but it does certain calculations in the following order:</p>
+
+<ul>
+  <li>Exponential and exponential Root calculations including <a href="SQR.html">SQR</a>.</li>
+  <li>Negation (Note that this means that <em>- 3 ^ 2</em> is treated as <em>-(3 ^ 2)</em> and not as <em>(-3) ^ 2.)</em></li>
+  <li>Multiplication, normal Division, <a href="INTEGER.html">INTEGER</a> Division and Remainder(<a href="MOD.html">MOD</a>) Division calculations</li>
+  <li>Addition and Subtraction calculations</li>
+</ul>
+
+<p><strong>Using Parenthesis to Define the Operation Order</strong></p>
+
+<p>Sometimes a calculation may need BASIC to do them in another order or the calculation will return bad results. BASIC allows the programmer to decide the order of operations by using <a href="parenthesis-2.html">parenthesis</a> around parts of the equation. BASIC will do the calculations inside of the <a href="parenthesis-2.html">parenthesis</a> brackets  first and the others from left to right in the normal operation order.</p>
+
+<h2 id="basics-mathematical-functions">Basic’s Mathematical Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ABS(n)</td>
+      <td>returns the absolute (positive) value of n: ABS(-5) = 5</td>
+    </tr>
+    <tr>
+      <td>ATN(angle*)</td>
+      <td>returns the arctangent of an angle in radians: pi = 4 * ATN(1)</td>
+    </tr>
+    <tr>
+      <td>COS(angle*)</td>
+      <td>returns the cosine of an angle in radians. (horizontal component)</td>
+    </tr>
+    <tr>
+      <td>EXP(n)</td>
+      <td>returns e ^ x, (n &lt;= 88.02969): e = EXP(1) ‘ (e = 2.718281828459045)</td>
+    </tr>
+    <tr>
+      <td>LOG(n)</td>
+      <td>returns the base e natural logarithm of n. (n &gt; 0)</td>
+    </tr>
+    <tr>
+      <td>SGN(n)</td>
+      <td>returns -1 if n &lt; 0, 0 if n = 0, 1 if n &gt; 0: SGN(-5) = -1</td>
+    </tr>
+    <tr>
+      <td>SIN(angle*)</td>
+      <td>returns the sine of an angle in radians. (vertical component)</td>
+    </tr>
+    <tr>
+      <td>SQR(n)</td>
+      <td>returns the square root of a number. (n &gt;= 0)</td>
+    </tr>
+    <tr>
+      <td>TAN(angle*)</td>
+      <td>returns the tangent of an angle in radians</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>* angles measured in radians</strong></p>
+
+<p>Degree to Radian Conversion.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FUNCTION</span> <span class="n">Radian</span> <span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">Radian</span> <span class="o">=</span> <span class="n">degrees</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mi">180</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">Degree</span> <span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+<span class="n">Degree</span> <span class="o">=</span> <span class="n">radians</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+</code></pre></div></div>
+
+<p>Logarithm to base n.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FUNCTION</span> <span class="n">LOGN</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>    
+<span class="n">IF</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">n</span> <span class="o">&lt;&gt;</span> <span class="mi">1</span> <span class="n">AND</span> <span class="n">X</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">LOGN</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="n">LOG</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">LOG10</span> <span class="p">(</span><span class="n">X</span><span class="p">)</span>    <span class="c1">'base 10 logarithm</span>
+<span class="n">IF</span> <span class="n">X</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">LOG10</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="n">LOG</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<p><strong>The numerical value of n in the <a href="LOG.html">LOG</a>(n) evaluation must be a positive value.</strong></p>
+
+<p><strong>The numerical value of n in the <a href="EXP.html">EXP</a>(n) evaluation must be less than or equal to 88.02969.</strong></p>
+
+<p><strong>The numerical value of n in the <a href="SQR.html">SQR</a>(n) evaluation <em>cannot</em> be a negative value.</strong></p>
+
+<h2 id="derived-mathematical-functions">Derived Mathematical Functions</h2>
+
+<p>The following Trigonometric functions can be derived from the <strong>BASIC Mathematical Functions</strong> listed above. Each function checks that certain values can be used without error or a <a href="BEEP.html">BEEP</a> will notify the user that a value could not be returned. An error handling routine can be substituted if desired. <strong>Note:</strong> Functions requiring <strong>π</strong> use 4 * <a href="ATN.html">ATN</a>(1) for <a href="SINGLE.html">SINGLE</a> accuracy. Use <a href="ATN.html">ATN</a>(1.#) for <a href="DOUBLE.html">DOUBLE</a> accuracy.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FUNCTION</span> <span class="n">SEC</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">'Secant</span>
+<span class="n">IF</span> <span class="n">COS</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">SEC</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">COS</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">CSC</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">'CoSecant </span>
+<span class="n">IF</span> <span class="n">SIN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">CSC</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">SIN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+<span class="n">FUNCTION</span> <span class="n">COT</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">'CoTangent </span>
+<span class="n">IF</span> <span class="n">TAN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">COT</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">TAN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+<span class="n">FUNCTION</span> <span class="n">ARCSIN</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1">'Inverse Sine           </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCSIN</span> <span class="o">=</span> <span class="n">ATN</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">SQR</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)))</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+<span class="n">FUNCTION</span> <span class="n">ARCCOS</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">' Inverse Cosine</span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCCOS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">ATN</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">SQR</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">))</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">ARCSEC</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1">' Inverse Secant        </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCSEC</span> <span class="o">=</span> <span class="n">ATN</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">SQR</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">SGN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+<span class="n">FUNCTION</span> <span class="n">ARCCSC</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse CoSecant </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCCSC</span> <span class="o">=</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">SQR</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">SGN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="n">ELSE</span> <span class="n">BEEP</span> 
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+<span class="n">FUNCTION</span> <span class="n">ARCCOT</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse CoTangent </span>
+<span class="n">ARCCOT</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ATN</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">ATN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">SINH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Hyperbolic Sine </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">88.02969</span> <span class="n">THEN</span> <span class="n">SINH</span> <span class="o">=</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">COSH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Hyperbolic CoSine </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">88.02969</span> <span class="n">THEN</span> <span class="n">COSH</span> <span class="o">=</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">TANH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Hyperbolic Tangent or SINH(x) / COSH(x)</span>
+<span class="n">IF</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">88.02969</span> <span class="n">AND</span> <span class="n">EXP</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> 
+     <span class="n">TANH</span> <span class="o">=</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
+  <span class="n">ELSE</span>
+    <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">IF</span> 
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">SECH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Hyperbolic Secant or (COSH(x)) ^ -1</span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">88.02969</span> <span class="n">AND</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">SECH</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="n">ELSE</span> <span class="n">BEEP</span>  
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">CSCH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Hyperbolic CoSecant or (SINH(x)) ^ -1</span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">88.02969</span> <span class="n">AND</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">CSCH</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">EXP</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="n">ELSE</span> <span class="n">BEEP</span>  
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">COTH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Hyperbolic CoTangent or COSH(x) / SINH(x)</span>
+<span class="n">IF</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">88.02969</span> <span class="n">AND</span> <span class="n">EXP</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> 
+     <span class="n">COTH</span> <span class="o">=</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">EXP</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> 
+  <span class="n">ELSE</span>
+    <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">ARCSINH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse Hyperbolic Sine </span>
+<span class="n">IF</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">+</span> <span class="n">SQR</span><span class="p">((</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> 
+<span class="n">ARCSINH</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">SQR</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> 
+  <span class="n">ELSE</span>
+    <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">ARCCOSH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse Hyperbolic CoSine </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">+</span> <span class="n">SQR</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> 
+<span class="n">ARCCOSH</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">SQR</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> 
+  <span class="n">ELSE</span>
+    <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">ARCTANH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse Hyperbolic Tangent </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCTANH</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+<span class="n">FUNCTION</span> <span class="n">ARCSECH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse Hyperbolic Secant </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCSECH</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">((</span><span class="n">SGN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">SQR</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span> <span class="n">ELSE</span> <span class="n">BEEP</span>  
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">ARCCSCH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse Hyperbolic CoSecant </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">AND</span> <span class="p">(</span><span class="n">SGN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">SQR</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">THEN</span> 
+     <span class="n">ARCCSCH</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">((</span><span class="n">SGN</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">SQR</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span> 
+  <span class="n">ELSE</span>
+    <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">IF</span>
+<span class="n">END</span> <span class="n">FUNCTION</span>
+
+<span class="n">FUNCTION</span> <span class="n">ARCCOTH</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1">' Inverse Hyperbolic CoTangent </span>
+<span class="n">IF</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="n">ARCCOTH</span> <span class="o">=</span> <span class="n">LOG</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="n">ELSE</span> <span class="n">BEEP</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                           **Hyperbolic Function Relationships:**
+
+                                   COSH(-x) = COSH(x)
+                                   SINH(-x) = -SINH(x)
+                                    
+                                   SECH(-x) = SECH(x)
+                                   CSCH(-x) = -CSCH(x)
+                                   TANH(-x) = -TANH(x)
+                                   COTH(-x) = -COTH(x)
+
+                       **Inverse Hyperbolic Function Relatonships:**
+
+                              ARSECH(x) = ARCOSH(x) ^ -1 
+                              ARCSCH(x) = ARSINH(x) ^ -1 
+                              ARCOTH(x) = ARTANH(x) ^ -1 
+
+              **Hyperbolic sine and cosine satisfy the Pythagorean trig. identity:**
+
+                           (COSH(x) ^ 2) - (SINH(x) ^ 2) = 1
+
+</code></pre></div></div>
+
+<p><a href="http://support.microsoft.com/kb/28249">Microsoft’s Derived BASIC Functions (KB 28249)</a></p>
+
+<h2 id="mathematical-logical-operators">Mathematical Logical Operators</h2>
+
+<p>The following logical operators compare numerical values using bitwise operations. The two numbers are compared by the number’s <a href="Binary-2.html">Binary</a> bits on and the result of the operation determines the value returned in decimal form. <a href="NOT.html">NOT</a> checks one value and returns the opposite. It returns 0 if a value is not 0 and -1 if it is 0. See <a href="Binary-2.html">Binary</a> for more on bitwise operations.</p>
+
+<p><strong>Truth table of the 6 BASIC Logical Operators</strong></p>
+
+<p>The results of the bitwise logical operations, where <em>A</em> and <em>B</em> are operands, and <em>T</em> and <em>F</em> indicate that a bit is set or not set:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th> </th>
+      <th><a href="NOT.html">NOT</a> B</th>
+      <th>A <a href="AND.html">AND</a> B</th>
+      <th>A <a href="OR.html">OR</a> B</th>
+      <th>A <a href="XOR.html">XOR</a> B</th>
+      <th>A <a href="EQV.html">EQV</a> B</th>
+      <th>A <a href="IMP.html">IMP</a> B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td> </td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td> </td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td> </td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td> </td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><a href="Relational-Operations.html">Relational Operations</a> return negative one (-1, all bits set) and zero (0, no bits set) for <em>true</em> and <em>false</em>, respectively.</strong></p>
+
+<p>This allows relational tests to be inverted and combined using the bitwise logical operations.</p>
+
+<p>BASIC can accept any + or - value that is not 0 to be True when used in an evaluation.</p>
+
+<h2 id="relational-operators">Relational Operators</h2>
+
+<p>Relational Operations are used to compare values in a Conditional <a href="IF...html">IF…THEN</a>, <a href="SELECT-CASE.html">SELECT CASE</a>, <a href="UNTIL.html">UNTIL</a> or <a href="WHILE.html">WHILE</a> statement.</p>
+
+<p><strong>Relational Operators:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Condition</th>
+      <th>Example Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>=</td>
+      <td>Equal</td>
+      <td>IF a = b THEN</td>
+    </tr>
+    <tr>
+      <td>&lt;&gt;</td>
+      <td>NOT equal</td>
+      <td>IF a &lt;&gt; b THEN</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>Less than</td>
+      <td>IF a &lt; b THEN</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>Greater than</td>
+      <td>IF a &gt; b THEN</td>
+    </tr>
+    <tr>
+      <td>&lt;=</td>
+      <td>Less than or equal</td>
+      <td>IF a &lt;= b THEN</td>
+    </tr>
+    <tr>
+      <td>&gt;=</td>
+      <td>Greater than or equal</td>
+      <td>IF a &gt;= b THEN</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="basics-rounding-functions">Basic’s Rounding Functions</h2>
+
+<blockquote>
+  <p>Rounding is used when the program needs a certain number value or type. There are 4 <a href="INTEGER.html">INTEGER</a> or <a href="LONG.html">LONG</a> Integer functions and one function each for closest <a href="SINGLE.html">SINGLE</a> and closest <a href="DOUBLE.html">DOUBLE</a> numerical types. Closest functions use “bankers” rounding which rounds up if the decimal point value is over one half. Variable types should match the return value.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>INT(n)</td>
+      <td>rounds down to lower Integer value whether positive or negative</td>
+    </tr>
+    <tr>
+      <td>FIX(n)</td>
+      <td>rounds positive values lower and negative to a less negative Integer value</td>
+    </tr>
+    <tr>
+      <td>CINT(n)</td>
+      <td>rounds to closest Integer. Rounds up for decimal point values over one half.</td>
+    </tr>
+    <tr>
+      <td>CLNG(n)</td>
+      <td>rounds Integer or Long values to closest value like CINT.(values over 32767)</td>
+    </tr>
+    <tr>
+      <td>CSNG(n)</td>
+      <td>rounds Single values to closest last decimal point value.</td>
+    </tr>
+    <tr>
+      <td>CDBL(n)</td>
+      <td>rounds Double values to closest last decimal point value.</td>
+    </tr>
+    <tr>
+      <td>_ROUND(n)</td>
+      <td>rounds to closest numerical integer value.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="note">Note</h3>
+
+<ul>
+  <li>Each of the above functions define the value’s type in addition to rounding the values.</li>
+</ul>
+
+<h2 id="base-number-systems">Base Number Systems</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                   **Comparing the [INTEGER](INTEGER) Base Number Systems**
+
+  **Decimal (base 10)    Binary (base 2)    Hexadecimal (base 16)    Octal (base 8)**
+
+                          **   [&amp;B](&amp;B)                 [&amp;H](&amp;H) [HEX$](HEX$)(n)           [&amp;O](&amp;O) [OCT$](OCT$)(n)**      
+
+          0                  0000                  0                     0
+          1                  0001                  1                     1
+          2                  0010                  2                     2
+          3                  0011                  3                     3
+          4                  0100                  4                     4
+          5                  0101                  5                     5
+          6                  0110                  6                     6
+          7                  0111                  7                     7 -- maxed
+          8                  1000                  8                    10
+  maxed-- 9                  1001                  9                    11
+         10                  1010                  A                    12
+         11                  1011                  B                    13
+         12                  1100                  C                    14
+         13                  1101                  D                    15
+         14                  1110                  E                    16
+         15  -------------   1111 &lt;--- Match ---&gt;  F  ----------------  17 -- max 2
+         16                 10000                 10                    20
+        
+      When the Decimal value is 15, the other 2 base systems are all maxed out!
+      The Binary values can be compared to all of the HEX value digit values so
+      it is possible to convert between the two quite easily. To convert a HEX
+      value to Binary just add the 4 binary digits for each HEX digit place so:
+
+                        F      A      C      E 
+              &amp;HFACE = 1111 + 1010 + 1100 + 1101 = &amp;B1111101011001101
+
+      To convert a Binary value to HEX you just need to divide the number into
+      sections of four digits starting from the right(LSB) end. If one has less
+      than 4 digits on the left end you could add the leading zeros like below:
+ 
+             &amp;B101011100010001001 = 0010 1011 1000 1000 1001  
+                       hexadecimal =  2  + B  + 8 +  8  + 9 = &amp;H2B889 
+
+    See the Decimal to Binary conversion function that uses **[HEX$](HEX$)** on the **[&amp;H](&amp;H)** page.
+ 
+
+</code></pre></div></div>
+
+<p><strong><a href="VAL.html">VAL</a> converts <a href="STRING.html">STRING</a> numbers to Decimal values.</strong></p>
+
+<ul>
+  <li>VAL reads the string from left to right and converts numerical string values, - and . to decimal values until it finds a character other than those 3 characters. Commas are not read.</li>
+  <li>HEXadecimal and OCTal base values can be read with <a href="%26H.html">&amp;H</a> or <a href="%26O.html">&amp;O</a>.</li>
+</ul>
+
+<p><strong>The <a href="OCT%24.html">OCT$</a> <a href="STRING.html">STRING</a> function return can be converted to a decimal value using <a href="VAL.html">VAL</a>(“&amp;O” + OCT$(n)).</strong></p>
+
+<p><strong>The <a href="HEX%24.html">HEX$</a> <a href="STRING.html">STRING</a> function return can be converted to a decimal value using <a href="VAL.html">VAL</a>(“&amp;H” + HEX$(n)).</strong></p>
+
+<blockquote>
+  <p><a href="STR%24.html">STR$</a> converts numerical values to string characters for <a href="PRINT.html">PRINT</a> or variable strings. It also removes the right number PRINT space.</p>
+</blockquote>
+
+<h2 id="bits-and-bytes">Bits and Bytes</h2>
+
+<p><strong><a href="_BIT.html">_BIT</a></strong></p>
+
+<p>The <strong>MSB</strong> is the most significant(largest) bit value and <strong>LSB</strong> is the least significant bit of a binary or register memory address value. The order in which the bits are read determines the binary or decimal byte value. There are two common ways to read a byte:</p>
+
+<ul>
+  <li><strong>“Big-endian”</strong>: MSB is the first bit encountered, decreasing to the LSB as the last bit by position, memory address or time.</li>
+  <li><strong>“Little-endian”</strong>: LSB is the first bit encountered, increasing to the MSB as the last bit by position, memory address or time.</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+         **Offset or Position:    0    1   2   3   4   5   6   7      Example: 11110000**
+                              ----------------------------------             --------
+    **Big-Endian Bit On Value:**   128  64  32  16   8   4   2   1                 240
+ **Little-Endian Bit On Value:**    1    2   4   8  16  32  64  128                 15
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>The big-endian method compares exponents of 2<sup>7</sup> down to 2<sup>0</sup> while the little-endian method does the opposite.</p>
+</blockquote>
+
+<p><strong><a href="_BYTE.html">_BYTE</a></strong></p>
+
+<p><a href="INTEGER.html">INTEGER</a> values consist of 2 bytes called the <strong>HI</strong> and <strong>LO</strong> bytes. Anytime that the number of binary digits is a multiple of 16 (2bytes, 4 bytes, etc.) and the HI byte’s MSB is on(1), the value returned will be negative, even with <a href="SINGLE.html">SINGLE</a> or <a href="DOUBLE.html">DOUBLE</a> values.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                                 **16 BIT INTEGER OR REGISTER**
+              **AH (High Byte Bits)                         AL (Low Byte Bits)**
+   BIT:    15    14   13   12   11   10   9   8  |   7   6    5   4    3    2   1    0
+          ---------------------------------------|--------------------------------------
+   HEX:   8000  4000 2000 1000  800 400  200 100 |  80   40  20   10   8    4   2    1
+                                                 |
+   DEC: -32768 16384 8192 4096 2048 1024 512 256 | 128   64  32   16   8    4   2    1
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>The HI byte’s <strong>MSB</strong> is often called the <strong>sign</strong> bit! When the highest bit is on, the signed value returned will be negative.</p>
+</blockquote>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Program displays the bits on for any integer value between -32768 and 32767 or &amp;H80000 and &amp;H7FFF.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFINT</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span>
+ <span class="n">PRINT</span> <span class="s">"      AH (High Register Byte Bits)           AL (Low Register Byte Bits)"</span>
+<span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span>
+ <span class="n">PRINT</span> <span class="s">"    15   14  13   12   11  10    9   8    7   6    5   4    3    2   1    0"</span>
+<span class="n">COLOR</span> <span class="mi">13</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">2</span>
+ <span class="n">PRINT</span> <span class="s">" &amp;H8000 4000 2000 1000 800 400  200 100  80   40  20   10   8    4   2  &amp;H1"</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span>
+ <span class="n">PRINT</span> <span class="s">"-32768 16384 8192 4096 2048 1024 512 256 128  64  32   16   8    4   2    1"</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">16</span>
+  <span class="n">CIRCLE</span> <span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="p">(</span><span class="mi">37</span> <span class="o">*</span> <span class="n">i</span><span class="p">),</span> <span class="mi">189</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span> <span class="c1">'place bit circles</span>
+<span class="n">NEXT</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">324</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">326</span><span class="p">,</span> <span class="mi">207</span><span class="p">),</span> <span class="mi">11</span><span class="p">,</span> <span class="n">BF</span> <span class="c1">'line splits bytes</span>
+<span class="n">DO</span>
+  <span class="n">IF</span> <span class="n">Num</span> <span class="n">THEN</span>
+    <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">15</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+      <span class="n">IF</span> <span class="p">(</span><span class="n">Num</span> <span class="n">AND</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">i</span><span class="p">)</span> <span class="n">THEN</span>
+        <span class="n">PAINT</span> <span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="p">(</span><span class="mi">37</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="mi">189</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span>
+        <span class="n">Bin</span><span class="err">$</span> <span class="o">=</span> <span class="n">Bin</span><span class="err">$</span> <span class="o">+</span> <span class="s">"1"</span>
+      <span class="n">ELSE</span>
+        <span class="n">PAINT</span> <span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="p">(</span><span class="mi">37</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="mi">189</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span>
+        <span class="n">Bin</span><span class="err">$</span> <span class="o">=</span> <span class="n">Bin</span><span class="err">$</span> <span class="o">+</span> <span class="s">"0"</span>
+      <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">NEXT</span>
+    <span class="n">COLOR</span> <span class="mi">10</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Binary ="</span><span class="err">;</span> <span class="n">VAL</span><span class="p">(</span><span class="n">Bin</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">COLOR</span> <span class="mi">9</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Decimal ="</span><span class="err">;</span> <span class="n">Num</span><span class="err">;</span><span class="p">:</span> <span class="n">COLOR</span> <span class="mi">13</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"       Hex = "</span><span class="err">;</span> <span class="n">Hexa</span><span class="err">$</span>
+    <span class="n">Hexa</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span><span class="p">:</span> <span class="n">Bin</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span>
+   <span class="n">END</span> <span class="n">IF</span>
+   <span class="n">COLOR</span> <span class="mi">14</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="n">INPUT</span> <span class="s">"Enter a decimal or HEX(&amp;H) value (0 Quits): "</span><span class="p">,</span> <span class="n">frst$</span>
+   <span class="n">first</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">frst$</span><span class="p">)</span>  
+   <span class="n">IF</span> <span class="n">first</span> <span class="n">THEN</span>
+     <span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+     <span class="n">COLOR</span> <span class="mi">13</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="n">INPUT</span> <span class="s">"Enter a second value: "</span><span class="p">,</span> <span class="n">secnd$</span>
+     <span class="n">second</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">secnd$</span><span class="p">)</span>
+     <span class="n">LOCATE</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">SPACE</span><span class="err">$</span><span class="p">(</span><span class="mi">69</span><span class="p">)</span>
+   <span class="n">END</span> <span class="n">IF</span>
+  <span class="n">Num</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
+  <span class="n">Hexa</span><span class="err">$</span> <span class="o">=</span> <span class="s">"&amp;H"</span> <span class="o">+</span> <span class="n">HEX</span><span class="err">$</span><span class="p">(</span><span class="n">Num</span><span class="p">)</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">first</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">Num</span> <span class="o">&gt;</span> <span class="mi">32767</span> <span class="n">OR</span> <span class="n">Num</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">32767</span>
+<span class="n">COLOR</span> <span class="mi">11</span><span class="p">:</span> <span class="n">LOCATE</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">30</span><span class="p">:</span> <span class="n">PRINT</span> <span class="s">"Press any key to exit!"</span><span class="err">;</span>
+<span class="n">SLEEP</span>
+<span class="n">SYSTEM</span> 
+
+</code></pre></div></div>
+
+<h2 id="offset">OFFSET</h2>
+
+<ul>
+  <li><a href="_OFFSET-(function).html">_OFFSET (function)</a> returns the memory offset position as a flexible sized value for a designated variable. See <a href="Using--OFFSET.html">Using _OFFSET</a>.</li>
+</ul>
+
+<p><strong>Warning: <a href="_OFFSET.html">_OFFSET</a> values cannot be reassigned to other variable <a href="TYPE.html">TYPE</a>.</strong></p>
+
+<p><strong><a href="_OFFSET.html">_OFFSET</a> values can only be used in conjunction with <a href="_MEM.html">_MEM</a>ory and <a href="DECLARE-DYNAMIC-LIBRARY.html">DECLARE DYNAMIC LIBRARY</a> procedures.</strong></p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_OFFSET.html">_OFFSET</a>, <a href="_MEM.html">_MEM</a></li>
+  <li><a href="DIM.html">DIM</a>, <a href="_DEFINE.html">_DEFINE</a></li>
+  <li><a href="TYPE.html">TYPE</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Mathematical-Operations by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:40 GMT -->
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/WRITE-(file-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="WRITE-(file-statement)-2.html" />
+<meta property="og:url" content="WRITE-(file-statement)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/WRITE-(file-statement).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="WRITE-(file-statement).html">WRITE (file statement)</a> file statement writes a list of comma separated variable values to a sequential file or port.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>WRITE #filenumber&amp;[, expressionList]</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>filenumber&amp; is the number of the file or device OPENed in the OUTPUT or APPEND modes. See: FREEFILE.</li>
+  <li>expressionList is a comma-separated list of values to be written to the file or device.</li>
+  <li>WRITE can place any number and types of variable values needed in a file record separated by commas.</li>
+  <li>String values will have quotation marks although quotes are not required to read strings in CSV files with <a href="INPUT-(file-statement).html">INPUT (file statement)</a> #.</li>
+  <li>Data files using WRITE normally will have the same number of values listed on each file line.</li>
+  <li>Data containing commas must be in quotation marks. Number commas are illegal!</li>
+  <li>WRITE created files are normally read with INPUT #.</li>
+  <li>CSV files created can be read by Excel using a .CSV file name extension. Strings may or may not include quotation marks.</li>
+  <li><a href="Semicolon.html">Semicolon</a>s cannot be used in or following the WRITE statement!</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Writes new data to a text file sequentially and reads it back to the program screen.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">filename$</span> <span class="o">=</span> <span class="s">"testfile.dat"</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">:</span> <span class="n">z$</span> <span class="o">=</span> <span class="s">"Three"</span> 
+
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">'opens and clears an existing file or creates new empty file </span>
+
+<span class="n">WRITE</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z$</span> 
+
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+
+<span class="n">PRINT</span> <span class="s">"File created with data. Press a key!"</span> 
+
+<span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'press a key </span>
+
+<span class="n">OPEN</span> <span class="n">filename$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">2</span> <span class="c1">'opens a file to read it </span>
+
+<span class="n">INPUT</span> <span class="p">#</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c$</span> 
+
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">2</span> 
+
+<span class="n">PRINT</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c$</span>
+<span class="n">WRITE</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c$</span> 
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>File content:</em> <a href="WRITE.html">WRITE</a> string values will include quotation marks, but they are not required to read the file.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+1,2,"Three"
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Screen output:</em> <a href="PRINT.html">PRINT</a> string values will not display enclosing quotes. <a href="WRITE.html">WRITE</a> screen displays will.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 1           2          Three
+1,2,"Three"
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="PRINT-(file-statement).html">PRINT (file statement)</a></li>
+  <li><a href="INPUT-(file-statement).html">INPUT (file statement)</a></li>
+  <li><a href="LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a></li>
+  <li><a href="SQL-Client.html">SQL Client</a> (library)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/WRITE-(file-statement).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:47 GMT -->
+</html>

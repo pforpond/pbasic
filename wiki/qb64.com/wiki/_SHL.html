@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_SHL by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_SHL-2.html" />
+<meta property="og:url" content="_SHL-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_SHL.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_SHL.html">_SHL</a> function is used to shift the bits of a numerical value to the left.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result = <a href="_SHL.html">_SHL</a>(numericalVariable, numericalValue)</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>numericalVariable is the variable to shift the bits of and can be of the following types: <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a>,<a href="_INTEGER64.html">_INTEGER64</a>, or <a href="_BYTE.html">_BYTE</a>.</li>
+  <li>Integer values can be signed or <a href="_UNSIGNED.html">_UNSIGNED</a>.</li>
+  <li>numericalValue is the number of places to shift the bits.</li>
+  <li>While 0 is a valid value it will have no affect on the variable being shifted.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Allows for multiplication of a value by 2 faster than normal multiplication (see example 2 below).</li>
+  <li>Bits that reach the end of a variable’s bit count are dropped (when using a variable of the same type - otherwise they will carry over).</li>
+  <li>The type of variable used to store the results should match the type of the variable being shifted.</li>
+</ul>
+
+<h2 id="availability">Availability</h2>
+
+<ul>
+  <li>Version 1.3 and up.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">A</span><span class="err">~%%</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">'set right most bit of an_UNSIGNED _BYTE</span>
+<span class="n">PRINT</span> <span class="n">A</span><span class="err">~%%</span>
+<span class="n">PRINT</span> <span class="n">_SHL</span><span class="p">(</span><span class="n">A</span><span class="err">~%%</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">B</span><span class="err">~%%</span> <span class="o">=</span> <span class="n">_SHL</span><span class="p">(</span><span class="n">A</span><span class="err">~%%</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="c1">'shift the bit off the left 'edge'</span>
+<span class="n">PRINT</span> <span class="n">B</span><span class="err">~%%</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 1
+ 128
+ 0
+
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">A</span><span class="err">~%%</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">FOR</span> <span class="n">I</span><span class="err">%%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">8</span>
+    <span class="n">PRINT</span> <span class="n">_SHL</span><span class="p">(</span><span class="n">A</span><span class="err">~%%</span><span class="p">,</span> <span class="n">I</span><span class="err">%%</span><span class="p">)</span>
+<span class="n">NEXT</span> <span class="n">I</span><span class="err">%%</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+   1
+   2
+   4
+   8
+  16
+  32
+  64
+ 128
+ 256
+
+</code></pre></div></div>
+
+<ul>
+  <li>Note: When directly <a href="PRINT.html">PRINT</a>ing to screen, the result is calculated internally using a larger variable type so the left most bit is carried to the next value.
+    <ul>
+      <li>To avoid this store the result in a variable of the same type before printing.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_SHR.html">_SHR</a>, <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a></li>
+  <li><a href="_BYTE.html">_BYTE</a>, <a href="_INTEGER64.html">_INTEGER64</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_SHL by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:21:37 GMT -->
+</html>

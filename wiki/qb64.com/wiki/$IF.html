@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/$IF by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="%24IF-2.html" />
+<meta property="og:url" content="%24IF-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/$IF.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>$IF</strong> is precompiler <a href="Metacommand.html">Metacommand</a>, which determines which sections of code inside its blocks are included into the final code for compliing.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p><a href="%24IF.html">$IF</a> variable = expression THEN
+.
+<a href="%24ELSEIF.html">$ELSEIF</a> variable = expression THEN
+.
+<a href="%24ELSE.html">$ELSE</a>
+.
+<a href="%24END-IF.html">$END IF</a></p>
+</blockquote>
+
+<ul>
+  <li>$IF is the start of a precompiler code block which includes or excludes sections of code from being compiled.</li>
+  <li>There is no single line $IF statement.  $IF must be in a valid $IF THEN…$END IF block to work properly.</li>
+  <li>Like all other metacommands, you can not use more than one metacommand per line. <strong>Use of : to separate statements in a single line is not allowed.</strong></li>
+  <li>Variable names can contain numbers, letters and periods, in any order.</li>
+  <li>Expressions can contain one set of leading and/or trailing quotes; and any number of numbers, letters and periods, in any order.</li>
+  <li>The precompiler comes with some preset values which can be used to help determine which code blocks to include/exclude.  These are:
+    <ul>
+      <li><strong>WIN</strong> or <strong>WINDOWS</strong> if the user is running QB64 in a Windows environment.</li>
+      <li><strong>LINUX</strong> if the user is running QB64 in a Linux environment.</li>
+      <li><strong>MAC</strong> or <strong>MACOSX</strong> if the user is running QB64 in a macOS environment.</li>
+      <li><strong>32BIT</strong> if the user is running a 32-bit version of QB64.</li>
+      <li><strong>64BIT</strong> if the user is running a 64-bit version of QB64.</li>
+      <li><strong>VERSION</strong>, which is set to the version of the QB64 compiler. This is a number and can be ordered, see example below.</li>
+    </ul>
+  </li>
+  <li>Special values <strong>DEFINED</strong> and <strong>UNDEFINED</strong> can be used to check whether a precompiler variable has already been assigned a value. Useful for code in libraries which may be repeated.</li>
+  <li><a href="%24END-IF.html">$END IF</a> denotes the end of a valid precompiler $IF block.</li>
+  <li><a href="%24ELSEIF.html">$ELSEIF</a> must follow a valid $IF or $ELSEIF statement.</li>
+  <li>If <a href="%24ELSE.html">$ELSE</a> is used, it must be used as the last conditional check before $END IF.  $ELSEIF cannot come after $ELSE.
+    <ul>
+      <li>There can only be one $ELSE in an <strong>$IF-$ELSEIF-$ELSE-$END IF</strong> block, and it must be the last block selection before the $END IF.  $ELSEIF cannot follow $ELSE.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="err">$</span><span class="n">LET</span> <span class="n">ScreenMode</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="err">$</span><span class="n">IF</span> <span class="n">ScreenMode</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span>
+    <span class="n">CONST</span> <span class="n">Red</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="err">$</span><span class="n">ELSEIF</span> <span class="n">ScreenMode</span> <span class="o">=</span> <span class="mi">32</span> <span class="n">THEN</span>
+    <span class="n">CONST</span> <span class="n">Red</span> <span class="o">=</span> <span class="n">_RGB32</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="err">$</span><span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">COLOR</span> <span class="n">Red</span>
+<span class="n">PRINT</span> <span class="s">"Hello World"</span>
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> The same CONST is defined twice inside the program.  Normally, defining a CONST more than once generates an error, but the $IF condition here is choosing which CONST will be inside the final program.</p>
+
+<p>As long as Screenmode is 0, the program will exclude the code where CONST Red is defined as color 4.  If Screenmode is 32, CONST Red will be defined as _RGB32(255, 0, 0).</p>
+
+<p>The <a href="%24LET.html">$LET</a> and $IF statements let the programmer control the code that actually gets compiled, while excluding the other blocks completely.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="err">$</span><span class="n">IF</span> <span class="n">WIN</span> <span class="n">THEN</span>
+    <span class="n">CONST</span> <span class="n">Slash</span> <span class="o">=</span> <span class="s">"\"</span>
+<span class="err">$</span><span class="n">ELSE</span>
+    <span class="n">CONST</span> <span class="n">Slash</span> <span class="o">=</span> <span class="s">"/"</span>
+<span class="err">$</span><span class="n">END</span> <span class="n">IF</span>
+
+<span class="n">PRINT</span> <span class="s">"The proper slash for your operating system is "</span><span class="err">;</span> <span class="n">Slash</span>
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> For the above, the CONST slash is defined by the automatic internal flags which returns what operating system is being used at compile time. On a Windows PC, the Slash will be the backslash; for any other OS it will be the forward slash.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="err">$</span><span class="n">IF</span> <span class="n">VERSION</span> <span class="o">&lt;</span> <span class="mf">1.5</span> <span class="n">THEN</span>
+    <span class="err">$</span><span class="n">ERROR</span> <span class="n">Requires</span> <span class="n">QB64</span> <span class="n">version</span> <span class="mf">1.5</span> <span class="n">or</span> <span class="n">greater</span>
+<span class="err">$</span><span class="n">END</span> <span class="n">IF</span>
+
+</code></pre></div></div>
+
+<p><em>Explanation:</em> VERSION is a predefined variable that holds the QB64 compiler version. If we know our program needs features only available above a certain version, we can check for that and give the user a helpful error message instead of a confusing error elsewhere in the program.</p>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="%24LET.html">$LET</a></li>
+  <li><a href="%24ERROR.html">$ERROR</a></li>
+  <li><a href="Metacommand.html">Metacommand</a>s</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/$IF by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:19:49 GMT -->
+</html>

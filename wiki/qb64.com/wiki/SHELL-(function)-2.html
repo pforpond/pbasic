@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/SHELL-(function).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="SHELL-(function)-2.html" />
+<meta property="og:url" content="SHELL-(function)-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/SHELL-(function).html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>SHELL</strong> function displays the console and returns the <a href="INTEGER.html">INTEGER</a> code value sent when the external program exits.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>return_code = <strong>SHELL(<em>DOScommand$</em>)</strong></p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The literal or variable <a href="STRING.html">STRING</a> <em>command</em> parameter can be any valid external command or call to another program.</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<ul>
+  <li>A SHELL to a QB64 EXE program with an exit return code parameter after <a href="END.html">END</a> or <a href="SYSTEM.html">SYSTEM</a> will return that code value.</li>
+  <li>The return_code is usually 0 when the external program ends with no errors.</li>
+  <li>The console window may appear when using the SHELL function. The <a href="_SHELLHIDE.html">_SHELLHIDE</a> function will hide the console from view.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Shelling to another QB64 program will return the exit code when one is set in the  program that is run.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+'DesktopSize.BAS ** Compile in Windows with QB64 first
+
+CONST SM_CXSCREEN = 0
+CONST SM_CYSCREEN = 1
+
+DECLARE LIBRARY
+    FUNCTION GetSystemMetrics&amp; (BYVAL n AS LONG)
+END DECLARE
+
+PRINT trimstr$(GetSystemMetrics(SM_CXSCREEN)); "X"; trimstr$(GetSystemMetrics(SM_CYSCREEN))
+
+s&amp; = _SCREENIMAGE
+PRINT _WIDTH(s&amp;); "X"; _HEIGHT(s&amp;)
+
+END 3 '&lt;&lt;&lt;&lt;&lt;&lt; add a code to return after END or SYSTEM in any program
+
+FUNCTION trimstr$ (whatever)
+  trimstr = LTRIM$(RTRIM$(STR$(whatever)))
+END FUNCTION 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> To set a program exit code use an <a href="INTEGER.html">INTEGER</a> parameter value after <a href="END.html">END</a> or <a href="SYSTEM.html">SYSTEM</a> in the called program.</p>
+</blockquote>
+
+<blockquote>
+  <p>After compiling <em>DesktopSize.EXE</em> run the following code in the QB64 IDE. After 1st program is done 3 will appear on screen:</p>
+</blockquote>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">returncode%</span> <span class="o">=</span> <span class="n">SHELL</span><span class="p">(</span><span class="s">"DesktopSize"</span><span class="p">)</span> <span class="c1">'replace call with name of any QB64 program EXE</span>
+
+<span class="n">PRINT</span> <span class="n">returncode%</span> <span class="c1">'prints code sent by called program after it is closed</span>
+
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+3 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_SHELLHIDE.html">_SHELLHIDE</a> (function)</li>
+  <li><a href="SHELL.html">SHELL</a>, <a href="_HIDE.html">_HIDE</a></li>
+  <li><a href="_CONSOLE.html">_CONSOLE</a>, <a href="%24CONSOLE.html">$CONSOLE</a></li>
+  <li><a href="SYSTEM.html">SYSTEM</a>, <a href="END.html">END</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/SHELL-(function).html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+</html>

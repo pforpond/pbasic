@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/ERROR-Codes by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="ERROR-Codes-2.html" />
+<meta property="og:url" content="ERROR-Codes-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/ERROR-Codes.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>This page lists all the error codes defined in QB64 that can occur in a program when running. Unless overridden with an <a href="ON-ERROR.html">ON ERROR</a> handler, these result in a dialog box appearing. Due to legacy holdovers from previous BASIC dialects, not all of these errors may actually occur in a program (unless manually triggered with <a href="ERROR.html">ERROR</a>).</p>
+
+<p>If you encounter an error while editing in the QB64 IDE or when compiling (especially a “C++ Compilation Failed” message), or believe your program is correct, please report the error at https://github.com/QB64Official/qb64/issues.</p>
+
+<p>It’s a good idea to exclude qb64.exe from any real-time anti-virus scanning to prevent generic strange errors when editing or compiling.</p>
+
+<h2 id="recoverable-errors">Recoverable errors</h2>
+
+<p>These errors can be triggered in QB64, and may be caught by an <a href="ON-ERROR.html">ON ERROR</a> handler. The default error handler gives the user option to continue program execution.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Possible Cause</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>No Error</td>
+      <td>No error has occurred</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Syntax error</td>
+      <td><a href="READ.html">READ</a> attempted to read a number but could not parse the next <a href="DATA.html">DATA</a> item.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>RETURN without GOSUB</td>
+      <td>The <a href="RETURN.html">RETURN</a> statement was encountered without first executing a corresponding <a href="GOSUB.html">GOSUB</a>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Out of DATA</td>
+      <td>The <a href="READ.html">READ</a> statement has read past the end of a <a href="DATA.html">DATA</a> block. Use <a href="RESTORE.html">RESTORE</a> to change the current data item if necessary.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Illegal function call</td>
+      <td>A function was called with invalid parameters, in the wrong graphics mode or otherwise in an illegal fashion. <a href="Illegal-Function.html">Illegal-Function</a> gives some suggestions.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Overflow</td>
+      <td>A numeric operation has resulted in a value beyond a variable’s allowed range. See <a href="Variable-Types.html">Variable Types</a>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Out of memory</td>
+      <td>Generic out of memory condition.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Subscript out of range</td>
+      <td>An <a href="Arrays.html">Arrays</a> <a href="UBOUND.html">UBOUND</a> or <a href="LBOUND.html">LBOUND</a> <a href="DIM.html">DIM</a> boundary has been exceeded.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Duplicate definition</td>
+      <td>An array created with <a href="DIM.html">DIM</a> was redefined with <a href="DIM.html">DIM</a> or <a href="REDIM.html">REDIM</a>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Type mismatch</td>
+      <td>A <a href="PRINT-USING.html">PRINT USING</a> format string did not match the type of the supplied variables.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>RESUME without error</td>
+      <td>The <a href="RESUME.html">RESUME</a> statement was encountered outside of an <a href="ON-ERROR.html">ON ERROR</a> error handler.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>FIELD overflow</td>
+      <td>The <a href="FIELD.html">FIELD</a> statement tried to allocate more bytes than were specified for the record length of a random access file.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>Internal error</td>
+      <td>Generic error</td>
+      <td>This error should be reported to the QB64 organization through Issues on GitHub.</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Bad file name or number</td>
+      <td>A file handle was used that does not correspond to a valid opened file.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>File not found</td>
+      <td>Attempt to open a file that does not (yet) exist. See File Error below.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Bad file mode</td>
+      <td>A file operation was not compatible with the mode used in the <a href="OPEN.html">OPEN</a> statement.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>File already open</td>
+      <td>An <a href="OPEN.html">OPEN</a> statement attempted to use a file handle that is already in use. Consider using <a href="FREEFILE.html">FREEFILE</a>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Bad record length</td>
+      <td>The record length used for a <a href="RANDOM.html">RANDOM</a> file was insufficient (too small) to perform the operation.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>Input past end of file</td>
+      <td>A file was read past its end. Ensure <a href="EOF.html">EOF</a> is being correctly checked.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Bad record number</td>
+      <td>The record (for <a href="RANDOM.html">RANDOM</a>) or offset (for <a href="BINARY.html">BINARY</a>) is outside the allowed range.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>Bad file name</td>
+      <td>You either can’t create of this name, or containing certain haracters. This varies from operating system to operating system. See File Error below.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>Device unavailable</td>
+      <td>A serial port (COM device) failed to behave as expected.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Permission denied</td>
+      <td>You do not have sufficient permission to read a particular file or to create a file under another username or a directory you do bot have write access. See File Error below.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Feature Unavailable</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>Path/File access error</td>
+      <td>Path to file is invalid. See File Error below.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>Path not found</td>
+      <td>Path name specified does not exist, See File Error below</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>258</td>
+      <td>Invalid handle</td>
+      <td>A handle used for an image, sound, font etc. was invalid. Be sure to check the return values of functions like <a href="_LOADFONT.html">_LOADFONT</a> and <a href="_LOADIMAGE.html">_LOADIMAGE</a>.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Error handling of file operations varies between operating systems and is highly dependent on the exact circumstances. The errors marked “file error” above should all be equally treated as a generic failure to read or write from disk.</p>
+
+<h2 id="critical-errors">Critical errors</h2>
+
+<p>These errors can be triggered in QB64 but will not be caught by an <a href="ON-ERROR.html">ON ERROR</a> handler. They are always fatal, causing the program to exit.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Notes</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>11</td>
+      <td>Division by zero</td>
+      <td>Only relevant for integer division, and may not be caught on all operating systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>Out of stack space</td>
+      <td>Too many nested <a href="GOSUB.html">GOSUB</a> calls.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>257</td>
+      <td>Out of memory</td>
+      <td>Generic out of memory condition.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>259</td>
+      <td>Cannot find dynamic library file</td>
+      <td>A .dll, .so or .dylib file referred to by <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> was not found.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>260, 261</td>
+      <td>Sub/Function does not exist in dynamic library</td>
+      <td>A function declared with <a href="DECLARE-LIBRARY.html">DECLARE LIBRARY</a> does not exist.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>270</td>
+      <td>_GL command called outside of SUB _GL’s scope</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>271</td>
+      <td>END/SYSTEM called within SUB _GL’s scope</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>300</td>
+      <td>Memory region out of range</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>301</td>
+      <td>Invalid size</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>302</td>
+      <td>Source memory region out of range</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>303</td>
+      <td>Destination memory region out of range</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>304</td>
+      <td>Source and destination memory regions out of range</td>
+      <td>Triggrered by _MEM commands</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>305</td>
+      <td>Source memory has been freed</td>
+      <td> </td>
+      <td>Triggrered by _MEM commands</td>
+    </tr>
+    <tr>
+      <td>306</td>
+      <td>Destination memory has been freed</td>
+      <td>Triggrered by _MEM commands</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>307</td>
+      <td>Memory already freed</td>
+      <td>Attempt to release memory previously released. Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>308</td>
+      <td>Memory has been freed</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>309</td>
+      <td>Memory not initialized</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>310</td>
+      <td>Source memory not initialized</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>311</td>
+      <td>Destination memory not initialized</td>
+      <td>Triggrered by _MEM commands.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>312</td>
+      <td>Source and destination memory not initialized</td>
+      <td>Triggrered by _MEM commands</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>313</td>
+      <td>Source and destination memory have been freed</td>
+      <td> </td>
+      <td>Triggrered by _MEM commands.</td>
+    </tr>
+    <tr>
+      <td>314</td>
+      <td>_ASSERT failed</td>
+      <td>See <a href="_ASSERT.html">_ASSERT</a>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>315</td>
+      <td>_ASSERT failed (check console for description)</td>
+      <td>See <a href="_ASSERT.html">_ASSERT</a>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>502 to 518</td>
+      <td>Out of memory</td>
+      <td>Generic out of memory condition.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="legacy-errors">Legacy errors</h2>
+
+<p>These errors will never be generated by a genuine error condition, and can only be triggered by explicit use of the <a href="ERROR.html">ERROR</a> command. They can all be caught by <a href="ON-ERROR.html">ON ERROR</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>NEXT without FOR</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Label not defined</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Illegal in direct mode</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Out of string space</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>String formula too complex</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Cannot continue</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Function not defined</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>No RESUME</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Device timeout</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Device fault</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>FOR without NEXT</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Out of paper</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>WHILE without WEND</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>WEND without WHILE</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Duplicate label</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Subprogram not defined</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Argument-count mismatch</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Array not defined</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Variable required</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>FIELD statement active</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Device I/O error</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>File already exists</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>Disk full</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>Too many files</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>Communication-buffer overflow</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>Disk not ready</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>Disk-media error</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Feature unavailable</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>Rename across disks</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="custom-errors">Custom errors</h2>
+
+<p>Any code not listed above may be used as a custom error code with <a href="ERROR.html">ERROR</a> to signal other errors in your application. To avoid confusion, it is a good idea to start at error code 100 and go up from there.</p>
+
+<h2 id="other-errors">Other Errors</h2>
+
+<p>*Syntax errors: QB64 will display most statement syntax and parameter errors in the Status area below the editing area in the IDE. It may also show missing brackets or other syntax punctuation required. Check the keyword’s syntax when necessary.
+*Memory errors: Loading many resources with a function like <a href="_LOADIMAGE.html">_LOADIMAGE</a> and not freeing (e.g. <a href="_FREEIMAGE.html">_FREEIMAGE</a>) can cause out of memory conditions, especially when executed in a loop.
+*CPU consumption: Loops will tend to use 100% of a processor by default. Consider using <a href="_LIMIT.html">_LIMIT</a> to restrict CPU usage.</p>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="ERL.html">ERL</a> (closest line number when line numbers are used)</li>
+  <li><a href="ERR.html">ERR</a> (error code number)</li>
+  <li><a href="ERROR.html">ERROR</a> (simulates error)</li>
+  <li><a href="_ERRORLINE.html">_ERRORLINE</a> (actual text code line)</li>
+  <li><a href="_ERRORMESSAGE%24.html">_ERRORMESSAGE$</a> (last error message or a specific message)</li>
+  <li><a href="_INCLERRORFILE%24.html">_INCLERRORFILE$</a></li>
+  <li><a href="_INCLERRORLINE.html">_INCLERRORLINE</a> (returns the line number in an <a href="INCLUDE.html">$INCLUDE</a> file that caused the most recent error, when an $INCLUDE file is being used)</li>
+  <li><a href="ON-ERROR.html">ON ERROR</a> (calls error handing routine using <a href="GOTO.html">GOTO</a> only)</li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/ERROR-Codes by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:14:37 GMT -->
+</html>

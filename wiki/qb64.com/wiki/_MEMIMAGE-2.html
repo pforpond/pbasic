@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_MEMIMAGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_MEMIMAGE-2.html" />
+<meta property="og:url" content="_MEMIMAGE-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_MEMIMAGE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_MEMIMAGE.html">_MEMIMAGE</a> function returns a <a href="_MEM.html">_MEM</a> value referring to an image’s memory using a designated image handle.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>imageBlock = <a href="_MEMIMAGE.html">_MEMIMAGE</a>[(imageHandle&amp;)]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li>The imageBlock <a href="_MEM.html">_MEM</a> type variable holds the read-only elements .OFFSET, .SIZE, .TYPE and .ELEMENTSIZE.</li>
+  <li>If the optional imageHandle&amp; isn’t passed, it is assumed to be the current <a href="_DEST.html">_DEST</a>ination program screen image.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Use the function to place images into memory access blocks for faster data access.</li>
+  <li>All values created by this function must be freed using <a href="_MEMFREE.html">_MEMFREE</a> with a valid <a href="_MEM.html">_MEM</a> <a href="Variable-Types.html">Variable Types</a> variable.</li>
+  <li>Image handle values and the memory used must still be freed using <a href="_FREEIMAGE.html">_FREEIMAGE</a> when no longer required.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Darkening an image using memory with <a href="%24CHECKING.html">$CHECKING</a>:OFF for greater speed. Use any 24 bit image file name on the second code line.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">768</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">i&amp;</span> <span class="o">=</span> <span class="n">_LOADIMAGE</span><span class="p">(</span><span class="s">"turtle.jpg"</span><span class="p">)</span> <span class="c1">'&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; use any 24 bit image file</span>
+
+<span class="n">FOR</span> <span class="n">n!</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mf">0.01</span> <span class="n">STEP</span> <span class="o">-</span><span class="mf">0.01</span>
+    <span class="n">i2&amp;</span> <span class="o">=</span> <span class="n">_COPYIMAGE</span><span class="p">(</span><span class="n">i&amp;</span><span class="p">)</span>
+    <span class="n">DarkenImage</span> <span class="n">i2&amp;</span><span class="p">,</span> <span class="n">n!</span>
+    <span class="n">_PUTIMAGE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">i2&amp;</span>
+    <span class="n">_FREEIMAGE</span> <span class="n">i2&amp;</span>
+    <span class="n">_DISPLAY</span>
+<span class="n">NEXT</span>
+
+<span class="n">SUB</span> <span class="n">DarkenImage</span> <span class="p">(</span><span class="n">Image</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">,</span> <span class="n">Value_From_0_To_1</span> <span class="n">AS</span> <span class="n">SINGLE</span><span class="p">)</span>
+<span class="n">IF</span> <span class="n">Value_From_0_To_1</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">OR</span> <span class="n">Value_From_0_To_1</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">_PIXELSIZE</span><span class="p">(</span><span class="n">Image</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">4</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">SUB</span>
+<span class="n">DIM</span> <span class="n">Buffer</span> <span class="n">AS</span> <span class="n">_MEM</span><span class="p">:</span> <span class="n">Buffer</span> <span class="o">=</span> <span class="n">_MEMIMAGE</span><span class="p">(</span><span class="n">Image</span><span class="p">)</span> <span class="c1">'Get a memory reference to our image</span>
+<span class="n">DIM</span> <span class="n">Frac_Value</span> <span class="n">AS</span> <span class="n">LONG</span><span class="p">:</span> <span class="n">Frac_Value</span> <span class="o">=</span> <span class="n">Value_From_0_To_1</span> <span class="o">*</span> <span class="mi">65536</span> <span class="c1">'Used to avoid slow floating point calculations</span>
+<span class="n">DIM</span> <span class="n">O</span> <span class="n">AS</span> <span class="n">_OFFSET</span><span class="p">,</span> <span class="n">O_Last</span> <span class="n">AS</span> <span class="n">_OFFSET</span>
+<span class="n">O</span> <span class="o">=</span> <span class="n">Buffer</span><span class="p">.</span><span class="n">OFFSET</span> <span class="c1">'We start at this offset</span>
+<span class="n">O_Last</span> <span class="o">=</span> <span class="n">Buffer</span><span class="p">.</span><span class="n">OFFSET</span> <span class="o">+</span> <span class="n">_WIDTH</span><span class="p">(</span><span class="n">Image</span><span class="p">)</span> <span class="o">*</span> <span class="n">_HEIGHT</span><span class="p">(</span><span class="n">Image</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span> <span class="c1">'We stop when we get to this offset</span>
+<span class="c1">'use on error free code ONLY!</span>
+<span class="err">$</span><span class="n">CHECKING</span><span class="p">:</span><span class="n">OFF</span> 
+<span class="n">DO</span>
+    <span class="n">_MEMPUT</span> <span class="n">Buffer</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">_MEMGET</span><span class="p">(</span><span class="n">Buffer</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Frac_Value</span> <span class="o">\</span> <span class="mi">65536</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+    <span class="n">_MEMPUT</span> <span class="n">Buffer</span><span class="p">,</span> <span class="n">O</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">_MEMGET</span><span class="p">(</span><span class="n">Buffer</span><span class="p">,</span> <span class="n">O</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Frac_Value</span> <span class="o">\</span> <span class="mi">65536</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+    <span class="n">_MEMPUT</span> <span class="n">Buffer</span><span class="p">,</span> <span class="n">O</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_MEMGET</span><span class="p">(</span><span class="n">Buffer</span><span class="p">,</span> <span class="n">O</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span><span class="p">)</span> <span class="o">*</span> <span class="n">Frac_Value</span> <span class="o">\</span> <span class="mi">65536</span> <span class="n">AS</span> <span class="n">_UNSIGNED</span> <span class="n">_BYTE</span>
+    <span class="n">O</span> <span class="o">=</span> <span class="n">O</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">O</span> <span class="o">=</span> <span class="n">O_Last</span>
+<span class="c1">'turn checking back on when done!</span>
+<span class="err">$</span><span class="n">CHECKING</span><span class="p">:</span><span class="n">ON</span> 
+<span class="n">_MEMFREE</span> <span class="n">Buffer</span>
+<span class="n">END</span> <span class="n">SUB</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The second value passed to DarkenImage is a value from 0.0 to 1.0 where 0.0 is full darkness and 1 is none.</p>
+</blockquote>
+
+<p>Reading information stored in an image with <a href="_MEMIMAGE.html">_MEMIMAGE</a> to print <a href="ASC.html">ASC</a> text characters to the screen.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">13</span>
+<span class="n">_FULLSCREEN</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"H"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"E"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"L"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"L"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"O"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">32</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"W"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"O"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"R"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"L"</span><span class="p">)</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ASC</span><span class="p">(</span><span class="s">"D"</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">m</span> <span class="n">AS</span> <span class="n">_MEM</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">_MEMIMAGE</span>
+<span class="n">x1$</span> <span class="o">=</span> <span class="n">_MEMGET</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">OFFSET</span><span class="p">,</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">'convert numbers to ASCII text characters</span>
+<span class="n">_MEMFREE</span> <span class="n">m</span> <span class="c1">'free memory when done</span>
+<span class="n">LOCATE</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">PRINT</span> <span class="n">LEN</span><span class="p">(</span><span class="n">x1$</span><span class="p">)</span> <span class="c1">'prints 11 as byte length</span>
+<span class="n">PRINT</span> <span class="n">x1$</span> <span class="c1">'prints HELLO WORLD</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Notes:</em> The colors in the upper left corner are the text data used. An image could hold a hidden text message this way.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_MEM.html">_MEM</a></li>
+  <li><a href="_MEMNEW.html">_MEMNEW</a></li>
+  <li><a href="_MEMGET.html">_MEMGET</a>, <a href="_MEMPUT.html">_MEMPUT</a></li>
+  <li><a href="_MEMFREE.html">_MEMFREE</a></li>
+  <li><a href="%24CHECKING.html">$CHECKING</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_MEMIMAGE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:39 GMT -->
+</html>

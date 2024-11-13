@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Relational-Operations by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:22:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Relational-Operations-2.html" />
+<meta property="og:url" content="Relational-Operations-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/Relational-Operations.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>QB64 supports several relational operations, which are binary operations that test numeric or string values and return an <a href="INTEGER.html">INTEGER</a> value representing a boolean <em>true</em> (-1) or <em>false</em> (0) result. These operations are primarily used in expressions where a condition is required, such as the <a href="IF...html">IF…THEN</a> statement.</p>
+
+<h2 id="list-of-relational-operations">List of relational operations</h2>
+
+<p>The following table describes the relational operations, where A is the left-hand side operand, and B is the right-hand side operand:</p>
+
+<p>MISSING: Relational Operations Table</p>
+
+<p>True statements return -1 in <a href="Boolean.html">Boolean</a> evaluations. False returns zero.</p>
+
+<h2 id="comparing-numerical-values-and-variables">Comparing numerical values and variables</h2>
+
+<p>For numeric operands, such as <a href="INTEGER.html">INTEGER</a> or <a href="DOUBLE.html">DOUBLE</a> values, the relational operations behave as one would expect. For example, the expression (-3.4 <a href="Less-Than.html">Less_Than</a> 1.2) evaluates to <em>true</em>, and the expression (50 <a href="Equal.html">Equal</a> 100) evaluates to <em>false</em>.</p>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>When a user enters a value greater than or equal to 5, the boolean statement returns -1. Zero is printed otherwise.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INPUT</span> <span class="s">"Enter a value from 1 to 10: "</span><span class="p">,</span> <span class="n">number</span>
+<span class="n">PRINT</span> <span class="n">number</span> <span class="o">&gt;=</span> <span class="mi">5</span> 
+
+</code></pre></div></div>
+
+<h2 id="comparing-string-values-and-variables">Comparing string values and variables</h2>
+
+<p>For string operands, the <a href="Equal.html">Equal</a> and <a href="Not-Equal.html">Not_Equal</a> operators test, respectively, if the operands are of the same or differing length, and that each of the corresponding characters match or don’t match. For example, the three expressions (“abc” <a href="Equal.html">Equal</a> “abc”), (“abc” <a href="Not-Equal.html">Not_Equal</a> “abd”) and (“abc” <a href="Not-Equal.html">Not-Equal</a> “abcdef”) all evaluate to <em>true</em>.</p>
+
+<p>When two strings are compared, the left string sets the number of characters to evaluate when not checking for equality. The <a href="Less-Than.html">Less_Than</a> and <a href="Greater-Than.html">Greater_Than</a> operators find the first set of non-matching characters and test if the <a href="ASCII.html">ASCII</a> code values of those characters are less than or greater than each other, respectively. <strong>Equal strings MUST be of the same length with identical <a href="UCASE%24.html">UCASE$</a> letters or <a href="ASCII.html">ASCII</a> characters!</strong></p>
+
+<p>If one string is identical to part of the other, <a href="Less-Than.html">Less_Than</a> returns <em>false</em> if the left-hand side string is shorter than the right-hand side string, while <a href="Greater-Than.html">Greater_Than</a> returns <em>true</em> if the left-hand side string is longer than the right-hand side string. For example, the expressions (“abc” <a href="Less-Than.html">Less_Than</a> “abd”) and (“abcdef” <a href="Greater-Than.html">Greater_Than</a> “abc”) both evaluate to <em>true</em>. Even <a href="SPACE%24.html">SPACE$</a> <a href="ASCII.html">ASCII</a> character values are evaluated!</p>
+
+<h2 id="examples-1">Example(s)</h2>
+
+<p>Shows that the left hand string sets the number of characters to evaluate when using &gt; or &lt; and are not equal when longer.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="s">"abc"</span> <span class="o">&lt;</span> <span class="s">"abcd"</span>
+<span class="n">PRINT</span> <span class="s">"abc"</span> <span class="o">=</span> <span class="s">"abc"</span>
+<span class="n">PRINT</span> <span class="s">"abc"</span> <span class="o">=</span> <span class="s">"abcd"</span>
+<span class="n">PRINT</span> <span class="s">"abcd"</span> <span class="o">&gt;</span> <span class="s">"abc"</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 0
+-1
+ 0
+-1
+
+</code></pre></div></div>
+
+<h2 id="comparing-user-defined-type-variables">Comparing user-defined type variables</h2>
+
+<p>Variables of a <a href="TYPE.html">TYPE</a> (UDT) cannot be used as operands to the relational operators, but numeric or string type fields can be used as described above. For example:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TYPE</span> <span class="n">T</span>
+  <span class="n">a</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+ 
+<span class="n">TYPE</span> <span class="n">U</span>
+  <span class="n">b</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">END</span> <span class="n">TYPE</span>
+ 
+<span class="n">DIM</span> <span class="n">x</span> <span class="n">AS</span> <span class="n">T</span> <span class="p">:</span> <span class="n">x</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">DIM</span> <span class="n">y</span> <span class="n">AS</span> <span class="n">U</span> <span class="p">:</span> <span class="n">y</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+ 
+<span class="n">PRINT</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>         <span class="c1">' &lt;- error: type mismatch</span>
+<span class="n">PRINT</span> <span class="n">x</span><span class="p">.</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">.</span><span class="n">b</span>     <span class="c1">' &lt;- outputs "-1"</span>
+
+</code></pre></div></div>
+
+<h2 id="boolean-values">Boolean values</h2>
+
+<p>The <a href="INTEGER.html">INTEGER</a> values for <em>true</em> and <em>false</em> are such that the bitwise Logical Operators, such as <a href="NOT.html">NOT</a>, <a href="AND.html">AND</a> and <a href="OR.html">OR</a> can be used to invert and combine test results. For example, the expression (<a href="NOT.html">NOT</a> (10 <a href="Greater-Than-Or-Equal.html">Greater-Than-Or-Equal</a> 20)) evaluates to <em>true</em>, while the expression ((2 <a href="Less-Than.html">Less-Than</a> 1) <a href="AND.html">AND</a> (“three” <a href="Equal.html">Equal</a> “four”)) evaluates to <em>false</em>.</p>
+
+<p>MISSING: Logical Truth Table</p>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="IF...html">IF…THEN</a></li>
+  <li><a href="DO...html">DO…LOOP</a>, <a href="WHILE...html">WHILE…WEND</a></li>
+  <li><a href="IS.html">IS</a>, <a href="NOT.html">NOT</a></li>
+  <li><a href="AND.html">AND</a>, <a href="OR.html">OR</a>, <a href="XOR.html">XOR</a>, <a href="EQV.html">EQV</a>, <a href="IMP.html">IMP</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Relational-Operations by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:22:29 GMT -->
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/RND.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="RND-2.html" />
+<meta property="og:url" content="RND-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/RND.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>RND</strong> function returns a random number with a value between 0 (inclusive) and 1 (exclusive).</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result! = <a href="RND.html">RND</a> [(<em>n</em>)]</p>
+</blockquote>
+
+<h2 id="parameters">Parameter(s)</h2>
+
+<ul>
+  <li><em>n</em> is a <a href="SINGLE.html">SINGLE</a> numeric value that defines the behavior of the RND function but is <strong>NOT normally required</strong>:
+    <ul>
+      <li>n parameter omitted: Returns next random number in the sequence.</li>
+      <li>n = 0: Return the last value returned.</li>
+      <li>n &lt; 0: Always returns the same value for any given n</li>
+      <li>n &gt; 0: the sequence of numbers generated will not change unless <a href="RANDOMIZE.html">RANDOMIZE</a> is initiated.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The random numbers generated range from 0 minimum to .9999999 maximum  <a href="SINGLE.html">SINGLE</a> values that never equal 1.</li>
+  <li>To get values in a range larger than 1, multiply RND with a number to get returns up to but not including that numerical value.</li>
+  <li>To get values starting at a certain number, add that number to the RND result as RND minimums can be 0.</li>
+  <li>If you need an integer range of numbers, like a dice roll, round it down to an <a href="INT.html">INT</a>. Add 1 to the maximum number with <a href="INT.html">INT</a>.</li>
+  <li>The random sequence is 2 ^ 24 or 16,777,216 entries long, which can allow repeated patterns in some procedures.</li>
+  <li>Formulas for the <a href="INT.html">INT</a> or <a href="CINT.html">CINT</a> of ANY number range from <em>min%</em>(lowest value) to <em>max%</em>(greatest value):
+    <ul>
+      <li>Using <a href="INT.html">INT</a>: randNum% = INT(RND * (max% - min% + 1)) + min%</li>
+      <li>Using <a href="CINT.html">CINT</a>: randNum% = CINT(RND * (max% - min%)) + min%</li>
+    </ul>
+  </li>
+  <li>Use <a href="RANDOMIZE.html">RANDOMIZE</a> <a href="TIMER.html">TIMER</a> for different random number results each time a program is run.</li>
+  <li><a href="RUN.html">RUN</a> should reset the <a href="RANDOMIZE.html">RANDOMIZE</a> sequence to the starting <a href="RND.html">RND</a> function value.(Not yet in QB64)</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Generating a random integer value between 1 and 6 (inclusive) using INT.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">dice%</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">'add one as INT value never reaches 6 </span>
+
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Using uniform random numbers to create random numbers with a gaussian distribution ([http://en.wikipedia.org/wiki/Marsaglia_polar_method</td>
+      <td>Marsaglia’s polar method]).</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">u!</span> <span class="o">=</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="n">v!</span> <span class="o">=</span> <span class="n">RND</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="n">s!</span> <span class="o">=</span> <span class="n">u!</span> <span class="o">*</span> <span class="n">u!</span> <span class="o">+</span> <span class="n">v!</span> <span class="o">*</span> <span class="n">v!</span>
+<span class="n">LOOP</span> <span class="n">WHILE</span> <span class="n">s!</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="n">OR</span> <span class="n">s!</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">s!</span> <span class="o">=</span> <span class="n">SQR</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">LOG</span><span class="p">(</span><span class="n">s!</span><span class="p">)</span> <span class="o">/</span> <span class="n">s!</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">u!</span> <span class="o">=</span> <span class="n">u!</span> <span class="o">*</span> <span class="n">s!</span>
+<span class="n">v!</span> <span class="o">=</span> <span class="n">v!</span> <span class="o">*</span> <span class="n">s!</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Values <em>u!</em> and <em>v!</em> are now two independent random numbers with gaussian distribution, centered at 0.</p>
+</blockquote>
+
+<p>Random flashes from an explosion</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="n">_NEWIMAGE</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">RANDOMIZE</span> <span class="n">TIMER</span>
+<span class="n">BC</span> <span class="o">=</span> <span class="mi">120</span> <span class="c1">' BALL COUNT</span>
+<span class="n">DIM</span> <span class="n">ballx</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">bally</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">velx</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">vely</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span><span class="p">)</span>
+<span class="n">DIM</span> <span class="n">bsize</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="p">(</span><span class="mi">400</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="mi">325</span>
+<span class="n">Y0</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">Tmax</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">DO</span>
+    <span class="n">FOR</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="p">(</span><span class="n">Tmax</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">50</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">+</span> <span class="mi">500</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="mi">500</span>
+        <span class="n">velx</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">X0</span><span class="p">)</span> <span class="o">/</span> <span class="n">T</span> <span class="c1">'                       calculate velocity based on flight time</span>
+        <span class="n">vely</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="p">.</span><span class="err">05</span> <span class="err">*</span> <span class="err">(</span><span class="n">T</span> <span class="o">^</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">Y0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="c1">' verticle velocity</span>
+    <span class="n">NEXT</span> <span class="n">p</span>
+
+    <span class="n">FOR</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span>
+        <span class="n">bsize</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">0</span> <span class="c1">'size</span>
+    <span class="n">NEXT</span> <span class="n">w</span>
+
+    <span class="n">FOR</span> <span class="n">J</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">Tmax</span>
+        <span class="n">_LIMIT</span> <span class="mi">60</span>
+        <span class="n">CLS</span>
+        <span class="c1">'FOR i = 0 TO 255 STEP .5</span>
+        <span class="c1">'CIRCLE (X0, Y0), i, _RGB(255 - i, 0, 0), 0, 3.147</span>
+        <span class="c1">' NEXT i</span>
+
+        <span class="n">R</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="p">(</span><span class="mi">25</span> <span class="o">-</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">20</span> <span class="c1">'random glimmer</span>
+        <span class="n">FOR</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span>
+            <span class="n">ballx</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">X0</span> <span class="o">+</span> <span class="n">velx</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">J</span>
+            <span class="n">bally</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">Y0</span> <span class="o">-</span> <span class="n">vely</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">J</span> <span class="o">+</span> <span class="p">.</span><span class="err">5</span> <span class="err">*</span> <span class="err">.1</span> <span class="err">*</span> <span class="n">J</span> <span class="o">^</span> <span class="mi">2</span>
+        <span class="n">NEXT</span> <span class="n">z</span>
+
+        <span class="n">FOR</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">BC</span>
+            <span class="n">RCOL</span> <span class="o">=</span> <span class="n">INT</span><span class="p">(</span><span class="n">RND</span> <span class="o">*</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">'color</span>
+            <span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="n">bsize</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">STEP</span> <span class="p">.</span><span class="err">4</span> <span class="c1">'draw balls</span>
+                <span class="n">CIRCLE</span> <span class="p">(</span><span class="n">ballx</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">bally</span><span class="p">(</span><span class="n">d</span><span class="p">)),</span> <span class="n">i</span><span class="p">,</span> <span class="n">_RGBA</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="n">RCOL</span> <span class="o">-</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">i</span><span class="p">),</span> <span class="n">RCOL</span> <span class="o">-</span> <span class="n">R</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+            <span class="n">NEXT</span> <span class="n">i</span>
+        <span class="n">NEXT</span> <span class="n">d</span>
+
+        <span class="n">_DISPLAY</span>
+
+    <span class="n">NEXT</span> <span class="n">J</span>
+
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="RANDOMIZE.html">RANDOMIZE</a>, <a href="TIMER.html">TIMER</a></li>
+  <li><a href="INT.html">INT</a>, <a href="CINT.html">CINT</a>, <a href="FIX.html">FIX</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/RND.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:37 GMT -->
+</html>

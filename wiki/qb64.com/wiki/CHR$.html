@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/CHR$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="CHR%24-2.html" />
+<meta property="og:url" content="CHR%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/CHR$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="CHR%24.html">CHR$</a> function returns the character associated with a certain <a href="ASCII.html">ASCII</a> as a <a href="STRING.html">STRING</a>.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>result$ = <a href="CHR%24.html">CHR$</a>(code%)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>Valid ASCII code% numbers range from 0 to 255.</li>
+  <li>The character code of a character can be found using <a href="ASC.html">ASC</a>.</li>
+  <li>Some control codes below 32 will not <a href="PRINT.html">PRINT</a> or will move the screen cursor, unless <a href="_CONTROLCHR.html">_CONTROLCHR</a> is used.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Outputs the characters of several character codes:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span><span class="err">;</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">65</span> <span class="o">+</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">66</span><span class="p">)</span><span class="err">;</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">66</span> <span class="o">+</span> <span class="mi">32</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Aa
+Bb
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Explanation: 65 is the ASCII code for “A” and 65 + 32 is the ASCII code for “a”. 66 is the ASCII code for “B” and 66 + 32 is the ASCII code for “b”</p>
+</blockquote>
+
+<p>To cut down on typing CHR$(???) all day, define often used characters as variables such as Q$ = CHR$(34) as shown.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Q</span> <span class="n">AS</span> <span class="n">STRING</span> <span class="o">*</span> <span class="mi">1</span>   <span class="c1">'define as one byte string(get rid of $ type suffix too)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>          <span class="c1">'Q will now represent the elusive quotation mark in a string</span>
+
+<span class="n">PRINT</span> <span class="s">"This text uses "</span><span class="err">;</span> <span class="n">Q</span><span class="err">;</span> <span class="s">"quotation marks"</span><span class="err">;</span> <span class="n">Q</span><span class="err">;</span> <span class="s">" that could have caused a syntax error!"</span>
+
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+This text uses "quotation marks" that could have caused a syntax error!
+
+</code></pre></div></div>
+
+<p>Using <a href="ASC.html">ASC</a> and <a href="CHR%24.html">CHR$</a> to <em>encrypt</em> a text file size up to 32K bytes</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">OPEN</span> <span class="n">FileName</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">' FileName to be encrypted</span>
+<span class="n">IF</span> <span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">32000</span> <span class="n">THEN</span> <span class="n">Text</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">' get Text as one string</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">Send</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span> <span class="c1">' clear value</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Text</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">Letter</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">Text</span><span class="err">$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">' get each character in the text</span>
+    <span class="n">Code</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">Letter</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">Code</span> <span class="o">&gt;</span> <span class="mi">64</span> <span class="n">AND</span> <span class="n">Code</span> <span class="o">&lt;</span> <span class="mi">91</span><span class="p">)</span> <span class="n">OR</span> <span class="p">(</span><span class="n">Code</span> <span class="o">&gt;</span> <span class="mi">96</span> <span class="n">AND</span> <span class="n">Code</span> <span class="o">&lt;</span> <span class="mi">123</span><span class="p">)</span> <span class="n">THEN</span>
+        <span class="n">Letter</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">Code</span> <span class="o">+</span> <span class="mi">130</span><span class="p">)</span> <span class="c1">' change letter's ASCII character by 130</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">Send</span><span class="err">$</span> <span class="o">=</span> <span class="n">Send</span><span class="err">$</span> <span class="o">+</span> <span class="n">Letter</span><span class="err">$</span> <span class="c1">' reassemble string with just letters encrypted</span>
+<span class="n">NEXT</span> <span class="n">i</span>
+<span class="n">OPEN</span> <span class="n">FileName</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">' erase FileName to be encrypted</span>
+<span class="n">PRINT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">Send</span><span class="err">$</span>   <span class="c1">' Text as one string</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Warning: The routine above will change an original text file to be unreadable. Use a second file name to preserve the original file.</em></p>
+</blockquote>
+
+<p>*Example 4:’Decrypting** the above encrypted text file (32K byte file size limit).</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">OPEN</span> <span class="n">FileName</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">INPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span>       <span class="c1">' FileName to be decrypted</span>
+    <span class="n">Text</span><span class="err">$</span> <span class="o">=</span> <span class="n">INPUT</span><span class="err">$</span><span class="p">(</span><span class="n">LOF</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1">' open Text as one string</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span>
+<span class="n">Send</span><span class="err">$</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">LEN</span><span class="p">(</span><span class="n">Text</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">Letter</span><span class="err">$</span> <span class="o">=</span> <span class="n">MID</span><span class="err">$</span><span class="p">(</span><span class="n">Text</span><span class="err">$</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">Code</span> <span class="o">=</span> <span class="n">ASC</span><span class="p">(</span><span class="n">Letter</span><span class="err">$</span><span class="p">)</span>
+    <span class="n">IF</span> <span class="p">(</span><span class="n">Code</span> <span class="o">&gt;</span> <span class="mi">194</span> <span class="n">AND</span> <span class="n">Code</span> <span class="o">&lt;</span> <span class="mi">221</span><span class="p">)</span> <span class="n">OR</span> <span class="p">(</span><span class="n">Code</span> <span class="o">&gt;</span> <span class="mi">226</span> <span class="n">AND</span> <span class="n">Code</span> <span class="o">&lt;</span> <span class="mi">253</span><span class="p">)</span> <span class="n">THEN</span>
+        <span class="n">Letter</span><span class="err">$</span> <span class="o">=</span> <span class="n">CHR</span><span class="err">$</span><span class="p">(</span><span class="n">Code</span> <span class="o">-</span> <span class="mi">130</span><span class="p">)</span>  <span class="c1">' change back to a Letter character</span>
+    <span class="n">END</span> <span class="n">IF</span>
+    <span class="n">Send</span><span class="err">$</span> <span class="o">=</span> <span class="n">Send</span><span class="err">$</span> <span class="o">+</span> <span class="n">Letter</span><span class="err">$</span> <span class="c1">' reassemble string as normal letters</span>
+    <span class="n">NEXT</span> <span class="n">i</span>
+<span class="n">OPEN</span> <span class="n">FileName</span><span class="err">$</span> <span class="n">FOR</span> <span class="n">OUTPUT</span> <span class="n">AS</span> <span class="p">#</span><span class="mi">1</span> <span class="c1">' Erase file for decrypted text</span>
+    <span class="n">PRINT</span> <span class="p">#</span><span class="mi">1</span><span class="p">,</span> <span class="n">Send</span><span class="err">$</span> <span class="c1">' place Text as one string</span>
+<span class="n">CLOSE</span> <span class="p">#</span><span class="mi">1</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> Examples 3 and 4 encrypt and decrypt a file up to 32 thousand bytes. <a href="INPUT%24.html">INPUT$</a> can only get strings less than 32767 characters. The upper and lower case letter characters are the only ones altered, but the encryption and decryption rely on the fact that most text files do not use the code characters above 193. You could alter any character from ASCII 32 to 125 without problems using the 130 adder. No <a href="ASCII.html">ASCII</a> code above 255 is allowed. Don’t alter the codes below code 32 as they are control characters. Specifically, characters 13 and 10 (CrLf) may be used for line returns in text files.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="ASC.html">ASC</a>, <a href="ASC-(statement).html">ASC (statement)</a></li>
+  <li><a href="INKEY%24.html">INKEY$</a></li>
+  <li><a href="ASCII.html">ASCII</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/CHR$ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:12:56 GMT -->
+</html>

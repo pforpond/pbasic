@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/inform.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:11:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="inform.html" />
+<meta property="og:url" content="inform.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/inform.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="index.html">Home</a> • <a href="https://qb64.boards.net/">Forums</a> • <a href="news.html">News</a> • <a href="https://github.com/QB64Official/qb64">GitHub</a> • <a href="wiki-2.html">Wiki</a> • <a href="samples.html">Samples</a> • <a href="inform.html">InForm</a> • <a href="gx.html">GX</a> • <a href="qbjs.html">QBjs</a> • <a href="community.html">Community</a> • <a href="more.html">More…</a></p>
+
+<p><img src="images/inform.png" alt="InForm" /></p>
+
+<p>A GUI engine and WYSIWYG interface designer for QB64.</p>
+
+<p><img src="images/inform_designer_v1_3.png" alt="InForm Designer v1.3" /></p>
+
+<h2 id="the-ultimate-gui-toolkit-for-qb64">The ultimate GUI toolkit for QB64</h2>
+
+<p>InForm is a Rapid Application Development tool for QB64. It consists of a library of graphical routines and a WYSIWYG editor that allows you to design forms and export the resulting code to generate an event-driven QB64 program.</p>
+
+<h3 id="overview">Overview</h3>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9UAzHco-Fgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p><strong>Event-driven QB64 programs</strong></p>
+
+<p>Inform’s main goal is to generate event-driven QB64 applications. This means that you design a graphical user interface with interactive controls and then write the code to respond to such controls once they are manipulated.</p>
+
+<h4 id="workflow">Workflow</h4>
+
+<p>After your form looks the way you want it to, click File -&gt; Save to export its contents and generate a .bas source file. Two files are output:</p>
+
+<ul>
+  <li><strong>.frm</strong> the generated form in QB64 code. This can be loaded back into the form designer or edited in QB64 or any text editor later, if you want to adjust fine details.</li>
+  <li><strong>.bas</strong> the actual program you will add your code to.
+You add code to respond to events:
+    <ul>
+      <li><em>Click</em></li>
+      <li><em>MouseEnter/MouseLeave</em> (hover)</li>
+      <li><em>FocusIn/FocusOut</em></li>
+      <li><em>MouseDown/MouseUp</em> (events preceding a <em>Click</em>)</li>
+      <li><em>KeyPress</em></li>
+      <li><em>TextChanged</em> (for text box controls)</li>
+      <li><em>ValueChanged</em> (for track bars, lists and dropdown lists)</li>
+    </ul>
+  </li>
+  <li>There are also events that occur in specific moments, to which you can respond/add code:
+    <ul>
+      <li><em>BeforeInit</em>, triggered just before the form is shown.</li>
+      <li><em>OnLoad</em>, triggered right after the form is first shown.</li>
+      <li><em>BeforeUpdateDisplay</em>, triggered everytime the form is about to be repainted.</li>
+      <li><em>BeforeUnload</em>, triggered when the user tries to close the program, either via clicking the window’s X button, right click in the task bar -&gt; Close or with Alt+F4 (Windows only).</li>
+      <li><em>FormResized</em>, triggered when a form with the CanResize property is resized at runtime.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="editor">Editor</h3>
+
+<p><img src="images/inform_designer.png" alt="InForm Designer" /></p>
+
+<p>You create a new form with the Editor. You can add new controls, edit their properties, align controls and edit their z-ordering.</p>
+
+<p>The following controls are available (as of v1.0).</p>
+
+<p><img src="images/inform_controls.png" alt="InForm Controls" /></p>
+
+<ul>
+  <li>Button</li>
+  <li>Label</li>
+  <li>Textbox</li>
+  <li>Numeric Textbox</li>
+  <li>Checkbox</li>
+  <li>Radio button</li>
+  <li>List</li>
+  <li>Dropdown list</li>
+  <li>Track bar/Slider</li>
+  <li>Progress bar</li>
+  <li>Picture box</li>
+  <li>Frame</li>
+  <li>Toggle switch</li>
+  <li>Menus</li>
+</ul>
+
+<p>You can also add menus (both in the menu bar or as contextual menus) to your program (Insert - Add menu bar/context menu).</p>
+
+<h2 id="preview-component">Preview Component</h2>
+
+<p>Your form’s design is updated in real-time. The preview component is automatically launched with the Editor and gives you several tools to format your controls.</p>
+
+<p><img src="images/inform_designer_beta8.png" alt="InForm Designer v1.3" /></p>
+
+<p>Features:</p>
+
+<ul>
+  <li>Drag and resize multiple controls at once</li>
+  <li>Right-click contextual menu allows:
+    <ul>
+      <li>Add menus</li>
+      <li>Aligning selected controls​</li>
+      <li>Center individual controls or groups of selected controls</li>
+      <li>Clipboard operations</li>
+    </ul>
+  </li>
+  <li>Keyboard​-enabled: the most common keyboard shortcuts will respond as you expect them to.</li>
+</ul>
+
+<h3 id="download">Download</h3>
+
+<p>Please visit the <a href="https://github.com/FellippeHeitor/InForm/releases">Inform GitHub repo - releases</a>.</p>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>You can find the InForm wiki on <a href="https://github.com/FellippeHeitor/InForm/wiki">Fellippe Heitor’s GitHub repo</a>.</p>
+
+<h3 id="videos">Videos</h3>
+
+<p>There are several great videos that Fellippe created that are online:</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=OTEtftKlgsA">Overview</a></li>
+  <li><a href="https://www.youtube.com/watch?v=wqKBKr9h1Kw">Workflow</a></li>
+  <li><a href="https://www.youtube.com/watch?v=437GhtLsND4">Writing a small project</a></li>
+  <li><a href="https://www.youtube.com/watch?v=a9pNGBaIr94">Tutorial - Creating a Simple App with InForm (Tic Tac Toe)</a></li>
+  <li><a href="https://youtu.be/NSCfVRTPvso">How to create a label that spans multiple lines</a></li>
+</ul>
+
+<h3 id="samples">Samples</h3>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/WordClock">Word Clock</a></p>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/WordClock"><img src="images/inform_wordclock.png" alt="Word Clock" /></a></p>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/Stopwatch">Stopwatch</a></p>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/Stopwatch"><img src="images/inform_stopwatch.png" alt="Stopwatch" /></a></p>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/InformTicTacToe">Simple Tic Tac Toe Game</a></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L9FmJBN4_SQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/InformTicTacToe2">Improved Tic Tac Toe Game</a></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8_D5YQj6XI4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/Fireworks2Inform">Fireworks Simulation with Visual Controls</a></p>
+
+<p><a href="https://github.com/FellippeHeitor/InForm-demos/tree/master/Fireworks2Inform"><img src="images/inform_fireworks.png" alt="Fireworks" /></a></p>
+
+<p><a href="downloads/calculator.zip">InForm Calculator by Terry Ritchie</a></p>
+
+<p><a href="downloads/calculator.zip"><img src="images/inform_calculator.jpg" alt="Calculator" /></a></p>
+
+<h3 id="blog">Blog</h3>
+
+<p><a href="https://web.archive.org/web/20210508105104/https://www.qb64.org/inform/blog/">via Archive.org</a></p>
+
+<h3 id="forum">Forum</h3>
+
+<p><a href="https://qb64forum.alephc.xyz/index.php?board=11.0">QB64.org Forum - InForm (read-only)</a></p>
+
+<h3 id="contact">Contact</h3>
+
+<p>Please utilize the <a href="https://github.com/FellippeHeitor">GitHub repo</a>.</p>
+
+<p><em>The InForm source code is licensed under the MIT License and is also available on GitHub and you can follow development as it goes.</em></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/inform.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:11:35 GMT -->
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/VARPTR$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="VARPTR%24-2.html" />
+<meta property="og:url" content="VARPTR%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/VARPTR$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><strong>VARPTR$</strong> is a memory function that returns a <a href="STRING.html">STRING</a> representation of a variable’s memory address value for use in a <a href="DRAW.html">DRAW</a> or <a href="PLAY.html">PLAY</a> statement.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>string_value$ = VARPTR$(<em>variable</em>)</p>
+</blockquote>
+
+<ul>
+  <li>Can use any <a href="STRING.html">STRING</a> or numerical variable reference <strong>existing</strong> in memory.</li>
+  <li>If the parameter value is from an array it must be dimensioned already. Cannot use fixed length string arrays.</li>
+  <li>When using <strong>numerical</strong> <em>variable</em> values in <a href="DRAW.html">DRAW</a> strings, use an = sign after the function letter. “TA=” + VARPTR$(<em>variable%</em>)</li>
+  <li>Always use variable X as in “X” + VARPTR$(<em>string_variable$</em>) to <a href="DRAW.html">DRAW</a> or <a href="PLAY.html">PLAY</a> another <a href="STRING.html">STRING</a> value.</li>
+  <li>DRAW relative Moves use a + or - before the equal sign. EX: DRAW “M+=” + VARPTR$(x%) + “,-=” + VARPTR$(y%)</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>How VARPTR$ reads consecutive values from memory.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">2</span>
+<span class="n">CLS</span>
+<span class="n">WIND</span><span class="err">$</span> <span class="o">=</span> <span class="s">"r10 d7 l10 u7 br20"</span>   <span class="c1">'create draw string to be read by function</span>
+<span class="n">ROW</span><span class="err">$</span> <span class="o">=</span> <span class="s">"x"</span><span class="o">+</span><span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">WIND</span><span class="err">$</span><span class="p">)</span><span class="o">+</span><span class="s">"x"</span><span class="o">+</span><span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">WIND</span><span class="err">$</span><span class="p">)</span><span class="o">+</span><span class="s">"x"</span><span class="o">+</span><span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">WIND</span><span class="err">$</span><span class="p">)</span><span class="o">+</span><span class="s">" x"</span><span class="o">+</span><span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">WIND</span><span class="err">$</span><span class="p">)</span><span class="o">+</span><span class="s">"bl80 bd11"</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="p">,</span> <span class="n">B</span>
+<span class="n">DRAW</span> <span class="s">"bm 115,52"</span>
+<span class="n">FOR</span> <span class="n">I</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span>
+    <span class="n">DRAW</span> <span class="s">"x"</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">ROW</span><span class="err">$</span><span class="p">)</span>
+<span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>*NOTE:’GWBasic** allows <strong>semicolons</strong> to be used in the ROW$ definition, but QBasic and <strong>QB64</strong> MUST use <strong>+</strong> concatenation.</p>
+</blockquote>
+
+<p>Using the function to change a Turn Angle value using DRAW.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+                           <span class="c1">'Demonstrates how string DRAW angles are used with TA</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">TO</span> <span class="mi">360</span> <span class="n">STEP</span> <span class="mi">30</span>           <span class="c1">'mark clock hours every 30 degrees</span>
+  <span class="n">angle$</span> <span class="o">=</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>                 <span class="c1">'change degree value i to a string   </span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">6</span>               <span class="c1">'clock center</span>
+  <span class="n">DRAW</span> <span class="s">"TA"</span> <span class="o">+</span> <span class="n">angle$</span> <span class="o">+</span> <span class="s">"BU100"</span>     <span class="c1">'add string angle to Turn Angle and draw blind up</span>
+  <span class="n">CIRCLE</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span>         <span class="c1">'place a circle at end of Up line</span>
+  <span class="n">DRAW</span> <span class="s">"P9, 12"</span>
+  <span class="n">_DELAY</span> <span class="p">.</span><span class="err">5</span>           
+<span class="n">NEXT</span>
+                            <span class="c1">'Demonstrates how VARPTR$ is used with TA= </span>
+<span class="n">DO</span><span class="p">:</span> <span class="n">sec$</span> <span class="o">=</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>        <span class="c1">'get current second value from time</span>
+  <span class="n">degree</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">sec$</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">6</span>          <span class="c1">'use a negative value to Turn Angle clockwise</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">9</span>               <span class="c1">'clock center</span>
+  <span class="n">DRAW</span> <span class="s">"TA="</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span> <span class="o">+</span> <span class="s">"U90"</span>  <span class="c1">'VARPTR$ value requires = in DRAW</span>
+  <span class="n">DO</span><span class="p">:</span> <span class="n">_LIMIT</span> <span class="mi">30</span><span class="p">:</span> <span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">RIGHT</span><span class="err">$</span><span class="p">(</span><span class="n">TIME</span><span class="err">$</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">sec$</span>  <span class="c1">'loop until seconds value changes</span>
+  <span class="n">IF</span> <span class="n">INKEY</span><span class="err">$</span> <span class="o">&lt;&gt;</span> <span class="s">""</span> <span class="n">THEN</span> <span class="n">EXIT</span> <span class="n">DO</span>
+  <span class="n">PSET</span> <span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">0</span>
+  <span class="n">DRAW</span> <span class="s">"TA="</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span> <span class="o">+</span> <span class="s">"U90"</span>  <span class="c1">'erase previous second hand draw</span>
+<span class="n">LOOP</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> When the VARPTR$ value is used in DRAW, <strong>=</strong> MUST be used to pass the value to the draw! Negative Turn Angle values move clockwise and each second moves the hand 6 degrees. <strong>TA</strong> uses actual degree angles starting at 0 or noon.</p>
+</blockquote>
+
+<p>Comparing DRAW moves using VARPTR$ and <a href="STR%24.html">STR$</a> values.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">SCREEN</span> <span class="mi">12</span>
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="mi">12</span>
+<span class="n">CIRCLE</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">100</span><span class="p">:</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">DRAW</span> <span class="s">"M+="</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="s">",-="</span> <span class="o">+</span> <span class="n">VARPTR</span><span class="err">$</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">PSET</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="mi">10</span>
+<span class="n">CIRCLE</span> <span class="n">STEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">100</span><span class="p">:</span> <span class="n">D</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+<span class="n">DRAW</span> <span class="s">"M+"</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">STR</span><span class="err">$</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="c1">'must add + for positive relative moves</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> A negative STR$ value will move the DRAW relatively where VARPTR$ won’t without the sign before the equal.</p>
+</blockquote>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="VARPTR.html">VARPTR</a>, <a href="STR%24.html">STR$</a></li>
+  <li><a href="DRAW.html">DRAW</a>, <a href="PLAY.html">PLAY</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/VARPTR$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:44:45 GMT -->
+</html>

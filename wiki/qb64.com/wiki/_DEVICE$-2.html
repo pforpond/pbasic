@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_DEVICE$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_DEVICE%24-2.html" />
+<meta property="og:url" content="_DEVICE%24-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_DEVICE$.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <strong>_DEVICE$</strong> function returns a <a href="STRING.html">STRING</a> value holding the controller type, name and input types of the input devices on a computer.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>device$ = _DEVICE$(device_number)</p>
+</blockquote>
+
+<ul>
+  <li>The <strong><a href="_DEVICES.html">_DEVICES</a> function must be read first to get the number of devices and to enable <a href="_DEVICE%24.html">_DEVICE$</a> and <a href="_DEVICEINPUT.html">_DEVICEINPUT</a>.</strong></li>
+  <li>The device_number parameter indicates the number of the controller device to be read.</li>
+  <li>Returns the <a href="STRING.html">STRING</a> control type, name of the device and input types each can use included in brackets:
+    <ul>
+      <li>Control type:
+        <ul>
+          <li>[KEYBOARD] always listed as first device when keyboard(s) available. Only one keyboard will show.</li>
+          <li>[MOUSE]] always listed as second device when keyboard(s) and mouse(mice) are available. Only one mouse will show.</li>
+          <li>[CONTROLLER] subsequent devices are listed as controllers which include joysticks and game pads.</li>
+          <li>When [CONTROLLER] is returned it may also give the <a href="STRING.html">STRING</a> [NAME] <a href="NAME%5d%20%5bdevice%20description.html">device description</a> of the controller.</li>
+        </ul>
+      </li>
+      <li>Returns the type of input after the device name as one or more of the following types:
+        <ul>
+          <li>[<a href="BUTTON.html">BUTTON</a>] indicates there are button types of input. <a href="_LASTBUTTON.html">_LASTBUTTON</a> can return the number of buttons available.</li>
+          <li>[<a href="AXIS.html">AXIS</a>] indicates there are stick types of input. <a href="_LASTAXIS.html">_LASTAXIS</a> can return the number of axis available.</li>
+          <li>[<a href="WHEEL.html">WHEEL</a>] indicates that a scrolling input can be read. <a href="_LASTWHEEL.html">_LASTWHEEL</a> can return the number of wheels available.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Device numbers above the number of <a href="_DEVICES.html">_DEVICES</a> found will return an OS error.</strong></li>
+  <li>Devices found include keyboard, mouse, joysticks, game pads and multiple stick game controllers.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Checking for the system’s input devices and the number of buttons available.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">devices</span> <span class="o">=</span> <span class="n">_DEVICES</span>  <span class="c1">'MUST be read in order for other 2 device functions to work!</span>
+<span class="n">PRINT</span> <span class="s">"Number of input devices found ="</span><span class="err">;</span> <span class="n">devices</span>
+<span class="n">FOR</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">devices</span>
+  <span class="n">PRINT</span> <span class="n">_DEVICE$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">PRINT</span> <span class="s">"Buttons:"</span><span class="err">;</span> <span class="n">_LASTBUTTON</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span> <span class="s">"Axis:"</span><span class="err">;</span> <span class="n">_LASTAXIS</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="err">;</span> <span class="s">"Wheels:"</span><span class="err">;</span> <span class="n">_LASTWHEEL</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">NEXT</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Number of input devices found = 3
+[KEYBOARD][BUTTON]
+Buttons: 512 Axis: 0 Wheels: 0
+[MOUSE][BUTTON][AXIS][WHEEL]
+Buttons: 3 Axis: 2 Wheels: 3
+[CONTROLLER][NAME][Microsoft Sidewinder Precision Pro (USB)](NAME][Microsoft Sidewinder Precision Pro (USB))[BUTTON][AXIS]
+Buttons: 9 Axis: 6 Wheels: 0
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: The <a href="STRIG.html">STRIG</a>/<a href="STICK.html">STICK</a> commands won’t read from the keyboard or mouse device the above example lists. They will only work on controllers.</p>
+</blockquote>
+
+<p>Finding the number of mouse buttons available in QB64. This could also be used for other devices.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FOR</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">TO</span> <span class="n">_DEVICES</span>  <span class="c1">'number of input devices found</span>
+  <span class="n">dev$</span> <span class="o">=</span> <span class="n">_DEVICE$</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">INSTR</span><span class="p">(</span><span class="n">dev$</span><span class="p">,</span> <span class="s">"[MOUSE]"</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">buttons</span> <span class="o">=</span> <span class="n">_LASTBUTTON</span><span class="p">(</span><span class="n">d</span><span class="p">):</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="n">buttons</span><span class="err">;</span> <span class="s">"mouse buttons available"</span> 
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_DEVICES.html">_DEVICES</a>, <a href="_DEVICEINPUT.html">_DEVICEINPUT</a></li>
+  <li><a href="_LASTBUTTON.html">_LASTBUTTON</a>, <a href="_LASTAXIS.html">_LASTAXIS</a>, <a href="_LASTWHEEL.html">_LASTWHEEL</a></li>
+  <li><a href="_BUTTON.html">_BUTTON</a>, <a href="_BUTTONCHANGE.html">_BUTTONCHANGE</a></li>
+  <li><a href="_AXIS.html">_AXIS</a>, <a href="_WHEEL.html">_WHEEL</a></li>
+  <li><a href="_MOUSEBUTTON.html">_MOUSEBUTTON</a></li>
+  <li><a href="STRIG.html">STRIG</a>, <a href="STICK.html">STICK</a></li>
+  <li><a href="ON-STRIG(n).html">ON STRIG(n)</a>, <a href="STRIG(n).html">STRIG(n)</a></li>
+  <li><a href="Controller-Devices.html">Controller Devices</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_DEVICE$.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:34 GMT -->
+</html>

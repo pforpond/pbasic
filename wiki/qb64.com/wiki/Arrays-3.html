@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/Arrays.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>What are Arrays? | QB64.com</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="What are Arrays?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="Arrays-3.html" />
+<meta property="og:url" content="Arrays-3.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="What are Arrays?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"What are Arrays?","url":"https://qb64.com/wiki/Arrays.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3 id="what-are-arrays">What are Arrays?</h3>
+
+<p>Arrays are simply variables with a number of elements that can each hold data in memory. To designate a certain element, integers denote the value’s position in memory. Don’t let talk about memory scare you! Basic does all of the work for you just by using the simple commands in this tutorial. Besides that, you have already been using memory since you created your first variable!</p>
+
+<p>Arrays can store element bytes of information like any other variable depending on the type of the variable. The total memory bytes used by an array type can be determined using the table below multiplied by the number of array elements:</p>
+
+<p>Standard QBasic/QuickBASIC types:</p>
+
+<ul>
+  <li><a href="STRING.html">STRING</a> = 1 byte per character</li>
+  <li><a href="INTEGER.html">INTEGER</a> = 2 bytes (signed Integer values from -32768 to 32767)</li>
+  <li><a href="LONG.html">LONG</a> = 4 bytes (signed Integer values from -2147483648 to 2147483647)</li>
+  <li><a href="SINGLE.html">SINGLE</a> = 4 bytes (up to 7 digit floating decimal point values)</li>
+  <li><a href="DOUBLE.html">DOUBLE</a> = 8 bytes (up to 15 digit floating point values)</li>
+</ul>
+
+<p>New types introduced by QB64</p>
+
+<ul>
+  <li><a href="_BIT.html">_BIT</a> * 8 = 1 byte(signed Integer values of -1 or 0)</li>
+  <li><a href="_BYTE.html">_BYTE</a> = 1 byte (signed Integer values from -128 to 127)</li>
+  <li><a href="_INTEGER64.html">_INTEGER64</a> = 8 bytes (signed values from -9223372036854775808 to 9223372036854775807</li>
+  <li><a href="_FLOAT.html">_FLOAT</a> = 10 bytes (better than Double accuracy)</li>
+</ul>
+
+<p>While QBasic uses signed values <strong>QB64</strong> can use signed or <a href="_UNSIGNED.html">_UNSIGNED</a> values for <a href="_BIT.html">_BIT</a>, <a href="_BYTE.html">_BYTE</a>, <a href="INTEGER.html">INTEGER</a>, <a href="LONG.html">LONG</a> or <a href="_INTEGER64.html">_INTEGER64</a> variable type values.</p>
+
+<p>The array’s variable type must be determined when the array is created. If no type is used, the default type is <a href="SINGLE.html">SINGLE</a>.</p>
+
+<h3 id="when-do-i-need-an-array">When do I need an Array?</h3>
+
+<p><strong>When you find yourself creating several variables with numbers in their names.</strong> This may seem simplistic, but normally programmers tend to use similar names to denote similar value types. This makes arrays perfect in many cases. You can get several values of the same type simply by referring to the element positions in an array. Plus you can have thousands of possibilities when needed.</p>
+
+<p>Arrays can be created to hold values until they are needed. They can hold image or file data too! There are many possible uses!</p>
+
+<p>The only drawback is that the data is lost when the program ends, but array data can be permanently stored in files when you want to save the data. All that you need is a simple loop to transfer the data sequencially or save the entire array to a <a href="BINARY.html">BINARY</a> file using <strong>QB64</strong> with a simple <a href="PUT.html">PUT</a> statement. You also can retrieve the array data using one <a href="GET.html">GET</a>.</p>
+
+<h3 id="creating-array-variables">Creating Array Variables</h3>
+
+<p>First we need to create a place in memory for the array. To do that we have to tell Basic the array’s name, type of values it will hold and how many values we need to access. This is called dimensioning an array.</p>
+
+<p>How good are you at counting from zero? This might seem like a simple question, but think about this. How many elements would we have if they were numbered 0 through 10? If you said 11, then you were correct. Some people have problems counting when 0 is involved so Basic has an option to allow all arrays to start at 1.</p>
+
+<p><a href="OPTION-BASE.html">OPTION BASE</a> 1 will cause all array dimensions to begin at 1, <a href="OPTION-BASE.html">OPTION BASE</a> 0 will cause all dimensions to begin at 0. The default when just using the maximum array size is 0. Use whatever option you are comfortable with.</p>
+
+<p>Arrays in QuickBASIC 4.5 and QBasic are limited to 32767 elements, while arrays in <strong>QB64</strong> are limited to 2147483647 elements (over 2 billion). When the 64-bit version of QB64 is implemented 9223372036854775807 elements will be the limit (but only on 64-bit systems).</p>
+
+<p><a href="DIM.html">DIM</a> reserves the array’s name, variable type and number of elements in memory before the array is used. DIM reserves a <a href="STATIC.html">STATIC</a> (unchangeable) array unless the <a href="%24DYNAMIC.html">$DYNAMIC</a> (changeable) metacommand is used at the program’s start or <a href="REDIM.html">REDIM</a> was used to dimension the array originally.</p>
+
+<p>Dimensions an array named ‘Array’ that is capable of holding 101 integer values including element 0.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Array</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+
+</code></pre></div></div>
+
+<p>An array starts at element 0 unless changed by <a href="OPTION-BASE.html">OPTION BASE</a> 1 (which can set the start at 1), you can also define the start and end area by <a href="DIM.html">DIM</a>ensioning within a range.</p>
+
+<p><a href="DIM.html">DIM</a>ensioning with a range is possible also by using TO between the minimum and  highest elements. Arrays can start and end at any element(index) value up to 32767. <strong>QB64</strong> allows larger array sizes!</p>
+
+<p>dimensions an Integer array that can hold 100 values in indices 1 to 100.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DIM</span> <span class="n">Array</span><span class="err">%</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">100</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><em>Note:</em> The array type can also be designated by variable suffixes as % designates Integers above.</p>
+
+<p><a href="REDIM.html">REDIM</a> can be used to redimension a dynamic array. Any information contained in the array before the REDIM will be lost…however. In order to use <a href="REDIM.html">REDIM</a>, the variable must have originally been dimensioned using <a href="REDIM.html">REDIM</a>, or a <a href="%24DYNAMIC.html">$DYNAMIC</a> metacommand must be placed at the top of the program.</p>
+
+<p><em>Example 3:</em></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+<span class="n">OPTION</span> <span class="n">BASE</span> <span class="mi">1</span>          <span class="c1">' placed before any arrays are dimensioned </span>
+<span class="n">REDIM</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>      <span class="c1">' REDIM creates a dynamic array</span>
+
+</code></pre></div></div>
+
+<p><strong>QB64</strong> has a REDIM <a href="_PRESERVE.html">_PRESERVE</a> action which can be used in a REDIM statement in order to preserve the data information in the array.</p>
+
+<p>REDIM without the _PRESERVE action erases the array contents</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="c1">REM $DYNAMIC</span>
+ <span class="n">DIM</span> <span class="n">array</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+ <span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">24</span>
+ <span class="n">PRINT</span> <span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+ <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">array</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+ <span class="n">PRINT</span> <span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+ <span class="n">REDIM</span> <span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+ <span class="n">PRINT</span> <span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+24
+24
+0
+
+</code></pre></div></div>
+
+<p><a href="_PRESERVE.html">_PRESERVE</a> also allows the lowest index to be changed. The old starting index data value will always be in the lowest new index when the index range limits are changed.</p>
+
+<p>Changing the starting index number using the <a href="_PRESERVE.html">_PRESERVE</a> action moves the data.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">REDIM</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">50</span><span class="p">)</span>
+ <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s">"I'm number one!"</span>
+ <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">=</span> <span class="s">"I'm 50..."</span>
+ <span class="n">REDIM</span> <span class="n">_PRESERVE</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">51</span> <span class="n">TO</span> <span class="mi">100</span><span class="p">)</span>
+ <span class="n">PRINT</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>              <span class="c1">' display new start index data</span>
+ <span class="n">PRINT</span> <span class="n">Array</span><span class="err">$</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>             <span class="c1">' display new end data</span>
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+I'm number one!
+I'm 50...
+
+</code></pre></div></div>
+
+<p>The memory segment address of the array is defined in <a href="DEF-SEG.html">DEF SEG</a>.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">DEF</span> <span class="n">SEG</span> <span class="o">=</span> <span class="n">VARSEG</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+ <span class="n">offset</span> <span class="o">=</span> <span class="n">VARPTR</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1">'program designated offset element </span>
+
+</code></pre></div></div>
+
+<p>NOTE: If <a href="OPTION-BASE.html">OPTION BASE</a> 1 is used change the 0 to 1. The array start index can be changed when some other data is indexed in the array.</p>
+
+<h3 id="multi-dimensional-arrays">Multi-Dimensional Arrays</h3>
+
+<p>Multiple dimensions are possible to create tables of values. QuickBASIC can use up to 60 dimensions. In <strong>QB64</strong> the number of dimensions possible depends on your system memory (a lot more than 60 dimensions). Array data can be saved and restored using file data.</p>
+
+<p><strong>Otherwise the data is lost when a program closes.</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+                        ** TWO DIMENSIONAL ARRAY TABLES**
+
+    Setting up a car sales Database: The sales for each month as represented in an array.
+              
+                     DIM Vehicle%(12, 4)       ' Vehicle%(month%, type%)
+   
+                       Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+                    **    1   2   3   4   5   6   7   8   9   10  11  12  ← Month index**
+         **Type index ↓**  -----------------------------------------------  
+           Cars     **1:**  5  10  15  20  30   19  17  12  24  20  33  30
+           Trucks   **2:**  3   8   7  10  15    9  11   8  15  10  16  11
+           Vans     **3:**  4   6   8   9   7   10   9   7   9   8  10   7 
+           SUV      **4:** 10   8   8   5  10    8   6   8  10  11   9   8
+
+             To find monthly and yearly totals you could do something like this:  
+
+                FOR month% = 1 TO 12
+                   FOR type% = 1 TO 4
+                      MonthlySales% = MonthlySales% + Vehicle%(month%, type%)
+                   NEXT
+                   YearlySales% = YearlySales% + MonthlySales%
+                   PRINT "Monthly =", MonthlySales%; " Yearly ="; YearlySales%; "   "
+                   INPUT$(1)               'stop to view each month 
+                   MonthlySales% = 0       'zero month sales for next months total
+                NEXT
+
+</code></pre></div></div>
+
+<p>Creating a two-dimensional array. A comma separates each dimension size.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="n">DIM</span> <span class="n">Array</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>           <span class="c1">' 2 dimensions can hold 143 data values </span>
+
+</code></pre></div></div>
+
+<p>One dimension could hold the month number and the other the number of items sold in 10 categories.</p>
+
+<p>Dimensioning using index ranges.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="n">DIM</span> <span class="n">Array</span><span class="p">(</span><span class="mi">1</span> <span class="n">TO</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span> <span class="n">TO</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">' 2 dimensions can hold 120 data values</span>
+
+</code></pre></div></div>
+
+<h3 id="working-with-the-array-elements">Working with the Array Elements</h3>
+
+<p>Once an array is created, you have to put something in it. As you may have noticed, each element or index has an integer value associated with it. Array(number%) refers to just one element of the array no matter what type it is. <strong>Arrays CAN have negative numbered elements!</strong></p>
+
+<p>You can place data into an array using several methods. The slowest method is directly placing data from the user. You can even use the array as the <a href="INPUT.html">INPUT</a> variable. It is recommended that ANY program user entries be limited to text as INPUT will give Redo from start errors if a user enters a string value when a numerical input was desired. Numerical string data can be converted from strings simply by using <a href="VAL.html">VAL</a>. This creates less user errors! NOTE: <strong>QB64</strong> does not return a “Redo from start” error as <a href="INPUT.html">INPUT</a> monitors entries.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DO</span>
+  <span class="n">INPUT</span> <span class="s">"Enter your age: "</span><span class="p">,</span> <span class="n">howold$</span> 
+  <span class="n">age%</span> <span class="o">=</span> <span class="n">VAL</span><span class="p">(</span><span class="n">howold$</span><span class="p">)</span>
+<span class="n">LOOP</span> <span class="n">UNTIL</span> <span class="n">age%</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="n">Playerage</span><span class="err">%</span><span class="p">(</span><span class="n">user%</span><span class="p">)</span> <span class="o">=</span> <span class="n">age%</span>   <span class="c1">'saves the players age to an indexed player number</span>
+
+<span class="n">PRINT</span> <span class="n">Playerage</span><span class="err">%</span><span class="p">(</span><span class="n">user%</span><span class="p">)</span>    <span class="c1">'print array element to screen to verify entry</span>
+
+<span class="n">user%</span> <span class="o">=</span> <span class="n">user%</span> <span class="o">+</span> <span class="mi">1</span>          <span class="c1">'increment user number when all data has been entered</span>
+
+</code></pre></div></div>
+
+<p>You could use several arrays to hold the player’s name, high scores, etc. Once the data is in the array, it can be used until the program ends. Then the data is lost, but you can store the data to a file before closing the program simply by using a loop. See next section.</p>
+
+<p><strong>To pass array data to a <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> parameter, an empty element bracket passes all elements while a number only passes one specified element of the array.</strong></p>
+
+<h3 id="array-indexing">Array Indexing</h3>
+
+<p>Arrays can be set up to hold more than one kind of data, by indexing the two or more kinds of data. To do this, the programmer reserves one set of element or index values for each kind of data. The type of values MUST be the same except when using a <a href="TYPE.html">TYPE</a> definition value.</p>
+
+<h3 id="sorting-array-data">Sorting Array Data</h3>
+
+<p>Arrays can be sorted numerically or alphabetically using various sorting routines. Commonly <a href="SWAP.html">SWAP</a> is used to trade element values in descending or ascending order.</p>
+
+<h3 id="saving-array-data">Saving Array Data</h3>
+
+<p>Since variables and arrays exist in memory, data is lost when a program closes. To preserve program data you must either create a permanent <a href="DATA.html">DATA</a> field or save the data to files.</p>
+
+<p>The next time a program is used, it can <a href="OPEN.html">OPEN</a> that file and quickly restore all of the array data using a loop or <strong>QB64</strong> can <a href="GET.html">GET</a> the entire file’s data in one GET. Use <a href="LINE-INPUT-(file-statement).html">LINE INPUT (file statement)</a> # to set the array sizes by counting the number of data rows in a file if you used a <a href="WRITE.html">WRITE</a> <strong>CSV</strong>(comma separated values) or a <a href="PRINT-(file-statement).html">PRINT (file statement)</a> # sequencial file. The number of records in a <a href="TYPE.html">TYPE</a> or <a href="FIELD.html">FIELD</a> defined <a href="RANDOM.html">RANDOM</a> access file can be found by dividing the record size into the <a href="LOF.html">LOF</a>. You may want to make the array slightly larger for new entries.</p>
+
+<h3 id="image-arrays">Image Arrays</h3>
+
+<p><a href="INTEGER.html">INTEGER</a> arrays are used to hold image information when using the following graphic procedures: <a href="GET-(graphics-statement).html">GET (graphics statement)</a>, <a href="PUT-(graphics-statement).html">PUT (graphics statement)</a>, <a href="BSAVE.html">BSAVE</a> and <a href="BLOAD.html">BLOAD</a>.</p>
+
+<p>The <a href="INTEGER.html">INTEGER</a> array size can be estimated by multiplying the height by the width of the image area. To find the actual size needed you can use the following routine to count backwards until something is found in the array. The example below returns the array size required to create a 20 by 20 image:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">wide&amp;</span> <span class="o">=</span> <span class="mi">20</span><span class="p">:</span> <span class="n">deep&amp;</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1">'change the sizes for any image area</span>
+<span class="n">DIM</span> <span class="n">array</span><span class="p">(</span><span class="n">wide&amp;</span> <span class="o">*</span> <span class="n">deep&amp;</span><span class="p">)</span> <span class="n">AS</span> <span class="n">INTEGER</span>
+<span class="n">LINE</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">wide&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">12</span><span class="p">,</span> <span class="n">B</span> <span class="c1">'the box border is all that you need to color.</span>
+<span class="n">GET</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">wide&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">deep&amp;</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">FOR</span> <span class="n">s&amp;</span> <span class="o">=</span> <span class="n">wide&amp;</span> <span class="o">*</span> <span class="n">deep&amp;</span> <span class="n">TO</span> <span class="mi">0</span> <span class="n">STEP</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">IF</span> <span class="n">array</span><span class="p">(</span><span class="n">s&amp;</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">arraysize&amp;</span> <span class="o">=</span> <span class="n">s&amp;</span><span class="p">:</span> <span class="n">EXIT</span> <span class="n">FOR</span>
+<span class="n">NEXT</span>
+<span class="n">PRINT</span> <span class="n">arraysize&amp;</span>
+<span class="n">END</span> 
+
+</code></pre></div></div>
+
+<p><strong>Note: QB64 can <a href="GET-(graphics-statement).html">GET (graphics statement)</a> the entire SCREEN 12 area into one array!</strong></p>
+
+<p>See also: <a href="Creating-Sprite-Masks.html">Creating Sprite Masks</a></p>
+
+<h3 id="shared-arrays">SHARED Arrays</h3>
+
+<p>When array data is used with <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures they can be passed as parameters. When passed as parameters, a specific index or the entire array can be used. To specify an index, the array is passed with the element number. If the entire array is passed, the element brackets should be empty. Example: <strong>SUB SubName (ArrayName() AS INTEGER)</strong></p>
+
+<p>Arrays can also be <a href="SHARED.html">SHARED</a> by all procedures by using <a href="DIM.html">DIM</a> <a href="SHARED.html">SHARED</a> when the array is created. This allows the array data to be used in the main procedure and all sub-procedures.</p>
+
+<p><a href="COMMON.html">COMMON</a> allows Array data to be shared between program modules when used with <a href="CHAIN.html">CHAIN</a>. The two modules can share any variable values in a list of variables. The lists can use different variable names, but the types of values MUST be listed in the SAME order in both modules.</p>
+
+<p><a href="COMMON_SHARED.html">COMMON SHARED</a> allows data to be shared between both modules and SUB or FUNCTION procedures.</p>
+
+<p>Arrays can be created inside of <a href="SUB.html">SUB</a> or <a href="FUNCTION.html">FUNCTION</a> procedures by using <a href="DIM.html">DIM</a> or <a href="REDIM.html">REDIM</a>. Also <a href="SHARED.html">SHARED</a>(without DIM) can be used inside of a sub-procedure to share variable data with the Main program module ONLY. Other sub-procedures cannot reference the data. To share array data with other sub-procedures, array FUNCTIONS can be created that use the internal array elements as a parameter. <strong>QB64 may allow sub-procedures to share values with other procedures soon!</strong></p>
+
+<p>Arrays can be set as <a href="STATIC.html">STATIC</a> to retain the values when a sub-procedure is exited. The values will be retained until changed inside of the procedure. If the procedure creates it’s own array, you can use a STATIC True or False variable to determine when to <a href="DIM.html">DIM</a> or <a href="REDIM.html">REDIM</a> a STATIC array so that values are not lost every call. The <em>Ready%</em> variable below DIMs the array when the function is first used:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">FUNCTION</span> <span class="n">ScanKey</span><span class="err">%</span> <span class="p">(</span><span class="n">scancode%</span><span class="p">)</span>
+  <span class="n">STATIC</span> <span class="n">Ready</span><span class="err">%</span><span class="p">,</span> <span class="n">keyflags%</span><span class="p">()</span>
+  <span class="n">IF</span> <span class="n">NOT</span> <span class="n">Ready</span><span class="err">%</span> <span class="n">THEN</span> <span class="n">REDIM</span> <span class="n">keyflags%</span><span class="p">(</span><span class="mi">0</span> <span class="n">TO</span> <span class="mi">127</span><span class="p">):</span> <span class="n">Ready</span><span class="err">%</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> 
+  <span class="n">i%</span> <span class="o">=</span> <span class="n">INP</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H60</span><span class="p">)</span>  <span class="c1">'read keyboard states</span>
+  <span class="n">IF</span> <span class="p">(</span><span class="n">i%</span> <span class="n">AND</span> <span class="mi">128</span><span class="p">)</span> <span class="n">THEN</span> <span class="n">keyflags%</span><span class="p">(</span><span class="n">i%</span> <span class="n">XOR</span> <span class="mi">128</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">IF</span> <span class="p">(</span><span class="n">i%</span> <span class="n">AND</span> <span class="mi">128</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">keyflags%</span><span class="p">(</span><span class="n">i%</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">K</span><span class="err">$</span> <span class="o">=</span> <span class="n">INKEY</span><span class="err">$</span>
+  <span class="n">ScanKey</span><span class="err">%</span> <span class="o">=</span> <span class="n">keyflags%</span><span class="p">(</span><span class="n">scancode%</span><span class="p">)</span>
+  <span class="n">IF</span> <span class="n">scancode%</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">Ready</span><span class="err">%</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">'allows program to reset all values to 0 with a REDIM</span>
+<span class="n">END</span> <span class="n">FUNCTION</span> 
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Explanation:</em> The STATIC <em>Ready%</em> value is always 0 when a procedure is first run. <a href="NOT.html">NOT</a> zero makes the IF statement True so the array is created. The <em>Ready%</em> value is then changed to anything but zero to make NOT <em>Ready%</em> False when the procedure is called again. The FUNCTION is referenced just like an array would be. The value it returns is either 0 or -1 to verify that a certain key was released or pressed respectively. The keyboard status is also updated in the array each call. If the <em>scancode%</em> sent is 0(a key scan code that does not exist), the array is reset(re-dimensioned) on the next call as <em>Ready%</em> is reset to zero.</p>
+</blockquote>
+
+<h3 id="preserving-data">Preserving Data</h3>
+
+<p><a href="_PRESERVE.html">_PRESERVE</a> can preserve data when <a href="REDIM.html">REDIM</a> or <a href="%24DYNAMIC.html">$DYNAMIC</a> is used to create dynamic arrays. The current array data can be preserved while changing the array element size. Increasing the size will preserve data inside of existing indices in the resized array. If the size is decreased, only the existing indices values will be preserved. <strong>The array <a href="TYPE.html">TYPE</a> and number of array dimensions cannot be changed!</strong></p>
+
+<p><strong>REDIM _PRESERVE ArrayName(1 TO 100)</strong></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/Arrays.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:43:57 GMT -->
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  
+<!-- Mirrored from qb64.com/wiki/_ACOS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.html">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style2443.css?v=eb9b8c9cad488bd1304035e1bfc5d2e89b0f78df">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QB64.com | QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="QB64.com" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<meta property="og:description" content="QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS." />
+<link rel="canonical" href="_ACOS-2.html" />
+<meta property="og:url" content="_ACOS-2.html" />
+<meta property="og:site_name" content="QB64.com" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QB64.com" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.","headline":"QB64.com","url":"https://qb64.com/wiki/_ACOS.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <!--<a id="forkme_banner" href="https://github.com/DualBrain/QB64">View on GitHub</a>-->
+          
+
+          <h1 id="project_title">QB64.com</h1>
+          <h2 id="project_tagline">QB64 is a modern extended BASIC programming language that retains QBasic/QuickBASIC 4.5 compatibility and compiles native binaries for Windows, Linux, and macOS.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>The <a href="_ACOS.html">_ACOS</a> function returns the angle measured in radians based on an input <a href="COS.html">COS</a>ine value ranging from -1 to 1.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<blockquote>
+  <p>radian_angle! = <a href="_ACOS.html">_ACOS</a>(cosine_value!)</p>
+</blockquote>
+
+<h2 id="description">Description</h2>
+
+<ul>
+  <li>The <em>cosine_value!</em> must be measured &gt;= -1 and &lt;= 1, or an error will be generated.  (PRINT _ACOS(1.2) would give the result of -1.#IND, which is basically QB64’s way of telling us that the number doesn’t exist, much like 1/0 would.)</li>
+  <li>ARCCOSINE is the inverse function of <a href="COS.html">COS</a>ine, which lets us turn a <a href="COS.html">COS</a>ine value back into an angle.</li>
+  <li>Note: Due to rounding with floating point math, the _ACOS may not always give a perfect match for the COS angle which generated this.  You can reduce the number of rounding errors by increasing the precision of your calculations by using <a href="DOUBLE.html">DOUBLE</a> or <a href="_FLOAT.html">_FLOAT</a> precision variables instead of <a href="SINGLE.html">SINGLE</a>.</li>
+</ul>
+
+<h2 id="availability">Availability</h2>
+
+<ul>
+  <li>Version 1.000 and up.</li>
+</ul>
+
+<h2 id="examples">Example(s)</h2>
+
+<p>Converting a radian angle to its COSine and using that value to find the angle in degrees again using _ACOS:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">DEFDBL</span> <span class="n">A</span><span class="o">-</span><span class="n">Z</span>
+
+<span class="n">INPUT</span> <span class="s">"Give me an Angle (in Degrees) =&gt; "</span><span class="err">;</span> <span class="n">Angle</span>
+<span class="n">PRINT</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">COS</span><span class="p">(</span><span class="n">_D2R</span><span class="p">(</span><span class="n">Angle</span><span class="p">))</span> <span class="c1">'_D2R is the command to convert Degrees to Radians, which is what COS expects</span>
+<span class="n">PRINT</span> <span class="s">"The COSINE of the Angle is: "</span><span class="err">;</span> <span class="n">C</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">_ACOS</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="s">"The ACOS of "</span><span class="err">;</span> <span class="n">C</span><span class="err">;</span> <span class="s">" is: "</span><span class="err">;</span> <span class="n">A</span>
+<span class="n">PRINT</span> <span class="s">"Notice, A is the Angle in Radians.  If we convert it to degrees, the value is "</span><span class="err">;</span> <span class="n">_R2D</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Give me an Angle (in Degrees) =&gt; ? 60
+
+The COSINE of the Angle is:  .5000000000000001
+The ACOS of  .5000000000000001  is:  1.047197551196598
+Notice, A is the Angle in Radians.  If we convert it to degrees, we discover the value is  60
+
+</code></pre></div></div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="_D2G.html">_D2G</a> (degree to gradient, <a href="_D2R.html">_D2R</a> (degree to radian)</li>
+  <li><a href="_G2D.html">_G2D</a> (gradient to degree), <a href="_G2R.html">_G2R</a> (gradient to degree</li>
+  <li><a href="_R2D.html">_R2D</a> (radian to degree), <a href="_R2G.html">_R2G</a> (radian to gradient</li>
+  <li><a href="COS.html">COS</a> (cosine), <a href="SIN.html">SIN</a> (sine), <a href="TAN.html">TAN</a> (tangent)</li>
+  <li><a href="_ASIN.html">_ASIN</a> (arc sine), <a href="ATN.html">ATN</a> (arc tangent)</li>
+  <li><a href="_ACOSH.html">_ACOSH</a> (arc hyperbolic  cosine), <a href="_ASINH.html">_ASINH</a> (arc hyperbolic  sine), <a href="_ATANH.html">_ATANH</a> (arc hyperbolic  tangent)</li>
+  <li><a href="_ATAN2.html">_ATAN2</a> (Compute arc tangent with two parameters)</li>
+  <li><a href="_HYPOT.html">_HYPOT</a> (hypotenuse)</li>
+  <li><a href="Mathematical-Operations.html">Mathematical Operations</a></li>
+</ul>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">QB64.com maintained by <a href="https://github.com/DualBrain">Cory Smith</a> on <a href="https://github.com/DualBrain/QB64">GitHub</a>.</p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+
+<!-- Mirrored from qb64.com/wiki/_ACOS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2024 13:50:24 GMT -->
+</html>
